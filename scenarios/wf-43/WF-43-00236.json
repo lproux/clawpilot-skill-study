@@ -1,0 +1,101 @@
+{
+  "scenario_id": "WF-43-00236",
+  "workflow_id": "WF-43",
+  "workflow_name": "Discovery Call Transcript -> Opportunity Build",
+  "seed": 4300278,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF43-M",
+  "persona": "Manager",
+  "fixture_id": "FX-015",
+  "user_message": "Give me the manager view on this Fourth Coffee email thread. This is time-sensitive -- customer is waiting.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Fourth Coffee",
+        "account_id": "ACC-A7MFL3SV",
+        "opportunities": [
+          {
+            "name": "Fourth Data Platform Migration",
+            "stage": "Qualify",
+            "amount": 210000,
+            "close_date": "2023-12-04"
+          }
+        ],
+        "acr_current": 114958.25,
+        "health_flag": "Healthy",
+        "owner": "Raj Mehta"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: security posture Discussion - Fourth Coffee\nDate: 2024-01-26\nDuration: 45 minutes\nAttendees: David Rivera (Fourth Coffee), Raj Mehta (Microsoft), David (Fourth Coffee)\n\n[00:02:00] David Rivera (Fourth Coffee): Good morning. I wanted to follow up on security posture from our last session.\n\n[00:07:00] David Rivera (Fourth Coffee): On the security posture front, we've made progress but there are still blockers around vendor dependencies.\n\n[00:12:00] David (Fourth Coffee): The timeline for performance requirements is aggressive. We need to validate the assumptions.\n\n[00:17:00] Raj Mehta (Microsoft): On the security posture front, we've made progress but there are still blockers around resource allocation.\n\n[00:20:00] David (Fourth Coffee): Our CTO reviewed this and has concerns about cost optimization. Can we address those?\n\n[00:25:00] Raj Mehta (Microsoft): Let me add some context -- we've been working on budget approval and found that the cost projections need to factor in reserved instance pricing for accuracy.",
+      "metadata": {
+        "freshness": "2024-02-06T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "mixed",
+        "length_class": "medium"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-segment-smb-small",
+    "persona-role-manager"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "opportunity creation warranted"
+      },
+      {
+        "target_skill": "solution-value-design-coach",
+        "condition": "solution sketch needed from discovery signals"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "discovery-call-transcript-->-opportunity-build",
+    "required_artifacts": [
+      "BANT signal extraction with evidence quotes",
+      "opportunity proposal with stage/value/close-date",
+      "confidence labels",
+      "solution sketch suggestion",
+      "follow-up actions"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF43-M trap (Confidence label missing or generic); produces complete BANT signal extraction with evidence quotes, opportunity proposal with stage/value/close-date, confi",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF43-M failure pattern",
+      "Score 1: Output exhibits the full FM-WF43-M failure mode (Confidence label missing or generic)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct security posture decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF43-M -- Confidence label missing or generic"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

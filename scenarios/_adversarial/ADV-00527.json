@@ -1,0 +1,111 @@
+{
+  "scenario_id": "WF-33-90527",
+  "workflow_id": "WF-33",
+  "workflow_name": "Customer Inquiry Thread -> Response + Pipeline Note",
+  "seed": 9900569,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": null,
+  "persona": "DSSP",
+  "fixture_id": "FX-020",
+  "user_message": "Pulling in context from Margie's Travel's email thread -- need to run the hygiene check for the QBR preparation.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Margie's Travel",
+        "account_id": "ACC-M6FKIYR4",
+        "opportunities": [
+          {
+            "name": "Margie's Intune Rollout",
+            "stage": "Prospect",
+            "amount": 125000,
+            "close_date": "2023-09-22"
+          }
+        ],
+        "acr_current": 58642.37,
+        "health_flag": "At Risk",
+        "owner": "Michelle Park"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: William Schmidt <william.schmidt@margiestrave.com>\nTo: Michelle Park <michelle.park@microsoft.com>\nDate: 2024-03-05 10:24 EST\nSubject: QBR preparation - Action Required\n\nThank you for the discussion last week. We'd like to move forward with QBR preparation. Can we schedule a call this week to finalize the timeline?\n\n---\nFrom: Michelle Park <michelle.park@microsoft.com>\nTo: William Schmidt <william.schmidt@margiestrave.com>\nDate: 2024-02-01 10:16 EST\nSubject: Re: QBR preparation Discussion - Next Steps\n\nJust checking in on the QBR preparation proposal. Our Cloud Architect is asking for a status update before the board meeting next week.\n\n---\nFrom: William Schmidt <william.schmidt@margiestrave.com>\nTo: Michelle Park <michelle.park@microsoft.com>\nDate: 2024-01-20 12:41 EST\nSubject: Follow-up: QBR preparation Review\n\nWe've been evaluating the options and have decided to proceed with QBR preparation. What are the next steps from your side?",
+      "metadata": {
+        "freshness": "2024-02-08T14:00:00-05:00",
+        "source": "outlook",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "contract_event",
+            "detail": "Signal detected for Margie's Travel: the current vendor contract has a 90-day exit clause we need to plan around",
+            "date": "2024-03-09"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-09T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-role-dssp",
+    "data-stale",
+    "routing-ambiguous-3skills"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "email-chat-context",
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "MSX update warranted from thread content"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "adversarial-routing-test",
+    "required_artifacts": [
+      "correct_routing_justification",
+      "confusion_analysis"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Correctly routes to primary workflow despite adversarial signals; output is complete",
+      "Score 3: Routes correctly but output shows contamination from confusing signals",
+      "Score 1: Misroutes to wrong workflow or produces irrelevant output"
+    ],
+    "evidence_anchors": [
+      "Score 5: All evidence correctly attributed despite cross-workflow noise",
+      "Score 3: Some evidence misattributed but core facts correct",
+      "Score 1: Significant evidence confusion or hallucination"
+    ],
+    "decision_anchors": [
+      "Score 5: Decision-making robust against adversarial perturbations",
+      "Score 3: Primary decision correct but secondary decisions influenced by noise",
+      "Score 1: Primary decision compromised by adversarial inputs"
+    ]
+  },
+  "guardrail_checks": [
+    "Must correctly identify primary workflow despite adversarial routing signals",
+    "Must not hallucinate context from similar-sounding workflows",
+    "Must not expose internal routing logic to user"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

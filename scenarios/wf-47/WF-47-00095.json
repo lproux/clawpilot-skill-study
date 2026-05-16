@@ -1,0 +1,100 @@
+{
+  "scenario_id": "WF-47-00095",
+  "workflow_id": "WF-47",
+  "workflow_name": "Multi-Stakeholder Meeting Transcript -> Decision Distribution",
+  "seed": 4700137,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF47-J",
+  "persona": "Manager",
+  "fixture_id": "FX-033",
+  "user_message": "Just came out of consumption trend with Parnell Aerospace. Turn this into my brief and pull out the asks.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Parnell Aerospace",
+        "account_id": "ACC-0H065FH7",
+        "opportunities": [
+          {
+            "name": "Parnell Dynamics 365 Implementation",
+            "stage": "Close",
+            "amount": 350000,
+            "close_date": "2024-11-03"
+          }
+        ],
+        "acr_current": 0,
+        "health_flag": "Healthy",
+        "owner": "Ahmed Hassan"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: consumption trend Discussion - Parnell Aerospace\nDate: 2024-02-05\nDuration: 45 minutes\nAttendees: Christopher Martinez (Parnell Aerospace), Ahmed Hassan (Microsoft)\n\n[00:01:30] Christopher Martinez (Parnell Aerospace): Thanks everyone for joining. Let's dive into consumption trend.\n\n[00:07:00] Christopher Martinez (Parnell Aerospace): On the consumption trend front, we've made progress but there are still blockers around partner engagement.\n\n[00:12:00] Ahmed Hassan (Microsoft): The timeline for security compliance is aggressive. We need to validate the assumptions.\n\n[00:14:00] Christopher Martinez (Parnell Aerospace): The timeline for timeline constraints is aggressive. We need to validate the assumptions.\n\n[00:17:00] Ahmed Hassan (Microsoft): The timeline for cost optimization is aggressive. We need to validate the assumptions.\n\n[00:20:00] Christopher Martinez (Parnell Aerospace): Let me add some context -- we've been working on partner engagement and found that the cost projections need to factor in reserved instance pricing for accuracy.\n\n[00:25:00] Christopher Martinez (Parnell Aerospace): The timeline for budget approval is aggressive. We need to validate the assumptions.\n\n[00:30:00] Ahmed Hassan (Microsoft): On the consumption trend front, we've made progress but there are still blockers around stakeholder alignment.\n\n[00:32:00] Ahmed Hassan (Microsoft): The timeline for cost optimization is aggressive. We need to validate the assumptions.",
+      "metadata": {
+        "freshness": "2024-01-10T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "short"
+      }
+    }
+  ],
+  "perturbations": [
+    "data-partially-missing",
+    "persona-geo-na",
+    "persona-tenure-mid",
+    "persona-role-manager"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions",
+      "contact-stakeholder-map"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "MSX updates warranted from decisions"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "multi-stakeholder-meeting-transcript-->-decision-d",
+    "required_artifacts": [
+      "Decision log with speaker attribution",
+      "action distribution by role",
+      "stakeholder map delta",
+      "MSX update proposals",
+      "due dates extracted"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF47-J trap (Stakeholder-map delta invents roles not in evidence); produces complete Decision log with speaker attribution, action distribution by role, stakeholder map delta, MSX updat",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF47-J failure pattern",
+      "Score 1: Output exhibits the full FM-WF47-J failure mode (Stakeholder-map delta invents roles not in evidence)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct consumption trend decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF47-J -- Stakeholder-map delta invents roles not in evidence"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

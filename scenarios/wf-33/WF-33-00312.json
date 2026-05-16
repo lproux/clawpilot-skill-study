@@ -1,0 +1,115 @@
+{
+  "scenario_id": "WF-33-00312",
+  "workflow_id": "WF-33",
+  "workflow_name": "Customer Inquiry Thread -> Response + Pipeline Note",
+  "seed": 3300354,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF33-C",
+  "persona": "CSA",
+  "fixture_id": "FX-017",
+  "user_message": "Can you work with me on competitive positioning for Humongous Insurance? I think there's an opportunity here but need to validate.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Humongous Insurance",
+        "account_id": "ACC-3AB2FT8E",
+        "opportunities": [
+          {
+            "name": "Humongous Cloud Migration Phase",
+            "stage": "Qualify",
+            "amount": 175000,
+            "close_date": "2023-10-27"
+          }
+        ],
+        "acr_current": 73720.59,
+        "health_flag": "Healthy",
+        "owner": "David Chen"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Michael Petrov <michael.petrov@humongousins.com>\nTo: David Chen <david.chen@microsoft.com>\nDate: 2024-03-13 15:41 EST\nSubject: URGENT: competitive positioning Issue at Humongous Insurance\n\nI wanted to follow up on our conversation about competitive positioning. Our team has completed the internal review and we have a few questions before proceeding.\n\n---\nFrom: David Chen <david.chen@microsoft.com>\nTo: Michael Petrov <michael.petrov@humongousins.com>\nDate: 2024-02-08 09:54 EST\nSubject: Follow-up: competitive positioning Review\n\nI wanted to follow up on our conversation about competitive positioning. Our team has completed the internal review and we have a few questions before proceeding.\n\n---\nFrom: Michael Petrov <michael.petrov@humongousins.com>\nTo: David Chen <david.chen@microsoft.com>\nDate: 2024-01-07 17:53 EST\nSubject: URGENT: competitive positioning Issue at Humongous Insurance\n\nThank you for the discussion last week. We'd like to move forward with competitive positioning. Can we schedule a call this week to finalize the timeline?",
+      "metadata": {
+        "freshness": "2024-02-22T12:00:00-05:00",
+        "source": "outlook",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "contract_event",
+            "detail": "Signal detected for Humongous Insurance: the current vendor contract has a 90-day exit clause we need to plan around",
+            "date": "2024-03-11"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-09T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-role-csa",
+    "persona-segment-smb-small",
+    "data-stale",
+    "persona-tenure-mid"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "email-chat-context",
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "MSX update warranted from thread content"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "customer-inquiry-thread-->-response-+-pipeline-not",
+    "required_artifacts": [
+      "Thread analysis",
+      "draft response",
+      "waiting-on-whom assessment",
+      "MSX pipeline note proposal (if warranted)",
+      "urgency calibration"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF33-C trap (Invents prior commitments not in thread); produces complete Thread analysis, draft response, waiting-on-whom assessment, MSX pipeline note proposal (if warrante",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF33-C failure pattern",
+      "Score 1: Output exhibits the full FM-WF33-C failure mode (Invents prior commitments not in thread)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct competitive positioning decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF33-C -- Invents prior commitments not in thread"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

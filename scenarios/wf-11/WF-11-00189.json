@@ -1,0 +1,131 @@
+{
+  "scenario_id": "WF-11-00189",
+  "workflow_id": "WF-11",
+  "workflow_name": "Pre-Meeting Brief",
+  "seed": 1100231,
+  "tier": 2,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": "FM-WF11-K",
+  "persona": "CSA",
+  "fixture_id": "FX-021",
+  "user_message": "Need help with Nod Publishers -- investigate the decline. I think there's an opportunity here but need to validate.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Nod Publishers",
+        "account_id": "ACC-BFJJI6LY",
+        "opportunities": [
+          {
+            "name": "Nod Azure SQL Migration",
+            "stage": "Close",
+            "amount": 45000,
+            "close_date": "2023-10-06"
+          },
+          {
+            "name": "Nod Intune Rollout",
+            "stage": "Develop",
+            "amount": 560000,
+            "close_date": "2024-12-16"
+          }
+        ],
+        "acr_current": 111088.58,
+        "health_flag": "At Risk",
+        "owner": "Marcus Williams"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Samantha Singh <samantha.singh@nodpublisher.com>\nTo: Marcus Williams <marcus.williams@microsoft.com>\nDate: 2024-03-04 16:53 EST\nSubject: Re: pipeline hygiene Discussion - Next Steps\n\nThank you for the discussion last week. We'd like to move forward with pipeline hygiene. Can we schedule a call this week to finalize the timeline?\n\n---\nFrom: Marcus Williams <marcus.williams@microsoft.com>\nTo: Samantha Singh <samantha.singh@nodpublisher.com>\nDate: 2024-02-16 17:23 EST\nSubject: URGENT: pipeline hygiene Issue at Nod Publishers\n\nWe've been evaluating the options and have decided to proceed with pipeline hygiene. What are the next steps from your side?\n\n---\nFrom: Samantha Singh <samantha.singh@nodpublisher.com>\nTo: Marcus Williams <marcus.williams@microsoft.com>\nDate: 2024-01-27 12:03 EST\nSubject: Quarterly Update: Nod Publishers pipeline hygiene\n\nWe've been evaluating the options and have decided to proceed with pipeline hygiene. What are the next steps from your side?",
+      "metadata": {
+        "freshness": "2024-03-06T14:00:00-05:00",
+        "source": "outlook",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: pipeline hygiene Discussion - Nod Publishers\nDate: 2024-01-25\nDuration: 45 minutes\nAttendees: Samantha Singh (Nod Publishers), Marcus Williams (Microsoft), Priya (Nod Publishers)\n\n[00:01:30] Samantha Singh (Nod Publishers): Thanks everyone for joining. Let's dive into pipeline hygiene.\n\n[00:06:00] Priya (Nod Publishers): Our VP reviewed this and has concerns about cost optimization. Can we address those?\n\n[00:09:00] Marcus Williams (Microsoft): The timeline for performance requirements is aggressive. We need to validate the assumptions.\n\n[00:11:00] Marcus Williams (Microsoft): Let me add some context -- we've been working on stakeholder alignment and found that there's a dependency on the security team's review that could delay us.\n\n[00:16:00] Priya (Nod Publishers): On the pipeline hygiene front, we've made progress but there are still blockers around stakeholder alignment.\n\n[00:20:00] Priya (Nod Publishers): Our director reviewed this and has concerns about technical validation. Can we address those?\n\n[00:22:00] Marcus Williams (Microsoft): Let me add some context -- we've been working on budget approval and found that the migration can proceed in phases to reduce risk.",
+      "metadata": {
+        "freshness": "2024-01-01T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "mixed",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Nod Publishers - pipeline hygiene",
+        "start": "2024-03-12T10:00:00-05:00",
+        "end": "2024-03-12T15:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Marcus Williams",
+            "email": "marcus.williams@microsoft.com"
+          },
+          {
+            "name": "Samantha Singh",
+            "email": "samantha.singh@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-segment-smb-mid",
+    "persona-geo-apac",
+    "persona-tenure-mid"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "meeting-prep",
+      "contact-stakeholder-map"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "pre-meeting-brief",
+    "required_artifacts": [
+      "One-page brief with attendee context",
+      "account snapshot",
+      "talking points",
+      "likely objections",
+      "open items from last meeting"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF11-K trap (One-page constraint hurts complex meetings); produces complete One-page brief with attendee context, account snapshot, talking points, likely objections, open item",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF11-K failure pattern",
+      "Score 1: Output exhibits the full FM-WF11-K failure mode (One-page constraint hurts complex meetings)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct pipeline hygiene decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF11-K -- One-page constraint hurts complex meetings",
+    "Guardrail axis scored neutrally -- focus on whether output served the user's actual need"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

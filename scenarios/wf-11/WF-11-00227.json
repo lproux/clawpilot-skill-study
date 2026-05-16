@@ -1,0 +1,125 @@
+{
+  "scenario_id": "WF-11-00227",
+  "workflow_id": "WF-11",
+  "workflow_name": "Pre-Meeting Brief",
+  "seed": 1100269,
+  "tier": 2,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF11-B",
+  "persona": "Manager",
+  "fixture_id": "FX-047",
+  "user_message": "How should I coach David Chen on Evergreen Solutions? This is a renewal account with declining consumption.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Evergreen Solutions",
+        "account_id": "ACC-S7KJN805",
+        "opportunities": [
+          {
+            "name": "Evergreen Azure AI Services",
+            "stage": "Qualify",
+            "amount": 175000,
+            "close_date": "2024-12-26"
+          }
+        ],
+        "acr_current": 19865.64,
+        "health_flag": "Healthy",
+        "owner": "David Chen"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Samantha Okafor <samantha.okafor@evergreensol.com>\nTo: David Chen <david.chen@microsoft.com>\nDate: 2024-03-05 11:36 EST\nSubject: Follow-up: whitespace analysis Review\n\nWe've been evaluating the options and have decided to proceed with whitespace analysis. What are the next steps from your side?\n\n---\nFrom: David Chen <david.chen@microsoft.com>\nTo: Samantha Okafor <samantha.okafor@evergreensol.com>\nDate: 2024-02-09 08:39 EST\nSubject: Re: whitespace analysis Discussion - Next Steps\n\nThere's been a change in our timeline for whitespace analysis. Can we discuss the implications on the overall project plan?",
+      "metadata": {
+        "freshness": "2024-03-11T11:00:00-05:00",
+        "source": "outlook",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: whitespace analysis Discussion - Evergreen Solutions\nDate: 2024-02-10\nDuration: 45 minutes\nAttendees: Samantha Okafor (Evergreen Solutions), David Chen (Microsoft), Michelle (Evergreen Solutions)\n\n[00:01:15] Samantha Okafor (Evergreen Solutions): Appreciate everyone making time. The main agenda today is whitespace analysis.\n\n[00:07:00] Michelle (Evergreen Solutions): Our director reviewed this and has concerns about integration complexity. Can we address those?\n\n[00:09:00] Michelle (Evergreen Solutions): Let me add some context -- we've been working on stakeholder alignment and found that the migration can proceed in phases to reduce risk.\n\n[00:11:00] Michelle (Evergreen Solutions): The timeline for cost optimization is aggressive. We need to validate the assumptions.\n\n[00:15:00] Samantha Okafor (Evergreen Solutions): I agree with that assessment. From our side, the main concern is cost optimization.\n\n[00:17:00] Samantha Okafor (Evergreen Solutions): Let me add some context -- we've been working on security compliance and found that there's a dependency on the security team's review that could delay us.\n\n[00:21:00] Samantha Okafor (Evergreen Solutions): Let me add some context -- we've been working on performance requirements and found that the current vendor contract has a 90-day exit clause we need to plan around.",
+      "metadata": {
+        "freshness": "2024-03-19T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Evergreen Solutions - whitespace analysis",
+        "start": "2024-03-12T12:00:00-05:00",
+        "end": "2024-03-11T15:00:00-05:00",
+        "attendees": [
+          {
+            "name": "David Chen",
+            "email": "david.chen@microsoft.com"
+          },
+          {
+            "name": "Samantha Okafor",
+            "email": "samantha.okafor@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-role-manager",
+    "signal-strength-faint",
+    "persona-segment-smb-small",
+    "persona-geo-na"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "meeting-prep",
+      "contact-stakeholder-map"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "pre-meeting-brief",
+    "required_artifacts": [
+      "One-page brief with attendee context",
+      "account snapshot",
+      "talking points",
+      "likely objections",
+      "open items from last meeting"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF11-B trap (Exposes raw email/chat content in customer-facing language); produces complete One-page brief with attendee context, account snapshot, talking points, likely objections, open item",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF11-B failure pattern",
+      "Score 1: Output exhibits the full FM-WF11-B failure mode (Exposes raw email/chat content in customer-facing language)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct whitespace analysis decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF11-B -- Exposes raw email/chat content in customer-facing language"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

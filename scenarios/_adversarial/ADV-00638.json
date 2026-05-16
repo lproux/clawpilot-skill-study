@@ -1,0 +1,100 @@
+{
+  "scenario_id": "WF-16-90638",
+  "workflow_id": "WF-16",
+  "workflow_name": "Email Context Pull-Through",
+  "seed": 9900680,
+  "tier": 1,
+  "intent": "adherence",
+  "targeted_failure_mode": null,
+  "persona": "DSSP",
+  "fixture_id": "FX-031",
+  "user_message": "The CSA escalated Liberty's Delightful Sinful Bakery to me -- can you build the narrative?",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Liberty's Delightful Sinful Bakery",
+        "account_id": "ACC-A2FZGZWL",
+        "opportunities": [
+          {
+            "name": "Liberty's Dynamics 365 Implementation",
+            "stage": "Develop",
+            "amount": 89000,
+            "close_date": "2024-12-10"
+          },
+          {
+            "name": "Liberty's AKS Deployment",
+            "stage": "Qualify",
+            "amount": 89000,
+            "close_date": "2024-12-24"
+          },
+          {
+            "name": "Liberty's Azure Infrastructure",
+            "stage": "Develop",
+            "amount": 450000,
+            "close_date": "2024-04-08"
+          }
+        ],
+        "acr_current": 0,
+        "health_flag": "Healthy",
+        "owner": "Marcus Williams"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Patricia Kim <patricia.kim@libertysdeli.com>\nTo: Marcus Williams <marcus.williams@microsoft.com>\nDate: 2024-03-11 13:27 EST\nSubject: URGENT: consumption trend Issue at Liberty's Delightful Sinful Bakery\n\nOur team encountered some challenges with consumption trend. Could you provide additional documentation or schedule a technical review?\n\n---\nFrom: Marcus Williams <marcus.williams@microsoft.com>\nTo: Patricia Kim <patricia.kim@libertysdeli.com>\nDate: 2024-01-11 15:11 EST\nSubject: consumption trend - Action Required\n\nJust checking in on the consumption trend proposal. Our Director of IT is asking for a status update before the board meeting next week.",
+      "metadata": {
+        "freshness": "2024-03-10T17:00:00-05:00",
+        "source": "outlook",
+        "length_class": "short"
+      }
+    }
+  ],
+  "perturbations": [
+    "routing-clear",
+    "persona-segment-smb-corporate",
+    "cross-workflow-trigger"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "email-chat-context"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "adversarial-routing-test",
+    "required_artifacts": [
+      "correct_routing_justification",
+      "confusion_analysis"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Correctly routes to primary workflow despite adversarial signals; output is complete",
+      "Score 3: Routes correctly but output shows contamination from confusing signals",
+      "Score 1: Misroutes to wrong workflow or produces irrelevant output"
+    ],
+    "evidence_anchors": [
+      "Score 5: All evidence correctly attributed despite cross-workflow noise",
+      "Score 3: Some evidence misattributed but core facts correct",
+      "Score 1: Significant evidence confusion or hallucination"
+    ],
+    "decision_anchors": [
+      "Score 5: Decision-making robust against adversarial perturbations",
+      "Score 3: Primary decision correct but secondary decisions influenced by noise",
+      "Score 1: Primary decision compromised by adversarial inputs"
+    ]
+  },
+  "guardrail_checks": [
+    "Must correctly identify primary workflow despite adversarial routing signals",
+    "Must not hallucinate context from similar-sounding workflows",
+    "Must not expose internal routing logic to user"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

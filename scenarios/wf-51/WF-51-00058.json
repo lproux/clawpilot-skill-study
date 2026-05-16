@@ -1,0 +1,126 @@
+{
+  "scenario_id": "WF-51-00058",
+  "workflow_id": "WF-51",
+  "workflow_name": "Partner Triangulation Transcript -> Plan Distribution",
+  "seed": 5100100,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF51-B",
+  "persona": "DSSP",
+  "fixture_id": "FX-009",
+  "user_message": "Can you extract the migration architecture from this meeting transcript for VanArsdel Ltd? The CSA flagged this as at-risk yesterday.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "VanArsdel Ltd",
+        "account_id": "ACC-3ORLVDXJ",
+        "opportunities": [
+          {
+            "name": "VanArsdel Data Platform Migration",
+            "stage": "Propose",
+            "amount": 210000,
+            "close_date": "2024-06-13"
+          },
+          {
+            "name": "VanArsdel M365 E5 Upsell",
+            "stage": "Prospect",
+            "amount": 280000,
+            "close_date": "2024-06-13"
+          },
+          {
+            "name": "VanArsdel Power Platform",
+            "stage": "Prospect",
+            "amount": 350000,
+            "close_date": "2024-09-08"
+          }
+        ],
+        "acr_current": 68769.78,
+        "health_flag": "Healthy",
+        "owner": "Tom Rodriguez"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: migration architecture Discussion - VanArsdel Ltd\nDate: 2024-02-24\nDuration: 45 minutes\nAttendees: Karen Patel (VanArsdel Ltd), Tom Rodriguez (Microsoft)\n\n[00:02:00] Karen Patel (VanArsdel Ltd): Good morning. I wanted to follow up on migration architecture from our last session.\n\n[00:05:00] Karen Patel (VanArsdel Ltd): Let me add some context -- we've been working on technical validation and found that there's a dependency on the security team's review that could delay us.\n\n[00:07:00] Tom Rodriguez (Microsoft): Let me add some context -- we've been working on stakeholder alignment and found that the existing infrastructure won't support the target workload without upgrades.\n\n[00:12:00] Tom Rodriguez (Microsoft): The timeline for integration complexity is aggressive. We need to validate the assumptions.\n\n[00:14:00] Karen Patel (VanArsdel Ltd): The timeline for partner engagement is aggressive. We need to validate the assumptions.\n\n[00:19:00] Karen Patel (VanArsdel Ltd): Our VP reviewed this and has concerns about data residency. Can we address those?\n\n[00:21:00] Tom Rodriguez (Microsoft): The timeline for technical validation is aggressive. We need to validate the assumptions.\n\n[00:25:00] Karen Patel (VanArsdel Ltd): I agree with that assessment. From our side, the main concern is data residency.\n\n[00:27:00] Karen Patel (VanArsdel Ltd): The timeline for technical validation is aggressive. We need to validate the assumptions.",
+      "metadata": {
+        "freshness": "2024-01-25T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "contract_event",
+            "detail": "Signal detected for VanArsdel Ltd: there's a compliance requirement we hadn't accounted for in the original scope",
+            "date": "2024-03-11"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-09T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-geo-na",
+    "persona-tenure-junior",
+    "persona-segment-smb-mid",
+    "persona-role-dssp"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "funding-partner-activation-coach",
+        "condition": "funding or partner evaluation needed"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "partner-triangulation-transcript-->-plan-distribut",
+    "required_artifacts": [
+      "Tri-party action distribution (MS/partner/customer owners)",
+      "funding eligibility assessment",
+      "follow-up sequence with tri-party coordination",
+      "conflict-of-interest check"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF51-B trap (Confuses partner aspirational role with committed role); produces complete Tri-party action distribution (MS/partner/customer owners), funding eligibility assessment, follow-u",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF51-B failure pattern",
+      "Score 1: Output exhibits the full FM-WF51-B failure mode (Confuses partner aspirational role with committed role)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct migration architecture decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF51-B -- Confuses partner aspirational role with committed role"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

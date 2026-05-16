@@ -1,0 +1,136 @@
+{
+  "scenario_id": "WF-11-00260",
+  "workflow_id": "WF-11",
+  "workflow_name": "Pre-Meeting Brief",
+  "seed": 1100302,
+  "tier": 2,
+  "intent": "happy",
+  "targeted_failure_mode": null,
+  "persona": "Manager",
+  "fixture_id": "FX-013",
+  "user_message": "Summarize what happened with Coho Winery and give me the asks.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Coho Winery",
+        "account_id": "ACC-W5BNG4OC",
+        "opportunities": [
+          {
+            "name": "Coho Copilot Adoption",
+            "stage": "Close",
+            "amount": 210000,
+            "close_date": "2023-11-10"
+          },
+          {
+            "name": "Coho Azure AI Services",
+            "stage": "Qualify",
+            "amount": 280000,
+            "close_date": "2024-04-26"
+          },
+          {
+            "name": "Coho Azure Virtual Desktop",
+            "stage": "Qualify",
+            "amount": 125000,
+            "close_date": "2024-11-17"
+          }
+        ],
+        "acr_current": 107808.75,
+        "health_flag": "At Risk",
+        "owner": "Ahmed Hassan"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Eric Kim <eric.kim@cohowinery.com>\nTo: Ahmed Hassan <ahmed.hassan@microsoft.com>\nDate: 2024-03-22 10:44 EST\nSubject: Re: Re: QBR preparation Timeline\n\nOur team encountered some challenges with QBR preparation. Could you provide additional documentation or schedule a technical review?\n\n---\nFrom: Ahmed Hassan <ahmed.hassan@microsoft.com>\nTo: Eric Kim <eric.kim@cohowinery.com>\nDate: 2024-02-15 17:53 EST\nSubject: URGENT: QBR preparation Issue at Coho Winery\n\nThank you for the discussion last week. We'd like to move forward with QBR preparation. Can we schedule a call this week to finalize the timeline?\n\n---\nFrom: Eric Kim <eric.kim@cohowinery.com>\nTo: Ahmed Hassan <ahmed.hassan@microsoft.com>\nDate: 2024-01-08 12:53 EST\nSubject: Quarterly Update: Coho Winery QBR preparation\n\nJust checking in on the QBR preparation proposal. Our VP Engineering is asking for a status update before the board meeting next week.",
+      "metadata": {
+        "freshness": "2024-02-12T09:00:00-05:00",
+        "source": "outlook",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: QBR preparation Discussion - Coho Winery\nDate: 2024-02-14\nDuration: 45 minutes\nAttendees: Eric Kim (Coho Winery), Ahmed Hassan (Microsoft)\n\n[00:02:00] Eric Kim (Coho Winery): Good morning. I wanted to follow up on QBR preparation from our last session.\n\n[00:07:00] Ahmed Hassan (Microsoft): The timeline for stakeholder alignment is aggressive. We need to validate the assumptions.\n\n[00:11:00] Eric Kim (Coho Winery): The timeline for cost optimization is aggressive. We need to validate the assumptions.\n\n[00:16:00] Eric Kim (Coho Winery): Our director reviewed this and has concerns about vendor dependencies. Can we address those?\n\n[00:20:00] Eric Kim (Coho Winery): The timeline for technical validation is aggressive. We need to validate the assumptions.\n\n[00:23:00] Eric Kim (Coho Winery): Let me add some context -- we've been working on performance requirements and found that the migration can proceed in phases to reduce risk.\n\n[00:26:00] Ahmed Hassan (Microsoft): I agree with that assessment. From our side, the main concern is performance requirements.\n\n[00:28:00] Eric Kim (Coho Winery): Let me add some context -- we've been working on technical validation and found that the current vendor contract has a 90-day exit clause we need to plan around.\n\n[00:31:00] Eric Kim (Coho Winery): Our architect reviewed this and has concerns about budget approval. Can we address those?",
+      "metadata": {
+        "freshness": "2024-03-10T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Coho Winery - QBR preparation",
+        "start": "2024-03-15T12:00:00-05:00",
+        "end": "2024-03-14T16:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Ahmed Hassan",
+            "email": "ahmed.hassan@microsoft.com"
+          },
+          {
+            "name": "Eric Kim",
+            "email": "eric.kim@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-role-manager",
+    "persona-segment-smb-corporate",
+    "persona-geo-na",
+    "data-stale"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "meeting-prep",
+      "contact-stakeholder-map"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "pre-meeting-brief",
+    "required_artifacts": [
+      "One-page brief with attendee context",
+      "account snapshot",
+      "talking points",
+      "likely objections",
+      "open items from last meeting"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Complete, well-structured output matching the Pre-Meeting Brief template with all required artifacts present and actionable",
+      "Score 3: Output covers main requirements but missing one or two secondary artifacts or lacking specificity",
+      "Score 1: Output is generic, missing key artifacts, or fails to address the specific request"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct QBR preparation decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

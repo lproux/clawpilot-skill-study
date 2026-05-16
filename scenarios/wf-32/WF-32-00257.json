@@ -1,0 +1,153 @@
+{
+  "scenario_id": "WF-32-00257",
+  "workflow_id": "WF-32",
+  "workflow_name": "Calendar Pre-Pack Automation",
+  "seed": 3200299,
+  "tier": 4,
+  "intent": "design-redesign",
+  "targeted_failure_mode": "FM-WF32-T",
+  "persona": "Manager",
+  "fixture_id": "FX-007",
+  "user_message": "[AUTOMATION TRIGGER] Daily automation: Calendar event with non-Microsoft external attendee detected. Account: Litware Inc.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Litware Inc",
+        "account_id": "ACC-658MPDXQ",
+        "opportunities": [
+          {
+            "name": "Litware Security Modernization",
+            "stage": "Prospect",
+            "amount": 280000,
+            "close_date": "2024-09-23"
+          }
+        ],
+        "acr_current": 76577.96,
+        "health_flag": "Healthy",
+        "owner": "David Chen"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Sarah Wilson <sarah.wilson@litwareinc.com>\nTo: David Chen <david.chen@microsoft.com>\nDate: 2024-03-25 08:01 EST\nSubject: Quarterly Update: Litware Inc migration architecture\n\nOur team encountered some challenges with migration architecture. Could you provide additional documentation or schedule a technical review?\n\n---\nFrom: David Chen <david.chen@microsoft.com>\nTo: Sarah Wilson <sarah.wilson@litwareinc.com>\nDate: 2024-02-01 12:01 EST\nSubject: Quarterly Update: Litware Inc migration architecture\n\nThere's been a change in our timeline for migration architecture. Can we discuss the implications on the overall project plan?",
+      "metadata": {
+        "freshness": "2024-03-06T08:00:00-05:00",
+        "source": "outlook",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: migration architecture Discussion - Litware Inc\nDate: 2024-02-20\nDuration: 45 minutes\nAttendees: Sarah Wilson (Litware Inc), David Chen (Microsoft), Kevin (Litware Inc)\n\n[00:01:30] Sarah Wilson (Litware Inc): Thanks everyone for joining. Let's dive into migration architecture.\n\n[00:05:00] Sarah Wilson (Litware Inc): I agree with that assessment. From our side, the main concern is integration complexity.\n\n[00:10:00] David Chen (Microsoft): On the migration architecture front, we've made progress but there are still blockers around security compliance.\n\n[00:12:00] Sarah Wilson (Litware Inc): Our director reviewed this and has concerns about vendor dependencies. Can we address those?\n\n[00:15:00] Kevin (Litware Inc): Our director reviewed this and has concerns about security compliance. Can we address those?\n\n[00:20:00] David Chen (Microsoft): On the migration architecture front, we've made progress but there are still blockers around stakeholder alignment.\n\n[00:25:00] David Chen (Microsoft): Let me add some context -- we've been working on performance requirements and found that the migration can proceed in phases to reduce risk.\n\n[00:28:00] Kevin (Litware Inc): Our team lead reviewed this and has concerns about budget approval. Can we address those?\n\n[00:31:00] Kevin (Litware Inc): Let me add some context -- we've been working on performance requirements and found that there's a compliance requirement we hadn't accounted for in the original scope.\n\n[00:33:00] Kevin (Litware Inc): I agree with that assessment. From our side, the main concern is partner engagement.\n\n[00:36:00] David Chen (Microsoft): I agree with that assessment. From our side, the main concern is budget approval.",
+      "metadata": {
+        "freshness": "2024-02-13T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Litware Inc - migration architecture",
+        "start": "2024-03-15T15:00:00-05:00",
+        "end": "2024-03-12T10:00:00-05:00",
+        "attendees": [
+          {
+            "name": "David Chen",
+            "email": "david.chen@microsoft.com"
+          },
+          {
+            "name": "Sarah Wilson",
+            "email": "sarah.wilson@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "consumption_decline",
+            "detail": "Signal detected for Litware Inc: the current vendor contract has a 90-day exit clause we need to plan around",
+            "date": "2024-03-08"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-10T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-geo-apac",
+    "data-fresh",
+    "persona-tenure-senior",
+    "persona-role-manager"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "meeting-prep",
+      "contact-stakeholder-map",
+      "email-chat-context"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "portfolio-account-planning-coach",
+        "condition": "meeting is for account CSA should have declined"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "calendar-pre-pack-automation",
+    "required_artifacts": [
+      "Pre-pack brief with attendee context",
+      "account snapshot",
+      "talking points",
+      "likely objections",
+      "open items"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF32-T trap (Calendar trigger should learn from CSA dismissals -- current design doesn't); produces complete Pre-pack brief with attendee context, account snapshot, talking points, likely objections, open item",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF32-T failure pattern",
+      "Score 1: Output exhibits the full FM-WF32-T failure mode (Calendar trigger should learn from CSA dismissals -- current design doesn't)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct migration architecture decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF32-T -- Calendar trigger should learn from CSA dismissals -- current design doesn't",
+    "Produce structural verdict on whether current routing adequately serves this scenario"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "verdict-on-structural",
+    "verdict_required_axes": [
+      "routing",
+      "evidence"
+    ]
+  }
+}

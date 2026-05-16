@@ -1,0 +1,109 @@
+{
+  "scenario_id": "WF-13-00176",
+  "workflow_id": "WF-13",
+  "workflow_name": "Dark Customer Re-Engagement Sequence",
+  "seed": 1300218,
+  "tier": 2,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF13-C",
+  "persona": "Manager",
+  "fixture_id": "FX-045",
+  "user_message": "[AUTOMATION TRIGGER] Daily automation: Account flagged as dark (no interaction in 60+ days) or user. Account: Azure Ridge Partners.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Azure Ridge Partners",
+        "account_id": "ACC-URB6CCFS",
+        "opportunities": [
+          {
+            "name": "Azure Cloud Migration Phase",
+            "stage": "Develop",
+            "amount": 210000,
+            "close_date": "2024-09-05"
+          },
+          {
+            "name": "Azure Cloud Migration Phase",
+            "stage": "Close",
+            "amount": 560000,
+            "close_date": "2024-10-05"
+          },
+          {
+            "name": "Azure Intune Rollout",
+            "stage": "Develop",
+            "amount": 280000,
+            "close_date": "2024-10-01"
+          }
+        ],
+        "acr_current": 189461.39,
+        "health_flag": "Unknown",
+        "owner": "Raj Mehta"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "consumption_decline",
+            "detail": "Signal detected for Azure Ridge Partners: the cost projections need to factor in reserved instance pricing for accuracy",
+            "date": "2024-03-07"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-09T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "data-inconsistent",
+    "persona-geo-emea"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "dark-customer-outreach",
+      "contact-stakeholder-map"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "dark-customer-re-engagement-sequence",
+    "required_artifacts": [
+      "Multi-touch re-engagement sequence with channel selection",
+      "timing",
+      "personalized messaging per touch",
+      "stop conditions"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF13-C trap (Recommends channels customer hasn't used); produces complete Multi-touch re-engagement sequence with channel selection, timing, personalized messaging per touch,",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF13-C failure pattern",
+      "Score 1: Output exhibits the full FM-WF13-C failure mode (Recommends channels customer hasn't used)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct pipeline hygiene decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF13-C -- Recommends channels customer hasn't used"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

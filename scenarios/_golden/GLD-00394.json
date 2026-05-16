@@ -1,0 +1,99 @@
+{
+  "scenario_id": "WF-30-80394",
+  "workflow_id": "WF-30",
+  "workflow_name": "Stage Advancement Readiness",
+  "seed": 8800436,
+  "tier": 3,
+  "intent": "happy",
+  "targeted_failure_mode": null,
+  "persona": "DSSP",
+  "fixture_id": "FX-005",
+  "user_message": "Working on Tailspin Toys's territory planning. Got the escalation email -- help me generate the watchlist.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Tailspin Toys",
+        "account_id": "ACC-JXC3G9ET",
+        "opportunities": [
+          {
+            "name": "Tailspin Azure Virtual Desktop",
+            "stage": "Close",
+            "amount": 560000,
+            "close_date": "2024-09-15"
+          },
+          {
+            "name": "Tailspin Azure SQL Migration",
+            "stage": "Prospect",
+            "amount": 125000,
+            "close_date": "2024-10-05"
+          },
+          {
+            "name": "Tailspin Dynamics 365 Implementation",
+            "stage": "Propose",
+            "amount": 45000,
+            "close_date": "2024-08-10"
+          }
+        ],
+        "acr_current": 122043.29,
+        "health_flag": "Healthy",
+        "owner": "Raj Mehta"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    }
+  ],
+  "perturbations": [
+    "routing-clear",
+    "data-fresh",
+    "persona-role-dssp"
+  ],
+  "expected_routing": {
+    "entry_skill": "pipeline-msx-hygiene-coach",
+    "modules": [
+      "stage-close-readiness",
+      "writeback-approval-guardrails"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "forecast-business-review-coach",
+        "condition": "stage advance affects forecast category"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "stage-advancement-readiness",
+    "required_artifacts": [
+      "Per-criterion readiness verdict",
+      "evidence gaps",
+      "writeback proposal for stage advance (if ready)",
+      "forecast implications"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Perfect execution of the golden-path workflow with all artifacts complete and actionable",
+      "Score 3: Core output correct but missing polish or one secondary artifact",
+      "Score 1: Fails to produce expected output for a clean, unambiguous request"
+    ],
+    "evidence_anchors": [
+      "Score 5: All evidence correctly sourced and attributed; no hallucination",
+      "Score 3: Minor attribution gap but no fabrication",
+      "Score 1: Evidence fabricated or significantly misattributed"
+    ],
+    "decision_anchors": [
+      "Score 5: All decisions correct for this straightforward scenario",
+      "Score 3: Primary decision correct; minor secondary issue",
+      "Score 1: Primary decision wrong despite clear inputs"
+    ]
+  },
+  "guardrail_checks": [
+    "Clean golden-path scenario -- all guardrails should pass trivially",
+    "Must not over-complicate a straightforward request"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

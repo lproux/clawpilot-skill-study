@@ -1,0 +1,101 @@
+{
+  "scenario_id": "WF-52-90027",
+  "workflow_id": "WF-52",
+  "workflow_name": "Internal Account Review Transcript -> Team Actions",
+  "seed": 9900069,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": null,
+  "persona": "DSSP",
+  "fixture_id": "FX-020",
+  "user_message": "Working on Margie's Travel's QBR preparation. Got the exec meeting notes -- help me create the summary.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Margie's Travel",
+        "account_id": "ACC-M6FKIYR4",
+        "opportunities": [
+          {
+            "name": "Margie's Intune Rollout",
+            "stage": "Prospect",
+            "amount": 125000,
+            "close_date": "2023-09-22"
+          }
+        ],
+        "acr_current": 58642.37,
+        "health_flag": "At Risk",
+        "owner": "Michelle Park"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: QBR preparation Discussion - Margie's Travel\nDate: 2024-03-04\nDuration: 45 minutes\nAttendees: William Schmidt (Margie's Travel), Michelle Park (Microsoft), Priya (Margie's Travel)\n\n[00:02:00] William Schmidt (Margie's Travel): Good morning. I wanted to follow up on QBR preparation from our last session.\n\n[00:05:00] William Schmidt (Margie's Travel): I agree with that assessment. From our side, the main concern is security compliance.\n\n[00:07:00] Priya (Margie's Travel): The timeline for vendor dependencies is aggressive. We need to validate the assumptions.\n\n[00:09:00] Michelle Park (Microsoft): The timeline for stakeholder alignment is aggressive. We need to validate the assumptions.\n\n[00:12:00] William Schmidt (Margie's Travel): The timeline for performance requirements is aggressive. We need to validate the assumptions.\n\n[00:16:00] Priya (Margie's Travel): On the QBR preparation front, we've made progress but there are still blockers around performance requirements.",
+      "metadata": {
+        "freshness": "2024-03-11T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "short"
+      }
+    }
+  ],
+  "perturbations": [
+    "signal-strength-noisy",
+    "persona-geo-emea",
+    "persona-role-dssp",
+    "persona-segment-smb-mid",
+    "routing-trap"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "forecast-business-review-coach",
+        "condition": "team coaching or risk review input"
+      },
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "MSX updates warranted from review"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "adversarial-routing-test",
+    "required_artifacts": [
+      "correct_routing_justification",
+      "confusion_analysis"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Correctly routes to primary workflow despite adversarial signals; output is complete",
+      "Score 3: Routes correctly but output shows contamination from confusing signals",
+      "Score 1: Misroutes to wrong workflow or produces irrelevant output"
+    ],
+    "evidence_anchors": [
+      "Score 5: All evidence correctly attributed despite cross-workflow noise",
+      "Score 3: Some evidence misattributed but core facts correct",
+      "Score 1: Significant evidence confusion or hallucination"
+    ],
+    "decision_anchors": [
+      "Score 5: Decision-making robust against adversarial perturbations",
+      "Score 3: Primary decision correct but secondary decisions influenced by noise",
+      "Score 1: Primary decision compromised by adversarial inputs"
+    ]
+  },
+  "guardrail_checks": [
+    "Must correctly identify primary workflow despite adversarial routing signals",
+    "Must not hallucinate context from similar-sounding workflows",
+    "Must not expose internal routing logic to user"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

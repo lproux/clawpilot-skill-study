@@ -1,0 +1,100 @@
+{
+  "scenario_id": "WF-47-00182",
+  "workflow_id": "WF-47",
+  "workflow_name": "Multi-Stakeholder Meeting Transcript -> Decision Distribution",
+  "seed": 4700224,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF47-H",
+  "persona": "Manager",
+  "fixture_id": "FX-007",
+  "user_message": "Give me the manager view on this Litware Inc meeting transcript. This is time-sensitive -- customer is waiting.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Litware Inc",
+        "account_id": "ACC-658MPDXQ",
+        "opportunities": [
+          {
+            "name": "Litware Security Modernization",
+            "stage": "Prospect",
+            "amount": 280000,
+            "close_date": "2024-09-23"
+          }
+        ],
+        "acr_current": 76577.96,
+        "health_flag": "Healthy",
+        "owner": "David Chen"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: QBR preparation Discussion - Litware Inc\nDate: 2024-02-21\nDuration: 45 minutes\nAttendees: Sarah Wilson (Litware Inc), David Chen (Microsoft)\n\n[00:02:00] Sarah Wilson (Litware Inc): Good morning. I wanted to follow up on QBR preparation from our last session.\n\n[00:06:00] Sarah Wilson (Litware Inc): Our team lead reviewed this and has concerns about performance requirements. Can we address those?\n\n[00:09:00] David Chen (Microsoft): Our director reviewed this and has concerns about data residency. Can we address those?\n\n[00:12:00] Sarah Wilson (Litware Inc): The timeline for cost optimization is aggressive. We need to validate the assumptions.\n\n[00:14:00] Sarah Wilson (Litware Inc): Our architect reviewed this and has concerns about technical validation. Can we address those?\n\n[00:17:00] Sarah Wilson (Litware Inc): On the QBR preparation front, we've made progress but there are still blockers around data residency.\n\n[00:22:00] David Chen (Microsoft): The timeline for performance requirements is aggressive. We need to validate the assumptions.\n\n[00:27:00] David Chen (Microsoft): Our VP reviewed this and has concerns about resource allocation. Can we address those?\n\n[00:30:00] David Chen (Microsoft): I agree with that assessment. From our side, the main concern is data residency.\n\n[00:35:00] David Chen (Microsoft): On the QBR preparation front, we've made progress but there are still blockers around performance requirements.\n\n[00:39:00] David Chen (Microsoft): Let me add some context -- we've been working on partner engagement and found that the migration can proceed in phases to reduce risk.",
+      "metadata": {
+        "freshness": "2024-01-18T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "medium"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-tenure-junior",
+    "persona-geo-apac",
+    "routing-clear",
+    "data-fresh"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions",
+      "contact-stakeholder-map"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "MSX updates warranted from decisions"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "multi-stakeholder-meeting-transcript-->-decision-d",
+    "required_artifacts": [
+      "Decision log with speaker attribution",
+      "action distribution by role",
+      "stakeholder map delta",
+      "MSX update proposals",
+      "due dates extracted"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF47-H trap (Over-reads loudest voice as decision-maker); produces complete Decision log with speaker attribution, action distribution by role, stakeholder map delta, MSX updat",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF47-H failure pattern",
+      "Score 1: Output exhibits the full FM-WF47-H failure mode (Over-reads loudest voice as decision-maker)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct QBR preparation decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF47-H -- Over-reads loudest voice as decision-maker"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

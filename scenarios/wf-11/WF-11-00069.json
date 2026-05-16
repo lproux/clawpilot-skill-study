@@ -1,0 +1,136 @@
+{
+  "scenario_id": "WF-11-00069",
+  "workflow_id": "WF-11",
+  "workflow_name": "Pre-Meeting Brief",
+  "seed": 1100111,
+  "tier": 2,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF11-G",
+  "persona": "CSA",
+  "fixture_id": "FX-031",
+  "user_message": "Can you pull the context on Liberty's Delightful Sinful Bakery? I need to map the stakeholders.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Liberty's Delightful Sinful Bakery",
+        "account_id": "ACC-A2FZGZWL",
+        "opportunities": [
+          {
+            "name": "Liberty's Dynamics 365 Implementation",
+            "stage": "Develop",
+            "amount": 89000,
+            "close_date": "2024-12-10"
+          },
+          {
+            "name": "Liberty's AKS Deployment",
+            "stage": "Qualify",
+            "amount": 89000,
+            "close_date": "2024-12-24"
+          },
+          {
+            "name": "Liberty's Azure Infrastructure",
+            "stage": "Develop",
+            "amount": 450000,
+            "close_date": "2024-04-08"
+          }
+        ],
+        "acr_current": 0,
+        "health_flag": "Healthy",
+        "owner": "Marcus Williams"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Patricia Kim <patricia.kim@libertysdeli.com>\nTo: Marcus Williams <marcus.williams@microsoft.com>\nDate: 2024-03-01 12:40 EST\nSubject: Quarterly Update: Liberty's Delightful Sinful Bakery competitive positioning\n\nI wanted to follow up on our conversation about competitive positioning. Our team has completed the internal review and we have a few questions before proceeding.\n\n---\nFrom: Marcus Williams <marcus.williams@microsoft.com>\nTo: Patricia Kim <patricia.kim@libertysdeli.com>\nDate: 2024-02-18 16:33 EST\nSubject: Re: competitive positioning Discussion - Next Steps\n\nThank you for the discussion last week. We'd like to move forward with competitive positioning. Can we schedule a call this week to finalize the timeline?\n\n---\nFrom: Patricia Kim <patricia.kim@libertysdeli.com>\nTo: Marcus Williams <marcus.williams@microsoft.com>\nDate: 2024-01-21 08:00 EST\nSubject: Re: Re: competitive positioning Timeline\n\nI wanted to follow up on our conversation about competitive positioning. Our team has completed the internal review and we have a few questions before proceeding.",
+      "metadata": {
+        "freshness": "2024-02-08T09:00:00-05:00",
+        "source": "outlook",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: competitive positioning Discussion - Liberty's Delightful Sinful Bakery\nDate: 2024-01-19\nDuration: 45 minutes\nAttendees: Patricia Kim (Liberty's Delightful Sinful Bakery), Marcus Williams (Microsoft), David (Liberty's Delightful Sinful Bakery)\n\n[00:01:30] Patricia Kim (Liberty's Delightful Sinful Bakery): Thanks everyone for joining. Let's dive into competitive positioning.\n\n[00:06:00] David (Liberty's Delightful Sinful Bakery): Our architect reviewed this and has concerns about cost optimization. Can we address those?\n\n[00:10:00] Patricia Kim (Liberty's Delightful Sinful Bakery): On the competitive positioning front, we've made progress but there are still blockers around vendor dependencies.\n\n[00:14:00] David (Liberty's Delightful Sinful Bakery): I agree with that assessment. From our side, the main concern is performance requirements.\n\n[00:19:00] Marcus Williams (Microsoft): Let me add some context -- we've been working on security compliance and found that the existing infrastructure won't support the target workload without upgrades.\n\n[00:21:00] David (Liberty's Delightful Sinful Bakery): The timeline for budget approval is aggressive. We need to validate the assumptions.",
+      "metadata": {
+        "freshness": "2024-03-22T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Liberty's Delightful Sinful Bakery - competitive positioning",
+        "start": "2024-03-12T12:00:00-05:00",
+        "end": "2024-03-13T13:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Marcus Williams",
+            "email": "marcus.williams@microsoft.com"
+          },
+          {
+            "name": "Patricia Kim",
+            "email": "patricia.kim@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-segment-smb-corporate",
+    "persona-geo-na",
+    "persona-role-csa"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "meeting-prep",
+      "contact-stakeholder-map"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "pre-meeting-brief",
+    "required_artifacts": [
+      "One-page brief with attendee context",
+      "account snapshot",
+      "talking points",
+      "likely objections",
+      "open items from last meeting"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF11-G trap (Misattributes attendee role); produces complete One-page brief with attendee context, account snapshot, talking points, likely objections, open item",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF11-G failure pattern",
+      "Score 1: Output exhibits the full FM-WF11-G failure mode (Misattributes attendee role)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct competitive positioning decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF11-G -- Misattributes attendee role"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

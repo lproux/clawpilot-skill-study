@@ -1,0 +1,132 @@
+{
+  "scenario_id": "WF-12-00149",
+  "workflow_id": "WF-12",
+  "workflow_name": "Post-Meeting Follow-Up",
+  "seed": 1200191,
+  "tier": 3,
+  "intent": "happy",
+  "targeted_failure_mode": null,
+  "persona": "Manager",
+  "fixture_id": "FX-041",
+  "user_message": "Just came out of competitive positioning with Quantum Analytics. Turn this into my brief and pull out the asks.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Quantum Analytics",
+        "account_id": "ACC-ZJSZDYNL",
+        "opportunities": [
+          {
+            "name": "Quantum Azure Infrastructure",
+            "stage": "Qualify",
+            "amount": 68000,
+            "close_date": "2024-04-14"
+          },
+          {
+            "name": "Quantum Data Platform Migration",
+            "stage": "Develop",
+            "amount": 450000,
+            "close_date": "2024-07-16"
+          },
+          {
+            "name": "Quantum Dynamics 365 Implementation",
+            "stage": "Qualify",
+            "amount": 68000,
+            "close_date": "2024-07-17"
+          }
+        ],
+        "acr_current": 21322.6,
+        "health_flag": "At Risk",
+        "owner": "Marcus Williams"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: competitive positioning Discussion - Quantum Analytics\nDate: 2024-03-10\nDuration: 45 minutes\nAttendees: Robert Foster (Quantum Analytics), Marcus Williams (Microsoft)\n\n[00:01:30] Robert Foster (Quantum Analytics): Thanks everyone for joining. Let's dive into competitive positioning.\n\n[00:07:00] Marcus Williams (Microsoft): The timeline for cost optimization is aggressive. We need to validate the assumptions.\n\n[00:11:00] Marcus Williams (Microsoft): Our architect reviewed this and has concerns about integration complexity. Can we address those?\n\n[00:15:00] Robert Foster (Quantum Analytics): On the competitive positioning front, we've made progress but there are still blockers around partner engagement.\n\n[00:18:00] Robert Foster (Quantum Analytics): Our VP reviewed this and has concerns about vendor dependencies. Can we address those?\n\n[00:20:00] Marcus Williams (Microsoft): On the competitive positioning front, we've made progress but there are still blockers around vendor dependencies.\n\n[00:25:00] Robert Foster (Quantum Analytics): On the competitive positioning front, we've made progress but there are still blockers around partner engagement.\n\n[00:30:00] Marcus Williams (Microsoft): The timeline for integration complexity is aggressive. We need to validate the assumptions.\n\n[00:33:00] Robert Foster (Quantum Analytics): Let me add some context -- we've been working on technical validation and found that the migration can proceed in phases to reduce risk.\n\n[00:38:00] Robert Foster (Quantum Analytics): Our CTO reviewed this and has concerns about resource allocation. Can we address those?",
+      "metadata": {
+        "freshness": "2024-02-07T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Quantum Analytics - competitive positioning",
+        "start": "2024-03-13T11:00:00-05:00",
+        "end": "2024-03-12T15:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Marcus Williams",
+            "email": "marcus.williams@microsoft.com"
+          },
+          {
+            "name": "Robert Foster",
+            "email": "robert.foster@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-role-manager",
+    "data-inconsistent",
+    "persona-geo-latam"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions",
+      "email-chat-context"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "MSX updates warranted from meeting outcomes"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "post-meeting-follow-up",
+    "required_artifacts": [
+      "Decision log",
+      "action items with owners and due dates",
+      "customer-facing follow-up email draft",
+      "MSX writeback proposals"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Complete, well-structured output matching the Post-Meeting Follow-Up template with all required artifacts present and actionable",
+      "Score 3: Output covers main requirements but missing one or two secondary artifacts or lacking specificity",
+      "Score 1: Output is generic, missing key artifacts, or fails to address the specific request"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct competitive positioning decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Write proposals must require explicit user approval"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

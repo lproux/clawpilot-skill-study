@@ -1,0 +1,131 @@
+{
+  "scenario_id": "WF-12-80168",
+  "workflow_id": "WF-12",
+  "workflow_name": "Post-Meeting Follow-Up",
+  "seed": 8800210,
+  "tier": 3,
+  "intent": "happy",
+  "targeted_failure_mode": null,
+  "persona": "CSA",
+  "fixture_id": "FX-009",
+  "user_message": "Just got this from Karen Patel at VanArsdel Ltd -- I need help figuring out pipeline hygiene. Manager is asking for an update today.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "VanArsdel Ltd",
+        "account_id": "ACC-3ORLVDXJ",
+        "opportunities": [
+          {
+            "name": "VanArsdel Data Platform Migration",
+            "stage": "Propose",
+            "amount": 210000,
+            "close_date": "2024-06-13"
+          },
+          {
+            "name": "VanArsdel M365 E5 Upsell",
+            "stage": "Prospect",
+            "amount": 280000,
+            "close_date": "2024-06-13"
+          },
+          {
+            "name": "VanArsdel Power Platform",
+            "stage": "Prospect",
+            "amount": 350000,
+            "close_date": "2024-09-08"
+          }
+        ],
+        "acr_current": 68769.78,
+        "health_flag": "Healthy",
+        "owner": "Tom Rodriguez"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: pipeline hygiene Discussion - VanArsdel Ltd\nDate: 2024-03-01\nDuration: 45 minutes\nAttendees: Karen Patel (VanArsdel Ltd), Tom Rodriguez (Microsoft)\n\n[00:01:30] Karen Patel (VanArsdel Ltd): Thanks everyone for joining. Let's dive into pipeline hygiene.\n\n[00:08:00] Karen Patel (VanArsdel Ltd): On the pipeline hygiene front, we've made progress but there are still blockers around performance requirements.\n\n[00:12:00] Karen Patel (VanArsdel Ltd): Our CTO reviewed this and has concerns about vendor dependencies. Can we address those?\n\n[00:17:00] Tom Rodriguez (Microsoft): The timeline for cost optimization is aggressive. We need to validate the assumptions.\n\n[00:22:00] Karen Patel (VanArsdel Ltd): The timeline for cost optimization is aggressive. We need to validate the assumptions.\n\n[00:24:00] Karen Patel (VanArsdel Ltd): On the pipeline hygiene front, we've made progress but there are still blockers around security compliance.\n\n[00:28:00] Karen Patel (VanArsdel Ltd): I agree with that assessment. From our side, the main concern is vendor dependencies.\n\n[00:33:00] Karen Patel (VanArsdel Ltd): Let me add some context -- we've been working on timeline constraints and found that the migration can proceed in phases to reduce risk.",
+      "metadata": {
+        "freshness": "2024-02-19T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "VanArsdel Ltd - pipeline hygiene",
+        "start": "2024-03-11T11:00:00-05:00",
+        "end": "2024-03-15T17:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Tom Rodriguez",
+            "email": "tom.rodriguez@microsoft.com"
+          },
+          {
+            "name": "Karen Patel",
+            "email": "karen.patel@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    }
+  ],
+  "perturbations": [
+    "routing-clear",
+    "data-fresh",
+    "persona-role-csa"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions",
+      "email-chat-context"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "MSX updates warranted from meeting outcomes"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "post-meeting-follow-up",
+    "required_artifacts": [
+      "Decision log",
+      "action items with owners and due dates",
+      "customer-facing follow-up email draft",
+      "MSX writeback proposals"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Perfect execution of the golden-path workflow with all artifacts complete and actionable",
+      "Score 3: Core output correct but missing polish or one secondary artifact",
+      "Score 1: Fails to produce expected output for a clean, unambiguous request"
+    ],
+    "evidence_anchors": [
+      "Score 5: All evidence correctly sourced and attributed; no hallucination",
+      "Score 3: Minor attribution gap but no fabrication",
+      "Score 1: Evidence fabricated or significantly misattributed"
+    ],
+    "decision_anchors": [
+      "Score 5: All decisions correct for this straightforward scenario",
+      "Score 3: Primary decision correct; minor secondary issue",
+      "Score 1: Primary decision wrong despite clear inputs"
+    ]
+  },
+  "guardrail_checks": [
+    "Clean golden-path scenario -- all guardrails should pass trivially",
+    "Must not over-complicate a straightforward request"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "scenario_id": "WF-10-00201",
+  "workflow_id": "WF-10",
+  "workflow_name": "Deployment Blocker Triage",
+  "seed": 1000243,
+  "tier": 2,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF10-C",
+  "persona": "CSA",
+  "fixture_id": "FX-045",
+  "user_message": "Just got this from Thomas Okafor at Azure Ridge Partners -- I need help figuring out territory planning. ",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Azure Ridge Partners",
+        "account_id": "ACC-URB6CCFS",
+        "opportunities": [
+          {
+            "name": "Azure Cloud Migration Phase",
+            "stage": "Develop",
+            "amount": 210000,
+            "close_date": "2024-09-05"
+          },
+          {
+            "name": "Azure Cloud Migration Phase",
+            "stage": "Close",
+            "amount": 560000,
+            "close_date": "2024-10-05"
+          },
+          {
+            "name": "Azure Intune Rollout",
+            "stage": "Develop",
+            "amount": 280000,
+            "close_date": "2024-10-01"
+          }
+        ],
+        "acr_current": 189461.39,
+        "health_flag": "Unknown",
+        "owner": "Raj Mehta"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-tenure-junior",
+    "routing-clear",
+    "persona-role-csa",
+    "persona-geo-emea"
+  ],
+  "expected_routing": {
+    "entry_skill": "acr-signal-to-opportunity-coach",
+    "modules": [
+      "signal-to-opportunity"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "funding-partner-activation-coach",
+        "condition": "partner engagement needed"
+      },
+      {
+        "target_skill": "customer-meeting-prep-outreach-coach",
+        "condition": "customer outreach needed to unblock"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "deployment-blocker-triage",
+    "required_artifacts": [
+      "Blocker classification (technical/commercial/organizational)",
+      "prioritized unblock actions with owners",
+      "partner engagement recommendation"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF10-C trap (Skips partner-engagement check); produces complete Blocker classification (technical/commercial/organizational), prioritized unblock actions with owner",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF10-C failure pattern",
+      "Score 1: Output exhibits the full FM-WF10-C failure mode (Skips partner-engagement check)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct territory planning decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF10-C -- Skips partner-engagement check"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

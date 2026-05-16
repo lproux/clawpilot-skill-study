@@ -1,0 +1,125 @@
+{
+  "scenario_id": "WF-33-00192",
+  "workflow_id": "WF-33",
+  "workflow_name": "Customer Inquiry Thread -> Response + Pipeline Note",
+  "seed": 3300234,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF33-L",
+  "persona": "CSA",
+  "fixture_id": "FX-027",
+  "user_message": "I have this email thread from Blue Yonder Airlines that needs build the narrative. Board meeting is next week.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Blue Yonder Airlines",
+        "account_id": "ACC-6ZHK5AIU",
+        "opportunities": [
+          {
+            "name": "Blue Dynamics 365 Implementation",
+            "stage": "Close",
+            "amount": 210000,
+            "close_date": "2024-04-22"
+          },
+          {
+            "name": "Blue Azure Infrastructure",
+            "stage": "Prospect",
+            "amount": 350000,
+            "close_date": "2024-08-05"
+          },
+          {
+            "name": "Blue Copilot Adoption",
+            "stage": "Prospect",
+            "amount": 210000,
+            "close_date": "2024-12-03"
+          }
+        ],
+        "acr_current": 0,
+        "health_flag": "At Risk",
+        "owner": "David Chen"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Robert Singh <robert.singh@blueyonderai.com>\nTo: David Chen <david.chen@microsoft.com>\nDate: 2024-03-20 14:08 EST\nSubject: URGENT: territory planning Issue at Blue Yonder Airlines\n\nOur team encountered some challenges with territory planning. Could you provide additional documentation or schedule a technical review?\n\n---\nFrom: David Chen <david.chen@microsoft.com>\nTo: Robert Singh <robert.singh@blueyonderai.com>\nDate: 2024-02-22 17:29 EST\nSubject: territory planning - Action Required\n\nOur team encountered some challenges with territory planning. Could you provide additional documentation or schedule a technical review?",
+      "metadata": {
+        "freshness": "2024-02-18T15:00:00-05:00",
+        "source": "outlook",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "consumption_decline",
+            "detail": "Signal detected for Blue Yonder Airlines: the cost projections need to factor in reserved instance pricing for accuracy",
+            "date": "2024-03-07"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-09T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-segment-smb-small",
+    "persona-role-csa"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "email-chat-context",
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "MSX update warranted from thread content"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "customer-inquiry-thread-->-response-+-pipeline-not",
+    "required_artifacts": [
+      "Thread analysis",
+      "draft response",
+      "waiting-on-whom assessment",
+      "MSX pipeline note proposal (if warranted)",
+      "urgency calibration"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF33-L trap (Proposed pipeline note duplicates content already in MSX); produces complete Thread analysis, draft response, waiting-on-whom assessment, MSX pipeline note proposal (if warrante",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF33-L failure pattern",
+      "Score 1: Output exhibits the full FM-WF33-L failure mode (Proposed pipeline note duplicates content already in MSX)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct territory planning decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF33-L -- Proposed pipeline note duplicates content already in MSX"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

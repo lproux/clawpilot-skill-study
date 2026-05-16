@@ -1,0 +1,158 @@
+{
+  "scenario_id": "WF-32-00144",
+  "workflow_id": "WF-32",
+  "workflow_name": "Calendar Pre-Pack Automation",
+  "seed": 3200186,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF32-J",
+  "persona": "CSA",
+  "fixture_id": "FX-031",
+  "user_message": "[AUTOMATION TRIGGER] Daily automation: Calendar event with non-Microsoft external attendee detected. Account: Liberty's Delightful Sinful Bakery.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Liberty's Delightful Sinful Bakery",
+        "account_id": "ACC-A2FZGZWL",
+        "opportunities": [
+          {
+            "name": "Liberty's Dynamics 365 Implementation",
+            "stage": "Develop",
+            "amount": 89000,
+            "close_date": "2024-12-10"
+          },
+          {
+            "name": "Liberty's AKS Deployment",
+            "stage": "Qualify",
+            "amount": 89000,
+            "close_date": "2024-12-24"
+          },
+          {
+            "name": "Liberty's Azure Infrastructure",
+            "stage": "Develop",
+            "amount": 450000,
+            "close_date": "2024-04-08"
+          }
+        ],
+        "acr_current": 0,
+        "health_flag": "Healthy",
+        "owner": "Marcus Williams"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Patricia Kim <patricia.kim@libertysdeli.com>\nTo: Marcus Williams <marcus.williams@microsoft.com>\nDate: 2024-02-09 15:56 EST\nSubject: partner engagement - Action Required\n\nOur team encountered some challenges with partner engagement. Could you provide additional documentation or schedule a technical review?\n\n---\nFrom: Marcus Williams <marcus.williams@microsoft.com>\nTo: Patricia Kim <patricia.kim@libertysdeli.com>\nDate: 2024-01-11 11:55 EST\nSubject: Re: Re: partner engagement Timeline\n\nWe've been evaluating the options and have decided to proceed with partner engagement. What are the next steps from your side?",
+      "metadata": {
+        "freshness": "2024-03-08T10:00:00-05:00",
+        "source": "outlook",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: partner engagement Discussion - Liberty's Delightful Sinful Bakery\nDate: 2024-02-11\nDuration: 45 minutes\nAttendees: Patricia Kim (Liberty's Delightful Sinful Bakery), Marcus Williams (Microsoft)\n\n[00:02:00] Patricia Kim (Liberty's Delightful Sinful Bakery): Good morning. I wanted to follow up on partner engagement from our last session.\n\n[00:07:00] Patricia Kim (Liberty's Delightful Sinful Bakery): Our VP reviewed this and has concerns about data residency. Can we address those?\n\n[00:11:00] Patricia Kim (Liberty's Delightful Sinful Bakery): I agree with that assessment. From our side, the main concern is vendor dependencies.\n\n[00:14:00] Marcus Williams (Microsoft): Our VP reviewed this and has concerns about timeline constraints. Can we address those?\n\n[00:19:00] Patricia Kim (Liberty's Delightful Sinful Bakery): The timeline for budget approval is aggressive. We need to validate the assumptions.\n\n[00:23:00] Patricia Kim (Liberty's Delightful Sinful Bakery): I agree with that assessment. From our side, the main concern is data residency.\n\n[00:28:00] Patricia Kim (Liberty's Delightful Sinful Bakery): I agree with that assessment. From our side, the main concern is stakeholder alignment.\n\n[00:31:00] Marcus Williams (Microsoft): On the partner engagement front, we've made progress but there are still blockers around performance requirements.\n\n[00:35:00] Patricia Kim (Liberty's Delightful Sinful Bakery): I agree with that assessment. From our side, the main concern is performance requirements.\n\n[00:39:00] Patricia Kim (Liberty's Delightful Sinful Bakery): On the partner engagement front, we've made progress but there are still blockers around data residency.\n\n[00:42:00] Patricia Kim (Liberty's Delightful Sinful Bakery): On the partner engagement front, we've made progress but there are still blockers around budget approval.",
+      "metadata": {
+        "freshness": "2024-01-13T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Liberty's Delightful Sinful Bakery - partner engagement",
+        "start": "2024-03-13T09:00:00-05:00",
+        "end": "2024-03-15T15:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Marcus Williams",
+            "email": "marcus.williams@microsoft.com"
+          },
+          {
+            "name": "Patricia Kim",
+            "email": "patricia.kim@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "consumption_decline",
+            "detail": "Signal detected for Liberty's Delightful Sinful Bakery: the cost projections need to factor in reserved instance pricing for accuracy",
+            "date": "2024-03-10"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-09T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "data-partially-missing",
+    "persona-segment-smb-corporate"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "meeting-prep",
+      "contact-stakeholder-map",
+      "email-chat-context"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "portfolio-account-planning-coach",
+        "condition": "meeting is for account CSA should have declined"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "calendar-pre-pack-automation",
+    "required_artifacts": [
+      "Pre-pack brief with attendee context",
+      "account snapshot",
+      "talking points",
+      "likely objections",
+      "open items"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF32-J trap (Fails to surface time-since-last-contact for cold attendees); produces complete Pre-pack brief with attendee context, account snapshot, talking points, likely objections, open item",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF32-J failure pattern",
+      "Score 1: Output exhibits the full FM-WF32-J failure mode (Fails to surface time-since-last-contact for cold attendees)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct partner engagement decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF32-J -- Fails to surface time-since-last-contact for cold attendees"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "scenario_id": "WF-09-00027",
+  "workflow_id": "WF-09",
+  "workflow_name": "Consumption-at-Risk Watchlist",
+  "seed": 900069,
+  "tier": 3,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF09-E",
+  "persona": "CSA",
+  "fixture_id": "FX-047",
+  "user_message": "[AUTOMATION TRIGGER] Daily automation: Daily automated watchlist generation or on-demand 'which acc. Account: Evergreen Solutions.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Evergreen Solutions",
+        "account_id": "ACC-S7KJN805",
+        "opportunities": [
+          {
+            "name": "Evergreen Azure AI Services",
+            "stage": "Qualify",
+            "amount": 175000,
+            "close_date": "2024-12-26"
+          }
+        ],
+        "acr_current": 19865.64,
+        "health_flag": "Healthy",
+        "owner": "David Chen"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "consumption_decline",
+            "detail": "Signal detected for Evergreen Solutions: the migration can proceed in phases to reduce risk",
+            "date": "2024-03-06"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-10T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "signal-strength-faint",
+    "persona-segment-smb-small"
+  ],
+  "expected_routing": {
+    "entry_skill": "acr-signal-to-opportunity-coach",
+    "modules": [
+      "acr-data-access",
+      "acr-health-forecast"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "at-risk account has stale records"
+      },
+      {
+        "target_skill": "customer-meeting-prep-outreach-coach",
+        "condition": "outreach needed for at-risk account"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "consumption-at-risk-watchlist",
+    "required_artifacts": [
+      "Prioritized watchlist (max 15 accounts) with risk driver",
+      "confidence",
+      "recovery actions",
+      "delta from yesterday",
+      "owner per account"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF09-E trap (Lists accounts without driver); produces complete Prioritized watchlist (max 15 accounts) with risk driver, confidence, recovery actions, delta from y",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF09-E failure pattern",
+      "Score 1: Output exhibits the full FM-WF09-E failure mode (Lists accounts without driver)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct migration architecture decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF09-E -- Lists accounts without driver"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

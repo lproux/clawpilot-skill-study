@@ -1,0 +1,129 @@
+{
+  "scenario_id": "WF-48-00169",
+  "workflow_id": "WF-48",
+  "workflow_name": "Roadmap Meeting Transcript -> Forecast Sequencing",
+  "seed": 4800211,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF48-G",
+  "persona": "DSSP",
+  "fixture_id": "FX-031",
+  "user_message": "Pulling in context from Liberty's Delightful Sinful Bakery's support ticket -- need to assess the risk for the partner engagement.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Liberty's Delightful Sinful Bakery",
+        "account_id": "ACC-A2FZGZWL",
+        "opportunities": [
+          {
+            "name": "Liberty's Dynamics 365 Implementation",
+            "stage": "Develop",
+            "amount": 89000,
+            "close_date": "2024-12-10"
+          },
+          {
+            "name": "Liberty's AKS Deployment",
+            "stage": "Qualify",
+            "amount": 89000,
+            "close_date": "2024-12-24"
+          },
+          {
+            "name": "Liberty's Azure Infrastructure",
+            "stage": "Develop",
+            "amount": 450000,
+            "close_date": "2024-04-08"
+          }
+        ],
+        "acr_current": 0,
+        "health_flag": "Healthy",
+        "owner": "Marcus Williams"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: partner engagement Discussion - Liberty's Delightful Sinful Bakery\nDate: 2024-02-25\nDuration: 45 minutes\nAttendees: Patricia Kim (Liberty's Delightful Sinful Bakery), Marcus Williams (Microsoft), Priya (Liberty's Delightful Sinful Bakery)\n\n[00:01:30] Patricia Kim (Liberty's Delightful Sinful Bakery): Thanks everyone for joining. Let's dive into partner engagement.\n\n[00:06:00] Priya (Liberty's Delightful Sinful Bakery): The timeline for resource allocation is aggressive. We need to validate the assumptions.\n\n[00:09:00] Priya (Liberty's Delightful Sinful Bakery): I agree with that assessment. From our side, the main concern is budget approval.\n\n[00:12:00] Priya (Liberty's Delightful Sinful Bakery): The timeline for vendor dependencies is aggressive. We need to validate the assumptions.\n\n[00:16:00] Marcus Williams (Microsoft): On the partner engagement front, we've made progress but there are still blockers around stakeholder alignment.\n\n[00:19:00] Priya (Liberty's Delightful Sinful Bakery): Let me add some context -- we've been working on timeline constraints and found that the cost projections need to factor in reserved instance pricing for accuracy.\n\n[00:23:00] Patricia Kim (Liberty's Delightful Sinful Bakery): The timeline for security compliance is aggressive. We need to validate the assumptions.\n\n[00:28:00] Patricia Kim (Liberty's Delightful Sinful Bakery): I agree with that assessment. From our side, the main concern is data residency.",
+      "metadata": {
+        "freshness": "2024-02-25T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "consumption_decline",
+            "detail": "Signal detected for Liberty's Delightful Sinful Bakery: the migration can proceed in phases to reduce risk",
+            "date": "2024-03-07"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-09T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "data-partially-missing",
+    "persona-role-dssp"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "milestone and date updates needed"
+      },
+      {
+        "target_skill": "forecast-business-review-coach",
+        "condition": "forecast sequencing affected"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "roadmap-meeting-transcript-->-forecast-sequencing",
+    "required_artifacts": [
+      "Roadmap-to-forecast mapping",
+      "milestone date proposals",
+      "opportunity sequencing",
+      "new opportunity proposals (if signaled)",
+      "forecast impact with confidence"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF48-G trap (Forecast impact estimated without confidence); produces complete Roadmap-to-forecast mapping, milestone date proposals, opportunity sequencing, new opportunity propo",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF48-G failure pattern",
+      "Score 1: Output exhibits the full FM-WF48-G failure mode (Forecast impact estimated without confidence)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct partner engagement decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF48-G -- Forecast impact estimated without confidence"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

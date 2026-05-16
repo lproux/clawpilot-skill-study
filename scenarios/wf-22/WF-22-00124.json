@@ -1,0 +1,111 @@
+{
+  "scenario_id": "WF-22-00124",
+  "workflow_id": "WF-22",
+  "workflow_name": "MACC Consumption Plan",
+  "seed": 2200166,
+  "tier": 2,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF22-B",
+  "persona": "DSSP",
+  "fixture_id": "FX-041",
+  "user_message": "Working on Quantum Analytics's whitespace analysis. Got the support ticket -- help me identify the blockers.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Quantum Analytics",
+        "account_id": "ACC-ZJSZDYNL",
+        "opportunities": [
+          {
+            "name": "Quantum Azure Infrastructure",
+            "stage": "Qualify",
+            "amount": 68000,
+            "close_date": "2024-04-14"
+          },
+          {
+            "name": "Quantum Data Platform Migration",
+            "stage": "Develop",
+            "amount": 450000,
+            "close_date": "2024-07-16"
+          },
+          {
+            "name": "Quantum Dynamics 365 Implementation",
+            "stage": "Qualify",
+            "amount": 68000,
+            "close_date": "2024-07-17"
+          }
+        ],
+        "acr_current": 21322.6,
+        "health_flag": "At Risk",
+        "owner": "Marcus Williams"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "consumption_decline",
+            "detail": "Signal detected for Quantum Analytics: there's a compliance requirement we hadn't accounted for in the original scope",
+            "date": "2024-03-06"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-10T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-geo-latam",
+    "persona-tenure-senior",
+    "signal-strength-noisy",
+    "persona-role-dssp"
+  ],
+  "expected_routing": {
+    "entry_skill": "funding-partner-activation-coach",
+    "modules": [
+      "macc-consumption-plan",
+      "contract-billing-lookup"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "macc-consumption-plan",
+    "required_artifacts": [
+      "Consumption plan with monthly projection",
+      "shortfall risk analysis",
+      "commitment band rationale",
+      "workload acceleration opportunities"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF22-B trap (No shortfall risk analysis); produces complete Consumption plan with monthly projection, shortfall risk analysis, commitment band rationale, worklo",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF22-B failure pattern",
+      "Score 1: Output exhibits the full FM-WF22-B failure mode (No shortfall risk analysis)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct whitespace analysis decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF22-B -- No shortfall risk analysis"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

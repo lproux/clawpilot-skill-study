@@ -1,0 +1,159 @@
+{
+  "scenario_id": "WF-32-00067",
+  "workflow_id": "WF-32",
+  "workflow_name": "Calendar Pre-Pack Automation",
+  "seed": 3200109,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF32-E",
+  "persona": "DSSP",
+  "fixture_id": "FX-027",
+  "user_message": "[AUTOMATION TRIGGER] Daily automation: Calendar event with non-Microsoft external attendee detected. Account: Blue Yonder Airlines.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Blue Yonder Airlines",
+        "account_id": "ACC-6ZHK5AIU",
+        "opportunities": [
+          {
+            "name": "Blue Dynamics 365 Implementation",
+            "stage": "Close",
+            "amount": 210000,
+            "close_date": "2024-04-22"
+          },
+          {
+            "name": "Blue Azure Infrastructure",
+            "stage": "Prospect",
+            "amount": 350000,
+            "close_date": "2024-08-05"
+          },
+          {
+            "name": "Blue Copilot Adoption",
+            "stage": "Prospect",
+            "amount": 210000,
+            "close_date": "2024-12-03"
+          }
+        ],
+        "acr_current": 0,
+        "health_flag": "At Risk",
+        "owner": "David Chen"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Robert Singh <robert.singh@blueyonderai.com>\nTo: David Chen <david.chen@microsoft.com>\nDate: 2024-02-20 10:31 EST\nSubject: URGENT: account health Issue at Blue Yonder Airlines\n\nWe've been evaluating the options and have decided to proceed with account health. What are the next steps from your side?\n\n---\nFrom: David Chen <david.chen@microsoft.com>\nTo: Robert Singh <robert.singh@blueyonderai.com>\nDate: 2024-01-04 10:28 EST\nSubject: Follow-up: account health Review\n\nOur team encountered some challenges with account health. Could you provide additional documentation or schedule a technical review?",
+      "metadata": {
+        "freshness": "2024-03-08T17:00:00-05:00",
+        "source": "outlook",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: account health Discussion - Blue Yonder Airlines\nDate: 2024-01-01\nDuration: 45 minutes\nAttendees: Robert Singh (Blue Yonder Airlines), David Chen (Microsoft)\n\n[00:02:00] Robert Singh (Blue Yonder Airlines): Good morning. I wanted to follow up on account health from our last session.\n\n[00:07:00] David Chen (Microsoft): I agree with that assessment. From our side, the main concern is budget approval.\n\n[00:10:00] David Chen (Microsoft): Our team lead reviewed this and has concerns about cost optimization. Can we address those?\n\n[00:15:00] David Chen (Microsoft): On the account health front, we've made progress but there are still blockers around stakeholder alignment.\n\n[00:19:00] David Chen (Microsoft): Let me add some context -- we've been working on technical validation and found that the existing infrastructure won't support the target workload without upgrades.\n\n[00:23:00] Robert Singh (Blue Yonder Airlines): Our director reviewed this and has concerns about partner engagement. Can we address those?\n\n[00:27:00] Robert Singh (Blue Yonder Airlines): Let me add some context -- we've been working on performance requirements and found that the cost projections need to factor in reserved instance pricing for accuracy.\n\n[00:29:00] Robert Singh (Blue Yonder Airlines): Our VP reviewed this and has concerns about partner engagement. Can we address those?\n\n[00:34:00] Robert Singh (Blue Yonder Airlines): On the account health front, we've made progress but there are still blockers around data residency.",
+      "metadata": {
+        "freshness": "2024-02-26T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Blue Yonder Airlines - account health",
+        "start": "2024-03-15T16:00:00-05:00",
+        "end": "2024-03-12T14:00:00-05:00",
+        "attendees": [
+          {
+            "name": "David Chen",
+            "email": "david.chen@microsoft.com"
+          },
+          {
+            "name": "Robert Singh",
+            "email": "robert.singh@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "contract_event",
+            "detail": "Signal detected for Blue Yonder Airlines: the existing infrastructure won't support the target workload without upgrades",
+            "date": "2024-03-08"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "routing-ambiguous-2skills",
+    "persona-segment-smb-small",
+    "data-partially-missing"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "meeting-prep",
+      "contact-stakeholder-map",
+      "email-chat-context"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "portfolio-account-planning-coach",
+        "condition": "meeting is for account CSA should have declined"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "calendar-pre-pack-automation",
+    "required_artifacts": [
+      "Pre-pack brief with attendee context",
+      "account snapshot",
+      "talking points",
+      "likely objections",
+      "open items"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF32-E trap (Pre-pack identical to last week's for a recurring meeting); produces complete Pre-pack brief with attendee context, account snapshot, talking points, likely objections, open item",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF32-E failure pattern",
+      "Score 1: Output exhibits the full FM-WF32-E failure mode (Pre-pack identical to last week's for a recurring meeting)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct account health decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF32-E -- Pre-pack identical to last week's for a recurring meeting"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

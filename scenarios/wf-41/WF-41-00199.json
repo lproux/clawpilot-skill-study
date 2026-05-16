@@ -1,0 +1,126 @@
+{
+  "scenario_id": "WF-41-00199",
+  "workflow_id": "WF-41",
+  "workflow_name": "Dark-Customer Re-Emergence",
+  "seed": 4100241,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF41-G",
+  "persona": "DSSP",
+  "fixture_id": "FX-041",
+  "user_message": "Can you extract the pipeline hygiene from this support ticket for Quantum Analytics? I met with them last week but can't remember the details.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Quantum Analytics",
+        "account_id": "ACC-ZJSZDYNL",
+        "opportunities": [
+          {
+            "name": "Quantum Azure Infrastructure",
+            "stage": "Qualify",
+            "amount": 68000,
+            "close_date": "2024-04-14"
+          },
+          {
+            "name": "Quantum Data Platform Migration",
+            "stage": "Develop",
+            "amount": 450000,
+            "close_date": "2024-07-16"
+          },
+          {
+            "name": "Quantum Dynamics 365 Implementation",
+            "stage": "Qualify",
+            "amount": 68000,
+            "close_date": "2024-07-17"
+          }
+        ],
+        "acr_current": 21322.6,
+        "health_flag": "At Risk",
+        "owner": "Marcus Williams"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Robert Foster <robert.foster@quantumanaly.com>\nTo: Marcus Williams <marcus.williams@microsoft.com>\nDate: 2024-03-20 10:56 EST\nSubject: Follow-up: pipeline hygiene Review\n\nI wanted to follow up on our conversation about pipeline hygiene. Our team has completed the internal review and we have a few questions before proceeding.\n\n---\nFrom: Marcus Williams <marcus.williams@microsoft.com>\nTo: Robert Foster <robert.foster@quantumanaly.com>\nDate: 2024-02-23 12:23 EST\nSubject: Re: pipeline hygiene Discussion - Next Steps\n\nOur team encountered some challenges with pipeline hygiene. Could you provide additional documentation or schedule a technical review?\n\n---\nFrom: Robert Foster <robert.foster@quantumanaly.com>\nTo: Marcus Williams <marcus.williams@microsoft.com>\nDate: 2024-01-21 15:24 EST\nSubject: URGENT: pipeline hygiene Issue at Quantum Analytics\n\nThank you for the discussion last week. We'd like to move forward with pipeline hygiene. Can we schedule a call this week to finalize the timeline?",
+      "metadata": {
+        "freshness": "2024-02-26T13:00:00-05:00",
+        "source": "outlook",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "deployment_blocker",
+            "detail": "Signal detected for Quantum Analytics: there's a compliance requirement we hadn't accounted for in the original scope",
+            "date": "2024-03-08"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-09T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-segment-smb-corporate",
+    "persona-role-dssp",
+    "data-inconsistent"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "email-chat-context",
+      "contact-stakeholder-map"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "MSX records need dark-period hygiene catchup"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "dark-customer-re-emergence",
+    "required_artifacts": [
+      "Context reconstruction",
+      "re-qualification assessment",
+      "response draft (appropriate tone)",
+      "stakeholder verification plan",
+      "MSX hygiene catchup proposals"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF41-G trap (Confuses individual contact return with account re-emergence); produces complete Context reconstruction, re-qualification assessment, response draft (appropriate tone), stakeholder ",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF41-G failure pattern",
+      "Score 1: Output exhibits the full FM-WF41-G failure mode (Confuses individual contact return with account re-emergence)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct pipeline hygiene decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF41-G -- Confuses individual contact return with account re-emergence"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

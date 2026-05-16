@@ -1,0 +1,123 @@
+{
+  "scenario_id": "WF-35-00189",
+  "workflow_id": "WF-35",
+  "workflow_name": "Customer Renewal Email -> Forecast Impact + Path",
+  "seed": 3500231,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF35-F",
+  "persona": "CSA",
+  "fixture_id": "FX-021",
+  "user_message": "Just got this from Samantha Singh at Nod Publishers -- I need help figuring out QBR preparation. ",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Nod Publishers",
+        "account_id": "ACC-BFJJI6LY",
+        "opportunities": [
+          {
+            "name": "Nod Azure SQL Migration",
+            "stage": "Close",
+            "amount": 45000,
+            "close_date": "2023-10-06"
+          },
+          {
+            "name": "Nod Intune Rollout",
+            "stage": "Develop",
+            "amount": 560000,
+            "close_date": "2024-12-16"
+          }
+        ],
+        "acr_current": 111088.58,
+        "health_flag": "At Risk",
+        "owner": "Marcus Williams"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Samantha Singh <samantha.singh@nodpublisher.com>\nTo: Marcus Williams <marcus.williams@microsoft.com>\nDate: 2024-03-04 13:08 EST\nSubject: Follow-up: QBR preparation Review\n\nWe've been evaluating the options and have decided to proceed with QBR preparation. What are the next steps from your side?\n\n---\nFrom: Marcus Williams <marcus.williams@microsoft.com>\nTo: Samantha Singh <samantha.singh@nodpublisher.com>\nDate: 2024-02-14 12:13 EST\nSubject: Re: QBR preparation Discussion - Next Steps\n\nThere's been a change in our timeline for QBR preparation. Can we discuss the implications on the overall project plan?\n\n---\nFrom: Samantha Singh <samantha.singh@nodpublisher.com>\nTo: Marcus Williams <marcus.williams@microsoft.com>\nDate: 2024-01-04 17:49 EST\nSubject: URGENT: QBR preparation Issue at Nod Publishers\n\nOur team encountered some challenges with QBR preparation. Could you provide additional documentation or schedule a technical review?",
+      "metadata": {
+        "freshness": "2024-02-03T10:00:00-05:00",
+        "source": "outlook",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "consumption_decline",
+            "detail": "Signal detected for Nod Publishers: there's a dependency on the security team's review that could delay us",
+            "date": "2024-03-11"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-10T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-role-csa",
+    "signal-strength-faint",
+    "persona-segment-smb-mid",
+    "data-stale"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "email-chat-context"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "funding-partner-activation-coach",
+        "condition": "contract/billing lookup needed"
+      },
+      {
+        "target_skill": "forecast-business-review-coach",
+        "condition": "forecast impact assessment needed"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "customer-renewal-email-->-forecast-impact-+-path",
+    "required_artifacts": [
+      "Contract state summary with freshness",
+      "forecast impact with confidence",
+      "response draft (no commercial commitments)",
+      "path forward with MACC/funding options if applicable"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF35-F trap (Draft response commits commercial terms); produces complete Contract state summary with freshness, forecast impact with confidence, response draft (no commercia",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF35-F failure pattern",
+      "Score 1: Output exhibits the full FM-WF35-F failure mode (Draft response commits commercial terms)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct QBR preparation decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF35-F -- Draft response commits commercial terms"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

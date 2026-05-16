@@ -1,0 +1,126 @@
+{
+  "scenario_id": "WF-38-00068",
+  "workflow_id": "WF-38",
+  "workflow_name": "Champion-Change Email Signal -> Re-engagement Plan",
+  "seed": 3800110,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF38-C",
+  "persona": "Manager",
+  "fixture_id": "FX-029",
+  "user_message": "I need you to process this exec meeting notes from Consolidated Messenger. ",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Consolidated Messenger",
+        "account_id": "ACC-LVS79LOG",
+        "opportunities": [
+          {
+            "name": "Consolidated Azure AI Services",
+            "stage": "Propose",
+            "amount": 280000,
+            "close_date": "2024-12-11"
+          },
+          {
+            "name": "Consolidated Security Modernization",
+            "stage": "Prospect",
+            "amount": 210000,
+            "close_date": "2024-04-06"
+          },
+          {
+            "name": "Consolidated Azure Arc Deployment",
+            "stage": "Close",
+            "amount": 125000,
+            "close_date": "2024-05-02"
+          }
+        ],
+        "acr_current": 0,
+        "health_flag": "Unknown",
+        "owner": "Tom Rodriguez"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Sarah Singh <sarah.singh@consolidated.com>\nTo: Tom Rodriguez <tom.rodriguez@microsoft.com>\nDate: 2024-03-08 14:01 EST\nSubject: Quarterly Update: Consolidated Messenger whitespace analysis\n\nJust checking in on the whitespace analysis proposal. Our DevOps Lead is asking for a status update before the board meeting next week.\n\n---\nFrom: Tom Rodriguez <tom.rodriguez@microsoft.com>\nTo: Sarah Singh <sarah.singh@consolidated.com>\nDate: 2024-02-15 10:10 EST\nSubject: whitespace analysis - Action Required\n\nThere's been a change in our timeline for whitespace analysis. Can we discuss the implications on the overall project plan?\n\n---\nFrom: Sarah Singh <sarah.singh@consolidated.com>\nTo: Tom Rodriguez <tom.rodriguez@microsoft.com>\nDate: 2024-01-21 12:35 EST\nSubject: Quarterly Update: Consolidated Messenger whitespace analysis\n\nThank you for the discussion last week. We'd like to move forward with whitespace analysis. Can we schedule a call this week to finalize the timeline?",
+      "metadata": {
+        "freshness": "2024-03-28T10:00:00-05:00",
+        "source": "outlook",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "contract_event",
+            "detail": "Signal detected for Consolidated Messenger: there's a dependency on the security team's review that could delay us",
+            "date": "2024-03-05"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-10T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-tenure-senior",
+    "persona-role-manager"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "contact-stakeholder-map",
+      "email-chat-context",
+      "dark-customer-outreach"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "contact and opportunity records need updating"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "champion-change-email-signal-->-re-engagement-plan",
+    "required_artifacts": [
+      "Stakeholder map delta",
+      "opportunity-at-risk assessment",
+      "re-engagement plan",
+      "contact update proposals",
+      "warm-handoff draft (if champion willing)"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF38-C trap (MSX contact update proposed without evidence); produces complete Stakeholder map delta, opportunity-at-risk assessment, re-engagement plan, contact update proposals,",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF38-C failure pattern",
+      "Score 1: Output exhibits the full FM-WF38-C failure mode (MSX contact update proposed without evidence)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct whitespace analysis decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF38-C -- MSX contact update proposed without evidence"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

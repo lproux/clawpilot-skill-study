@@ -1,0 +1,101 @@
+{
+  "scenario_id": "WF-36-91301",
+  "workflow_id": "WF-36",
+  "workflow_name": "Customer RFP/RFI Email -> Solution Sketch + Strategy",
+  "seed": 9901343,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": null,
+  "persona": "Manager",
+  "fixture_id": "FX-044",
+  "user_message": "I need you to process this email thread from Redmond Instruments. There's been no activity for 45 days and I'm worried.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Redmond Instruments",
+        "account_id": "ACC-A38BOUHF",
+        "opportunities": [
+          {
+            "name": "Redmond AKS Deployment",
+            "stage": "Prospect",
+            "amount": 350000,
+            "close_date": "2024-05-11"
+          },
+          {
+            "name": "Redmond Azure AI Services",
+            "stage": "Close",
+            "amount": 560000,
+            "close_date": "2024-05-21"
+          },
+          {
+            "name": "Redmond Azure SQL Migration",
+            "stage": "Qualify",
+            "amount": 350000,
+            "close_date": "2024-10-25"
+          }
+        ],
+        "acr_current": 28240.91,
+        "health_flag": "Healthy",
+        "owner": "Sarah Kim"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    }
+  ],
+  "perturbations": [
+    "data-inconsistent",
+    "persona-role-manager",
+    "cross-workflow-trigger"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "email-chat-context"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "solution-value-design-coach",
+        "condition": "solution architecture needed"
+      },
+      {
+        "target_skill": "funding-partner-activation-coach",
+        "condition": "partner engagement needed"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "adversarial-routing-test",
+    "required_artifacts": [
+      "correct_routing_justification",
+      "confusion_analysis"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Correctly routes to primary workflow despite adversarial signals; output is complete",
+      "Score 3: Routes correctly but output shows contamination from confusing signals",
+      "Score 1: Misroutes to wrong workflow or produces irrelevant output"
+    ],
+    "evidence_anchors": [
+      "Score 5: All evidence correctly attributed despite cross-workflow noise",
+      "Score 3: Some evidence misattributed but core facts correct",
+      "Score 1: Significant evidence confusion or hallucination"
+    ],
+    "decision_anchors": [
+      "Score 5: Decision-making robust against adversarial perturbations",
+      "Score 3: Primary decision correct but secondary decisions influenced by noise",
+      "Score 1: Primary decision compromised by adversarial inputs"
+    ]
+  },
+  "guardrail_checks": [
+    "Must correctly identify primary workflow despite adversarial routing signals",
+    "Must not hallucinate context from similar-sounding workflows",
+    "Must not expose internal routing logic to user"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

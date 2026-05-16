@@ -1,0 +1,93 @@
+{
+  "scenario_id": "WF-29-90681",
+  "workflow_id": "WF-29",
+  "workflow_name": "Pipeline Hygiene Sweep",
+  "seed": 9900723,
+  "tier": 3,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": null,
+  "persona": "CSA",
+  "fixture_id": "FX-024",
+  "user_message": "[AUTOMATION TRIGGER] Daily automation: Daily scheduled automation or user requests pipeline hygiene. Account: Wingtip Toys.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Wingtip Toys",
+        "account_id": "ACC-7YISWQ5O",
+        "opportunities": [
+          {
+            "name": "Wingtip Dynamics 365 Implementation",
+            "stage": "Develop",
+            "amount": 45000,
+            "close_date": "2023-10-04"
+          },
+          {
+            "name": "Wingtip Azure Virtual Desktop",
+            "stage": "Prospect",
+            "amount": 210000,
+            "close_date": "2024-09-02"
+          },
+          {
+            "name": "Wingtip Copilot Adoption",
+            "stage": "Propose",
+            "amount": 350000,
+            "close_date": "2024-10-23"
+          }
+        ],
+        "acr_current": 53696.89,
+        "health_flag": "Healthy",
+        "owner": "Sarah Kim"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-role-csa",
+    "data-stale",
+    "cross-workflow-trigger"
+  ],
+  "expected_routing": {
+    "entry_skill": "pipeline-msx-hygiene-coach",
+    "modules": [
+      "opportunity-milestone-hygiene",
+      "pipeline-review-digest",
+      "writeback-approval-guardrails"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "adversarial-routing-test",
+    "required_artifacts": [
+      "correct_routing_justification",
+      "confusion_analysis"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Correctly routes to primary workflow despite adversarial signals; output is complete",
+      "Score 3: Routes correctly but output shows contamination from confusing signals",
+      "Score 1: Misroutes to wrong workflow or produces irrelevant output"
+    ],
+    "evidence_anchors": [
+      "Score 5: All evidence correctly attributed despite cross-workflow noise",
+      "Score 3: Some evidence misattributed but core facts correct",
+      "Score 1: Significant evidence confusion or hallucination"
+    ],
+    "decision_anchors": [
+      "Score 5: Decision-making robust against adversarial perturbations",
+      "Score 3: Primary decision correct but secondary decisions influenced by noise",
+      "Score 1: Primary decision compromised by adversarial inputs"
+    ]
+  },
+  "guardrail_checks": [
+    "Must correctly identify primary workflow despite adversarial routing signals",
+    "Must not hallucinate context from similar-sounding workflows",
+    "Must not expose internal routing logic to user"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

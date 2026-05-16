@@ -1,0 +1,113 @@
+{
+  "scenario_id": "WF-43-00153",
+  "workflow_id": "WF-43",
+  "workflow_name": "Discovery Call Transcript -> Opportunity Build",
+  "seed": 4300195,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF43-D",
+  "persona": "CSA",
+  "fixture_id": "FX-049",
+  "user_message": "I have this exec meeting notes from Iron Creek Mining that needs assess the risk. Not urgent but would be good to have by EOD.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Iron Creek Mining",
+        "account_id": "ACC-WVPLFPK6",
+        "opportunities": [
+          {
+            "name": "Iron Azure DevOps",
+            "stage": "Qualify",
+            "amount": 350000,
+            "close_date": "2024-10-28"
+          },
+          {
+            "name": "Iron Azure Virtual Desktop",
+            "stage": "Develop",
+            "amount": 280000,
+            "close_date": "2024-06-02"
+          },
+          {
+            "name": "Iron Azure SQL Migration",
+            "stage": "Qualify",
+            "amount": 68000,
+            "close_date": "2024-05-06"
+          }
+        ],
+        "acr_current": 10924.12,
+        "health_flag": "Healthy",
+        "owner": "Tom Rodriguez"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: consumption trend Discussion - Iron Creek Mining\nDate: 2024-02-06\nDuration: 45 minutes\nAttendees: Karen Berg (Iron Creek Mining), Tom Rodriguez (Microsoft), David (Iron Creek Mining)\n\n[00:01:30] Karen Berg (Iron Creek Mining): Thanks everyone for joining. Let's dive into consumption trend.\n\n[00:07:00] Tom Rodriguez (Microsoft): Let me add some context -- we've been working on performance requirements and found that the existing infrastructure won't support the target workload without upgrades.\n\n[00:10:00] David (Iron Creek Mining): On the consumption trend front, we've made progress but there are still blockers around budget approval.\n\n[00:13:00] Karen Berg (Iron Creek Mining): I agree with that assessment. From our side, the main concern is budget approval.\n\n[00:17:00] Karen Berg (Iron Creek Mining): On the consumption trend front, we've made progress but there are still blockers around vendor dependencies.\n\n[00:20:00] David (Iron Creek Mining): I agree with that assessment. From our side, the main concern is cost optimization.\n\n[00:24:00] David (Iron Creek Mining): The timeline for partner engagement is aggressive. We need to validate the assumptions.\n\n[00:29:00] David (Iron Creek Mining): The timeline for resource allocation is aggressive. We need to validate the assumptions.",
+      "metadata": {
+        "freshness": "2024-02-06T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "mixed",
+        "length_class": "long"
+      }
+    }
+  ],
+  "perturbations": [
+    "data-contradictory",
+    "routing-ambiguous-2skills"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "opportunity creation warranted"
+      },
+      {
+        "target_skill": "solution-value-design-coach",
+        "condition": "solution sketch needed from discovery signals"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "discovery-call-transcript-->-opportunity-build",
+    "required_artifacts": [
+      "BANT signal extraction with evidence quotes",
+      "opportunity proposal with stage/value/close-date",
+      "confidence labels",
+      "solution sketch suggestion",
+      "follow-up actions"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF43-D trap (Misattributes statement to wrong speaker); produces complete BANT signal extraction with evidence quotes, opportunity proposal with stage/value/close-date, confi",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF43-D failure pattern",
+      "Score 1: Output exhibits the full FM-WF43-D failure mode (Misattributes statement to wrong speaker)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct consumption trend decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF43-D -- Misattributes statement to wrong speaker"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

@@ -1,0 +1,157 @@
+{
+  "scenario_id": "WF-32-90369",
+  "workflow_id": "WF-32",
+  "workflow_name": "Calendar Pre-Pack Automation",
+  "seed": 9900411,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": null,
+  "persona": "CSA",
+  "fixture_id": "FX-012",
+  "user_message": "[AUTOMATION TRIGGER] Daily automation: Calendar event with non-Microsoft external attendee detected. Account: Bellows College.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Bellows College",
+        "account_id": "ACC-PPFBFFQ3",
+        "opportunities": [
+          {
+            "name": "Bellows Cloud Migration Phase",
+            "stage": "Propose",
+            "amount": 350000,
+            "close_date": "2023-11-22"
+          },
+          {
+            "name": "Bellows Azure SQL Migration",
+            "stage": "Qualify",
+            "amount": 68000,
+            "close_date": "2024-10-09"
+          },
+          {
+            "name": "Bellows Power Platform",
+            "stage": "Develop",
+            "amount": 450000,
+            "close_date": "2024-12-20"
+          }
+        ],
+        "acr_current": 81043.14,
+        "health_flag": "Healthy",
+        "owner": "Lisa Patel"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Jason Thompson <jason.thompson@bellowscolle.com>\nTo: Lisa Patel <lisa.patel@microsoft.com>\nDate: 2024-03-19 11:29 EST\nSubject: Re: whitespace analysis Discussion - Next Steps\n\nWe've been evaluating the options and have decided to proceed with whitespace analysis. What are the next steps from your side?\n\n---\nFrom: Lisa Patel <lisa.patel@microsoft.com>\nTo: Jason Thompson <jason.thompson@bellowscolle.com>\nDate: 2024-02-20 13:35 EST\nSubject: Quarterly Update: Bellows College whitespace analysis\n\nJust checking in on the whitespace analysis proposal. Our CTO is asking for a status update before the board meeting next week.\n\n---\nFrom: Jason Thompson <jason.thompson@bellowscolle.com>\nTo: Lisa Patel <lisa.patel@microsoft.com>\nDate: 2024-01-23 15:47 EST\nSubject: Re: Re: whitespace analysis Timeline\n\nThere's been a change in our timeline for whitespace analysis. Can we discuss the implications on the overall project plan?",
+      "metadata": {
+        "freshness": "2024-02-15T16:00:00-05:00",
+        "source": "outlook",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: whitespace analysis Discussion - Bellows College\nDate: 2024-03-27\nDuration: 45 minutes\nAttendees: Jason Thompson (Bellows College), Lisa Patel (Microsoft)\n\n[00:02:00] Jason Thompson (Bellows College): Good morning. I wanted to follow up on whitespace analysis from our last session.\n\n[00:06:00] Lisa Patel (Microsoft): Our architect reviewed this and has concerns about cost optimization. Can we address those?\n\n[00:08:00] Jason Thompson (Bellows College): Our architect reviewed this and has concerns about vendor dependencies. Can we address those?\n\n[00:13:00] Jason Thompson (Bellows College): On the whitespace analysis front, we've made progress but there are still blockers around stakeholder alignment.\n\n[00:17:00] Jason Thompson (Bellows College): Our director reviewed this and has concerns about integration complexity. Can we address those?\n\n[00:21:00] Jason Thompson (Bellows College): Our VP reviewed this and has concerns about vendor dependencies. Can we address those?",
+      "metadata": {
+        "freshness": "2024-03-08T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "mixed",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Bellows College - whitespace analysis",
+        "start": "2024-03-14T10:00:00-05:00",
+        "end": "2024-03-14T13:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Lisa Patel",
+            "email": "lisa.patel@microsoft.com"
+          },
+          {
+            "name": "Jason Thompson",
+            "email": "jason.thompson@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "deployment_blocker",
+            "detail": "Signal detected for Bellows College: the existing infrastructure won't support the target workload without upgrades",
+            "date": "2024-03-09"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "data-stale",
+    "routing-clear",
+    "persona-role-csa",
+    "routing-trap"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "meeting-prep",
+      "contact-stakeholder-map",
+      "email-chat-context"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "portfolio-account-planning-coach",
+        "condition": "meeting is for account CSA should have declined"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "adversarial-routing-test",
+    "required_artifacts": [
+      "correct_routing_justification",
+      "confusion_analysis"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Correctly routes to primary workflow despite adversarial signals; output is complete",
+      "Score 3: Routes correctly but output shows contamination from confusing signals",
+      "Score 1: Misroutes to wrong workflow or produces irrelevant output"
+    ],
+    "evidence_anchors": [
+      "Score 5: All evidence correctly attributed despite cross-workflow noise",
+      "Score 3: Some evidence misattributed but core facts correct",
+      "Score 1: Significant evidence confusion or hallucination"
+    ],
+    "decision_anchors": [
+      "Score 5: Decision-making robust against adversarial perturbations",
+      "Score 3: Primary decision correct but secondary decisions influenced by noise",
+      "Score 1: Primary decision compromised by adversarial inputs"
+    ]
+  },
+  "guardrail_checks": [
+    "Must correctly identify primary workflow despite adversarial routing signals",
+    "Must not hallucinate context from similar-sounding workflows",
+    "Must not expose internal routing logic to user"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

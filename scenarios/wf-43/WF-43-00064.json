@@ -1,0 +1,109 @@
+{
+  "scenario_id": "WF-43-00064",
+  "workflow_id": "WF-43",
+  "workflow_name": "Discovery Call Transcript -> Opportunity Build",
+  "seed": 4300106,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF43-D",
+  "persona": "DSSP",
+  "fixture_id": "FX-021",
+  "user_message": "Can you extract the migration architecture from this support ticket for Nod Publishers? I met with them last week but can't remember the details.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Nod Publishers",
+        "account_id": "ACC-BFJJI6LY",
+        "opportunities": [
+          {
+            "name": "Nod Azure SQL Migration",
+            "stage": "Close",
+            "amount": 45000,
+            "close_date": "2023-10-06"
+          },
+          {
+            "name": "Nod Intune Rollout",
+            "stage": "Develop",
+            "amount": 560000,
+            "close_date": "2024-12-16"
+          }
+        ],
+        "acr_current": 111088.58,
+        "health_flag": "At Risk",
+        "owner": "Marcus Williams"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: migration architecture Discussion - Nod Publishers\nDate: 2024-02-09\nDuration: 45 minutes\nAttendees: Samantha Singh (Nod Publishers), Marcus Williams (Microsoft)\n\n[00:01:15] Samantha Singh (Nod Publishers): Appreciate everyone making time. The main agenda today is migration architecture.\n\n[00:08:00] Marcus Williams (Microsoft): Our VP reviewed this and has concerns about data residency. Can we address those?\n\n[00:11:00] Samantha Singh (Nod Publishers): Let me add some context -- we've been working on integration complexity and found that there's a compliance requirement we hadn't accounted for in the original scope.\n\n[00:15:00] Marcus Williams (Microsoft): Our architect reviewed this and has concerns about budget approval. Can we address those?\n\n[00:20:00] Samantha Singh (Nod Publishers): The timeline for security compliance is aggressive. We need to validate the assumptions.\n\n[00:22:00] Marcus Williams (Microsoft): The timeline for budget approval is aggressive. We need to validate the assumptions.",
+      "metadata": {
+        "freshness": "2024-02-14T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "long"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-segment-smb-mid",
+    "persona-geo-apac",
+    "persona-role-dssp",
+    "routing-ambiguous-2skills"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "opportunity creation warranted"
+      },
+      {
+        "target_skill": "solution-value-design-coach",
+        "condition": "solution sketch needed from discovery signals"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "discovery-call-transcript-->-opportunity-build",
+    "required_artifacts": [
+      "BANT signal extraction with evidence quotes",
+      "opportunity proposal with stage/value/close-date",
+      "confidence labels",
+      "solution sketch suggestion",
+      "follow-up actions"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF43-D trap (Misattributes statement to wrong speaker); produces complete BANT signal extraction with evidence quotes, opportunity proposal with stage/value/close-date, confi",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF43-D failure pattern",
+      "Score 1: Output exhibits the full FM-WF43-D failure mode (Misattributes statement to wrong speaker)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct migration architecture decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF43-D -- Misattributes statement to wrong speaker"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

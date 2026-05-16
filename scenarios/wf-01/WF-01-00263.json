@@ -1,0 +1,140 @@
+{
+  "scenario_id": "WF-01-00263",
+  "workflow_id": "WF-01",
+  "workflow_name": "Monday Morning Portfolio Triage",
+  "seed": 100305,
+  "tier": 3,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF01-G",
+  "persona": "Manager",
+  "fixture_id": "FX-019",
+  "user_message": "[AUTOMATION TRIGGER] Daily automation: Scheduled run before user's first Monday meeting; or on-dema. Account: Lucerne Publishing.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Lucerne Publishing",
+        "account_id": "ACC-2JXCFRG8",
+        "opportunities": [
+          {
+            "name": "Lucerne Copilot Adoption",
+            "stage": "Propose",
+            "amount": 210000,
+            "close_date": "2023-11-19"
+          },
+          {
+            "name": "Lucerne Data Platform Migration",
+            "stage": "Prospect",
+            "amount": 45000,
+            "close_date": "2024-11-16"
+          }
+        ],
+        "acr_current": 39791.19,
+        "health_flag": "Healthy",
+        "owner": "Tom Rodriguez"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Lucerne Publishing - forecast prep",
+        "start": "2024-03-13T13:00:00-05:00",
+        "end": "2024-03-15T12:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Tom Rodriguez",
+            "email": "tom.rodriguez@microsoft.com"
+          },
+          {
+            "name": "Laura Anderson",
+            "email": "laura.anderson@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "consumption_decline",
+            "detail": "Signal detected for Lucerne Publishing: the migration can proceed in phases to reduce risk",
+            "date": "2024-03-05"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-tenure-senior",
+    "persona-segment-smb-corporate"
+  ],
+  "expected_routing": {
+    "entry_skill": "portfolio-account-planning-coach",
+    "modules": [
+      "daily-weekly-planning",
+      "account-health-prioritization"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "customer-meeting-prep-outreach-coach",
+        "condition": "customer meetings exist this week"
+      },
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "stale records detected"
+      },
+      {
+        "target_skill": "acr-signal-to-opportunity-coach",
+        "condition": "ACR signals match top accounts"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "monday-morning-portfolio-triage",
+    "required_artifacts": [
+      "Top 5-10 accounts ranked by urgency x impact",
+      "reason per account",
+      "named next action with owner",
+      "time-block plan for the week",
+      "populated handoff queue"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF01-G trap (Treats 'no recent activity' as the only urgency signal (ignores other risk facto); produces complete Top 5-10 accounts ranked by urgency x impact, reason per account, named next action with owner, time",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF01-G failure pattern",
+      "Score 1: Output exhibits the full FM-WF01-G failure mode (Treats 'no recent activity' as the only urgency signal (ignores other risk facto)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct forecast prep decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF01-G -- Treats 'no recent activity' as the only urgency signal (ignores other risk facto"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "scenario_id": "WF-22-00128",
+  "workflow_id": "WF-22",
+  "workflow_name": "MACC Consumption Plan",
+  "seed": 2200170,
+  "tier": 2,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF22-A",
+  "persona": "Manager",
+  "fixture_id": "FX-049",
+  "user_message": "Just came out of escalation triage with Iron Creek Mining. Turn this into my brief and pull out the asks.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Iron Creek Mining",
+        "account_id": "ACC-WVPLFPK6",
+        "opportunities": [
+          {
+            "name": "Iron Azure DevOps",
+            "stage": "Qualify",
+            "amount": 350000,
+            "close_date": "2024-10-28"
+          },
+          {
+            "name": "Iron Azure Virtual Desktop",
+            "stage": "Develop",
+            "amount": 280000,
+            "close_date": "2024-06-02"
+          },
+          {
+            "name": "Iron Azure SQL Migration",
+            "stage": "Qualify",
+            "amount": 68000,
+            "close_date": "2024-05-06"
+          }
+        ],
+        "acr_current": 10924.12,
+        "health_flag": "Healthy",
+        "owner": "Tom Rodriguez"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "contract_event",
+            "detail": "Signal detected for Iron Creek Mining: the migration can proceed in phases to reduce risk",
+            "date": "2024-03-11"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-segment-smb-small",
+    "persona-role-manager",
+    "data-contradictory",
+    "persona-geo-apac"
+  ],
+  "expected_routing": {
+    "entry_skill": "funding-partner-activation-coach",
+    "modules": [
+      "macc-consumption-plan",
+      "contract-billing-lookup"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "macc-consumption-plan",
+    "required_artifacts": [
+      "Consumption plan with monthly projection",
+      "shortfall risk analysis",
+      "commitment band rationale",
+      "workload acceleration opportunities"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF22-A trap (Assumes generic growth multiplier); produces complete Consumption plan with monthly projection, shortfall risk analysis, commitment band rationale, worklo",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF22-A failure pattern",
+      "Score 1: Output exhibits the full FM-WF22-A failure mode (Assumes generic growth multiplier)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct escalation triage decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF22-A -- Assumes generic growth multiplier"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

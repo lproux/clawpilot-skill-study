@@ -1,0 +1,107 @@
+{
+  "scenario_id": "WF-40-00025",
+  "workflow_id": "WF-40",
+  "workflow_name": "Decision-Maker Reply -> BPF Advance Check",
+  "seed": 4000067,
+  "tier": 4,
+  "intent": "happy",
+  "targeted_failure_mode": null,
+  "persona": "DSSP",
+  "fixture_id": "FX-043",
+  "user_message": "Working on Pacific Northwest Outfitters's escalation triage. Got the escalation email -- help me generate the watchlist.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Pacific Northwest Outfitters",
+        "account_id": "ACC-6SYIFEPT",
+        "opportunities": [
+          {
+            "name": "Pacific Azure Arc Deployment",
+            "stage": "Qualify",
+            "amount": 45000,
+            "close_date": "2024-04-15"
+          },
+          {
+            "name": "Pacific M365 E5 Upsell",
+            "stage": "Qualify",
+            "amount": 560000,
+            "close_date": "2024-11-15"
+          }
+        ],
+        "acr_current": 81560.32,
+        "health_flag": "Healthy",
+        "owner": "Ahmed Hassan"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Andrew Taylor <andrew.taylor@pacificnorth.com>\nTo: Ahmed Hassan <ahmed.hassan@microsoft.com>\nDate: 2024-03-02 11:30 EST\nSubject: Follow-up: escalation triage Review\n\nWe've been evaluating the options and have decided to proceed with escalation triage. What are the next steps from your side?\n\n---\nFrom: Ahmed Hassan <ahmed.hassan@microsoft.com>\nTo: Andrew Taylor <andrew.taylor@pacificnorth.com>\nDate: 2024-02-01 12:58 EST\nSubject: escalation triage - Action Required\n\nJust checking in on the escalation triage proposal. Our IT Director is asking for a status update before the board meeting next week.\n\n---\nFrom: Andrew Taylor <andrew.taylor@pacificnorth.com>\nTo: Ahmed Hassan <ahmed.hassan@microsoft.com>\nDate: 2024-01-14 17:53 EST\nSubject: URGENT: escalation triage Issue at Pacific Northwest Outfitters\n\nOur team encountered some challenges with escalation triage. Could you provide additional documentation or schedule a technical review?",
+      "metadata": {
+        "freshness": "2024-02-09T12:00:00-05:00",
+        "source": "outlook",
+        "length_class": "medium"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-segment-smb-small",
+    "data-inconsistent",
+    "persona-role-dssp"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "email-chat-context",
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "BPF advance warranted"
+      },
+      {
+        "target_skill": "forecast-business-review-coach",
+        "condition": "forecast category change warranted"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "decision-maker-reply-->-bpf-advance-check",
+    "required_artifacts": [
+      "Commitment assessment",
+      "BPF advance verdict",
+      "milestone proposal",
+      "forecast category recommendation",
+      "acknowledgment draft"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Complete, well-structured output matching the Decision-Maker Reply -> BPF Advance Check template with all required artifacts present and actionable",
+      "Score 3: Output covers main requirements but missing one or two secondary artifacts or lacking specificity",
+      "Score 1: Output is generic, missing key artifacts, or fails to address the specific request"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct escalation triage decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

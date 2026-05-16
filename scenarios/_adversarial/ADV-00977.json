@@ -1,0 +1,102 @@
+{
+  "scenario_id": "WF-31-90977",
+  "workflow_id": "WF-31",
+  "workflow_name": "SL4 Customer 360 Forecast Roll-Up",
+  "seed": 9901019,
+  "tier": 3,
+  "intent": "adherence",
+  "targeted_failure_mode": null,
+  "persona": "Manager",
+  "fixture_id": "FX-020",
+  "user_message": "Just came out of whitespace analysis with Margie's Travel. Turn this into my brief and pull out the asks.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Margie's Travel",
+        "account_id": "ACC-M6FKIYR4",
+        "opportunities": [
+          {
+            "name": "Margie's Intune Rollout",
+            "stage": "Prospect",
+            "amount": 125000,
+            "close_date": "2023-09-22"
+          }
+        ],
+        "acr_current": 58642.37,
+        "health_flag": "At Risk",
+        "owner": "Michelle Park"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "consumption_decline",
+            "detail": "Signal detected for Margie's Travel: the existing infrastructure won't support the target workload without upgrades",
+            "date": "2024-03-07"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-geo-emea",
+    "persona-role-manager",
+    "persona-tenure-senior",
+    "routing-ambiguous-3skills"
+  ],
+  "expected_routing": {
+    "entry_skill": "forecast-business-review-coach",
+    "modules": [
+      "committed-milestone-forecast"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "solution-value-design-coach",
+        "condition": "Customer 360 unavailable, Kusto BI fallback needed"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "adversarial-routing-test",
+    "required_artifacts": [
+      "correct_routing_justification",
+      "confusion_analysis"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Correctly routes to primary workflow despite adversarial signals; output is complete",
+      "Score 3: Routes correctly but output shows contamination from confusing signals",
+      "Score 1: Misroutes to wrong workflow or produces irrelevant output"
+    ],
+    "evidence_anchors": [
+      "Score 5: All evidence correctly attributed despite cross-workflow noise",
+      "Score 3: Some evidence misattributed but core facts correct",
+      "Score 1: Significant evidence confusion or hallucination"
+    ],
+    "decision_anchors": [
+      "Score 5: Decision-making robust against adversarial perturbations",
+      "Score 3: Primary decision correct but secondary decisions influenced by noise",
+      "Score 1: Primary decision compromised by adversarial inputs"
+    ]
+  },
+  "guardrail_checks": [
+    "Must correctly identify primary workflow despite adversarial routing signals",
+    "Must not hallucinate context from similar-sounding workflows",
+    "Must not expose internal routing logic to user"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

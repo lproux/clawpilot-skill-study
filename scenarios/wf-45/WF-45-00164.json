@@ -1,0 +1,127 @@
+{
+  "scenario_id": "WF-45-00164",
+  "workflow_id": "WF-45",
+  "workflow_name": "QBR Transcript -> Health + Whitespace + Renewal Risk",
+  "seed": 4500206,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF45-C",
+  "persona": "Manager",
+  "fixture_id": "FX-021",
+  "user_message": "Just came out of forecast prep with Nod Publishers. Turn this into my brief and pull out the asks.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Nod Publishers",
+        "account_id": "ACC-BFJJI6LY",
+        "opportunities": [
+          {
+            "name": "Nod Azure SQL Migration",
+            "stage": "Close",
+            "amount": 45000,
+            "close_date": "2023-10-06"
+          },
+          {
+            "name": "Nod Intune Rollout",
+            "stage": "Develop",
+            "amount": 560000,
+            "close_date": "2024-12-16"
+          }
+        ],
+        "acr_current": 111088.58,
+        "health_flag": "At Risk",
+        "owner": "Marcus Williams"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: forecast prep Discussion - Nod Publishers\nDate: 2024-01-28\nDuration: 45 minutes\nAttendees: Samantha Singh (Nod Publishers), Marcus Williams (Microsoft)\n\n[00:01:15] Samantha Singh (Nod Publishers): Appreciate everyone making time. The main agenda today is forecast prep.\n\n[00:08:00] Samantha Singh (Nod Publishers): Let me add some context -- we've been working on security compliance and found that the migration can proceed in phases to reduce risk.\n\n[00:10:00] Samantha Singh (Nod Publishers): Let me add some context -- we've been working on performance requirements and found that there's a compliance requirement we hadn't accounted for in the original scope.\n\n[00:13:00] Marcus Williams (Microsoft): Let me add some context -- we've been working on data residency and found that the current vendor contract has a 90-day exit clause we need to plan around.\n\n[00:18:00] Marcus Williams (Microsoft): The timeline for cost optimization is aggressive. We need to validate the assumptions.\n\n[00:23:00] Samantha Singh (Nod Publishers): Let me add some context -- we've been working on integration complexity and found that the migration can proceed in phases to reduce risk.",
+      "metadata": {
+        "freshness": "2024-03-22T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "consumption_decline",
+            "detail": "Signal detected for Nod Publishers: the migration can proceed in phases to reduce risk",
+            "date": "2024-03-09"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "routing-clear",
+    "persona-tenure-junior"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "portfolio-account-planning-coach",
+        "condition": "health assessment needed"
+      },
+      {
+        "target_skill": "acr-signal-to-opportunity-coach",
+        "condition": "whitespace signals warrant investigation"
+      },
+      {
+        "target_skill": "forecast-business-review-coach",
+        "condition": "renewal risk affects forecast"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "qbr-transcript-->-health-+-whitespace-+-renewal-ri",
+    "required_artifacts": [
+      "Health delta assessment",
+      "whitespace hypotheses",
+      "renewal risk with confidence",
+      "action distribution with owners",
+      "comparison to last QBR commitments"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF45-C trap (Whitespace hypotheses ignore customer's stated priorities); produces complete Health delta assessment, whitespace hypotheses, renewal risk with confidence, action distribution wi",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF45-C failure pattern",
+      "Score 1: Output exhibits the full FM-WF45-C failure mode (Whitespace hypotheses ignore customer's stated priorities)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct forecast prep decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF45-C -- Whitespace hypotheses ignore customer's stated priorities"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

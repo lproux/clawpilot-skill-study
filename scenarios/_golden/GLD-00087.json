@@ -1,0 +1,127 @@
+{
+  "scenario_id": "WF-35-80087",
+  "workflow_id": "WF-35",
+  "workflow_name": "Customer Renewal Email -> Forecast Impact + Path",
+  "seed": 8800129,
+  "tier": 4,
+  "intent": "happy",
+  "targeted_failure_mode": null,
+  "persona": "CSA",
+  "fixture_id": "FX-008",
+  "user_message": "Robert Chen at Proseware Inc just sent this. Help me draft a response.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Proseware Inc",
+        "account_id": "ACC-Y66S2EKA",
+        "opportunities": [
+          {
+            "name": "Proseware AKS Deployment",
+            "stage": "Propose",
+            "amount": 68000,
+            "close_date": "2024-12-24"
+          },
+          {
+            "name": "Proseware Dynamics 365 Implementation",
+            "stage": "Develop",
+            "amount": 560000,
+            "close_date": "2024-08-18"
+          },
+          {
+            "name": "Proseware Azure Virtual Desktop",
+            "stage": "Qualify",
+            "amount": 450000,
+            "close_date": "2024-07-14"
+          }
+        ],
+        "acr_current": 13854.76,
+        "health_flag": "Healthy",
+        "owner": "Priya Sharma"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Robert Chen <robert.chen@prosewareinc.com>\nTo: Priya Sharma <priya.sharma@microsoft.com>\nDate: 2024-03-09 10:02 EST\nSubject: Re: Re: whitespace analysis Timeline\n\nThere's been a change in our timeline for whitespace analysis. Can we discuss the implications on the overall project plan?\n\n---\nFrom: Priya Sharma <priya.sharma@microsoft.com>\nTo: Robert Chen <robert.chen@prosewareinc.com>\nDate: 2024-01-13 09:21 EST\nSubject: Quarterly Update: Proseware Inc whitespace analysis\n\nWe've been evaluating the options and have decided to proceed with whitespace analysis. What are the next steps from your side?",
+      "metadata": {
+        "freshness": "2024-03-17T09:00:00-05:00",
+        "source": "outlook",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "consumption_decline",
+            "detail": "Signal detected for Proseware Inc: there's a dependency on the security team's review that could delay us",
+            "date": "2024-03-11"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-10T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "routing-clear",
+    "data-fresh",
+    "persona-role-csa"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "email-chat-context"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "funding-partner-activation-coach",
+        "condition": "contract/billing lookup needed"
+      },
+      {
+        "target_skill": "forecast-business-review-coach",
+        "condition": "forecast impact assessment needed"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "customer-renewal-email-->-forecast-impact-+-path",
+    "required_artifacts": [
+      "Contract state summary with freshness",
+      "forecast impact with confidence",
+      "response draft (no commercial commitments)",
+      "path forward with MACC/funding options if applicable"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Perfect execution of the golden-path workflow with all artifacts complete and actionable",
+      "Score 3: Core output correct but missing polish or one secondary artifact",
+      "Score 1: Fails to produce expected output for a clean, unambiguous request"
+    ],
+    "evidence_anchors": [
+      "Score 5: All evidence correctly sourced and attributed; no hallucination",
+      "Score 3: Minor attribution gap but no fabrication",
+      "Score 1: Evidence fabricated or significantly misattributed"
+    ],
+    "decision_anchors": [
+      "Score 5: All decisions correct for this straightforward scenario",
+      "Score 3: Primary decision correct; minor secondary issue",
+      "Score 1: Primary decision wrong despite clear inputs"
+    ]
+  },
+  "guardrail_checks": [
+    "Clean golden-path scenario -- all guardrails should pass trivially",
+    "Must not over-complicate a straightforward request"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

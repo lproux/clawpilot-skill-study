@@ -1,0 +1,122 @@
+{
+  "scenario_id": "WF-06-00249",
+  "workflow_id": "WF-06",
+  "workflow_name": "ACR Decline Investigation",
+  "seed": 600291,
+  "tier": 3,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF06-C",
+  "persona": "CSA",
+  "fixture_id": "FX-041",
+  "user_message": "Just got this from Robert Foster at Quantum Analytics -- I need help figuring out account health. Not urgent but would be good to have by EOD.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Quantum Analytics",
+        "account_id": "ACC-ZJSZDYNL",
+        "opportunities": [
+          {
+            "name": "Quantum Azure Infrastructure",
+            "stage": "Qualify",
+            "amount": 68000,
+            "close_date": "2024-04-14"
+          },
+          {
+            "name": "Quantum Data Platform Migration",
+            "stage": "Develop",
+            "amount": 450000,
+            "close_date": "2024-07-16"
+          },
+          {
+            "name": "Quantum Dynamics 365 Implementation",
+            "stage": "Qualify",
+            "amount": 68000,
+            "close_date": "2024-07-17"
+          }
+        ],
+        "acr_current": 21322.6,
+        "health_flag": "At Risk",
+        "owner": "Marcus Williams"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "contract_event",
+            "detail": "Signal detected for Quantum Analytics: the current vendor contract has a 90-day exit clause we need to plan around",
+            "date": "2024-03-11"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-tenure-junior",
+    "persona-segment-smb-corporate",
+    "data-inconsistent",
+    "persona-geo-latam"
+  ],
+  "expected_routing": {
+    "entry_skill": "acr-signal-to-opportunity-coach",
+    "modules": [
+      "acr-data-access",
+      "acr-health-forecast",
+      "signal-to-opportunity"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "funding-partner-activation-coach",
+        "condition": "contract/billing is the driver"
+      },
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "opportunity records need updating"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "acr-decline-investigation",
+    "required_artifacts": [
+      "Ranked hypotheses for decline with evidence",
+      "recovery actions with owners",
+      "timeline",
+      "confidence labels"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF06-C trap (Recommends opportunity creation before validation); produces complete Ranked hypotheses for decline with evidence, recovery actions with owners, timeline, confidence labe",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF06-C failure pattern",
+      "Score 1: Output exhibits the full FM-WF06-C failure mode (Recommends opportunity creation before validation)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct account health decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF06-C -- Recommends opportunity creation before validation"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

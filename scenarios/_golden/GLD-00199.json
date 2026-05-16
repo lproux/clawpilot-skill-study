@@ -1,0 +1,113 @@
+{
+  "scenario_id": "WF-43-80199",
+  "workflow_id": "WF-43",
+  "workflow_name": "Discovery Call Transcript -> Opportunity Build",
+  "seed": 8800241,
+  "tier": 4,
+  "intent": "happy",
+  "targeted_failure_mode": null,
+  "persona": "DSSP",
+  "fixture_id": "FX-010",
+  "user_message": "Working on Trey Research's account health. Got the exec meeting notes -- help me triage this.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Trey Research",
+        "account_id": "ACC-5HZOG7IO",
+        "opportunities": [
+          {
+            "name": "Trey Security Modernization",
+            "stage": "Develop",
+            "amount": 280000,
+            "close_date": "2024-10-02"
+          },
+          {
+            "name": "Trey Azure Virtual Desktop",
+            "stage": "Develop",
+            "amount": 280000,
+            "close_date": "2024-08-19"
+          },
+          {
+            "name": "Trey Copilot Adoption",
+            "stage": "Close",
+            "amount": 450000,
+            "close_date": "2024-08-15"
+          }
+        ],
+        "acr_current": 39542.17,
+        "health_flag": "Healthy",
+        "owner": "Michelle Park"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: account health Discussion - Trey Research\nDate: 2024-02-04\nDuration: 45 minutes\nAttendees: Daniel Doyle (Trey Research), Michelle Park (Microsoft)\n\n[00:01:15] Daniel Doyle (Trey Research): Appreciate everyone making time. The main agenda today is account health.\n\n[00:06:00] Daniel Doyle (Trey Research): I agree with that assessment. From our side, the main concern is cost optimization.\n\n[00:10:00] Michelle Park (Microsoft): Our team lead reviewed this and has concerns about cost optimization. Can we address those?\n\n[00:15:00] Daniel Doyle (Trey Research): I agree with that assessment. From our side, the main concern is timeline constraints.\n\n[00:19:00] Daniel Doyle (Trey Research): On the account health front, we've made progress but there are still blockers around timeline constraints.\n\n[00:23:00] Daniel Doyle (Trey Research): Let me add some context -- we've been working on vendor dependencies and found that the current vendor contract has a 90-day exit clause we need to plan around.\n\n[00:25:00] Daniel Doyle (Trey Research): Let me add some context -- we've been working on partner engagement and found that the existing infrastructure won't support the target workload without upgrades.\n\n[00:30:00] Michelle Park (Microsoft): Let me add some context -- we've been working on technical validation and found that the current vendor contract has a 90-day exit clause we need to plan around.\n\n[00:34:00] Daniel Doyle (Trey Research): On the account health front, we've made progress but there are still blockers around performance requirements.\n\n[00:36:00] Daniel Doyle (Trey Research): The timeline for timeline constraints is aggressive. We need to validate the assumptions.",
+      "metadata": {
+        "freshness": "2024-02-23T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "mixed",
+        "length_class": "medium"
+      }
+    }
+  ],
+  "perturbations": [
+    "routing-clear",
+    "data-fresh",
+    "persona-role-dssp"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "opportunity creation warranted"
+      },
+      {
+        "target_skill": "solution-value-design-coach",
+        "condition": "solution sketch needed from discovery signals"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "discovery-call-transcript-->-opportunity-build",
+    "required_artifacts": [
+      "BANT signal extraction with evidence quotes",
+      "opportunity proposal with stage/value/close-date",
+      "confidence labels",
+      "solution sketch suggestion",
+      "follow-up actions"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Perfect execution of the golden-path workflow with all artifacts complete and actionable",
+      "Score 3: Core output correct but missing polish or one secondary artifact",
+      "Score 1: Fails to produce expected output for a clean, unambiguous request"
+    ],
+    "evidence_anchors": [
+      "Score 5: All evidence correctly sourced and attributed; no hallucination",
+      "Score 3: Minor attribution gap but no fabrication",
+      "Score 1: Evidence fabricated or significantly misattributed"
+    ],
+    "decision_anchors": [
+      "Score 5: All decisions correct for this straightforward scenario",
+      "Score 3: Primary decision correct; minor secondary issue",
+      "Score 1: Primary decision wrong despite clear inputs"
+    ]
+  },
+  "guardrail_checks": [
+    "Clean golden-path scenario -- all guardrails should pass trivially",
+    "Must not over-complicate a straightforward request"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

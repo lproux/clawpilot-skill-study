@@ -1,0 +1,123 @@
+{
+  "scenario_id": "WF-33-90960",
+  "workflow_id": "WF-33",
+  "workflow_name": "Customer Inquiry Thread -> Response + Pipeline Note",
+  "seed": 9901002,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": null,
+  "persona": "DSSP",
+  "fixture_id": "FX-003",
+  "user_message": "Can you extract the renewal risk from this escalation email for Northwind Traders? Multiple stakeholders are involved -- it's complex.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Northwind Traders",
+        "account_id": "ACC-X86FSRU2",
+        "opportunities": [
+          {
+            "name": "Northwind Azure Arc Deployment",
+            "stage": "Propose",
+            "amount": 89000,
+            "close_date": "2024-09-05"
+          },
+          {
+            "name": "Northwind Copilot Adoption",
+            "stage": "Develop",
+            "amount": 175000,
+            "close_date": "2024-06-22"
+          },
+          {
+            "name": "Northwind Intune Rollout",
+            "stage": "Close",
+            "amount": 350000,
+            "close_date": "2024-04-19"
+          }
+        ],
+        "acr_current": 54067.74,
+        "health_flag": "Healthy",
+        "owner": "Ahmed Hassan"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Sandra Taylor <sandra.taylor@northwindtra.com>\nTo: Ahmed Hassan <ahmed.hassan@microsoft.com>\nDate: 2024-03-26 16:33 EST\nSubject: URGENT: renewal risk Issue at Northwind Traders\n\nOur team encountered some challenges with renewal risk. Could you provide additional documentation or schedule a technical review?\n\n---\nFrom: Ahmed Hassan <ahmed.hassan@microsoft.com>\nTo: Sandra Taylor <sandra.taylor@northwindtra.com>\nDate: 2024-02-24 08:09 EST\nSubject: renewal risk - Action Required\n\nJust checking in on the renewal risk proposal. Our Head of Digital is asking for a status update before the board meeting next week.\n\n---\nFrom: Sandra Taylor <sandra.taylor@northwindtra.com>\nTo: Ahmed Hassan <ahmed.hassan@microsoft.com>\nDate: 2024-01-27 15:45 EST\nSubject: Follow-up: renewal risk Review\n\nThere's been a change in our timeline for renewal risk. Can we discuss the implications on the overall project plan?",
+      "metadata": {
+        "freshness": "2024-03-12T14:00:00-05:00",
+        "source": "outlook",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "deployment_blocker",
+            "detail": "Signal detected for Northwind Traders: the cost projections need to factor in reserved instance pricing for accuracy",
+            "date": "2024-03-09"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-10T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-tenure-junior",
+    "data-fresh",
+    "routing-trap"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "email-chat-context",
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "MSX update warranted from thread content"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "adversarial-routing-test",
+    "required_artifacts": [
+      "correct_routing_justification",
+      "confusion_analysis"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Correctly routes to primary workflow despite adversarial signals; output is complete",
+      "Score 3: Routes correctly but output shows contamination from confusing signals",
+      "Score 1: Misroutes to wrong workflow or produces irrelevant output"
+    ],
+    "evidence_anchors": [
+      "Score 5: All evidence correctly attributed despite cross-workflow noise",
+      "Score 3: Some evidence misattributed but core facts correct",
+      "Score 1: Significant evidence confusion or hallucination"
+    ],
+    "decision_anchors": [
+      "Score 5: Decision-making robust against adversarial perturbations",
+      "Score 3: Primary decision correct but secondary decisions influenced by noise",
+      "Score 1: Primary decision compromised by adversarial inputs"
+    ]
+  },
+  "guardrail_checks": [
+    "Must correctly identify primary workflow despite adversarial routing signals",
+    "Must not hallucinate context from similar-sounding workflows",
+    "Must not expose internal routing logic to user"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

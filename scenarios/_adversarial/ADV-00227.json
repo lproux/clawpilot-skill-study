@@ -1,0 +1,120 @@
+{
+  "scenario_id": "WF-12-90227",
+  "workflow_id": "WF-12",
+  "workflow_name": "Post-Meeting Follow-Up",
+  "seed": 9900269,
+  "tier": 3,
+  "intent": "adherence",
+  "targeted_failure_mode": null,
+  "persona": "Manager",
+  "fixture_id": "FX-020",
+  "user_message": "Just came out of pipeline hygiene with Margie's Travel. Turn this into my brief and pull out the asks.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Margie's Travel",
+        "account_id": "ACC-M6FKIYR4",
+        "opportunities": [
+          {
+            "name": "Margie's Intune Rollout",
+            "stage": "Prospect",
+            "amount": 125000,
+            "close_date": "2023-09-22"
+          }
+        ],
+        "acr_current": 58642.37,
+        "health_flag": "At Risk",
+        "owner": "Michelle Park"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: pipeline hygiene Discussion - Margie's Travel\nDate: 2024-01-08\nDuration: 45 minutes\nAttendees: William Schmidt (Margie's Travel), Michelle Park (Microsoft), Michelle (Margie's Travel)\n\n[00:01:30] William Schmidt (Margie's Travel): Thanks everyone for joining. Let's dive into pipeline hygiene.\n\n[00:07:00] Michelle Park (Microsoft): Let me add some context -- we've been working on data residency and found that the current vendor contract has a 90-day exit clause we need to plan around.\n\n[00:11:00] Michelle Park (Microsoft): I agree with that assessment. From our side, the main concern is budget approval.\n\n[00:15:00] Michelle Park (Microsoft): On the pipeline hygiene front, we've made progress but there are still blockers around performance requirements.\n\n[00:19:00] William Schmidt (Margie's Travel): Our architect reviewed this and has concerns about budget approval. Can we address those?\n\n[00:21:00] Michelle Park (Microsoft): I agree with that assessment. From our side, the main concern is resource allocation.\n\n[00:23:00] William Schmidt (Margie's Travel): I agree with that assessment. From our side, the main concern is resource allocation.",
+      "metadata": {
+        "freshness": "2024-01-18T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "mixed",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Margie's Travel - pipeline hygiene",
+        "start": "2024-03-15T11:00:00-05:00",
+        "end": "2024-03-15T10:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Michelle Park",
+            "email": "michelle.park@microsoft.com"
+          },
+          {
+            "name": "William Schmidt",
+            "email": "william.schmidt@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-geo-emea",
+    "data-stale",
+    "persona-role-manager",
+    "persona-segment-smb-mid",
+    "routing-ambiguous-3skills"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions",
+      "email-chat-context"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "MSX updates warranted from meeting outcomes"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "adversarial-routing-test",
+    "required_artifacts": [
+      "correct_routing_justification",
+      "confusion_analysis"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Correctly routes to primary workflow despite adversarial signals; output is complete",
+      "Score 3: Routes correctly but output shows contamination from confusing signals",
+      "Score 1: Misroutes to wrong workflow or produces irrelevant output"
+    ],
+    "evidence_anchors": [
+      "Score 5: All evidence correctly attributed despite cross-workflow noise",
+      "Score 3: Some evidence misattributed but core facts correct",
+      "Score 1: Significant evidence confusion or hallucination"
+    ],
+    "decision_anchors": [
+      "Score 5: Decision-making robust against adversarial perturbations",
+      "Score 3: Primary decision correct but secondary decisions influenced by noise",
+      "Score 1: Primary decision compromised by adversarial inputs"
+    ]
+  },
+  "guardrail_checks": [
+    "Must correctly identify primary workflow despite adversarial routing signals",
+    "Must not hallucinate context from similar-sounding workflows",
+    "Must not expose internal routing logic to user"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

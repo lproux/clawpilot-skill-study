@@ -1,0 +1,145 @@
+{
+  "scenario_id": "WF-01-00097",
+  "workflow_id": "WF-01",
+  "workflow_name": "Monday Morning Portfolio Triage",
+  "seed": 100139,
+  "tier": 3,
+  "intent": "design-redesign",
+  "targeted_failure_mode": "FM-WF01-N",
+  "persona": "DSSP",
+  "fixture_id": "FX-037",
+  "user_message": "[AUTOMATION TRIGGER] Daily automation: Scheduled run before user's first Monday meeting; or on-dema. Account: Woodgrove Labs.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Woodgrove Labs",
+        "account_id": "ACC-WZHG8AQ3",
+        "opportunities": [
+          {
+            "name": "Woodgrove Power Platform",
+            "stage": "Qualify",
+            "amount": 210000,
+            "close_date": "2024-12-15"
+          },
+          {
+            "name": "Woodgrove AKS Deployment",
+            "stage": "Propose",
+            "amount": 125000,
+            "close_date": "2024-05-21"
+          }
+        ],
+        "acr_current": 204547.55,
+        "health_flag": "At Risk",
+        "owner": "David Chen"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Woodgrove Labs - pipeline hygiene",
+        "start": "2024-03-14T13:00:00-05:00",
+        "end": "2024-03-12T14:00:00-05:00",
+        "attendees": [
+          {
+            "name": "David Chen",
+            "email": "david.chen@microsoft.com"
+          },
+          {
+            "name": "Robert Petrov",
+            "email": "robert.petrov@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "contract_event",
+            "detail": "Signal detected for Woodgrove Labs: the migration can proceed in phases to reduce risk",
+            "date": "2024-03-07"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-09T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-segment-smb-small",
+    "persona-role-dssp"
+  ],
+  "expected_routing": {
+    "entry_skill": "portfolio-account-planning-coach",
+    "modules": [
+      "daily-weekly-planning",
+      "account-health-prioritization"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "customer-meeting-prep-outreach-coach",
+        "condition": "customer meetings exist this week"
+      },
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "stale records detected"
+      },
+      {
+        "target_skill": "acr-signal-to-opportunity-coach",
+        "condition": "ACR signals match top accounts"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "monday-morning-portfolio-triage",
+    "required_artifacts": [
+      "Top 5-10 accounts ranked by urgency x impact",
+      "reason per account",
+      "named next action with owner",
+      "time-block plan for the week",
+      "populated handoff queue"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF01-N trap (No native learning from CSA's actual focus pattern week-over-week); produces complete Top 5-10 accounts ranked by urgency x impact, reason per account, named next action with owner, time",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF01-N failure pattern",
+      "Score 1: Output exhibits the full FM-WF01-N failure mode (No native learning from CSA's actual focus pattern week-over-week)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct pipeline hygiene decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF01-N -- No native learning from CSA's actual focus pattern week-over-week",
+    "Produce structural verdict on whether current routing adequately serves this scenario"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "verdict-on-structural",
+    "verdict_required_axes": [
+      "routing",
+      "evidence"
+    ]
+  }
+}

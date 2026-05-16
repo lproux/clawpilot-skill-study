@@ -1,0 +1,119 @@
+{
+  "scenario_id": "WF-48-00052",
+  "workflow_id": "WF-48",
+  "workflow_name": "Roadmap Meeting Transcript -> Forecast Sequencing",
+  "seed": 4800094,
+  "tier": 4,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": "FM-WF48-M",
+  "persona": "DSSP",
+  "fixture_id": "FX-047",
+  "user_message": "Pulling in context from Evergreen Solutions's email thread -- need to identify the blockers for the security posture.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Evergreen Solutions",
+        "account_id": "ACC-S7KJN805",
+        "opportunities": [
+          {
+            "name": "Evergreen Azure AI Services",
+            "stage": "Qualify",
+            "amount": 175000,
+            "close_date": "2024-12-26"
+          }
+        ],
+        "acr_current": 19865.64,
+        "health_flag": "Healthy",
+        "owner": "David Chen"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: security posture Discussion - Evergreen Solutions\nDate: 2024-01-11\nDuration: 45 minutes\nAttendees: Samantha Okafor (Evergreen Solutions), David Chen (Microsoft)\n\n[00:02:00] Samantha Okafor (Evergreen Solutions): Good morning. I wanted to follow up on security posture from our last session.\n\n[00:06:00] David Chen (Microsoft): I agree with that assessment. From our side, the main concern is performance requirements.\n\n[00:09:00] David Chen (Microsoft): The timeline for integration complexity is aggressive. We need to validate the assumptions.\n\n[00:14:00] David Chen (Microsoft): The timeline for resource allocation is aggressive. We need to validate the assumptions.\n\n[00:19:00] David Chen (Microsoft): The timeline for security compliance is aggressive. We need to validate the assumptions.\n\n[00:23:00] Samantha Okafor (Evergreen Solutions): Let me add some context -- we've been working on vendor dependencies and found that the migration can proceed in phases to reduce risk.\n\n[00:25:00] Samantha Okafor (Evergreen Solutions): On the security posture front, we've made progress but there are still blockers around vendor dependencies.\n\n[00:30:00] David Chen (Microsoft): Our director reviewed this and has concerns about integration complexity. Can we address those?",
+      "metadata": {
+        "freshness": "2024-01-02T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "mixed",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "contract_event",
+            "detail": "Signal detected for Evergreen Solutions: the current vendor contract has a 90-day exit clause we need to plan around",
+            "date": "2024-03-10"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-10T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-role-dssp",
+    "data-contradictory",
+    "persona-tenure-mid"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "milestone and date updates needed"
+      },
+      {
+        "target_skill": "forecast-business-review-coach",
+        "condition": "forecast sequencing affected"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "roadmap-meeting-transcript-->-forecast-sequencing",
+    "required_artifacts": [
+      "Roadmap-to-forecast mapping",
+      "milestone date proposals",
+      "opportunity sequencing",
+      "new opportunity proposals (if signaled)",
+      "forecast impact with confidence"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF48-M trap (Forecast-business-review separation from opportunity sequencing forces double-pa); produces complete Roadmap-to-forecast mapping, milestone date proposals, opportunity sequencing, new opportunity propo",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF48-M failure pattern",
+      "Score 1: Output exhibits the full FM-WF48-M failure mode (Forecast-business-review separation from opportunity sequencing forces double-pa)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct security posture decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF48-M -- Forecast-business-review separation from opportunity sequencing forces double-pa",
+    "Guardrail axis scored neutrally -- focus on whether output served the user's actual need"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

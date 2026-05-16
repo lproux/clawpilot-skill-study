@@ -1,0 +1,109 @@
+{
+  "scenario_id": "WF-47-00230",
+  "workflow_id": "WF-47",
+  "workflow_name": "Multi-Stakeholder Meeting Transcript -> Decision Distribution",
+  "seed": 4700272,
+  "tier": 4,
+  "intent": "happy",
+  "targeted_failure_mode": null,
+  "persona": "Manager",
+  "fixture_id": "FX-003",
+  "user_message": "Just came out of renewal risk with Northwind Traders. Turn this into my brief and pull out the asks.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Northwind Traders",
+        "account_id": "ACC-X86FSRU2",
+        "opportunities": [
+          {
+            "name": "Northwind Azure Arc Deployment",
+            "stage": "Propose",
+            "amount": 89000,
+            "close_date": "2024-09-05"
+          },
+          {
+            "name": "Northwind Copilot Adoption",
+            "stage": "Develop",
+            "amount": 175000,
+            "close_date": "2024-06-22"
+          },
+          {
+            "name": "Northwind Intune Rollout",
+            "stage": "Close",
+            "amount": 350000,
+            "close_date": "2024-04-19"
+          }
+        ],
+        "acr_current": 54067.74,
+        "health_flag": "Healthy",
+        "owner": "Ahmed Hassan"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: renewal risk Discussion - Northwind Traders\nDate: 2024-02-27\nDuration: 45 minutes\nAttendees: Sandra Taylor (Northwind Traders), Ahmed Hassan (Microsoft), David (Northwind Traders)\n\n[00:02:00] Sandra Taylor (Northwind Traders): Good morning. I wanted to follow up on renewal risk from our last session.\n\n[00:07:00] Ahmed Hassan (Microsoft): The timeline for timeline constraints is aggressive. We need to validate the assumptions.\n\n[00:12:00] Ahmed Hassan (Microsoft): Let me add some context -- we've been working on integration complexity and found that the current vendor contract has a 90-day exit clause we need to plan around.\n\n[00:16:00] Sandra Taylor (Northwind Traders): The timeline for timeline constraints is aggressive. We need to validate the assumptions.\n\n[00:18:00] David (Northwind Traders): Our CTO reviewed this and has concerns about data residency. Can we address those?\n\n[00:23:00] Sandra Taylor (Northwind Traders): Our CTO reviewed this and has concerns about stakeholder alignment. Can we address those?\n\n[00:28:00] Sandra Taylor (Northwind Traders): Our team lead reviewed this and has concerns about resource allocation. Can we address those?\n\n[00:33:00] Sandra Taylor (Northwind Traders): On the renewal risk front, we've made progress but there are still blockers around security compliance.\n\n[00:38:00] David (Northwind Traders): Let me add some context -- we've been working on data residency and found that the migration can proceed in phases to reduce risk.\n\n[00:40:00] David (Northwind Traders): The timeline for cost optimization is aggressive. We need to validate the assumptions.\n\n[00:45:00] Sandra Taylor (Northwind Traders): The timeline for cost optimization is aggressive. We need to validate the assumptions.",
+      "metadata": {
+        "freshness": "2024-03-14T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "short"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-geo-na",
+    "data-fresh"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions",
+      "contact-stakeholder-map"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "MSX updates warranted from decisions"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "multi-stakeholder-meeting-transcript-->-decision-d",
+    "required_artifacts": [
+      "Decision log with speaker attribution",
+      "action distribution by role",
+      "stakeholder map delta",
+      "MSX update proposals",
+      "due dates extracted"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Complete, well-structured output matching the Multi-Stakeholder Meeting Transcript -> Decision Distribution template with all required artifacts present and actionable",
+      "Score 3: Output covers main requirements but missing one or two secondary artifacts or lacking specificity",
+      "Score 1: Output is generic, missing key artifacts, or fails to address the specific request"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct renewal risk decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

@@ -1,0 +1,134 @@
+{
+  "scenario_id": "WF-11-00055",
+  "workflow_id": "WF-11",
+  "workflow_name": "Pre-Meeting Brief",
+  "seed": 1100097,
+  "tier": 2,
+  "intent": "happy",
+  "targeted_failure_mode": null,
+  "persona": "DSSP",
+  "fixture_id": "FX-003",
+  "user_message": "I need to build the narrative for the Northwind Traders engagement. I think there's an opportunity here but need to validate.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Northwind Traders",
+        "account_id": "ACC-X86FSRU2",
+        "opportunities": [
+          {
+            "name": "Northwind Azure Arc Deployment",
+            "stage": "Propose",
+            "amount": 89000,
+            "close_date": "2024-09-05"
+          },
+          {
+            "name": "Northwind Copilot Adoption",
+            "stage": "Develop",
+            "amount": 175000,
+            "close_date": "2024-06-22"
+          },
+          {
+            "name": "Northwind Intune Rollout",
+            "stage": "Close",
+            "amount": 350000,
+            "close_date": "2024-04-19"
+          }
+        ],
+        "acr_current": 54067.74,
+        "health_flag": "Healthy",
+        "owner": "Ahmed Hassan"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Sandra Taylor <sandra.taylor@northwindtra.com>\nTo: Ahmed Hassan <ahmed.hassan@microsoft.com>\nDate: 2024-02-02 16:33 EST\nSubject: Re: security posture Discussion - Next Steps\n\nWe've been evaluating the options and have decided to proceed with security posture. What are the next steps from your side?\n\n---\nFrom: Ahmed Hassan <ahmed.hassan@microsoft.com>\nTo: Sandra Taylor <sandra.taylor@northwindtra.com>\nDate: 2024-01-16 15:20 EST\nSubject: Re: Re: security posture Timeline\n\nThank you for the discussion last week. We'd like to move forward with security posture. Can we schedule a call this week to finalize the timeline?",
+      "metadata": {
+        "freshness": "2024-02-25T16:00:00-05:00",
+        "source": "outlook",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: security posture Discussion - Northwind Traders\nDate: 2024-02-14\nDuration: 45 minutes\nAttendees: Sandra Taylor (Northwind Traders), Ahmed Hassan (Microsoft), Kevin (Northwind Traders)\n\n[00:01:30] Sandra Taylor (Northwind Traders): Thanks everyone for joining. Let's dive into security posture.\n\n[00:05:00] Ahmed Hassan (Microsoft): Our director reviewed this and has concerns about technical validation. Can we address those?\n\n[00:07:00] Sandra Taylor (Northwind Traders): On the security posture front, we've made progress but there are still blockers around data residency.\n\n[00:11:00] Kevin (Northwind Traders): Let me add some context -- we've been working on budget approval and found that there's a dependency on the security team's review that could delay us.\n\n[00:14:00] Ahmed Hassan (Microsoft): The timeline for integration complexity is aggressive. We need to validate the assumptions.\n\n[00:17:00] Ahmed Hassan (Microsoft): Let me add some context -- we've been working on performance requirements and found that the migration can proceed in phases to reduce risk.\n\n[00:19:00] Kevin (Northwind Traders): Our team lead reviewed this and has concerns about vendor dependencies. Can we address those?",
+      "metadata": {
+        "freshness": "2024-02-25T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Northwind Traders - security posture",
+        "start": "2024-03-12T13:00:00-05:00",
+        "end": "2024-03-14T13:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Ahmed Hassan",
+            "email": "ahmed.hassan@microsoft.com"
+          },
+          {
+            "name": "Sandra Taylor",
+            "email": "sandra.taylor@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-geo-na",
+    "persona-segment-smb-corporate"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "meeting-prep",
+      "contact-stakeholder-map"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "pre-meeting-brief",
+    "required_artifacts": [
+      "One-page brief with attendee context",
+      "account snapshot",
+      "talking points",
+      "likely objections",
+      "open items from last meeting"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Complete, well-structured output matching the Pre-Meeting Brief template with all required artifacts present and actionable",
+      "Score 3: Output covers main requirements but missing one or two secondary artifacts or lacking specificity",
+      "Score 1: Output is generic, missing key artifacts, or fails to address the specific request"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct security posture decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

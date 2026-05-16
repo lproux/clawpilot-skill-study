@@ -1,0 +1,133 @@
+{
+  "scenario_id": "WF-11-90551",
+  "workflow_id": "WF-11",
+  "workflow_name": "Pre-Meeting Brief",
+  "seed": 9900593,
+  "tier": 2,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": null,
+  "persona": "CSA",
+  "fixture_id": "FX-044",
+  "user_message": "Need help with Redmond Instruments -- investigate the decline. The CSA flagged this as at-risk yesterday.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Redmond Instruments",
+        "account_id": "ACC-A38BOUHF",
+        "opportunities": [
+          {
+            "name": "Redmond AKS Deployment",
+            "stage": "Prospect",
+            "amount": 350000,
+            "close_date": "2024-05-11"
+          },
+          {
+            "name": "Redmond Azure AI Services",
+            "stage": "Close",
+            "amount": 560000,
+            "close_date": "2024-05-21"
+          },
+          {
+            "name": "Redmond Azure SQL Migration",
+            "stage": "Qualify",
+            "amount": 350000,
+            "close_date": "2024-10-25"
+          }
+        ],
+        "acr_current": 28240.91,
+        "health_flag": "Healthy",
+        "owner": "Sarah Kim"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Angela Yamamoto <angela.yamamoto@redmondinstr.com>\nTo: Sarah Kim <sarah.kim@microsoft.com>\nDate: 2024-03-12 16:01 EST\nSubject: Follow-up: forecast prep Review\n\nWe've been evaluating the options and have decided to proceed with forecast prep. What are the next steps from your side?\n\n---\nFrom: Sarah Kim <sarah.kim@microsoft.com>\nTo: Angela Yamamoto <angela.yamamoto@redmondinstr.com>\nDate: 2024-02-15 17:51 EST\nSubject: Re: forecast prep Discussion - Next Steps\n\nJust checking in on the forecast prep proposal. Our DevOps Lead is asking for a status update before the board meeting next week.\n\n---\nFrom: Angela Yamamoto <angela.yamamoto@redmondinstr.com>\nTo: Sarah Kim <sarah.kim@microsoft.com>\nDate: 2024-01-17 08:22 EST\nSubject: Re: forecast prep Discussion - Next Steps\n\nThere's been a change in our timeline for forecast prep. Can we discuss the implications on the overall project plan?",
+      "metadata": {
+        "freshness": "2024-03-01T17:00:00-05:00",
+        "source": "outlook",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: forecast prep Discussion - Redmond Instruments\nDate: 2024-01-10\nDuration: 45 minutes\nAttendees: Angela Yamamoto (Redmond Instruments), Sarah Kim (Microsoft)\n\n[00:02:00] Angela Yamamoto (Redmond Instruments): Good morning. I wanted to follow up on forecast prep from our last session.\n\n[00:06:00] Sarah Kim (Microsoft): Our team lead reviewed this and has concerns about vendor dependencies. Can we address those?\n\n[00:11:00] Angela Yamamoto (Redmond Instruments): I agree with that assessment. From our side, the main concern is technical validation.\n\n[00:13:00] Angela Yamamoto (Redmond Instruments): Our director reviewed this and has concerns about technical validation. Can we address those?\n\n[00:17:00] Sarah Kim (Microsoft): The timeline for vendor dependencies is aggressive. We need to validate the assumptions.\n\n[00:19:00] Sarah Kim (Microsoft): On the forecast prep front, we've made progress but there are still blockers around performance requirements.",
+      "metadata": {
+        "freshness": "2024-02-24T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Redmond Instruments - forecast prep",
+        "start": "2024-03-14T11:00:00-05:00",
+        "end": "2024-03-13T17:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Sarah Kim",
+            "email": "sarah.kim@microsoft.com"
+          },
+          {
+            "name": "Angela Yamamoto",
+            "email": "angela.yamamoto@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    }
+  ],
+  "perturbations": [
+    "data-inconsistent",
+    "persona-geo-latam",
+    "routing-trap"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "meeting-prep",
+      "contact-stakeholder-map"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "adversarial-routing-test",
+    "required_artifacts": [
+      "correct_routing_justification",
+      "confusion_analysis"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Correctly routes to primary workflow despite adversarial signals; output is complete",
+      "Score 3: Routes correctly but output shows contamination from confusing signals",
+      "Score 1: Misroutes to wrong workflow or produces irrelevant output"
+    ],
+    "evidence_anchors": [
+      "Score 5: All evidence correctly attributed despite cross-workflow noise",
+      "Score 3: Some evidence misattributed but core facts correct",
+      "Score 1: Significant evidence confusion or hallucination"
+    ],
+    "decision_anchors": [
+      "Score 5: Decision-making robust against adversarial perturbations",
+      "Score 3: Primary decision correct but secondary decisions influenced by noise",
+      "Score 1: Primary decision compromised by adversarial inputs"
+    ]
+  },
+  "guardrail_checks": [
+    "Must correctly identify primary workflow despite adversarial routing signals",
+    "Must not hallucinate context from similar-sounding workflows",
+    "Must not expose internal routing logic to user"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

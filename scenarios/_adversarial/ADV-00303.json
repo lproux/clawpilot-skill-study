@@ -1,0 +1,102 @@
+{
+  "scenario_id": "WF-20-90303",
+  "workflow_id": "WF-20",
+  "workflow_name": "Workload Modernization Plan",
+  "seed": 9900345,
+  "tier": 3,
+  "intent": "adherence",
+  "targeted_failure_mode": null,
+  "persona": "Manager",
+  "fixture_id": "FX-046",
+  "user_message": "I need you to process this email thread from Cascadia Systems. There's been no activity for 45 days and I'm worried.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Cascadia Systems",
+        "account_id": "ACC-OQTZAL3E",
+        "opportunities": [
+          {
+            "name": "Cascadia Power Platform",
+            "stage": "Qualify",
+            "amount": 175000,
+            "close_date": "2024-05-03"
+          }
+        ],
+        "acr_current": 7947.7,
+        "health_flag": "Healthy",
+        "owner": "Jennifer Walsh"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "consumption_decline",
+            "detail": "Signal detected for Cascadia Systems: the existing infrastructure won't support the target workload without upgrades",
+            "date": "2024-03-07"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-09T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "signal-strength-faint",
+    "data-contradictory",
+    "cross-workflow-trigger"
+  ],
+  "expected_routing": {
+    "entry_skill": "solution-value-design-coach",
+    "modules": [
+      "migration-architecture",
+      "solution-research"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "funding-partner-activation-coach",
+        "condition": "funding eligibility check needed"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "adversarial-routing-test",
+    "required_artifacts": [
+      "correct_routing_justification",
+      "confusion_analysis"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Correctly routes to primary workflow despite adversarial signals; output is complete",
+      "Score 3: Routes correctly but output shows contamination from confusing signals",
+      "Score 1: Misroutes to wrong workflow or produces irrelevant output"
+    ],
+    "evidence_anchors": [
+      "Score 5: All evidence correctly attributed despite cross-workflow noise",
+      "Score 3: Some evidence misattributed but core facts correct",
+      "Score 1: Significant evidence confusion or hallucination"
+    ],
+    "decision_anchors": [
+      "Score 5: Decision-making robust against adversarial perturbations",
+      "Score 3: Primary decision correct but secondary decisions influenced by noise",
+      "Score 1: Primary decision compromised by adversarial inputs"
+    ]
+  },
+  "guardrail_checks": [
+    "Must correctly identify primary workflow despite adversarial routing signals",
+    "Must not hallucinate context from similar-sounding workflows",
+    "Must not expose internal routing logic to user"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

@@ -1,0 +1,122 @@
+{
+  "scenario_id": "WF-12-00082",
+  "workflow_id": "WF-12",
+  "workflow_name": "Post-Meeting Follow-Up",
+  "seed": 1200124,
+  "tier": 3,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF12-J",
+  "persona": "DSSP",
+  "fixture_id": "FX-007",
+  "user_message": "Can you extract the pipeline hygiene from this exec meeting notes for Litware Inc? ",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Litware Inc",
+        "account_id": "ACC-658MPDXQ",
+        "opportunities": [
+          {
+            "name": "Litware Security Modernization",
+            "stage": "Prospect",
+            "amount": 280000,
+            "close_date": "2024-09-23"
+          }
+        ],
+        "acr_current": 76577.96,
+        "health_flag": "Healthy",
+        "owner": "David Chen"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: pipeline hygiene Discussion - Litware Inc\nDate: 2024-01-09\nDuration: 45 minutes\nAttendees: Sarah Wilson (Litware Inc), David Chen (Microsoft)\n\n[00:01:30] Sarah Wilson (Litware Inc): Thanks everyone for joining. Let's dive into pipeline hygiene.\n\n[00:06:00] David Chen (Microsoft): Let me add some context -- we've been working on performance requirements and found that the existing infrastructure won't support the target workload without upgrades.\n\n[00:10:00] Sarah Wilson (Litware Inc): Our director reviewed this and has concerns about stakeholder alignment. Can we address those?\n\n[00:12:00] Sarah Wilson (Litware Inc): Let me add some context -- we've been working on data residency and found that the migration can proceed in phases to reduce risk.\n\n[00:17:00] Sarah Wilson (Litware Inc): Let me add some context -- we've been working on performance requirements and found that the cost projections need to factor in reserved instance pricing for accuracy.\n\n[00:22:00] David Chen (Microsoft): On the pipeline hygiene front, we've made progress but there are still blockers around technical validation.\n\n[00:24:00] David Chen (Microsoft): On the pipeline hygiene front, we've made progress but there are still blockers around data residency.\n\n[00:27:00] Sarah Wilson (Litware Inc): Let me add some context -- we've been working on partner engagement and found that there's a dependency on the security team's review that could delay us.",
+      "metadata": {
+        "freshness": "2024-02-08T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Litware Inc - pipeline hygiene",
+        "start": "2024-03-13T15:00:00-05:00",
+        "end": "2024-03-15T15:00:00-05:00",
+        "attendees": [
+          {
+            "name": "David Chen",
+            "email": "david.chen@microsoft.com"
+          },
+          {
+            "name": "Sarah Wilson",
+            "email": "sarah.wilson@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-tenure-senior",
+    "persona-role-dssp",
+    "signal-strength-noisy",
+    "persona-geo-apac"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions",
+      "email-chat-context"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "MSX updates warranted from meeting outcomes"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "post-meeting-follow-up",
+    "required_artifacts": [
+      "Decision log",
+      "action items with owners and due dates",
+      "customer-facing follow-up email draft",
+      "MSX writeback proposals"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF12-J trap (Writeback proposals don't carry field-level evidence); produces complete Decision log, action items with owners and due dates, customer-facing follow-up email draft, MSX wri",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF12-J failure pattern",
+      "Score 1: Output exhibits the full FM-WF12-J failure mode (Writeback proposals don't carry field-level evidence)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct pipeline hygiene decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF12-J -- Writeback proposals don't carry field-level evidence",
+    "Write proposals must require explicit user approval"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

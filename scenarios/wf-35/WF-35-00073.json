@@ -1,0 +1,122 @@
+{
+  "scenario_id": "WF-35-00073",
+  "workflow_id": "WF-35",
+  "workflow_name": "Customer Renewal Email -> Forecast Impact + Path",
+  "seed": 3500115,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF35-G",
+  "persona": "DSSP",
+  "fixture_id": "FX-039",
+  "user_message": "Can you extract the partner engagement from this meeting transcript for Fabrikam Residences? The CSA flagged this as at-risk yesterday.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Fabrikam Residences",
+        "account_id": "ACC-5JSOIRD0",
+        "opportunities": [
+          {
+            "name": "Fabrikam Power Platform",
+            "stage": "Prospect",
+            "amount": 175000,
+            "close_date": "2024-06-08"
+          },
+          {
+            "name": "Fabrikam Cloud Migration Phase",
+            "stage": "Develop",
+            "amount": 450000,
+            "close_date": "2024-11-24"
+          }
+        ],
+        "acr_current": 32488.07,
+        "health_flag": "Healthy",
+        "owner": "Tom Rodriguez"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Kevin Lee <kevin.lee@fabrikamresi.com>\nTo: Tom Rodriguez <tom.rodriguez@microsoft.com>\nDate: 2024-03-27 15:23 EST\nSubject: Quarterly Update: Fabrikam Residences partner engagement\n\nWe've been evaluating the options and have decided to proceed with partner engagement. What are the next steps from your side?\n\n---\nFrom: Tom Rodriguez <tom.rodriguez@microsoft.com>\nTo: Kevin Lee <kevin.lee@fabrikamresi.com>\nDate: 2024-02-22 09:31 EST\nSubject: Follow-up: partner engagement Review\n\nWe've been evaluating the options and have decided to proceed with partner engagement. What are the next steps from your side?\n\n---\nFrom: Kevin Lee <kevin.lee@fabrikamresi.com>\nTo: Tom Rodriguez <tom.rodriguez@microsoft.com>\nDate: 2024-01-13 11:20 EST\nSubject: partner engagement - Action Required\n\nI wanted to follow up on our conversation about partner engagement. Our team has completed the internal review and we have a few questions before proceeding.",
+      "metadata": {
+        "freshness": "2024-02-09T14:00:00-05:00",
+        "source": "outlook",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "security_alert",
+            "detail": "Signal detected for Fabrikam Residences: there's a compliance requirement we hadn't accounted for in the original scope",
+            "date": "2024-03-06"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-10T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-geo-emea",
+    "routing-ambiguous-2skills",
+    "persona-tenure-junior"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "email-chat-context"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "funding-partner-activation-coach",
+        "condition": "contract/billing lookup needed"
+      },
+      {
+        "target_skill": "forecast-business-review-coach",
+        "condition": "forecast impact assessment needed"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "customer-renewal-email-->-forecast-impact-+-path",
+    "required_artifacts": [
+      "Contract state summary with freshness",
+      "forecast impact with confidence",
+      "response draft (no commercial commitments)",
+      "path forward with MACC/funding options if applicable"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF35-G trap (Skips ACR trajectory check); produces complete Contract state summary with freshness, forecast impact with confidence, response draft (no commercia",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF35-G failure pattern",
+      "Score 1: Output exhibits the full FM-WF35-G failure mode (Skips ACR trajectory check)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct partner engagement decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF35-G -- Skips ACR trajectory check"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

@@ -1,0 +1,124 @@
+{
+  "scenario_id": "WF-48-00197",
+  "workflow_id": "WF-48",
+  "workflow_name": "Roadmap Meeting Transcript -> Forecast Sequencing",
+  "seed": 4800239,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF48-C",
+  "persona": "Manager",
+  "fixture_id": "FX-037",
+  "user_message": "Give me the manager view on this Woodgrove Labs email thread. Renewal conversation is tomorrow.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Woodgrove Labs",
+        "account_id": "ACC-WZHG8AQ3",
+        "opportunities": [
+          {
+            "name": "Woodgrove Power Platform",
+            "stage": "Qualify",
+            "amount": 210000,
+            "close_date": "2024-12-15"
+          },
+          {
+            "name": "Woodgrove AKS Deployment",
+            "stage": "Propose",
+            "amount": 125000,
+            "close_date": "2024-05-21"
+          }
+        ],
+        "acr_current": 204547.55,
+        "health_flag": "At Risk",
+        "owner": "David Chen"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: QBR preparation Discussion - Woodgrove Labs\nDate: 2024-01-28\nDuration: 45 minutes\nAttendees: Robert Petrov (Woodgrove Labs), David Chen (Microsoft)\n\n[00:01:15] Robert Petrov (Woodgrove Labs): Appreciate everyone making time. The main agenda today is QBR preparation.\n\n[00:06:00] Robert Petrov (Woodgrove Labs): I agree with that assessment. From our side, the main concern is technical validation.\n\n[00:11:00] Robert Petrov (Woodgrove Labs): The timeline for stakeholder alignment is aggressive. We need to validate the assumptions.\n\n[00:14:00] David Chen (Microsoft): I agree with that assessment. From our side, the main concern is vendor dependencies.\n\n[00:19:00] David Chen (Microsoft): I agree with that assessment. From our side, the main concern is resource allocation.\n\n[00:21:00] David Chen (Microsoft): The timeline for partner engagement is aggressive. We need to validate the assumptions.\n\n[00:24:00] David Chen (Microsoft): I agree with that assessment. From our side, the main concern is cost optimization.",
+      "metadata": {
+        "freshness": "2024-01-01T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "mixed",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "consumption_decline",
+            "detail": "Signal detected for Woodgrove Labs: there's a dependency on the security team's review that could delay us",
+            "date": "2024-03-05"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-09T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-segment-smb-small",
+    "routing-clear",
+    "persona-role-manager"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "milestone and date updates needed"
+      },
+      {
+        "target_skill": "forecast-business-review-coach",
+        "condition": "forecast sequencing affected"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "roadmap-meeting-transcript-->-forecast-sequencing",
+    "required_artifacts": [
+      "Roadmap-to-forecast mapping",
+      "milestone date proposals",
+      "opportunity sequencing",
+      "new opportunity proposals (if signaled)",
+      "forecast impact with confidence"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF48-C trap (Over-confidently dates a customer's vague 'later this year'); produces complete Roadmap-to-forecast mapping, milestone date proposals, opportunity sequencing, new opportunity propo",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF48-C failure pattern",
+      "Score 1: Output exhibits the full FM-WF48-C failure mode (Over-confidently dates a customer's vague 'later this year')"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct QBR preparation decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF48-C -- Over-confidently dates a customer's vague 'later this year'"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

@@ -1,0 +1,115 @@
+{
+  "scenario_id": "WF-35-00034",
+  "workflow_id": "WF-35",
+  "workflow_name": "Customer Renewal Email -> Forecast Impact + Path",
+  "seed": 3500076,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF35-D",
+  "persona": "DSSP",
+  "fixture_id": "FX-011",
+  "user_message": "Working on Alpine Ski House's renewal risk. Got the meeting transcript -- help me create the summary.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Alpine Ski House",
+        "account_id": "ACC-UIKNWGJ7",
+        "opportunities": [
+          {
+            "name": "Alpine Azure Virtual Desktop",
+            "stage": "Propose",
+            "amount": 560000,
+            "close_date": "2023-12-14"
+          }
+        ],
+        "acr_current": 115928.19,
+        "health_flag": "At Risk",
+        "owner": "Marcus Williams"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Brian Yamamoto <brian.yamamoto@alpineskihou.com>\nTo: Marcus Williams <marcus.williams@microsoft.com>\nDate: 2024-03-24 09:41 EST\nSubject: renewal risk - Action Required\n\nThere's been a change in our timeline for renewal risk. Can we discuss the implications on the overall project plan?\n\n---\nFrom: Marcus Williams <marcus.williams@microsoft.com>\nTo: Brian Yamamoto <brian.yamamoto@alpineskihou.com>\nDate: 2024-02-05 14:32 EST\nSubject: Re: renewal risk Discussion - Next Steps\n\nThere's been a change in our timeline for renewal risk. Can we discuss the implications on the overall project plan?\n\n---\nFrom: Brian Yamamoto <brian.yamamoto@alpineskihou.com>\nTo: Marcus Williams <marcus.williams@microsoft.com>\nDate: 2024-01-05 16:27 EST\nSubject: Quarterly Update: Alpine Ski House renewal risk\n\nOur team encountered some challenges with renewal risk. Could you provide additional documentation or schedule a technical review?",
+      "metadata": {
+        "freshness": "2024-02-28T17:00:00-05:00",
+        "source": "outlook",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "contract_event",
+            "detail": "Signal detected for Alpine Ski House: there's a dependency on the security team's review that could delay us",
+            "date": "2024-03-10"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-10T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "data-stale",
+    "persona-role-dssp"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "email-chat-context"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "funding-partner-activation-coach",
+        "condition": "contract/billing lookup needed"
+      },
+      {
+        "target_skill": "forecast-business-review-coach",
+        "condition": "forecast impact assessment needed"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "customer-renewal-email-->-forecast-impact-+-path",
+    "required_artifacts": [
+      "Contract state summary with freshness",
+      "forecast impact with confidence",
+      "response draft (no commercial commitments)",
+      "path forward with MACC/funding options if applicable"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF35-D trap (Funding eligibility asserted as approved); produces complete Contract state summary with freshness, forecast impact with confidence, response draft (no commercia",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF35-D failure pattern",
+      "Score 1: Output exhibits the full FM-WF35-D failure mode (Funding eligibility asserted as approved)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct renewal risk decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF35-D -- Funding eligibility asserted as approved"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

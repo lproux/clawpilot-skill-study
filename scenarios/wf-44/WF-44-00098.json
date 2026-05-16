@@ -1,0 +1,105 @@
+{
+  "scenario_id": "WF-44-00098",
+  "workflow_id": "WF-44",
+  "workflow_name": "Technical Deep-Dive Transcript -> Architecture + Blockers",
+  "seed": 4400140,
+  "tier": 4,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": "FM-WF44-M",
+  "persona": "Manager",
+  "fixture_id": "FX-039",
+  "user_message": "Give me the manager view on this Fabrikam Residences support ticket. Board meeting is next week.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Fabrikam Residences",
+        "account_id": "ACC-5JSOIRD0",
+        "opportunities": [
+          {
+            "name": "Fabrikam Power Platform",
+            "stage": "Prospect",
+            "amount": 175000,
+            "close_date": "2024-06-08"
+          },
+          {
+            "name": "Fabrikam Cloud Migration Phase",
+            "stage": "Develop",
+            "amount": 450000,
+            "close_date": "2024-11-24"
+          }
+        ],
+        "acr_current": 32488.07,
+        "health_flag": "Healthy",
+        "owner": "Tom Rodriguez"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: renewal risk Discussion - Fabrikam Residences\nDate: 2024-01-12\nDuration: 45 minutes\nAttendees: Kevin Lee (Fabrikam Residences), Tom Rodriguez (Microsoft)\n\n[00:02:00] Kevin Lee (Fabrikam Residences): Good morning. I wanted to follow up on renewal risk from our last session.\n\n[00:06:00] Tom Rodriguez (Microsoft): On the renewal risk front, we've made progress but there are still blockers around security compliance.\n\n[00:08:00] Kevin Lee (Fabrikam Residences): The timeline for security compliance is aggressive. We need to validate the assumptions.\n\n[00:11:00] Tom Rodriguez (Microsoft): On the renewal risk front, we've made progress but there are still blockers around security compliance.\n\n[00:14:00] Tom Rodriguez (Microsoft): Our director reviewed this and has concerns about stakeholder alignment. Can we address those?\n\n[00:18:00] Tom Rodriguez (Microsoft): I agree with that assessment. From our side, the main concern is performance requirements.\n\n[00:21:00] Tom Rodriguez (Microsoft): Let me add some context -- we've been working on technical validation and found that there's a dependency on the security team's review that could delay us.\n\n[00:25:00] Kevin Lee (Fabrikam Residences): On the renewal risk front, we've made progress but there are still blockers around stakeholder alignment.\n\n[00:30:00] Tom Rodriguez (Microsoft): On the renewal risk front, we've made progress but there are still blockers around technical validation.\n\n[00:34:00] Kevin Lee (Fabrikam Residences): The timeline for partner engagement is aggressive. We need to validate the assumptions.\n\n[00:37:00] Kevin Lee (Fabrikam Residences): Let me add some context -- we've been working on data residency and found that the existing infrastructure won't support the target workload without upgrades.",
+      "metadata": {
+        "freshness": "2024-01-03T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "long"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-role-manager",
+    "persona-tenure-mid",
+    "signal-strength-noisy"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "solution-value-design-coach",
+        "condition": "architecture sketch needed from technical signals"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "technical-deep-dive-transcript-->-architecture-+-b",
+    "required_artifacts": [
+      "Architecture summary",
+      "blocker inventory (tech/commercial/org)",
+      "open questions",
+      "sequencing recommendation",
+      "specialist routing"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF44-M trap (Separation of security-posture-value from migration-architecture forces awkward ); produces complete Architecture summary, blocker inventory (tech/commercial/org), open questions, sequencing recommenda",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF44-M failure pattern",
+      "Score 1: Output exhibits the full FM-WF44-M failure mode (Separation of security-posture-value from migration-architecture forces awkward )"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct renewal risk decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF44-M -- Separation of security-posture-value from migration-architecture forces awkward ",
+    "Guardrail axis scored neutrally -- focus on whether output served the user's actual need"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

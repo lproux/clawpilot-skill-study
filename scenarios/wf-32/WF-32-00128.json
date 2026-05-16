@@ -1,0 +1,165 @@
+{
+  "scenario_id": "WF-32-00128",
+  "workflow_id": "WF-32",
+  "workflow_name": "Calendar Pre-Pack Automation",
+  "seed": 3200170,
+  "tier": 4,
+  "intent": "design-redesign",
+  "targeted_failure_mode": "FM-WF32-T",
+  "persona": "Manager",
+  "fixture_id": "FX-049",
+  "user_message": "[AUTOMATION TRIGGER] Scheduled Calendar event with non-Microsoft external attendee detected initiated for Iron Creek Mining.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Iron Creek Mining",
+        "account_id": "ACC-WVPLFPK6",
+        "opportunities": [
+          {
+            "name": "Iron Azure DevOps",
+            "stage": "Qualify",
+            "amount": 350000,
+            "close_date": "2024-10-28"
+          },
+          {
+            "name": "Iron Azure Virtual Desktop",
+            "stage": "Develop",
+            "amount": 280000,
+            "close_date": "2024-06-02"
+          },
+          {
+            "name": "Iron Azure SQL Migration",
+            "stage": "Qualify",
+            "amount": 68000,
+            "close_date": "2024-05-06"
+          }
+        ],
+        "acr_current": 10924.12,
+        "health_flag": "Healthy",
+        "owner": "Tom Rodriguez"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Karen Berg <karen.berg@ironcreekmin.com>\nTo: Tom Rodriguez <tom.rodriguez@microsoft.com>\nDate: 2024-03-28 11:27 EST\nSubject: Quarterly Update: Iron Creek Mining migration architecture\n\nOur team encountered some challenges with migration architecture. Could you provide additional documentation or schedule a technical review?\n\n---\nFrom: Tom Rodriguez <tom.rodriguez@microsoft.com>\nTo: Karen Berg <karen.berg@ironcreekmin.com>\nDate: 2024-02-03 10:32 EST\nSubject: migration architecture - Action Required\n\nOur team encountered some challenges with migration architecture. Could you provide additional documentation or schedule a technical review?",
+      "metadata": {
+        "freshness": "2024-02-06T17:00:00-05:00",
+        "source": "outlook",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: migration architecture Discussion - Iron Creek Mining\nDate: 2024-02-12\nDuration: 45 minutes\nAttendees: Karen Berg (Iron Creek Mining), Tom Rodriguez (Microsoft), David (Iron Creek Mining)\n\n[00:01:30] Karen Berg (Iron Creek Mining): Thanks everyone for joining. Let's dive into migration architecture.\n\n[00:07:00] David (Iron Creek Mining): On the migration architecture front, we've made progress but there are still blockers around cost optimization.\n\n[00:12:00] Tom Rodriguez (Microsoft): Our VP reviewed this and has concerns about performance requirements. Can we address those?\n\n[00:15:00] Karen Berg (Iron Creek Mining): Our architect reviewed this and has concerns about resource allocation. Can we address those?\n\n[00:18:00] Tom Rodriguez (Microsoft): I agree with that assessment. From our side, the main concern is integration complexity.\n\n[00:22:00] Karen Berg (Iron Creek Mining): Our director reviewed this and has concerns about timeline constraints. Can we address those?\n\n[00:25:00] Tom Rodriguez (Microsoft): On the migration architecture front, we've made progress but there are still blockers around integration complexity.\n\n[00:30:00] Karen Berg (Iron Creek Mining): Our architect reviewed this and has concerns about partner engagement. Can we address those?\n\n[00:34:00] David (Iron Creek Mining): The timeline for security compliance is aggressive. We need to validate the assumptions.\n\n[00:37:00] Karen Berg (Iron Creek Mining): Let me add some context -- we've been working on integration complexity and found that there's a dependency on the security team's review that could delay us.\n\n[00:41:00] Karen Berg (Iron Creek Mining): I agree with that assessment. From our side, the main concern is cost optimization.",
+      "metadata": {
+        "freshness": "2024-03-10T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "mixed",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Iron Creek Mining - migration architecture",
+        "start": "2024-03-13T16:00:00-05:00",
+        "end": "2024-03-15T16:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Tom Rodriguez",
+            "email": "tom.rodriguez@microsoft.com"
+          },
+          {
+            "name": "Karen Berg",
+            "email": "karen.berg@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "consumption_decline",
+            "detail": "Signal detected for Iron Creek Mining: the existing infrastructure won't support the target workload without upgrades",
+            "date": "2024-03-08"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-10T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-geo-apac",
+    "persona-segment-smb-small",
+    "persona-role-manager",
+    "persona-tenure-mid"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "meeting-prep",
+      "contact-stakeholder-map",
+      "email-chat-context"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "portfolio-account-planning-coach",
+        "condition": "meeting is for account CSA should have declined"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "calendar-pre-pack-automation",
+    "required_artifacts": [
+      "Pre-pack brief with attendee context",
+      "account snapshot",
+      "talking points",
+      "likely objections",
+      "open items"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF32-T trap (Calendar trigger should learn from CSA dismissals -- current design doesn't); produces complete Pre-pack brief with attendee context, account snapshot, talking points, likely objections, open item",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF32-T failure pattern",
+      "Score 1: Output exhibits the full FM-WF32-T failure mode (Calendar trigger should learn from CSA dismissals -- current design doesn't)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct migration architecture decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF32-T -- Calendar trigger should learn from CSA dismissals -- current design doesn't",
+    "Produce structural verdict on whether current routing adequately serves this scenario"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "verdict-on-structural",
+    "verdict_required_axes": [
+      "routing",
+      "evidence"
+    ]
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "scenario_id": "WF-50-00039",
+  "workflow_id": "WF-50",
+  "workflow_name": "Executive Meeting Transcript -> Manager Brief + Asks",
+  "seed": 5000081,
+  "tier": 4,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": "FM-WF50-M",
+  "persona": "CSA",
+  "fixture_id": "FX-021",
+  "user_message": "Samantha Singh at Nod Publishers just sent this. Help me pull the context.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Nod Publishers",
+        "account_id": "ACC-BFJJI6LY",
+        "opportunities": [
+          {
+            "name": "Nod Azure SQL Migration",
+            "stage": "Close",
+            "amount": 45000,
+            "close_date": "2023-10-06"
+          },
+          {
+            "name": "Nod Intune Rollout",
+            "stage": "Develop",
+            "amount": 560000,
+            "close_date": "2024-12-16"
+          }
+        ],
+        "acr_current": 111088.58,
+        "health_flag": "At Risk",
+        "owner": "Marcus Williams"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: executive brief Discussion - Nod Publishers\nDate: 2024-02-02\nDuration: 45 minutes\nAttendees: Samantha Singh (Nod Publishers), Marcus Williams (Microsoft), Kevin (Nod Publishers)\n\n[00:02:00] Samantha Singh (Nod Publishers): Good morning. I wanted to follow up on executive brief from our last session.\n\n[00:08:00] Kevin (Nod Publishers): The timeline for stakeholder alignment is aggressive. We need to validate the assumptions.\n\n[00:13:00] Samantha Singh (Nod Publishers): Our director reviewed this and has concerns about resource allocation. Can we address those?\n\n[00:18:00] Samantha Singh (Nod Publishers): The timeline for resource allocation is aggressive. We need to validate the assumptions.\n\n[00:22:00] Samantha Singh (Nod Publishers): On the executive brief front, we've made progress but there are still blockers around cost optimization.\n\n[00:25:00] Kevin (Nod Publishers): The timeline for budget approval is aggressive. We need to validate the assumptions.\n\n[00:28:00] Kevin (Nod Publishers): The timeline for timeline constraints is aggressive. We need to validate the assumptions.",
+      "metadata": {
+        "freshness": "2024-03-27T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "short"
+      }
+    }
+  ],
+  "perturbations": [
+    "signal-strength-noisy",
+    "data-stale",
+    "persona-role-csa"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "forecast-business-review-coach",
+        "condition": "business review narrative input from exec meeting"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "executive-meeting-transcript-->-manager-brief-+-as",
+    "required_artifacts": [
+      "Executive brief (strategic density)",
+      "asks section (actionable for exec)",
+      "risk register",
+      "skip-level follow-up plan",
+      "exec sponsor identification"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF50-M trap (Business-review-narrative module designed for ROB cadence, not ad-hoc exec captu); produces complete Executive brief (strategic density), asks section (actionable for exec), risk register, skip-level f",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF50-M failure pattern",
+      "Score 1: Output exhibits the full FM-WF50-M failure mode (Business-review-narrative module designed for ROB cadence, not ad-hoc exec captu)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct executive brief decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF50-M -- Business-review-narrative module designed for ROB cadence, not ad-hoc exec captu",
+    "Guardrail axis scored neutrally -- focus on whether output served the user's actual need"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

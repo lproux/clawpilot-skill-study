@@ -1,0 +1,136 @@
+{
+  "scenario_id": "WF-11-00231",
+  "workflow_id": "WF-11",
+  "workflow_name": "Pre-Meeting Brief",
+  "seed": 1100273,
+  "tier": 2,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": "FM-WF11-K",
+  "persona": "CSA",
+  "fixture_id": "FX-005",
+  "user_message": "Quick one -- draft the follow-up on Tailspin Toys. Need this before my 2pm call.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Tailspin Toys",
+        "account_id": "ACC-JXC3G9ET",
+        "opportunities": [
+          {
+            "name": "Tailspin Azure Virtual Desktop",
+            "stage": "Close",
+            "amount": 560000,
+            "close_date": "2024-09-15"
+          },
+          {
+            "name": "Tailspin Azure SQL Migration",
+            "stage": "Prospect",
+            "amount": 125000,
+            "close_date": "2024-10-05"
+          },
+          {
+            "name": "Tailspin Dynamics 365 Implementation",
+            "stage": "Propose",
+            "amount": 45000,
+            "close_date": "2024-08-10"
+          }
+        ],
+        "acr_current": 122043.29,
+        "health_flag": "Healthy",
+        "owner": "Raj Mehta"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Steven Wilson <steven.wilson@tailspintoys.com>\nTo: Raj Mehta <raj.mehta@microsoft.com>\nDate: 2024-03-23 09:16 EST\nSubject: Re: forecast prep Discussion - Next Steps\n\nThank you for the discussion last week. We'd like to move forward with forecast prep. Can we schedule a call this week to finalize the timeline?\n\n---\nFrom: Raj Mehta <raj.mehta@microsoft.com>\nTo: Steven Wilson <steven.wilson@tailspintoys.com>\nDate: 2024-02-16 17:06 EST\nSubject: Re: Re: forecast prep Timeline\n\nThere's been a change in our timeline for forecast prep. Can we discuss the implications on the overall project plan?\n\n---\nFrom: Steven Wilson <steven.wilson@tailspintoys.com>\nTo: Raj Mehta <raj.mehta@microsoft.com>\nDate: 2024-01-13 10:36 EST\nSubject: URGENT: forecast prep Issue at Tailspin Toys\n\nThank you for the discussion last week. We'd like to move forward with forecast prep. Can we schedule a call this week to finalize the timeline?",
+      "metadata": {
+        "freshness": "2024-02-11T08:00:00-05:00",
+        "source": "outlook",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: forecast prep Discussion - Tailspin Toys\nDate: 2024-01-16\nDuration: 45 minutes\nAttendees: Steven Wilson (Tailspin Toys), Raj Mehta (Microsoft), Michelle (Tailspin Toys)\n\n[00:01:30] Steven Wilson (Tailspin Toys): Thanks everyone for joining. Let's dive into forecast prep.\n\n[00:05:00] Michelle (Tailspin Toys): Our VP reviewed this and has concerns about performance requirements. Can we address those?\n\n[00:10:00] Michelle (Tailspin Toys): The timeline for resource allocation is aggressive. We need to validate the assumptions.\n\n[00:13:00] Raj Mehta (Microsoft): I agree with that assessment. From our side, the main concern is integration complexity.\n\n[00:18:00] Michelle (Tailspin Toys): The timeline for technical validation is aggressive. We need to validate the assumptions.\n\n[00:23:00] Michelle (Tailspin Toys): The timeline for security compliance is aggressive. We need to validate the assumptions.\n\n[00:28:00] Raj Mehta (Microsoft): Let me add some context -- we've been working on technical validation and found that the migration can proceed in phases to reduce risk.\n\n[00:31:00] Raj Mehta (Microsoft): Our architect reviewed this and has concerns about budget approval. Can we address those?\n\n[00:36:00] Steven Wilson (Tailspin Toys): On the forecast prep front, we've made progress but there are still blockers around security compliance.\n\n[00:40:00] Michelle (Tailspin Toys): I agree with that assessment. From our side, the main concern is security compliance.",
+      "metadata": {
+        "freshness": "2024-02-19T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Tailspin Toys - forecast prep",
+        "start": "2024-03-13T09:00:00-05:00",
+        "end": "2024-03-11T10:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Raj Mehta",
+            "email": "raj.mehta@microsoft.com"
+          },
+          {
+            "name": "Steven Wilson",
+            "email": "steven.wilson@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-segment-smb-small",
+    "signal-strength-noisy"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "meeting-prep",
+      "contact-stakeholder-map"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "pre-meeting-brief",
+    "required_artifacts": [
+      "One-page brief with attendee context",
+      "account snapshot",
+      "talking points",
+      "likely objections",
+      "open items from last meeting"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF11-K trap (One-page constraint hurts complex meetings); produces complete One-page brief with attendee context, account snapshot, talking points, likely objections, open item",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF11-K failure pattern",
+      "Score 1: Output exhibits the full FM-WF11-K failure mode (One-page constraint hurts complex meetings)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct forecast prep decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF11-K -- One-page constraint hurts complex meetings",
+    "Guardrail axis scored neutrally -- focus on whether output served the user's actual need"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "scenario_id": "WF-50-00113",
+  "workflow_id": "WF-50",
+  "workflow_name": "Executive Meeting Transcript -> Manager Brief + Asks",
+  "seed": 5000155,
+  "tier": 4,
+  "intent": "happy",
+  "targeted_failure_mode": null,
+  "persona": "Manager",
+  "fixture_id": "FX-019",
+  "user_message": "Give me the manager view on this Lucerne Publishing escalation email. This is time-sensitive -- customer is waiting.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Lucerne Publishing",
+        "account_id": "ACC-2JXCFRG8",
+        "opportunities": [
+          {
+            "name": "Lucerne Copilot Adoption",
+            "stage": "Propose",
+            "amount": 210000,
+            "close_date": "2023-11-19"
+          },
+          {
+            "name": "Lucerne Data Platform Migration",
+            "stage": "Prospect",
+            "amount": 45000,
+            "close_date": "2024-11-16"
+          }
+        ],
+        "acr_current": 39791.19,
+        "health_flag": "Healthy",
+        "owner": "Tom Rodriguez"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: QBR preparation Discussion - Lucerne Publishing\nDate: 2024-02-06\nDuration: 45 minutes\nAttendees: Laura Anderson (Lucerne Publishing), Tom Rodriguez (Microsoft)\n\n[00:01:30] Laura Anderson (Lucerne Publishing): Thanks everyone for joining. Let's dive into QBR preparation.\n\n[00:08:00] Laura Anderson (Lucerne Publishing): Our CTO reviewed this and has concerns about technical validation. Can we address those?\n\n[00:10:00] Laura Anderson (Lucerne Publishing): Let me add some context -- we've been working on performance requirements and found that the existing infrastructure won't support the target workload without upgrades.\n\n[00:14:00] Tom Rodriguez (Microsoft): Let me add some context -- we've been working on stakeholder alignment and found that the cost projections need to factor in reserved instance pricing for accuracy.\n\n[00:16:00] Tom Rodriguez (Microsoft): On the QBR preparation front, we've made progress but there are still blockers around cost optimization.\n\n[00:21:00] Tom Rodriguez (Microsoft): Our director reviewed this and has concerns about security compliance. Can we address those?\n\n[00:25:00] Laura Anderson (Lucerne Publishing): On the QBR preparation front, we've made progress but there are still blockers around timeline constraints.\n\n[00:29:00] Laura Anderson (Lucerne Publishing): The timeline for data residency is aggressive. We need to validate the assumptions.",
+      "metadata": {
+        "freshness": "2024-01-04T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "medium"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-segment-smb-corporate",
+    "persona-role-manager",
+    "persona-geo-na"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "forecast-business-review-coach",
+        "condition": "business review narrative input from exec meeting"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "executive-meeting-transcript-->-manager-brief-+-as",
+    "required_artifacts": [
+      "Executive brief (strategic density)",
+      "asks section (actionable for exec)",
+      "risk register",
+      "skip-level follow-up plan",
+      "exec sponsor identification"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Complete, well-structured output matching the Executive Meeting Transcript -> Manager Brief + Asks template with all required artifacts present and actionable",
+      "Score 3: Output covers main requirements but missing one or two secondary artifacts or lacking specificity",
+      "Score 1: Output is generic, missing key artifacts, or fails to address the specific request"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct QBR preparation decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

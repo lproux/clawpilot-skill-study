@@ -1,0 +1,103 @@
+{
+  "scenario_id": "WF-50-00048",
+  "workflow_id": "WF-50",
+  "workflow_name": "Executive Meeting Transcript -> Manager Brief + Asks",
+  "seed": 5000090,
+  "tier": 4,
+  "intent": "happy",
+  "targeted_failure_mode": null,
+  "persona": "CSA",
+  "fixture_id": "FX-039",
+  "user_message": "Kevin Lee at Fabrikam Residences just sent this. Help me pull the context.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Fabrikam Residences",
+        "account_id": "ACC-5JSOIRD0",
+        "opportunities": [
+          {
+            "name": "Fabrikam Power Platform",
+            "stage": "Prospect",
+            "amount": 175000,
+            "close_date": "2024-06-08"
+          },
+          {
+            "name": "Fabrikam Cloud Migration Phase",
+            "stage": "Develop",
+            "amount": 450000,
+            "close_date": "2024-11-24"
+          }
+        ],
+        "acr_current": 32488.07,
+        "health_flag": "Healthy",
+        "owner": "Tom Rodriguez"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: forecast prep Discussion - Fabrikam Residences\nDate: 2024-02-17\nDuration: 45 minutes\nAttendees: Kevin Lee (Fabrikam Residences), Tom Rodriguez (Microsoft), Michelle (Fabrikam Residences)\n\n[00:01:15] Kevin Lee (Fabrikam Residences): Appreciate everyone making time. The main agenda today is forecast prep.\n\n[00:08:00] Tom Rodriguez (Microsoft): Let me add some context -- we've been working on performance requirements and found that the migration can proceed in phases to reduce risk.\n\n[00:13:00] Kevin Lee (Fabrikam Residences): On the forecast prep front, we've made progress but there are still blockers around stakeholder alignment.\n\n[00:18:00] Kevin Lee (Fabrikam Residences): Our architect reviewed this and has concerns about technical validation. Can we address those?\n\n[00:21:00] Michelle (Fabrikam Residences): On the forecast prep front, we've made progress but there are still blockers around vendor dependencies.\n\n[00:23:00] Kevin Lee (Fabrikam Residences): I agree with that assessment. From our side, the main concern is performance requirements.\n\n[00:25:00] Tom Rodriguez (Microsoft): On the forecast prep front, we've made progress but there are still blockers around vendor dependencies.\n\n[00:30:00] Tom Rodriguez (Microsoft): On the forecast prep front, we've made progress but there are still blockers around vendor dependencies.\n\n[00:35:00] Michelle (Fabrikam Residences): I agree with that assessment. From our side, the main concern is timeline constraints.\n\n[00:40:00] Tom Rodriguez (Microsoft): The timeline for timeline constraints is aggressive. We need to validate the assumptions.\n\n[00:43:00] Michelle (Fabrikam Residences): The timeline for stakeholder alignment is aggressive. We need to validate the assumptions.",
+      "metadata": {
+        "freshness": "2024-02-04T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "mixed",
+        "length_class": "short"
+      }
+    }
+  ],
+  "perturbations": [
+    "data-inconsistent",
+    "signal-strength-noisy",
+    "persona-geo-emea"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "forecast-business-review-coach",
+        "condition": "business review narrative input from exec meeting"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "executive-meeting-transcript-->-manager-brief-+-as",
+    "required_artifacts": [
+      "Executive brief (strategic density)",
+      "asks section (actionable for exec)",
+      "risk register",
+      "skip-level follow-up plan",
+      "exec sponsor identification"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Complete, well-structured output matching the Executive Meeting Transcript -> Manager Brief + Asks template with all required artifacts present and actionable",
+      "Score 3: Output covers main requirements but missing one or two secondary artifacts or lacking specificity",
+      "Score 1: Output is generic, missing key artifacts, or fails to address the specific request"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct forecast prep decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

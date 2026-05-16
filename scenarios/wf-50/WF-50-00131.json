@@ -1,0 +1,110 @@
+{
+  "scenario_id": "WF-50-00131",
+  "workflow_id": "WF-50",
+  "workflow_name": "Executive Meeting Transcript -> Manager Brief + Asks",
+  "seed": 5000173,
+  "tier": 4,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": "FM-WF50-M",
+  "persona": "Manager",
+  "fixture_id": "FX-005",
+  "user_message": "Just came out of partner engagement with Tailspin Toys. Turn this into my brief and pull out the asks.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Tailspin Toys",
+        "account_id": "ACC-JXC3G9ET",
+        "opportunities": [
+          {
+            "name": "Tailspin Azure Virtual Desktop",
+            "stage": "Close",
+            "amount": 560000,
+            "close_date": "2024-09-15"
+          },
+          {
+            "name": "Tailspin Azure SQL Migration",
+            "stage": "Prospect",
+            "amount": 125000,
+            "close_date": "2024-10-05"
+          },
+          {
+            "name": "Tailspin Dynamics 365 Implementation",
+            "stage": "Propose",
+            "amount": 45000,
+            "close_date": "2024-08-10"
+          }
+        ],
+        "acr_current": 122043.29,
+        "health_flag": "Healthy",
+        "owner": "Raj Mehta"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: partner engagement Discussion - Tailspin Toys\nDate: 2024-02-05\nDuration: 45 minutes\nAttendees: Steven Wilson (Tailspin Toys), Raj Mehta (Microsoft), Michelle (Tailspin Toys)\n\n[00:01:30] Steven Wilson (Tailspin Toys): Thanks everyone for joining. Let's dive into partner engagement.\n\n[00:06:00] Michelle (Tailspin Toys): Let me add some context -- we've been working on data residency and found that the migration can proceed in phases to reduce risk.\n\n[00:11:00] Steven Wilson (Tailspin Toys): I agree with that assessment. From our side, the main concern is integration complexity.\n\n[00:16:00] Raj Mehta (Microsoft): Let me add some context -- we've been working on data residency and found that there's a dependency on the security team's review that could delay us.\n\n[00:20:00] Raj Mehta (Microsoft): The timeline for timeline constraints is aggressive. We need to validate the assumptions.\n\n[00:25:00] Michelle (Tailspin Toys): The timeline for cost optimization is aggressive. We need to validate the assumptions.\n\n[00:27:00] Raj Mehta (Microsoft): Let me add some context -- we've been working on stakeholder alignment and found that the existing infrastructure won't support the target workload without upgrades.\n\n[00:31:00] Raj Mehta (Microsoft): On the partner engagement front, we've made progress but there are still blockers around stakeholder alignment.\n\n[00:36:00] Steven Wilson (Tailspin Toys): Our VP reviewed this and has concerns about security compliance. Can we address those?\n\n[00:38:00] Raj Mehta (Microsoft): The timeline for resource allocation is aggressive. We need to validate the assumptions.",
+      "metadata": {
+        "freshness": "2024-01-17T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "mixed",
+        "length_class": "medium"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-role-manager",
+    "routing-clear"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "forecast-business-review-coach",
+        "condition": "business review narrative input from exec meeting"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "executive-meeting-transcript-->-manager-brief-+-as",
+    "required_artifacts": [
+      "Executive brief (strategic density)",
+      "asks section (actionable for exec)",
+      "risk register",
+      "skip-level follow-up plan",
+      "exec sponsor identification"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF50-M trap (Business-review-narrative module designed for ROB cadence, not ad-hoc exec captu); produces complete Executive brief (strategic density), asks section (actionable for exec), risk register, skip-level f",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF50-M failure pattern",
+      "Score 1: Output exhibits the full FM-WF50-M failure mode (Business-review-narrative module designed for ROB cadence, not ad-hoc exec captu)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct partner engagement decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF50-M -- Business-review-narrative module designed for ROB cadence, not ad-hoc exec captu",
+    "Guardrail axis scored neutrally -- focus on whether output served the user's actual need"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

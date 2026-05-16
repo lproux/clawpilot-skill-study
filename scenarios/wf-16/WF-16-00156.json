@@ -1,0 +1,102 @@
+{
+  "scenario_id": "WF-16-00156",
+  "workflow_id": "WF-16",
+  "workflow_name": "Email Context Pull-Through",
+  "seed": 1600198,
+  "tier": 1,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF16-B",
+  "persona": "CSA",
+  "fixture_id": "FX-005",
+  "user_message": "Need help with Tailspin Toys -- map the stakeholders. I met with them last week but can't remember the details.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Tailspin Toys",
+        "account_id": "ACC-JXC3G9ET",
+        "opportunities": [
+          {
+            "name": "Tailspin Azure Virtual Desktop",
+            "stage": "Close",
+            "amount": 560000,
+            "close_date": "2024-09-15"
+          },
+          {
+            "name": "Tailspin Azure SQL Migration",
+            "stage": "Prospect",
+            "amount": 125000,
+            "close_date": "2024-10-05"
+          },
+          {
+            "name": "Tailspin Dynamics 365 Implementation",
+            "stage": "Propose",
+            "amount": 45000,
+            "close_date": "2024-08-10"
+          }
+        ],
+        "acr_current": 122043.29,
+        "health_flag": "Healthy",
+        "owner": "Raj Mehta"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Steven Wilson <steven.wilson@tailspintoys.com>\nTo: Raj Mehta <raj.mehta@microsoft.com>\nDate: 2024-03-02 16:38 EST\nSubject: Re: deployment blockers Discussion - Next Steps\n\nThere's been a change in our timeline for deployment blockers. Can we discuss the implications on the overall project plan?\n\n---\nFrom: Raj Mehta <raj.mehta@microsoft.com>\nTo: Steven Wilson <steven.wilson@tailspintoys.com>\nDate: 2024-02-26 10:24 EST\nSubject: Re: deployment blockers Discussion - Next Steps\n\nJust checking in on the deployment blockers proposal. Our VP Engineering is asking for a status update before the board meeting next week.\n\n---\nFrom: Steven Wilson <steven.wilson@tailspintoys.com>\nTo: Raj Mehta <raj.mehta@microsoft.com>\nDate: 2024-01-13 17:32 EST\nSubject: Re: deployment blockers Discussion - Next Steps\n\nWe've been evaluating the options and have decided to proceed with deployment blockers. What are the next steps from your side?",
+      "metadata": {
+        "freshness": "2024-03-04T16:00:00-05:00",
+        "source": "outlook",
+        "length_class": "long"
+      }
+    }
+  ],
+  "perturbations": [
+    "signal-strength-noisy",
+    "data-fresh",
+    "persona-geo-apac"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "email-chat-context"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "email-context-pull-through",
+    "required_artifacts": [
+      "Thread summary",
+      "key commitments/asks identified",
+      "waiting-on-whom assessment",
+      "draft response matching established tone"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF16-B trap (Invents prior commitments); produces complete Thread summary, key commitments/asks identified, waiting-on-whom assessment, draft response matching",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF16-B failure pattern",
+      "Score 1: Output exhibits the full FM-WF16-B failure mode (Invents prior commitments)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct deployment blockers decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF16-B -- Invents prior commitments"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

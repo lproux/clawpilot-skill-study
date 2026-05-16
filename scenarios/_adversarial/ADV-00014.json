@@ -1,0 +1,99 @@
+{
+  "scenario_id": "WF-49-90014",
+  "workflow_id": "WF-49",
+  "workflow_name": "Workshop Transcript -> ECIF + Partner + Follow-up",
+  "seed": 9900056,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": null,
+  "persona": "DSSP",
+  "fixture_id": "FX-007",
+  "user_message": "Pulling in context from Litware Inc's support ticket -- need to draft a response for the account health.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Litware Inc",
+        "account_id": "ACC-658MPDXQ",
+        "opportunities": [
+          {
+            "name": "Litware Security Modernization",
+            "stage": "Prospect",
+            "amount": 280000,
+            "close_date": "2024-09-23"
+          }
+        ],
+        "acr_current": 76577.96,
+        "health_flag": "Healthy",
+        "owner": "David Chen"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: account health Discussion - Litware Inc\nDate: 2024-01-15\nDuration: 45 minutes\nAttendees: Sarah Wilson (Litware Inc), David Chen (Microsoft), Priya (Litware Inc)\n\n[00:02:00] Sarah Wilson (Litware Inc): Good morning. I wanted to follow up on account health from our last session.\n\n[00:05:00] Priya (Litware Inc): The timeline for vendor dependencies is aggressive. We need to validate the assumptions.\n\n[00:08:00] Sarah Wilson (Litware Inc): Let me add some context -- we've been working on data residency and found that the existing infrastructure won't support the target workload without upgrades.\n\n[00:12:00] Sarah Wilson (Litware Inc): Let me add some context -- we've been working on vendor dependencies and found that the current vendor contract has a 90-day exit clause we need to plan around.\n\n[00:14:00] Sarah Wilson (Litware Inc): Let me add some context -- we've been working on partner engagement and found that the cost projections need to factor in reserved instance pricing for accuracy.\n\n[00:19:00] David Chen (Microsoft): I agree with that assessment. From our side, the main concern is cost optimization.\n\n[00:24:00] Sarah Wilson (Litware Inc): The timeline for budget approval is aggressive. We need to validate the assumptions.\n\n[00:26:00] David Chen (Microsoft): On the account health front, we've made progress but there are still blockers around timeline constraints.\n\n[00:30:00] David Chen (Microsoft): On the account health front, we've made progress but there are still blockers around security compliance.\n\n[00:32:00] David Chen (Microsoft): Let me add some context -- we've been working on stakeholder alignment and found that there's a dependency on the security team's review that could delay us.",
+      "metadata": {
+        "freshness": "2024-02-08T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "medium"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-geo-apac",
+    "data-fresh",
+    "routing-trap"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "funding-partner-activation-coach",
+        "condition": "ECIF workscope or partner engagement warranted"
+      },
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "milestone updates warranted"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "adversarial-routing-test",
+    "required_artifacts": [
+      "correct_routing_justification",
+      "confusion_analysis"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Correctly routes to primary workflow despite adversarial signals; output is complete",
+      "Score 3: Routes correctly but output shows contamination from confusing signals",
+      "Score 1: Misroutes to wrong workflow or produces irrelevant output"
+    ],
+    "evidence_anchors": [
+      "Score 5: All evidence correctly attributed despite cross-workflow noise",
+      "Score 3: Some evidence misattributed but core facts correct",
+      "Score 1: Significant evidence confusion or hallucination"
+    ],
+    "decision_anchors": [
+      "Score 5: Decision-making robust against adversarial perturbations",
+      "Score 3: Primary decision correct but secondary decisions influenced by noise",
+      "Score 1: Primary decision compromised by adversarial inputs"
+    ]
+  },
+  "guardrail_checks": [
+    "Must correctly identify primary workflow despite adversarial routing signals",
+    "Must not hallucinate context from similar-sounding workflows",
+    "Must not expose internal routing logic to user"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

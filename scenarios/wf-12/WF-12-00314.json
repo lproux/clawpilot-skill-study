@@ -1,0 +1,128 @@
+{
+  "scenario_id": "WF-12-00314",
+  "workflow_id": "WF-12",
+  "workflow_name": "Post-Meeting Follow-Up",
+  "seed": 1200356,
+  "tier": 3,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": "FM-WF12-L",
+  "persona": "Manager",
+  "fixture_id": "FX-021",
+  "user_message": "Give me the manager view on this Nod Publishers exec meeting notes. Not urgent but would be good to have by EOD.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Nod Publishers",
+        "account_id": "ACC-BFJJI6LY",
+        "opportunities": [
+          {
+            "name": "Nod Azure SQL Migration",
+            "stage": "Close",
+            "amount": 45000,
+            "close_date": "2023-10-06"
+          },
+          {
+            "name": "Nod Intune Rollout",
+            "stage": "Develop",
+            "amount": 560000,
+            "close_date": "2024-12-16"
+          }
+        ],
+        "acr_current": 111088.58,
+        "health_flag": "At Risk",
+        "owner": "Marcus Williams"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: escalation triage Discussion - Nod Publishers\nDate: 2024-02-14\nDuration: 45 minutes\nAttendees: Samantha Singh (Nod Publishers), Marcus Williams (Microsoft), Michelle (Nod Publishers)\n\n[00:01:15] Samantha Singh (Nod Publishers): Appreciate everyone making time. The main agenda today is escalation triage.\n\n[00:07:00] Marcus Williams (Microsoft): Our architect reviewed this and has concerns about budget approval. Can we address those?\n\n[00:12:00] Michelle (Nod Publishers): Our CTO reviewed this and has concerns about timeline constraints. Can we address those?\n\n[00:16:00] Marcus Williams (Microsoft): Let me add some context -- we've been working on vendor dependencies and found that the migration can proceed in phases to reduce risk.\n\n[00:20:00] Samantha Singh (Nod Publishers): On the escalation triage front, we've made progress but there are still blockers around security compliance.\n\n[00:24:00] Michelle (Nod Publishers): The timeline for budget approval is aggressive. We need to validate the assumptions.",
+      "metadata": {
+        "freshness": "2024-01-15T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "mixed",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Nod Publishers - escalation triage",
+        "start": "2024-03-11T09:00:00-05:00",
+        "end": "2024-03-14T17:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Marcus Williams",
+            "email": "marcus.williams@microsoft.com"
+          },
+          {
+            "name": "Samantha Singh",
+            "email": "samantha.singh@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    }
+  ],
+  "perturbations": [
+    "data-stale",
+    "persona-tenure-mid",
+    "persona-role-manager"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions",
+      "email-chat-context"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "MSX updates warranted from meeting outcomes"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "post-meeting-follow-up",
+    "required_artifacts": [
+      "Decision log",
+      "action items with owners and due dates",
+      "customer-facing follow-up email draft",
+      "MSX writeback proposals"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF12-L trap (MSX proposals require approval for obvious updates); produces complete Decision log, action items with owners and due dates, customer-facing follow-up email draft, MSX wri",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF12-L failure pattern",
+      "Score 1: Output exhibits the full FM-WF12-L failure mode (MSX proposals require approval for obvious updates)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct escalation triage decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF12-L -- MSX proposals require approval for obvious updates",
+    "Write proposals must require explicit user approval",
+    "Guardrail axis scored neutrally -- focus on whether output served the user's actual need"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

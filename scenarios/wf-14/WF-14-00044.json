@@ -1,0 +1,149 @@
+{
+  "scenario_id": "WF-14-00044",
+  "workflow_id": "WF-14",
+  "workflow_name": "Stakeholder Map Generation",
+  "seed": 1400086,
+  "tier": 1,
+  "intent": "happy",
+  "targeted_failure_mode": null,
+  "persona": "Manager",
+  "fixture_id": "FX-031",
+  "user_message": "Summarize what happened with Liberty's Delightful Sinful Bakery and give me the asks.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Liberty's Delightful Sinful Bakery",
+        "account_id": "ACC-A2FZGZWL",
+        "opportunities": [
+          {
+            "name": "Liberty's Dynamics 365 Implementation",
+            "stage": "Develop",
+            "amount": 89000,
+            "close_date": "2024-12-10"
+          },
+          {
+            "name": "Liberty's AKS Deployment",
+            "stage": "Qualify",
+            "amount": 89000,
+            "close_date": "2024-12-24"
+          },
+          {
+            "name": "Liberty's Azure Infrastructure",
+            "stage": "Develop",
+            "amount": 450000,
+            "close_date": "2024-04-08"
+          }
+        ],
+        "acr_current": 0,
+        "health_flag": "Healthy",
+        "owner": "Marcus Williams"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Patricia Kim <patricia.kim@libertysdeli.com>\nTo: Marcus Williams <marcus.williams@microsoft.com>\nDate: 2024-03-24 14:07 EST\nSubject: Re: Re: territory planning Timeline\n\nWe've been evaluating the options and have decided to proceed with territory planning. What are the next steps from your side?\n\n---\nFrom: Marcus Williams <marcus.williams@microsoft.com>\nTo: Patricia Kim <patricia.kim@libertysdeli.com>\nDate: 2024-02-28 15:21 EST\nSubject: Quarterly Update: Liberty's Delightful Sinful Bakery territory planning\n\nI wanted to follow up on our conversation about territory planning. Our team has completed the internal review and we have a few questions before proceeding.\n\n---\nFrom: Patricia Kim <patricia.kim@libertysdeli.com>\nTo: Marcus Williams <marcus.williams@microsoft.com>\nDate: 2024-01-01 16:59 EST\nSubject: URGENT: territory planning Issue at Liberty's Delightful Sinful Bakery\n\nThank you for the discussion last week. We'd like to move forward with territory planning. Can we schedule a call this week to finalize the timeline?",
+      "metadata": {
+        "freshness": "2024-03-23T16:00:00-05:00",
+        "source": "outlook",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: territory planning Discussion - Liberty's Delightful Sinful Bakery\nDate: 2024-03-11\nDuration: 45 minutes\nAttendees: Patricia Kim (Liberty's Delightful Sinful Bakery), Marcus Williams (Microsoft)\n\n[00:01:15] Patricia Kim (Liberty's Delightful Sinful Bakery): Appreciate everyone making time. The main agenda today is territory planning.\n\n[00:06:00] Patricia Kim (Liberty's Delightful Sinful Bakery): The timeline for budget approval is aggressive. We need to validate the assumptions.\n\n[00:10:00] Patricia Kim (Liberty's Delightful Sinful Bakery): I agree with that assessment. From our side, the main concern is vendor dependencies.\n\n[00:14:00] Patricia Kim (Liberty's Delightful Sinful Bakery): Let me add some context -- we've been working on performance requirements and found that there's a dependency on the security team's review that could delay us.\n\n[00:18:00] Marcus Williams (Microsoft): The timeline for performance requirements is aggressive. We need to validate the assumptions.\n\n[00:20:00] Marcus Williams (Microsoft): I agree with that assessment. From our side, the main concern is technical validation.\n\n[00:25:00] Marcus Williams (Microsoft): Our team lead reviewed this and has concerns about partner engagement. Can we address those?\n\n[00:29:00] Patricia Kim (Liberty's Delightful Sinful Bakery): On the territory planning front, we've made progress but there are still blockers around cost optimization.\n\n[00:32:00] Marcus Williams (Microsoft): On the territory planning front, we've made progress but there are still blockers around vendor dependencies.",
+      "metadata": {
+        "freshness": "2024-03-03T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "mixed",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Liberty's Delightful Sinful Bakery - territory planning",
+        "start": "2024-03-13T15:00:00-05:00",
+        "end": "2024-03-11T15:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Marcus Williams",
+            "email": "marcus.williams@microsoft.com"
+          },
+          {
+            "name": "Patricia Kim",
+            "email": "patricia.kim@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "deployment_blocker",
+            "detail": "Signal detected for Liberty's Delightful Sinful Bakery: the migration can proceed in phases to reduce risk",
+            "date": "2024-03-10"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-10T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "data-partially-missing",
+    "persona-segment-smb-corporate"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "contact-stakeholder-map"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "stakeholder-map-generation",
+    "required_artifacts": [
+      "Stakeholder map with roles (decision-maker",
+      "influencer",
+      "champion",
+      "blocker)",
+      "recency labels"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Complete, well-structured output matching the Stakeholder Map Generation template with all required artifacts present and actionable",
+      "Score 3: Output covers main requirements but missing one or two secondary artifacts or lacking specificity",
+      "Score 1: Output is generic, missing key artifacts, or fails to address the specific request"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct territory planning decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

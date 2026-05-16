@@ -1,0 +1,108 @@
+{
+  "scenario_id": "WF-27-00082",
+  "workflow_id": "WF-27",
+  "workflow_name": "Gap-to-Target Diagnostic",
+  "seed": 2700124,
+  "tier": 3,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF27-F",
+  "persona": "DSSP",
+  "fixture_id": "FX-007",
+  "user_message": "Pulling in context from Litware Inc's support ticket -- need to triage this for the partner engagement.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Litware Inc",
+        "account_id": "ACC-658MPDXQ",
+        "opportunities": [
+          {
+            "name": "Litware Security Modernization",
+            "stage": "Prospect",
+            "amount": 280000,
+            "close_date": "2024-09-23"
+          }
+        ],
+        "acr_current": 76577.96,
+        "health_flag": "Healthy",
+        "owner": "David Chen"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "consumption_decline",
+            "detail": "Signal detected for Litware Inc: the cost projections need to factor in reserved instance pricing for accuracy",
+            "date": "2024-03-07"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-09T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-segment-smb-corporate",
+    "data-fresh",
+    "persona-role-dssp"
+  ],
+  "expected_routing": {
+    "entry_skill": "forecast-business-review-coach",
+    "modules": [
+      "gap-to-target-review"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "acr-signal-to-opportunity-coach",
+        "condition": "consumption is the gap driver"
+      },
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "record fixes needed for accurate gap"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "gap-to-target-diagnostic",
+    "required_artifacts": [
+      "Gap decomposition (coverage",
+      "conversion",
+      "value",
+      "timing)",
+      "recovery options with probability estimates"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF27-F trap (Over-weights recent month vs cumulative pattern); produces complete Gap decomposition (coverage, conversion, value, timing), recovery options with probability estimates",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF27-F failure pattern",
+      "Score 1: Output exhibits the full FM-WF27-F failure mode (Over-weights recent month vs cumulative pattern)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct partner engagement decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF27-F -- Over-weights recent month vs cumulative pattern"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

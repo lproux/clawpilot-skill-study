@@ -1,0 +1,158 @@
+{
+  "scenario_id": "WF-32-00210",
+  "workflow_id": "WF-32",
+  "workflow_name": "Calendar Pre-Pack Automation",
+  "seed": 3200252,
+  "tier": 4,
+  "intent": "happy",
+  "targeted_failure_mode": null,
+  "persona": "CSA",
+  "fixture_id": "FX-013",
+  "user_message": "[AUTOMATION TRIGGER] System detected Calendar event with non-Microsoft external attendee detected for account Coho Winery. Generating output.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Coho Winery",
+        "account_id": "ACC-W5BNG4OC",
+        "opportunities": [
+          {
+            "name": "Coho Copilot Adoption",
+            "stage": "Close",
+            "amount": 210000,
+            "close_date": "2023-11-10"
+          },
+          {
+            "name": "Coho Azure AI Services",
+            "stage": "Qualify",
+            "amount": 280000,
+            "close_date": "2024-04-26"
+          },
+          {
+            "name": "Coho Azure Virtual Desktop",
+            "stage": "Qualify",
+            "amount": 125000,
+            "close_date": "2024-11-17"
+          }
+        ],
+        "acr_current": 107808.75,
+        "health_flag": "At Risk",
+        "owner": "Ahmed Hassan"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Eric Kim <eric.kim@cohowinery.com>\nTo: Ahmed Hassan <ahmed.hassan@microsoft.com>\nDate: 2024-03-04 10:52 EST\nSubject: Re: partner engagement Discussion - Next Steps\n\nOur team encountered some challenges with partner engagement. Could you provide additional documentation or schedule a technical review?\n\n---\nFrom: Ahmed Hassan <ahmed.hassan@microsoft.com>\nTo: Eric Kim <eric.kim@cohowinery.com>\nDate: 2024-02-04 14:17 EST\nSubject: Re: Re: partner engagement Timeline\n\nThere's been a change in our timeline for partner engagement. Can we discuss the implications on the overall project plan?\n\n---\nFrom: Eric Kim <eric.kim@cohowinery.com>\nTo: Ahmed Hassan <ahmed.hassan@microsoft.com>\nDate: 2024-01-09 11:53 EST\nSubject: Follow-up: partner engagement Review\n\nI wanted to follow up on our conversation about partner engagement. Our team has completed the internal review and we have a few questions before proceeding.",
+      "metadata": {
+        "freshness": "2024-03-03T08:00:00-05:00",
+        "source": "outlook",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: partner engagement Discussion - Coho Winery\nDate: 2024-02-20\nDuration: 45 minutes\nAttendees: Eric Kim (Coho Winery), Ahmed Hassan (Microsoft)\n\n[00:01:15] Eric Kim (Coho Winery): Appreciate everyone making time. The main agenda today is partner engagement.\n\n[00:06:00] Eric Kim (Coho Winery): Let me add some context -- we've been working on cost optimization and found that the current vendor contract has a 90-day exit clause we need to plan around.\n\n[00:11:00] Eric Kim (Coho Winery): Our team lead reviewed this and has concerns about integration complexity. Can we address those?\n\n[00:14:00] Eric Kim (Coho Winery): The timeline for integration complexity is aggressive. We need to validate the assumptions.\n\n[00:19:00] Eric Kim (Coho Winery): The timeline for resource allocation is aggressive. We need to validate the assumptions.\n\n[00:23:00] Eric Kim (Coho Winery): Our architect reviewed this and has concerns about vendor dependencies. Can we address those?\n\n[00:27:00] Ahmed Hassan (Microsoft): Our director reviewed this and has concerns about integration complexity. Can we address those?\n\n[00:31:00] Ahmed Hassan (Microsoft): Our team lead reviewed this and has concerns about partner engagement. Can we address those?\n\n[00:35:00] Ahmed Hassan (Microsoft): Our VP reviewed this and has concerns about security compliance. Can we address those?",
+      "metadata": {
+        "freshness": "2024-01-16T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Coho Winery - partner engagement",
+        "start": "2024-03-15T11:00:00-05:00",
+        "end": "2024-03-12T14:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Ahmed Hassan",
+            "email": "ahmed.hassan@microsoft.com"
+          },
+          {
+            "name": "Eric Kim",
+            "email": "eric.kim@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "security_alert",
+            "detail": "Signal detected for Coho Winery: there's a compliance requirement we hadn't accounted for in the original scope",
+            "date": "2024-03-08"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-09T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-geo-na",
+    "persona-role-csa",
+    "persona-segment-smb-corporate"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "meeting-prep",
+      "contact-stakeholder-map",
+      "email-chat-context"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "portfolio-account-planning-coach",
+        "condition": "meeting is for account CSA should have declined"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "calendar-pre-pack-automation",
+    "required_artifacts": [
+      "Pre-pack brief with attendee context",
+      "account snapshot",
+      "talking points",
+      "likely objections",
+      "open items"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Complete, well-structured output matching the Calendar Pre-Pack Automation template with all required artifacts present and actionable",
+      "Score 3: Output covers main requirements but missing one or two secondary artifacts or lacking specificity",
+      "Score 1: Output is generic, missing key artifacts, or fails to address the specific request"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct partner engagement decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

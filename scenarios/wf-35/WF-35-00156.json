@@ -1,0 +1,127 @@
+{
+  "scenario_id": "WF-35-00156",
+  "workflow_id": "WF-35",
+  "workflow_name": "Customer Renewal Email -> Forecast Impact + Path",
+  "seed": 3500198,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF35-I",
+  "persona": "CSA",
+  "fixture_id": "FX-005",
+  "user_message": "Steven Wilson at Tailspin Toys just sent this. Help me build the analysis.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Tailspin Toys",
+        "account_id": "ACC-JXC3G9ET",
+        "opportunities": [
+          {
+            "name": "Tailspin Azure Virtual Desktop",
+            "stage": "Close",
+            "amount": 560000,
+            "close_date": "2024-09-15"
+          },
+          {
+            "name": "Tailspin Azure SQL Migration",
+            "stage": "Prospect",
+            "amount": 125000,
+            "close_date": "2024-10-05"
+          },
+          {
+            "name": "Tailspin Dynamics 365 Implementation",
+            "stage": "Propose",
+            "amount": 45000,
+            "close_date": "2024-08-10"
+          }
+        ],
+        "acr_current": 122043.29,
+        "health_flag": "Healthy",
+        "owner": "Raj Mehta"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Steven Wilson <steven.wilson@tailspintoys.com>\nTo: Raj Mehta <raj.mehta@microsoft.com>\nDate: 2024-03-25 17:35 EST\nSubject: URGENT: security posture Issue at Tailspin Toys\n\nJust checking in on the security posture proposal. Our VP Engineering is asking for a status update before the board meeting next week.\n\n---\nFrom: Raj Mehta <raj.mehta@microsoft.com>\nTo: Steven Wilson <steven.wilson@tailspintoys.com>\nDate: 2024-02-20 16:59 EST\nSubject: Re: Re: security posture Timeline\n\nJust checking in on the security posture proposal. Our VP Engineering is asking for a status update before the board meeting next week.\n\n---\nFrom: Steven Wilson <steven.wilson@tailspintoys.com>\nTo: Raj Mehta <raj.mehta@microsoft.com>\nDate: 2024-01-07 15:58 EST\nSubject: URGENT: security posture Issue at Tailspin Toys\n\nOur team encountered some challenges with security posture. Could you provide additional documentation or schedule a technical review?",
+      "metadata": {
+        "freshness": "2024-03-03T10:00:00-05:00",
+        "source": "outlook",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "consumption_decline",
+            "detail": "Signal detected for Tailspin Toys: the existing infrastructure won't support the target workload without upgrades",
+            "date": "2024-03-05"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-role-csa",
+    "routing-ambiguous-2skills"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "email-chat-context"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "funding-partner-activation-coach",
+        "condition": "contract/billing lookup needed"
+      },
+      {
+        "target_skill": "forecast-business-review-coach",
+        "condition": "forecast impact assessment needed"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "customer-renewal-email-->-forecast-impact-+-path",
+    "required_artifacts": [
+      "Contract state summary with freshness",
+      "forecast impact with confidence",
+      "response draft (no commercial commitments)",
+      "path forward with MACC/funding options if applicable"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF35-I trap (Confuses CSP vs MCA renewal mechanics); produces complete Contract state summary with freshness, forecast impact with confidence, response draft (no commercia",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF35-I failure pattern",
+      "Score 1: Output exhibits the full FM-WF35-I failure mode (Confuses CSP vs MCA renewal mechanics)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct security posture decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF35-I -- Confuses CSP vs MCA renewal mechanics"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

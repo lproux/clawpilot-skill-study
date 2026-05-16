@@ -1,0 +1,145 @@
+{
+  "scenario_id": "WF-14-00196",
+  "workflow_id": "WF-14",
+  "workflow_name": "Stakeholder Map Generation",
+  "seed": 1400238,
+  "tier": 1,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF14-D",
+  "persona": "DSSP",
+  "fixture_id": "FX-035",
+  "user_message": "I need to assess the risk for the Treyarch Global engagement. The CSA flagged this as at-risk yesterday.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Treyarch Global",
+        "account_id": "ACC-YBG804XY",
+        "opportunities": [
+          {
+            "name": "Treyarch Azure DevOps",
+            "stage": "Close",
+            "amount": 89000,
+            "close_date": "2024-05-02"
+          },
+          {
+            "name": "Treyarch Azure AI Services",
+            "stage": "Qualify",
+            "amount": 450000,
+            "close_date": "2024-05-13"
+          }
+        ],
+        "acr_current": 48495.65,
+        "health_flag": "Healthy",
+        "owner": "Raj Mehta"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Laura Schmidt <laura.schmidt@treyarchglob.com>\nTo: Raj Mehta <raj.mehta@microsoft.com>\nDate: 2024-03-25 17:02 EST\nSubject: Re: Re: partner engagement Timeline\n\nThere's been a change in our timeline for partner engagement. Can we discuss the implications on the overall project plan?\n\n---\nFrom: Raj Mehta <raj.mehta@microsoft.com>\nTo: Laura Schmidt <laura.schmidt@treyarchglob.com>\nDate: 2024-02-23 17:35 EST\nSubject: URGENT: partner engagement Issue at Treyarch Global\n\nThank you for the discussion last week. We'd like to move forward with partner engagement. Can we schedule a call this week to finalize the timeline?\n\n---\nFrom: Laura Schmidt <laura.schmidt@treyarchglob.com>\nTo: Raj Mehta <raj.mehta@microsoft.com>\nDate: 2024-01-07 13:50 EST\nSubject: URGENT: partner engagement Issue at Treyarch Global\n\nWe've been evaluating the options and have decided to proceed with partner engagement. What are the next steps from your side?",
+      "metadata": {
+        "freshness": "2024-02-01T17:00:00-05:00",
+        "source": "outlook",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: partner engagement Discussion - Treyarch Global\nDate: 2024-03-14\nDuration: 45 minutes\nAttendees: Laura Schmidt (Treyarch Global), Raj Mehta (Microsoft), David (Treyarch Global)\n\n[00:01:15] Laura Schmidt (Treyarch Global): Appreciate everyone making time. The main agenda today is partner engagement.\n\n[00:07:00] Laura Schmidt (Treyarch Global): The timeline for timeline constraints is aggressive. We need to validate the assumptions.\n\n[00:12:00] David (Treyarch Global): The timeline for technical validation is aggressive. We need to validate the assumptions.\n\n[00:14:00] David (Treyarch Global): I agree with that assessment. From our side, the main concern is data residency.\n\n[00:16:00] Raj Mehta (Microsoft): On the partner engagement front, we've made progress but there are still blockers around cost optimization.\n\n[00:21:00] Laura Schmidt (Treyarch Global): On the partner engagement front, we've made progress but there are still blockers around stakeholder alignment.\n\n[00:24:00] Raj Mehta (Microsoft): On the partner engagement front, we've made progress but there are still blockers around budget approval.",
+      "metadata": {
+        "freshness": "2024-02-27T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "mixed",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Treyarch Global - partner engagement",
+        "start": "2024-03-11T11:00:00-05:00",
+        "end": "2024-03-14T17:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Raj Mehta",
+            "email": "raj.mehta@microsoft.com"
+          },
+          {
+            "name": "Laura Schmidt",
+            "email": "laura.schmidt@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "deployment_blocker",
+            "detail": "Signal detected for Treyarch Global: the migration can proceed in phases to reduce risk",
+            "date": "2024-03-05"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-09T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-geo-latam",
+    "persona-tenure-mid",
+    "signal-strength-noisy"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "contact-stakeholder-map"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "stakeholder-map-generation",
+    "required_artifacts": [
+      "Stakeholder map with roles (decision-maker",
+      "influencer",
+      "champion",
+      "blocker)",
+      "recency labels"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF14-D trap (Claims champion without evidence); produces complete Stakeholder map with roles (decision-maker, influencer, champion, blocker), recency labels, confiden",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF14-D failure pattern",
+      "Score 1: Output exhibits the full FM-WF14-D failure mode (Claims champion without evidence)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct partner engagement decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF14-D -- Claims champion without evidence"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "scenario_id": "WF-37-00057",
+  "workflow_id": "WF-37",
+  "workflow_name": "Customer Outage/Complaint Email -> Triage + Escalation",
+  "seed": 3700099,
+  "tier": 4,
+  "intent": "happy",
+  "targeted_failure_mode": null,
+  "persona": "CSA",
+  "fixture_id": "FX-007",
+  "user_message": "Can you work with me on deployment blockers for Litware Inc? I think there's an opportunity here but need to validate.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Litware Inc",
+        "account_id": "ACC-658MPDXQ",
+        "opportunities": [
+          {
+            "name": "Litware Security Modernization",
+            "stage": "Prospect",
+            "amount": 280000,
+            "close_date": "2024-09-23"
+          }
+        ],
+        "acr_current": 76577.96,
+        "health_flag": "Healthy",
+        "owner": "David Chen"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Sarah Wilson <sarah.wilson@litwareinc.com>\nTo: David Chen <david.chen@microsoft.com>\nDate: 2024-03-22 12:43 EST\nSubject: deployment blockers - Action Required\n\nThere's been a change in our timeline for deployment blockers. Can we discuss the implications on the overall project plan?\n\n---\nFrom: David Chen <david.chen@microsoft.com>\nTo: Sarah Wilson <sarah.wilson@litwareinc.com>\nDate: 2024-02-08 16:50 EST\nSubject: Re: deployment blockers Discussion - Next Steps\n\nOur team encountered some challenges with deployment blockers. Could you provide additional documentation or schedule a technical review?\n\n---\nFrom: Sarah Wilson <sarah.wilson@litwareinc.com>\nTo: David Chen <david.chen@microsoft.com>\nDate: 2024-01-01 11:12 EST\nSubject: Quarterly Update: Litware Inc deployment blockers\n\nWe've been evaluating the options and have decided to proceed with deployment blockers. What are the next steps from your side?",
+      "metadata": {
+        "freshness": "2024-02-06T12:00:00-05:00",
+        "source": "outlook",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "consumption_decline",
+            "detail": "Signal detected for Litware Inc: there's a compliance requirement we hadn't accounted for in the original scope",
+            "date": "2024-03-07"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-10T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "signal-strength-noisy",
+    "persona-tenure-junior",
+    "persona-geo-apac"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "email-chat-context"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "acr-signal-to-opportunity-coach",
+        "condition": "outage impacts major workload ACR"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "customer-outage/complaint-email-->-triage-+-escala",
+    "required_artifacts": [
+      "Severity triage",
+      "root-cause hypothesis (labeled as hypothesis)",
+      "customer response draft",
+      "ACR risk flag",
+      "escalation routing"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Complete, well-structured output matching the Customer Outage/Complaint Email -> Triage + Escalation template with all required artifacts present and actionable",
+      "Score 3: Output covers main requirements but missing one or two secondary artifacts or lacking specificity",
+      "Score 1: Output is generic, missing key artifacts, or fails to address the specific request"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct deployment blockers decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

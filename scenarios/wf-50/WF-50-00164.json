@@ -1,0 +1,104 @@
+{
+  "scenario_id": "WF-50-00164",
+  "workflow_id": "WF-50",
+  "workflow_name": "Executive Meeting Transcript -> Manager Brief + Asks",
+  "seed": 5000206,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF50-B",
+  "persona": "Manager",
+  "fixture_id": "FX-021",
+  "user_message": "Just came out of forecast prep with Nod Publishers. Turn this into my brief and pull out the asks.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Nod Publishers",
+        "account_id": "ACC-BFJJI6LY",
+        "opportunities": [
+          {
+            "name": "Nod Azure SQL Migration",
+            "stage": "Close",
+            "amount": 45000,
+            "close_date": "2023-10-06"
+          },
+          {
+            "name": "Nod Intune Rollout",
+            "stage": "Develop",
+            "amount": 560000,
+            "close_date": "2024-12-16"
+          }
+        ],
+        "acr_current": 111088.58,
+        "health_flag": "At Risk",
+        "owner": "Marcus Williams"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: forecast prep Discussion - Nod Publishers\nDate: 2024-01-23\nDuration: 45 minutes\nAttendees: Samantha Singh (Nod Publishers), Marcus Williams (Microsoft), Kevin (Nod Publishers)\n\n[00:01:15] Samantha Singh (Nod Publishers): Appreciate everyone making time. The main agenda today is forecast prep.\n\n[00:08:00] Marcus Williams (Microsoft): Let me add some context -- we've been working on security compliance and found that the cost projections need to factor in reserved instance pricing for accuracy.\n\n[00:13:00] Kevin (Nod Publishers): Let me add some context -- we've been working on stakeholder alignment and found that the current vendor contract has a 90-day exit clause we need to plan around.\n\n[00:17:00] Marcus Williams (Microsoft): Let me add some context -- we've been working on integration complexity and found that the existing infrastructure won't support the target workload without upgrades.\n\n[00:19:00] Marcus Williams (Microsoft): Let me add some context -- we've been working on security compliance and found that the existing infrastructure won't support the target workload without upgrades.\n\n[00:24:00] Marcus Williams (Microsoft): On the forecast prep front, we've made progress but there are still blockers around data residency.",
+      "metadata": {
+        "freshness": "2024-01-04T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "medium"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-tenure-senior",
+    "persona-role-manager",
+    "data-stale"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "forecast-business-review-coach",
+        "condition": "business review narrative input from exec meeting"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "executive-meeting-transcript-->-manager-brief-+-as",
+    "required_artifacts": [
+      "Executive brief (strategic density)",
+      "asks section (actionable for exec)",
+      "risk register",
+      "skip-level follow-up plan",
+      "exec sponsor identification"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF50-B trap (Asks too vague for exec to action); produces complete Executive brief (strategic density), asks section (actionable for exec), risk register, skip-level f",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF50-B failure pattern",
+      "Score 1: Output exhibits the full FM-WF50-B failure mode (Asks too vague for exec to action)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct forecast prep decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF50-B -- Asks too vague for exec to action"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "scenario_id": "WF-50-00020",
+  "workflow_id": "WF-50",
+  "workflow_name": "Executive Meeting Transcript -> Manager Brief + Asks",
+  "seed": 5000062,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF50-F",
+  "persona": "Manager",
+  "fixture_id": "FX-033",
+  "user_message": "I need you to process this escalation email from Parnell Aerospace. The CSA flagged this as at-risk yesterday.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Parnell Aerospace",
+        "account_id": "ACC-0H065FH7",
+        "opportunities": [
+          {
+            "name": "Parnell Dynamics 365 Implementation",
+            "stage": "Close",
+            "amount": 350000,
+            "close_date": "2024-11-03"
+          }
+        ],
+        "acr_current": 0,
+        "health_flag": "Healthy",
+        "owner": "Ahmed Hassan"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: consumption trend Discussion - Parnell Aerospace\nDate: 2024-02-24\nDuration: 45 minutes\nAttendees: Christopher Martinez (Parnell Aerospace), Ahmed Hassan (Microsoft), David (Parnell Aerospace)\n\n[00:02:00] Christopher Martinez (Parnell Aerospace): Good morning. I wanted to follow up on consumption trend from our last session.\n\n[00:08:00] Christopher Martinez (Parnell Aerospace): Our team lead reviewed this and has concerns about stakeholder alignment. Can we address those?\n\n[00:11:00] Christopher Martinez (Parnell Aerospace): Our architect reviewed this and has concerns about cost optimization. Can we address those?\n\n[00:14:00] Christopher Martinez (Parnell Aerospace): Let me add some context -- we've been working on data residency and found that there's a compliance requirement we hadn't accounted for in the original scope.\n\n[00:17:00] David (Parnell Aerospace): Our architect reviewed this and has concerns about cost optimization. Can we address those?\n\n[00:20:00] David (Parnell Aerospace): I agree with that assessment. From our side, the main concern is stakeholder alignment.\n\n[00:23:00] David (Parnell Aerospace): Let me add some context -- we've been working on performance requirements and found that there's a dependency on the security team's review that could delay us.\n\n[00:28:00] Ahmed Hassan (Microsoft): The timeline for stakeholder alignment is aggressive. We need to validate the assumptions.\n\n[00:30:00] Ahmed Hassan (Microsoft): I agree with that assessment. From our side, the main concern is stakeholder alignment.\n\n[00:35:00] Christopher Martinez (Parnell Aerospace): Let me add some context -- we've been working on cost optimization and found that the migration can proceed in phases to reduce risk.",
+      "metadata": {
+        "freshness": "2024-02-18T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "medium"
+      }
+    }
+  ],
+  "perturbations": [
+    "routing-clear",
+    "persona-role-manager"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "forecast-business-review-coach",
+        "condition": "business review narrative input from exec meeting"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "executive-meeting-transcript-->-manager-brief-+-as",
+    "required_artifacts": [
+      "Executive brief (strategic density)",
+      "asks section (actionable for exec)",
+      "risk register",
+      "skip-level follow-up plan",
+      "exec sponsor identification"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF50-F trap (Invents commitments from executives who were observers); produces complete Executive brief (strategic density), asks section (actionable for exec), risk register, skip-level f",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF50-F failure pattern",
+      "Score 1: Output exhibits the full FM-WF50-F failure mode (Invents commitments from executives who were observers)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct consumption trend decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF50-F -- Invents commitments from executives who were observers"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

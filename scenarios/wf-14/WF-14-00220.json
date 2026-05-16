@@ -1,0 +1,140 @@
+{
+  "scenario_id": "WF-14-00220",
+  "workflow_id": "WF-14",
+  "workflow_name": "Stakeholder Map Generation",
+  "seed": 1400262,
+  "tier": 1,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF14-C",
+  "persona": "DSSP",
+  "fixture_id": "FX-033",
+  "user_message": "I need to identify the blockers for the Parnell Aerospace engagement. Multiple stakeholders are involved -- it's complex.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Parnell Aerospace",
+        "account_id": "ACC-0H065FH7",
+        "opportunities": [
+          {
+            "name": "Parnell Dynamics 365 Implementation",
+            "stage": "Close",
+            "amount": 350000,
+            "close_date": "2024-11-03"
+          }
+        ],
+        "acr_current": 0,
+        "health_flag": "Healthy",
+        "owner": "Ahmed Hassan"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Christopher Martinez <christopher.martinez@parnellaeros.com>\nTo: Ahmed Hassan <ahmed.hassan@microsoft.com>\nDate: 2024-03-15 08:53 EST\nSubject: Quarterly Update: Parnell Aerospace pipeline hygiene\n\nWe've been evaluating the options and have decided to proceed with pipeline hygiene. What are the next steps from your side?\n\n---\nFrom: Ahmed Hassan <ahmed.hassan@microsoft.com>\nTo: Christopher Martinez <christopher.martinez@parnellaeros.com>\nDate: 2024-02-16 09:24 EST\nSubject: URGENT: pipeline hygiene Issue at Parnell Aerospace\n\nThank you for the discussion last week. We'd like to move forward with pipeline hygiene. Can we schedule a call this week to finalize the timeline?\n\n---\nFrom: Christopher Martinez <christopher.martinez@parnellaeros.com>\nTo: Ahmed Hassan <ahmed.hassan@microsoft.com>\nDate: 2024-01-03 11:18 EST\nSubject: URGENT: pipeline hygiene Issue at Parnell Aerospace\n\nOur team encountered some challenges with pipeline hygiene. Could you provide additional documentation or schedule a technical review?",
+      "metadata": {
+        "freshness": "2024-02-26T11:00:00-05:00",
+        "source": "outlook",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: pipeline hygiene Discussion - Parnell Aerospace\nDate: 2024-02-09\nDuration: 45 minutes\nAttendees: Christopher Martinez (Parnell Aerospace), Ahmed Hassan (Microsoft)\n\n[00:01:30] Christopher Martinez (Parnell Aerospace): Thanks everyone for joining. Let's dive into pipeline hygiene.\n\n[00:06:00] Christopher Martinez (Parnell Aerospace): On the pipeline hygiene front, we've made progress but there are still blockers around technical validation.\n\n[00:08:00] Christopher Martinez (Parnell Aerospace): On the pipeline hygiene front, we've made progress but there are still blockers around partner engagement.\n\n[00:10:00] Christopher Martinez (Parnell Aerospace): Let me add some context -- we've been working on data residency and found that the migration can proceed in phases to reduce risk.\n\n[00:13:00] Christopher Martinez (Parnell Aerospace): Our CTO reviewed this and has concerns about resource allocation. Can we address those?\n\n[00:18:00] Ahmed Hassan (Microsoft): On the pipeline hygiene front, we've made progress but there are still blockers around stakeholder alignment.\n\n[00:23:00] Christopher Martinez (Parnell Aerospace): On the pipeline hygiene front, we've made progress but there are still blockers around performance requirements.\n\n[00:25:00] Ahmed Hassan (Microsoft): The timeline for integration complexity is aggressive. We need to validate the assumptions.\n\n[00:27:00] Ahmed Hassan (Microsoft): Let me add some context -- we've been working on cost optimization and found that there's a dependency on the security team's review that could delay us.",
+      "metadata": {
+        "freshness": "2024-01-27T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Parnell Aerospace - pipeline hygiene",
+        "start": "2024-03-11T14:00:00-05:00",
+        "end": "2024-03-11T17:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Ahmed Hassan",
+            "email": "ahmed.hassan@microsoft.com"
+          },
+          {
+            "name": "Christopher Martinez",
+            "email": "christopher.martinez@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "consumption_decline",
+            "detail": "Signal detected for Parnell Aerospace: the cost projections need to factor in reserved instance pricing for accuracy",
+            "date": "2024-03-06"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-10T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-segment-smb-small",
+    "persona-role-dssp",
+    "persona-tenure-junior",
+    "routing-clear"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "contact-stakeholder-map"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "stakeholder-map-generation",
+    "required_artifacts": [
+      "Stakeholder map with roles (decision-maker",
+      "influencer",
+      "champion",
+      "blocker)",
+      "recency labels"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF14-C trap (No recency labeling); produces complete Stakeholder map with roles (decision-maker, influencer, champion, blocker), recency labels, confiden",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF14-C failure pattern",
+      "Score 1: Output exhibits the full FM-WF14-C failure mode (No recency labeling)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct pipeline hygiene decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF14-C -- No recency labeling"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

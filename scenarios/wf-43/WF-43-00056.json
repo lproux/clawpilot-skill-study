@@ -1,0 +1,114 @@
+{
+  "scenario_id": "WF-43-00056",
+  "workflow_id": "WF-43",
+  "workflow_name": "Discovery Call Transcript -> Opportunity Build",
+  "seed": 4300098,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF43-I",
+  "persona": "Manager",
+  "fixture_id": "FX-005",
+  "user_message": "Just came out of account health with Tailspin Toys. Turn this into my brief and pull out the asks.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Tailspin Toys",
+        "account_id": "ACC-JXC3G9ET",
+        "opportunities": [
+          {
+            "name": "Tailspin Azure Virtual Desktop",
+            "stage": "Close",
+            "amount": 560000,
+            "close_date": "2024-09-15"
+          },
+          {
+            "name": "Tailspin Azure SQL Migration",
+            "stage": "Prospect",
+            "amount": 125000,
+            "close_date": "2024-10-05"
+          },
+          {
+            "name": "Tailspin Dynamics 365 Implementation",
+            "stage": "Propose",
+            "amount": 45000,
+            "close_date": "2024-08-10"
+          }
+        ],
+        "acr_current": 122043.29,
+        "health_flag": "Healthy",
+        "owner": "Raj Mehta"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: account health Discussion - Tailspin Toys\nDate: 2024-03-01\nDuration: 45 minutes\nAttendees: Steven Wilson (Tailspin Toys), Raj Mehta (Microsoft), David (Tailspin Toys)\n\n[00:01:15] Steven Wilson (Tailspin Toys): Appreciate everyone making time. The main agenda today is account health.\n\n[00:08:00] Raj Mehta (Microsoft): On the account health front, we've made progress but there are still blockers around partner engagement.\n\n[00:13:00] Raj Mehta (Microsoft): Our VP reviewed this and has concerns about budget approval. Can we address those?\n\n[00:15:00] David (Tailspin Toys): Our architect reviewed this and has concerns about stakeholder alignment. Can we address those?\n\n[00:18:00] Raj Mehta (Microsoft): Our director reviewed this and has concerns about budget approval. Can we address those?\n\n[00:23:00] David (Tailspin Toys): Our VP reviewed this and has concerns about integration complexity. Can we address those?",
+      "metadata": {
+        "freshness": "2024-03-19T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "long"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-tenure-senior",
+    "data-fresh",
+    "persona-geo-apac"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "opportunity creation warranted"
+      },
+      {
+        "target_skill": "solution-value-design-coach",
+        "condition": "solution sketch needed from discovery signals"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "discovery-call-transcript-->-opportunity-build",
+    "required_artifacts": [
+      "BANT signal extraction with evidence quotes",
+      "opportunity proposal with stage/value/close-date",
+      "confidence labels",
+      "solution sketch suggestion",
+      "follow-up actions"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF43-I trap (Duplicates existing opportunity at account); produces complete BANT signal extraction with evidence quotes, opportunity proposal with stage/value/close-date, confi",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF43-I failure pattern",
+      "Score 1: Output exhibits the full FM-WF43-I failure mode (Duplicates existing opportunity at account)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct account health decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF43-I -- Duplicates existing opportunity at account"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

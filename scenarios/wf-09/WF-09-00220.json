@@ -1,0 +1,109 @@
+{
+  "scenario_id": "WF-09-00220",
+  "workflow_id": "WF-09",
+  "workflow_name": "Consumption-at-Risk Watchlist",
+  "seed": 900262,
+  "tier": 3,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF09-B",
+  "persona": "DSSP",
+  "fixture_id": "FX-033",
+  "user_message": "[AUTOMATION TRIGGER] System detected Daily automated watchlist generation or on-demand 'which acc for account Parnell Aerospace. Generating output.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Parnell Aerospace",
+        "account_id": "ACC-0H065FH7",
+        "opportunities": [
+          {
+            "name": "Parnell Dynamics 365 Implementation",
+            "stage": "Close",
+            "amount": 350000,
+            "close_date": "2024-11-03"
+          }
+        ],
+        "acr_current": 0,
+        "health_flag": "Healthy",
+        "owner": "Ahmed Hassan"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "contract_event",
+            "detail": "Signal detected for Parnell Aerospace: the cost projections need to factor in reserved instance pricing for accuracy",
+            "date": "2024-03-07"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-10T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-segment-smb-small",
+    "data-partially-missing",
+    "persona-geo-na"
+  ],
+  "expected_routing": {
+    "entry_skill": "acr-signal-to-opportunity-coach",
+    "modules": [
+      "acr-data-access",
+      "acr-health-forecast"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "at-risk account has stale records"
+      },
+      {
+        "target_skill": "customer-meeting-prep-outreach-coach",
+        "condition": "outreach needed for at-risk account"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "consumption-at-risk-watchlist",
+    "required_artifacts": [
+      "Prioritized watchlist (max 15 accounts) with risk driver",
+      "confidence",
+      "recovery actions",
+      "delta from yesterday",
+      "owner per account"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF09-B trap (Projects risk without confidence); produces complete Prioritized watchlist (max 15 accounts) with risk driver, confidence, recovery actions, delta from y",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF09-B failure pattern",
+      "Score 1: Output exhibits the full FM-WF09-B failure mode (Projects risk without confidence)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct partner engagement decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF09-B -- Projects risk without confidence"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

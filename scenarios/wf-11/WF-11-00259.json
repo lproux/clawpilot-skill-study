@@ -1,0 +1,126 @@
+{
+  "scenario_id": "WF-11-00259",
+  "workflow_id": "WF-11",
+  "workflow_name": "Pre-Meeting Brief",
+  "seed": 1100301,
+  "tier": 2,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": "FM-WF11-K",
+  "persona": "DSSP",
+  "fixture_id": "FX-011",
+  "user_message": "Can you help me triage this? The customer (Alpine Ski House) is asking about territory planning.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Alpine Ski House",
+        "account_id": "ACC-UIKNWGJ7",
+        "opportunities": [
+          {
+            "name": "Alpine Azure Virtual Desktop",
+            "stage": "Propose",
+            "amount": 560000,
+            "close_date": "2023-12-14"
+          }
+        ],
+        "acr_current": 115928.19,
+        "health_flag": "At Risk",
+        "owner": "Marcus Williams"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Brian Yamamoto <brian.yamamoto@alpineskihou.com>\nTo: Marcus Williams <marcus.williams@microsoft.com>\nDate: 2024-02-13 13:30 EST\nSubject: Quarterly Update: Alpine Ski House territory planning\n\nI wanted to follow up on our conversation about territory planning. Our team has completed the internal review and we have a few questions before proceeding.\n\n---\nFrom: Marcus Williams <marcus.williams@microsoft.com>\nTo: Brian Yamamoto <brian.yamamoto@alpineskihou.com>\nDate: 2024-01-09 16:43 EST\nSubject: Re: Re: territory planning Timeline\n\nThere's been a change in our timeline for territory planning. Can we discuss the implications on the overall project plan?",
+      "metadata": {
+        "freshness": "2024-03-06T12:00:00-05:00",
+        "source": "outlook",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: territory planning Discussion - Alpine Ski House\nDate: 2024-03-11\nDuration: 45 minutes\nAttendees: Brian Yamamoto (Alpine Ski House), Marcus Williams (Microsoft)\n\n[00:02:00] Brian Yamamoto (Alpine Ski House): Good morning. I wanted to follow up on territory planning from our last session.\n\n[00:06:00] Marcus Williams (Microsoft): Let me add some context -- we've been working on technical validation and found that there's a dependency on the security team's review that could delay us.\n\n[00:11:00] Marcus Williams (Microsoft): Let me add some context -- we've been working on budget approval and found that the existing infrastructure won't support the target workload without upgrades.\n\n[00:14:00] Brian Yamamoto (Alpine Ski House): On the territory planning front, we've made progress but there are still blockers around cost optimization.\n\n[00:16:00] Brian Yamamoto (Alpine Ski House): On the territory planning front, we've made progress but there are still blockers around partner engagement.\n\n[00:18:00] Marcus Williams (Microsoft): The timeline for performance requirements is aggressive. We need to validate the assumptions.",
+      "metadata": {
+        "freshness": "2024-02-06T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Alpine Ski House - territory planning",
+        "start": "2024-03-11T15:00:00-05:00",
+        "end": "2024-03-11T12:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Marcus Williams",
+            "email": "marcus.williams@microsoft.com"
+          },
+          {
+            "name": "Brian Yamamoto",
+            "email": "brian.yamamoto@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-tenure-senior",
+    "persona-segment-smb-mid",
+    "data-stale",
+    "persona-geo-apac"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "meeting-prep",
+      "contact-stakeholder-map"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "pre-meeting-brief",
+    "required_artifacts": [
+      "One-page brief with attendee context",
+      "account snapshot",
+      "talking points",
+      "likely objections",
+      "open items from last meeting"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF11-K trap (One-page constraint hurts complex meetings); produces complete One-page brief with attendee context, account snapshot, talking points, likely objections, open item",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF11-K failure pattern",
+      "Score 1: Output exhibits the full FM-WF11-K failure mode (One-page constraint hurts complex meetings)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct territory planning decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF11-K -- One-page constraint hurts complex meetings",
+    "Guardrail axis scored neutrally -- focus on whether output served the user's actual need"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

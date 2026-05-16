@@ -1,0 +1,158 @@
+{
+  "scenario_id": "WF-32-00180",
+  "workflow_id": "WF-32",
+  "workflow_name": "Calendar Pre-Pack Automation",
+  "seed": 3200222,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF32-C",
+  "persona": "CSA",
+  "fixture_id": "FX-003",
+  "user_message": "[AUTOMATION TRIGGER] System detected Calendar event with non-Microsoft external attendee detected for account Northwind Traders. Generating output.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Northwind Traders",
+        "account_id": "ACC-X86FSRU2",
+        "opportunities": [
+          {
+            "name": "Northwind Azure Arc Deployment",
+            "stage": "Propose",
+            "amount": 89000,
+            "close_date": "2024-09-05"
+          },
+          {
+            "name": "Northwind Copilot Adoption",
+            "stage": "Develop",
+            "amount": 175000,
+            "close_date": "2024-06-22"
+          },
+          {
+            "name": "Northwind Intune Rollout",
+            "stage": "Close",
+            "amount": 350000,
+            "close_date": "2024-04-19"
+          }
+        ],
+        "acr_current": 54067.74,
+        "health_flag": "Healthy",
+        "owner": "Ahmed Hassan"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Sandra Taylor <sandra.taylor@northwindtra.com>\nTo: Ahmed Hassan <ahmed.hassan@microsoft.com>\nDate: 2024-03-12 17:26 EST\nSubject: Re: Re: competitive positioning Timeline\n\nI wanted to follow up on our conversation about competitive positioning. Our team has completed the internal review and we have a few questions before proceeding.\n\n---\nFrom: Ahmed Hassan <ahmed.hassan@microsoft.com>\nTo: Sandra Taylor <sandra.taylor@northwindtra.com>\nDate: 2024-02-19 17:41 EST\nSubject: URGENT: competitive positioning Issue at Northwind Traders\n\nThere's been a change in our timeline for competitive positioning. Can we discuss the implications on the overall project plan?\n\n---\nFrom: Sandra Taylor <sandra.taylor@northwindtra.com>\nTo: Ahmed Hassan <ahmed.hassan@microsoft.com>\nDate: 2024-01-04 10:41 EST\nSubject: URGENT: competitive positioning Issue at Northwind Traders\n\nJust checking in on the competitive positioning proposal. Our Head of Digital is asking for a status update before the board meeting next week.",
+      "metadata": {
+        "freshness": "2024-02-21T16:00:00-05:00",
+        "source": "outlook",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: competitive positioning Discussion - Northwind Traders\nDate: 2024-03-06\nDuration: 45 minutes\nAttendees: Sandra Taylor (Northwind Traders), Ahmed Hassan (Microsoft)\n\n[00:01:15] Sandra Taylor (Northwind Traders): Appreciate everyone making time. The main agenda today is competitive positioning.\n\n[00:08:00] Sandra Taylor (Northwind Traders): Let me add some context -- we've been working on timeline constraints and found that there's a dependency on the security team's review that could delay us.\n\n[00:13:00] Sandra Taylor (Northwind Traders): I agree with that assessment. From our side, the main concern is technical validation.\n\n[00:16:00] Ahmed Hassan (Microsoft): The timeline for cost optimization is aggressive. We need to validate the assumptions.\n\n[00:18:00] Sandra Taylor (Northwind Traders): The timeline for budget approval is aggressive. We need to validate the assumptions.\n\n[00:21:00] Sandra Taylor (Northwind Traders): Let me add some context -- we've been working on stakeholder alignment and found that the current vendor contract has a 90-day exit clause we need to plan around.\n\n[00:25:00] Sandra Taylor (Northwind Traders): The timeline for cost optimization is aggressive. We need to validate the assumptions.\n\n[00:27:00] Sandra Taylor (Northwind Traders): Let me add some context -- we've been working on performance requirements and found that the migration can proceed in phases to reduce risk.",
+      "metadata": {
+        "freshness": "2024-01-27T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Northwind Traders - competitive positioning",
+        "start": "2024-03-12T15:00:00-05:00",
+        "end": "2024-03-15T11:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Ahmed Hassan",
+            "email": "ahmed.hassan@microsoft.com"
+          },
+          {
+            "name": "Sandra Taylor",
+            "email": "sandra.taylor@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "contract_event",
+            "detail": "Signal detected for Northwind Traders: there's a compliance requirement we hadn't accounted for in the original scope",
+            "date": "2024-03-11"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-10T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "data-fresh",
+    "persona-role-csa"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "meeting-prep",
+      "contact-stakeholder-map",
+      "email-chat-context"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "portfolio-account-planning-coach",
+        "condition": "meeting is for account CSA should have declined"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "calendar-pre-pack-automation",
+    "required_artifacts": [
+      "Pre-pack brief with attendee context",
+      "account snapshot",
+      "talking points",
+      "likely objections",
+      "open items"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF32-C trap (Includes raw email/chat content rather than summary); produces complete Pre-pack brief with attendee context, account snapshot, talking points, likely objections, open item",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF32-C failure pattern",
+      "Score 1: Output exhibits the full FM-WF32-C failure mode (Includes raw email/chat content rather than summary)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct competitive positioning decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF32-C -- Includes raw email/chat content rather than summary"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

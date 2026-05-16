@@ -1,0 +1,138 @@
+{
+  "scenario_id": "WF-14-91275",
+  "workflow_id": "WF-14",
+  "workflow_name": "Stakeholder Map Generation",
+  "seed": 9901317,
+  "tier": 1,
+  "intent": "adherence",
+  "targeted_failure_mode": null,
+  "persona": "Manager",
+  "fixture_id": "FX-018",
+  "user_message": "What's at risk across my portfolio? This is a renewal account with declining consumption.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Lamna Healthcare",
+        "account_id": "ACC-Z7NKL31Q",
+        "opportunities": [
+          {
+            "name": "Lamna Azure Infrastructure",
+            "stage": "Qualify",
+            "amount": 45000,
+            "close_date": "2023-09-17"
+          }
+        ],
+        "acr_current": 31523.63,
+        "health_flag": "Healthy",
+        "owner": "Priya Sharma"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Victoria Lee <victoria.lee@lamnahealthc.com>\nTo: Priya Sharma <priya.sharma@microsoft.com>\nDate: 2024-03-22 16:55 EST\nSubject: Quarterly Update: Lamna Healthcare executive brief\n\nI wanted to follow up on our conversation about executive brief. Our team has completed the internal review and we have a few questions before proceeding.\n\n---\nFrom: Priya Sharma <priya.sharma@microsoft.com>\nTo: Victoria Lee <victoria.lee@lamnahealthc.com>\nDate: 2024-02-12 16:41 EST\nSubject: Quarterly Update: Lamna Healthcare executive brief\n\nOur team encountered some challenges with executive brief. Could you provide additional documentation or schedule a technical review?\n\n---\nFrom: Victoria Lee <victoria.lee@lamnahealthc.com>\nTo: Priya Sharma <priya.sharma@microsoft.com>\nDate: 2024-01-11 11:54 EST\nSubject: executive brief - Action Required\n\nOur team encountered some challenges with executive brief. Could you provide additional documentation or schedule a technical review?",
+      "metadata": {
+        "freshness": "2024-03-06T13:00:00-05:00",
+        "source": "outlook",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: executive brief Discussion - Lamna Healthcare\nDate: 2024-03-28\nDuration: 45 minutes\nAttendees: Victoria Lee (Lamna Healthcare), Priya Sharma (Microsoft)\n\n[00:02:00] Victoria Lee (Lamna Healthcare): Good morning. I wanted to follow up on executive brief from our last session.\n\n[00:06:00] Priya Sharma (Microsoft): I agree with that assessment. From our side, the main concern is performance requirements.\n\n[00:11:00] Victoria Lee (Lamna Healthcare): Let me add some context -- we've been working on partner engagement and found that the existing infrastructure won't support the target workload without upgrades.\n\n[00:14:00] Priya Sharma (Microsoft): Let me add some context -- we've been working on resource allocation and found that the migration can proceed in phases to reduce risk.\n\n[00:17:00] Victoria Lee (Lamna Healthcare): Let me add some context -- we've been working on security compliance and found that there's a compliance requirement we hadn't accounted for in the original scope.\n\n[00:20:00] Victoria Lee (Lamna Healthcare): I agree with that assessment. From our side, the main concern is stakeholder alignment.\n\n[00:23:00] Victoria Lee (Lamna Healthcare): On the executive brief front, we've made progress but there are still blockers around technical validation.\n\n[00:25:00] Victoria Lee (Lamna Healthcare): Let me add some context -- we've been working on data residency and found that the migration can proceed in phases to reduce risk.\n\n[00:29:00] Victoria Lee (Lamna Healthcare): The timeline for technical validation is aggressive. We need to validate the assumptions.",
+      "metadata": {
+        "freshness": "2024-03-26T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Lamna Healthcare - executive brief",
+        "start": "2024-03-13T11:00:00-05:00",
+        "end": "2024-03-14T17:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Priya Sharma",
+            "email": "priya.sharma@microsoft.com"
+          },
+          {
+            "name": "Victoria Lee",
+            "email": "victoria.lee@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "deployment_blocker",
+            "detail": "Signal detected for Lamna Healthcare: there's a dependency on the security team's review that could delay us",
+            "date": "2024-03-06"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-segment-smb-corporate",
+    "data-stale",
+    "persona-geo-emea",
+    "persona-tenure-junior",
+    "routing-ambiguous-3skills"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "contact-stakeholder-map"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "adversarial-routing-test",
+    "required_artifacts": [
+      "correct_routing_justification",
+      "confusion_analysis"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Correctly routes to primary workflow despite adversarial signals; output is complete",
+      "Score 3: Routes correctly but output shows contamination from confusing signals",
+      "Score 1: Misroutes to wrong workflow or produces irrelevant output"
+    ],
+    "evidence_anchors": [
+      "Score 5: All evidence correctly attributed despite cross-workflow noise",
+      "Score 3: Some evidence misattributed but core facts correct",
+      "Score 1: Significant evidence confusion or hallucination"
+    ],
+    "decision_anchors": [
+      "Score 5: Decision-making robust against adversarial perturbations",
+      "Score 3: Primary decision correct but secondary decisions influenced by noise",
+      "Score 1: Primary decision compromised by adversarial inputs"
+    ]
+  },
+  "guardrail_checks": [
+    "Must correctly identify primary workflow despite adversarial routing signals",
+    "Must not hallucinate context from similar-sounding workflows",
+    "Must not expose internal routing logic to user"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

@@ -1,0 +1,119 @@
+{
+  "scenario_id": "WF-09-90406",
+  "workflow_id": "WF-09",
+  "workflow_name": "Consumption-at-Risk Watchlist",
+  "seed": 9900448,
+  "tier": 3,
+  "intent": "adherence",
+  "targeted_failure_mode": null,
+  "persona": "CSA",
+  "fixture_id": "FX-049",
+  "user_message": "[AUTOMATION TRIGGER] Daily automation: Daily automated watchlist generation or on-demand 'which acc. Account: Iron Creek Mining.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Iron Creek Mining",
+        "account_id": "ACC-WVPLFPK6",
+        "opportunities": [
+          {
+            "name": "Iron Azure DevOps",
+            "stage": "Qualify",
+            "amount": 350000,
+            "close_date": "2024-10-28"
+          },
+          {
+            "name": "Iron Azure Virtual Desktop",
+            "stage": "Develop",
+            "amount": 280000,
+            "close_date": "2024-06-02"
+          },
+          {
+            "name": "Iron Azure SQL Migration",
+            "stage": "Qualify",
+            "amount": 68000,
+            "close_date": "2024-05-06"
+          }
+        ],
+        "acr_current": 10924.12,
+        "health_flag": "Healthy",
+        "owner": "Tom Rodriguez"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "deployment_blocker",
+            "detail": "Signal detected for Iron Creek Mining: the migration can proceed in phases to reduce risk",
+            "date": "2024-03-10"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-09T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "data-contradictory",
+    "persona-tenure-senior",
+    "persona-segment-smb-small",
+    "cross-workflow-trigger"
+  ],
+  "expected_routing": {
+    "entry_skill": "acr-signal-to-opportunity-coach",
+    "modules": [
+      "acr-data-access",
+      "acr-health-forecast"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "at-risk account has stale records"
+      },
+      {
+        "target_skill": "customer-meeting-prep-outreach-coach",
+        "condition": "outreach needed for at-risk account"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "adversarial-routing-test",
+    "required_artifacts": [
+      "correct_routing_justification",
+      "confusion_analysis"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Correctly routes to primary workflow despite adversarial signals; output is complete",
+      "Score 3: Routes correctly but output shows contamination from confusing signals",
+      "Score 1: Misroutes to wrong workflow or produces irrelevant output"
+    ],
+    "evidence_anchors": [
+      "Score 5: All evidence correctly attributed despite cross-workflow noise",
+      "Score 3: Some evidence misattributed but core facts correct",
+      "Score 1: Significant evidence confusion or hallucination"
+    ],
+    "decision_anchors": [
+      "Score 5: Decision-making robust against adversarial perturbations",
+      "Score 3: Primary decision correct but secondary decisions influenced by noise",
+      "Score 1: Primary decision compromised by adversarial inputs"
+    ]
+  },
+  "guardrail_checks": [
+    "Must correctly identify primary workflow despite adversarial routing signals",
+    "Must not hallucinate context from similar-sounding workflows",
+    "Must not expose internal routing logic to user"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

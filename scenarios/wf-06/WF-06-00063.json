@@ -1,0 +1,115 @@
+{
+  "scenario_id": "WF-06-00063",
+  "workflow_id": "WF-06",
+  "workflow_name": "ACR Decline Investigation",
+  "seed": 600105,
+  "tier": 3,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF06-B",
+  "persona": "CSA",
+  "fixture_id": "FX-019",
+  "user_message": "Just got this from Laura Anderson at Lucerne Publishing -- I need help figuring out renewal risk. Board meeting is next week.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Lucerne Publishing",
+        "account_id": "ACC-2JXCFRG8",
+        "opportunities": [
+          {
+            "name": "Lucerne Copilot Adoption",
+            "stage": "Propose",
+            "amount": 210000,
+            "close_date": "2023-11-19"
+          },
+          {
+            "name": "Lucerne Data Platform Migration",
+            "stage": "Prospect",
+            "amount": 45000,
+            "close_date": "2024-11-16"
+          }
+        ],
+        "acr_current": 39791.19,
+        "health_flag": "Healthy",
+        "owner": "Tom Rodriguez"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "contract_event",
+            "detail": "Signal detected for Lucerne Publishing: there's a compliance requirement we hadn't accounted for in the original scope",
+            "date": "2024-03-11"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-10T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-geo-na",
+    "data-stale",
+    "persona-tenure-mid"
+  ],
+  "expected_routing": {
+    "entry_skill": "acr-signal-to-opportunity-coach",
+    "modules": [
+      "acr-data-access",
+      "acr-health-forecast",
+      "signal-to-opportunity"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "funding-partner-activation-coach",
+        "condition": "contract/billing is the driver"
+      },
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "opportunity records need updating"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "acr-decline-investigation",
+    "required_artifacts": [
+      "Ranked hypotheses for decline with evidence",
+      "recovery actions with owners",
+      "timeline",
+      "confidence labels"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF06-B trap (Skips contract/billing check (often the actual cause)); produces complete Ranked hypotheses for decline with evidence, recovery actions with owners, timeline, confidence labe",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF06-B failure pattern",
+      "Score 1: Output exhibits the full FM-WF06-B failure mode (Skips contract/billing check (often the actual cause))"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct renewal risk decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF06-B -- Skips contract/billing check (often the actual cause)"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

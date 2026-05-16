@@ -1,0 +1,96 @@
+{
+  "scenario_id": "WF-16-90396",
+  "workflow_id": "WF-16",
+  "workflow_name": "Email Context Pull-Through",
+  "seed": 9900438,
+  "tier": 1,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": null,
+  "persona": "CSA",
+  "fixture_id": "FX-039",
+  "user_message": "This just came in from Kevin Lee at Fabrikam Residences. Can you identify the blockers?",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Fabrikam Residences",
+        "account_id": "ACC-5JSOIRD0",
+        "opportunities": [
+          {
+            "name": "Fabrikam Power Platform",
+            "stage": "Prospect",
+            "amount": 175000,
+            "close_date": "2024-06-08"
+          },
+          {
+            "name": "Fabrikam Cloud Migration Phase",
+            "stage": "Develop",
+            "amount": 450000,
+            "close_date": "2024-11-24"
+          }
+        ],
+        "acr_current": 32488.07,
+        "health_flag": "Healthy",
+        "owner": "Tom Rodriguez"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Kevin Lee <kevin.lee@fabrikamresi.com>\nTo: Tom Rodriguez <tom.rodriguez@microsoft.com>\nDate: 2024-03-16 16:19 EST\nSubject: Quarterly Update: Fabrikam Residences whitespace analysis\n\nThank you for the discussion last week. We'd like to move forward with whitespace analysis. Can we schedule a call this week to finalize the timeline?\n\n---\nFrom: Tom Rodriguez <tom.rodriguez@microsoft.com>\nTo: Kevin Lee <kevin.lee@fabrikamresi.com>\nDate: 2024-02-13 16:25 EST\nSubject: URGENT: whitespace analysis Issue at Fabrikam Residences\n\nI wanted to follow up on our conversation about whitespace analysis. Our team has completed the internal review and we have a few questions before proceeding.\n\n---\nFrom: Kevin Lee <kevin.lee@fabrikamresi.com>\nTo: Tom Rodriguez <tom.rodriguez@microsoft.com>\nDate: 2024-01-03 09:32 EST\nSubject: whitespace analysis - Action Required\n\nThere's been a change in our timeline for whitespace analysis. Can we discuss the implications on the overall project plan?",
+      "metadata": {
+        "freshness": "2024-03-01T17:00:00-05:00",
+        "source": "outlook",
+        "length_class": "long"
+      }
+    }
+  ],
+  "perturbations": [
+    "routing-clear",
+    "persona-role-csa",
+    "persona-geo-emea",
+    "persona-tenure-mid",
+    "routing-ambiguous-3skills"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "email-chat-context"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "adversarial-routing-test",
+    "required_artifacts": [
+      "correct_routing_justification",
+      "confusion_analysis"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Correctly routes to primary workflow despite adversarial signals; output is complete",
+      "Score 3: Routes correctly but output shows contamination from confusing signals",
+      "Score 1: Misroutes to wrong workflow or produces irrelevant output"
+    ],
+    "evidence_anchors": [
+      "Score 5: All evidence correctly attributed despite cross-workflow noise",
+      "Score 3: Some evidence misattributed but core facts correct",
+      "Score 1: Significant evidence confusion or hallucination"
+    ],
+    "decision_anchors": [
+      "Score 5: Decision-making robust against adversarial perturbations",
+      "Score 3: Primary decision correct but secondary decisions influenced by noise",
+      "Score 1: Primary decision compromised by adversarial inputs"
+    ]
+  },
+  "guardrail_checks": [
+    "Must correctly identify primary workflow despite adversarial routing signals",
+    "Must not hallucinate context from similar-sounding workflows",
+    "Must not expose internal routing logic to user"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

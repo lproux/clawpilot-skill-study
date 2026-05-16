@@ -1,0 +1,133 @@
+{
+  "scenario_id": "WF-45-00056",
+  "workflow_id": "WF-45",
+  "workflow_name": "QBR Transcript -> Health + Whitespace + Renewal Risk",
+  "seed": 4500098,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF45-C",
+  "persona": "Manager",
+  "fixture_id": "FX-005",
+  "user_message": "I need you to process this escalation email from Tailspin Toys. We had a deep-dive last month -- need the follow-up.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Tailspin Toys",
+        "account_id": "ACC-JXC3G9ET",
+        "opportunities": [
+          {
+            "name": "Tailspin Azure Virtual Desktop",
+            "stage": "Close",
+            "amount": 560000,
+            "close_date": "2024-09-15"
+          },
+          {
+            "name": "Tailspin Azure SQL Migration",
+            "stage": "Prospect",
+            "amount": 125000,
+            "close_date": "2024-10-05"
+          },
+          {
+            "name": "Tailspin Dynamics 365 Implementation",
+            "stage": "Propose",
+            "amount": 45000,
+            "close_date": "2024-08-10"
+          }
+        ],
+        "acr_current": 122043.29,
+        "health_flag": "Healthy",
+        "owner": "Raj Mehta"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: competitive positioning Discussion - Tailspin Toys\nDate: 2024-03-02\nDuration: 45 minutes\nAttendees: Steven Wilson (Tailspin Toys), Raj Mehta (Microsoft), Michelle (Tailspin Toys)\n\n[00:01:30] Steven Wilson (Tailspin Toys): Thanks everyone for joining. Let's dive into competitive positioning.\n\n[00:06:00] Raj Mehta (Microsoft): The timeline for timeline constraints is aggressive. We need to validate the assumptions.\n\n[00:11:00] Steven Wilson (Tailspin Toys): Our architect reviewed this and has concerns about performance requirements. Can we address those?\n\n[00:15:00] Steven Wilson (Tailspin Toys): The timeline for technical validation is aggressive. We need to validate the assumptions.\n\n[00:17:00] Raj Mehta (Microsoft): Let me add some context -- we've been working on data residency and found that the migration can proceed in phases to reduce risk.\n\n[00:22:00] Steven Wilson (Tailspin Toys): On the competitive positioning front, we've made progress but there are still blockers around integration complexity.\n\n[00:27:00] Michelle (Tailspin Toys): The timeline for budget approval is aggressive. We need to validate the assumptions.\n\n[00:32:00] Steven Wilson (Tailspin Toys): On the competitive positioning front, we've made progress but there are still blockers around resource allocation.\n\n[00:37:00] Steven Wilson (Tailspin Toys): Let me add some context -- we've been working on security compliance and found that the cost projections need to factor in reserved instance pricing for accuracy.\n\n[00:39:00] Michelle (Tailspin Toys): Our team lead reviewed this and has concerns about resource allocation. Can we address those?\n\n[00:42:00] Raj Mehta (Microsoft): Let me add some context -- we've been working on technical validation and found that the migration can proceed in phases to reduce risk.",
+      "metadata": {
+        "freshness": "2024-01-17T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "consumption_decline",
+            "detail": "Signal detected for Tailspin Toys: the existing infrastructure won't support the target workload without upgrades",
+            "date": "2024-03-08"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-09T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-geo-apac",
+    "routing-clear"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "portfolio-account-planning-coach",
+        "condition": "health assessment needed"
+      },
+      {
+        "target_skill": "acr-signal-to-opportunity-coach",
+        "condition": "whitespace signals warrant investigation"
+      },
+      {
+        "target_skill": "forecast-business-review-coach",
+        "condition": "renewal risk affects forecast"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "qbr-transcript-->-health-+-whitespace-+-renewal-ri",
+    "required_artifacts": [
+      "Health delta assessment",
+      "whitespace hypotheses",
+      "renewal risk with confidence",
+      "action distribution with owners",
+      "comparison to last QBR commitments"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF45-C trap (Whitespace hypotheses ignore customer's stated priorities); produces complete Health delta assessment, whitespace hypotheses, renewal risk with confidence, action distribution wi",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF45-C failure pattern",
+      "Score 1: Output exhibits the full FM-WF45-C failure mode (Whitespace hypotheses ignore customer's stated priorities)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct competitive positioning decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF45-C -- Whitespace hypotheses ignore customer's stated priorities"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

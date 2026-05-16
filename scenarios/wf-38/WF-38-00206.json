@@ -1,0 +1,128 @@
+{
+  "scenario_id": "WF-38-00206",
+  "workflow_id": "WF-38",
+  "workflow_name": "Champion-Change Email Signal -> Re-engagement Plan",
+  "seed": 3800248,
+  "tier": 4,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": "FM-WF38-K",
+  "persona": "Manager",
+  "fixture_id": "FX-005",
+  "user_message": "Give me the manager view on this Tailspin Toys email thread. Board meeting is next week.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Tailspin Toys",
+        "account_id": "ACC-JXC3G9ET",
+        "opportunities": [
+          {
+            "name": "Tailspin Azure Virtual Desktop",
+            "stage": "Close",
+            "amount": 560000,
+            "close_date": "2024-09-15"
+          },
+          {
+            "name": "Tailspin Azure SQL Migration",
+            "stage": "Prospect",
+            "amount": 125000,
+            "close_date": "2024-10-05"
+          },
+          {
+            "name": "Tailspin Dynamics 365 Implementation",
+            "stage": "Propose",
+            "amount": 45000,
+            "close_date": "2024-08-10"
+          }
+        ],
+        "acr_current": 122043.29,
+        "health_flag": "Healthy",
+        "owner": "Raj Mehta"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Steven Wilson <steven.wilson@tailspintoys.com>\nTo: Raj Mehta <raj.mehta@microsoft.com>\nDate: 2024-03-03 15:47 EST\nSubject: Quarterly Update: Tailspin Toys QBR preparation\n\nThank you for the discussion last week. We'd like to move forward with QBR preparation. Can we schedule a call this week to finalize the timeline?\n\n---\nFrom: Raj Mehta <raj.mehta@microsoft.com>\nTo: Steven Wilson <steven.wilson@tailspintoys.com>\nDate: 2024-01-09 16:44 EST\nSubject: QBR preparation - Action Required\n\nWe've been evaluating the options and have decided to proceed with QBR preparation. What are the next steps from your side?",
+      "metadata": {
+        "freshness": "2024-02-04T11:00:00-05:00",
+        "source": "outlook",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "deployment_blocker",
+            "detail": "Signal detected for Tailspin Toys: the current vendor contract has a 90-day exit clause we need to plan around",
+            "date": "2024-03-09"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-10T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "signal-strength-faint",
+    "persona-segment-smb-small",
+    "persona-geo-apac"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "contact-stakeholder-map",
+      "email-chat-context",
+      "dark-customer-outreach"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "contact and opportunity records need updating"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "champion-change-email-signal-->-re-engagement-plan",
+    "required_artifacts": [
+      "Stakeholder map delta",
+      "opportunity-at-risk assessment",
+      "re-engagement plan",
+      "contact update proposals",
+      "warm-handoff draft (if champion willing)"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF38-K trap (Strict draft-only when an obvious warm-handoff email would benefit from being se); produces complete Stakeholder map delta, opportunity-at-risk assessment, re-engagement plan, contact update proposals,",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF38-K failure pattern",
+      "Score 1: Output exhibits the full FM-WF38-K failure mode (Strict draft-only when an obvious warm-handoff email would benefit from being se)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct QBR preparation decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF38-K -- Strict draft-only when an obvious warm-handoff email would benefit from being se",
+    "Guardrail axis scored neutrally -- focus on whether output served the user's actual need"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

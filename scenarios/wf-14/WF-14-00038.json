@@ -1,0 +1,146 @@
+{
+  "scenario_id": "WF-14-00038",
+  "workflow_id": "WF-14",
+  "workflow_name": "Stakeholder Map Generation",
+  "seed": 1400080,
+  "tier": 1,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF14-C",
+  "persona": "Manager",
+  "fixture_id": "FX-019",
+  "user_message": "What's at risk across my portfolio? I think there's an opportunity here but need to validate.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Lucerne Publishing",
+        "account_id": "ACC-2JXCFRG8",
+        "opportunities": [
+          {
+            "name": "Lucerne Copilot Adoption",
+            "stage": "Propose",
+            "amount": 210000,
+            "close_date": "2023-11-19"
+          },
+          {
+            "name": "Lucerne Data Platform Migration",
+            "stage": "Prospect",
+            "amount": 45000,
+            "close_date": "2024-11-16"
+          }
+        ],
+        "acr_current": 39791.19,
+        "health_flag": "Healthy",
+        "owner": "Tom Rodriguez"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Laura Anderson <laura.anderson@lucernepubli.com>\nTo: Tom Rodriguez <tom.rodriguez@microsoft.com>\nDate: 2024-03-08 10:29 EST\nSubject: deployment blockers - Action Required\n\nOur team encountered some challenges with deployment blockers. Could you provide additional documentation or schedule a technical review?\n\n---\nFrom: Tom Rodriguez <tom.rodriguez@microsoft.com>\nTo: Laura Anderson <laura.anderson@lucernepubli.com>\nDate: 2024-02-07 13:10 EST\nSubject: Quarterly Update: Lucerne Publishing deployment blockers\n\nOur team encountered some challenges with deployment blockers. Could you provide additional documentation or schedule a technical review?\n\n---\nFrom: Laura Anderson <laura.anderson@lucernepubli.com>\nTo: Tom Rodriguez <tom.rodriguez@microsoft.com>\nDate: 2024-01-14 13:37 EST\nSubject: Quarterly Update: Lucerne Publishing deployment blockers\n\nThere's been a change in our timeline for deployment blockers. Can we discuss the implications on the overall project plan?",
+      "metadata": {
+        "freshness": "2024-03-15T09:00:00-05:00",
+        "source": "outlook",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: deployment blockers Discussion - Lucerne Publishing\nDate: 2024-01-06\nDuration: 45 minutes\nAttendees: Laura Anderson (Lucerne Publishing), Tom Rodriguez (Microsoft), David (Lucerne Publishing)\n\n[00:01:15] Laura Anderson (Lucerne Publishing): Appreciate everyone making time. The main agenda today is deployment blockers.\n\n[00:05:00] Tom Rodriguez (Microsoft): On the deployment blockers front, we've made progress but there are still blockers around data residency.\n\n[00:09:00] Tom Rodriguez (Microsoft): The timeline for cost optimization is aggressive. We need to validate the assumptions.\n\n[00:11:00] David (Lucerne Publishing): Let me add some context -- we've been working on technical validation and found that there's a compliance requirement we hadn't accounted for in the original scope.\n\n[00:16:00] Tom Rodriguez (Microsoft): Our architect reviewed this and has concerns about partner engagement. Can we address those?\n\n[00:20:00] Tom Rodriguez (Microsoft): The timeline for stakeholder alignment is aggressive. We need to validate the assumptions.\n\n[00:23:00] David (Lucerne Publishing): The timeline for vendor dependencies is aggressive. We need to validate the assumptions.\n\n[00:28:00] David (Lucerne Publishing): Let me add some context -- we've been working on cost optimization and found that the current vendor contract has a 90-day exit clause we need to plan around.\n\n[00:32:00] Tom Rodriguez (Microsoft): Let me add some context -- we've been working on cost optimization and found that the existing infrastructure won't support the target workload without upgrades.",
+      "metadata": {
+        "freshness": "2024-01-03T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Lucerne Publishing - deployment blockers",
+        "start": "2024-03-11T15:00:00-05:00",
+        "end": "2024-03-11T10:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Tom Rodriguez",
+            "email": "tom.rodriguez@microsoft.com"
+          },
+          {
+            "name": "Laura Anderson",
+            "email": "laura.anderson@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "contract_event",
+            "detail": "Signal detected for Lucerne Publishing: the cost projections need to factor in reserved instance pricing for accuracy",
+            "date": "2024-03-08"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "routing-ambiguous-2skills",
+    "persona-role-manager",
+    "persona-tenure-junior",
+    "persona-geo-na"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "contact-stakeholder-map"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "stakeholder-map-generation",
+    "required_artifacts": [
+      "Stakeholder map with roles (decision-maker",
+      "influencer",
+      "champion",
+      "blocker)",
+      "recency labels"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF14-C trap (No recency labeling); produces complete Stakeholder map with roles (decision-maker, influencer, champion, blocker), recency labels, confiden",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF14-C failure pattern",
+      "Score 1: Output exhibits the full FM-WF14-C failure mode (No recency labeling)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct deployment blockers decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF14-C -- No recency labeling"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

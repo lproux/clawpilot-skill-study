@@ -1,0 +1,115 @@
+{
+  "scenario_id": "WF-07-90823",
+  "workflow_id": "WF-07",
+  "workflow_name": "SPA Triage Friday",
+  "seed": 9900865,
+  "tier": 2,
+  "intent": "adherence",
+  "targeted_failure_mode": null,
+  "persona": "DSSP",
+  "fixture_id": "FX-016",
+  "user_message": "[AUTOMATION TRIGGER] Scheduled Friday scheduled automation for SPA batch triage initiated for Graphic Design Institute.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Graphic Design Institute",
+        "account_id": "ACC-HIKSYLTX",
+        "opportunities": [
+          {
+            "name": "Graphic Azure DevOps",
+            "stage": "Propose",
+            "amount": 450000,
+            "close_date": "2023-09-06"
+          },
+          {
+            "name": "Graphic Azure Infrastructure",
+            "stage": "Prospect",
+            "amount": 125000,
+            "close_date": "2024-11-14"
+          },
+          {
+            "name": "Graphic Azure Arc Deployment",
+            "stage": "Develop",
+            "amount": 45000,
+            "close_date": "2024-10-28"
+          }
+        ],
+        "acr_current": 10042.75,
+        "health_flag": "Healthy",
+        "owner": "Jennifer Walsh"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "security_alert",
+            "detail": "Signal detected for Graphic Design Institute: the cost projections need to factor in reserved instance pricing for accuracy",
+            "date": "2024-03-10"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-10T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-geo-emea",
+    "data-stale",
+    "routing-ambiguous-2skills",
+    "routing-ambiguous-3skills"
+  ],
+  "expected_routing": {
+    "entry_skill": "acr-signal-to-opportunity-coach",
+    "modules": [
+      "spa-recommendation-triage",
+      "signal-to-opportunity"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "accepted SPA creates opportunity needing MSX write"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "adversarial-routing-test",
+    "required_artifacts": [
+      "correct_routing_justification",
+      "confusion_analysis"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Correctly routes to primary workflow despite adversarial signals; output is complete",
+      "Score 3: Routes correctly but output shows contamination from confusing signals",
+      "Score 1: Misroutes to wrong workflow or produces irrelevant output"
+    ],
+    "evidence_anchors": [
+      "Score 5: All evidence correctly attributed despite cross-workflow noise",
+      "Score 3: Some evidence misattributed but core facts correct",
+      "Score 1: Significant evidence confusion or hallucination"
+    ],
+    "decision_anchors": [
+      "Score 5: Decision-making robust against adversarial perturbations",
+      "Score 3: Primary decision correct but secondary decisions influenced by noise",
+      "Score 1: Primary decision compromised by adversarial inputs"
+    ]
+  },
+  "guardrail_checks": [
+    "Must correctly identify primary workflow despite adversarial routing signals",
+    "Must not hallucinate context from similar-sounding workflows",
+    "Must not expose internal routing logic to user"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

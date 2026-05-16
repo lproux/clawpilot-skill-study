@@ -1,0 +1,135 @@
+{
+  "scenario_id": "WF-11-00296",
+  "workflow_id": "WF-11",
+  "workflow_name": "Pre-Meeting Brief",
+  "seed": 1100338,
+  "tier": 2,
+  "intent": "design-redesign",
+  "targeted_failure_mode": "FM-WF11-M",
+  "persona": "Manager",
+  "fixture_id": "FX-035",
+  "user_message": "How should I coach Raj Mehta on Treyarch Global? I think there's an opportunity here but need to validate.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Treyarch Global",
+        "account_id": "ACC-YBG804XY",
+        "opportunities": [
+          {
+            "name": "Treyarch Azure DevOps",
+            "stage": "Close",
+            "amount": 89000,
+            "close_date": "2024-05-02"
+          },
+          {
+            "name": "Treyarch Azure AI Services",
+            "stage": "Qualify",
+            "amount": 450000,
+            "close_date": "2024-05-13"
+          }
+        ],
+        "acr_current": 48495.65,
+        "health_flag": "Healthy",
+        "owner": "Raj Mehta"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Laura Schmidt <laura.schmidt@treyarchglob.com>\nTo: Raj Mehta <raj.mehta@microsoft.com>\nDate: 2024-03-15 12:42 EST\nSubject: renewal risk - Action Required\n\nWe've been evaluating the options and have decided to proceed with renewal risk. What are the next steps from your side?\n\n---\nFrom: Raj Mehta <raj.mehta@microsoft.com>\nTo: Laura Schmidt <laura.schmidt@treyarchglob.com>\nDate: 2024-02-24 12:09 EST\nSubject: Quarterly Update: Treyarch Global renewal risk\n\nThere's been a change in our timeline for renewal risk. Can we discuss the implications on the overall project plan?\n\n---\nFrom: Laura Schmidt <laura.schmidt@treyarchglob.com>\nTo: Raj Mehta <raj.mehta@microsoft.com>\nDate: 2024-01-16 10:43 EST\nSubject: Follow-up: renewal risk Review\n\nThere's been a change in our timeline for renewal risk. Can we discuss the implications on the overall project plan?",
+      "metadata": {
+        "freshness": "2024-02-15T16:00:00-05:00",
+        "source": "outlook",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: renewal risk Discussion - Treyarch Global\nDate: 2024-01-27\nDuration: 45 minutes\nAttendees: Laura Schmidt (Treyarch Global), Raj Mehta (Microsoft)\n\n[00:01:15] Laura Schmidt (Treyarch Global): Appreciate everyone making time. The main agenda today is renewal risk.\n\n[00:06:00] Raj Mehta (Microsoft): Let me add some context -- we've been working on timeline constraints and found that there's a compliance requirement we hadn't accounted for in the original scope.\n\n[00:10:00] Laura Schmidt (Treyarch Global): The timeline for integration complexity is aggressive. We need to validate the assumptions.\n\n[00:13:00] Raj Mehta (Microsoft): Our VP reviewed this and has concerns about technical validation. Can we address those?\n\n[00:17:00] Laura Schmidt (Treyarch Global): On the renewal risk front, we've made progress but there are still blockers around partner engagement.\n\n[00:20:00] Raj Mehta (Microsoft): Our director reviewed this and has concerns about data residency. Can we address those?\n\n[00:25:00] Raj Mehta (Microsoft): Let me add some context -- we've been working on vendor dependencies and found that the current vendor contract has a 90-day exit clause we need to plan around.\n\n[00:28:00] Raj Mehta (Microsoft): On the renewal risk front, we've made progress but there are still blockers around timeline constraints.\n\n[00:31:00] Laura Schmidt (Treyarch Global): I agree with that assessment. From our side, the main concern is timeline constraints.\n\n[00:36:00] Raj Mehta (Microsoft): Let me add some context -- we've been working on stakeholder alignment and found that the migration can proceed in phases to reduce risk.\n\n[00:40:00] Laura Schmidt (Treyarch Global): I agree with that assessment. From our side, the main concern is security compliance.",
+      "metadata": {
+        "freshness": "2024-03-01T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Treyarch Global - renewal risk",
+        "start": "2024-03-11T16:00:00-05:00",
+        "end": "2024-03-15T14:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Raj Mehta",
+            "email": "raj.mehta@microsoft.com"
+          },
+          {
+            "name": "Laura Schmidt",
+            "email": "laura.schmidt@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-geo-latam",
+    "persona-segment-smb-mid",
+    "data-partially-missing"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "meeting-prep",
+      "contact-stakeholder-map"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "pre-meeting-brief",
+    "required_artifacts": [
+      "One-page brief with attendee context",
+      "account snapshot",
+      "talking points",
+      "likely objections",
+      "open items from last meeting"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF11-M trap (Brief format doesn't natively differentiate first-meeting vs recurring); produces complete One-page brief with attendee context, account snapshot, talking points, likely objections, open item",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF11-M failure pattern",
+      "Score 1: Output exhibits the full FM-WF11-M failure mode (Brief format doesn't natively differentiate first-meeting vs recurring)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct renewal risk decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF11-M -- Brief format doesn't natively differentiate first-meeting vs recurring",
+    "Produce structural verdict on whether current routing adequately serves this scenario"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "verdict-on-structural",
+    "verdict_required_axes": [
+      "routing",
+      "evidence"
+    ]
+  }
+}

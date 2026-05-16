@@ -1,0 +1,119 @@
+{
+  "scenario_id": "WF-41-00139",
+  "workflow_id": "WF-41",
+  "workflow_name": "Dark-Customer Re-Emergence",
+  "seed": 4100181,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF41-A",
+  "persona": "DSSP",
+  "fixture_id": "FX-021",
+  "user_message": "Can you extract the account health from this escalation email for Nod Publishers? We had a deep-dive last month -- need the follow-up.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Nod Publishers",
+        "account_id": "ACC-BFJJI6LY",
+        "opportunities": [
+          {
+            "name": "Nod Azure SQL Migration",
+            "stage": "Close",
+            "amount": 45000,
+            "close_date": "2023-10-06"
+          },
+          {
+            "name": "Nod Intune Rollout",
+            "stage": "Develop",
+            "amount": 560000,
+            "close_date": "2024-12-16"
+          }
+        ],
+        "acr_current": 111088.58,
+        "health_flag": "At Risk",
+        "owner": "Marcus Williams"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Samantha Singh <samantha.singh@nodpublisher.com>\nTo: Marcus Williams <marcus.williams@microsoft.com>\nDate: 2024-03-14 17:55 EST\nSubject: account health - Action Required\n\nWe've been evaluating the options and have decided to proceed with account health. What are the next steps from your side?\n\n---\nFrom: Marcus Williams <marcus.williams@microsoft.com>\nTo: Samantha Singh <samantha.singh@nodpublisher.com>\nDate: 2024-02-12 16:05 EST\nSubject: Re: account health Discussion - Next Steps\n\nI wanted to follow up on our conversation about account health. Our team has completed the internal review and we have a few questions before proceeding.\n\n---\nFrom: Samantha Singh <samantha.singh@nodpublisher.com>\nTo: Marcus Williams <marcus.williams@microsoft.com>\nDate: 2024-01-24 11:24 EST\nSubject: URGENT: account health Issue at Nod Publishers\n\nThank you for the discussion last week. We'd like to move forward with account health. Can we schedule a call this week to finalize the timeline?",
+      "metadata": {
+        "freshness": "2024-02-22T16:00:00-05:00",
+        "source": "outlook",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "security_alert",
+            "detail": "Signal detected for Nod Publishers: the migration can proceed in phases to reduce risk",
+            "date": "2024-03-05"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-geo-apac",
+    "routing-clear"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "email-chat-context",
+      "contact-stakeholder-map"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "MSX records need dark-period hygiene catchup"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "dark-customer-re-emergence",
+    "required_artifacts": [
+      "Context reconstruction",
+      "re-qualification assessment",
+      "response draft (appropriate tone)",
+      "stakeholder verification plan",
+      "MSX hygiene catchup proposals"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF41-A trap (Assumes pre-dark opportunity state still valid); produces complete Context reconstruction, re-qualification assessment, response draft (appropriate tone), stakeholder ",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF41-A failure pattern",
+      "Score 1: Output exhibits the full FM-WF41-A failure mode (Assumes pre-dark opportunity state still valid)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct account health decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF41-A -- Assumes pre-dark opportunity state still valid"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

@@ -1,0 +1,110 @@
+{
+  "scenario_id": "WF-47-00066",
+  "workflow_id": "WF-47",
+  "workflow_name": "Multi-Stakeholder Meeting Transcript -> Decision Distribution",
+  "seed": 4700108,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF47-B",
+  "persona": "CSA",
+  "fixture_id": "FX-025",
+  "user_message": "I have this exec meeting notes from Adatum Corporation that needs triage this. Not urgent but would be good to have by EOD.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Adatum Corporation",
+        "account_id": "ACC-ELNED368",
+        "opportunities": [
+          {
+            "name": "Adatum Azure Virtual Desktop",
+            "stage": "Qualify",
+            "amount": 175000,
+            "close_date": "2023-12-18"
+          },
+          {
+            "name": "Adatum Azure SQL Migration",
+            "stage": "Close",
+            "amount": 125000,
+            "close_date": "2024-10-09"
+          },
+          {
+            "name": "Adatum Azure Arc Deployment",
+            "stage": "Propose",
+            "amount": 210000,
+            "close_date": "2024-12-01"
+          }
+        ],
+        "acr_current": 14124.54,
+        "health_flag": "At Risk",
+        "owner": "Raj Mehta"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: account health Discussion - Adatum Corporation\nDate: 2024-01-06\nDuration: 45 minutes\nAttendees: Laura Nguyen (Adatum Corporation), Raj Mehta (Microsoft), Michelle (Adatum Corporation)\n\n[00:01:15] Laura Nguyen (Adatum Corporation): Appreciate everyone making time. The main agenda today is account health.\n\n[00:05:00] Michelle (Adatum Corporation): On the account health front, we've made progress but there are still blockers around technical validation.\n\n[00:09:00] Laura Nguyen (Adatum Corporation): On the account health front, we've made progress but there are still blockers around vendor dependencies.\n\n[00:13:00] Laura Nguyen (Adatum Corporation): Our director reviewed this and has concerns about data residency. Can we address those?\n\n[00:17:00] Michelle (Adatum Corporation): Let me add some context -- we've been working on vendor dependencies and found that there's a compliance requirement we hadn't accounted for in the original scope.\n\n[00:19:00] Laura Nguyen (Adatum Corporation): Our team lead reviewed this and has concerns about cost optimization. Can we address those?\n\n[00:24:00] Raj Mehta (Microsoft): Let me add some context -- we've been working on vendor dependencies and found that there's a dependency on the security team's review that could delay us.",
+      "metadata": {
+        "freshness": "2024-03-24T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "medium"
+      }
+    }
+  ],
+  "perturbations": [
+    "signal-strength-faint",
+    "persona-segment-smb-mid"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions",
+      "contact-stakeholder-map"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "MSX updates warranted from decisions"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "multi-stakeholder-meeting-transcript-->-decision-d",
+    "required_artifacts": [
+      "Decision log with speaker attribution",
+      "action distribution by role",
+      "stakeholder map delta",
+      "MSX update proposals",
+      "due dates extracted"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF47-B trap (Confuses dissent with discussion); produces complete Decision log with speaker attribution, action distribution by role, stakeholder map delta, MSX updat",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF47-B failure pattern",
+      "Score 1: Output exhibits the full FM-WF47-B failure mode (Confuses dissent with discussion)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct account health decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF47-B -- Confuses dissent with discussion"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

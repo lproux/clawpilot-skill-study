@@ -1,0 +1,98 @@
+{
+  "scenario_id": "WF-50-00057",
+  "workflow_id": "WF-50",
+  "workflow_name": "Executive Meeting Transcript -> Manager Brief + Asks",
+  "seed": 5000099,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF50-E",
+  "persona": "CSA",
+  "fixture_id": "FX-007",
+  "user_message": "I have this escalation email from Litware Inc that needs investigate the decline. Need this before my 2pm call.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Litware Inc",
+        "account_id": "ACC-658MPDXQ",
+        "opportunities": [
+          {
+            "name": "Litware Security Modernization",
+            "stage": "Prospect",
+            "amount": 280000,
+            "close_date": "2024-09-23"
+          }
+        ],
+        "acr_current": 76577.96,
+        "health_flag": "Healthy",
+        "owner": "David Chen"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: account health Discussion - Litware Inc\nDate: 2024-01-27\nDuration: 45 minutes\nAttendees: Sarah Wilson (Litware Inc), David Chen (Microsoft), David (Litware Inc)\n\n[00:01:15] Sarah Wilson (Litware Inc): Appreciate everyone making time. The main agenda today is account health.\n\n[00:08:00] David Chen (Microsoft): The timeline for technical validation is aggressive. We need to validate the assumptions.\n\n[00:12:00] David (Litware Inc): I agree with that assessment. From our side, the main concern is partner engagement.\n\n[00:15:00] David (Litware Inc): The timeline for resource allocation is aggressive. We need to validate the assumptions.\n\n[00:17:00] Sarah Wilson (Litware Inc): The timeline for cost optimization is aggressive. We need to validate the assumptions.\n\n[00:22:00] David (Litware Inc): The timeline for performance requirements is aggressive. We need to validate the assumptions.\n\n[00:25:00] David Chen (Microsoft): Our CTO reviewed this and has concerns about security compliance. Can we address those?\n\n[00:29:00] David Chen (Microsoft): I agree with that assessment. From our side, the main concern is technical validation.\n\n[00:33:00] Sarah Wilson (Litware Inc): I agree with that assessment. From our side, the main concern is resource allocation.",
+      "metadata": {
+        "freshness": "2024-03-07T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "mixed",
+        "length_class": "medium"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-role-csa",
+    "routing-ambiguous-2skills",
+    "persona-tenure-mid"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "forecast-business-review-coach",
+        "condition": "business review narrative input from exec meeting"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "executive-meeting-transcript-->-manager-brief-+-as",
+    "required_artifacts": [
+      "Executive brief (strategic density)",
+      "asks section (actionable for exec)",
+      "risk register",
+      "skip-level follow-up plan",
+      "exec sponsor identification"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF50-E trap (Confuses diplomatic exec language with stated commitment); produces complete Executive brief (strategic density), asks section (actionable for exec), risk register, skip-level f",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF50-E failure pattern",
+      "Score 1: Output exhibits the full FM-WF50-E failure mode (Confuses diplomatic exec language with stated commitment)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct account health decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF50-E -- Confuses diplomatic exec language with stated commitment"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

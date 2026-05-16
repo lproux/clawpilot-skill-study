@@ -1,0 +1,114 @@
+{
+  "scenario_id": "WF-43-00231",
+  "workflow_id": "WF-43",
+  "workflow_name": "Discovery Call Transcript -> Opportunity Build",
+  "seed": 4300273,
+  "tier": 4,
+  "intent": "happy",
+  "targeted_failure_mode": null,
+  "persona": "CSA",
+  "fixture_id": "FX-005",
+  "user_message": "I have this support ticket from Tailspin Toys that needs triage this. Manager is asking for an update today.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Tailspin Toys",
+        "account_id": "ACC-JXC3G9ET",
+        "opportunities": [
+          {
+            "name": "Tailspin Azure Virtual Desktop",
+            "stage": "Close",
+            "amount": 560000,
+            "close_date": "2024-09-15"
+          },
+          {
+            "name": "Tailspin Azure SQL Migration",
+            "stage": "Prospect",
+            "amount": 125000,
+            "close_date": "2024-10-05"
+          },
+          {
+            "name": "Tailspin Dynamics 365 Implementation",
+            "stage": "Propose",
+            "amount": 45000,
+            "close_date": "2024-08-10"
+          }
+        ],
+        "acr_current": 122043.29,
+        "health_flag": "Healthy",
+        "owner": "Raj Mehta"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: competitive positioning Discussion - Tailspin Toys\nDate: 2024-02-16\nDuration: 45 minutes\nAttendees: Steven Wilson (Tailspin Toys), Raj Mehta (Microsoft), David (Tailspin Toys)\n\n[00:01:30] Steven Wilson (Tailspin Toys): Thanks everyone for joining. Let's dive into competitive positioning.\n\n[00:08:00] Steven Wilson (Tailspin Toys): On the competitive positioning front, we've made progress but there are still blockers around vendor dependencies.\n\n[00:12:00] Raj Mehta (Microsoft): Let me add some context -- we've been working on integration complexity and found that the cost projections need to factor in reserved instance pricing for accuracy.\n\n[00:17:00] Steven Wilson (Tailspin Toys): Let me add some context -- we've been working on resource allocation and found that the existing infrastructure won't support the target workload without upgrades.\n\n[00:19:00] David (Tailspin Toys): Let me add some context -- we've been working on resource allocation and found that there's a dependency on the security team's review that could delay us.\n\n[00:24:00] Raj Mehta (Microsoft): Let me add some context -- we've been working on technical validation and found that there's a dependency on the security team's review that could delay us.\n\n[00:27:00] Steven Wilson (Tailspin Toys): On the competitive positioning front, we've made progress but there are still blockers around security compliance.\n\n[00:29:00] Steven Wilson (Tailspin Toys): Let me add some context -- we've been working on technical validation and found that there's a dependency on the security team's review that could delay us.\n\n[00:34:00] Steven Wilson (Tailspin Toys): Our VP reviewed this and has concerns about data residency. Can we address those?",
+      "metadata": {
+        "freshness": "2024-02-20T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "medium"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-segment-smb-small",
+    "data-fresh",
+    "signal-strength-noisy",
+    "persona-geo-apac"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "opportunity creation warranted"
+      },
+      {
+        "target_skill": "solution-value-design-coach",
+        "condition": "solution sketch needed from discovery signals"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "discovery-call-transcript-->-opportunity-build",
+    "required_artifacts": [
+      "BANT signal extraction with evidence quotes",
+      "opportunity proposal with stage/value/close-date",
+      "confidence labels",
+      "solution sketch suggestion",
+      "follow-up actions"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Complete, well-structured output matching the Discovery Call Transcript -> Opportunity Build template with all required artifacts present and actionable",
+      "Score 3: Output covers main requirements but missing one or two secondary artifacts or lacking specificity",
+      "Score 1: Output is generic, missing key artifacts, or fails to address the specific request"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct competitive positioning decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

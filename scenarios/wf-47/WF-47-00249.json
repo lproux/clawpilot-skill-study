@@ -1,0 +1,112 @@
+{
+  "scenario_id": "WF-47-00249",
+  "workflow_id": "WF-47",
+  "workflow_name": "Multi-Stakeholder Meeting Transcript -> Decision Distribution",
+  "seed": 4700291,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF47-J",
+  "persona": "CSA",
+  "fixture_id": "FX-041",
+  "user_message": "I have this support ticket from Quantum Analytics that needs prep a brief. Not urgent but would be good to have by EOD.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Quantum Analytics",
+        "account_id": "ACC-ZJSZDYNL",
+        "opportunities": [
+          {
+            "name": "Quantum Azure Infrastructure",
+            "stage": "Qualify",
+            "amount": 68000,
+            "close_date": "2024-04-14"
+          },
+          {
+            "name": "Quantum Data Platform Migration",
+            "stage": "Develop",
+            "amount": 450000,
+            "close_date": "2024-07-16"
+          },
+          {
+            "name": "Quantum Dynamics 365 Implementation",
+            "stage": "Qualify",
+            "amount": 68000,
+            "close_date": "2024-07-17"
+          }
+        ],
+        "acr_current": 21322.6,
+        "health_flag": "At Risk",
+        "owner": "Marcus Williams"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: renewal risk Discussion - Quantum Analytics\nDate: 2024-02-09\nDuration: 45 minutes\nAttendees: Robert Foster (Quantum Analytics), Marcus Williams (Microsoft)\n\n[00:01:15] Robert Foster (Quantum Analytics): Appreciate everyone making time. The main agenda today is renewal risk.\n\n[00:07:00] Marcus Williams (Microsoft): The timeline for cost optimization is aggressive. We need to validate the assumptions.\n\n[00:09:00] Robert Foster (Quantum Analytics): Our team lead reviewed this and has concerns about security compliance. Can we address those?\n\n[00:12:00] Marcus Williams (Microsoft): On the renewal risk front, we've made progress but there are still blockers around timeline constraints.\n\n[00:15:00] Robert Foster (Quantum Analytics): On the renewal risk front, we've made progress but there are still blockers around performance requirements.\n\n[00:18:00] Robert Foster (Quantum Analytics): On the renewal risk front, we've made progress but there are still blockers around security compliance.",
+      "metadata": {
+        "freshness": "2024-03-16T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "short"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-geo-latam",
+    "persona-tenure-senior",
+    "persona-segment-smb-corporate",
+    "data-inconsistent"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions",
+      "contact-stakeholder-map"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "MSX updates warranted from decisions"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "multi-stakeholder-meeting-transcript-->-decision-d",
+    "required_artifacts": [
+      "Decision log with speaker attribution",
+      "action distribution by role",
+      "stakeholder map delta",
+      "MSX update proposals",
+      "due dates extracted"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF47-J trap (Stakeholder-map delta invents roles not in evidence); produces complete Decision log with speaker attribution, action distribution by role, stakeholder map delta, MSX updat",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF47-J failure pattern",
+      "Score 1: Output exhibits the full FM-WF47-J failure mode (Stakeholder-map delta invents roles not in evidence)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct renewal risk decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF47-J -- Stakeholder-map delta invents roles not in evidence"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

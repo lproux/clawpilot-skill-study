@@ -1,0 +1,124 @@
+{
+  "scenario_id": "WF-48-00061",
+  "workflow_id": "WF-48",
+  "workflow_name": "Roadmap Meeting Transcript -> Forecast Sequencing",
+  "seed": 4800103,
+  "tier": 4,
+  "intent": "design-redesign",
+  "targeted_failure_mode": "FM-WF48-O",
+  "persona": "DSSP",
+  "fixture_id": "FX-015",
+  "user_message": "Can you extract the territory planning from this email thread for Fourth Coffee? The CSA flagged this as at-risk yesterday.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Fourth Coffee",
+        "account_id": "ACC-A7MFL3SV",
+        "opportunities": [
+          {
+            "name": "Fourth Data Platform Migration",
+            "stage": "Qualify",
+            "amount": 210000,
+            "close_date": "2023-12-04"
+          }
+        ],
+        "acr_current": 114958.25,
+        "health_flag": "Healthy",
+        "owner": "Raj Mehta"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: territory planning Discussion - Fourth Coffee\nDate: 2024-03-26\nDuration: 45 minutes\nAttendees: David Rivera (Fourth Coffee), Raj Mehta (Microsoft), Kevin (Fourth Coffee)\n\n[00:02:00] David Rivera (Fourth Coffee): Good morning. I wanted to follow up on territory planning from our last session.\n\n[00:08:00] Raj Mehta (Microsoft): The timeline for timeline constraints is aggressive. We need to validate the assumptions.\n\n[00:13:00] Kevin (Fourth Coffee): Our architect reviewed this and has concerns about data residency. Can we address those?\n\n[00:16:00] David Rivera (Fourth Coffee): Our CTO reviewed this and has concerns about timeline constraints. Can we address those?\n\n[00:18:00] Kevin (Fourth Coffee): Our team lead reviewed this and has concerns about timeline constraints. Can we address those?\n\n[00:21:00] David Rivera (Fourth Coffee): Our VP reviewed this and has concerns about security compliance. Can we address those?\n\n[00:23:00] Raj Mehta (Microsoft): Let me add some context -- we've been working on budget approval and found that the existing infrastructure won't support the target workload without upgrades.",
+      "metadata": {
+        "freshness": "2024-03-28T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "consumption_decline",
+            "detail": "Signal detected for Fourth Coffee: there's a dependency on the security team's review that could delay us",
+            "date": "2024-03-06"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-segment-smb-small",
+    "persona-role-dssp",
+    "routing-clear",
+    "data-stale"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "milestone and date updates needed"
+      },
+      {
+        "target_skill": "forecast-business-review-coach",
+        "condition": "forecast sequencing affected"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "roadmap-meeting-transcript-->-forecast-sequencing",
+    "required_artifacts": [
+      "Roadmap-to-forecast mapping",
+      "milestone date proposals",
+      "opportunity sequencing",
+      "new opportunity proposals (if signaled)",
+      "forecast impact with confidence"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF48-O trap (No native 'roadmap-to-forecast' workflow primitive); produces complete Roadmap-to-forecast mapping, milestone date proposals, opportunity sequencing, new opportunity propo",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF48-O failure pattern",
+      "Score 1: Output exhibits the full FM-WF48-O failure mode (No native 'roadmap-to-forecast' workflow primitive)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct territory planning decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF48-O -- No native 'roadmap-to-forecast' workflow primitive",
+    "Produce structural verdict on whether current routing adequately serves this scenario"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "verdict-on-structural",
+    "verdict_required_axes": [
+      "routing",
+      "evidence"
+    ]
+  }
+}

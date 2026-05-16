@@ -1,0 +1,161 @@
+{
+  "scenario_id": "WF-32-00126",
+  "workflow_id": "WF-32",
+  "workflow_name": "Calendar Pre-Pack Automation",
+  "seed": 3200168,
+  "tier": 4,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": "FM-WF32-Q",
+  "persona": "CSA",
+  "fixture_id": "FX-045",
+  "user_message": "[AUTOMATION TRIGGER] Daily automation: Calendar event with non-Microsoft external attendee detected. Account: Azure Ridge Partners.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Azure Ridge Partners",
+        "account_id": "ACC-URB6CCFS",
+        "opportunities": [
+          {
+            "name": "Azure Cloud Migration Phase",
+            "stage": "Develop",
+            "amount": 210000,
+            "close_date": "2024-09-05"
+          },
+          {
+            "name": "Azure Cloud Migration Phase",
+            "stage": "Close",
+            "amount": 560000,
+            "close_date": "2024-10-05"
+          },
+          {
+            "name": "Azure Intune Rollout",
+            "stage": "Develop",
+            "amount": 280000,
+            "close_date": "2024-10-01"
+          }
+        ],
+        "acr_current": 189461.39,
+        "health_flag": "Unknown",
+        "owner": "Raj Mehta"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Thomas Okafor <thomas.okafor@azureridgepa.com>\nTo: Raj Mehta <raj.mehta@microsoft.com>\nDate: 2024-03-08 09:02 EST\nSubject: territory planning - Action Required\n\nJust checking in on the territory planning proposal. Our CFO is asking for a status update before the board meeting next week.\n\n---\nFrom: Raj Mehta <raj.mehta@microsoft.com>\nTo: Thomas Okafor <thomas.okafor@azureridgepa.com>\nDate: 2024-02-19 16:23 EST\nSubject: URGENT: territory planning Issue at Azure Ridge Partners\n\nJust checking in on the territory planning proposal. Our CFO is asking for a status update before the board meeting next week.",
+      "metadata": {
+        "freshness": "2024-03-28T11:00:00-05:00",
+        "source": "outlook",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: territory planning Discussion - Azure Ridge Partners\nDate: 2024-01-08\nDuration: 45 minutes\nAttendees: Thomas Okafor (Azure Ridge Partners), Raj Mehta (Microsoft)\n\n[00:01:15] Thomas Okafor (Azure Ridge Partners): Appreciate everyone making time. The main agenda today is territory planning.\n\n[00:07:00] Raj Mehta (Microsoft): Let me add some context -- we've been working on budget approval and found that there's a dependency on the security team's review that could delay us.\n\n[00:09:00] Thomas Okafor (Azure Ridge Partners): The timeline for timeline constraints is aggressive. We need to validate the assumptions.\n\n[00:14:00] Raj Mehta (Microsoft): I agree with that assessment. From our side, the main concern is cost optimization.\n\n[00:18:00] Raj Mehta (Microsoft): I agree with that assessment. From our side, the main concern is timeline constraints.\n\n[00:20:00] Thomas Okafor (Azure Ridge Partners): Our CTO reviewed this and has concerns about cost optimization. Can we address those?\n\n[00:23:00] Thomas Okafor (Azure Ridge Partners): I agree with that assessment. From our side, the main concern is timeline constraints.\n\n[00:26:00] Raj Mehta (Microsoft): On the territory planning front, we've made progress but there are still blockers around budget approval.\n\n[00:29:00] Thomas Okafor (Azure Ridge Partners): The timeline for timeline constraints is aggressive. We need to validate the assumptions.\n\n[00:33:00] Raj Mehta (Microsoft): I agree with that assessment. From our side, the main concern is performance requirements.\n\n[00:37:00] Thomas Okafor (Azure Ridge Partners): On the territory planning front, we've made progress but there are still blockers around performance requirements.",
+      "metadata": {
+        "freshness": "2024-03-17T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Azure Ridge Partners - territory planning",
+        "start": "2024-03-12T13:00:00-05:00",
+        "end": "2024-03-15T14:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Raj Mehta",
+            "email": "raj.mehta@microsoft.com"
+          },
+          {
+            "name": "Thomas Okafor",
+            "email": "thomas.okafor@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "consumption_decline",
+            "detail": "Signal detected for Azure Ridge Partners: the migration can proceed in phases to reduce risk",
+            "date": "2024-03-10"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-09T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-geo-emea",
+    "persona-role-csa",
+    "signal-strength-faint",
+    "persona-tenure-senior"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "meeting-prep",
+      "contact-stakeholder-map",
+      "email-chat-context"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "portfolio-account-planning-coach",
+        "condition": "meeting is for account CSA should have declined"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "calendar-pre-pack-automation",
+    "required_artifacts": [
+      "Pre-pack brief with attendee context",
+      "account snapshot",
+      "talking points",
+      "likely objections",
+      "open items"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF32-Q trap (Daily-Automation generating pre-packs for every meeting creates noise vs filteri); produces complete Pre-pack brief with attendee context, account snapshot, talking points, likely objections, open item",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF32-Q failure pattern",
+      "Score 1: Output exhibits the full FM-WF32-Q failure mode (Daily-Automation generating pre-packs for every meeting creates noise vs filteri)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct territory planning decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF32-Q -- Daily-Automation generating pre-packs for every meeting creates noise vs filteri",
+    "Guardrail axis scored neutrally -- focus on whether output served the user's actual need"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

@@ -1,0 +1,130 @@
+{
+  "scenario_id": "WF-48-00130",
+  "workflow_id": "WF-48",
+  "workflow_name": "Roadmap Meeting Transcript -> Forecast Sequencing",
+  "seed": 4800172,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF48-C",
+  "persona": "DSSP",
+  "fixture_id": "FX-003",
+  "user_message": "Pulling in context from Northwind Traders's meeting transcript -- need to generate the watchlist for the executive brief.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Northwind Traders",
+        "account_id": "ACC-X86FSRU2",
+        "opportunities": [
+          {
+            "name": "Northwind Azure Arc Deployment",
+            "stage": "Propose",
+            "amount": 89000,
+            "close_date": "2024-09-05"
+          },
+          {
+            "name": "Northwind Copilot Adoption",
+            "stage": "Develop",
+            "amount": 175000,
+            "close_date": "2024-06-22"
+          },
+          {
+            "name": "Northwind Intune Rollout",
+            "stage": "Close",
+            "amount": 350000,
+            "close_date": "2024-04-19"
+          }
+        ],
+        "acr_current": 54067.74,
+        "health_flag": "Healthy",
+        "owner": "Ahmed Hassan"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: executive brief Discussion - Northwind Traders\nDate: 2024-02-17\nDuration: 45 minutes\nAttendees: Sandra Taylor (Northwind Traders), Ahmed Hassan (Microsoft), Kevin (Northwind Traders)\n\n[00:01:15] Sandra Taylor (Northwind Traders): Appreciate everyone making time. The main agenda today is executive brief.\n\n[00:06:00] Ahmed Hassan (Microsoft): On the executive brief front, we've made progress but there are still blockers around security compliance.\n\n[00:09:00] Kevin (Northwind Traders): Our team lead reviewed this and has concerns about data residency. Can we address those?\n\n[00:12:00] Kevin (Northwind Traders): Our architect reviewed this and has concerns about security compliance. Can we address those?\n\n[00:16:00] Kevin (Northwind Traders): I agree with that assessment. From our side, the main concern is partner engagement.\n\n[00:19:00] Kevin (Northwind Traders): On the executive brief front, we've made progress but there are still blockers around data residency.\n\n[00:21:00] Ahmed Hassan (Microsoft): Our architect reviewed this and has concerns about performance requirements. Can we address those?\n\n[00:26:00] Kevin (Northwind Traders): On the executive brief front, we've made progress but there are still blockers around security compliance.",
+      "metadata": {
+        "freshness": "2024-01-08T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "consumption_decline",
+            "detail": "Signal detected for Northwind Traders: there's a dependency on the security team's review that could delay us",
+            "date": "2024-03-10"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-geo-na",
+    "data-fresh",
+    "persona-role-dssp"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "milestone and date updates needed"
+      },
+      {
+        "target_skill": "forecast-business-review-coach",
+        "condition": "forecast sequencing affected"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "roadmap-meeting-transcript-->-forecast-sequencing",
+    "required_artifacts": [
+      "Roadmap-to-forecast mapping",
+      "milestone date proposals",
+      "opportunity sequencing",
+      "new opportunity proposals (if signaled)",
+      "forecast impact with confidence"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF48-C trap (Over-confidently dates a customer's vague 'later this year'); produces complete Roadmap-to-forecast mapping, milestone date proposals, opportunity sequencing, new opportunity propo",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF48-C failure pattern",
+      "Score 1: Output exhibits the full FM-WF48-C failure mode (Over-confidently dates a customer's vague 'later this year')"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct executive brief decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF48-C -- Over-confidently dates a customer's vague 'later this year'"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

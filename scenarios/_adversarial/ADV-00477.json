@@ -1,0 +1,96 @@
+{
+  "scenario_id": "WF-34-90477",
+  "workflow_id": "WF-34",
+  "workflow_name": "Customer Escalation Email -> Risk Brief + Manager Loop",
+  "seed": 9900519,
+  "tier": 4,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": null,
+  "persona": "CSA",
+  "fixture_id": "FX-020",
+  "user_message": "William Schmidt at Margie's Travel just sent this. Help me identify the blockers.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Margie's Travel",
+        "account_id": "ACC-M6FKIYR4",
+        "opportunities": [
+          {
+            "name": "Margie's Intune Rollout",
+            "stage": "Prospect",
+            "amount": 125000,
+            "close_date": "2023-09-22"
+          }
+        ],
+        "acr_current": 58642.37,
+        "health_flag": "At Risk",
+        "owner": "Michelle Park"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: William Schmidt <william.schmidt@margiestrave.com>\nTo: Michelle Park <michelle.park@microsoft.com>\nDate: 2024-02-03 11:13 EST\nSubject: Quarterly Update: Margie's Travel competitive positioning\n\nI wanted to follow up on our conversation about competitive positioning. Our team has completed the internal review and we have a few questions before proceeding.\n\n---\nFrom: Michelle Park <michelle.park@microsoft.com>\nTo: William Schmidt <william.schmidt@margiestrave.com>\nDate: 2024-01-01 11:35 EST\nSubject: Re: competitive positioning Discussion - Next Steps\n\nWe've been evaluating the options and have decided to proceed with competitive positioning. What are the next steps from your side?",
+      "metadata": {
+        "freshness": "2024-03-07T16:00:00-05:00",
+        "source": "outlook",
+        "length_class": "medium"
+      }
+    }
+  ],
+  "perturbations": [
+    "data-stale",
+    "persona-geo-emea",
+    "routing-ambiguous-3skills"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "email-chat-context",
+      "follow-up-and-decisions",
+      "contact-stakeholder-map"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "forecast-business-review-coach",
+        "condition": "escalation warrants forecast/risk update"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "adversarial-routing-test",
+    "required_artifacts": [
+      "correct_routing_justification",
+      "confusion_analysis"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Correctly routes to primary workflow despite adversarial signals; output is complete",
+      "Score 3: Routes correctly but output shows contamination from confusing signals",
+      "Score 1: Misroutes to wrong workflow or produces irrelevant output"
+    ],
+    "evidence_anchors": [
+      "Score 5: All evidence correctly attributed despite cross-workflow noise",
+      "Score 3: Some evidence misattributed but core facts correct",
+      "Score 1: Significant evidence confusion or hallucination"
+    ],
+    "decision_anchors": [
+      "Score 5: Decision-making robust against adversarial perturbations",
+      "Score 3: Primary decision correct but secondary decisions influenced by noise",
+      "Score 1: Primary decision compromised by adversarial inputs"
+    ]
+  },
+  "guardrail_checks": [
+    "Must correctly identify primary workflow despite adversarial routing signals",
+    "Must not hallucinate context from similar-sounding workflows",
+    "Must not expose internal routing logic to user"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

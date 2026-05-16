@@ -1,0 +1,114 @@
+{
+  "scenario_id": "WF-43-00215",
+  "workflow_id": "WF-43",
+  "workflow_name": "Discovery Call Transcript -> Opportunity Build",
+  "seed": 4300257,
+  "tier": 4,
+  "intent": "design-redesign",
+  "targeted_failure_mode": "FM-WF43-Q",
+  "persona": "Manager",
+  "fixture_id": "FX-023",
+  "user_message": "Give me the manager view on this Wide World Importers exec meeting notes. Manager is asking for an update today.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Wide World Importers",
+        "account_id": "ACC-Q026BTUQ",
+        "opportunities": [
+          {
+            "name": "Wide AKS Deployment",
+            "stage": "Close",
+            "amount": 125000,
+            "close_date": "2023-12-01"
+          },
+          {
+            "name": "Wide Intune Rollout",
+            "stage": "Close",
+            "amount": 89000,
+            "close_date": "2024-04-18"
+          }
+        ],
+        "acr_current": 61965.63,
+        "health_flag": "At Risk",
+        "owner": "Ahmed Hassan"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: whitespace analysis Discussion - Wide World Importers\nDate: 2024-01-08\nDuration: 45 minutes\nAttendees: Ryan Kowalski (Wide World Importers), Ahmed Hassan (Microsoft), Kevin (Wide World Importers)\n\n[00:01:30] Ryan Kowalski (Wide World Importers): Thanks everyone for joining. Let's dive into whitespace analysis.\n\n[00:05:00] Ryan Kowalski (Wide World Importers): On the whitespace analysis front, we've made progress but there are still blockers around resource allocation.\n\n[00:09:00] Kevin (Wide World Importers): Let me add some context -- we've been working on budget approval and found that there's a dependency on the security team's review that could delay us.\n\n[00:13:00] Ahmed Hassan (Microsoft): I agree with that assessment. From our side, the main concern is resource allocation.\n\n[00:18:00] Kevin (Wide World Importers): Our architect reviewed this and has concerns about vendor dependencies. Can we address those?\n\n[00:21:00] Ryan Kowalski (Wide World Importers): Let me add some context -- we've been working on performance requirements and found that the migration can proceed in phases to reduce risk.\n\n[00:26:00] Ryan Kowalski (Wide World Importers): The timeline for stakeholder alignment is aggressive. We need to validate the assumptions.\n\n[00:31:00] Ryan Kowalski (Wide World Importers): Let me add some context -- we've been working on vendor dependencies and found that the current vendor contract has a 90-day exit clause we need to plan around.\n\n[00:34:00] Ahmed Hassan (Microsoft): The timeline for integration complexity is aggressive. We need to validate the assumptions.\n\n[00:37:00] Kevin (Wide World Importers): Our team lead reviewed this and has concerns about partner engagement. Can we address those?",
+      "metadata": {
+        "freshness": "2024-02-15T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "mixed",
+        "length_class": "short"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-role-manager",
+    "data-stale",
+    "persona-geo-na",
+    "persona-tenure-senior"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "opportunity creation warranted"
+      },
+      {
+        "target_skill": "solution-value-design-coach",
+        "condition": "solution sketch needed from discovery signals"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "discovery-call-transcript-->-opportunity-build",
+    "required_artifacts": [
+      "BANT signal extraction with evidence quotes",
+      "opportunity proposal with stage/value/close-date",
+      "confidence labels",
+      "solution sketch suggestion",
+      "follow-up actions"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF43-Q trap (No native 'discovery-to-opportunity' workflow primitive -- synthesis spans 4 ski); produces complete BANT signal extraction with evidence quotes, opportunity proposal with stage/value/close-date, confi",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF43-Q failure pattern",
+      "Score 1: Output exhibits the full FM-WF43-Q failure mode (No native 'discovery-to-opportunity' workflow primitive -- synthesis spans 4 ski)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct whitespace analysis decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF43-Q -- No native 'discovery-to-opportunity' workflow primitive -- synthesis spans 4 ski",
+    "Produce structural verdict on whether current routing adequately serves this scenario"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "verdict-on-structural",
+    "verdict_required_axes": [
+      "routing",
+      "evidence"
+    ]
+  }
+}

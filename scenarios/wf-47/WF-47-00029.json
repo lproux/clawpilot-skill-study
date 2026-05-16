@@ -1,0 +1,101 @@
+{
+  "scenario_id": "WF-47-00029",
+  "workflow_id": "WF-47",
+  "workflow_name": "Multi-Stakeholder Meeting Transcript -> Decision Distribution",
+  "seed": 4700071,
+  "tier": 4,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": "FM-WF47-N",
+  "persona": "Manager",
+  "fixture_id": "FX-001",
+  "user_message": "I need you to process this escalation email from Contoso Ltd. Multiple stakeholders are involved -- it's complex.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Contoso Ltd",
+        "account_id": "ACC-VWW2DK8X",
+        "opportunities": [
+          {
+            "name": "Contoso Power Platform",
+            "stage": "Propose",
+            "amount": 560000,
+            "close_date": "2024-12-28"
+          }
+        ],
+        "acr_current": 78949.7,
+        "health_flag": "Healthy",
+        "owner": "Marcus Williams"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: migration architecture Discussion - Contoso Ltd\nDate: 2024-02-25\nDuration: 45 minutes\nAttendees: Angela Doyle (Contoso Ltd), Marcus Williams (Microsoft)\n\n[00:01:30] Angela Doyle (Contoso Ltd): Thanks everyone for joining. Let's dive into migration architecture.\n\n[00:07:00] Marcus Williams (Microsoft): Let me add some context -- we've been working on cost optimization and found that the cost projections need to factor in reserved instance pricing for accuracy.\n\n[00:11:00] Angela Doyle (Contoso Ltd): Let me add some context -- we've been working on integration complexity and found that there's a dependency on the security team's review that could delay us.\n\n[00:15:00] Angela Doyle (Contoso Ltd): The timeline for data residency is aggressive. We need to validate the assumptions.\n\n[00:17:00] Marcus Williams (Microsoft): The timeline for cost optimization is aggressive. We need to validate the assumptions.\n\n[00:20:00] Marcus Williams (Microsoft): Our architect reviewed this and has concerns about technical validation. Can we address those?\n\n[00:22:00] Marcus Williams (Microsoft): On the migration architecture front, we've made progress but there are still blockers around technical validation.\n\n[00:26:00] Angela Doyle (Contoso Ltd): Our director reviewed this and has concerns about security compliance. Can we address those?\n\n[00:28:00] Angela Doyle (Contoso Ltd): On the migration architecture front, we've made progress but there are still blockers around resource allocation.\n\n[00:30:00] Angela Doyle (Contoso Ltd): Our team lead reviewed this and has concerns about security compliance. Can we address those?",
+      "metadata": {
+        "freshness": "2024-01-15T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "long"
+      }
+    }
+  ],
+  "perturbations": [
+    "data-fresh",
+    "persona-tenure-mid",
+    "persona-role-manager",
+    "persona-geo-na"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions",
+      "contact-stakeholder-map"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "MSX updates warranted from decisions"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "multi-stakeholder-meeting-transcript-->-decision-d",
+    "required_artifacts": [
+      "Decision log with speaker attribution",
+      "action distribution by role",
+      "stakeholder map delta",
+      "MSX update proposals",
+      "due dates extracted"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF47-N trap (Follow-up-and-decisions module assumes named speakers when transcript has 'Speak); produces complete Decision log with speaker attribution, action distribution by role, stakeholder map delta, MSX updat",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF47-N failure pattern",
+      "Score 1: Output exhibits the full FM-WF47-N failure mode (Follow-up-and-decisions module assumes named speakers when transcript has 'Speak)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct migration architecture decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF47-N -- Follow-up-and-decisions module assumes named speakers when transcript has 'Speak",
+    "Guardrail axis scored neutrally -- focus on whether output served the user's actual need"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

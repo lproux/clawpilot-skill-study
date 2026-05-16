@@ -1,0 +1,134 @@
+{
+  "scenario_id": "WF-35-00069",
+  "workflow_id": "WF-35",
+  "workflow_name": "Customer Renewal Email -> Forecast Impact + Path",
+  "seed": 3500111,
+  "tier": 4,
+  "intent": "design-redesign",
+  "targeted_failure_mode": "FM-WF35-N",
+  "persona": "CSA",
+  "fixture_id": "FX-031",
+  "user_message": "Just got this from Patricia Kim at Liberty's Delightful Sinful Bakery -- I need help figuring out deployment blockers. Board meeting is next week.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Liberty's Delightful Sinful Bakery",
+        "account_id": "ACC-A2FZGZWL",
+        "opportunities": [
+          {
+            "name": "Liberty's Dynamics 365 Implementation",
+            "stage": "Develop",
+            "amount": 89000,
+            "close_date": "2024-12-10"
+          },
+          {
+            "name": "Liberty's AKS Deployment",
+            "stage": "Qualify",
+            "amount": 89000,
+            "close_date": "2024-12-24"
+          },
+          {
+            "name": "Liberty's Azure Infrastructure",
+            "stage": "Develop",
+            "amount": 450000,
+            "close_date": "2024-04-08"
+          }
+        ],
+        "acr_current": 0,
+        "health_flag": "Healthy",
+        "owner": "Marcus Williams"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Patricia Kim <patricia.kim@libertysdeli.com>\nTo: Marcus Williams <marcus.williams@microsoft.com>\nDate: 2024-03-26 09:46 EST\nSubject: URGENT: deployment blockers Issue at Liberty's Delightful Sinful Bakery\n\nJust checking in on the deployment blockers proposal. Our Director of IT is asking for a status update before the board meeting next week.\n\n---\nFrom: Marcus Williams <marcus.williams@microsoft.com>\nTo: Patricia Kim <patricia.kim@libertysdeli.com>\nDate: 2024-02-04 15:18 EST\nSubject: Quarterly Update: Liberty's Delightful Sinful Bakery deployment blockers\n\nThere's been a change in our timeline for deployment blockers. Can we discuss the implications on the overall project plan?\n\n---\nFrom: Patricia Kim <patricia.kim@libertysdeli.com>\nTo: Marcus Williams <marcus.williams@microsoft.com>\nDate: 2024-01-01 15:20 EST\nSubject: Follow-up: deployment blockers Review\n\nWe've been evaluating the options and have decided to proceed with deployment blockers. What are the next steps from your side?",
+      "metadata": {
+        "freshness": "2024-03-25T14:00:00-05:00",
+        "source": "outlook",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "contract_event",
+            "detail": "Signal detected for Liberty's Delightful Sinful Bakery: the cost projections need to factor in reserved instance pricing for accuracy",
+            "date": "2024-03-07"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-geo-na",
+    "routing-ambiguous-2skills",
+    "persona-tenure-mid",
+    "persona-role-csa"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "email-chat-context"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "funding-partner-activation-coach",
+        "condition": "contract/billing lookup needed"
+      },
+      {
+        "target_skill": "forecast-business-review-coach",
+        "condition": "forecast impact assessment needed"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "customer-renewal-email-->-forecast-impact-+-path",
+    "required_artifacts": [
+      "Contract state summary with freshness",
+      "forecast impact with confidence",
+      "response draft (no commercial commitments)",
+      "path forward with MACC/funding options if applicable"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF35-N trap (No native 'renewal motion' workflow in skill set -- current design synthesizes); produces complete Contract state summary with freshness, forecast impact with confidence, response draft (no commercia",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF35-N failure pattern",
+      "Score 1: Output exhibits the full FM-WF35-N failure mode (No native 'renewal motion' workflow in skill set -- current design synthesizes)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct deployment blockers decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF35-N -- No native 'renewal motion' workflow in skill set -- current design synthesizes",
+    "Produce structural verdict on whether current routing adequately serves this scenario"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "verdict-on-structural",
+    "verdict_required_axes": [
+      "routing",
+      "evidence"
+    ]
+  }
+}

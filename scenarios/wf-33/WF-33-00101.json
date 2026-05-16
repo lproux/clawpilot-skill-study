@@ -1,0 +1,128 @@
+{
+  "scenario_id": "WF-33-00101",
+  "workflow_id": "WF-33",
+  "workflow_name": "Customer Inquiry Thread -> Response + Pipeline Note",
+  "seed": 3300143,
+  "tier": 4,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": "FM-WF33-O",
+  "persona": "Manager",
+  "fixture_id": "FX-045",
+  "user_message": "I need you to process this escalation email from Azure Ridge Partners. There's been no activity for 45 days and I'm worried.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Azure Ridge Partners",
+        "account_id": "ACC-URB6CCFS",
+        "opportunities": [
+          {
+            "name": "Azure Cloud Migration Phase",
+            "stage": "Develop",
+            "amount": 210000,
+            "close_date": "2024-09-05"
+          },
+          {
+            "name": "Azure Cloud Migration Phase",
+            "stage": "Close",
+            "amount": 560000,
+            "close_date": "2024-10-05"
+          },
+          {
+            "name": "Azure Intune Rollout",
+            "stage": "Develop",
+            "amount": 280000,
+            "close_date": "2024-10-01"
+          }
+        ],
+        "acr_current": 189461.39,
+        "health_flag": "Unknown",
+        "owner": "Raj Mehta"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Thomas Okafor <thomas.okafor@azureridgepa.com>\nTo: Raj Mehta <raj.mehta@microsoft.com>\nDate: 2024-03-20 16:16 EST\nSubject: Quarterly Update: Azure Ridge Partners deployment blockers\n\nJust checking in on the deployment blockers proposal. Our CFO is asking for a status update before the board meeting next week.\n\n---\nFrom: Raj Mehta <raj.mehta@microsoft.com>\nTo: Thomas Okafor <thomas.okafor@azureridgepa.com>\nDate: 2024-02-17 11:57 EST\nSubject: URGENT: deployment blockers Issue at Azure Ridge Partners\n\nThere's been a change in our timeline for deployment blockers. Can we discuss the implications on the overall project plan?\n\n---\nFrom: Thomas Okafor <thomas.okafor@azureridgepa.com>\nTo: Raj Mehta <raj.mehta@microsoft.com>\nDate: 2024-01-11 09:09 EST\nSubject: Re: deployment blockers Discussion - Next Steps\n\nWe've been evaluating the options and have decided to proceed with deployment blockers. What are the next steps from your side?",
+      "metadata": {
+        "freshness": "2024-03-23T11:00:00-05:00",
+        "source": "outlook",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "deployment_blocker",
+            "detail": "Signal detected for Azure Ridge Partners: there's a dependency on the security team's review that could delay us",
+            "date": "2024-03-11"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-10T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "routing-clear",
+    "persona-role-manager",
+    "persona-tenure-senior",
+    "persona-geo-emea"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "email-chat-context",
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "MSX update warranted from thread content"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "customer-inquiry-thread-->-response-+-pipeline-not",
+    "required_artifacts": [
+      "Thread analysis",
+      "draft response",
+      "waiting-on-whom assessment",
+      "MSX pipeline note proposal (if warranted)",
+      "urgency calibration"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF33-O trap (MSX delta requires approval for obvious updates (next-step changes)); produces complete Thread analysis, draft response, waiting-on-whom assessment, MSX pipeline note proposal (if warrante",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF33-O failure pattern",
+      "Score 1: Output exhibits the full FM-WF33-O failure mode (MSX delta requires approval for obvious updates (next-step changes))"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct deployment blockers decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF33-O -- MSX delta requires approval for obvious updates (next-step changes)",
+    "Guardrail axis scored neutrally -- focus on whether output served the user's actual need"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

@@ -1,0 +1,150 @@
+{
+  "scenario_id": "WF-14-91182",
+  "workflow_id": "WF-14",
+  "workflow_name": "Stakeholder Map Generation",
+  "seed": 9901224,
+  "tier": 1,
+  "intent": "adherence",
+  "targeted_failure_mode": null,
+  "persona": "DSSP",
+  "fixture_id": "FX-025",
+  "user_message": "Can you help me assess the risk? The customer (Adatum Corporation) is asking about territory planning.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Adatum Corporation",
+        "account_id": "ACC-ELNED368",
+        "opportunities": [
+          {
+            "name": "Adatum Azure Virtual Desktop",
+            "stage": "Qualify",
+            "amount": 175000,
+            "close_date": "2023-12-18"
+          },
+          {
+            "name": "Adatum Azure SQL Migration",
+            "stage": "Close",
+            "amount": 125000,
+            "close_date": "2024-10-09"
+          },
+          {
+            "name": "Adatum Azure Arc Deployment",
+            "stage": "Propose",
+            "amount": 210000,
+            "close_date": "2024-12-01"
+          }
+        ],
+        "acr_current": 14124.54,
+        "health_flag": "At Risk",
+        "owner": "Raj Mehta"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Laura Nguyen <laura.nguyen@adatumcorpor.com>\nTo: Raj Mehta <raj.mehta@microsoft.com>\nDate: 2024-03-27 10:22 EST\nSubject: Re: Re: territory planning Timeline\n\nI wanted to follow up on our conversation about territory planning. Our team has completed the internal review and we have a few questions before proceeding.\n\n---\nFrom: Raj Mehta <raj.mehta@microsoft.com>\nTo: Laura Nguyen <laura.nguyen@adatumcorpor.com>\nDate: 2024-02-12 12:40 EST\nSubject: Re: Re: territory planning Timeline\n\nOur team encountered some challenges with territory planning. Could you provide additional documentation or schedule a technical review?\n\n---\nFrom: Laura Nguyen <laura.nguyen@adatumcorpor.com>\nTo: Raj Mehta <raj.mehta@microsoft.com>\nDate: 2024-01-20 09:11 EST\nSubject: Quarterly Update: Adatum Corporation territory planning\n\nJust checking in on the territory planning proposal. Our Infrastructure Manager is asking for a status update before the board meeting next week.",
+      "metadata": {
+        "freshness": "2024-03-28T12:00:00-05:00",
+        "source": "outlook",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: territory planning Discussion - Adatum Corporation\nDate: 2024-03-02\nDuration: 45 minutes\nAttendees: Laura Nguyen (Adatum Corporation), Raj Mehta (Microsoft), David (Adatum Corporation)\n\n[00:02:00] Laura Nguyen (Adatum Corporation): Good morning. I wanted to follow up on territory planning from our last session.\n\n[00:08:00] Laura Nguyen (Adatum Corporation): The timeline for budget approval is aggressive. We need to validate the assumptions.\n\n[00:10:00] Raj Mehta (Microsoft): I agree with that assessment. From our side, the main concern is cost optimization.\n\n[00:13:00] David (Adatum Corporation): The timeline for stakeholder alignment is aggressive. We need to validate the assumptions.\n\n[00:16:00] Raj Mehta (Microsoft): I agree with that assessment. From our side, the main concern is security compliance.\n\n[00:19:00] Laura Nguyen (Adatum Corporation): Our CTO reviewed this and has concerns about resource allocation. Can we address those?\n\n[00:21:00] Raj Mehta (Microsoft): The timeline for cost optimization is aggressive. We need to validate the assumptions.\n\n[00:25:00] Laura Nguyen (Adatum Corporation): I agree with that assessment. From our side, the main concern is resource allocation.\n\n[00:29:00] Laura Nguyen (Adatum Corporation): The timeline for stakeholder alignment is aggressive. We need to validate the assumptions.\n\n[00:31:00] Laura Nguyen (Adatum Corporation): The timeline for resource allocation is aggressive. We need to validate the assumptions.\n\n[00:33:00] Raj Mehta (Microsoft): On the territory planning front, we've made progress but there are still blockers around resource allocation.",
+      "metadata": {
+        "freshness": "2024-02-27T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Adatum Corporation - territory planning",
+        "start": "2024-03-14T14:00:00-05:00",
+        "end": "2024-03-15T10:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Raj Mehta",
+            "email": "raj.mehta@microsoft.com"
+          },
+          {
+            "name": "Laura Nguyen",
+            "email": "laura.nguyen@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "deployment_blocker",
+            "detail": "Signal detected for Adatum Corporation: the current vendor contract has a 90-day exit clause we need to plan around",
+            "date": "2024-03-09"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-10T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "data-stale",
+    "persona-tenure-senior",
+    "persona-geo-na",
+    "persona-role-dssp",
+    "cross-workflow-trigger"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "contact-stakeholder-map"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "adversarial-routing-test",
+    "required_artifacts": [
+      "correct_routing_justification",
+      "confusion_analysis"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Correctly routes to primary workflow despite adversarial signals; output is complete",
+      "Score 3: Routes correctly but output shows contamination from confusing signals",
+      "Score 1: Misroutes to wrong workflow or produces irrelevant output"
+    ],
+    "evidence_anchors": [
+      "Score 5: All evidence correctly attributed despite cross-workflow noise",
+      "Score 3: Some evidence misattributed but core facts correct",
+      "Score 1: Significant evidence confusion or hallucination"
+    ],
+    "decision_anchors": [
+      "Score 5: Decision-making robust against adversarial perturbations",
+      "Score 3: Primary decision correct but secondary decisions influenced by noise",
+      "Score 1: Primary decision compromised by adversarial inputs"
+    ]
+  },
+  "guardrail_checks": [
+    "Must correctly identify primary workflow despite adversarial routing signals",
+    "Must not hallucinate context from similar-sounding workflows",
+    "Must not expose internal routing logic to user"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

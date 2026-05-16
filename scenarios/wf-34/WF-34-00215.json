@@ -1,0 +1,106 @@
+{
+  "scenario_id": "WF-34-00215",
+  "workflow_id": "WF-34",
+  "workflow_name": "Customer Escalation Email -> Risk Brief + Manager Loop",
+  "seed": 3400257,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF34-D",
+  "persona": "Manager",
+  "fixture_id": "FX-023",
+  "user_message": "Give me the manager view on this Wide World Importers meeting transcript. The customer escalated this morning.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Wide World Importers",
+        "account_id": "ACC-Q026BTUQ",
+        "opportunities": [
+          {
+            "name": "Wide AKS Deployment",
+            "stage": "Close",
+            "amount": 125000,
+            "close_date": "2023-12-01"
+          },
+          {
+            "name": "Wide Intune Rollout",
+            "stage": "Close",
+            "amount": 89000,
+            "close_date": "2024-04-18"
+          }
+        ],
+        "acr_current": 61965.63,
+        "health_flag": "At Risk",
+        "owner": "Ahmed Hassan"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Ryan Kowalski <ryan.kowalski@wideworldimp.com>\nTo: Ahmed Hassan <ahmed.hassan@microsoft.com>\nDate: 2024-03-20 16:11 EST\nSubject: pipeline hygiene - Action Required\n\nThank you for the discussion last week. We'd like to move forward with pipeline hygiene. Can we schedule a call this week to finalize the timeline?\n\n---\nFrom: Ahmed Hassan <ahmed.hassan@microsoft.com>\nTo: Ryan Kowalski <ryan.kowalski@wideworldimp.com>\nDate: 2024-02-04 09:23 EST\nSubject: Re: Re: pipeline hygiene Timeline\n\nThank you for the discussion last week. We'd like to move forward with pipeline hygiene. Can we schedule a call this week to finalize the timeline?\n\n---\nFrom: Ryan Kowalski <ryan.kowalski@wideworldimp.com>\nTo: Ahmed Hassan <ahmed.hassan@microsoft.com>\nDate: 2024-01-20 15:55 EST\nSubject: Re: pipeline hygiene Discussion - Next Steps\n\nI wanted to follow up on our conversation about pipeline hygiene. Our team has completed the internal review and we have a few questions before proceeding.",
+      "metadata": {
+        "freshness": "2024-03-03T13:00:00-05:00",
+        "source": "outlook",
+        "length_class": "short"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-tenure-junior",
+    "signal-strength-noisy",
+    "data-stale",
+    "persona-geo-na"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "email-chat-context",
+      "follow-up-and-decisions",
+      "contact-stakeholder-map"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "forecast-business-review-coach",
+        "condition": "escalation warrants forecast/risk update"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "customer-escalation-email-->-risk-brief-+-manager-",
+    "required_artifacts": [
+      "Severity assessment",
+      "manager risk brief",
+      "customer-facing draft response",
+      "stakeholder map delta",
+      "forecast/risk impact"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF34-D trap (Customer draft over-apologizes (commits liability)); produces complete Severity assessment, manager risk brief, customer-facing draft response, stakeholder map delta, fore",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF34-D failure pattern",
+      "Score 1: Output exhibits the full FM-WF34-D failure mode (Customer draft over-apologizes (commits liability))"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct pipeline hygiene decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF34-D -- Customer draft over-apologizes (commits liability)"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

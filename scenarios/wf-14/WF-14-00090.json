@@ -1,0 +1,145 @@
+{
+  "scenario_id": "WF-14-00090",
+  "workflow_id": "WF-14",
+  "workflow_name": "Stakeholder Map Generation",
+  "seed": 1400132,
+  "tier": 1,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF14-D",
+  "persona": "CSA",
+  "fixture_id": "FX-023",
+  "user_message": "Quick one -- build the analysis on Wide World Importers. Manager is asking for an update today.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Wide World Importers",
+        "account_id": "ACC-Q026BTUQ",
+        "opportunities": [
+          {
+            "name": "Wide AKS Deployment",
+            "stage": "Close",
+            "amount": 125000,
+            "close_date": "2023-12-01"
+          },
+          {
+            "name": "Wide Intune Rollout",
+            "stage": "Close",
+            "amount": 89000,
+            "close_date": "2024-04-18"
+          }
+        ],
+        "acr_current": 61965.63,
+        "health_flag": "At Risk",
+        "owner": "Ahmed Hassan"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Ryan Kowalski <ryan.kowalski@wideworldimp.com>\nTo: Ahmed Hassan <ahmed.hassan@microsoft.com>\nDate: 2024-03-10 14:35 EST\nSubject: Re: security posture Discussion - Next Steps\n\nWe've been evaluating the options and have decided to proceed with security posture. What are the next steps from your side?\n\n---\nFrom: Ahmed Hassan <ahmed.hassan@microsoft.com>\nTo: Ryan Kowalski <ryan.kowalski@wideworldimp.com>\nDate: 2024-02-01 12:04 EST\nSubject: URGENT: security posture Issue at Wide World Importers\n\nWe've been evaluating the options and have decided to proceed with security posture. What are the next steps from your side?\n\n---\nFrom: Ryan Kowalski <ryan.kowalski@wideworldimp.com>\nTo: Ahmed Hassan <ahmed.hassan@microsoft.com>\nDate: 2024-01-09 11:31 EST\nSubject: security posture - Action Required\n\nJust checking in on the security posture proposal. Our Director of IT is asking for a status update before the board meeting next week.",
+      "metadata": {
+        "freshness": "2024-03-20T11:00:00-05:00",
+        "source": "outlook",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: security posture Discussion - Wide World Importers\nDate: 2024-03-01\nDuration: 45 minutes\nAttendees: Ryan Kowalski (Wide World Importers), Ahmed Hassan (Microsoft)\n\n[00:01:15] Ryan Kowalski (Wide World Importers): Appreciate everyone making time. The main agenda today is security posture.\n\n[00:08:00] Ahmed Hassan (Microsoft): I agree with that assessment. From our side, the main concern is cost optimization.\n\n[00:12:00] Ahmed Hassan (Microsoft): On the security posture front, we've made progress but there are still blockers around data residency.\n\n[00:15:00] Ahmed Hassan (Microsoft): Our team lead reviewed this and has concerns about integration complexity. Can we address those?\n\n[00:18:00] Ryan Kowalski (Wide World Importers): Our architect reviewed this and has concerns about security compliance. Can we address those?\n\n[00:21:00] Ryan Kowalski (Wide World Importers): I agree with that assessment. From our side, the main concern is technical validation.\n\n[00:24:00] Ahmed Hassan (Microsoft): On the security posture front, we've made progress but there are still blockers around budget approval.\n\n[00:28:00] Ahmed Hassan (Microsoft): On the security posture front, we've made progress but there are still blockers around technical validation.\n\n[00:30:00] Ryan Kowalski (Wide World Importers): On the security posture front, we've made progress but there are still blockers around cost optimization.",
+      "metadata": {
+        "freshness": "2024-03-23T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "mixed",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Wide World Importers - security posture",
+        "start": "2024-03-12T09:00:00-05:00",
+        "end": "2024-03-11T14:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Ahmed Hassan",
+            "email": "ahmed.hassan@microsoft.com"
+          },
+          {
+            "name": "Ryan Kowalski",
+            "email": "ryan.kowalski@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "contract_event",
+            "detail": "Signal detected for Wide World Importers: the migration can proceed in phases to reduce risk",
+            "date": "2024-03-10"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-segment-smb-corporate",
+    "persona-tenure-senior",
+    "signal-strength-faint"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "contact-stakeholder-map"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "stakeholder-map-generation",
+    "required_artifacts": [
+      "Stakeholder map with roles (decision-maker",
+      "influencer",
+      "champion",
+      "blocker)",
+      "recency labels"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF14-D trap (Claims champion without evidence); produces complete Stakeholder map with roles (decision-maker, influencer, champion, blocker), recency labels, confiden",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF14-D failure pattern",
+      "Score 1: Output exhibits the full FM-WF14-D failure mode (Claims champion without evidence)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct security posture decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF14-D -- Claims champion without evidence"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

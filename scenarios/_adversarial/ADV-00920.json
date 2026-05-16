@@ -1,0 +1,121 @@
+{
+  "scenario_id": "WF-06-90920",
+  "workflow_id": "WF-06",
+  "workflow_name": "ACR Decline Investigation",
+  "seed": 9900962,
+  "tier": 3,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": null,
+  "persona": "DSSP",
+  "fixture_id": "FX-013",
+  "user_message": "Can you extract the partner engagement from this escalation email for Coho Winery? I met with them last week but can't remember the details.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Coho Winery",
+        "account_id": "ACC-W5BNG4OC",
+        "opportunities": [
+          {
+            "name": "Coho Copilot Adoption",
+            "stage": "Close",
+            "amount": 210000,
+            "close_date": "2023-11-10"
+          },
+          {
+            "name": "Coho Azure AI Services",
+            "stage": "Qualify",
+            "amount": 280000,
+            "close_date": "2024-04-26"
+          },
+          {
+            "name": "Coho Azure Virtual Desktop",
+            "stage": "Qualify",
+            "amount": 125000,
+            "close_date": "2024-11-17"
+          }
+        ],
+        "acr_current": 107808.75,
+        "health_flag": "At Risk",
+        "owner": "Ahmed Hassan"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "deployment_blocker",
+            "detail": "Signal detected for Coho Winery: the current vendor contract has a 90-day exit clause we need to plan around",
+            "date": "2024-03-11"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-geo-na",
+    "persona-segment-smb-corporate",
+    "data-stale",
+    "persona-tenure-senior",
+    "routing-ambiguous-3skills"
+  ],
+  "expected_routing": {
+    "entry_skill": "acr-signal-to-opportunity-coach",
+    "modules": [
+      "acr-data-access",
+      "acr-health-forecast",
+      "signal-to-opportunity"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "funding-partner-activation-coach",
+        "condition": "contract/billing is the driver"
+      },
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "opportunity records need updating"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "adversarial-routing-test",
+    "required_artifacts": [
+      "correct_routing_justification",
+      "confusion_analysis"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Correctly routes to primary workflow despite adversarial signals; output is complete",
+      "Score 3: Routes correctly but output shows contamination from confusing signals",
+      "Score 1: Misroutes to wrong workflow or produces irrelevant output"
+    ],
+    "evidence_anchors": [
+      "Score 5: All evidence correctly attributed despite cross-workflow noise",
+      "Score 3: Some evidence misattributed but core facts correct",
+      "Score 1: Significant evidence confusion or hallucination"
+    ],
+    "decision_anchors": [
+      "Score 5: Decision-making robust against adversarial perturbations",
+      "Score 3: Primary decision correct but secondary decisions influenced by noise",
+      "Score 1: Primary decision compromised by adversarial inputs"
+    ]
+  },
+  "guardrail_checks": [
+    "Must correctly identify primary workflow despite adversarial routing signals",
+    "Must not hallucinate context from similar-sounding workflows",
+    "Must not expose internal routing logic to user"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

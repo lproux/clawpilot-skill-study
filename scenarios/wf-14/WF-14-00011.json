@@ -1,0 +1,142 @@
+{
+  "scenario_id": "WF-14-00011",
+  "workflow_id": "WF-14",
+  "workflow_name": "Stakeholder Map Generation",
+  "seed": 1400053,
+  "tier": 1,
+  "intent": "design-redesign",
+  "targeted_failure_mode": null,
+  "persona": "Manager",
+  "fixture_id": "FX-015",
+  "user_message": "Help me prep the competitive positioning for Fourth Coffee. Renewal conversation is tomorrow.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Fourth Coffee",
+        "account_id": "ACC-A7MFL3SV",
+        "opportunities": [
+          {
+            "name": "Fourth Data Platform Migration",
+            "stage": "Qualify",
+            "amount": 210000,
+            "close_date": "2023-12-04"
+          }
+        ],
+        "acr_current": 114958.25,
+        "health_flag": "Healthy",
+        "owner": "Raj Mehta"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: David Rivera <david.rivera@fourthcoffee.com>\nTo: Raj Mehta <raj.mehta@microsoft.com>\nDate: 2024-03-04 13:55 EST\nSubject: Follow-up: competitive positioning Review\n\nI wanted to follow up on our conversation about competitive positioning. Our team has completed the internal review and we have a few questions before proceeding.\n\n---\nFrom: Raj Mehta <raj.mehta@microsoft.com>\nTo: David Rivera <david.rivera@fourthcoffee.com>\nDate: 2024-02-04 12:12 EST\nSubject: Re: competitive positioning Discussion - Next Steps\n\nOur team encountered some challenges with competitive positioning. Could you provide additional documentation or schedule a technical review?\n\n---\nFrom: David Rivera <david.rivera@fourthcoffee.com>\nTo: Raj Mehta <raj.mehta@microsoft.com>\nDate: 2024-01-04 10:13 EST\nSubject: URGENT: competitive positioning Issue at Fourth Coffee\n\nWe've been evaluating the options and have decided to proceed with competitive positioning. What are the next steps from your side?",
+      "metadata": {
+        "freshness": "2024-03-17T09:00:00-05:00",
+        "source": "outlook",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: competitive positioning Discussion - Fourth Coffee\nDate: 2024-01-23\nDuration: 45 minutes\nAttendees: David Rivera (Fourth Coffee), Raj Mehta (Microsoft)\n\n[00:01:15] David Rivera (Fourth Coffee): Appreciate everyone making time. The main agenda today is competitive positioning.\n\n[00:06:00] David Rivera (Fourth Coffee): I agree with that assessment. From our side, the main concern is stakeholder alignment.\n\n[00:08:00] David Rivera (Fourth Coffee): Our director reviewed this and has concerns about stakeholder alignment. Can we address those?\n\n[00:11:00] Raj Mehta (Microsoft): Let me add some context -- we've been working on timeline constraints and found that there's a dependency on the security team's review that could delay us.\n\n[00:14:00] David Rivera (Fourth Coffee): On the competitive positioning front, we've made progress but there are still blockers around cost optimization.\n\n[00:19:00] Raj Mehta (Microsoft): I agree with that assessment. From our side, the main concern is performance requirements.\n\n[00:23:00] Raj Mehta (Microsoft): Our architect reviewed this and has concerns about vendor dependencies. Can we address those?\n\n[00:26:00] Raj Mehta (Microsoft): Our architect reviewed this and has concerns about security compliance. Can we address those?\n\n[00:28:00] David Rivera (Fourth Coffee): Let me add some context -- we've been working on partner engagement and found that there's a dependency on the security team's review that could delay us.",
+      "metadata": {
+        "freshness": "2024-02-15T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Fourth Coffee - competitive positioning",
+        "start": "2024-03-12T10:00:00-05:00",
+        "end": "2024-03-15T16:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Raj Mehta",
+            "email": "raj.mehta@microsoft.com"
+          },
+          {
+            "name": "David Rivera",
+            "email": "david.rivera@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "contract_event",
+            "detail": "Signal detected for Fourth Coffee: there's a compliance requirement we hadn't accounted for in the original scope",
+            "date": "2024-03-09"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-tenure-junior",
+    "data-stale"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "contact-stakeholder-map"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "stakeholder-map-generation",
+    "required_artifacts": [
+      "Stakeholder map with roles (decision-maker",
+      "influencer",
+      "champion",
+      "blocker)",
+      "recency labels"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Complete, well-structured output matching the Stakeholder Map Generation template with all required artifacts present and actionable",
+      "Score 3: Output covers main requirements but missing one or two secondary artifacts or lacking specificity",
+      "Score 1: Output is generic, missing key artifacts, or fails to address the specific request"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct competitive positioning decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Produce structural verdict on whether current routing adequately serves this scenario"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "verdict-on-structural",
+    "verdict_required_axes": [
+      "routing",
+      "evidence"
+    ]
+  }
+}

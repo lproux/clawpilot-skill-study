@@ -1,0 +1,140 @@
+{
+  "scenario_id": "WF-14-00102",
+  "workflow_id": "WF-14",
+  "workflow_name": "Stakeholder Map Generation",
+  "seed": 1400144,
+  "tier": 1,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": null,
+  "persona": "CSA",
+  "fixture_id": "FX-047",
+  "user_message": "Can you pull the context on Evergreen Solutions? I need to identify the blockers.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Evergreen Solutions",
+        "account_id": "ACC-S7KJN805",
+        "opportunities": [
+          {
+            "name": "Evergreen Azure AI Services",
+            "stage": "Qualify",
+            "amount": 175000,
+            "close_date": "2024-12-26"
+          }
+        ],
+        "acr_current": 19865.64,
+        "health_flag": "Healthy",
+        "owner": "David Chen"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Samantha Okafor <samantha.okafor@evergreensol.com>\nTo: David Chen <david.chen@microsoft.com>\nDate: 2024-03-26 12:49 EST\nSubject: Follow-up: account health Review\n\nThere's been a change in our timeline for account health. Can we discuss the implications on the overall project plan?\n\n---\nFrom: David Chen <david.chen@microsoft.com>\nTo: Samantha Okafor <samantha.okafor@evergreensol.com>\nDate: 2024-01-15 16:40 EST\nSubject: Quarterly Update: Evergreen Solutions account health\n\nOur team encountered some challenges with account health. Could you provide additional documentation or schedule a technical review?",
+      "metadata": {
+        "freshness": "2024-02-20T09:00:00-05:00",
+        "source": "outlook",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: account health Discussion - Evergreen Solutions\nDate: 2024-02-21\nDuration: 45 minutes\nAttendees: Samantha Okafor (Evergreen Solutions), David Chen (Microsoft), David (Evergreen Solutions)\n\n[00:01:30] Samantha Okafor (Evergreen Solutions): Thanks everyone for joining. Let's dive into account health.\n\n[00:06:00] Samantha Okafor (Evergreen Solutions): On the account health front, we've made progress but there are still blockers around data residency.\n\n[00:08:00] Samantha Okafor (Evergreen Solutions): I agree with that assessment. From our side, the main concern is security compliance.\n\n[00:13:00] David Chen (Microsoft): I agree with that assessment. From our side, the main concern is security compliance.\n\n[00:18:00] Samantha Okafor (Evergreen Solutions): Let me add some context -- we've been working on performance requirements and found that the current vendor contract has a 90-day exit clause we need to plan around.\n\n[00:21:00] David Chen (Microsoft): Let me add some context -- we've been working on vendor dependencies and found that the cost projections need to factor in reserved instance pricing for accuracy.\n\n[00:23:00] David (Evergreen Solutions): Let me add some context -- we've been working on timeline constraints and found that there's a compliance requirement we hadn't accounted for in the original scope.",
+      "metadata": {
+        "freshness": "2024-03-02T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Evergreen Solutions - account health",
+        "start": "2024-03-15T15:00:00-05:00",
+        "end": "2024-03-13T17:00:00-05:00",
+        "attendees": [
+          {
+            "name": "David Chen",
+            "email": "david.chen@microsoft.com"
+          },
+          {
+            "name": "Samantha Okafor",
+            "email": "samantha.okafor@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "security_alert",
+            "detail": "Signal detected for Evergreen Solutions: the existing infrastructure won't support the target workload without upgrades",
+            "date": "2024-03-05"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-10T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-tenure-junior",
+    "persona-geo-na",
+    "signal-strength-faint",
+    "data-contradictory"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "contact-stakeholder-map"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "stakeholder-map-generation",
+    "required_artifacts": [
+      "Stakeholder map with roles (decision-maker",
+      "influencer",
+      "champion",
+      "blocker)",
+      "recency labels"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Complete, well-structured output matching the Stakeholder Map Generation template with all required artifacts present and actionable",
+      "Score 3: Output covers main requirements but missing one or two secondary artifacts or lacking specificity",
+      "Score 1: Output is generic, missing key artifacts, or fails to address the specific request"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct account health decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Guardrail axis scored neutrally -- focus on whether output served the user's actual need"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

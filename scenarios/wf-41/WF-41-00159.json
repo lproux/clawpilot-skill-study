@@ -1,0 +1,115 @@
+{
+  "scenario_id": "WF-41-00159",
+  "workflow_id": "WF-41",
+  "workflow_name": "Dark-Customer Re-Emergence",
+  "seed": 4100201,
+  "tier": 4,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": "FM-WF41-K",
+  "persona": "CSA",
+  "fixture_id": "FX-011",
+  "user_message": "Just got this from Brian Yamamoto at Alpine Ski House -- I need help figuring out security posture. Need this before my 2pm call.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Alpine Ski House",
+        "account_id": "ACC-UIKNWGJ7",
+        "opportunities": [
+          {
+            "name": "Alpine Azure Virtual Desktop",
+            "stage": "Propose",
+            "amount": 560000,
+            "close_date": "2023-12-14"
+          }
+        ],
+        "acr_current": 115928.19,
+        "health_flag": "At Risk",
+        "owner": "Marcus Williams"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Brian Yamamoto <brian.yamamoto@alpineskihou.com>\nTo: Marcus Williams <marcus.williams@microsoft.com>\nDate: 2024-03-04 13:25 EST\nSubject: Quarterly Update: Alpine Ski House security posture\n\nOur team encountered some challenges with security posture. Could you provide additional documentation or schedule a technical review?\n\n---\nFrom: Marcus Williams <marcus.williams@microsoft.com>\nTo: Brian Yamamoto <brian.yamamoto@alpineskihou.com>\nDate: 2024-02-02 14:22 EST\nSubject: Quarterly Update: Alpine Ski House security posture\n\nI wanted to follow up on our conversation about security posture. Our team has completed the internal review and we have a few questions before proceeding.\n\n---\nFrom: Brian Yamamoto <brian.yamamoto@alpineskihou.com>\nTo: Marcus Williams <marcus.williams@microsoft.com>\nDate: 2024-01-17 08:56 EST\nSubject: URGENT: security posture Issue at Alpine Ski House\n\nOur team encountered some challenges with security posture. Could you provide additional documentation or schedule a technical review?",
+      "metadata": {
+        "freshness": "2024-03-02T13:00:00-05:00",
+        "source": "outlook",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "deployment_blocker",
+            "detail": "Signal detected for Alpine Ski House: the current vendor contract has a 90-day exit clause we need to plan around",
+            "date": "2024-03-06"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-tenure-mid",
+    "routing-ambiguous-2skills",
+    "persona-segment-smb-mid"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "email-chat-context",
+      "contact-stakeholder-map"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "MSX records need dark-period hygiene catchup"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "dark-customer-re-emergence",
+    "required_artifacts": [
+      "Context reconstruction",
+      "re-qualification assessment",
+      "response draft (appropriate tone)",
+      "stakeholder verification plan",
+      "MSX hygiene catchup proposals"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF41-K trap (Dark-customer-outreach module's sequence pattern isn't right for unexpected re-e); produces complete Context reconstruction, re-qualification assessment, response draft (appropriate tone), stakeholder ",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF41-K failure pattern",
+      "Score 1: Output exhibits the full FM-WF41-K failure mode (Dark-customer-outreach module's sequence pattern isn't right for unexpected re-e)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct security posture decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF41-K -- Dark-customer-outreach module's sequence pattern isn't right for unexpected re-e",
+    "Guardrail axis scored neutrally -- focus on whether output served the user's actual need"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

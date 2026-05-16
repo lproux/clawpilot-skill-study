@@ -1,0 +1,88 @@
+{
+  "scenario_id": "WF-15-00027",
+  "workflow_id": "WF-15",
+  "workflow_name": "Visual Meeting Packet (Executive Brief)",
+  "seed": 1500069,
+  "tier": 3,
+  "intent": "design-redesign",
+  "targeted_failure_mode": "FM-WF15-M",
+  "persona": "CSA",
+  "fixture_id": "FX-047",
+  "user_message": "Just got this from Samantha Okafor at Evergreen Solutions -- I need help figuring out pipeline hygiene. Need this before my 2pm call.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Evergreen Solutions",
+        "account_id": "ACC-S7KJN805",
+        "opportunities": [
+          {
+            "name": "Evergreen Azure AI Services",
+            "stage": "Qualify",
+            "amount": 175000,
+            "close_date": "2024-12-26"
+          }
+        ],
+        "acr_current": 19865.64,
+        "health_flag": "Healthy",
+        "owner": "David Chen"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-role-csa",
+    "data-contradictory",
+    "persona-segment-smb-small"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "meeting-prep",
+      "contact-stakeholder-map"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "visual-meeting-packet-(executive-brief)",
+    "required_artifacts": [
+      "Visual executive packet with cover page",
+      "exec summary",
+      "opportunity ladder",
+      "solution narrative",
+      "asks section"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF15-M trap (Visual packet should integrate with portfolio + ACR data more deeply); produces complete Visual executive packet with cover page, exec summary, opportunity ladder, solution narrative, asks ",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF15-M failure pattern",
+      "Score 1: Output exhibits the full FM-WF15-M failure mode (Visual packet should integrate with portfolio + ACR data more deeply)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct pipeline hygiene decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF15-M -- Visual packet should integrate with portfolio + ACR data more deeply",
+    "Produce structural verdict on whether current routing adequately serves this scenario"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "verdict-on-structural",
+    "verdict_required_axes": [
+      "routing",
+      "evidence"
+    ]
+  }
+}

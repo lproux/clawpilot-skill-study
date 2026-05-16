@@ -1,0 +1,152 @@
+{
+  "scenario_id": "WF-14-00043",
+  "workflow_id": "WF-14",
+  "workflow_name": "Stakeholder Map Generation",
+  "seed": 1400085,
+  "tier": 1,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF14-F",
+  "persona": "DSSP",
+  "fixture_id": "FX-029",
+  "user_message": "I need to identify the blockers for the Consolidated Messenger engagement. This is a renewal account with declining consumption.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Consolidated Messenger",
+        "account_id": "ACC-LVS79LOG",
+        "opportunities": [
+          {
+            "name": "Consolidated Azure AI Services",
+            "stage": "Propose",
+            "amount": 280000,
+            "close_date": "2024-12-11"
+          },
+          {
+            "name": "Consolidated Security Modernization",
+            "stage": "Prospect",
+            "amount": 210000,
+            "close_date": "2024-04-06"
+          },
+          {
+            "name": "Consolidated Azure Arc Deployment",
+            "stage": "Close",
+            "amount": 125000,
+            "close_date": "2024-05-02"
+          }
+        ],
+        "acr_current": 0,
+        "health_flag": "Unknown",
+        "owner": "Tom Rodriguez"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Sarah Singh <sarah.singh@consolidated.com>\nTo: Tom Rodriguez <tom.rodriguez@microsoft.com>\nDate: 2024-03-02 11:48 EST\nSubject: Follow-up: competitive positioning Review\n\nThank you for the discussion last week. We'd like to move forward with competitive positioning. Can we schedule a call this week to finalize the timeline?\n\n---\nFrom: Tom Rodriguez <tom.rodriguez@microsoft.com>\nTo: Sarah Singh <sarah.singh@consolidated.com>\nDate: 2024-02-18 09:58 EST\nSubject: Quarterly Update: Consolidated Messenger competitive positioning\n\nThank you for the discussion last week. We'd like to move forward with competitive positioning. Can we schedule a call this week to finalize the timeline?\n\n---\nFrom: Sarah Singh <sarah.singh@consolidated.com>\nTo: Tom Rodriguez <tom.rodriguez@microsoft.com>\nDate: 2024-01-17 17:35 EST\nSubject: Re: Re: competitive positioning Timeline\n\nOur team encountered some challenges with competitive positioning. Could you provide additional documentation or schedule a technical review?",
+      "metadata": {
+        "freshness": "2024-02-27T16:00:00-05:00",
+        "source": "outlook",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: competitive positioning Discussion - Consolidated Messenger\nDate: 2024-02-11\nDuration: 45 minutes\nAttendees: Sarah Singh (Consolidated Messenger), Tom Rodriguez (Microsoft)\n\n[00:01:15] Sarah Singh (Consolidated Messenger): Appreciate everyone making time. The main agenda today is competitive positioning.\n\n[00:08:00] Sarah Singh (Consolidated Messenger): The timeline for stakeholder alignment is aggressive. We need to validate the assumptions.\n\n[00:13:00] Sarah Singh (Consolidated Messenger): On the competitive positioning front, we've made progress but there are still blockers around data residency.\n\n[00:16:00] Tom Rodriguez (Microsoft): On the competitive positioning front, we've made progress but there are still blockers around data residency.\n\n[00:19:00] Tom Rodriguez (Microsoft): Our CTO reviewed this and has concerns about budget approval. Can we address those?\n\n[00:23:00] Sarah Singh (Consolidated Messenger): The timeline for cost optimization is aggressive. We need to validate the assumptions.\n\n[00:27:00] Sarah Singh (Consolidated Messenger): Our director reviewed this and has concerns about stakeholder alignment. Can we address those?\n\n[00:31:00] Tom Rodriguez (Microsoft): Let me add some context -- we've been working on data residency and found that there's a compliance requirement we hadn't accounted for in the original scope.\n\n[00:35:00] Tom Rodriguez (Microsoft): I agree with that assessment. From our side, the main concern is resource allocation.\n\n[00:39:00] Sarah Singh (Consolidated Messenger): The timeline for partner engagement is aggressive. We need to validate the assumptions.",
+      "metadata": {
+        "freshness": "2024-01-25T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Consolidated Messenger - competitive positioning",
+        "start": "2024-03-11T13:00:00-05:00",
+        "end": "2024-03-13T16:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Tom Rodriguez",
+            "email": "tom.rodriguez@microsoft.com"
+          },
+          {
+            "name": "Sarah Singh",
+            "email": "sarah.singh@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "consumption_decline",
+            "detail": "Signal detected for Consolidated Messenger: there's a dependency on the security team's review that could delay us",
+            "date": "2024-03-07"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-role-dssp",
+    "routing-clear",
+    "persona-segment-smb-mid",
+    "persona-tenure-junior"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "contact-stakeholder-map"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "stakeholder-map-generation",
+    "required_artifacts": [
+      "Stakeholder map with roles (decision-maker",
+      "influencer",
+      "champion",
+      "blocker)",
+      "recency labels"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF14-F trap (Skips technical-decision-maker role); produces complete Stakeholder map with roles (decision-maker, influencer, champion, blocker), recency labels, confiden",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF14-F failure pattern",
+      "Score 1: Output exhibits the full FM-WF14-F failure mode (Skips technical-decision-maker role)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct competitive positioning decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF14-F -- Skips technical-decision-maker role"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

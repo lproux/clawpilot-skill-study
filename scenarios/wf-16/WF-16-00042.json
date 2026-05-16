@@ -1,0 +1,100 @@
+{
+  "scenario_id": "WF-16-00042",
+  "workflow_id": "WF-16",
+  "workflow_name": "Email Context Pull-Through",
+  "seed": 1600084,
+  "tier": 1,
+  "intent": "happy",
+  "targeted_failure_mode": null,
+  "persona": "CSA",
+  "fixture_id": "FX-027",
+  "user_message": "Quick one -- map the stakeholders on Blue Yonder Airlines. Not urgent but would be good to have by EOD.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Blue Yonder Airlines",
+        "account_id": "ACC-6ZHK5AIU",
+        "opportunities": [
+          {
+            "name": "Blue Dynamics 365 Implementation",
+            "stage": "Close",
+            "amount": 210000,
+            "close_date": "2024-04-22"
+          },
+          {
+            "name": "Blue Azure Infrastructure",
+            "stage": "Prospect",
+            "amount": 350000,
+            "close_date": "2024-08-05"
+          },
+          {
+            "name": "Blue Copilot Adoption",
+            "stage": "Prospect",
+            "amount": 210000,
+            "close_date": "2024-12-03"
+          }
+        ],
+        "acr_current": 0,
+        "health_flag": "At Risk",
+        "owner": "David Chen"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Robert Singh <robert.singh@blueyonderai.com>\nTo: David Chen <david.chen@microsoft.com>\nDate: 2024-03-19 16:29 EST\nSubject: Re: account health Discussion - Next Steps\n\nThere's been a change in our timeline for account health. Can we discuss the implications on the overall project plan?\n\n---\nFrom: David Chen <david.chen@microsoft.com>\nTo: Robert Singh <robert.singh@blueyonderai.com>\nDate: 2024-02-05 12:32 EST\nSubject: account health - Action Required\n\nOur team encountered some challenges with account health. Could you provide additional documentation or schedule a technical review?\n\n---\nFrom: Robert Singh <robert.singh@blueyonderai.com>\nTo: David Chen <david.chen@microsoft.com>\nDate: 2024-01-07 09:29 EST\nSubject: Follow-up: account health Review\n\nI wanted to follow up on our conversation about account health. Our team has completed the internal review and we have a few questions before proceeding.",
+      "metadata": {
+        "freshness": "2024-03-15T13:00:00-05:00",
+        "source": "outlook",
+        "length_class": "short"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-segment-smb-small",
+    "persona-geo-emea"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "email-chat-context"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "email-context-pull-through",
+    "required_artifacts": [
+      "Thread summary",
+      "key commitments/asks identified",
+      "waiting-on-whom assessment",
+      "draft response matching established tone"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Complete, well-structured output matching the Email Context Pull-Through template with all required artifacts present and actionable",
+      "Score 3: Output covers main requirements but missing one or two secondary artifacts or lacking specificity",
+      "Score 1: Output is generic, missing key artifacts, or fails to address the specific request"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct account health decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

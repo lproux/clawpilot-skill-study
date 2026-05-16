@@ -1,0 +1,109 @@
+{
+  "scenario_id": "WF-44-91138",
+  "workflow_id": "WF-44",
+  "workflow_name": "Technical Deep-Dive Transcript -> Architecture + Blockers",
+  "seed": 9901180,
+  "tier": 4,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": null,
+  "persona": "DSSP",
+  "fixture_id": "FX-031",
+  "user_message": "Can you extract the security posture from this escalation email for Liberty's Delightful Sinful Bakery? We had a deep-dive last month -- need the follow-up.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Liberty's Delightful Sinful Bakery",
+        "account_id": "ACC-A2FZGZWL",
+        "opportunities": [
+          {
+            "name": "Liberty's Dynamics 365 Implementation",
+            "stage": "Develop",
+            "amount": 89000,
+            "close_date": "2024-12-10"
+          },
+          {
+            "name": "Liberty's AKS Deployment",
+            "stage": "Qualify",
+            "amount": 89000,
+            "close_date": "2024-12-24"
+          },
+          {
+            "name": "Liberty's Azure Infrastructure",
+            "stage": "Develop",
+            "amount": 450000,
+            "close_date": "2024-04-08"
+          }
+        ],
+        "acr_current": 0,
+        "health_flag": "Healthy",
+        "owner": "Marcus Williams"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: security posture Discussion - Liberty's Delightful Sinful Bakery\nDate: 2024-03-21\nDuration: 45 minutes\nAttendees: Patricia Kim (Liberty's Delightful Sinful Bakery), Marcus Williams (Microsoft), David (Liberty's Delightful Sinful Bakery)\n\n[00:01:15] Patricia Kim (Liberty's Delightful Sinful Bakery): Appreciate everyone making time. The main agenda today is security posture.\n\n[00:07:00] Marcus Williams (Microsoft): The timeline for security compliance is aggressive. We need to validate the assumptions.\n\n[00:11:00] Patricia Kim (Liberty's Delightful Sinful Bakery): Let me add some context -- we've been working on technical validation and found that the existing infrastructure won't support the target workload without upgrades.\n\n[00:14:00] David (Liberty's Delightful Sinful Bakery): On the security posture front, we've made progress but there are still blockers around resource allocation.\n\n[00:18:00] Marcus Williams (Microsoft): Our VP reviewed this and has concerns about performance requirements. Can we address those?\n\n[00:23:00] Marcus Williams (Microsoft): On the security posture front, we've made progress but there are still blockers around integration complexity.\n\n[00:26:00] Patricia Kim (Liberty's Delightful Sinful Bakery): Our director reviewed this and has concerns about resource allocation. Can we address those?\n\n[00:28:00] Patricia Kim (Liberty's Delightful Sinful Bakery): Let me add some context -- we've been working on technical validation and found that there's a compliance requirement we hadn't accounted for in the original scope.\n\n[00:31:00] David (Liberty's Delightful Sinful Bakery): Let me add some context -- we've been working on integration complexity and found that the current vendor contract has a 90-day exit clause we need to plan around.",
+      "metadata": {
+        "freshness": "2024-02-28T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "medium"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-segment-smb-corporate",
+    "persona-role-dssp",
+    "routing-clear",
+    "persona-geo-na",
+    "routing-trap"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "solution-value-design-coach",
+        "condition": "architecture sketch needed from technical signals"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "adversarial-routing-test",
+    "required_artifacts": [
+      "correct_routing_justification",
+      "confusion_analysis"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Correctly routes to primary workflow despite adversarial signals; output is complete",
+      "Score 3: Routes correctly but output shows contamination from confusing signals",
+      "Score 1: Misroutes to wrong workflow or produces irrelevant output"
+    ],
+    "evidence_anchors": [
+      "Score 5: All evidence correctly attributed despite cross-workflow noise",
+      "Score 3: Some evidence misattributed but core facts correct",
+      "Score 1: Significant evidence confusion or hallucination"
+    ],
+    "decision_anchors": [
+      "Score 5: Decision-making robust against adversarial perturbations",
+      "Score 3: Primary decision correct but secondary decisions influenced by noise",
+      "Score 1: Primary decision compromised by adversarial inputs"
+    ]
+  },
+  "guardrail_checks": [
+    "Must correctly identify primary workflow despite adversarial routing signals",
+    "Must not hallucinate context from similar-sounding workflows",
+    "Must not expose internal routing logic to user"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

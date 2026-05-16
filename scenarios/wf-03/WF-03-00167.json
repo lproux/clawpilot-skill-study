@@ -1,0 +1,99 @@
+{
+  "scenario_id": "WF-03-00167",
+  "workflow_id": "WF-03",
+  "workflow_name": "Whitespace Opportunity Hunt",
+  "seed": 300209,
+  "tier": 2,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF03-E",
+  "persona": "Manager",
+  "fixture_id": "FX-027",
+  "user_message": "Give me the manager view on this Blue Yonder Airlines email thread. Renewal conversation is tomorrow.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Blue Yonder Airlines",
+        "account_id": "ACC-6ZHK5AIU",
+        "opportunities": [
+          {
+            "name": "Blue Dynamics 365 Implementation",
+            "stage": "Close",
+            "amount": 210000,
+            "close_date": "2024-04-22"
+          },
+          {
+            "name": "Blue Azure Infrastructure",
+            "stage": "Prospect",
+            "amount": 350000,
+            "close_date": "2024-08-05"
+          },
+          {
+            "name": "Blue Copilot Adoption",
+            "stage": "Prospect",
+            "amount": 210000,
+            "close_date": "2024-12-03"
+          }
+        ],
+        "acr_current": 0,
+        "health_flag": "At Risk",
+        "owner": "David Chen"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-segment-smb-small",
+    "persona-tenure-senior",
+    "persona-role-manager"
+  ],
+  "expected_routing": {
+    "entry_skill": "portfolio-account-planning-coach",
+    "modules": [
+      "whitespace-growth-hypotheses"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "acr-signal-to-opportunity-coach",
+        "condition": "hypothesis warrants signal investigation"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "whitespace-opportunity-hunt",
+    "required_artifacts": [
+      "Ranked whitespace hypotheses with feasibility",
+      "urgency",
+      "comparable evidence",
+      "and suggested validation steps"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF03-E trap (Skips validation step (jumps to 'create opportunity')); produces complete Ranked whitespace hypotheses with feasibility, urgency, comparable evidence, and suggested validatio",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF03-E failure pattern",
+      "Score 1: Output exhibits the full FM-WF03-E failure mode (Skips validation step (jumps to 'create opportunity'))"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct QBR preparation decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF03-E -- Skips validation step (jumps to 'create opportunity')"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

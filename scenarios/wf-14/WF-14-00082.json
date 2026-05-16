@@ -1,0 +1,138 @@
+{
+  "scenario_id": "WF-14-00082",
+  "workflow_id": "WF-14",
+  "workflow_name": "Stakeholder Map Generation",
+  "seed": 1400124,
+  "tier": 1,
+  "intent": "happy",
+  "targeted_failure_mode": null,
+  "persona": "DSSP",
+  "fixture_id": "FX-007",
+  "user_message": "Working on Litware Inc's consumption trend -- need you to investigate the decline.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Litware Inc",
+        "account_id": "ACC-658MPDXQ",
+        "opportunities": [
+          {
+            "name": "Litware Security Modernization",
+            "stage": "Prospect",
+            "amount": 280000,
+            "close_date": "2024-09-23"
+          }
+        ],
+        "acr_current": 76577.96,
+        "health_flag": "Healthy",
+        "owner": "David Chen"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Sarah Wilson <sarah.wilson@litwareinc.com>\nTo: David Chen <david.chen@microsoft.com>\nDate: 2024-03-13 10:09 EST\nSubject: consumption trend - Action Required\n\nJust checking in on the consumption trend proposal. Our VP Operations is asking for a status update before the board meeting next week.\n\n---\nFrom: David Chen <david.chen@microsoft.com>\nTo: Sarah Wilson <sarah.wilson@litwareinc.com>\nDate: 2024-02-14 15:11 EST\nSubject: Re: Re: consumption trend Timeline\n\nThere's been a change in our timeline for consumption trend. Can we discuss the implications on the overall project plan?\n\n---\nFrom: Sarah Wilson <sarah.wilson@litwareinc.com>\nTo: David Chen <david.chen@microsoft.com>\nDate: 2024-01-26 13:58 EST\nSubject: Follow-up: consumption trend Review\n\nThank you for the discussion last week. We'd like to move forward with consumption trend. Can we schedule a call this week to finalize the timeline?",
+      "metadata": {
+        "freshness": "2024-03-06T10:00:00-05:00",
+        "source": "outlook",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: consumption trend Discussion - Litware Inc\nDate: 2024-02-07\nDuration: 45 minutes\nAttendees: Sarah Wilson (Litware Inc), David Chen (Microsoft), David (Litware Inc)\n\n[00:01:15] Sarah Wilson (Litware Inc): Appreciate everyone making time. The main agenda today is consumption trend.\n\n[00:08:00] David Chen (Microsoft): Our architect reviewed this and has concerns about cost optimization. Can we address those?\n\n[00:12:00] David Chen (Microsoft): Let me add some context -- we've been working on cost optimization and found that the existing infrastructure won't support the target workload without upgrades.\n\n[00:16:00] David Chen (Microsoft): The timeline for resource allocation is aggressive. We need to validate the assumptions.\n\n[00:20:00] David Chen (Microsoft): The timeline for budget approval is aggressive. We need to validate the assumptions.\n\n[00:24:00] David (Litware Inc): The timeline for resource allocation is aggressive. We need to validate the assumptions.\n\n[00:29:00] David Chen (Microsoft): I agree with that assessment. From our side, the main concern is vendor dependencies.\n\n[00:34:00] David Chen (Microsoft): The timeline for vendor dependencies is aggressive. We need to validate the assumptions.",
+      "metadata": {
+        "freshness": "2024-02-27T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "mixed",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Litware Inc - consumption trend",
+        "start": "2024-03-11T15:00:00-05:00",
+        "end": "2024-03-11T15:00:00-05:00",
+        "attendees": [
+          {
+            "name": "David Chen",
+            "email": "david.chen@microsoft.com"
+          },
+          {
+            "name": "Sarah Wilson",
+            "email": "sarah.wilson@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "security_alert",
+            "detail": "Signal detected for Litware Inc: there's a dependency on the security team's review that could delay us",
+            "date": "2024-03-06"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-10T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-geo-apac",
+    "routing-ambiguous-2skills",
+    "persona-role-dssp"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "contact-stakeholder-map"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "stakeholder-map-generation",
+    "required_artifacts": [
+      "Stakeholder map with roles (decision-maker",
+      "influencer",
+      "champion",
+      "blocker)",
+      "recency labels"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Complete, well-structured output matching the Stakeholder Map Generation template with all required artifacts present and actionable",
+      "Score 3: Output covers main requirements but missing one or two secondary artifacts or lacking specificity",
+      "Score 1: Output is generic, missing key artifacts, or fails to address the specific request"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct consumption trend decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

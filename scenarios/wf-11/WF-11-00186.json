@@ -1,0 +1,126 @@
+{
+  "scenario_id": "WF-11-00186",
+  "workflow_id": "WF-11",
+  "workflow_name": "Pre-Meeting Brief",
+  "seed": 1100228,
+  "tier": 2,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": "FM-WF11-K",
+  "persona": "CSA",
+  "fixture_id": "FX-015",
+  "user_message": "Quick one -- generate the watchlist on Fourth Coffee. The customer escalated this morning.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Fourth Coffee",
+        "account_id": "ACC-A7MFL3SV",
+        "opportunities": [
+          {
+            "name": "Fourth Data Platform Migration",
+            "stage": "Qualify",
+            "amount": 210000,
+            "close_date": "2023-12-04"
+          }
+        ],
+        "acr_current": 114958.25,
+        "health_flag": "Healthy",
+        "owner": "Raj Mehta"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: David Rivera <david.rivera@fourthcoffee.com>\nTo: Raj Mehta <raj.mehta@microsoft.com>\nDate: 2024-03-02 09:21 EST\nSubject: Re: migration architecture Discussion - Next Steps\n\nI wanted to follow up on our conversation about migration architecture. Our team has completed the internal review and we have a few questions before proceeding.\n\n---\nFrom: Raj Mehta <raj.mehta@microsoft.com>\nTo: David Rivera <david.rivera@fourthcoffee.com>\nDate: 2024-02-10 12:18 EST\nSubject: Follow-up: migration architecture Review\n\nThank you for the discussion last week. We'd like to move forward with migration architecture. Can we schedule a call this week to finalize the timeline?\n\n---\nFrom: David Rivera <david.rivera@fourthcoffee.com>\nTo: Raj Mehta <raj.mehta@microsoft.com>\nDate: 2024-01-17 15:25 EST\nSubject: migration architecture - Action Required\n\nOur team encountered some challenges with migration architecture. Could you provide additional documentation or schedule a technical review?",
+      "metadata": {
+        "freshness": "2024-02-01T16:00:00-05:00",
+        "source": "outlook",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: migration architecture Discussion - Fourth Coffee\nDate: 2024-03-09\nDuration: 45 minutes\nAttendees: David Rivera (Fourth Coffee), Raj Mehta (Microsoft)\n\n[00:02:00] David Rivera (Fourth Coffee): Good morning. I wanted to follow up on migration architecture from our last session.\n\n[00:07:00] Raj Mehta (Microsoft): On the migration architecture front, we've made progress but there are still blockers around security compliance.\n\n[00:12:00] David Rivera (Fourth Coffee): I agree with that assessment. From our side, the main concern is partner engagement.\n\n[00:14:00] David Rivera (Fourth Coffee): The timeline for resource allocation is aggressive. We need to validate the assumptions.\n\n[00:16:00] David Rivera (Fourth Coffee): On the migration architecture front, we've made progress but there are still blockers around partner engagement.\n\n[00:21:00] David Rivera (Fourth Coffee): Let me add some context -- we've been working on technical validation and found that the current vendor contract has a 90-day exit clause we need to plan around.\n\n[00:24:00] Raj Mehta (Microsoft): The timeline for integration complexity is aggressive. We need to validate the assumptions.\n\n[00:29:00] Raj Mehta (Microsoft): The timeline for performance requirements is aggressive. We need to validate the assumptions.\n\n[00:34:00] Raj Mehta (Microsoft): On the migration architecture front, we've made progress but there are still blockers around performance requirements.\n\n[00:38:00] David Rivera (Fourth Coffee): On the migration architecture front, we've made progress but there are still blockers around security compliance.",
+      "metadata": {
+        "freshness": "2024-01-15T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "mixed",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Fourth Coffee - migration architecture",
+        "start": "2024-03-13T09:00:00-05:00",
+        "end": "2024-03-15T14:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Raj Mehta",
+            "email": "raj.mehta@microsoft.com"
+          },
+          {
+            "name": "David Rivera",
+            "email": "david.rivera@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-tenure-junior",
+    "persona-role-csa",
+    "signal-strength-noisy",
+    "persona-segment-smb-small"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "meeting-prep",
+      "contact-stakeholder-map"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "pre-meeting-brief",
+    "required_artifacts": [
+      "One-page brief with attendee context",
+      "account snapshot",
+      "talking points",
+      "likely objections",
+      "open items from last meeting"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF11-K trap (One-page constraint hurts complex meetings); produces complete One-page brief with attendee context, account snapshot, talking points, likely objections, open item",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF11-K failure pattern",
+      "Score 1: Output exhibits the full FM-WF11-K failure mode (One-page constraint hurts complex meetings)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct migration architecture decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF11-K -- One-page constraint hurts complex meetings",
+    "Guardrail axis scored neutrally -- focus on whether output served the user's actual need"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

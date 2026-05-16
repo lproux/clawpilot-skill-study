@@ -1,0 +1,127 @@
+{
+  "scenario_id": "WF-39-00076",
+  "workflow_id": "WF-39",
+  "workflow_name": "Multi-Thread Customer Conversation Synthesis",
+  "seed": 3900118,
+  "tier": 4,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": "FM-WF39-L",
+  "persona": "DSSP",
+  "fixture_id": "FX-045",
+  "user_message": "Can you extract the migration architecture from this email thread for Azure Ridge Partners? The CSA flagged this as at-risk yesterday.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Azure Ridge Partners",
+        "account_id": "ACC-URB6CCFS",
+        "opportunities": [
+          {
+            "name": "Azure Cloud Migration Phase",
+            "stage": "Develop",
+            "amount": 210000,
+            "close_date": "2024-09-05"
+          },
+          {
+            "name": "Azure Cloud Migration Phase",
+            "stage": "Close",
+            "amount": 560000,
+            "close_date": "2024-10-05"
+          },
+          {
+            "name": "Azure Intune Rollout",
+            "stage": "Develop",
+            "amount": 280000,
+            "close_date": "2024-10-01"
+          }
+        ],
+        "acr_current": 189461.39,
+        "health_flag": "Unknown",
+        "owner": "Raj Mehta"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Thomas Okafor <thomas.okafor@azureridgepa.com>\nTo: Raj Mehta <raj.mehta@microsoft.com>\nDate: 2024-03-25 12:21 EST\nSubject: Re: Re: migration architecture Timeline\n\nI wanted to follow up on our conversation about migration architecture. Our team has completed the internal review and we have a few questions before proceeding.\n\n---\nFrom: Raj Mehta <raj.mehta@microsoft.com>\nTo: Thomas Okafor <thomas.okafor@azureridgepa.com>\nDate: 2024-02-28 12:59 EST\nSubject: Quarterly Update: Azure Ridge Partners migration architecture\n\nJust checking in on the migration architecture proposal. Our CFO is asking for a status update before the board meeting next week.\n\n---\nFrom: Thomas Okafor <thomas.okafor@azureridgepa.com>\nTo: Raj Mehta <raj.mehta@microsoft.com>\nDate: 2024-01-12 16:42 EST\nSubject: Re: migration architecture Discussion - Next Steps\n\nWe've been evaluating the options and have decided to proceed with migration architecture. What are the next steps from your side?",
+      "metadata": {
+        "freshness": "2024-03-12T08:00:00-05:00",
+        "source": "outlook",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "deployment_blocker",
+            "detail": "Signal detected for Azure Ridge Partners: the existing infrastructure won't support the target workload without upgrades",
+            "date": "2024-03-10"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-09T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "routing-ambiguous-2skills",
+    "persona-geo-emea",
+    "data-inconsistent"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "email-chat-context",
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "MSX updates warranted from synthesis"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "multi-thread-customer-conversation-synthesis",
+    "required_artifacts": [
+      "Consolidated decision log",
+      "cross-thread commitment inventory",
+      "action list with thread attribution",
+      "MSX update proposals",
+      "superseded-commitment identification"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF39-L trap (Follow-up-and-decisions module assumes single-thread input); produces complete Consolidated decision log, cross-thread commitment inventory, action list with thread attribution, M",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF39-L failure pattern",
+      "Score 1: Output exhibits the full FM-WF39-L failure mode (Follow-up-and-decisions module assumes single-thread input)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct migration architecture decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF39-L -- Follow-up-and-decisions module assumes single-thread input",
+    "Guardrail axis scored neutrally -- focus on whether output served the user's actual need"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

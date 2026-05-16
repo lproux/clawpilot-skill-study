@@ -1,0 +1,131 @@
+{
+  "scenario_id": "WF-11-00100",
+  "workflow_id": "WF-11",
+  "workflow_name": "Pre-Meeting Brief",
+  "seed": 1100142,
+  "tier": 2,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF11-E",
+  "persona": "DSSP",
+  "fixture_id": "FX-043",
+  "user_message": "Can you help me draft the follow-up? The customer (Pacific Northwest Outfitters) is asking about whitespace analysis.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Pacific Northwest Outfitters",
+        "account_id": "ACC-6SYIFEPT",
+        "opportunities": [
+          {
+            "name": "Pacific Azure Arc Deployment",
+            "stage": "Qualify",
+            "amount": 45000,
+            "close_date": "2024-04-15"
+          },
+          {
+            "name": "Pacific M365 E5 Upsell",
+            "stage": "Qualify",
+            "amount": 560000,
+            "close_date": "2024-11-15"
+          }
+        ],
+        "acr_current": 81560.32,
+        "health_flag": "Healthy",
+        "owner": "Ahmed Hassan"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Andrew Taylor <andrew.taylor@pacificnorth.com>\nTo: Ahmed Hassan <ahmed.hassan@microsoft.com>\nDate: 2024-03-08 13:56 EST\nSubject: Quarterly Update: Pacific Northwest Outfitters whitespace analysis\n\nThank you for the discussion last week. We'd like to move forward with whitespace analysis. Can we schedule a call this week to finalize the timeline?\n\n---\nFrom: Ahmed Hassan <ahmed.hassan@microsoft.com>\nTo: Andrew Taylor <andrew.taylor@pacificnorth.com>\nDate: 2024-02-07 15:32 EST\nSubject: Re: Re: whitespace analysis Timeline\n\nJust checking in on the whitespace analysis proposal. Our IT Director is asking for a status update before the board meeting next week.\n\n---\nFrom: Andrew Taylor <andrew.taylor@pacificnorth.com>\nTo: Ahmed Hassan <ahmed.hassan@microsoft.com>\nDate: 2024-01-13 08:49 EST\nSubject: Re: Re: whitespace analysis Timeline\n\nOur team encountered some challenges with whitespace analysis. Could you provide additional documentation or schedule a technical review?",
+      "metadata": {
+        "freshness": "2024-02-22T12:00:00-05:00",
+        "source": "outlook",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: whitespace analysis Discussion - Pacific Northwest Outfitters\nDate: 2024-03-16\nDuration: 45 minutes\nAttendees: Andrew Taylor (Pacific Northwest Outfitters), Ahmed Hassan (Microsoft)\n\n[00:02:00] Andrew Taylor (Pacific Northwest Outfitters): Good morning. I wanted to follow up on whitespace analysis from our last session.\n\n[00:07:00] Ahmed Hassan (Microsoft): I agree with that assessment. From our side, the main concern is security compliance.\n\n[00:10:00] Ahmed Hassan (Microsoft): On the whitespace analysis front, we've made progress but there are still blockers around security compliance.\n\n[00:12:00] Andrew Taylor (Pacific Northwest Outfitters): On the whitespace analysis front, we've made progress but there are still blockers around performance requirements.\n\n[00:14:00] Andrew Taylor (Pacific Northwest Outfitters): Let me add some context -- we've been working on timeline constraints and found that there's a compliance requirement we hadn't accounted for in the original scope.\n\n[00:16:00] Andrew Taylor (Pacific Northwest Outfitters): The timeline for stakeholder alignment is aggressive. We need to validate the assumptions.\n\n[00:19:00] Andrew Taylor (Pacific Northwest Outfitters): Let me add some context -- we've been working on security compliance and found that the current vendor contract has a 90-day exit clause we need to plan around.\n\n[00:24:00] Ahmed Hassan (Microsoft): The timeline for performance requirements is aggressive. We need to validate the assumptions.\n\n[00:28:00] Andrew Taylor (Pacific Northwest Outfitters): The timeline for technical validation is aggressive. We need to validate the assumptions.\n\n[00:33:00] Andrew Taylor (Pacific Northwest Outfitters): The timeline for partner engagement is aggressive. We need to validate the assumptions.\n\n[00:35:00] Ahmed Hassan (Microsoft): Our CTO reviewed this and has concerns about performance requirements. Can we address those?",
+      "metadata": {
+        "freshness": "2024-02-03T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Pacific Northwest Outfitters - whitespace analysis",
+        "start": "2024-03-12T12:00:00-05:00",
+        "end": "2024-03-13T15:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Ahmed Hassan",
+            "email": "ahmed.hassan@microsoft.com"
+          },
+          {
+            "name": "Andrew Taylor",
+            "email": "andrew.taylor@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    }
+  ],
+  "perturbations": [
+    "data-inconsistent",
+    "persona-tenure-junior",
+    "persona-role-dssp",
+    "persona-segment-smb-small"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "meeting-prep",
+      "contact-stakeholder-map"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "pre-meeting-brief",
+    "required_artifacts": [
+      "One-page brief with attendee context",
+      "account snapshot",
+      "talking points",
+      "likely objections",
+      "open items from last meeting"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF11-E trap (Misses the most recent thread); produces complete One-page brief with attendee context, account snapshot, talking points, likely objections, open item",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF11-E failure pattern",
+      "Score 1: Output exhibits the full FM-WF11-E failure mode (Misses the most recent thread)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct whitespace analysis decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF11-E -- Misses the most recent thread"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

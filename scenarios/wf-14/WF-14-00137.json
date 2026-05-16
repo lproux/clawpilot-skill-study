@@ -1,0 +1,138 @@
+{
+  "scenario_id": "WF-14-00137",
+  "workflow_id": "WF-14",
+  "workflow_name": "Stakeholder Map Generation",
+  "seed": 1400179,
+  "tier": 1,
+  "intent": "happy",
+  "targeted_failure_mode": null,
+  "persona": "Manager",
+  "fixture_id": "FX-017",
+  "user_message": "What's at risk across my portfolio? Multiple stakeholders are involved -- it's complex.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Humongous Insurance",
+        "account_id": "ACC-3AB2FT8E",
+        "opportunities": [
+          {
+            "name": "Humongous Cloud Migration Phase",
+            "stage": "Qualify",
+            "amount": 175000,
+            "close_date": "2023-10-27"
+          }
+        ],
+        "acr_current": 73720.59,
+        "health_flag": "Healthy",
+        "owner": "David Chen"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Michael Petrov <michael.petrov@humongousins.com>\nTo: David Chen <david.chen@microsoft.com>\nDate: 2024-03-07 09:01 EST\nSubject: URGENT: executive brief Issue at Humongous Insurance\n\nJust checking in on the executive brief proposal. Our IT Director is asking for a status update before the board meeting next week.\n\n---\nFrom: David Chen <david.chen@microsoft.com>\nTo: Michael Petrov <michael.petrov@humongousins.com>\nDate: 2024-02-02 09:02 EST\nSubject: Re: executive brief Discussion - Next Steps\n\nOur team encountered some challenges with executive brief. Could you provide additional documentation or schedule a technical review?",
+      "metadata": {
+        "freshness": "2024-03-18T10:00:00-05:00",
+        "source": "outlook",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: executive brief Discussion - Humongous Insurance\nDate: 2024-02-12\nDuration: 45 minutes\nAttendees: Michael Petrov (Humongous Insurance), David Chen (Microsoft)\n\n[00:02:00] Michael Petrov (Humongous Insurance): Good morning. I wanted to follow up on executive brief from our last session.\n\n[00:06:00] David Chen (Microsoft): Our architect reviewed this and has concerns about partner engagement. Can we address those?\n\n[00:09:00] David Chen (Microsoft): The timeline for performance requirements is aggressive. We need to validate the assumptions.\n\n[00:14:00] David Chen (Microsoft): Let me add some context -- we've been working on partner engagement and found that the existing infrastructure won't support the target workload without upgrades.\n\n[00:19:00] David Chen (Microsoft): The timeline for performance requirements is aggressive. We need to validate the assumptions.\n\n[00:24:00] David Chen (Microsoft): I agree with that assessment. From our side, the main concern is stakeholder alignment.\n\n[00:26:00] Michael Petrov (Humongous Insurance): The timeline for resource allocation is aggressive. We need to validate the assumptions.\n\n[00:30:00] David Chen (Microsoft): On the executive brief front, we've made progress but there are still blockers around performance requirements.\n\n[00:33:00] David Chen (Microsoft): On the executive brief front, we've made progress but there are still blockers around vendor dependencies.",
+      "metadata": {
+        "freshness": "2024-02-23T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "mixed",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Humongous Insurance - executive brief",
+        "start": "2024-03-14T14:00:00-05:00",
+        "end": "2024-03-12T12:00:00-05:00",
+        "attendees": [
+          {
+            "name": "David Chen",
+            "email": "david.chen@microsoft.com"
+          },
+          {
+            "name": "Michael Petrov",
+            "email": "michael.petrov@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "consumption_decline",
+            "detail": "Signal detected for Humongous Insurance: the existing infrastructure won't support the target workload without upgrades",
+            "date": "2024-03-09"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-geo-latam",
+    "persona-role-manager",
+    "persona-segment-smb-small"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "contact-stakeholder-map"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "stakeholder-map-generation",
+    "required_artifacts": [
+      "Stakeholder map with roles (decision-maker",
+      "influencer",
+      "champion",
+      "blocker)",
+      "recency labels"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Complete, well-structured output matching the Stakeholder Map Generation template with all required artifacts present and actionable",
+      "Score 3: Output covers main requirements but missing one or two secondary artifacts or lacking specificity",
+      "Score 1: Output is generic, missing key artifacts, or fails to address the specific request"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct executive brief decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

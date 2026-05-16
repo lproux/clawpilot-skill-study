@@ -1,0 +1,144 @@
+{
+  "scenario_id": "WF-14-00020",
+  "workflow_id": "WF-14",
+  "workflow_name": "Stakeholder Map Generation",
+  "seed": 1400062,
+  "tier": 1,
+  "intent": "design-redesign",
+  "targeted_failure_mode": null,
+  "persona": "Manager",
+  "fixture_id": "FX-033",
+  "user_message": "I need the team view on whitespace analysis. I think there's an opportunity here but need to validate.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Parnell Aerospace",
+        "account_id": "ACC-0H065FH7",
+        "opportunities": [
+          {
+            "name": "Parnell Dynamics 365 Implementation",
+            "stage": "Close",
+            "amount": 350000,
+            "close_date": "2024-11-03"
+          }
+        ],
+        "acr_current": 0,
+        "health_flag": "Healthy",
+        "owner": "Ahmed Hassan"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Christopher Martinez <christopher.martinez@parnellaeros.com>\nTo: Ahmed Hassan <ahmed.hassan@microsoft.com>\nDate: 2024-03-23 11:49 EST\nSubject: Quarterly Update: Parnell Aerospace whitespace analysis\n\nOur team encountered some challenges with whitespace analysis. Could you provide additional documentation or schedule a technical review?\n\n---\nFrom: Ahmed Hassan <ahmed.hassan@microsoft.com>\nTo: Christopher Martinez <christopher.martinez@parnellaeros.com>\nDate: 2024-02-03 10:54 EST\nSubject: Re: whitespace analysis Discussion - Next Steps\n\nOur team encountered some challenges with whitespace analysis. Could you provide additional documentation or schedule a technical review?\n\n---\nFrom: Christopher Martinez <christopher.martinez@parnellaeros.com>\nTo: Ahmed Hassan <ahmed.hassan@microsoft.com>\nDate: 2024-01-23 12:25 EST\nSubject: Follow-up: whitespace analysis Review\n\nThere's been a change in our timeline for whitespace analysis. Can we discuss the implications on the overall project plan?",
+      "metadata": {
+        "freshness": "2024-02-20T13:00:00-05:00",
+        "source": "outlook",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: whitespace analysis Discussion - Parnell Aerospace\nDate: 2024-01-03\nDuration: 45 minutes\nAttendees: Christopher Martinez (Parnell Aerospace), Ahmed Hassan (Microsoft)\n\n[00:01:30] Christopher Martinez (Parnell Aerospace): Thanks everyone for joining. Let's dive into whitespace analysis.\n\n[00:08:00] Ahmed Hassan (Microsoft): Let me add some context -- we've been working on resource allocation and found that the existing infrastructure won't support the target workload without upgrades.\n\n[00:11:00] Christopher Martinez (Parnell Aerospace): Our CTO reviewed this and has concerns about vendor dependencies. Can we address those?\n\n[00:15:00] Ahmed Hassan (Microsoft): Our team lead reviewed this and has concerns about stakeholder alignment. Can we address those?\n\n[00:19:00] Ahmed Hassan (Microsoft): I agree with that assessment. From our side, the main concern is vendor dependencies.\n\n[00:24:00] Ahmed Hassan (Microsoft): Our architect reviewed this and has concerns about integration complexity. Can we address those?",
+      "metadata": {
+        "freshness": "2024-01-02T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Parnell Aerospace - whitespace analysis",
+        "start": "2024-03-13T09:00:00-05:00",
+        "end": "2024-03-14T17:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Ahmed Hassan",
+            "email": "ahmed.hassan@microsoft.com"
+          },
+          {
+            "name": "Christopher Martinez",
+            "email": "christopher.martinez@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "security_alert",
+            "detail": "Signal detected for Parnell Aerospace: there's a compliance requirement we hadn't accounted for in the original scope",
+            "date": "2024-03-11"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-09T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-tenure-junior",
+    "data-partially-missing",
+    "persona-role-manager",
+    "persona-segment-smb-small"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "contact-stakeholder-map"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "stakeholder-map-generation",
+    "required_artifacts": [
+      "Stakeholder map with roles (decision-maker",
+      "influencer",
+      "champion",
+      "blocker)",
+      "recency labels"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Complete, well-structured output matching the Stakeholder Map Generation template with all required artifacts present and actionable",
+      "Score 3: Output covers main requirements but missing one or two secondary artifacts or lacking specificity",
+      "Score 1: Output is generic, missing key artifacts, or fails to address the specific request"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct whitespace analysis decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Produce structural verdict on whether current routing adequately serves this scenario"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "verdict-on-structural",
+    "verdict_required_axes": [
+      "routing",
+      "evidence"
+    ]
+  }
+}

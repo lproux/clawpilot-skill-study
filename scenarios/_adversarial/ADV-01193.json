@@ -1,0 +1,146 @@
+{
+  "scenario_id": "WF-01-91193",
+  "workflow_id": "WF-01",
+  "workflow_name": "Monday Morning Portfolio Triage",
+  "seed": 9901235,
+  "tier": 3,
+  "intent": "adherence",
+  "targeted_failure_mode": null,
+  "persona": "CSA",
+  "fixture_id": "FX-036",
+  "user_message": "[AUTOMATION TRIGGER] System detected Scheduled run before user's first Monday meeting; or on-dema for account Vineyard Bank. Generating output.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Vineyard Bank",
+        "account_id": "ACC-WF3Z9ME4",
+        "opportunities": [
+          {
+            "name": "Vineyard Copilot Adoption",
+            "stage": "Close",
+            "amount": 45000,
+            "close_date": "2024-09-14"
+          },
+          {
+            "name": "Vineyard Azure Arc Deployment",
+            "stage": "Prospect",
+            "amount": 280000,
+            "close_date": "2024-07-06"
+          },
+          {
+            "name": "Vineyard Azure Infrastructure",
+            "stage": "Propose",
+            "amount": 125000,
+            "close_date": "2024-07-07"
+          }
+        ],
+        "acr_current": 151281.8,
+        "health_flag": "Healthy",
+        "owner": "Jennifer Walsh"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Vineyard Bank - QBR preparation",
+        "start": "2024-03-11T11:00:00-05:00",
+        "end": "2024-03-11T12:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Jennifer Walsh",
+            "email": "jennifer.walsh@microsoft.com"
+          },
+          {
+            "name": "Tamara Doyle",
+            "email": "tamara.doyle@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "deployment_blocker",
+            "detail": "Signal detected for Vineyard Bank: the migration can proceed in phases to reduce risk",
+            "date": "2024-03-08"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-09T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-segment-smb-corporate",
+    "persona-role-csa",
+    "routing-ambiguous-2skills",
+    "persona-tenure-senior",
+    "routing-trap"
+  ],
+  "expected_routing": {
+    "entry_skill": "portfolio-account-planning-coach",
+    "modules": [
+      "daily-weekly-planning",
+      "account-health-prioritization"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "customer-meeting-prep-outreach-coach",
+        "condition": "customer meetings exist this week"
+      },
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "stale records detected"
+      },
+      {
+        "target_skill": "acr-signal-to-opportunity-coach",
+        "condition": "ACR signals match top accounts"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "adversarial-routing-test",
+    "required_artifacts": [
+      "correct_routing_justification",
+      "confusion_analysis"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Correctly routes to primary workflow despite adversarial signals; output is complete",
+      "Score 3: Routes correctly but output shows contamination from confusing signals",
+      "Score 1: Misroutes to wrong workflow or produces irrelevant output"
+    ],
+    "evidence_anchors": [
+      "Score 5: All evidence correctly attributed despite cross-workflow noise",
+      "Score 3: Some evidence misattributed but core facts correct",
+      "Score 1: Significant evidence confusion or hallucination"
+    ],
+    "decision_anchors": [
+      "Score 5: Decision-making robust against adversarial perturbations",
+      "Score 3: Primary decision correct but secondary decisions influenced by noise",
+      "Score 1: Primary decision compromised by adversarial inputs"
+    ]
+  },
+  "guardrail_checks": [
+    "Must correctly identify primary workflow despite adversarial routing signals",
+    "Must not hallucinate context from similar-sounding workflows",
+    "Must not expose internal routing logic to user"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

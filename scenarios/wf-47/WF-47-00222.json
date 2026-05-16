@@ -1,0 +1,111 @@
+{
+  "scenario_id": "WF-47-00222",
+  "workflow_id": "WF-47",
+  "workflow_name": "Multi-Stakeholder Meeting Transcript -> Decision Distribution",
+  "seed": 4700264,
+  "tier": 4,
+  "intent": "design-redesign",
+  "targeted_failure_mode": "FM-WF47-P",
+  "persona": "CSA",
+  "fixture_id": "FX-037",
+  "user_message": "Robert Petrov at Woodgrove Labs just sent this. Help me prepare the forecast.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Woodgrove Labs",
+        "account_id": "ACC-WZHG8AQ3",
+        "opportunities": [
+          {
+            "name": "Woodgrove Power Platform",
+            "stage": "Qualify",
+            "amount": 210000,
+            "close_date": "2024-12-15"
+          },
+          {
+            "name": "Woodgrove AKS Deployment",
+            "stage": "Propose",
+            "amount": 125000,
+            "close_date": "2024-05-21"
+          }
+        ],
+        "acr_current": 204547.55,
+        "health_flag": "At Risk",
+        "owner": "David Chen"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: security posture Discussion - Woodgrove Labs\nDate: 2024-02-03\nDuration: 45 minutes\nAttendees: Robert Petrov (Woodgrove Labs), David Chen (Microsoft)\n\n[00:01:15] Robert Petrov (Woodgrove Labs): Appreciate everyone making time. The main agenda today is security posture.\n\n[00:05:00] Robert Petrov (Woodgrove Labs): Our CTO reviewed this and has concerns about partner engagement. Can we address those?\n\n[00:07:00] David Chen (Microsoft): Let me add some context -- we've been working on data residency and found that the migration can proceed in phases to reduce risk.\n\n[00:12:00] Robert Petrov (Woodgrove Labs): Our team lead reviewed this and has concerns about timeline constraints. Can we address those?\n\n[00:15:00] Robert Petrov (Woodgrove Labs): Our CTO reviewed this and has concerns about integration complexity. Can we address those?\n\n[00:20:00] Robert Petrov (Woodgrove Labs): The timeline for technical validation is aggressive. We need to validate the assumptions.\n\n[00:22:00] Robert Petrov (Woodgrove Labs): Our director reviewed this and has concerns about integration complexity. Can we address those?\n\n[00:25:00] Robert Petrov (Woodgrove Labs): Let me add some context -- we've been working on stakeholder alignment and found that the migration can proceed in phases to reduce risk.",
+      "metadata": {
+        "freshness": "2024-01-12T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "medium"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-geo-na",
+    "data-inconsistent",
+    "persona-role-csa",
+    "routing-clear"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions",
+      "contact-stakeholder-map"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "MSX updates warranted from decisions"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "multi-stakeholder-meeting-transcript-->-decision-d",
+    "required_artifacts": [
+      "Decision log with speaker attribution",
+      "action distribution by role",
+      "stakeholder map delta",
+      "MSX update proposals",
+      "due dates extracted"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF47-P trap (No native 'multi-party decision distribution' primitive); produces complete Decision log with speaker attribution, action distribution by role, stakeholder map delta, MSX updat",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF47-P failure pattern",
+      "Score 1: Output exhibits the full FM-WF47-P failure mode (No native 'multi-party decision distribution' primitive)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct security posture decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF47-P -- No native 'multi-party decision distribution' primitive",
+    "Produce structural verdict on whether current routing adequately serves this scenario"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "verdict-on-structural",
+    "verdict_required_axes": [
+      "routing",
+      "evidence"
+    ]
+  }
+}

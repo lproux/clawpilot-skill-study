@@ -1,0 +1,127 @@
+{
+  "scenario_id": "WF-35-00026",
+  "workflow_id": "WF-35",
+  "workflow_name": "Customer Renewal Email -> Forecast Impact + Path",
+  "seed": 3500068,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF35-I",
+  "persona": "Manager",
+  "fixture_id": "FX-045",
+  "user_message": "Just came out of migration architecture with Azure Ridge Partners. Turn this into my brief and pull out the asks.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Azure Ridge Partners",
+        "account_id": "ACC-URB6CCFS",
+        "opportunities": [
+          {
+            "name": "Azure Cloud Migration Phase",
+            "stage": "Develop",
+            "amount": 210000,
+            "close_date": "2024-09-05"
+          },
+          {
+            "name": "Azure Cloud Migration Phase",
+            "stage": "Close",
+            "amount": 560000,
+            "close_date": "2024-10-05"
+          },
+          {
+            "name": "Azure Intune Rollout",
+            "stage": "Develop",
+            "amount": 280000,
+            "close_date": "2024-10-01"
+          }
+        ],
+        "acr_current": 189461.39,
+        "health_flag": "Unknown",
+        "owner": "Raj Mehta"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Thomas Okafor <thomas.okafor@azureridgepa.com>\nTo: Raj Mehta <raj.mehta@microsoft.com>\nDate: 2024-03-07 13:17 EST\nSubject: migration architecture - Action Required\n\nI wanted to follow up on our conversation about migration architecture. Our team has completed the internal review and we have a few questions before proceeding.\n\n---\nFrom: Raj Mehta <raj.mehta@microsoft.com>\nTo: Thomas Okafor <thomas.okafor@azureridgepa.com>\nDate: 2024-02-11 14:43 EST\nSubject: Re: migration architecture Discussion - Next Steps\n\nThank you for the discussion last week. We'd like to move forward with migration architecture. Can we schedule a call this week to finalize the timeline?\n\n---\nFrom: Thomas Okafor <thomas.okafor@azureridgepa.com>\nTo: Raj Mehta <raj.mehta@microsoft.com>\nDate: 2024-01-27 11:44 EST\nSubject: Quarterly Update: Azure Ridge Partners migration architecture\n\nWe've been evaluating the options and have decided to proceed with migration architecture. What are the next steps from your side?",
+      "metadata": {
+        "freshness": "2024-03-28T11:00:00-05:00",
+        "source": "outlook",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "deployment_blocker",
+            "detail": "Signal detected for Azure Ridge Partners: the existing infrastructure won't support the target workload without upgrades",
+            "date": "2024-03-07"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-09T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-segment-smb-mid",
+    "persona-tenure-mid"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "email-chat-context"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "funding-partner-activation-coach",
+        "condition": "contract/billing lookup needed"
+      },
+      {
+        "target_skill": "forecast-business-review-coach",
+        "condition": "forecast impact assessment needed"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "customer-renewal-email-->-forecast-impact-+-path",
+    "required_artifacts": [
+      "Contract state summary with freshness",
+      "forecast impact with confidence",
+      "response draft (no commercial commitments)",
+      "path forward with MACC/funding options if applicable"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF35-I trap (Confuses CSP vs MCA renewal mechanics); produces complete Contract state summary with freshness, forecast impact with confidence, response draft (no commercia",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF35-I failure pattern",
+      "Score 1: Output exhibits the full FM-WF35-I failure mode (Confuses CSP vs MCA renewal mechanics)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct migration architecture decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF35-I -- Confuses CSP vs MCA renewal mechanics"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

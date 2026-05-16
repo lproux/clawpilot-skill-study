@@ -1,0 +1,115 @@
+{
+  "scenario_id": "WF-39-00132",
+  "workflow_id": "WF-39",
+  "workflow_name": "Multi-Thread Customer Conversation Synthesis",
+  "seed": 3900174,
+  "tier": 4,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": "FM-WF39-L",
+  "persona": "CSA",
+  "fixture_id": "FX-007",
+  "user_message": "I have this support ticket from Litware Inc that needs generate the watchlist. ",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Litware Inc",
+        "account_id": "ACC-658MPDXQ",
+        "opportunities": [
+          {
+            "name": "Litware Security Modernization",
+            "stage": "Prospect",
+            "amount": 280000,
+            "close_date": "2024-09-23"
+          }
+        ],
+        "acr_current": 76577.96,
+        "health_flag": "Healthy",
+        "owner": "David Chen"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Sarah Wilson <sarah.wilson@litwareinc.com>\nTo: David Chen <david.chen@microsoft.com>\nDate: 2024-03-02 08:35 EST\nSubject: executive brief - Action Required\n\nWe've been evaluating the options and have decided to proceed with executive brief. What are the next steps from your side?\n\n---\nFrom: David Chen <david.chen@microsoft.com>\nTo: Sarah Wilson <sarah.wilson@litwareinc.com>\nDate: 2024-02-18 14:47 EST\nSubject: Re: Re: executive brief Timeline\n\nThank you for the discussion last week. We'd like to move forward with executive brief. Can we schedule a call this week to finalize the timeline?\n\n---\nFrom: Sarah Wilson <sarah.wilson@litwareinc.com>\nTo: David Chen <david.chen@microsoft.com>\nDate: 2024-01-03 15:41 EST\nSubject: URGENT: executive brief Issue at Litware Inc\n\nJust checking in on the executive brief proposal. Our VP Operations is asking for a status update before the board meeting next week.",
+      "metadata": {
+        "freshness": "2024-02-12T08:00:00-05:00",
+        "source": "outlook",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "consumption_decline",
+            "detail": "Signal detected for Litware Inc: the cost projections need to factor in reserved instance pricing for accuracy",
+            "date": "2024-03-09"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-10T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-segment-smb-corporate",
+    "data-fresh",
+    "persona-role-csa"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "email-chat-context",
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "MSX updates warranted from synthesis"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "multi-thread-customer-conversation-synthesis",
+    "required_artifacts": [
+      "Consolidated decision log",
+      "cross-thread commitment inventory",
+      "action list with thread attribution",
+      "MSX update proposals",
+      "superseded-commitment identification"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF39-L trap (Follow-up-and-decisions module assumes single-thread input); produces complete Consolidated decision log, cross-thread commitment inventory, action list with thread attribution, M",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF39-L failure pattern",
+      "Score 1: Output exhibits the full FM-WF39-L failure mode (Follow-up-and-decisions module assumes single-thread input)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct executive brief decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF39-L -- Follow-up-and-decisions module assumes single-thread input",
+    "Guardrail axis scored neutrally -- focus on whether output served the user's actual need"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

@@ -1,0 +1,132 @@
+{
+  "scenario_id": "WF-11-00150",
+  "workflow_id": "WF-11",
+  "workflow_name": "Pre-Meeting Brief",
+  "seed": 1100192,
+  "tier": 2,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": "FM-WF11-K",
+  "persona": "CSA",
+  "fixture_id": "FX-043",
+  "user_message": "Need help with Pacific Northwest Outfitters -- build the narrative. Multiple stakeholders are involved -- it's complex.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Pacific Northwest Outfitters",
+        "account_id": "ACC-6SYIFEPT",
+        "opportunities": [
+          {
+            "name": "Pacific Azure Arc Deployment",
+            "stage": "Qualify",
+            "amount": 45000,
+            "close_date": "2024-04-15"
+          },
+          {
+            "name": "Pacific M365 E5 Upsell",
+            "stage": "Qualify",
+            "amount": 560000,
+            "close_date": "2024-11-15"
+          }
+        ],
+        "acr_current": 81560.32,
+        "health_flag": "Healthy",
+        "owner": "Ahmed Hassan"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Andrew Taylor <andrew.taylor@pacificnorth.com>\nTo: Ahmed Hassan <ahmed.hassan@microsoft.com>\nDate: 2024-03-22 17:00 EST\nSubject: URGENT: consumption trend Issue at Pacific Northwest Outfitters\n\nJust checking in on the consumption trend proposal. Our IT Director is asking for a status update before the board meeting next week.\n\n---\nFrom: Ahmed Hassan <ahmed.hassan@microsoft.com>\nTo: Andrew Taylor <andrew.taylor@pacificnorth.com>\nDate: 2024-02-22 11:30 EST\nSubject: Re: Re: consumption trend Timeline\n\nThere's been a change in our timeline for consumption trend. Can we discuss the implications on the overall project plan?\n\n---\nFrom: Andrew Taylor <andrew.taylor@pacificnorth.com>\nTo: Ahmed Hassan <ahmed.hassan@microsoft.com>\nDate: 2024-01-25 08:22 EST\nSubject: consumption trend - Action Required\n\nOur team encountered some challenges with consumption trend. Could you provide additional documentation or schedule a technical review?",
+      "metadata": {
+        "freshness": "2024-03-01T09:00:00-05:00",
+        "source": "outlook",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: consumption trend Discussion - Pacific Northwest Outfitters\nDate: 2024-02-11\nDuration: 45 minutes\nAttendees: Andrew Taylor (Pacific Northwest Outfitters), Ahmed Hassan (Microsoft), Priya (Pacific Northwest Outfitters)\n\n[00:01:15] Andrew Taylor (Pacific Northwest Outfitters): Appreciate everyone making time. The main agenda today is consumption trend.\n\n[00:05:00] Andrew Taylor (Pacific Northwest Outfitters): Let me add some context -- we've been working on data residency and found that the migration can proceed in phases to reduce risk.\n\n[00:07:00] Andrew Taylor (Pacific Northwest Outfitters): Our team lead reviewed this and has concerns about integration complexity. Can we address those?\n\n[00:09:00] Andrew Taylor (Pacific Northwest Outfitters): On the consumption trend front, we've made progress but there are still blockers around integration complexity.\n\n[00:11:00] Priya (Pacific Northwest Outfitters): Our CTO reviewed this and has concerns about partner engagement. Can we address those?\n\n[00:13:00] Ahmed Hassan (Microsoft): On the consumption trend front, we've made progress but there are still blockers around security compliance.\n\n[00:18:00] Priya (Pacific Northwest Outfitters): I agree with that assessment. From our side, the main concern is vendor dependencies.\n\n[00:23:00] Priya (Pacific Northwest Outfitters): On the consumption trend front, we've made progress but there are still blockers around timeline constraints.",
+      "metadata": {
+        "freshness": "2024-01-24T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Pacific Northwest Outfitters - consumption trend",
+        "start": "2024-03-14T11:00:00-05:00",
+        "end": "2024-03-12T12:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Ahmed Hassan",
+            "email": "ahmed.hassan@microsoft.com"
+          },
+          {
+            "name": "Andrew Taylor",
+            "email": "andrew.taylor@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    }
+  ],
+  "perturbations": [
+    "signal-strength-faint",
+    "data-inconsistent",
+    "persona-role-csa",
+    "persona-geo-emea"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "meeting-prep",
+      "contact-stakeholder-map"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "pre-meeting-brief",
+    "required_artifacts": [
+      "One-page brief with attendee context",
+      "account snapshot",
+      "talking points",
+      "likely objections",
+      "open items from last meeting"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF11-K trap (One-page constraint hurts complex meetings); produces complete One-page brief with attendee context, account snapshot, talking points, likely objections, open item",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF11-K failure pattern",
+      "Score 1: Output exhibits the full FM-WF11-K failure mode (One-page constraint hurts complex meetings)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct consumption trend decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF11-K -- One-page constraint hurts complex meetings",
+    "Guardrail axis scored neutrally -- focus on whether output served the user's actual need"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

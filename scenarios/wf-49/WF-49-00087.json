@@ -1,0 +1,108 @@
+{
+  "scenario_id": "WF-49-00087",
+  "workflow_id": "WF-49",
+  "workflow_name": "Workshop Transcript -> ECIF + Partner + Follow-up",
+  "seed": 4900129,
+  "tier": 4,
+  "intent": "design-redesign",
+  "targeted_failure_mode": "FM-WF49-N",
+  "persona": "CSA",
+  "fixture_id": "FX-017",
+  "user_message": "Just got this from Michael Petrov at Humongous Insurance -- I need help figuring out competitive positioning. Board meeting is next week.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Humongous Insurance",
+        "account_id": "ACC-3AB2FT8E",
+        "opportunities": [
+          {
+            "name": "Humongous Cloud Migration Phase",
+            "stage": "Qualify",
+            "amount": 175000,
+            "close_date": "2023-10-27"
+          }
+        ],
+        "acr_current": 73720.59,
+        "health_flag": "Healthy",
+        "owner": "David Chen"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: competitive positioning Discussion - Humongous Insurance\nDate: 2024-02-06\nDuration: 45 minutes\nAttendees: Michael Petrov (Humongous Insurance), David Chen (Microsoft), Priya (Humongous Insurance)\n\n[00:01:15] Michael Petrov (Humongous Insurance): Appreciate everyone making time. The main agenda today is competitive positioning.\n\n[00:07:00] David Chen (Microsoft): Our director reviewed this and has concerns about timeline constraints. Can we address those?\n\n[00:11:00] Priya (Humongous Insurance): On the competitive positioning front, we've made progress but there are still blockers around cost optimization.\n\n[00:15:00] Priya (Humongous Insurance): On the competitive positioning front, we've made progress but there are still blockers around vendor dependencies.\n\n[00:19:00] Priya (Humongous Insurance): The timeline for security compliance is aggressive. We need to validate the assumptions.\n\n[00:22:00] Priya (Humongous Insurance): I agree with that assessment. From our side, the main concern is cost optimization.\n\n[00:26:00] David Chen (Microsoft): Let me add some context -- we've been working on stakeholder alignment and found that the current vendor contract has a 90-day exit clause we need to plan around.",
+      "metadata": {
+        "freshness": "2024-02-03T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "short"
+      }
+    }
+  ],
+  "perturbations": [
+    "data-stale",
+    "routing-clear",
+    "persona-role-csa",
+    "persona-geo-latam"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "funding-partner-activation-coach",
+        "condition": "ECIF workscope or partner engagement warranted"
+      },
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "milestone updates warranted"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "workshop-transcript-->-ecif-+-partner-+-follow-up",
+    "required_artifacts": [
+      "Workshop recap",
+      "ECIF workscope draft (if warranted)",
+      "partner plan",
+      "follow-up items with owners",
+      "milestone update proposals"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF49-N trap (No native 'workshop-capture' primitive -- synthesis spans 4 skills); produces complete Workshop recap, ECIF workscope draft (if warranted), partner plan, follow-up items with owners, mile",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF49-N failure pattern",
+      "Score 1: Output exhibits the full FM-WF49-N failure mode (No native 'workshop-capture' primitive -- synthesis spans 4 skills)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct competitive positioning decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF49-N -- No native 'workshop-capture' primitive -- synthesis spans 4 skills",
+    "Produce structural verdict on whether current routing adequately serves this scenario"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "verdict-on-structural",
+    "verdict_required_axes": [
+      "routing",
+      "evidence"
+    ]
+  }
+}

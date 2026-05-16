@@ -1,0 +1,110 @@
+{
+  "scenario_id": "WF-44-00194",
+  "workflow_id": "WF-44",
+  "workflow_name": "Technical Deep-Dive Transcript -> Architecture + Blockers",
+  "seed": 4400236,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF44-D",
+  "persona": "Manager",
+  "fixture_id": "FX-031",
+  "user_message": "Give me the manager view on this Liberty's Delightful Sinful Bakery meeting transcript. The customer escalated this morning.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Liberty's Delightful Sinful Bakery",
+        "account_id": "ACC-A2FZGZWL",
+        "opportunities": [
+          {
+            "name": "Liberty's Dynamics 365 Implementation",
+            "stage": "Develop",
+            "amount": 89000,
+            "close_date": "2024-12-10"
+          },
+          {
+            "name": "Liberty's AKS Deployment",
+            "stage": "Qualify",
+            "amount": 89000,
+            "close_date": "2024-12-24"
+          },
+          {
+            "name": "Liberty's Azure Infrastructure",
+            "stage": "Develop",
+            "amount": 450000,
+            "close_date": "2024-04-08"
+          }
+        ],
+        "acr_current": 0,
+        "health_flag": "Healthy",
+        "owner": "Marcus Williams"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: security posture Discussion - Liberty's Delightful Sinful Bakery\nDate: 2024-01-14\nDuration: 45 minutes\nAttendees: Patricia Kim (Liberty's Delightful Sinful Bakery), Marcus Williams (Microsoft), Kevin (Liberty's Delightful Sinful Bakery)\n\n[00:01:15] Patricia Kim (Liberty's Delightful Sinful Bakery): Appreciate everyone making time. The main agenda today is security posture.\n\n[00:05:00] Kevin (Liberty's Delightful Sinful Bakery): On the security posture front, we've made progress but there are still blockers around integration complexity.\n\n[00:08:00] Kevin (Liberty's Delightful Sinful Bakery): The timeline for resource allocation is aggressive. We need to validate the assumptions.\n\n[00:12:00] Kevin (Liberty's Delightful Sinful Bakery): Let me add some context -- we've been working on stakeholder alignment and found that there's a compliance requirement we hadn't accounted for in the original scope.\n\n[00:17:00] Patricia Kim (Liberty's Delightful Sinful Bakery): The timeline for data residency is aggressive. We need to validate the assumptions.\n\n[00:22:00] Patricia Kim (Liberty's Delightful Sinful Bakery): Let me add some context -- we've been working on resource allocation and found that there's a compliance requirement we hadn't accounted for in the original scope.\n\n[00:26:00] Marcus Williams (Microsoft): Our director reviewed this and has concerns about stakeholder alignment. Can we address those?\n\n[00:28:00] Patricia Kim (Liberty's Delightful Sinful Bakery): Our director reviewed this and has concerns about data residency. Can we address those?\n\n[00:31:00] Patricia Kim (Liberty's Delightful Sinful Bakery): On the security posture front, we've made progress but there are still blockers around technical validation.",
+      "metadata": {
+        "freshness": "2024-02-14T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "short"
+      }
+    }
+  ],
+  "perturbations": [
+    "signal-strength-noisy",
+    "persona-role-manager",
+    "data-partially-missing"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "solution-value-design-coach",
+        "condition": "architecture sketch needed from technical signals"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "technical-deep-dive-transcript-->-architecture-+-b",
+    "required_artifacts": [
+      "Architecture summary",
+      "blocker inventory (tech/commercial/org)",
+      "open questions",
+      "sequencing recommendation",
+      "specialist routing"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF44-D trap (Confuses speaker's hypothetical with stated requirement); produces complete Architecture summary, blocker inventory (tech/commercial/org), open questions, sequencing recommenda",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF44-D failure pattern",
+      "Score 1: Output exhibits the full FM-WF44-D failure mode (Confuses speaker's hypothetical with stated requirement)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct security posture decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF44-D -- Confuses speaker's hypothetical with stated requirement"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

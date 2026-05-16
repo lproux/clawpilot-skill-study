@@ -1,0 +1,106 @@
+{
+  "scenario_id": "WF-47-00072",
+  "workflow_id": "WF-47",
+  "workflow_name": "Multi-Stakeholder Meeting Transcript -> Decision Distribution",
+  "seed": 4700114,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF47-D",
+  "persona": "CSA",
+  "fixture_id": "FX-037",
+  "user_message": "I have this support ticket from Woodgrove Labs that needs generate the watchlist. Manager is asking for an update today.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Woodgrove Labs",
+        "account_id": "ACC-WZHG8AQ3",
+        "opportunities": [
+          {
+            "name": "Woodgrove Power Platform",
+            "stage": "Qualify",
+            "amount": 210000,
+            "close_date": "2024-12-15"
+          },
+          {
+            "name": "Woodgrove AKS Deployment",
+            "stage": "Propose",
+            "amount": 125000,
+            "close_date": "2024-05-21"
+          }
+        ],
+        "acr_current": 204547.55,
+        "health_flag": "At Risk",
+        "owner": "David Chen"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: consumption trend Discussion - Woodgrove Labs\nDate: 2024-03-11\nDuration: 45 minutes\nAttendees: Robert Petrov (Woodgrove Labs), David Chen (Microsoft), Priya (Woodgrove Labs)\n\n[00:01:15] Robert Petrov (Woodgrove Labs): Appreciate everyone making time. The main agenda today is consumption trend.\n\n[00:06:00] Priya (Woodgrove Labs): The timeline for data residency is aggressive. We need to validate the assumptions.\n\n[00:11:00] Robert Petrov (Woodgrove Labs): Our VP reviewed this and has concerns about cost optimization. Can we address those?\n\n[00:15:00] Robert Petrov (Woodgrove Labs): Our VP reviewed this and has concerns about data residency. Can we address those?\n\n[00:20:00] David Chen (Microsoft): Our CTO reviewed this and has concerns about budget approval. Can we address those?\n\n[00:25:00] Priya (Woodgrove Labs): On the consumption trend front, we've made progress but there are still blockers around stakeholder alignment.\n\n[00:30:00] David Chen (Microsoft): I agree with that assessment. From our side, the main concern is technical validation.",
+      "metadata": {
+        "freshness": "2024-03-28T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "short"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-tenure-mid",
+    "persona-segment-smb-small",
+    "routing-ambiguous-2skills",
+    "persona-geo-na"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions",
+      "contact-stakeholder-map"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "MSX updates warranted from decisions"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "multi-stakeholder-meeting-transcript-->-decision-d",
+    "required_artifacts": [
+      "Decision log with speaker attribution",
+      "action distribution by role",
+      "stakeholder map delta",
+      "MSX update proposals",
+      "due dates extracted"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF47-D trap (Actions distributed to wrong role); produces complete Decision log with speaker attribution, action distribution by role, stakeholder map delta, MSX updat",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF47-D failure pattern",
+      "Score 1: Output exhibits the full FM-WF47-D failure mode (Actions distributed to wrong role)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct consumption trend decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF47-D -- Actions distributed to wrong role"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

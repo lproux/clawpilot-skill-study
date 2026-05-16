@@ -1,0 +1,128 @@
+{
+  "scenario_id": "WF-42-00058",
+  "workflow_id": "WF-42",
+  "workflow_name": "Cross-Sell Trigger Email",
+  "seed": 4200100,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF42-F",
+  "persona": "DSSP",
+  "fixture_id": "FX-009",
+  "user_message": "Can you extract the executive brief from this meeting transcript for VanArsdel Ltd? There's been no activity for 45 days and I'm worried.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "VanArsdel Ltd",
+        "account_id": "ACC-3ORLVDXJ",
+        "opportunities": [
+          {
+            "name": "VanArsdel Data Platform Migration",
+            "stage": "Propose",
+            "amount": 210000,
+            "close_date": "2024-06-13"
+          },
+          {
+            "name": "VanArsdel M365 E5 Upsell",
+            "stage": "Prospect",
+            "amount": 280000,
+            "close_date": "2024-06-13"
+          },
+          {
+            "name": "VanArsdel Power Platform",
+            "stage": "Prospect",
+            "amount": 350000,
+            "close_date": "2024-09-08"
+          }
+        ],
+        "acr_current": 68769.78,
+        "health_flag": "Healthy",
+        "owner": "Tom Rodriguez"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Karen Patel <karen.patel@vanarsdelltd.com>\nTo: Tom Rodriguez <tom.rodriguez@microsoft.com>\nDate: 2024-02-26 17:10 EST\nSubject: Follow-up: executive brief Review\n\nOur team encountered some challenges with executive brief. Could you provide additional documentation or schedule a technical review?\n\n---\nFrom: Tom Rodriguez <tom.rodriguez@microsoft.com>\nTo: Karen Patel <karen.patel@vanarsdelltd.com>\nDate: 2024-01-12 14:54 EST\nSubject: Quarterly Update: VanArsdel Ltd executive brief\n\nI wanted to follow up on our conversation about executive brief. Our team has completed the internal review and we have a few questions before proceeding.",
+      "metadata": {
+        "freshness": "2024-02-01T09:00:00-05:00",
+        "source": "outlook",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "deployment_blocker",
+            "detail": "Signal detected for VanArsdel Ltd: the cost projections need to factor in reserved instance pricing for accuracy",
+            "date": "2024-03-07"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-10T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-tenure-senior",
+    "signal-strength-faint"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "email-chat-context"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "acr-signal-to-opportunity-coach",
+        "condition": "cross-sell signal warrants opportunity assessment"
+      },
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "opportunity creation warranted"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "cross-sell-trigger-email",
+    "required_artifacts": [
+      "Signal assessment",
+      "opportunity hypothesis with confidence",
+      "ownership routing",
+      "response draft",
+      "next-step sequence with timing"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF42-F trap (Invents customer interest beyond what email signaled); produces complete Signal assessment, opportunity hypothesis with confidence, ownership routing, response draft, next-s",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF42-F failure pattern",
+      "Score 1: Output exhibits the full FM-WF42-F failure mode (Invents customer interest beyond what email signaled)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct executive brief decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF42-F -- Invents customer interest beyond what email signaled"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

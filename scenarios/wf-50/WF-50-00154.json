@@ -1,0 +1,98 @@
+{
+  "scenario_id": "WF-50-00154",
+  "workflow_id": "WF-50",
+  "workflow_name": "Executive Meeting Transcript -> Manager Brief + Asks",
+  "seed": 5000196,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF50-E",
+  "persona": "DSSP",
+  "fixture_id": "FX-001",
+  "user_message": "Pulling in context from Contoso Ltd's meeting transcript -- need to prepare the forecast for the forecast prep.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Contoso Ltd",
+        "account_id": "ACC-VWW2DK8X",
+        "opportunities": [
+          {
+            "name": "Contoso Power Platform",
+            "stage": "Propose",
+            "amount": 560000,
+            "close_date": "2024-12-28"
+          }
+        ],
+        "acr_current": 78949.7,
+        "health_flag": "Healthy",
+        "owner": "Marcus Williams"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: forecast prep Discussion - Contoso Ltd\nDate: 2024-01-11\nDuration: 45 minutes\nAttendees: Angela Doyle (Contoso Ltd), Marcus Williams (Microsoft)\n\n[00:02:00] Angela Doyle (Contoso Ltd): Good morning. I wanted to follow up on forecast prep from our last session.\n\n[00:06:00] Marcus Williams (Microsoft): The timeline for vendor dependencies is aggressive. We need to validate the assumptions.\n\n[00:09:00] Marcus Williams (Microsoft): Let me add some context -- we've been working on cost optimization and found that the migration can proceed in phases to reduce risk.\n\n[00:11:00] Marcus Williams (Microsoft): I agree with that assessment. From our side, the main concern is timeline constraints.\n\n[00:16:00] Angela Doyle (Contoso Ltd): The timeline for vendor dependencies is aggressive. We need to validate the assumptions.\n\n[00:20:00] Angela Doyle (Contoso Ltd): On the forecast prep front, we've made progress but there are still blockers around integration complexity.\n\n[00:22:00] Marcus Williams (Microsoft): I agree with that assessment. From our side, the main concern is partner engagement.\n\n[00:27:00] Angela Doyle (Contoso Ltd): The timeline for vendor dependencies is aggressive. We need to validate the assumptions.\n\n[00:31:00] Angela Doyle (Contoso Ltd): Our CTO reviewed this and has concerns about resource allocation. Can we address those?",
+      "metadata": {
+        "freshness": "2024-03-27T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "medium"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-tenure-senior",
+    "persona-role-dssp",
+    "routing-ambiguous-2skills"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "forecast-business-review-coach",
+        "condition": "business review narrative input from exec meeting"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "executive-meeting-transcript-->-manager-brief-+-as",
+    "required_artifacts": [
+      "Executive brief (strategic density)",
+      "asks section (actionable for exec)",
+      "risk register",
+      "skip-level follow-up plan",
+      "exec sponsor identification"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF50-E trap (Confuses diplomatic exec language with stated commitment); produces complete Executive brief (strategic density), asks section (actionable for exec), risk register, skip-level f",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF50-E failure pattern",
+      "Score 1: Output exhibits the full FM-WF50-E failure mode (Confuses diplomatic exec language with stated commitment)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct forecast prep decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF50-E -- Confuses diplomatic exec language with stated commitment"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

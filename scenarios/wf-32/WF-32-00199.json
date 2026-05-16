@@ -1,0 +1,161 @@
+{
+  "scenario_id": "WF-32-00199",
+  "workflow_id": "WF-32",
+  "workflow_name": "Calendar Pre-Pack Automation",
+  "seed": 3200241,
+  "tier": 4,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": "FM-WF32-R",
+  "persona": "DSSP",
+  "fixture_id": "FX-041",
+  "user_message": "[AUTOMATION TRIGGER] Daily automation: Calendar event with non-Microsoft external attendee detected. Account: Quantum Analytics.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Quantum Analytics",
+        "account_id": "ACC-ZJSZDYNL",
+        "opportunities": [
+          {
+            "name": "Quantum Azure Infrastructure",
+            "stage": "Qualify",
+            "amount": 68000,
+            "close_date": "2024-04-14"
+          },
+          {
+            "name": "Quantum Data Platform Migration",
+            "stage": "Develop",
+            "amount": 450000,
+            "close_date": "2024-07-16"
+          },
+          {
+            "name": "Quantum Dynamics 365 Implementation",
+            "stage": "Qualify",
+            "amount": 68000,
+            "close_date": "2024-07-17"
+          }
+        ],
+        "acr_current": 21322.6,
+        "health_flag": "At Risk",
+        "owner": "Marcus Williams"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Robert Foster <robert.foster@quantumanaly.com>\nTo: Marcus Williams <marcus.williams@microsoft.com>\nDate: 2024-03-24 13:49 EST\nSubject: Follow-up: migration architecture Review\n\nOur team encountered some challenges with migration architecture. Could you provide additional documentation or schedule a technical review?\n\n---\nFrom: Marcus Williams <marcus.williams@microsoft.com>\nTo: Robert Foster <robert.foster@quantumanaly.com>\nDate: 2024-02-01 16:41 EST\nSubject: Re: Re: migration architecture Timeline\n\nThank you for the discussion last week. We'd like to move forward with migration architecture. Can we schedule a call this week to finalize the timeline?\n\n---\nFrom: Robert Foster <robert.foster@quantumanaly.com>\nTo: Marcus Williams <marcus.williams@microsoft.com>\nDate: 2024-01-12 16:06 EST\nSubject: Quarterly Update: Quantum Analytics migration architecture\n\nThank you for the discussion last week. We'd like to move forward with migration architecture. Can we schedule a call this week to finalize the timeline?",
+      "metadata": {
+        "freshness": "2024-02-17T12:00:00-05:00",
+        "source": "outlook",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: migration architecture Discussion - Quantum Analytics\nDate: 2024-03-25\nDuration: 45 minutes\nAttendees: Robert Foster (Quantum Analytics), Marcus Williams (Microsoft), Kevin (Quantum Analytics)\n\n[00:01:15] Robert Foster (Quantum Analytics): Appreciate everyone making time. The main agenda today is migration architecture.\n\n[00:05:00] Robert Foster (Quantum Analytics): The timeline for integration complexity is aggressive. We need to validate the assumptions.\n\n[00:09:00] Marcus Williams (Microsoft): On the migration architecture front, we've made progress but there are still blockers around cost optimization.\n\n[00:13:00] Robert Foster (Quantum Analytics): I agree with that assessment. From our side, the main concern is stakeholder alignment.\n\n[00:15:00] Robert Foster (Quantum Analytics): On the migration architecture front, we've made progress but there are still blockers around cost optimization.\n\n[00:19:00] Robert Foster (Quantum Analytics): The timeline for partner engagement is aggressive. We need to validate the assumptions.\n\n[00:22:00] Robert Foster (Quantum Analytics): The timeline for vendor dependencies is aggressive. We need to validate the assumptions.",
+      "metadata": {
+        "freshness": "2024-03-02T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Quantum Analytics - migration architecture",
+        "start": "2024-03-14T14:00:00-05:00",
+        "end": "2024-03-13T10:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Marcus Williams",
+            "email": "marcus.williams@microsoft.com"
+          },
+          {
+            "name": "Robert Foster",
+            "email": "robert.foster@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "deployment_blocker",
+            "detail": "Signal detected for Quantum Analytics: there's a compliance requirement we hadn't accounted for in the original scope",
+            "date": "2024-03-05"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "signal-strength-faint",
+    "persona-segment-smb-corporate",
+    "persona-tenure-mid",
+    "persona-role-dssp"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "meeting-prep",
+      "contact-stakeholder-map",
+      "email-chat-context"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "portfolio-account-planning-coach",
+        "condition": "meeting is for account CSA should have declined"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "calendar-pre-pack-automation",
+    "required_artifacts": [
+      "Pre-pack brief with attendee context",
+      "account snapshot",
+      "talking points",
+      "likely objections",
+      "open items"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF32-R trap (Non-Microsoft attendee as the sole filter misses partner-led meetings with valua); produces complete Pre-pack brief with attendee context, account snapshot, talking points, likely objections, open item",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF32-R failure pattern",
+      "Score 1: Output exhibits the full FM-WF32-R failure mode (Non-Microsoft attendee as the sole filter misses partner-led meetings with valua)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct migration architecture decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF32-R -- Non-Microsoft attendee as the sole filter misses partner-led meetings with valua",
+    "Guardrail axis scored neutrally -- focus on whether output served the user's actual need"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

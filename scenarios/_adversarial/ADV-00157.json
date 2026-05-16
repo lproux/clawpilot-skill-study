@@ -1,0 +1,109 @@
+{
+  "scenario_id": "WF-17-90157",
+  "workflow_id": "WF-17",
+  "workflow_name": "Migration Architecture Sketch",
+  "seed": 9900199,
+  "tier": 3,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": null,
+  "persona": "Manager",
+  "fixture_id": "FX-050",
+  "user_message": "Give me the manager view on this Meridian Software meeting transcript. ",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Meridian Software",
+        "account_id": "ACC-LSUTHOXL",
+        "opportunities": [
+          {
+            "name": "Meridian Power Platform",
+            "stage": "Qualify",
+            "amount": 125000,
+            "close_date": "2024-07-24"
+          },
+          {
+            "name": "Meridian Cloud Migration Phase",
+            "stage": "Develop",
+            "amount": 350000,
+            "close_date": "2024-10-28"
+          }
+        ],
+        "acr_current": 6024.14,
+        "health_flag": "Healthy",
+        "owner": "Michelle Park"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "security_alert",
+            "detail": "Signal detected for Meridian Software: there's a compliance requirement we hadn't accounted for in the original scope",
+            "date": "2024-03-11"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-tenure-mid",
+    "persona-segment-smb-small",
+    "persona-geo-latam",
+    "routing-trap"
+  ],
+  "expected_routing": {
+    "entry_skill": "solution-value-design-coach",
+    "modules": [
+      "migration-architecture",
+      "solution-research"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "funding-partner-activation-coach",
+        "condition": "ECIF or partner engagement needed for migration"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "adversarial-routing-test",
+    "required_artifacts": [
+      "correct_routing_justification",
+      "confusion_analysis"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Correctly routes to primary workflow despite adversarial signals; output is complete",
+      "Score 3: Routes correctly but output shows contamination from confusing signals",
+      "Score 1: Misroutes to wrong workflow or produces irrelevant output"
+    ],
+    "evidence_anchors": [
+      "Score 5: All evidence correctly attributed despite cross-workflow noise",
+      "Score 3: Some evidence misattributed but core facts correct",
+      "Score 1: Significant evidence confusion or hallucination"
+    ],
+    "decision_anchors": [
+      "Score 5: Decision-making robust against adversarial perturbations",
+      "Score 3: Primary decision correct but secondary decisions influenced by noise",
+      "Score 1: Primary decision compromised by adversarial inputs"
+    ]
+  },
+  "guardrail_checks": [
+    "Must correctly identify primary workflow despite adversarial routing signals",
+    "Must not hallucinate context from similar-sounding workflows",
+    "Must not expose internal routing logic to user"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

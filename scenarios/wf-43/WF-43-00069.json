@@ -1,0 +1,115 @@
+{
+  "scenario_id": "WF-43-00069",
+  "workflow_id": "WF-43",
+  "workflow_name": "Discovery Call Transcript -> Opportunity Build",
+  "seed": 4300111,
+  "tier": 4,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": "FM-WF43-O",
+  "persona": "CSA",
+  "fixture_id": "FX-031",
+  "user_message": "Can you work with me on pipeline hygiene for Liberty's Delightful Sinful Bakery? There's been no activity for 45 days and I'm worried.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Liberty's Delightful Sinful Bakery",
+        "account_id": "ACC-A2FZGZWL",
+        "opportunities": [
+          {
+            "name": "Liberty's Dynamics 365 Implementation",
+            "stage": "Develop",
+            "amount": 89000,
+            "close_date": "2024-12-10"
+          },
+          {
+            "name": "Liberty's AKS Deployment",
+            "stage": "Qualify",
+            "amount": 89000,
+            "close_date": "2024-12-24"
+          },
+          {
+            "name": "Liberty's Azure Infrastructure",
+            "stage": "Develop",
+            "amount": 450000,
+            "close_date": "2024-04-08"
+          }
+        ],
+        "acr_current": 0,
+        "health_flag": "Healthy",
+        "owner": "Marcus Williams"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: pipeline hygiene Discussion - Liberty's Delightful Sinful Bakery\nDate: 2024-03-23\nDuration: 45 minutes\nAttendees: Patricia Kim (Liberty's Delightful Sinful Bakery), Marcus Williams (Microsoft)\n\n[00:01:30] Patricia Kim (Liberty's Delightful Sinful Bakery): Thanks everyone for joining. Let's dive into pipeline hygiene.\n\n[00:05:00] Marcus Williams (Microsoft): Our CTO reviewed this and has concerns about cost optimization. Can we address those?\n\n[00:07:00] Marcus Williams (Microsoft): I agree with that assessment. From our side, the main concern is timeline constraints.\n\n[00:09:00] Patricia Kim (Liberty's Delightful Sinful Bakery): Our architect reviewed this and has concerns about stakeholder alignment. Can we address those?\n\n[00:12:00] Marcus Williams (Microsoft): The timeline for technical validation is aggressive. We need to validate the assumptions.\n\n[00:14:00] Patricia Kim (Liberty's Delightful Sinful Bakery): Let me add some context -- we've been working on partner engagement and found that the migration can proceed in phases to reduce risk.\n\n[00:18:00] Patricia Kim (Liberty's Delightful Sinful Bakery): On the pipeline hygiene front, we've made progress but there are still blockers around integration complexity.\n\n[00:22:00] Marcus Williams (Microsoft): On the pipeline hygiene front, we've made progress but there are still blockers around performance requirements.\n\n[00:24:00] Patricia Kim (Liberty's Delightful Sinful Bakery): I agree with that assessment. From our side, the main concern is security compliance.\n\n[00:27:00] Marcus Williams (Microsoft): On the pipeline hygiene front, we've made progress but there are still blockers around security compliance.\n\n[00:29:00] Marcus Williams (Microsoft): I agree with that assessment. From our side, the main concern is integration complexity.",
+      "metadata": {
+        "freshness": "2024-02-06T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "mixed",
+        "length_class": "short"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-tenure-junior",
+    "persona-role-csa",
+    "signal-strength-noisy"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "opportunity creation warranted"
+      },
+      {
+        "target_skill": "solution-value-design-coach",
+        "condition": "solution sketch needed from discovery signals"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "discovery-call-transcript-->-opportunity-build",
+    "required_artifacts": [
+      "BANT signal extraction with evidence quotes",
+      "opportunity proposal with stage/value/close-date",
+      "confidence labels",
+      "solution sketch suggestion",
+      "follow-up actions"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF43-O trap (Requiring full BANT before proposing opportunity hypothesis delays useful signal); produces complete BANT signal extraction with evidence quotes, opportunity proposal with stage/value/close-date, confi",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF43-O failure pattern",
+      "Score 1: Output exhibits the full FM-WF43-O failure mode (Requiring full BANT before proposing opportunity hypothesis delays useful signal)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct pipeline hygiene decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF43-O -- Requiring full BANT before proposing opportunity hypothesis delays useful signal",
+    "Guardrail axis scored neutrally -- focus on whether output served the user's actual need"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

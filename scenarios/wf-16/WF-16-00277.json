@@ -1,0 +1,89 @@
+{
+  "scenario_id": "WF-16-00277",
+  "workflow_id": "WF-16",
+  "workflow_name": "Email Context Pull-Through",
+  "seed": 1600319,
+  "tier": 1,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF16-D",
+  "persona": "DSSP",
+  "fixture_id": "FX-047",
+  "user_message": "Working on Evergreen Solutions's executive brief -- need you to triage this.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Evergreen Solutions",
+        "account_id": "ACC-S7KJN805",
+        "opportunities": [
+          {
+            "name": "Evergreen Azure AI Services",
+            "stage": "Qualify",
+            "amount": 175000,
+            "close_date": "2024-12-26"
+          }
+        ],
+        "acr_current": 19865.64,
+        "health_flag": "Healthy",
+        "owner": "David Chen"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Samantha Okafor <samantha.okafor@evergreensol.com>\nTo: David Chen <david.chen@microsoft.com>\nDate: 2024-03-25 16:44 EST\nSubject: Follow-up: executive brief Review\n\nOur team encountered some challenges with executive brief. Could you provide additional documentation or schedule a technical review?\n\n---\nFrom: David Chen <david.chen@microsoft.com>\nTo: Samantha Okafor <samantha.okafor@evergreensol.com>\nDate: 2024-01-23 11:31 EST\nSubject: Re: Re: executive brief Timeline\n\nJust checking in on the executive brief proposal. Our IT Director is asking for a status update before the board meeting next week.",
+      "metadata": {
+        "freshness": "2024-02-13T09:00:00-05:00",
+        "source": "outlook",
+        "length_class": "long"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-geo-na",
+    "persona-segment-smb-small"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "email-chat-context"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "email-context-pull-through",
+    "required_artifacts": [
+      "Thread summary",
+      "key commitments/asks identified",
+      "waiting-on-whom assessment",
+      "draft response matching established tone"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF16-D trap (Draft response answers wrong question); produces complete Thread summary, key commitments/asks identified, waiting-on-whom assessment, draft response matching",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF16-D failure pattern",
+      "Score 1: Output exhibits the full FM-WF16-D failure mode (Draft response answers wrong question)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct executive brief decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF16-D -- Draft response answers wrong question"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

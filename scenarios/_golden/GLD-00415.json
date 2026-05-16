@@ -1,0 +1,124 @@
+{
+  "scenario_id": "WF-51-80415",
+  "workflow_id": "WF-51",
+  "workflow_name": "Partner Triangulation Transcript -> Plan Distribution",
+  "seed": 8800457,
+  "tier": 4,
+  "intent": "happy",
+  "targeted_failure_mode": null,
+  "persona": "DSSP",
+  "fixture_id": "FX-006",
+  "user_message": "Working on Woodgrove Bank's territory planning. Got the meeting transcript -- help me triage this.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Woodgrove Bank",
+        "account_id": "ACC-AIM1K57Z",
+        "opportunities": [
+          {
+            "name": "Woodgrove Azure AI Services",
+            "stage": "Propose",
+            "amount": 450000,
+            "close_date": "2024-08-25"
+          },
+          {
+            "name": "Woodgrove Azure SQL Migration",
+            "stage": "Close",
+            "amount": 560000,
+            "close_date": "2024-09-18"
+          },
+          {
+            "name": "Woodgrove Copilot Adoption",
+            "stage": "Qualify",
+            "amount": 280000,
+            "close_date": "2024-10-25"
+          }
+        ],
+        "acr_current": 46586.35,
+        "health_flag": "Healthy",
+        "owner": "Jennifer Walsh"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: territory planning Discussion - Woodgrove Bank\nDate: 2024-02-07\nDuration: 45 minutes\nAttendees: Rachel Berg (Woodgrove Bank), Jennifer Walsh (Microsoft), Kevin (Woodgrove Bank)\n\n[00:01:15] Rachel Berg (Woodgrove Bank): Appreciate everyone making time. The main agenda today is territory planning.\n\n[00:06:00] Kevin (Woodgrove Bank): Let me add some context -- we've been working on data residency and found that the cost projections need to factor in reserved instance pricing for accuracy.\n\n[00:10:00] Rachel Berg (Woodgrove Bank): The timeline for integration complexity is aggressive. We need to validate the assumptions.\n\n[00:12:00] Jennifer Walsh (Microsoft): On the territory planning front, we've made progress but there are still blockers around budget approval.\n\n[00:16:00] Kevin (Woodgrove Bank): I agree with that assessment. From our side, the main concern is integration complexity.\n\n[00:19:00] Jennifer Walsh (Microsoft): I agree with that assessment. From our side, the main concern is budget approval.",
+      "metadata": {
+        "freshness": "2024-03-11T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "consumption_decline",
+            "detail": "Signal detected for Woodgrove Bank: there's a dependency on the security team's review that could delay us",
+            "date": "2024-03-11"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-10T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "routing-clear",
+    "data-fresh",
+    "persona-role-dssp"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "funding-partner-activation-coach",
+        "condition": "funding or partner evaluation needed"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "partner-triangulation-transcript-->-plan-distribut",
+    "required_artifacts": [
+      "Tri-party action distribution (MS/partner/customer owners)",
+      "funding eligibility assessment",
+      "follow-up sequence with tri-party coordination",
+      "conflict-of-interest check"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Perfect execution of the golden-path workflow with all artifacts complete and actionable",
+      "Score 3: Core output correct but missing polish or one secondary artifact",
+      "Score 1: Fails to produce expected output for a clean, unambiguous request"
+    ],
+    "evidence_anchors": [
+      "Score 5: All evidence correctly sourced and attributed; no hallucination",
+      "Score 3: Minor attribution gap but no fabrication",
+      "Score 1: Evidence fabricated or significantly misattributed"
+    ],
+    "decision_anchors": [
+      "Score 5: All decisions correct for this straightforward scenario",
+      "Score 3: Primary decision correct; minor secondary issue",
+      "Score 1: Primary decision wrong despite clear inputs"
+    ]
+  },
+  "guardrail_checks": [
+    "Clean golden-path scenario -- all guardrails should pass trivially",
+    "Must not over-complicate a straightforward request"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

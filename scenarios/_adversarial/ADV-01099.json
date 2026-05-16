@@ -1,0 +1,137 @@
+{
+  "scenario_id": "WF-14-91099",
+  "workflow_id": "WF-14",
+  "workflow_name": "Stakeholder Map Generation",
+  "seed": 9901141,
+  "tier": 1,
+  "intent": "adherence",
+  "targeted_failure_mode": null,
+  "persona": "CSA",
+  "fixture_id": "FX-042",
+  "user_message": "Quick one -- run the hygiene check on Sunrise Healthcare. The customer escalated this morning.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Sunrise Healthcare",
+        "account_id": "ACC-49A5S852",
+        "opportunities": [
+          {
+            "name": "Sunrise Azure AI Services",
+            "stage": "Propose",
+            "amount": 89000,
+            "close_date": "2024-09-16"
+          }
+        ],
+        "acr_current": 18077.88,
+        "health_flag": "Healthy",
+        "owner": "Lisa Patel"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Sandra Brown <sandra.brown@sunrisehealt.com>\nTo: Lisa Patel <lisa.patel@microsoft.com>\nDate: 2024-03-01 11:46 EST\nSubject: Quarterly Update: Sunrise Healthcare consumption trend\n\nWe've been evaluating the options and have decided to proceed with consumption trend. What are the next steps from your side?\n\n---\nFrom: Lisa Patel <lisa.patel@microsoft.com>\nTo: Sandra Brown <sandra.brown@sunrisehealt.com>\nDate: 2024-02-12 16:39 EST\nSubject: Re: Re: consumption trend Timeline\n\nI wanted to follow up on our conversation about consumption trend. Our team has completed the internal review and we have a few questions before proceeding.\n\n---\nFrom: Sandra Brown <sandra.brown@sunrisehealt.com>\nTo: Lisa Patel <lisa.patel@microsoft.com>\nDate: 2024-01-28 11:43 EST\nSubject: Follow-up: consumption trend Review\n\nThank you for the discussion last week. We'd like to move forward with consumption trend. Can we schedule a call this week to finalize the timeline?",
+      "metadata": {
+        "freshness": "2024-02-19T12:00:00-05:00",
+        "source": "outlook",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: consumption trend Discussion - Sunrise Healthcare\nDate: 2024-02-19\nDuration: 45 minutes\nAttendees: Sandra Brown (Sunrise Healthcare), Lisa Patel (Microsoft)\n\n[00:02:00] Sandra Brown (Sunrise Healthcare): Good morning. I wanted to follow up on consumption trend from our last session.\n\n[00:06:00] Lisa Patel (Microsoft): The timeline for integration complexity is aggressive. We need to validate the assumptions.\n\n[00:08:00] Sandra Brown (Sunrise Healthcare): The timeline for resource allocation is aggressive. We need to validate the assumptions.\n\n[00:12:00] Lisa Patel (Microsoft): The timeline for performance requirements is aggressive. We need to validate the assumptions.\n\n[00:17:00] Sandra Brown (Sunrise Healthcare): I agree with that assessment. From our side, the main concern is performance requirements.\n\n[00:22:00] Sandra Brown (Sunrise Healthcare): On the consumption trend front, we've made progress but there are still blockers around integration complexity.",
+      "metadata": {
+        "freshness": "2024-01-25T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Sunrise Healthcare - consumption trend",
+        "start": "2024-03-13T09:00:00-05:00",
+        "end": "2024-03-12T13:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Lisa Patel",
+            "email": "lisa.patel@microsoft.com"
+          },
+          {
+            "name": "Sandra Brown",
+            "email": "sandra.brown@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "security_alert",
+            "detail": "Signal detected for Sunrise Healthcare: the migration can proceed in phases to reduce risk",
+            "date": "2024-03-08"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-segment-smb-mid",
+    "persona-role-csa",
+    "data-inconsistent",
+    "routing-ambiguous-3skills"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "contact-stakeholder-map"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "adversarial-routing-test",
+    "required_artifacts": [
+      "correct_routing_justification",
+      "confusion_analysis"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Correctly routes to primary workflow despite adversarial signals; output is complete",
+      "Score 3: Routes correctly but output shows contamination from confusing signals",
+      "Score 1: Misroutes to wrong workflow or produces irrelevant output"
+    ],
+    "evidence_anchors": [
+      "Score 5: All evidence correctly attributed despite cross-workflow noise",
+      "Score 3: Some evidence misattributed but core facts correct",
+      "Score 1: Significant evidence confusion or hallucination"
+    ],
+    "decision_anchors": [
+      "Score 5: Decision-making robust against adversarial perturbations",
+      "Score 3: Primary decision correct but secondary decisions influenced by noise",
+      "Score 1: Primary decision compromised by adversarial inputs"
+    ]
+  },
+  "guardrail_checks": [
+    "Must correctly identify primary workflow despite adversarial routing signals",
+    "Must not hallucinate context from similar-sounding workflows",
+    "Must not expose internal routing logic to user"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

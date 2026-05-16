@@ -1,0 +1,117 @@
+{
+  "scenario_id": "WF-51-00090",
+  "workflow_id": "WF-51",
+  "workflow_name": "Partner Triangulation Transcript -> Plan Distribution",
+  "seed": 5100132,
+  "tier": 4,
+  "intent": "happy",
+  "targeted_failure_mode": null,
+  "persona": "CSA",
+  "fixture_id": "FX-023",
+  "user_message": "Can you work with me on whitespace analysis for Wide World Importers? I think there's an opportunity here but need to validate.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Wide World Importers",
+        "account_id": "ACC-Q026BTUQ",
+        "opportunities": [
+          {
+            "name": "Wide AKS Deployment",
+            "stage": "Close",
+            "amount": 125000,
+            "close_date": "2023-12-01"
+          },
+          {
+            "name": "Wide Intune Rollout",
+            "stage": "Close",
+            "amount": 89000,
+            "close_date": "2024-04-18"
+          }
+        ],
+        "acr_current": 61965.63,
+        "health_flag": "At Risk",
+        "owner": "Ahmed Hassan"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: whitespace analysis Discussion - Wide World Importers\nDate: 2024-03-11\nDuration: 45 minutes\nAttendees: Ryan Kowalski (Wide World Importers), Ahmed Hassan (Microsoft), Michelle (Wide World Importers)\n\n[00:01:15] Ryan Kowalski (Wide World Importers): Appreciate everyone making time. The main agenda today is whitespace analysis.\n\n[00:07:00] Michelle (Wide World Importers): On the whitespace analysis front, we've made progress but there are still blockers around timeline constraints.\n\n[00:11:00] Ahmed Hassan (Microsoft): On the whitespace analysis front, we've made progress but there are still blockers around budget approval.\n\n[00:13:00] Ryan Kowalski (Wide World Importers): The timeline for timeline constraints is aggressive. We need to validate the assumptions.\n\n[00:15:00] Ahmed Hassan (Microsoft): Let me add some context -- we've been working on cost optimization and found that the existing infrastructure won't support the target workload without upgrades.\n\n[00:18:00] Ryan Kowalski (Wide World Importers): On the whitespace analysis front, we've made progress but there are still blockers around security compliance.\n\n[00:21:00] Ahmed Hassan (Microsoft): Our director reviewed this and has concerns about resource allocation. Can we address those?",
+      "metadata": {
+        "freshness": "2024-01-19T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "contract_event",
+            "detail": "Signal detected for Wide World Importers: there's a dependency on the security team's review that could delay us",
+            "date": "2024-03-10"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-geo-na",
+    "persona-role-csa"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "funding-partner-activation-coach",
+        "condition": "funding or partner evaluation needed"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "partner-triangulation-transcript-->-plan-distribut",
+    "required_artifacts": [
+      "Tri-party action distribution (MS/partner/customer owners)",
+      "funding eligibility assessment",
+      "follow-up sequence with tri-party coordination",
+      "conflict-of-interest check"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Complete, well-structured output matching the Partner Triangulation Transcript -> Plan Distribution template with all required artifacts present and actionable",
+      "Score 3: Output covers main requirements but missing one or two secondary artifacts or lacking specificity",
+      "Score 1: Output is generic, missing key artifacts, or fails to address the specific request"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct whitespace analysis decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

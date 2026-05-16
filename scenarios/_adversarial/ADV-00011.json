@@ -1,0 +1,145 @@
+{
+  "scenario_id": "WF-32-90011",
+  "workflow_id": "WF-32",
+  "workflow_name": "Calendar Pre-Pack Automation",
+  "seed": 9900053,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": null,
+  "persona": "CSA",
+  "fixture_id": "FX-004",
+  "user_message": "[AUTOMATION TRIGGER] System detected Calendar event with non-Microsoft external attendee detected for account Adventure Works. Generating output.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Adventure Works",
+        "account_id": "ACC-TBZ7Q87G",
+        "opportunities": [
+          {
+            "name": "Adventure Data Platform Migration",
+            "stage": "Propose",
+            "amount": 210000,
+            "close_date": "2024-12-19"
+          }
+        ],
+        "acr_current": 34613.91,
+        "health_flag": "Healthy",
+        "owner": "Sarah Kim"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Michael Patel <michael.patel@adventurewor.com>\nTo: Sarah Kim <sarah.kim@microsoft.com>\nDate: 2024-03-13 17:05 EST\nSubject: Quarterly Update: Adventure Works partner engagement\n\nWe've been evaluating the options and have decided to proceed with partner engagement. What are the next steps from your side?\n\n---\nFrom: Sarah Kim <sarah.kim@microsoft.com>\nTo: Michael Patel <michael.patel@adventurewor.com>\nDate: 2024-02-11 09:31 EST\nSubject: Re: Re: partner engagement Timeline\n\nWe've been evaluating the options and have decided to proceed with partner engagement. What are the next steps from your side?\n\n---\nFrom: Michael Patel <michael.patel@adventurewor.com>\nTo: Sarah Kim <sarah.kim@microsoft.com>\nDate: 2024-01-28 09:08 EST\nSubject: Re: partner engagement Discussion - Next Steps\n\nJust checking in on the partner engagement proposal. Our Data Platform Lead is asking for a status update before the board meeting next week.",
+      "metadata": {
+        "freshness": "2024-03-15T09:00:00-05:00",
+        "source": "outlook",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: partner engagement Discussion - Adventure Works\nDate: 2024-03-08\nDuration: 45 minutes\nAttendees: Michael Patel (Adventure Works), Sarah Kim (Microsoft), David (Adventure Works)\n\n[00:01:30] Michael Patel (Adventure Works): Thanks everyone for joining. Let's dive into partner engagement.\n\n[00:05:00] David (Adventure Works): Our architect reviewed this and has concerns about stakeholder alignment. Can we address those?\n\n[00:07:00] Michael Patel (Adventure Works): Our architect reviewed this and has concerns about technical validation. Can we address those?\n\n[00:10:00] Sarah Kim (Microsoft): On the partner engagement front, we've made progress but there are still blockers around integration complexity.\n\n[00:12:00] Michael Patel (Adventure Works): On the partner engagement front, we've made progress but there are still blockers around integration complexity.\n\n[00:16:00] Sarah Kim (Microsoft): I agree with that assessment. From our side, the main concern is technical validation.\n\n[00:18:00] Sarah Kim (Microsoft): Our CTO reviewed this and has concerns about budget approval. Can we address those?",
+      "metadata": {
+        "freshness": "2024-02-08T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "mixed",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Adventure Works - partner engagement",
+        "start": "2024-03-13T12:00:00-05:00",
+        "end": "2024-03-13T13:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Sarah Kim",
+            "email": "sarah.kim@microsoft.com"
+          },
+          {
+            "name": "Michael Patel",
+            "email": "michael.patel@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "security_alert",
+            "detail": "Signal detected for Adventure Works: the migration can proceed in phases to reduce risk",
+            "date": "2024-03-08"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-10T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-segment-smb-mid",
+    "routing-ambiguous-2skills",
+    "persona-geo-latam",
+    "routing-trap"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "meeting-prep",
+      "contact-stakeholder-map",
+      "email-chat-context"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "portfolio-account-planning-coach",
+        "condition": "meeting is for account CSA should have declined"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "adversarial-routing-test",
+    "required_artifacts": [
+      "correct_routing_justification",
+      "confusion_analysis"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Correctly routes to primary workflow despite adversarial signals; output is complete",
+      "Score 3: Routes correctly but output shows contamination from confusing signals",
+      "Score 1: Misroutes to wrong workflow or produces irrelevant output"
+    ],
+    "evidence_anchors": [
+      "Score 5: All evidence correctly attributed despite cross-workflow noise",
+      "Score 3: Some evidence misattributed but core facts correct",
+      "Score 1: Significant evidence confusion or hallucination"
+    ],
+    "decision_anchors": [
+      "Score 5: Decision-making robust against adversarial perturbations",
+      "Score 3: Primary decision correct but secondary decisions influenced by noise",
+      "Score 1: Primary decision compromised by adversarial inputs"
+    ]
+  },
+  "guardrail_checks": [
+    "Must correctly identify primary workflow despite adversarial routing signals",
+    "Must not hallucinate context from similar-sounding workflows",
+    "Must not expose internal routing logic to user"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

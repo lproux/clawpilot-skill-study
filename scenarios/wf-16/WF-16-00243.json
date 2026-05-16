@@ -1,0 +1,101 @@
+{
+  "scenario_id": "WF-16-00243",
+  "workflow_id": "WF-16",
+  "workflow_name": "Email Context Pull-Through",
+  "seed": 1600285,
+  "tier": 1,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF16-C",
+  "persona": "CSA",
+  "fixture_id": "FX-029",
+  "user_message": "Can you pull the context on Consolidated Messenger? I need to build the analysis.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Consolidated Messenger",
+        "account_id": "ACC-LVS79LOG",
+        "opportunities": [
+          {
+            "name": "Consolidated Azure AI Services",
+            "stage": "Propose",
+            "amount": 280000,
+            "close_date": "2024-12-11"
+          },
+          {
+            "name": "Consolidated Security Modernization",
+            "stage": "Prospect",
+            "amount": 210000,
+            "close_date": "2024-04-06"
+          },
+          {
+            "name": "Consolidated Azure Arc Deployment",
+            "stage": "Close",
+            "amount": 125000,
+            "close_date": "2024-05-02"
+          }
+        ],
+        "acr_current": 0,
+        "health_flag": "Unknown",
+        "owner": "Tom Rodriguez"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Sarah Singh <sarah.singh@consolidated.com>\nTo: Tom Rodriguez <tom.rodriguez@microsoft.com>\nDate: 2024-03-24 17:15 EST\nSubject: Re: Re: executive brief Timeline\n\nOur team encountered some challenges with executive brief. Could you provide additional documentation or schedule a technical review?\n\n---\nFrom: Tom Rodriguez <tom.rodriguez@microsoft.com>\nTo: Sarah Singh <sarah.singh@consolidated.com>\nDate: 2024-02-20 09:30 EST\nSubject: Re: executive brief Discussion - Next Steps\n\nThere's been a change in our timeline for executive brief. Can we discuss the implications on the overall project plan?\n\n---\nFrom: Sarah Singh <sarah.singh@consolidated.com>\nTo: Tom Rodriguez <tom.rodriguez@microsoft.com>\nDate: 2024-01-23 09:28 EST\nSubject: Re: Re: executive brief Timeline\n\nJust checking in on the executive brief proposal. Our DevOps Lead is asking for a status update before the board meeting next week.",
+      "metadata": {
+        "freshness": "2024-03-17T14:00:00-05:00",
+        "source": "outlook",
+        "length_class": "short"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-tenure-junior",
+    "data-partially-missing"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "email-chat-context"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "email-context-pull-through",
+    "required_artifacts": [
+      "Thread summary",
+      "key commitments/asks identified",
+      "waiting-on-whom assessment",
+      "draft response matching established tone"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF16-C trap (Skips the 'waiting on whom' question); produces complete Thread summary, key commitments/asks identified, waiting-on-whom assessment, draft response matching",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF16-C failure pattern",
+      "Score 1: Output exhibits the full FM-WF16-C failure mode (Skips the 'waiting on whom' question)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct executive brief decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF16-C -- Skips the 'waiting on whom' question"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

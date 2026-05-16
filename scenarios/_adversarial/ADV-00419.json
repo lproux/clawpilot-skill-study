@@ -1,0 +1,112 @@
+{
+  "scenario_id": "WF-43-90419",
+  "workflow_id": "WF-43",
+  "workflow_name": "Discovery Call Transcript -> Opportunity Build",
+  "seed": 9900461,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": null,
+  "persona": "Manager",
+  "fixture_id": "FX-012",
+  "user_message": "I need you to process this support ticket from Bellows College. We had a deep-dive last month -- need the follow-up.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Bellows College",
+        "account_id": "ACC-PPFBFFQ3",
+        "opportunities": [
+          {
+            "name": "Bellows Cloud Migration Phase",
+            "stage": "Propose",
+            "amount": 350000,
+            "close_date": "2023-11-22"
+          },
+          {
+            "name": "Bellows Azure SQL Migration",
+            "stage": "Qualify",
+            "amount": 68000,
+            "close_date": "2024-10-09"
+          },
+          {
+            "name": "Bellows Power Platform",
+            "stage": "Develop",
+            "amount": 450000,
+            "close_date": "2024-12-20"
+          }
+        ],
+        "acr_current": 81043.14,
+        "health_flag": "Healthy",
+        "owner": "Lisa Patel"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: territory planning Discussion - Bellows College\nDate: 2024-03-21\nDuration: 45 minutes\nAttendees: Jason Thompson (Bellows College), Lisa Patel (Microsoft), Kevin (Bellows College)\n\n[00:02:00] Jason Thompson (Bellows College): Good morning. I wanted to follow up on territory planning from our last session.\n\n[00:05:00] Jason Thompson (Bellows College): The timeline for security compliance is aggressive. We need to validate the assumptions.\n\n[00:08:00] Lisa Patel (Microsoft): Our team lead reviewed this and has concerns about technical validation. Can we address those?\n\n[00:11:00] Lisa Patel (Microsoft): Let me add some context -- we've been working on cost optimization and found that the migration can proceed in phases to reduce risk.\n\n[00:14:00] Kevin (Bellows College): Let me add some context -- we've been working on resource allocation and found that the migration can proceed in phases to reduce risk.\n\n[00:18:00] Jason Thompson (Bellows College): The timeline for technical validation is aggressive. We need to validate the assumptions.\n\n[00:21:00] Kevin (Bellows College): Our CTO reviewed this and has concerns about performance requirements. Can we address those?\n\n[00:23:00] Lisa Patel (Microsoft): Our director reviewed this and has concerns about stakeholder alignment. Can we address those?",
+      "metadata": {
+        "freshness": "2024-03-17T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "mixed",
+        "length_class": "long"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-role-manager",
+    "data-stale",
+    "persona-tenure-senior",
+    "cross-workflow-trigger"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "opportunity creation warranted"
+      },
+      {
+        "target_skill": "solution-value-design-coach",
+        "condition": "solution sketch needed from discovery signals"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "adversarial-routing-test",
+    "required_artifacts": [
+      "correct_routing_justification",
+      "confusion_analysis"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Correctly routes to primary workflow despite adversarial signals; output is complete",
+      "Score 3: Routes correctly but output shows contamination from confusing signals",
+      "Score 1: Misroutes to wrong workflow or produces irrelevant output"
+    ],
+    "evidence_anchors": [
+      "Score 5: All evidence correctly attributed despite cross-workflow noise",
+      "Score 3: Some evidence misattributed but core facts correct",
+      "Score 1: Significant evidence confusion or hallucination"
+    ],
+    "decision_anchors": [
+      "Score 5: Decision-making robust against adversarial perturbations",
+      "Score 3: Primary decision correct but secondary decisions influenced by noise",
+      "Score 1: Primary decision compromised by adversarial inputs"
+    ]
+  },
+  "guardrail_checks": [
+    "Must correctly identify primary workflow despite adversarial routing signals",
+    "Must not hallucinate context from similar-sounding workflows",
+    "Must not expose internal routing logic to user"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

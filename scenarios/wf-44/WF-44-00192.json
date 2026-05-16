@@ -1,0 +1,109 @@
+{
+  "scenario_id": "WF-44-00192",
+  "workflow_id": "WF-44",
+  "workflow_name": "Technical Deep-Dive Transcript -> Architecture + Blockers",
+  "seed": 4400234,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF44-H",
+  "persona": "CSA",
+  "fixture_id": "FX-027",
+  "user_message": "Can you work with me on escalation triage for Blue Yonder Airlines? We had a deep-dive last month -- need the follow-up.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Blue Yonder Airlines",
+        "account_id": "ACC-6ZHK5AIU",
+        "opportunities": [
+          {
+            "name": "Blue Dynamics 365 Implementation",
+            "stage": "Close",
+            "amount": 210000,
+            "close_date": "2024-04-22"
+          },
+          {
+            "name": "Blue Azure Infrastructure",
+            "stage": "Prospect",
+            "amount": 350000,
+            "close_date": "2024-08-05"
+          },
+          {
+            "name": "Blue Copilot Adoption",
+            "stage": "Prospect",
+            "amount": 210000,
+            "close_date": "2024-12-03"
+          }
+        ],
+        "acr_current": 0,
+        "health_flag": "At Risk",
+        "owner": "David Chen"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: escalation triage Discussion - Blue Yonder Airlines\nDate: 2024-03-07\nDuration: 45 minutes\nAttendees: Robert Singh (Blue Yonder Airlines), David Chen (Microsoft), Michelle (Blue Yonder Airlines)\n\n[00:01:30] Robert Singh (Blue Yonder Airlines): Thanks everyone for joining. Let's dive into escalation triage.\n\n[00:07:00] Robert Singh (Blue Yonder Airlines): Our VP reviewed this and has concerns about partner engagement. Can we address those?\n\n[00:12:00] David Chen (Microsoft): Our team lead reviewed this and has concerns about budget approval. Can we address those?\n\n[00:17:00] David Chen (Microsoft): On the escalation triage front, we've made progress but there are still blockers around data residency.\n\n[00:19:00] Robert Singh (Blue Yonder Airlines): The timeline for vendor dependencies is aggressive. We need to validate the assumptions.\n\n[00:23:00] David Chen (Microsoft): The timeline for data residency is aggressive. We need to validate the assumptions.",
+      "metadata": {
+        "freshness": "2024-03-27T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "long"
+      }
+    }
+  ],
+  "perturbations": [
+    "signal-strength-faint",
+    "persona-role-csa"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "solution-value-design-coach",
+        "condition": "architecture sketch needed from technical signals"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "technical-deep-dive-transcript-->-architecture-+-b",
+    "required_artifacts": [
+      "Architecture summary",
+      "blocker inventory (tech/commercial/org)",
+      "open questions",
+      "sequencing recommendation",
+      "specialist routing"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF44-H trap (Open-questions list is generic 'we should investigate more'); produces complete Architecture summary, blocker inventory (tech/commercial/org), open questions, sequencing recommenda",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF44-H failure pattern",
+      "Score 1: Output exhibits the full FM-WF44-H failure mode (Open-questions list is generic 'we should investigate more')"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct escalation triage decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF44-H -- Open-questions list is generic 'we should investigate more'"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

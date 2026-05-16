@@ -1,0 +1,94 @@
+{
+  "scenario_id": "WF-04-00016",
+  "workflow_id": "WF-04",
+  "workflow_name": "Quarterly Territory Re-segmentation",
+  "seed": 400058,
+  "tier": 2,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": "FM-WF04-F",
+  "persona": "DSSP",
+  "fixture_id": "FX-025",
+  "user_message": "Can you help me create the summary? The customer (Adatum Corporation) is asking about forecast prep.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Adatum Corporation",
+        "account_id": "ACC-ELNED368",
+        "opportunities": [
+          {
+            "name": "Adatum Azure Virtual Desktop",
+            "stage": "Qualify",
+            "amount": 175000,
+            "close_date": "2023-12-18"
+          },
+          {
+            "name": "Adatum Azure SQL Migration",
+            "stage": "Close",
+            "amount": 125000,
+            "close_date": "2024-10-09"
+          },
+          {
+            "name": "Adatum Azure Arc Deployment",
+            "stage": "Propose",
+            "amount": 210000,
+            "close_date": "2024-12-01"
+          }
+        ],
+        "acr_current": 14124.54,
+        "health_flag": "At Risk",
+        "owner": "Raj Mehta"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-tenure-senior",
+    "signal-strength-faint",
+    "persona-geo-na",
+    "persona-segment-smb-mid"
+  ],
+  "expected_routing": {
+    "entry_skill": "portfolio-account-planning-coach",
+    "modules": [
+      "manager-portfolio-review"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "quarterly-territory-re-segmentation",
+    "required_artifacts": [
+      "Proposed territory redistribution with complexity balance",
+      "projected attainment impact with confidence bands",
+      "inequity analysis"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF04-F trap (Quarterly cadence too coarse for fast-changing portfolios); produces complete Proposed territory redistribution with complexity balance, projected attainment impact with confiden",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF04-F failure pattern",
+      "Score 1: Output exhibits the full FM-WF04-F failure mode (Quarterly cadence too coarse for fast-changing portfolios)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct forecast prep decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF04-F -- Quarterly cadence too coarse for fast-changing portfolios",
+    "Guardrail axis scored neutrally -- focus on whether output served the user's actual need"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

@@ -1,0 +1,157 @@
+{
+  "scenario_id": "WF-32-91337",
+  "workflow_id": "WF-32",
+  "workflow_name": "Calendar Pre-Pack Automation",
+  "seed": 9901379,
+  "tier": 4,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": null,
+  "persona": "CSA",
+  "fixture_id": "FX-030",
+  "user_message": "[AUTOMATION TRIGGER] Scheduled Calendar event with non-Microsoft external attendee detected initiated for First Up Consultants.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "First Up Consultants",
+        "account_id": "ACC-M3ON3CTQ",
+        "opportunities": [
+          {
+            "name": "First M365 E5 Upsell",
+            "stage": "Develop",
+            "amount": 210000,
+            "close_date": "2024-12-12"
+          },
+          {
+            "name": "First Security Modernization",
+            "stage": "Develop",
+            "amount": 210000,
+            "close_date": "2024-07-15"
+          },
+          {
+            "name": "First Azure Arc Deployment",
+            "stage": "Develop",
+            "amount": 45000,
+            "close_date": "2024-09-18"
+          }
+        ],
+        "acr_current": 38672.15,
+        "health_flag": "Unknown",
+        "owner": "Michelle Park"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Michael Schmidt <michael.schmidt@firstupconsu.com>\nTo: Michelle Park <michelle.park@microsoft.com>\nDate: 2024-03-16 11:47 EST\nSubject: Re: Re: executive brief Timeline\n\nThank you for the discussion last week. We'd like to move forward with executive brief. Can we schedule a call this week to finalize the timeline?\n\n---\nFrom: Michelle Park <michelle.park@microsoft.com>\nTo: Michael Schmidt <michael.schmidt@firstupconsu.com>\nDate: 2024-02-08 17:31 EST\nSubject: Re: Re: executive brief Timeline\n\nI wanted to follow up on our conversation about executive brief. Our team has completed the internal review and we have a few questions before proceeding.\n\n---\nFrom: Michael Schmidt <michael.schmidt@firstupconsu.com>\nTo: Michelle Park <michelle.park@microsoft.com>\nDate: 2024-01-03 15:20 EST\nSubject: Re: executive brief Discussion - Next Steps\n\nOur team encountered some challenges with executive brief. Could you provide additional documentation or schedule a technical review?",
+      "metadata": {
+        "freshness": "2024-02-17T10:00:00-05:00",
+        "source": "outlook",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: executive brief Discussion - First Up Consultants\nDate: 2024-02-17\nDuration: 45 minutes\nAttendees: Michael Schmidt (First Up Consultants), Michelle Park (Microsoft), Michelle (First Up Consultants)\n\n[00:01:15] Michael Schmidt (First Up Consultants): Appreciate everyone making time. The main agenda today is executive brief.\n\n[00:07:00] Michelle (First Up Consultants): I agree with that assessment. From our side, the main concern is resource allocation.\n\n[00:11:00] Michael Schmidt (First Up Consultants): I agree with that assessment. From our side, the main concern is stakeholder alignment.\n\n[00:13:00] Michael Schmidt (First Up Consultants): The timeline for stakeholder alignment is aggressive. We need to validate the assumptions.\n\n[00:16:00] Michael Schmidt (First Up Consultants): Our architect reviewed this and has concerns about resource allocation. Can we address those?\n\n[00:20:00] Michelle (First Up Consultants): The timeline for security compliance is aggressive. We need to validate the assumptions.\n\n[00:23:00] Michael Schmidt (First Up Consultants): I agree with that assessment. From our side, the main concern is security compliance.\n\n[00:27:00] Michelle (First Up Consultants): Our director reviewed this and has concerns about cost optimization. Can we address those?\n\n[00:30:00] Michelle (First Up Consultants): Our director reviewed this and has concerns about budget approval. Can we address those?\n\n[00:35:00] Michael Schmidt (First Up Consultants): On the executive brief front, we've made progress but there are still blockers around timeline constraints.",
+      "metadata": {
+        "freshness": "2024-01-27T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "First Up Consultants - executive brief",
+        "start": "2024-03-14T10:00:00-05:00",
+        "end": "2024-03-12T15:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Michelle Park",
+            "email": "michelle.park@microsoft.com"
+          },
+          {
+            "name": "Michael Schmidt",
+            "email": "michael.schmidt@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "security_alert",
+            "detail": "Signal detected for First Up Consultants: the current vendor contract has a 90-day exit clause we need to plan around",
+            "date": "2024-03-06"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-role-csa",
+    "persona-tenure-senior",
+    "persona-geo-apac",
+    "routing-trap"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "meeting-prep",
+      "contact-stakeholder-map",
+      "email-chat-context"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "portfolio-account-planning-coach",
+        "condition": "meeting is for account CSA should have declined"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "adversarial-routing-test",
+    "required_artifacts": [
+      "correct_routing_justification",
+      "confusion_analysis"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Correctly routes to primary workflow despite adversarial signals; output is complete",
+      "Score 3: Routes correctly but output shows contamination from confusing signals",
+      "Score 1: Misroutes to wrong workflow or produces irrelevant output"
+    ],
+    "evidence_anchors": [
+      "Score 5: All evidence correctly attributed despite cross-workflow noise",
+      "Score 3: Some evidence misattributed but core facts correct",
+      "Score 1: Significant evidence confusion or hallucination"
+    ],
+    "decision_anchors": [
+      "Score 5: Decision-making robust against adversarial perturbations",
+      "Score 3: Primary decision correct but secondary decisions influenced by noise",
+      "Score 1: Primary decision compromised by adversarial inputs"
+    ]
+  },
+  "guardrail_checks": [
+    "Must correctly identify primary workflow despite adversarial routing signals",
+    "Must not hallucinate context from similar-sounding workflows",
+    "Must not expose internal routing logic to user"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

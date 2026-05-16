@@ -1,0 +1,130 @@
+{
+  "scenario_id": "WF-11-00065",
+  "workflow_id": "WF-11",
+  "workflow_name": "Pre-Meeting Brief",
+  "seed": 1100107,
+  "tier": 2,
+  "intent": "happy",
+  "targeted_failure_mode": null,
+  "persona": "Manager",
+  "fixture_id": "FX-023",
+  "user_message": "Summarize what happened with Wide World Importers and give me the asks.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Wide World Importers",
+        "account_id": "ACC-Q026BTUQ",
+        "opportunities": [
+          {
+            "name": "Wide AKS Deployment",
+            "stage": "Close",
+            "amount": 125000,
+            "close_date": "2023-12-01"
+          },
+          {
+            "name": "Wide Intune Rollout",
+            "stage": "Close",
+            "amount": 89000,
+            "close_date": "2024-04-18"
+          }
+        ],
+        "acr_current": 61965.63,
+        "health_flag": "At Risk",
+        "owner": "Ahmed Hassan"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Ryan Kowalski <ryan.kowalski@wideworldimp.com>\nTo: Ahmed Hassan <ahmed.hassan@microsoft.com>\nDate: 2024-03-27 09:05 EST\nSubject: Follow-up: territory planning Review\n\nI wanted to follow up on our conversation about territory planning. Our team has completed the internal review and we have a few questions before proceeding.\n\n---\nFrom: Ahmed Hassan <ahmed.hassan@microsoft.com>\nTo: Ryan Kowalski <ryan.kowalski@wideworldimp.com>\nDate: 2024-01-14 11:48 EST\nSubject: URGENT: territory planning Issue at Wide World Importers\n\nOur team encountered some challenges with territory planning. Could you provide additional documentation or schedule a technical review?",
+      "metadata": {
+        "freshness": "2024-02-01T08:00:00-05:00",
+        "source": "outlook",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: territory planning Discussion - Wide World Importers\nDate: 2024-02-21\nDuration: 45 minutes\nAttendees: Ryan Kowalski (Wide World Importers), Ahmed Hassan (Microsoft)\n\n[00:01:15] Ryan Kowalski (Wide World Importers): Appreciate everyone making time. The main agenda today is territory planning.\n\n[00:07:00] Ahmed Hassan (Microsoft): On the territory planning front, we've made progress but there are still blockers around partner engagement.\n\n[00:12:00] Ahmed Hassan (Microsoft): Let me add some context -- we've been working on integration complexity and found that there's a dependency on the security team's review that could delay us.\n\n[00:15:00] Ahmed Hassan (Microsoft): The timeline for resource allocation is aggressive. We need to validate the assumptions.\n\n[00:17:00] Ryan Kowalski (Wide World Importers): The timeline for cost optimization is aggressive. We need to validate the assumptions.\n\n[00:20:00] Ahmed Hassan (Microsoft): The timeline for timeline constraints is aggressive. We need to validate the assumptions.",
+      "metadata": {
+        "freshness": "2024-03-04T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "mixed",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Wide World Importers - territory planning",
+        "start": "2024-03-14T09:00:00-05:00",
+        "end": "2024-03-13T10:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Ahmed Hassan",
+            "email": "ahmed.hassan@microsoft.com"
+          },
+          {
+            "name": "Ryan Kowalski",
+            "email": "ryan.kowalski@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-geo-na",
+    "persona-role-manager",
+    "persona-tenure-senior",
+    "data-stale"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "meeting-prep",
+      "contact-stakeholder-map"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "pre-meeting-brief",
+    "required_artifacts": [
+      "One-page brief with attendee context",
+      "account snapshot",
+      "talking points",
+      "likely objections",
+      "open items from last meeting"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Complete, well-structured output matching the Pre-Meeting Brief template with all required artifacts present and actionable",
+      "Score 3: Output covers main requirements but missing one or two secondary artifacts or lacking specificity",
+      "Score 1: Output is generic, missing key artifacts, or fails to address the specific request"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct territory planning decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

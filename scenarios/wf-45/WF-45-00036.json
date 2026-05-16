@@ -1,0 +1,121 @@
+{
+  "scenario_id": "WF-45-00036",
+  "workflow_id": "WF-45",
+  "workflow_name": "QBR Transcript -> Health + Whitespace + Renewal Risk",
+  "seed": 4500078,
+  "tier": 4,
+  "intent": "happy",
+  "targeted_failure_mode": null,
+  "persona": "CSA",
+  "fixture_id": "FX-015",
+  "user_message": "Just got this from David Rivera at Fourth Coffee -- I need help figuring out account health. Board meeting is next week.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Fourth Coffee",
+        "account_id": "ACC-A7MFL3SV",
+        "opportunities": [
+          {
+            "name": "Fourth Data Platform Migration",
+            "stage": "Qualify",
+            "amount": 210000,
+            "close_date": "2023-12-04"
+          }
+        ],
+        "acr_current": 114958.25,
+        "health_flag": "Healthy",
+        "owner": "Raj Mehta"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: account health Discussion - Fourth Coffee\nDate: 2024-01-04\nDuration: 45 minutes\nAttendees: David Rivera (Fourth Coffee), Raj Mehta (Microsoft)\n\n[00:01:15] David Rivera (Fourth Coffee): Appreciate everyone making time. The main agenda today is account health.\n\n[00:05:00] David Rivera (Fourth Coffee): Our CTO reviewed this and has concerns about technical validation. Can we address those?\n\n[00:08:00] David Rivera (Fourth Coffee): The timeline for stakeholder alignment is aggressive. We need to validate the assumptions.\n\n[00:12:00] Raj Mehta (Microsoft): Our VP reviewed this and has concerns about security compliance. Can we address those?\n\n[00:14:00] Raj Mehta (Microsoft): Our director reviewed this and has concerns about data residency. Can we address those?\n\n[00:18:00] David Rivera (Fourth Coffee): The timeline for data residency is aggressive. We need to validate the assumptions.\n\n[00:22:00] Raj Mehta (Microsoft): The timeline for integration complexity is aggressive. We need to validate the assumptions.\n\n[00:27:00] Raj Mehta (Microsoft): I agree with that assessment. From our side, the main concern is timeline constraints.\n\n[00:31:00] David Rivera (Fourth Coffee): I agree with that assessment. From our side, the main concern is integration complexity.\n\n[00:33:00] David Rivera (Fourth Coffee): The timeline for cost optimization is aggressive. We need to validate the assumptions.",
+      "metadata": {
+        "freshness": "2024-03-20T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "mixed",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "security_alert",
+            "detail": "Signal detected for Fourth Coffee: the migration can proceed in phases to reduce risk",
+            "date": "2024-03-05"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-role-csa",
+    "routing-ambiguous-2skills",
+    "persona-segment-smb-small"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "portfolio-account-planning-coach",
+        "condition": "health assessment needed"
+      },
+      {
+        "target_skill": "acr-signal-to-opportunity-coach",
+        "condition": "whitespace signals warrant investigation"
+      },
+      {
+        "target_skill": "forecast-business-review-coach",
+        "condition": "renewal risk affects forecast"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "qbr-transcript-->-health-+-whitespace-+-renewal-ri",
+    "required_artifacts": [
+      "Health delta assessment",
+      "whitespace hypotheses",
+      "renewal risk with confidence",
+      "action distribution with owners",
+      "comparison to last QBR commitments"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Complete, well-structured output matching the QBR Transcript -> Health + Whitespace + Renewal Risk template with all required artifacts present and actionable",
+      "Score 3: Output covers main requirements but missing one or two secondary artifacts or lacking specificity",
+      "Score 1: Output is generic, missing key artifacts, or fails to address the specific request"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct account health decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

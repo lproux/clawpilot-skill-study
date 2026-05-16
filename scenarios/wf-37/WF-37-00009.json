@@ -1,0 +1,112 @@
+{
+  "scenario_id": "WF-37-00009",
+  "workflow_id": "WF-37",
+  "workflow_name": "Customer Outage/Complaint Email -> Triage + Escalation",
+  "seed": 3700051,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF37-E",
+  "persona": "CSA",
+  "fixture_id": "FX-011",
+  "user_message": "Can you work with me on executive brief for Alpine Ski House? I think there's an opportunity here but need to validate.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Alpine Ski House",
+        "account_id": "ACC-UIKNWGJ7",
+        "opportunities": [
+          {
+            "name": "Alpine Azure Virtual Desktop",
+            "stage": "Propose",
+            "amount": 560000,
+            "close_date": "2023-12-14"
+          }
+        ],
+        "acr_current": 115928.19,
+        "health_flag": "At Risk",
+        "owner": "Marcus Williams"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Brian Yamamoto <brian.yamamoto@alpineskihou.com>\nTo: Marcus Williams <marcus.williams@microsoft.com>\nDate: 2024-03-08 13:42 EST\nSubject: Quarterly Update: Alpine Ski House executive brief\n\nThank you for the discussion last week. We'd like to move forward with executive brief. Can we schedule a call this week to finalize the timeline?\n\n---\nFrom: Marcus Williams <marcus.williams@microsoft.com>\nTo: Brian Yamamoto <brian.yamamoto@alpineskihou.com>\nDate: 2024-02-21 13:22 EST\nSubject: Re: executive brief Discussion - Next Steps\n\nThere's been a change in our timeline for executive brief. Can we discuss the implications on the overall project plan?\n\n---\nFrom: Brian Yamamoto <brian.yamamoto@alpineskihou.com>\nTo: Marcus Williams <marcus.williams@microsoft.com>\nDate: 2024-01-16 12:28 EST\nSubject: executive brief - Action Required\n\nThank you for the discussion last week. We'd like to move forward with executive brief. Can we schedule a call this week to finalize the timeline?",
+      "metadata": {
+        "freshness": "2024-03-28T08:00:00-05:00",
+        "source": "outlook",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "contract_event",
+            "detail": "Signal detected for Alpine Ski House: the migration can proceed in phases to reduce risk",
+            "date": "2024-03-07"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-10T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "data-stale",
+    "persona-role-csa"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "email-chat-context"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "acr-signal-to-opportunity-coach",
+        "condition": "outage impacts major workload ACR"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "customer-outage/complaint-email-->-triage-+-escala",
+    "required_artifacts": [
+      "Severity triage",
+      "root-cause hypothesis (labeled as hypothesis)",
+      "customer response draft",
+      "ACR risk flag",
+      "escalation routing"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF37-E trap (No ACR risk flag when outage is on a major workload); produces complete Severity triage, root-cause hypothesis (labeled as hypothesis), customer response draft, ACR risk fl",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF37-E failure pattern",
+      "Score 1: Output exhibits the full FM-WF37-E failure mode (No ACR risk flag when outage is on a major workload)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct executive brief decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF37-E -- No ACR risk flag when outage is on a major workload"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

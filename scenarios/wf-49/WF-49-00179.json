@@ -1,0 +1,103 @@
+{
+  "scenario_id": "WF-49-00179",
+  "workflow_id": "WF-49",
+  "workflow_name": "Workshop Transcript -> ECIF + Partner + Follow-up",
+  "seed": 4900221,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF49-B",
+  "persona": "Manager",
+  "fixture_id": "FX-001",
+  "user_message": "I need you to process this meeting transcript from Contoso Ltd. I met with them last week but can't remember the details.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Contoso Ltd",
+        "account_id": "ACC-VWW2DK8X",
+        "opportunities": [
+          {
+            "name": "Contoso Power Platform",
+            "stage": "Propose",
+            "amount": 560000,
+            "close_date": "2024-12-28"
+          }
+        ],
+        "acr_current": 78949.7,
+        "health_flag": "Healthy",
+        "owner": "Marcus Williams"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: QBR preparation Discussion - Contoso Ltd\nDate: 2024-02-22\nDuration: 45 minutes\nAttendees: Angela Doyle (Contoso Ltd), Marcus Williams (Microsoft), Priya (Contoso Ltd)\n\n[00:01:15] Angela Doyle (Contoso Ltd): Appreciate everyone making time. The main agenda today is QBR preparation.\n\n[00:08:00] Angela Doyle (Contoso Ltd): Our architect reviewed this and has concerns about resource allocation. Can we address those?\n\n[00:10:00] Priya (Contoso Ltd): Let me add some context -- we've been working on technical validation and found that there's a dependency on the security team's review that could delay us.\n\n[00:12:00] Priya (Contoso Ltd): The timeline for technical validation is aggressive. We need to validate the assumptions.\n\n[00:15:00] Marcus Williams (Microsoft): Our director reviewed this and has concerns about data residency. Can we address those?\n\n[00:20:00] Priya (Contoso Ltd): Let me add some context -- we've been working on vendor dependencies and found that the migration can proceed in phases to reduce risk.\n\n[00:23:00] Priya (Contoso Ltd): On the QBR preparation front, we've made progress but there are still blockers around performance requirements.\n\n[00:25:00] Priya (Contoso Ltd): On the QBR preparation front, we've made progress but there are still blockers around stakeholder alignment.\n\n[00:30:00] Priya (Contoso Ltd): Our CTO reviewed this and has concerns about data residency. Can we address those?",
+      "metadata": {
+        "freshness": "2024-03-15T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "short"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-geo-na",
+    "data-fresh",
+    "persona-segment-smb-corporate",
+    "persona-role-manager"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "funding-partner-activation-coach",
+        "condition": "ECIF workscope or partner engagement warranted"
+      },
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "milestone updates warranted"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "workshop-transcript-->-ecif-+-partner-+-follow-up",
+    "required_artifacts": [
+      "Workshop recap",
+      "ECIF workscope draft (if warranted)",
+      "partner plan",
+      "follow-up items with owners",
+      "milestone update proposals"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF49-B trap (Partner role asserted without workshop-evidence); produces complete Workshop recap, ECIF workscope draft (if warranted), partner plan, follow-up items with owners, mile",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF49-B failure pattern",
+      "Score 1: Output exhibits the full FM-WF49-B failure mode (Partner role asserted without workshop-evidence)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct QBR preparation decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF49-B -- Partner role asserted without workshop-evidence"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

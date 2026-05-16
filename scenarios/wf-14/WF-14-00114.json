@@ -1,0 +1,145 @@
+{
+  "scenario_id": "WF-14-00114",
+  "workflow_id": "WF-14",
+  "workflow_name": "Stakeholder Map Generation",
+  "seed": 1400156,
+  "tier": 1,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF14-C",
+  "persona": "CSA",
+  "fixture_id": "FX-021",
+  "user_message": "Before my call with Nod Publishers, create the summary. This is a renewal account with declining consumption.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Nod Publishers",
+        "account_id": "ACC-BFJJI6LY",
+        "opportunities": [
+          {
+            "name": "Nod Azure SQL Migration",
+            "stage": "Close",
+            "amount": 45000,
+            "close_date": "2023-10-06"
+          },
+          {
+            "name": "Nod Intune Rollout",
+            "stage": "Develop",
+            "amount": 560000,
+            "close_date": "2024-12-16"
+          }
+        ],
+        "acr_current": 111088.58,
+        "health_flag": "At Risk",
+        "owner": "Marcus Williams"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Samantha Singh <samantha.singh@nodpublisher.com>\nTo: Marcus Williams <marcus.williams@microsoft.com>\nDate: 2024-03-21 16:32 EST\nSubject: URGENT: migration architecture Issue at Nod Publishers\n\nThank you for the discussion last week. We'd like to move forward with migration architecture. Can we schedule a call this week to finalize the timeline?\n\n---\nFrom: Marcus Williams <marcus.williams@microsoft.com>\nTo: Samantha Singh <samantha.singh@nodpublisher.com>\nDate: 2024-02-18 14:24 EST\nSubject: URGENT: migration architecture Issue at Nod Publishers\n\nOur team encountered some challenges with migration architecture. Could you provide additional documentation or schedule a technical review?\n\n---\nFrom: Samantha Singh <samantha.singh@nodpublisher.com>\nTo: Marcus Williams <marcus.williams@microsoft.com>\nDate: 2024-01-16 09:25 EST\nSubject: Re: migration architecture Discussion - Next Steps\n\nWe've been evaluating the options and have decided to proceed with migration architecture. What are the next steps from your side?",
+      "metadata": {
+        "freshness": "2024-03-12T08:00:00-05:00",
+        "source": "outlook",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: migration architecture Discussion - Nod Publishers\nDate: 2024-01-14\nDuration: 45 minutes\nAttendees: Samantha Singh (Nod Publishers), Marcus Williams (Microsoft)\n\n[00:01:15] Samantha Singh (Nod Publishers): Appreciate everyone making time. The main agenda today is migration architecture.\n\n[00:05:00] Samantha Singh (Nod Publishers): On the migration architecture front, we've made progress but there are still blockers around cost optimization.\n\n[00:08:00] Samantha Singh (Nod Publishers): Our director reviewed this and has concerns about partner engagement. Can we address those?\n\n[00:11:00] Samantha Singh (Nod Publishers): I agree with that assessment. From our side, the main concern is integration complexity.\n\n[00:13:00] Marcus Williams (Microsoft): On the migration architecture front, we've made progress but there are still blockers around timeline constraints.\n\n[00:17:00] Marcus Williams (Microsoft): Our CTO reviewed this and has concerns about budget approval. Can we address those?\n\n[00:22:00] Marcus Williams (Microsoft): The timeline for cost optimization is aggressive. We need to validate the assumptions.\n\n[00:27:00] Marcus Williams (Microsoft): The timeline for budget approval is aggressive. We need to validate the assumptions.\n\n[00:31:00] Marcus Williams (Microsoft): The timeline for technical validation is aggressive. We need to validate the assumptions.\n\n[00:35:00] Marcus Williams (Microsoft): The timeline for technical validation is aggressive. We need to validate the assumptions.\n\n[00:40:00] Marcus Williams (Microsoft): I agree with that assessment. From our side, the main concern is integration complexity.",
+      "metadata": {
+        "freshness": "2024-02-17T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Nod Publishers - migration architecture",
+        "start": "2024-03-11T15:00:00-05:00",
+        "end": "2024-03-12T15:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Marcus Williams",
+            "email": "marcus.williams@microsoft.com"
+          },
+          {
+            "name": "Samantha Singh",
+            "email": "samantha.singh@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "contract_event",
+            "detail": "Signal detected for Nod Publishers: there's a dependency on the security team's review that could delay us",
+            "date": "2024-03-08"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-segment-smb-mid",
+    "data-stale",
+    "persona-role-csa"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "contact-stakeholder-map"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "stakeholder-map-generation",
+    "required_artifacts": [
+      "Stakeholder map with roles (decision-maker",
+      "influencer",
+      "champion",
+      "blocker)",
+      "recency labels"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF14-C trap (No recency labeling); produces complete Stakeholder map with roles (decision-maker, influencer, champion, blocker), recency labels, confiden",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF14-C failure pattern",
+      "Score 1: Output exhibits the full FM-WF14-C failure mode (No recency labeling)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct migration architecture decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF14-C -- No recency labeling"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

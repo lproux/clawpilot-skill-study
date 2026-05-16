@@ -1,0 +1,102 @@
+{
+  "scenario_id": "WF-49-00037",
+  "workflow_id": "WF-49",
+  "workflow_name": "Workshop Transcript -> ECIF + Partner + Follow-up",
+  "seed": 4900079,
+  "tier": 4,
+  "intent": "happy",
+  "targeted_failure_mode": null,
+  "persona": "DSSP",
+  "fixture_id": "FX-017",
+  "user_message": "Pulling in context from Humongous Insurance's exec meeting notes -- need to prepare the forecast for the whitespace analysis.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Humongous Insurance",
+        "account_id": "ACC-3AB2FT8E",
+        "opportunities": [
+          {
+            "name": "Humongous Cloud Migration Phase",
+            "stage": "Qualify",
+            "amount": 175000,
+            "close_date": "2023-10-27"
+          }
+        ],
+        "acr_current": 73720.59,
+        "health_flag": "Healthy",
+        "owner": "David Chen"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: whitespace analysis Discussion - Humongous Insurance\nDate: 2024-03-23\nDuration: 45 minutes\nAttendees: Michael Petrov (Humongous Insurance), David Chen (Microsoft)\n\n[00:01:15] Michael Petrov (Humongous Insurance): Appreciate everyone making time. The main agenda today is whitespace analysis.\n\n[00:07:00] Michael Petrov (Humongous Insurance): The timeline for cost optimization is aggressive. We need to validate the assumptions.\n\n[00:10:00] Michael Petrov (Humongous Insurance): I agree with that assessment. From our side, the main concern is data residency.\n\n[00:14:00] David Chen (Microsoft): On the whitespace analysis front, we've made progress but there are still blockers around integration complexity.\n\n[00:18:00] Michael Petrov (Humongous Insurance): Our director reviewed this and has concerns about integration complexity. Can we address those?\n\n[00:20:00] Michael Petrov (Humongous Insurance): Our architect reviewed this and has concerns about stakeholder alignment. Can we address those?\n\n[00:24:00] Michael Petrov (Humongous Insurance): I agree with that assessment. From our side, the main concern is performance requirements.\n\n[00:28:00] David Chen (Microsoft): On the whitespace analysis front, we've made progress but there are still blockers around partner engagement.\n\n[00:31:00] David Chen (Microsoft): Let me add some context -- we've been working on vendor dependencies and found that the migration can proceed in phases to reduce risk.\n\n[00:33:00] David Chen (Microsoft): On the whitespace analysis front, we've made progress but there are still blockers around budget approval.\n\n[00:35:00] David Chen (Microsoft): Our director reviewed this and has concerns about security compliance. Can we address those?",
+      "metadata": {
+        "freshness": "2024-01-09T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "medium"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-segment-smb-small",
+    "data-stale",
+    "signal-strength-noisy",
+    "persona-tenure-junior"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "funding-partner-activation-coach",
+        "condition": "ECIF workscope or partner engagement warranted"
+      },
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "milestone updates warranted"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "workshop-transcript-->-ecif-+-partner-+-follow-up",
+    "required_artifacts": [
+      "Workshop recap",
+      "ECIF workscope draft (if warranted)",
+      "partner plan",
+      "follow-up items with owners",
+      "milestone update proposals"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Complete, well-structured output matching the Workshop Transcript -> ECIF + Partner + Follow-up template with all required artifacts present and actionable",
+      "Score 3: Output covers main requirements but missing one or two secondary artifacts or lacking specificity",
+      "Score 1: Output is generic, missing key artifacts, or fails to address the specific request"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct whitespace analysis decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

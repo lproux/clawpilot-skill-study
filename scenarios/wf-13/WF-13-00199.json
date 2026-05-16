@@ -1,0 +1,109 @@
+{
+  "scenario_id": "WF-13-00199",
+  "workflow_id": "WF-13",
+  "workflow_name": "Dark Customer Re-Engagement Sequence",
+  "seed": 1300241,
+  "tier": 2,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF13-D",
+  "persona": "DSSP",
+  "fixture_id": "FX-041",
+  "user_message": "[AUTOMATION TRIGGER] Scheduled Account flagged as dark (no interaction in 60+ days) or user initiated for Quantum Analytics.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Quantum Analytics",
+        "account_id": "ACC-ZJSZDYNL",
+        "opportunities": [
+          {
+            "name": "Quantum Azure Infrastructure",
+            "stage": "Qualify",
+            "amount": 68000,
+            "close_date": "2024-04-14"
+          },
+          {
+            "name": "Quantum Data Platform Migration",
+            "stage": "Develop",
+            "amount": 450000,
+            "close_date": "2024-07-16"
+          },
+          {
+            "name": "Quantum Dynamics 365 Implementation",
+            "stage": "Qualify",
+            "amount": 68000,
+            "close_date": "2024-07-17"
+          }
+        ],
+        "acr_current": 21322.6,
+        "health_flag": "At Risk",
+        "owner": "Marcus Williams"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "deployment_blocker",
+            "detail": "Signal detected for Quantum Analytics: the migration can proceed in phases to reduce risk",
+            "date": "2024-03-10"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-09T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-geo-latam",
+    "signal-strength-noisy"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "dark-customer-outreach",
+      "contact-stakeholder-map"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "dark-customer-re-engagement-sequence",
+    "required_artifacts": [
+      "Multi-touch re-engagement sequence with channel selection",
+      "timing",
+      "personalized messaging per touch",
+      "stop conditions"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF13-D trap (Ignores why customer went dark); produces complete Multi-touch re-engagement sequence with channel selection, timing, personalized messaging per touch,",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF13-D failure pattern",
+      "Score 1: Output exhibits the full FM-WF13-D failure mode (Ignores why customer went dark)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct partner engagement decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF13-D -- Ignores why customer went dark"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

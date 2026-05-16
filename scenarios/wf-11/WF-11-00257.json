@@ -1,0 +1,123 @@
+{
+  "scenario_id": "WF-11-00257",
+  "workflow_id": "WF-11",
+  "workflow_name": "Pre-Meeting Brief",
+  "seed": 1100299,
+  "tier": 2,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF11-G",
+  "persona": "Manager",
+  "fixture_id": "FX-007",
+  "user_message": "How should I coach David Chen on Litware Inc? We had a deep-dive last month -- need the follow-up.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Litware Inc",
+        "account_id": "ACC-658MPDXQ",
+        "opportunities": [
+          {
+            "name": "Litware Security Modernization",
+            "stage": "Prospect",
+            "amount": 280000,
+            "close_date": "2024-09-23"
+          }
+        ],
+        "acr_current": 76577.96,
+        "health_flag": "Healthy",
+        "owner": "David Chen"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Sarah Wilson <sarah.wilson@litwareinc.com>\nTo: David Chen <david.chen@microsoft.com>\nDate: 2024-03-05 10:47 EST\nSubject: Quarterly Update: Litware Inc consumption trend\n\nThank you for the discussion last week. We'd like to move forward with consumption trend. Can we schedule a call this week to finalize the timeline?\n\n---\nFrom: David Chen <david.chen@microsoft.com>\nTo: Sarah Wilson <sarah.wilson@litwareinc.com>\nDate: 2024-02-17 17:24 EST\nSubject: Follow-up: consumption trend Review\n\nI wanted to follow up on our conversation about consumption trend. Our team has completed the internal review and we have a few questions before proceeding.\n\n---\nFrom: Sarah Wilson <sarah.wilson@litwareinc.com>\nTo: David Chen <david.chen@microsoft.com>\nDate: 2024-01-09 12:55 EST\nSubject: Quarterly Update: Litware Inc consumption trend\n\nJust checking in on the consumption trend proposal. Our VP Operations is asking for a status update before the board meeting next week.",
+      "metadata": {
+        "freshness": "2024-03-08T09:00:00-05:00",
+        "source": "outlook",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: consumption trend Discussion - Litware Inc\nDate: 2024-03-16\nDuration: 45 minutes\nAttendees: Sarah Wilson (Litware Inc), David Chen (Microsoft)\n\n[00:02:00] Sarah Wilson (Litware Inc): Good morning. I wanted to follow up on consumption trend from our last session.\n\n[00:08:00] David Chen (Microsoft): On the consumption trend front, we've made progress but there are still blockers around vendor dependencies.\n\n[00:12:00] Sarah Wilson (Litware Inc): On the consumption trend front, we've made progress but there are still blockers around partner engagement.\n\n[00:16:00] Sarah Wilson (Litware Inc): Let me add some context -- we've been working on technical validation and found that there's a compliance requirement we hadn't accounted for in the original scope.\n\n[00:19:00] David Chen (Microsoft): Let me add some context -- we've been working on timeline constraints and found that the cost projections need to factor in reserved instance pricing for accuracy.\n\n[00:21:00] David Chen (Microsoft): I agree with that assessment. From our side, the main concern is stakeholder alignment.\n\n[00:25:00] David Chen (Microsoft): I agree with that assessment. From our side, the main concern is performance requirements.\n\n[00:29:00] David Chen (Microsoft): Let me add some context -- we've been working on budget approval and found that the current vendor contract has a 90-day exit clause we need to plan around.\n\n[00:34:00] Sarah Wilson (Litware Inc): The timeline for cost optimization is aggressive. We need to validate the assumptions.\n\n[00:37:00] David Chen (Microsoft): On the consumption trend front, we've made progress but there are still blockers around timeline constraints.",
+      "metadata": {
+        "freshness": "2024-02-21T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "mixed",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Litware Inc - consumption trend",
+        "start": "2024-03-13T10:00:00-05:00",
+        "end": "2024-03-11T14:00:00-05:00",
+        "attendees": [
+          {
+            "name": "David Chen",
+            "email": "david.chen@microsoft.com"
+          },
+          {
+            "name": "Sarah Wilson",
+            "email": "sarah.wilson@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-role-manager",
+    "persona-segment-smb-corporate"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "meeting-prep",
+      "contact-stakeholder-map"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "pre-meeting-brief",
+    "required_artifacts": [
+      "One-page brief with attendee context",
+      "account snapshot",
+      "talking points",
+      "likely objections",
+      "open items from last meeting"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF11-G trap (Misattributes attendee role); produces complete One-page brief with attendee context, account snapshot, talking points, likely objections, open item",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF11-G failure pattern",
+      "Score 1: Output exhibits the full FM-WF11-G failure mode (Misattributes attendee role)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct consumption trend decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF11-G -- Misattributes attendee role"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

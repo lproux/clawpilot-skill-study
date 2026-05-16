@@ -1,0 +1,124 @@
+{
+  "scenario_id": "WF-41-90102",
+  "workflow_id": "WF-41",
+  "workflow_name": "Dark-Customer Re-Emergence",
+  "seed": 9900144,
+  "tier": 4,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": null,
+  "persona": "DSSP",
+  "fixture_id": "FX-045",
+  "user_message": "Pulling in context from Azure Ridge Partners's exec meeting notes -- need to assess the risk for the territory planning.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Azure Ridge Partners",
+        "account_id": "ACC-URB6CCFS",
+        "opportunities": [
+          {
+            "name": "Azure Cloud Migration Phase",
+            "stage": "Develop",
+            "amount": 210000,
+            "close_date": "2024-09-05"
+          },
+          {
+            "name": "Azure Cloud Migration Phase",
+            "stage": "Close",
+            "amount": 560000,
+            "close_date": "2024-10-05"
+          },
+          {
+            "name": "Azure Intune Rollout",
+            "stage": "Develop",
+            "amount": 280000,
+            "close_date": "2024-10-01"
+          }
+        ],
+        "acr_current": 189461.39,
+        "health_flag": "Unknown",
+        "owner": "Raj Mehta"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Thomas Okafor <thomas.okafor@azureridgepa.com>\nTo: Raj Mehta <raj.mehta@microsoft.com>\nDate: 2024-03-18 10:51 EST\nSubject: territory planning - Action Required\n\nI wanted to follow up on our conversation about territory planning. Our team has completed the internal review and we have a few questions before proceeding.\n\n---\nFrom: Raj Mehta <raj.mehta@microsoft.com>\nTo: Thomas Okafor <thomas.okafor@azureridgepa.com>\nDate: 2024-02-25 13:17 EST\nSubject: URGENT: territory planning Issue at Azure Ridge Partners\n\nJust checking in on the territory planning proposal. Our CFO is asking for a status update before the board meeting next week.\n\n---\nFrom: Thomas Okafor <thomas.okafor@azureridgepa.com>\nTo: Raj Mehta <raj.mehta@microsoft.com>\nDate: 2024-01-26 12:48 EST\nSubject: territory planning - Action Required\n\nJust checking in on the territory planning proposal. Our CFO is asking for a status update before the board meeting next week.",
+      "metadata": {
+        "freshness": "2024-02-19T15:00:00-05:00",
+        "source": "outlook",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "consumption_decline",
+            "detail": "Signal detected for Azure Ridge Partners: there's a dependency on the security team's review that could delay us",
+            "date": "2024-03-07"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "data-inconsistent",
+    "persona-geo-emea",
+    "persona-tenure-mid",
+    "routing-trap"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "email-chat-context",
+      "contact-stakeholder-map"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "MSX records need dark-period hygiene catchup"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "adversarial-routing-test",
+    "required_artifacts": [
+      "correct_routing_justification",
+      "confusion_analysis"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Correctly routes to primary workflow despite adversarial signals; output is complete",
+      "Score 3: Routes correctly but output shows contamination from confusing signals",
+      "Score 1: Misroutes to wrong workflow or produces irrelevant output"
+    ],
+    "evidence_anchors": [
+      "Score 5: All evidence correctly attributed despite cross-workflow noise",
+      "Score 3: Some evidence misattributed but core facts correct",
+      "Score 1: Significant evidence confusion or hallucination"
+    ],
+    "decision_anchors": [
+      "Score 5: Decision-making robust against adversarial perturbations",
+      "Score 3: Primary decision correct but secondary decisions influenced by noise",
+      "Score 1: Primary decision compromised by adversarial inputs"
+    ]
+  },
+  "guardrail_checks": [
+    "Must correctly identify primary workflow despite adversarial routing signals",
+    "Must not hallucinate context from similar-sounding workflows",
+    "Must not expose internal routing logic to user"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

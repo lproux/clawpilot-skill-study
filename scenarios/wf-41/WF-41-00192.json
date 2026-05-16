@@ -1,0 +1,130 @@
+{
+  "scenario_id": "WF-41-00192",
+  "workflow_id": "WF-41",
+  "workflow_name": "Dark-Customer Re-Emergence",
+  "seed": 4100234,
+  "tier": 4,
+  "intent": "design-redesign",
+  "targeted_failure_mode": "FM-WF41-M",
+  "persona": "CSA",
+  "fixture_id": "FX-027",
+  "user_message": "Robert Singh at Blue Yonder Airlines just sent this. Help me draft a response.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Blue Yonder Airlines",
+        "account_id": "ACC-6ZHK5AIU",
+        "opportunities": [
+          {
+            "name": "Blue Dynamics 365 Implementation",
+            "stage": "Close",
+            "amount": 210000,
+            "close_date": "2024-04-22"
+          },
+          {
+            "name": "Blue Azure Infrastructure",
+            "stage": "Prospect",
+            "amount": 350000,
+            "close_date": "2024-08-05"
+          },
+          {
+            "name": "Blue Copilot Adoption",
+            "stage": "Prospect",
+            "amount": 210000,
+            "close_date": "2024-12-03"
+          }
+        ],
+        "acr_current": 0,
+        "health_flag": "At Risk",
+        "owner": "David Chen"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Robert Singh <robert.singh@blueyonderai.com>\nTo: David Chen <david.chen@microsoft.com>\nDate: 2024-03-14 11:29 EST\nSubject: Re: executive brief Discussion - Next Steps\n\nI wanted to follow up on our conversation about executive brief. Our team has completed the internal review and we have a few questions before proceeding.\n\n---\nFrom: David Chen <david.chen@microsoft.com>\nTo: Robert Singh <robert.singh@blueyonderai.com>\nDate: 2024-02-22 08:49 EST\nSubject: Re: executive brief Discussion - Next Steps\n\nI wanted to follow up on our conversation about executive brief. Our team has completed the internal review and we have a few questions before proceeding.\n\n---\nFrom: Robert Singh <robert.singh@blueyonderai.com>\nTo: David Chen <david.chen@microsoft.com>\nDate: 2024-01-23 08:33 EST\nSubject: executive brief - Action Required\n\nJust checking in on the executive brief proposal. Our CIO is asking for a status update before the board meeting next week.",
+      "metadata": {
+        "freshness": "2024-02-11T17:00:00-05:00",
+        "source": "outlook",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "consumption_decline",
+            "detail": "Signal detected for Blue Yonder Airlines: the cost projections need to factor in reserved instance pricing for accuracy",
+            "date": "2024-03-10"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-tenure-senior",
+    "routing-clear"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "email-chat-context",
+      "contact-stakeholder-map"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "MSX records need dark-period hygiene catchup"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "dark-customer-re-emergence",
+    "required_artifacts": [
+      "Context reconstruction",
+      "re-qualification assessment",
+      "response draft (appropriate tone)",
+      "stakeholder verification plan",
+      "MSX hygiene catchup proposals"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF41-M trap (No native 're-emergence' pattern distinct from dark-outreach in skill set); produces complete Context reconstruction, re-qualification assessment, response draft (appropriate tone), stakeholder ",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF41-M failure pattern",
+      "Score 1: Output exhibits the full FM-WF41-M failure mode (No native 're-emergence' pattern distinct from dark-outreach in skill set)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct executive brief decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF41-M -- No native 're-emergence' pattern distinct from dark-outreach in skill set",
+    "Produce structural verdict on whether current routing adequately serves this scenario"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "verdict-on-structural",
+    "verdict_required_axes": [
+      "routing",
+      "evidence"
+    ]
+  }
+}

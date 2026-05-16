@@ -1,0 +1,135 @@
+{
+  "scenario_id": "WF-45-00193",
+  "workflow_id": "WF-45",
+  "workflow_name": "QBR Transcript -> Health + Whitespace + Renewal Risk",
+  "seed": 4500235,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF45-F",
+  "persona": "DSSP",
+  "fixture_id": "FX-029",
+  "user_message": "Working on Consolidated Messenger's migration architecture. Got the exec meeting notes -- help me assess the risk.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Consolidated Messenger",
+        "account_id": "ACC-LVS79LOG",
+        "opportunities": [
+          {
+            "name": "Consolidated Azure AI Services",
+            "stage": "Propose",
+            "amount": 280000,
+            "close_date": "2024-12-11"
+          },
+          {
+            "name": "Consolidated Security Modernization",
+            "stage": "Prospect",
+            "amount": 210000,
+            "close_date": "2024-04-06"
+          },
+          {
+            "name": "Consolidated Azure Arc Deployment",
+            "stage": "Close",
+            "amount": 125000,
+            "close_date": "2024-05-02"
+          }
+        ],
+        "acr_current": 0,
+        "health_flag": "Unknown",
+        "owner": "Tom Rodriguez"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: migration architecture Discussion - Consolidated Messenger\nDate: 2024-02-09\nDuration: 45 minutes\nAttendees: Sarah Singh (Consolidated Messenger), Tom Rodriguez (Microsoft), Priya (Consolidated Messenger)\n\n[00:02:00] Sarah Singh (Consolidated Messenger): Good morning. I wanted to follow up on migration architecture from our last session.\n\n[00:07:00] Sarah Singh (Consolidated Messenger): On the migration architecture front, we've made progress but there are still blockers around performance requirements.\n\n[00:09:00] Tom Rodriguez (Microsoft): On the migration architecture front, we've made progress but there are still blockers around resource allocation.\n\n[00:11:00] Tom Rodriguez (Microsoft): I agree with that assessment. From our side, the main concern is resource allocation.\n\n[00:16:00] Tom Rodriguez (Microsoft): Our CTO reviewed this and has concerns about integration complexity. Can we address those?\n\n[00:18:00] Priya (Consolidated Messenger): The timeline for technical validation is aggressive. We need to validate the assumptions.\n\n[00:20:00] Priya (Consolidated Messenger): On the migration architecture front, we've made progress but there are still blockers around performance requirements.\n\n[00:24:00] Sarah Singh (Consolidated Messenger): Let me add some context -- we've been working on integration complexity and found that the cost projections need to factor in reserved instance pricing for accuracy.",
+      "metadata": {
+        "freshness": "2024-02-13T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "security_alert",
+            "detail": "Signal detected for Consolidated Messenger: there's a dependency on the security team's review that could delay us",
+            "date": "2024-03-06"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-10T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "data-partially-missing",
+    "persona-role-dssp",
+    "routing-ambiguous-2skills",
+    "persona-segment-smb-mid"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "portfolio-account-planning-coach",
+        "condition": "health assessment needed"
+      },
+      {
+        "target_skill": "acr-signal-to-opportunity-coach",
+        "condition": "whitespace signals warrant investigation"
+      },
+      {
+        "target_skill": "forecast-business-review-coach",
+        "condition": "renewal risk affects forecast"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "qbr-transcript-->-health-+-whitespace-+-renewal-ri",
+    "required_artifacts": [
+      "Health delta assessment",
+      "whitespace hypotheses",
+      "renewal risk with confidence",
+      "action distribution with owners",
+      "comparison to last QBR commitments"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF45-F trap (Misses signals buried in side conversations); produces complete Health delta assessment, whitespace hypotheses, renewal risk with confidence, action distribution wi",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF45-F failure pattern",
+      "Score 1: Output exhibits the full FM-WF45-F failure mode (Misses signals buried in side conversations)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct migration architecture decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF45-F -- Misses signals buried in side conversations"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

@@ -1,0 +1,126 @@
+{
+  "scenario_id": "WF-39-00139",
+  "workflow_id": "WF-39",
+  "workflow_name": "Multi-Thread Customer Conversation Synthesis",
+  "seed": 3900181,
+  "tier": 4,
+  "intent": "design-redesign",
+  "targeted_failure_mode": "FM-WF39-M",
+  "persona": "DSSP",
+  "fixture_id": "FX-021",
+  "user_message": "Pulling in context from Nod Publishers's email thread -- need to triage this for the territory planning.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Nod Publishers",
+        "account_id": "ACC-BFJJI6LY",
+        "opportunities": [
+          {
+            "name": "Nod Azure SQL Migration",
+            "stage": "Close",
+            "amount": 45000,
+            "close_date": "2023-10-06"
+          },
+          {
+            "name": "Nod Intune Rollout",
+            "stage": "Develop",
+            "amount": 560000,
+            "close_date": "2024-12-16"
+          }
+        ],
+        "acr_current": 111088.58,
+        "health_flag": "At Risk",
+        "owner": "Marcus Williams"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Samantha Singh <samantha.singh@nodpublisher.com>\nTo: Marcus Williams <marcus.williams@microsoft.com>\nDate: 2024-02-25 13:38 EST\nSubject: Re: Re: territory planning Timeline\n\nJust checking in on the territory planning proposal. Our VP Engineering is asking for a status update before the board meeting next week.\n\n---\nFrom: Marcus Williams <marcus.williams@microsoft.com>\nTo: Samantha Singh <samantha.singh@nodpublisher.com>\nDate: 2024-01-08 08:50 EST\nSubject: URGENT: territory planning Issue at Nod Publishers\n\nThere's been a change in our timeline for territory planning. Can we discuss the implications on the overall project plan?",
+      "metadata": {
+        "freshness": "2024-03-21T16:00:00-05:00",
+        "source": "outlook",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "deployment_blocker",
+            "detail": "Signal detected for Nod Publishers: the current vendor contract has a 90-day exit clause we need to plan around",
+            "date": "2024-03-07"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-10T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-tenure-senior",
+    "persona-role-dssp",
+    "signal-strength-noisy",
+    "data-stale"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "email-chat-context",
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "MSX updates warranted from synthesis"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "multi-thread-customer-conversation-synthesis",
+    "required_artifacts": [
+      "Consolidated decision log",
+      "cross-thread commitment inventory",
+      "action list with thread attribution",
+      "MSX update proposals",
+      "superseded-commitment identification"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF39-M trap (No native 'multi-thread synthesis' primitive); produces complete Consolidated decision log, cross-thread commitment inventory, action list with thread attribution, M",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF39-M failure pattern",
+      "Score 1: Output exhibits the full FM-WF39-M failure mode (No native 'multi-thread synthesis' primitive)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct territory planning decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF39-M -- No native 'multi-thread synthesis' primitive",
+    "Produce structural verdict on whether current routing adequately serves this scenario"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "verdict-on-structural",
+    "verdict_required_axes": [
+      "routing",
+      "evidence"
+    ]
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "scenario_id": "WF-16-00126",
+  "workflow_id": "WF-16",
+  "workflow_name": "Email Context Pull-Through",
+  "seed": 1600168,
+  "tier": 1,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF16-E",
+  "persona": "CSA",
+  "fixture_id": "FX-045",
+  "user_message": "Can you pull the context on Azure Ridge Partners? I need to build the analysis.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Azure Ridge Partners",
+        "account_id": "ACC-URB6CCFS",
+        "opportunities": [
+          {
+            "name": "Azure Cloud Migration Phase",
+            "stage": "Develop",
+            "amount": 210000,
+            "close_date": "2024-09-05"
+          },
+          {
+            "name": "Azure Cloud Migration Phase",
+            "stage": "Close",
+            "amount": 560000,
+            "close_date": "2024-10-05"
+          },
+          {
+            "name": "Azure Intune Rollout",
+            "stage": "Develop",
+            "amount": 280000,
+            "close_date": "2024-10-01"
+          }
+        ],
+        "acr_current": 189461.39,
+        "health_flag": "Unknown",
+        "owner": "Raj Mehta"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Thomas Okafor <thomas.okafor@azureridgepa.com>\nTo: Raj Mehta <raj.mehta@microsoft.com>\nDate: 2024-03-23 14:34 EST\nSubject: Re: deployment blockers Discussion - Next Steps\n\nThank you for the discussion last week. We'd like to move forward with deployment blockers. Can we schedule a call this week to finalize the timeline?\n\n---\nFrom: Raj Mehta <raj.mehta@microsoft.com>\nTo: Thomas Okafor <thomas.okafor@azureridgepa.com>\nDate: 2024-01-17 14:49 EST\nSubject: Re: Re: deployment blockers Timeline\n\nThere's been a change in our timeline for deployment blockers. Can we discuss the implications on the overall project plan?",
+      "metadata": {
+        "freshness": "2024-03-16T14:00:00-05:00",
+        "source": "outlook",
+        "length_class": "long"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-geo-emea",
+    "persona-tenure-mid",
+    "persona-segment-smb-mid",
+    "persona-role-csa"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "email-chat-context"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "email-context-pull-through",
+    "required_artifacts": [
+      "Thread summary",
+      "key commitments/asks identified",
+      "waiting-on-whom assessment",
+      "draft response matching established tone"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF16-E trap (Exposes internal language in external draft); produces complete Thread summary, key commitments/asks identified, waiting-on-whom assessment, draft response matching",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF16-E failure pattern",
+      "Score 1: Output exhibits the full FM-WF16-E failure mode (Exposes internal language in external draft)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct deployment blockers decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF16-E -- Exposes internal language in external draft"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

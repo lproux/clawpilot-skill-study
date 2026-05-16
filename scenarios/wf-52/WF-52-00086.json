@@ -1,0 +1,101 @@
+{
+  "scenario_id": "WF-52-00086",
+  "workflow_id": "WF-52",
+  "workflow_name": "Internal Account Review Transcript -> Team Actions",
+  "seed": 5200128,
+  "tier": 4,
+  "intent": "happy",
+  "targeted_failure_mode": null,
+  "persona": "Manager",
+  "fixture_id": "FX-015",
+  "user_message": "Give me the manager view on this Fourth Coffee exec meeting notes. This is time-sensitive -- customer is waiting.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Fourth Coffee",
+        "account_id": "ACC-A7MFL3SV",
+        "opportunities": [
+          {
+            "name": "Fourth Data Platform Migration",
+            "stage": "Qualify",
+            "amount": 210000,
+            "close_date": "2023-12-04"
+          }
+        ],
+        "acr_current": 114958.25,
+        "health_flag": "Healthy",
+        "owner": "Raj Mehta"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: consumption trend Discussion - Fourth Coffee\nDate: 2024-02-24\nDuration: 45 minutes\nAttendees: David Rivera (Fourth Coffee), Raj Mehta (Microsoft), David (Fourth Coffee)\n\n[00:01:30] David Rivera (Fourth Coffee): Thanks everyone for joining. Let's dive into consumption trend.\n\n[00:07:00] David (Fourth Coffee): The timeline for technical validation is aggressive. We need to validate the assumptions.\n\n[00:12:00] Raj Mehta (Microsoft): The timeline for vendor dependencies is aggressive. We need to validate the assumptions.\n\n[00:16:00] David Rivera (Fourth Coffee): Our CTO reviewed this and has concerns about technical validation. Can we address those?\n\n[00:21:00] David Rivera (Fourth Coffee): Our director reviewed this and has concerns about data residency. Can we address those?\n\n[00:24:00] David Rivera (Fourth Coffee): I agree with that assessment. From our side, the main concern is budget approval.\n\n[00:26:00] David Rivera (Fourth Coffee): The timeline for stakeholder alignment is aggressive. We need to validate the assumptions.",
+      "metadata": {
+        "freshness": "2024-01-25T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "medium"
+      }
+    }
+  ],
+  "perturbations": [
+    "data-stale",
+    "persona-geo-na",
+    "persona-segment-smb-small"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "forecast-business-review-coach",
+        "condition": "team coaching or risk review input"
+      },
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "MSX updates warranted from review"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "internal-account-review-transcript-->-team-actions",
+    "required_artifacts": [
+      "Team action items with owners",
+      "coaching notes (constructive frame)",
+      "customer-facing draft (sanitized)",
+      "manager decision items",
+      "MSX update proposals"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Complete, well-structured output matching the Internal Account Review Transcript -> Team Actions template with all required artifacts present and actionable",
+      "Score 3: Output covers main requirements but missing one or two secondary artifacts or lacking specificity",
+      "Score 1: Output is generic, missing key artifacts, or fails to address the specific request"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct consumption trend decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

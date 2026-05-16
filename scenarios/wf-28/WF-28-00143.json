@@ -1,0 +1,109 @@
+{
+  "scenario_id": "WF-28-00143",
+  "workflow_id": "WF-28",
+  "workflow_name": "Manager Team Risk Review",
+  "seed": 2800185,
+  "tier": 2,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF28-A",
+  "persona": "Manager",
+  "fixture_id": "FX-029",
+  "user_message": "How should I coach Tom Rodriguez on Consolidated Messenger? This is a renewal account with declining consumption.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Consolidated Messenger",
+        "account_id": "ACC-LVS79LOG",
+        "opportunities": [
+          {
+            "name": "Consolidated Azure AI Services",
+            "stage": "Propose",
+            "amount": 280000,
+            "close_date": "2024-12-11"
+          },
+          {
+            "name": "Consolidated Security Modernization",
+            "stage": "Prospect",
+            "amount": 210000,
+            "close_date": "2024-04-06"
+          },
+          {
+            "name": "Consolidated Azure Arc Deployment",
+            "stage": "Close",
+            "amount": 125000,
+            "close_date": "2024-05-02"
+          }
+        ],
+        "acr_current": 0,
+        "health_flag": "Unknown",
+        "owner": "Tom Rodriguez"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "security_alert",
+            "detail": "Signal detected for Consolidated Messenger: the cost projections need to factor in reserved instance pricing for accuracy",
+            "date": "2024-03-09"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-10T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-segment-smb-mid",
+    "routing-ambiguous-2skills",
+    "persona-role-manager"
+  ],
+  "expected_routing": {
+    "entry_skill": "forecast-business-review-coach",
+    "modules": [
+      "team-coaching-risk-review"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "manager-team-risk-review",
+    "required_artifacts": [
+      "Ranked risk register with impact-likelihood reasoning",
+      "coaching-framed IC mentions",
+      "mitigations",
+      "skip-level asks"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF28-A trap (Ranks risks without impact-likelihood reasoning); produces complete Ranked risk register with impact-likelihood reasoning, coaching-framed IC mentions, mitigations, ski",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF28-A failure pattern",
+      "Score 1: Output exhibits the full FM-WF28-A failure mode (Ranks risks without impact-likelihood reasoning)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct partner engagement decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF28-A -- Ranks risks without impact-likelihood reasoning"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

@@ -1,0 +1,129 @@
+{
+  "scenario_id": "WF-11-00022",
+  "workflow_id": "WF-11",
+  "workflow_name": "Pre-Meeting Brief",
+  "seed": 1100064,
+  "tier": 2,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF11-E",
+  "persona": "DSSP",
+  "fixture_id": "FX-037",
+  "user_message": "I need to generate the watchlist for the Woodgrove Labs engagement. ",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Woodgrove Labs",
+        "account_id": "ACC-WZHG8AQ3",
+        "opportunities": [
+          {
+            "name": "Woodgrove Power Platform",
+            "stage": "Qualify",
+            "amount": 210000,
+            "close_date": "2024-12-15"
+          },
+          {
+            "name": "Woodgrove AKS Deployment",
+            "stage": "Propose",
+            "amount": 125000,
+            "close_date": "2024-05-21"
+          }
+        ],
+        "acr_current": 204547.55,
+        "health_flag": "At Risk",
+        "owner": "David Chen"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Robert Petrov <robert.petrov@woodgrovelab.com>\nTo: David Chen <david.chen@microsoft.com>\nDate: 2024-02-04 11:49 EST\nSubject: Re: competitive positioning Discussion - Next Steps\n\nWe've been evaluating the options and have decided to proceed with competitive positioning. What are the next steps from your side?\n\n---\nFrom: David Chen <david.chen@microsoft.com>\nTo: Robert Petrov <robert.petrov@woodgrovelab.com>\nDate: 2024-01-26 17:26 EST\nSubject: URGENT: competitive positioning Issue at Woodgrove Labs\n\nI wanted to follow up on our conversation about competitive positioning. Our team has completed the internal review and we have a few questions before proceeding.",
+      "metadata": {
+        "freshness": "2024-02-21T17:00:00-05:00",
+        "source": "outlook",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: competitive positioning Discussion - Woodgrove Labs\nDate: 2024-03-13\nDuration: 45 minutes\nAttendees: Robert Petrov (Woodgrove Labs), David Chen (Microsoft), Michelle (Woodgrove Labs)\n\n[00:01:15] Robert Petrov (Woodgrove Labs): Appreciate everyone making time. The main agenda today is competitive positioning.\n\n[00:07:00] Michelle (Woodgrove Labs): Our VP reviewed this and has concerns about resource allocation. Can we address those?\n\n[00:11:00] Michelle (Woodgrove Labs): I agree with that assessment. From our side, the main concern is stakeholder alignment.\n\n[00:13:00] David Chen (Microsoft): I agree with that assessment. From our side, the main concern is cost optimization.\n\n[00:15:00] Robert Petrov (Woodgrove Labs): On the competitive positioning front, we've made progress but there are still blockers around data residency.\n\n[00:20:00] Michelle (Woodgrove Labs): I agree with that assessment. From our side, the main concern is vendor dependencies.",
+      "metadata": {
+        "freshness": "2024-03-06T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Woodgrove Labs - competitive positioning",
+        "start": "2024-03-14T13:00:00-05:00",
+        "end": "2024-03-14T14:00:00-05:00",
+        "attendees": [
+          {
+            "name": "David Chen",
+            "email": "david.chen@microsoft.com"
+          },
+          {
+            "name": "Robert Petrov",
+            "email": "robert.petrov@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    }
+  ],
+  "perturbations": [
+    "signal-strength-faint",
+    "persona-tenure-senior"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "meeting-prep",
+      "contact-stakeholder-map"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "pre-meeting-brief",
+    "required_artifacts": [
+      "One-page brief with attendee context",
+      "account snapshot",
+      "talking points",
+      "likely objections",
+      "open items from last meeting"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF11-E trap (Misses the most recent thread); produces complete One-page brief with attendee context, account snapshot, talking points, likely objections, open item",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF11-E failure pattern",
+      "Score 1: Output exhibits the full FM-WF11-E failure mode (Misses the most recent thread)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct competitive positioning decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF11-E -- Misses the most recent thread"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

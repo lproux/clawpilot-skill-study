@@ -1,0 +1,130 @@
+{
+  "scenario_id": "WF-46-00169",
+  "workflow_id": "WF-46",
+  "workflow_name": "Objection-Handling Transcript -> Competitive Counter",
+  "seed": 4600211,
+  "tier": 4,
+  "intent": "design-redesign",
+  "targeted_failure_mode": "FM-WF46-N",
+  "persona": "DSSP",
+  "fixture_id": "FX-031",
+  "user_message": "Can you extract the migration architecture from this meeting transcript for Liberty's Delightful Sinful Bakery? I think there's an opportunity here but need to validate.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Liberty's Delightful Sinful Bakery",
+        "account_id": "ACC-A2FZGZWL",
+        "opportunities": [
+          {
+            "name": "Liberty's Dynamics 365 Implementation",
+            "stage": "Develop",
+            "amount": 89000,
+            "close_date": "2024-12-10"
+          },
+          {
+            "name": "Liberty's AKS Deployment",
+            "stage": "Qualify",
+            "amount": 89000,
+            "close_date": "2024-12-24"
+          },
+          {
+            "name": "Liberty's Azure Infrastructure",
+            "stage": "Develop",
+            "amount": 450000,
+            "close_date": "2024-04-08"
+          }
+        ],
+        "acr_current": 0,
+        "health_flag": "Healthy",
+        "owner": "Marcus Williams"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: migration architecture Discussion - Liberty's Delightful Sinful Bakery\nDate: 2024-03-22\nDuration: 45 minutes\nAttendees: Patricia Kim (Liberty's Delightful Sinful Bakery), Marcus Williams (Microsoft)\n\n[00:01:30] Patricia Kim (Liberty's Delightful Sinful Bakery): Thanks everyone for joining. Let's dive into migration architecture.\n\n[00:05:00] Marcus Williams (Microsoft): Our CTO reviewed this and has concerns about timeline constraints. Can we address those?\n\n[00:07:00] Marcus Williams (Microsoft): Our CTO reviewed this and has concerns about budget approval. Can we address those?\n\n[00:09:00] Patricia Kim (Liberty's Delightful Sinful Bakery): The timeline for security compliance is aggressive. We need to validate the assumptions.\n\n[00:14:00] Marcus Williams (Microsoft): On the migration architecture front, we've made progress but there are still blockers around cost optimization.\n\n[00:16:00] Marcus Williams (Microsoft): The timeline for timeline constraints is aggressive. We need to validate the assumptions.\n\n[00:20:00] Patricia Kim (Liberty's Delightful Sinful Bakery): I agree with that assessment. From our side, the main concern is stakeholder alignment.\n\n[00:22:00] Patricia Kim (Liberty's Delightful Sinful Bakery): Let me add some context -- we've been working on cost optimization and found that the current vendor contract has a 90-day exit clause we need to plan around.\n\n[00:26:00] Marcus Williams (Microsoft): On the migration architecture front, we've made progress but there are still blockers around vendor dependencies.\n\n[00:31:00] Patricia Kim (Liberty's Delightful Sinful Bakery): Let me add some context -- we've been working on data residency and found that there's a dependency on the security team's review that could delay us.",
+      "metadata": {
+        "freshness": "2024-02-16T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "security_alert",
+            "detail": "Signal detected for Liberty's Delightful Sinful Bakery: the cost projections need to factor in reserved instance pricing for accuracy",
+            "date": "2024-03-11"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-role-dssp",
+    "signal-strength-noisy"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "solution-value-design-coach",
+        "condition": "competitive positioning research needed"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "objection-handling-transcript-->-competitive-count",
+    "required_artifacts": [
+      "Objection inventory with root-cause analysis",
+      "counter-positioning per objection",
+      "response draft",
+      "next-meeting tactics",
+      "proof-point needs"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF46-N trap (Solution-research module doesn't natively produce counter-positioning artifacts); produces complete Objection inventory with root-cause analysis, counter-positioning per objection, response draft, nex",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF46-N failure pattern",
+      "Score 1: Output exhibits the full FM-WF46-N failure mode (Solution-research module doesn't natively produce counter-positioning artifacts)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct migration architecture decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF46-N -- Solution-research module doesn't natively produce counter-positioning artifacts",
+    "Produce structural verdict on whether current routing adequately serves this scenario"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "verdict-on-structural",
+    "verdict_required_axes": [
+      "routing",
+      "evidence"
+    ]
+  }
+}

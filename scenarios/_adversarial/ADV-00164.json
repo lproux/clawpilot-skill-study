@@ -1,0 +1,120 @@
+{
+  "scenario_id": "WF-45-90164",
+  "workflow_id": "WF-45",
+  "workflow_name": "QBR Transcript -> Health + Whitespace + Renewal Risk",
+  "seed": 9900206,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": null,
+  "persona": "Manager",
+  "fixture_id": "FX-007",
+  "user_message": "Give me the manager view on this Litware Inc exec meeting notes. ",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Litware Inc",
+        "account_id": "ACC-658MPDXQ",
+        "opportunities": [
+          {
+            "name": "Litware Security Modernization",
+            "stage": "Prospect",
+            "amount": 280000,
+            "close_date": "2024-09-23"
+          }
+        ],
+        "acr_current": 76577.96,
+        "health_flag": "Healthy",
+        "owner": "David Chen"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: executive brief Discussion - Litware Inc\nDate: 2024-03-05\nDuration: 45 minutes\nAttendees: Sarah Wilson (Litware Inc), David Chen (Microsoft), Michelle (Litware Inc)\n\n[00:01:30] Sarah Wilson (Litware Inc): Thanks everyone for joining. Let's dive into executive brief.\n\n[00:05:00] Sarah Wilson (Litware Inc): Let me add some context -- we've been working on partner engagement and found that the current vendor contract has a 90-day exit clause we need to plan around.\n\n[00:10:00] Sarah Wilson (Litware Inc): Our team lead reviewed this and has concerns about stakeholder alignment. Can we address those?\n\n[00:14:00] Michelle (Litware Inc): On the executive brief front, we've made progress but there are still blockers around security compliance.\n\n[00:16:00] David Chen (Microsoft): Our architect reviewed this and has concerns about budget approval. Can we address those?\n\n[00:21:00] David Chen (Microsoft): On the executive brief front, we've made progress but there are still blockers around integration complexity.\n\n[00:26:00] David Chen (Microsoft): The timeline for stakeholder alignment is aggressive. We need to validate the assumptions.\n\n[00:31:00] Michelle (Litware Inc): Let me add some context -- we've been working on budget approval and found that there's a compliance requirement we hadn't accounted for in the original scope.\n\n[00:36:00] Michelle (Litware Inc): Our director reviewed this and has concerns about stakeholder alignment. Can we address those?\n\n[00:41:00] David Chen (Microsoft): On the executive brief front, we've made progress but there are still blockers around technical validation.\n\n[00:43:00] David Chen (Microsoft): On the executive brief front, we've made progress but there are still blockers around budget approval.",
+      "metadata": {
+        "freshness": "2024-01-22T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "security_alert",
+            "detail": "Signal detected for Litware Inc: there's a dependency on the security team's review that could delay us",
+            "date": "2024-03-06"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-10T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "data-fresh",
+    "persona-segment-smb-corporate",
+    "persona-role-manager",
+    "routing-trap"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "portfolio-account-planning-coach",
+        "condition": "health assessment needed"
+      },
+      {
+        "target_skill": "acr-signal-to-opportunity-coach",
+        "condition": "whitespace signals warrant investigation"
+      },
+      {
+        "target_skill": "forecast-business-review-coach",
+        "condition": "renewal risk affects forecast"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "adversarial-routing-test",
+    "required_artifacts": [
+      "correct_routing_justification",
+      "confusion_analysis"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Correctly routes to primary workflow despite adversarial signals; output is complete",
+      "Score 3: Routes correctly but output shows contamination from confusing signals",
+      "Score 1: Misroutes to wrong workflow or produces irrelevant output"
+    ],
+    "evidence_anchors": [
+      "Score 5: All evidence correctly attributed despite cross-workflow noise",
+      "Score 3: Some evidence misattributed but core facts correct",
+      "Score 1: Significant evidence confusion or hallucination"
+    ],
+    "decision_anchors": [
+      "Score 5: Decision-making robust against adversarial perturbations",
+      "Score 3: Primary decision correct but secondary decisions influenced by noise",
+      "Score 1: Primary decision compromised by adversarial inputs"
+    ]
+  },
+  "guardrail_checks": [
+    "Must correctly identify primary workflow despite adversarial routing signals",
+    "Must not hallucinate context from similar-sounding workflows",
+    "Must not expose internal routing logic to user"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

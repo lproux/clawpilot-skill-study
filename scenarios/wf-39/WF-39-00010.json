@@ -1,0 +1,126 @@
+{
+  "scenario_id": "WF-39-00010",
+  "workflow_id": "WF-39",
+  "workflow_name": "Multi-Thread Customer Conversation Synthesis",
+  "seed": 3900052,
+  "tier": 4,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": "FM-WF39-L",
+  "persona": "DSSP",
+  "fixture_id": "FX-013",
+  "user_message": "Pulling in context from Coho Winery's escalation email -- need to investigate the decline for the security posture.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Coho Winery",
+        "account_id": "ACC-W5BNG4OC",
+        "opportunities": [
+          {
+            "name": "Coho Copilot Adoption",
+            "stage": "Close",
+            "amount": 210000,
+            "close_date": "2023-11-10"
+          },
+          {
+            "name": "Coho Azure AI Services",
+            "stage": "Qualify",
+            "amount": 280000,
+            "close_date": "2024-04-26"
+          },
+          {
+            "name": "Coho Azure Virtual Desktop",
+            "stage": "Qualify",
+            "amount": 125000,
+            "close_date": "2024-11-17"
+          }
+        ],
+        "acr_current": 107808.75,
+        "health_flag": "At Risk",
+        "owner": "Ahmed Hassan"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Eric Kim <eric.kim@cohowinery.com>\nTo: Ahmed Hassan <ahmed.hassan@microsoft.com>\nDate: 2024-03-25 10:46 EST\nSubject: Re: Re: security posture Timeline\n\nI wanted to follow up on our conversation about security posture. Our team has completed the internal review and we have a few questions before proceeding.\n\n---\nFrom: Ahmed Hassan <ahmed.hassan@microsoft.com>\nTo: Eric Kim <eric.kim@cohowinery.com>\nDate: 2024-02-22 14:03 EST\nSubject: Re: security posture Discussion - Next Steps\n\nOur team encountered some challenges with security posture. Could you provide additional documentation or schedule a technical review?\n\n---\nFrom: Eric Kim <eric.kim@cohowinery.com>\nTo: Ahmed Hassan <ahmed.hassan@microsoft.com>\nDate: 2024-01-05 14:16 EST\nSubject: Quarterly Update: Coho Winery security posture\n\nWe've been evaluating the options and have decided to proceed with security posture. What are the next steps from your side?",
+      "metadata": {
+        "freshness": "2024-03-15T14:00:00-05:00",
+        "source": "outlook",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "security_alert",
+            "detail": "Signal detected for Coho Winery: there's a compliance requirement we hadn't accounted for in the original scope",
+            "date": "2024-03-06"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-10T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-role-dssp",
+    "signal-strength-noisy"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "email-chat-context",
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "MSX updates warranted from synthesis"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "multi-thread-customer-conversation-synthesis",
+    "required_artifacts": [
+      "Consolidated decision log",
+      "cross-thread commitment inventory",
+      "action list with thread attribution",
+      "MSX update proposals",
+      "superseded-commitment identification"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF39-L trap (Follow-up-and-decisions module assumes single-thread input); produces complete Consolidated decision log, cross-thread commitment inventory, action list with thread attribution, M",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF39-L failure pattern",
+      "Score 1: Output exhibits the full FM-WF39-L failure mode (Follow-up-and-decisions module assumes single-thread input)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct security posture decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF39-L -- Follow-up-and-decisions module assumes single-thread input",
+    "Guardrail axis scored neutrally -- focus on whether output served the user's actual need"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

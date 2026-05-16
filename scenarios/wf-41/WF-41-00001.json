@@ -1,0 +1,128 @@
+{
+  "scenario_id": "WF-41-00001",
+  "workflow_id": "WF-41",
+  "workflow_name": "Dark-Customer Re-Emergence",
+  "seed": 4100043,
+  "tier": 4,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": "FM-WF41-L",
+  "persona": "DSSP",
+  "fixture_id": "FX-045",
+  "user_message": "Can you extract the competitive positioning from this email thread for Azure Ridge Partners? This is a renewal account with declining consumption.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Azure Ridge Partners",
+        "account_id": "ACC-URB6CCFS",
+        "opportunities": [
+          {
+            "name": "Azure Cloud Migration Phase",
+            "stage": "Develop",
+            "amount": 210000,
+            "close_date": "2024-09-05"
+          },
+          {
+            "name": "Azure Cloud Migration Phase",
+            "stage": "Close",
+            "amount": 560000,
+            "close_date": "2024-10-05"
+          },
+          {
+            "name": "Azure Intune Rollout",
+            "stage": "Develop",
+            "amount": 280000,
+            "close_date": "2024-10-01"
+          }
+        ],
+        "acr_current": 189461.39,
+        "health_flag": "Unknown",
+        "owner": "Raj Mehta"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Thomas Okafor <thomas.okafor@azureridgepa.com>\nTo: Raj Mehta <raj.mehta@microsoft.com>\nDate: 2024-03-28 14:06 EST\nSubject: Follow-up: competitive positioning Review\n\nThere's been a change in our timeline for competitive positioning. Can we discuss the implications on the overall project plan?\n\n---\nFrom: Raj Mehta <raj.mehta@microsoft.com>\nTo: Thomas Okafor <thomas.okafor@azureridgepa.com>\nDate: 2024-02-26 08:56 EST\nSubject: Re: competitive positioning Discussion - Next Steps\n\nJust checking in on the competitive positioning proposal. Our CFO is asking for a status update before the board meeting next week.\n\n---\nFrom: Thomas Okafor <thomas.okafor@azureridgepa.com>\nTo: Raj Mehta <raj.mehta@microsoft.com>\nDate: 2024-01-10 14:29 EST\nSubject: Follow-up: competitive positioning Review\n\nOur team encountered some challenges with competitive positioning. Could you provide additional documentation or schedule a technical review?",
+      "metadata": {
+        "freshness": "2024-02-15T09:00:00-05:00",
+        "source": "outlook",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "contract_event",
+            "detail": "Signal detected for Azure Ridge Partners: the current vendor contract has a 90-day exit clause we need to plan around",
+            "date": "2024-03-09"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-10T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-geo-emea",
+    "data-inconsistent",
+    "persona-tenure-senior",
+    "persona-segment-smb-mid"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "email-chat-context",
+      "contact-stakeholder-map"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "MSX records need dark-period hygiene catchup"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "dark-customer-re-emergence",
+    "required_artifacts": [
+      "Context reconstruction",
+      "re-qualification assessment",
+      "response draft (appropriate tone)",
+      "stakeholder verification plan",
+      "MSX hygiene catchup proposals"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF41-L trap (Stakeholder-map refresh as separate proposal vs inline verification); produces complete Context reconstruction, re-qualification assessment, response draft (appropriate tone), stakeholder ",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF41-L failure pattern",
+      "Score 1: Output exhibits the full FM-WF41-L failure mode (Stakeholder-map refresh as separate proposal vs inline verification)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct competitive positioning decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF41-L -- Stakeholder-map refresh as separate proposal vs inline verification",
+    "Guardrail axis scored neutrally -- focus on whether output served the user's actual need"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

@@ -1,0 +1,115 @@
+{
+  "scenario_id": "WF-38-00084",
+  "workflow_id": "WF-38",
+  "workflow_name": "Champion-Change Email Signal -> Re-engagement Plan",
+  "seed": 3800126,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF38-F",
+  "persona": "CSA",
+  "fixture_id": "FX-011",
+  "user_message": "Brian Yamamoto at Alpine Ski House just sent this. Help me build the narrative.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Alpine Ski House",
+        "account_id": "ACC-UIKNWGJ7",
+        "opportunities": [
+          {
+            "name": "Alpine Azure Virtual Desktop",
+            "stage": "Propose",
+            "amount": 560000,
+            "close_date": "2023-12-14"
+          }
+        ],
+        "acr_current": 115928.19,
+        "health_flag": "At Risk",
+        "owner": "Marcus Williams"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Brian Yamamoto <brian.yamamoto@alpineskihou.com>\nTo: Marcus Williams <marcus.williams@microsoft.com>\nDate: 2024-03-24 12:49 EST\nSubject: partner engagement - Action Required\n\nI wanted to follow up on our conversation about partner engagement. Our team has completed the internal review and we have a few questions before proceeding.\n\n---\nFrom: Marcus Williams <marcus.williams@microsoft.com>\nTo: Brian Yamamoto <brian.yamamoto@alpineskihou.com>\nDate: 2024-02-22 11:09 EST\nSubject: Re: partner engagement Discussion - Next Steps\n\nThank you for the discussion last week. We'd like to move forward with partner engagement. Can we schedule a call this week to finalize the timeline?\n\n---\nFrom: Brian Yamamoto <brian.yamamoto@alpineskihou.com>\nTo: Marcus Williams <marcus.williams@microsoft.com>\nDate: 2024-01-15 13:26 EST\nSubject: Quarterly Update: Alpine Ski House partner engagement\n\nOur team encountered some challenges with partner engagement. Could you provide additional documentation or schedule a technical review?",
+      "metadata": {
+        "freshness": "2024-03-13T09:00:00-05:00",
+        "source": "outlook",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "deployment_blocker",
+            "detail": "Signal detected for Alpine Ski House: there's a compliance requirement we hadn't accounted for in the original scope",
+            "date": "2024-03-11"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-segment-smb-mid",
+    "persona-role-csa",
+    "routing-clear"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "contact-stakeholder-map",
+      "email-chat-context",
+      "dark-customer-outreach"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "contact and opportunity records need updating"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "champion-change-email-signal-->-re-engagement-plan",
+    "required_artifacts": [
+      "Stakeholder map delta",
+      "opportunity-at-risk assessment",
+      "re-engagement plan",
+      "contact update proposals",
+      "warm-handoff draft (if champion willing)"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF38-F trap (Skips champion's prior commitments -- replacement engagement misses context); produces complete Stakeholder map delta, opportunity-at-risk assessment, re-engagement plan, contact update proposals,",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF38-F failure pattern",
+      "Score 1: Output exhibits the full FM-WF38-F failure mode (Skips champion's prior commitments -- replacement engagement misses context)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct partner engagement decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF38-F -- Skips champion's prior commitments -- replacement engagement misses context"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

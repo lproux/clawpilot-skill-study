@@ -1,0 +1,96 @@
+{
+  "scenario_id": "WF-16-00248",
+  "workflow_id": "WF-16",
+  "workflow_name": "Email Context Pull-Through",
+  "seed": 1600290,
+  "tier": 1,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF16-D",
+  "persona": "Manager",
+  "fixture_id": "FX-039",
+  "user_message": "How should I coach Tom Rodriguez on Fabrikam Residences? Multiple stakeholders are involved -- it's complex.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Fabrikam Residences",
+        "account_id": "ACC-5JSOIRD0",
+        "opportunities": [
+          {
+            "name": "Fabrikam Power Platform",
+            "stage": "Prospect",
+            "amount": 175000,
+            "close_date": "2024-06-08"
+          },
+          {
+            "name": "Fabrikam Cloud Migration Phase",
+            "stage": "Develop",
+            "amount": 450000,
+            "close_date": "2024-11-24"
+          }
+        ],
+        "acr_current": 32488.07,
+        "health_flag": "Healthy",
+        "owner": "Tom Rodriguez"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Kevin Lee <kevin.lee@fabrikamresi.com>\nTo: Tom Rodriguez <tom.rodriguez@microsoft.com>\nDate: 2024-03-19 10:53 EST\nSubject: Re: Re: security posture Timeline\n\nWe've been evaluating the options and have decided to proceed with security posture. What are the next steps from your side?\n\n---\nFrom: Tom Rodriguez <tom.rodriguez@microsoft.com>\nTo: Kevin Lee <kevin.lee@fabrikamresi.com>\nDate: 2024-02-17 15:03 EST\nSubject: Quarterly Update: Fabrikam Residences security posture\n\nThank you for the discussion last week. We'd like to move forward with security posture. Can we schedule a call this week to finalize the timeline?\n\n---\nFrom: Kevin Lee <kevin.lee@fabrikamresi.com>\nTo: Tom Rodriguez <tom.rodriguez@microsoft.com>\nDate: 2024-01-06 15:22 EST\nSubject: Quarterly Update: Fabrikam Residences security posture\n\nI wanted to follow up on our conversation about security posture. Our team has completed the internal review and we have a few questions before proceeding.",
+      "metadata": {
+        "freshness": "2024-02-04T15:00:00-05:00",
+        "source": "outlook",
+        "length_class": "medium"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-geo-emea",
+    "data-inconsistent",
+    "signal-strength-noisy"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "email-chat-context"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "email-context-pull-through",
+    "required_artifacts": [
+      "Thread summary",
+      "key commitments/asks identified",
+      "waiting-on-whom assessment",
+      "draft response matching established tone"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF16-D trap (Draft response answers wrong question); produces complete Thread summary, key commitments/asks identified, waiting-on-whom assessment, draft response matching",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF16-D failure pattern",
+      "Score 1: Output exhibits the full FM-WF16-D failure mode (Draft response answers wrong question)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct security posture decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF16-D -- Draft response answers wrong question"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

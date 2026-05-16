@@ -1,0 +1,101 @@
+{
+  "scenario_id": "WF-16-80224",
+  "workflow_id": "WF-16",
+  "workflow_name": "Email Context Pull-Through",
+  "seed": 8800266,
+  "tier": 1,
+  "intent": "happy",
+  "targeted_failure_mode": null,
+  "persona": "Manager",
+  "fixture_id": "FX-005",
+  "user_message": "What's at risk across my portfolio? This is a renewal account with declining consumption.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Tailspin Toys",
+        "account_id": "ACC-JXC3G9ET",
+        "opportunities": [
+          {
+            "name": "Tailspin Azure Virtual Desktop",
+            "stage": "Close",
+            "amount": 560000,
+            "close_date": "2024-09-15"
+          },
+          {
+            "name": "Tailspin Azure SQL Migration",
+            "stage": "Prospect",
+            "amount": 125000,
+            "close_date": "2024-10-05"
+          },
+          {
+            "name": "Tailspin Dynamics 365 Implementation",
+            "stage": "Propose",
+            "amount": 45000,
+            "close_date": "2024-08-10"
+          }
+        ],
+        "acr_current": 122043.29,
+        "health_flag": "Healthy",
+        "owner": "Raj Mehta"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Steven Wilson <steven.wilson@tailspintoys.com>\nTo: Raj Mehta <raj.mehta@microsoft.com>\nDate: 2024-03-05 10:44 EST\nSubject: Quarterly Update: Tailspin Toys consumption trend\n\nThere's been a change in our timeline for consumption trend. Can we discuss the implications on the overall project plan?\n\n---\nFrom: Raj Mehta <raj.mehta@microsoft.com>\nTo: Steven Wilson <steven.wilson@tailspintoys.com>\nDate: 2024-02-27 11:16 EST\nSubject: Quarterly Update: Tailspin Toys consumption trend\n\nOur team encountered some challenges with consumption trend. Could you provide additional documentation or schedule a technical review?\n\n---\nFrom: Steven Wilson <steven.wilson@tailspintoys.com>\nTo: Raj Mehta <raj.mehta@microsoft.com>\nDate: 2024-01-18 15:19 EST\nSubject: Re: consumption trend Discussion - Next Steps\n\nThere's been a change in our timeline for consumption trend. Can we discuss the implications on the overall project plan?",
+      "metadata": {
+        "freshness": "2024-03-26T14:00:00-05:00",
+        "source": "outlook",
+        "length_class": "medium"
+      }
+    }
+  ],
+  "perturbations": [
+    "routing-clear",
+    "data-fresh",
+    "persona-role-manager"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "email-chat-context"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "email-context-pull-through",
+    "required_artifacts": [
+      "Thread summary",
+      "key commitments/asks identified",
+      "waiting-on-whom assessment",
+      "draft response matching established tone"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Perfect execution of the golden-path workflow with all artifacts complete and actionable",
+      "Score 3: Core output correct but missing polish or one secondary artifact",
+      "Score 1: Fails to produce expected output for a clean, unambiguous request"
+    ],
+    "evidence_anchors": [
+      "Score 5: All evidence correctly sourced and attributed; no hallucination",
+      "Score 3: Minor attribution gap but no fabrication",
+      "Score 1: Evidence fabricated or significantly misattributed"
+    ],
+    "decision_anchors": [
+      "Score 5: All decisions correct for this straightforward scenario",
+      "Score 3: Primary decision correct; minor secondary issue",
+      "Score 1: Primary decision wrong despite clear inputs"
+    ]
+  },
+  "guardrail_checks": [
+    "Clean golden-path scenario -- all guardrails should pass trivially",
+    "Must not over-complicate a straightforward request"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

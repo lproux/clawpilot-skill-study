@@ -1,0 +1,92 @@
+{
+  "scenario_id": "WF-05-00155",
+  "workflow_id": "WF-05",
+  "workflow_name": "Manager Weekly Portfolio Rollup",
+  "seed": 500197,
+  "tier": 2,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF05-E",
+  "persona": "Manager",
+  "fixture_id": "FX-003",
+  "user_message": "[AUTOMATION TRIGGER] Scheduled Weekly scheduled automation or manager request for team roll initiated for Northwind Traders.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Northwind Traders",
+        "account_id": "ACC-X86FSRU2",
+        "opportunities": [
+          {
+            "name": "Northwind Azure Arc Deployment",
+            "stage": "Propose",
+            "amount": 89000,
+            "close_date": "2024-09-05"
+          },
+          {
+            "name": "Northwind Copilot Adoption",
+            "stage": "Develop",
+            "amount": 175000,
+            "close_date": "2024-06-22"
+          },
+          {
+            "name": "Northwind Intune Rollout",
+            "stage": "Close",
+            "amount": 350000,
+            "close_date": "2024-04-19"
+          }
+        ],
+        "acr_current": 54067.74,
+        "health_flag": "Healthy",
+        "owner": "Ahmed Hassan"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-role-manager",
+    "persona-geo-na"
+  ],
+  "expected_routing": {
+    "entry_skill": "portfolio-account-planning-coach",
+    "modules": [
+      "manager-portfolio-review"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "manager-weekly-portfolio-rollup",
+    "required_artifacts": [
+      "One-page team rollup with wins",
+      "risks (coaching-framed)",
+      "asks for skip-level",
+      "week-over-week delta"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF05-E trap (Omits the 'ask' section); produces complete One-page team rollup with wins, risks (coaching-framed), asks for skip-level, week-over-week delta",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF05-E failure pattern",
+      "Score 1: Output exhibits the full FM-WF05-E failure mode (Omits the 'ask' section)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct executive brief decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF05-E -- Omits the 'ask' section"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

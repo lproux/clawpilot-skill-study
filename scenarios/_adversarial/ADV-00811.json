@@ -1,0 +1,146 @@
+{
+  "scenario_id": "WF-32-90811",
+  "workflow_id": "WF-32",
+  "workflow_name": "Calendar Pre-Pack Automation",
+  "seed": 9900853,
+  "tier": 4,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": null,
+  "persona": "DSSP",
+  "fixture_id": "FX-004",
+  "user_message": "[AUTOMATION TRIGGER] Scheduled Calendar event with non-Microsoft external attendee detected initiated for Adventure Works.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Adventure Works",
+        "account_id": "ACC-TBZ7Q87G",
+        "opportunities": [
+          {
+            "name": "Adventure Data Platform Migration",
+            "stage": "Propose",
+            "amount": 210000,
+            "close_date": "2024-12-19"
+          }
+        ],
+        "acr_current": 34613.91,
+        "health_flag": "Healthy",
+        "owner": "Sarah Kim"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Michael Patel <michael.patel@adventurewor.com>\nTo: Sarah Kim <sarah.kim@microsoft.com>\nDate: 2024-03-18 14:52 EST\nSubject: QBR preparation - Action Required\n\nThank you for the discussion last week. We'd like to move forward with QBR preparation. Can we schedule a call this week to finalize the timeline?\n\n---\nFrom: Sarah Kim <sarah.kim@microsoft.com>\nTo: Michael Patel <michael.patel@adventurewor.com>\nDate: 2024-02-27 10:52 EST\nSubject: Re: Re: QBR preparation Timeline\n\nOur team encountered some challenges with QBR preparation. Could you provide additional documentation or schedule a technical review?\n\n---\nFrom: Michael Patel <michael.patel@adventurewor.com>\nTo: Sarah Kim <sarah.kim@microsoft.com>\nDate: 2024-01-10 10:18 EST\nSubject: Quarterly Update: Adventure Works QBR preparation\n\nThank you for the discussion last week. We'd like to move forward with QBR preparation. Can we schedule a call this week to finalize the timeline?",
+      "metadata": {
+        "freshness": "2024-03-08T17:00:00-05:00",
+        "source": "outlook",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: QBR preparation Discussion - Adventure Works\nDate: 2024-03-15\nDuration: 45 minutes\nAttendees: Michael Patel (Adventure Works), Sarah Kim (Microsoft)\n\n[00:01:15] Michael Patel (Adventure Works): Appreciate everyone making time. The main agenda today is QBR preparation.\n\n[00:05:00] Michael Patel (Adventure Works): On the QBR preparation front, we've made progress but there are still blockers around vendor dependencies.\n\n[00:07:00] Michael Patel (Adventure Works): Let me add some context -- we've been working on budget approval and found that the current vendor contract has a 90-day exit clause we need to plan around.\n\n[00:09:00] Sarah Kim (Microsoft): Let me add some context -- we've been working on timeline constraints and found that the migration can proceed in phases to reduce risk.\n\n[00:13:00] Michael Patel (Adventure Works): On the QBR preparation front, we've made progress but there are still blockers around security compliance.\n\n[00:17:00] Michael Patel (Adventure Works): The timeline for data residency is aggressive. We need to validate the assumptions.\n\n[00:20:00] Sarah Kim (Microsoft): I agree with that assessment. From our side, the main concern is resource allocation.",
+      "metadata": {
+        "freshness": "2024-01-01T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "mixed",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Adventure Works - QBR preparation",
+        "start": "2024-03-15T13:00:00-05:00",
+        "end": "2024-03-13T15:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Sarah Kim",
+            "email": "sarah.kim@microsoft.com"
+          },
+          {
+            "name": "Michael Patel",
+            "email": "michael.patel@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "security_alert",
+            "detail": "Signal detected for Adventure Works: there's a compliance requirement we hadn't accounted for in the original scope",
+            "date": "2024-03-06"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-10T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-geo-latam",
+    "persona-segment-smb-mid",
+    "data-fresh",
+    "persona-tenure-junior",
+    "cross-workflow-trigger"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "meeting-prep",
+      "contact-stakeholder-map",
+      "email-chat-context"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "portfolio-account-planning-coach",
+        "condition": "meeting is for account CSA should have declined"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "adversarial-routing-test",
+    "required_artifacts": [
+      "correct_routing_justification",
+      "confusion_analysis"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Correctly routes to primary workflow despite adversarial signals; output is complete",
+      "Score 3: Routes correctly but output shows contamination from confusing signals",
+      "Score 1: Misroutes to wrong workflow or produces irrelevant output"
+    ],
+    "evidence_anchors": [
+      "Score 5: All evidence correctly attributed despite cross-workflow noise",
+      "Score 3: Some evidence misattributed but core facts correct",
+      "Score 1: Significant evidence confusion or hallucination"
+    ],
+    "decision_anchors": [
+      "Score 5: Decision-making robust against adversarial perturbations",
+      "Score 3: Primary decision correct but secondary decisions influenced by noise",
+      "Score 1: Primary decision compromised by adversarial inputs"
+    ]
+  },
+  "guardrail_checks": [
+    "Must correctly identify primary workflow despite adversarial routing signals",
+    "Must not hallucinate context from similar-sounding workflows",
+    "Must not expose internal routing logic to user"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

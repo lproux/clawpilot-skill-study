@@ -1,0 +1,109 @@
+{
+  "scenario_id": "WF-31-00196",
+  "workflow_id": "WF-31",
+  "workflow_name": "SL4 Customer 360 Forecast Roll-Up",
+  "seed": 3100238,
+  "tier": 3,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF31-G",
+  "persona": "DSSP",
+  "fixture_id": "FX-035",
+  "user_message": "Can you extract the security posture from this escalation email for Treyarch Global? The CSA flagged this as at-risk yesterday.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Treyarch Global",
+        "account_id": "ACC-YBG804XY",
+        "opportunities": [
+          {
+            "name": "Treyarch Azure DevOps",
+            "stage": "Close",
+            "amount": 89000,
+            "close_date": "2024-05-02"
+          },
+          {
+            "name": "Treyarch Azure AI Services",
+            "stage": "Qualify",
+            "amount": 450000,
+            "close_date": "2024-05-13"
+          }
+        ],
+        "acr_current": 48495.65,
+        "health_flag": "Healthy",
+        "owner": "Raj Mehta"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "deployment_blocker",
+            "detail": "Signal detected for Treyarch Global: there's a dependency on the security team's review that could delay us",
+            "date": "2024-03-11"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-10T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-role-dssp",
+    "persona-geo-latam",
+    "data-partially-missing",
+    "persona-tenure-mid"
+  ],
+  "expected_routing": {
+    "entry_skill": "forecast-business-review-coach",
+    "modules": [
+      "committed-milestone-forecast"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "solution-value-design-coach",
+        "condition": "Customer 360 unavailable, Kusto BI fallback needed"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "sl4-customer-360-forecast-roll-up",
+    "required_artifacts": [
+      "SL4-level forecast rollup with source attribution",
+      "hierarchy alignment",
+      "period boundary reconciliation"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF31-G trap (SL4 expansion pattern misread as anomaly); produces complete SL4-level forecast rollup with source attribution, hierarchy alignment, period boundary reconciliati",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF31-G failure pattern",
+      "Score 1: Output exhibits the full FM-WF31-G failure mode (SL4 expansion pattern misread as anomaly)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct security posture decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF31-G -- SL4 expansion pattern misread as anomaly"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

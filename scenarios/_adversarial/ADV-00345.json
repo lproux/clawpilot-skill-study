@@ -1,0 +1,128 @@
+{
+  "scenario_id": "WF-42-90345",
+  "workflow_id": "WF-42",
+  "workflow_name": "Cross-Sell Trigger Email",
+  "seed": 9900387,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": null,
+  "persona": "CSA",
+  "fixture_id": "FX-038",
+  "user_message": "Kevin Foster at Contoso Suites just sent this. Help me run the hygiene check.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Contoso Suites",
+        "account_id": "ACC-BV87NNVK",
+        "opportunities": [
+          {
+            "name": "Contoso AKS Deployment",
+            "stage": "Propose",
+            "amount": 350000,
+            "close_date": "2024-05-04"
+          },
+          {
+            "name": "Contoso Azure AI Services",
+            "stage": "Propose",
+            "amount": 450000,
+            "close_date": "2024-04-12"
+          },
+          {
+            "name": "Contoso Data Platform Migration",
+            "stage": "Propose",
+            "amount": 560000,
+            "close_date": "2024-05-21"
+          }
+        ],
+        "acr_current": 22982.69,
+        "health_flag": "Unknown",
+        "owner": "Priya Sharma"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Kevin Foster <kevin.foster@contososuite.com>\nTo: Priya Sharma <priya.sharma@microsoft.com>\nDate: 2024-03-14 09:16 EST\nSubject: Re: Re: deployment blockers Timeline\n\nThank you for the discussion last week. We'd like to move forward with deployment blockers. Can we schedule a call this week to finalize the timeline?\n\n---\nFrom: Priya Sharma <priya.sharma@microsoft.com>\nTo: Kevin Foster <kevin.foster@contososuite.com>\nDate: 2024-02-14 08:14 EST\nSubject: deployment blockers - Action Required\n\nThank you for the discussion last week. We'd like to move forward with deployment blockers. Can we schedule a call this week to finalize the timeline?\n\n---\nFrom: Kevin Foster <kevin.foster@contososuite.com>\nTo: Priya Sharma <priya.sharma@microsoft.com>\nDate: 2024-01-07 12:43 EST\nSubject: deployment blockers - Action Required\n\nThere's been a change in our timeline for deployment blockers. Can we discuss the implications on the overall project plan?",
+      "metadata": {
+        "freshness": "2024-03-03T14:00:00-05:00",
+        "source": "outlook",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "security_alert",
+            "detail": "Signal detected for Contoso Suites: there's a compliance requirement we hadn't accounted for in the original scope",
+            "date": "2024-03-05"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-tenure-senior",
+    "persona-role-csa",
+    "persona-segment-smb-mid",
+    "signal-strength-faint",
+    "cross-workflow-trigger"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "email-chat-context"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "acr-signal-to-opportunity-coach",
+        "condition": "cross-sell signal warrants opportunity assessment"
+      },
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "opportunity creation warranted"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "adversarial-routing-test",
+    "required_artifacts": [
+      "correct_routing_justification",
+      "confusion_analysis"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Correctly routes to primary workflow despite adversarial signals; output is complete",
+      "Score 3: Routes correctly but output shows contamination from confusing signals",
+      "Score 1: Misroutes to wrong workflow or produces irrelevant output"
+    ],
+    "evidence_anchors": [
+      "Score 5: All evidence correctly attributed despite cross-workflow noise",
+      "Score 3: Some evidence misattributed but core facts correct",
+      "Score 1: Significant evidence confusion or hallucination"
+    ],
+    "decision_anchors": [
+      "Score 5: Decision-making robust against adversarial perturbations",
+      "Score 3: Primary decision correct but secondary decisions influenced by noise",
+      "Score 1: Primary decision compromised by adversarial inputs"
+    ]
+  },
+  "guardrail_checks": [
+    "Must correctly identify primary workflow despite adversarial routing signals",
+    "Must not hallucinate context from similar-sounding workflows",
+    "Must not expose internal routing logic to user"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

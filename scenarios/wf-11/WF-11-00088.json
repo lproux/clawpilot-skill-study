@@ -1,0 +1,130 @@
+{
+  "scenario_id": "WF-11-00088",
+  "workflow_id": "WF-11",
+  "workflow_name": "Pre-Meeting Brief",
+  "seed": 1100130,
+  "tier": 2,
+  "intent": "happy",
+  "targeted_failure_mode": null,
+  "persona": "DSSP",
+  "fixture_id": "FX-019",
+  "user_message": "I need to build the analysis for the Lucerne Publishing engagement. There's been no activity for 45 days and I'm worried.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Lucerne Publishing",
+        "account_id": "ACC-2JXCFRG8",
+        "opportunities": [
+          {
+            "name": "Lucerne Copilot Adoption",
+            "stage": "Propose",
+            "amount": 210000,
+            "close_date": "2023-11-19"
+          },
+          {
+            "name": "Lucerne Data Platform Migration",
+            "stage": "Prospect",
+            "amount": 45000,
+            "close_date": "2024-11-16"
+          }
+        ],
+        "acr_current": 39791.19,
+        "health_flag": "Healthy",
+        "owner": "Tom Rodriguez"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Laura Anderson <laura.anderson@lucernepubli.com>\nTo: Tom Rodriguez <tom.rodriguez@microsoft.com>\nDate: 2024-03-14 16:11 EST\nSubject: Follow-up: migration architecture Review\n\nThere's been a change in our timeline for migration architecture. Can we discuss the implications on the overall project plan?\n\n---\nFrom: Tom Rodriguez <tom.rodriguez@microsoft.com>\nTo: Laura Anderson <laura.anderson@lucernepubli.com>\nDate: 2024-02-09 14:26 EST\nSubject: Re: Re: migration architecture Timeline\n\nWe've been evaluating the options and have decided to proceed with migration architecture. What are the next steps from your side?\n\n---\nFrom: Laura Anderson <laura.anderson@lucernepubli.com>\nTo: Tom Rodriguez <tom.rodriguez@microsoft.com>\nDate: 2024-01-14 09:23 EST\nSubject: Re: Re: migration architecture Timeline\n\nJust checking in on the migration architecture proposal. Our Head of Digital is asking for a status update before the board meeting next week.",
+      "metadata": {
+        "freshness": "2024-03-07T16:00:00-05:00",
+        "source": "outlook",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: migration architecture Discussion - Lucerne Publishing\nDate: 2024-03-06\nDuration: 45 minutes\nAttendees: Laura Anderson (Lucerne Publishing), Tom Rodriguez (Microsoft)\n\n[00:02:00] Laura Anderson (Lucerne Publishing): Good morning. I wanted to follow up on migration architecture from our last session.\n\n[00:05:00] Tom Rodriguez (Microsoft): The timeline for technical validation is aggressive. We need to validate the assumptions.\n\n[00:08:00] Tom Rodriguez (Microsoft): The timeline for partner engagement is aggressive. We need to validate the assumptions.\n\n[00:10:00] Tom Rodriguez (Microsoft): Our architect reviewed this and has concerns about stakeholder alignment. Can we address those?\n\n[00:12:00] Laura Anderson (Lucerne Publishing): I agree with that assessment. From our side, the main concern is cost optimization.\n\n[00:15:00] Tom Rodriguez (Microsoft): I agree with that assessment. From our side, the main concern is budget approval.\n\n[00:17:00] Tom Rodriguez (Microsoft): Our CTO reviewed this and has concerns about partner engagement. Can we address those?\n\n[00:21:00] Laura Anderson (Lucerne Publishing): Let me add some context -- we've been working on budget approval and found that there's a dependency on the security team's review that could delay us.",
+      "metadata": {
+        "freshness": "2024-02-26T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "mixed",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Lucerne Publishing - migration architecture",
+        "start": "2024-03-13T14:00:00-05:00",
+        "end": "2024-03-11T14:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Tom Rodriguez",
+            "email": "tom.rodriguez@microsoft.com"
+          },
+          {
+            "name": "Laura Anderson",
+            "email": "laura.anderson@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    }
+  ],
+  "perturbations": [
+    "routing-ambiguous-2skills",
+    "persona-tenure-mid",
+    "persona-geo-na",
+    "data-stale"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "meeting-prep",
+      "contact-stakeholder-map"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "pre-meeting-brief",
+    "required_artifacts": [
+      "One-page brief with attendee context",
+      "account snapshot",
+      "talking points",
+      "likely objections",
+      "open items from last meeting"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Complete, well-structured output matching the Pre-Meeting Brief template with all required artifacts present and actionable",
+      "Score 3: Output covers main requirements but missing one or two secondary artifacts or lacking specificity",
+      "Score 1: Output is generic, missing key artifacts, or fails to address the specific request"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct migration architecture decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

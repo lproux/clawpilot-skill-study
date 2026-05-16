@@ -1,0 +1,143 @@
+{
+  "scenario_id": "WF-14-00227",
+  "workflow_id": "WF-14",
+  "workflow_name": "Stakeholder Map Generation",
+  "seed": 1400269,
+  "tier": 1,
+  "intent": "design-redesign",
+  "targeted_failure_mode": null,
+  "persona": "Manager",
+  "fixture_id": "FX-047",
+  "user_message": "Summarize what happened with Evergreen Solutions and give me the asks.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Evergreen Solutions",
+        "account_id": "ACC-S7KJN805",
+        "opportunities": [
+          {
+            "name": "Evergreen Azure AI Services",
+            "stage": "Qualify",
+            "amount": 175000,
+            "close_date": "2024-12-26"
+          }
+        ],
+        "acr_current": 19865.64,
+        "health_flag": "Healthy",
+        "owner": "David Chen"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Samantha Okafor <samantha.okafor@evergreensol.com>\nTo: David Chen <david.chen@microsoft.com>\nDate: 2024-03-19 12:18 EST\nSubject: URGENT: partner engagement Issue at Evergreen Solutions\n\nThere's been a change in our timeline for partner engagement. Can we discuss the implications on the overall project plan?\n\n---\nFrom: David Chen <david.chen@microsoft.com>\nTo: Samantha Okafor <samantha.okafor@evergreensol.com>\nDate: 2024-02-10 12:59 EST\nSubject: URGENT: partner engagement Issue at Evergreen Solutions\n\nThere's been a change in our timeline for partner engagement. Can we discuss the implications on the overall project plan?\n\n---\nFrom: Samantha Okafor <samantha.okafor@evergreensol.com>\nTo: David Chen <david.chen@microsoft.com>\nDate: 2024-01-11 14:58 EST\nSubject: Re: Re: partner engagement Timeline\n\nThere's been a change in our timeline for partner engagement. Can we discuss the implications on the overall project plan?",
+      "metadata": {
+        "freshness": "2024-03-03T15:00:00-05:00",
+        "source": "outlook",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: partner engagement Discussion - Evergreen Solutions\nDate: 2024-03-01\nDuration: 45 minutes\nAttendees: Samantha Okafor (Evergreen Solutions), David Chen (Microsoft)\n\n[00:01:30] Samantha Okafor (Evergreen Solutions): Thanks everyone for joining. Let's dive into partner engagement.\n\n[00:07:00] David Chen (Microsoft): I agree with that assessment. From our side, the main concern is performance requirements.\n\n[00:09:00] David Chen (Microsoft): Our architect reviewed this and has concerns about security compliance. Can we address those?\n\n[00:14:00] David Chen (Microsoft): I agree with that assessment. From our side, the main concern is budget approval.\n\n[00:19:00] David Chen (Microsoft): On the partner engagement front, we've made progress but there are still blockers around data residency.\n\n[00:24:00] David Chen (Microsoft): Our CTO reviewed this and has concerns about resource allocation. Can we address those?\n\n[00:27:00] Samantha Okafor (Evergreen Solutions): Our VP reviewed this and has concerns about budget approval. Can we address those?\n\n[00:32:00] David Chen (Microsoft): The timeline for performance requirements is aggressive. We need to validate the assumptions.\n\n[00:35:00] Samantha Okafor (Evergreen Solutions): I agree with that assessment. From our side, the main concern is technical validation.\n\n[00:39:00] Samantha Okafor (Evergreen Solutions): On the partner engagement front, we've made progress but there are still blockers around technical validation.\n\n[00:41:00] Samantha Okafor (Evergreen Solutions): The timeline for technical validation is aggressive. We need to validate the assumptions.",
+      "metadata": {
+        "freshness": "2024-02-11T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Evergreen Solutions - partner engagement",
+        "start": "2024-03-11T14:00:00-05:00",
+        "end": "2024-03-13T15:00:00-05:00",
+        "attendees": [
+          {
+            "name": "David Chen",
+            "email": "david.chen@microsoft.com"
+          },
+          {
+            "name": "Samantha Okafor",
+            "email": "samantha.okafor@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "deployment_blocker",
+            "detail": "Signal detected for Evergreen Solutions: the migration can proceed in phases to reduce risk",
+            "date": "2024-03-05"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-segment-smb-small",
+    "data-contradictory",
+    "persona-role-manager"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "contact-stakeholder-map"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "stakeholder-map-generation",
+    "required_artifacts": [
+      "Stakeholder map with roles (decision-maker",
+      "influencer",
+      "champion",
+      "blocker)",
+      "recency labels"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Complete, well-structured output matching the Stakeholder Map Generation template with all required artifacts present and actionable",
+      "Score 3: Output covers main requirements but missing one or two secondary artifacts or lacking specificity",
+      "Score 1: Output is generic, missing key artifacts, or fails to address the specific request"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct partner engagement decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Produce structural verdict on whether current routing adequately serves this scenario"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "verdict-on-structural",
+    "verdict_required_axes": [
+      "routing",
+      "evidence"
+    ]
+  }
+}

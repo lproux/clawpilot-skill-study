@@ -1,0 +1,118 @@
+{
+  "scenario_id": "WF-51-00171",
+  "workflow_id": "WF-51",
+  "workflow_name": "Partner Triangulation Transcript -> Plan Distribution",
+  "seed": 5100213,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF51-I",
+  "persona": "CSA",
+  "fixture_id": "FX-035",
+  "user_message": "Can you work with me on consumption trend for Treyarch Global? The CSA flagged this as at-risk yesterday.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Treyarch Global",
+        "account_id": "ACC-YBG804XY",
+        "opportunities": [
+          {
+            "name": "Treyarch Azure DevOps",
+            "stage": "Close",
+            "amount": 89000,
+            "close_date": "2024-05-02"
+          },
+          {
+            "name": "Treyarch Azure AI Services",
+            "stage": "Qualify",
+            "amount": 450000,
+            "close_date": "2024-05-13"
+          }
+        ],
+        "acr_current": 48495.65,
+        "health_flag": "Healthy",
+        "owner": "Raj Mehta"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: consumption trend Discussion - Treyarch Global\nDate: 2024-02-13\nDuration: 45 minutes\nAttendees: Laura Schmidt (Treyarch Global), Raj Mehta (Microsoft)\n\n[00:02:00] Laura Schmidt (Treyarch Global): Good morning. I wanted to follow up on consumption trend from our last session.\n\n[00:08:00] Laura Schmidt (Treyarch Global): The timeline for technical validation is aggressive. We need to validate the assumptions.\n\n[00:13:00] Laura Schmidt (Treyarch Global): Let me add some context -- we've been working on vendor dependencies and found that the cost projections need to factor in reserved instance pricing for accuracy.\n\n[00:17:00] Laura Schmidt (Treyarch Global): Let me add some context -- we've been working on data residency and found that the existing infrastructure won't support the target workload without upgrades.\n\n[00:21:00] Laura Schmidt (Treyarch Global): The timeline for budget approval is aggressive. We need to validate the assumptions.\n\n[00:24:00] Raj Mehta (Microsoft): On the consumption trend front, we've made progress but there are still blockers around performance requirements.\n\n[00:27:00] Laura Schmidt (Treyarch Global): The timeline for security compliance is aggressive. We need to validate the assumptions.",
+      "metadata": {
+        "freshness": "2024-01-26T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "deployment_blocker",
+            "detail": "Signal detected for Treyarch Global: there's a dependency on the security team's review that could delay us",
+            "date": "2024-03-09"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-09T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "routing-clear",
+    "data-partially-missing"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "funding-partner-activation-coach",
+        "condition": "funding or partner evaluation needed"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "partner-triangulation-transcript-->-plan-distribut",
+    "required_artifacts": [
+      "Tri-party action distribution (MS/partner/customer owners)",
+      "funding eligibility assessment",
+      "follow-up sequence with tri-party coordination",
+      "conflict-of-interest check"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF51-I trap (Invents partner capability not in transcript); produces complete Tri-party action distribution (MS/partner/customer owners), funding eligibility assessment, follow-u",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF51-I failure pattern",
+      "Score 1: Output exhibits the full FM-WF51-I failure mode (Invents partner capability not in transcript)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct consumption trend decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF51-I -- Invents partner capability not in transcript"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "scenario_id": "WF-37-00111",
+  "workflow_id": "WF-37",
+  "workflow_name": "Customer Outage/Complaint Email -> Triage + Escalation",
+  "seed": 3700153,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF37-F",
+  "persona": "CSA",
+  "fixture_id": "FX-015",
+  "user_message": "Can you work with me on account health for Fourth Coffee? There's been no activity for 45 days and I'm worried.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Fourth Coffee",
+        "account_id": "ACC-A7MFL3SV",
+        "opportunities": [
+          {
+            "name": "Fourth Data Platform Migration",
+            "stage": "Qualify",
+            "amount": 210000,
+            "close_date": "2023-12-04"
+          }
+        ],
+        "acr_current": 114958.25,
+        "health_flag": "Healthy",
+        "owner": "Raj Mehta"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: David Rivera <david.rivera@fourthcoffee.com>\nTo: Raj Mehta <raj.mehta@microsoft.com>\nDate: 2024-03-10 12:53 EST\nSubject: Follow-up: account health Review\n\nThere's been a change in our timeline for account health. Can we discuss the implications on the overall project plan?\n\n---\nFrom: Raj Mehta <raj.mehta@microsoft.com>\nTo: David Rivera <david.rivera@fourthcoffee.com>\nDate: 2024-02-08 11:39 EST\nSubject: URGENT: account health Issue at Fourth Coffee\n\nThank you for the discussion last week. We'd like to move forward with account health. Can we schedule a call this week to finalize the timeline?",
+      "metadata": {
+        "freshness": "2024-03-24T08:00:00-05:00",
+        "source": "outlook",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "contract_event",
+            "detail": "Signal detected for Fourth Coffee: there's a dependency on the security team's review that could delay us",
+            "date": "2024-03-08"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-role-csa",
+    "signal-strength-noisy",
+    "persona-segment-smb-small"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "email-chat-context"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "acr-signal-to-opportunity-coach",
+        "condition": "outage impacts major workload ACR"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "customer-outage/complaint-email-->-triage-+-escala",
+    "required_artifacts": [
+      "Severity triage",
+      "root-cause hypothesis (labeled as hypothesis)",
+      "customer response draft",
+      "ACR risk flag",
+      "escalation routing"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF37-F trap (Skips prior-similar-incident check); produces complete Severity triage, root-cause hypothesis (labeled as hypothesis), customer response draft, ACR risk fl",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF37-F failure pattern",
+      "Score 1: Output exhibits the full FM-WF37-F failure mode (Skips prior-similar-incident check)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct account health decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF37-F -- Skips prior-similar-incident check"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

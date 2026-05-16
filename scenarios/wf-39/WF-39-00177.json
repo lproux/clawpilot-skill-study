@@ -1,0 +1,118 @@
+{
+  "scenario_id": "WF-39-00177",
+  "workflow_id": "WF-39",
+  "workflow_name": "Multi-Thread Customer Conversation Synthesis",
+  "seed": 3900219,
+  "tier": 4,
+  "intent": "design-redesign",
+  "targeted_failure_mode": "FM-WF39-N",
+  "persona": "CSA",
+  "fixture_id": "FX-047",
+  "user_message": "Can you work with me on forecast prep for Evergreen Solutions? This is a renewal account with declining consumption.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Evergreen Solutions",
+        "account_id": "ACC-S7KJN805",
+        "opportunities": [
+          {
+            "name": "Evergreen Azure AI Services",
+            "stage": "Qualify",
+            "amount": 175000,
+            "close_date": "2024-12-26"
+          }
+        ],
+        "acr_current": 19865.64,
+        "health_flag": "Healthy",
+        "owner": "David Chen"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Samantha Okafor <samantha.okafor@evergreensol.com>\nTo: David Chen <david.chen@microsoft.com>\nDate: 2024-03-26 08:28 EST\nSubject: Re: forecast prep Discussion - Next Steps\n\nI wanted to follow up on our conversation about forecast prep. Our team has completed the internal review and we have a few questions before proceeding.\n\n---\nFrom: David Chen <david.chen@microsoft.com>\nTo: Samantha Okafor <samantha.okafor@evergreensol.com>\nDate: 2024-02-17 16:47 EST\nSubject: Quarterly Update: Evergreen Solutions forecast prep\n\nJust checking in on the forecast prep proposal. Our IT Director is asking for a status update before the board meeting next week.\n\n---\nFrom: Samantha Okafor <samantha.okafor@evergreensol.com>\nTo: David Chen <david.chen@microsoft.com>\nDate: 2024-01-09 17:53 EST\nSubject: URGENT: forecast prep Issue at Evergreen Solutions\n\nThere's been a change in our timeline for forecast prep. Can we discuss the implications on the overall project plan?",
+      "metadata": {
+        "freshness": "2024-03-06T16:00:00-05:00",
+        "source": "outlook",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "contract_event",
+            "detail": "Signal detected for Evergreen Solutions: the cost projections need to factor in reserved instance pricing for accuracy",
+            "date": "2024-03-07"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-09T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-role-csa",
+    "persona-geo-na"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "email-chat-context",
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "MSX updates warranted from synthesis"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "multi-thread-customer-conversation-synthesis",
+    "required_artifacts": [
+      "Consolidated decision log",
+      "cross-thread commitment inventory",
+      "action list with thread attribution",
+      "MSX update proposals",
+      "superseded-commitment identification"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF39-N trap (Decision-log format doesn't carry thread-attribution); produces complete Consolidated decision log, cross-thread commitment inventory, action list with thread attribution, M",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF39-N failure pattern",
+      "Score 1: Output exhibits the full FM-WF39-N failure mode (Decision-log format doesn't carry thread-attribution)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct forecast prep decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF39-N -- Decision-log format doesn't carry thread-attribution",
+    "Produce structural verdict on whether current routing adequately serves this scenario"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "verdict-on-structural",
+    "verdict_required_axes": [
+      "routing",
+      "evidence"
+    ]
+  }
+}

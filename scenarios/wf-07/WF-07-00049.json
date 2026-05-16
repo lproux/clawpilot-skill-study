@@ -1,0 +1,113 @@
+{
+  "scenario_id": "WF-07-00049",
+  "workflow_id": "WF-07",
+  "workflow_name": "SPA Triage Friday",
+  "seed": 700091,
+  "tier": 2,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF07-A",
+  "persona": "DSSP",
+  "fixture_id": "FX-041",
+  "user_message": "[AUTOMATION TRIGGER] Daily automation: Friday scheduled automation for SPA batch triage. Account: Quantum Analytics.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Quantum Analytics",
+        "account_id": "ACC-ZJSZDYNL",
+        "opportunities": [
+          {
+            "name": "Quantum Azure Infrastructure",
+            "stage": "Qualify",
+            "amount": 68000,
+            "close_date": "2024-04-14"
+          },
+          {
+            "name": "Quantum Data Platform Migration",
+            "stage": "Develop",
+            "amount": 450000,
+            "close_date": "2024-07-16"
+          },
+          {
+            "name": "Quantum Dynamics 365 Implementation",
+            "stage": "Qualify",
+            "amount": 68000,
+            "close_date": "2024-07-17"
+          }
+        ],
+        "acr_current": 21322.6,
+        "health_flag": "At Risk",
+        "owner": "Marcus Williams"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "consumption_decline",
+            "detail": "Signal detected for Quantum Analytics: there's a compliance requirement we hadn't accounted for in the original scope",
+            "date": "2024-03-09"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-09T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "signal-strength-faint",
+    "persona-tenure-mid"
+  ],
+  "expected_routing": {
+    "entry_skill": "acr-signal-to-opportunity-coach",
+    "modules": [
+      "spa-recommendation-triage",
+      "signal-to-opportunity"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "accepted SPA creates opportunity needing MSX write"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "spa-triage-friday",
+    "required_artifacts": [
+      "Per-SPA disposition (accept/decline/escalate) with rationale",
+      "proposed opportunities for accepted SPAs"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF07-A trap (Accepts SPAs without account-context check); produces complete Per-SPA disposition (accept/decline/escalate) with rationale, proposed opportunities for accepted SP",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF07-A failure pattern",
+      "Score 1: Output exhibits the full FM-WF07-A failure mode (Accepts SPAs without account-context check)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct competitive positioning decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF07-A -- Accepts SPAs without account-context check"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

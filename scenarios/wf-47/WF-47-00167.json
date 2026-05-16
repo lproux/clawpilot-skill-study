@@ -1,0 +1,112 @@
+{
+  "scenario_id": "WF-47-00167",
+  "workflow_id": "WF-47",
+  "workflow_name": "Multi-Stakeholder Meeting Transcript -> Decision Distribution",
+  "seed": 4700209,
+  "tier": 4,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": "FM-WF47-O",
+  "persona": "Manager",
+  "fixture_id": "FX-027",
+  "user_message": "Give me the manager view on this Blue Yonder Airlines escalation email. The customer escalated this morning.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Blue Yonder Airlines",
+        "account_id": "ACC-6ZHK5AIU",
+        "opportunities": [
+          {
+            "name": "Blue Dynamics 365 Implementation",
+            "stage": "Close",
+            "amount": 210000,
+            "close_date": "2024-04-22"
+          },
+          {
+            "name": "Blue Azure Infrastructure",
+            "stage": "Prospect",
+            "amount": 350000,
+            "close_date": "2024-08-05"
+          },
+          {
+            "name": "Blue Copilot Adoption",
+            "stage": "Prospect",
+            "amount": 210000,
+            "close_date": "2024-12-03"
+          }
+        ],
+        "acr_current": 0,
+        "health_flag": "At Risk",
+        "owner": "David Chen"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: security posture Discussion - Blue Yonder Airlines\nDate: 2024-01-21\nDuration: 45 minutes\nAttendees: Robert Singh (Blue Yonder Airlines), David Chen (Microsoft), Kevin (Blue Yonder Airlines)\n\n[00:01:30] Robert Singh (Blue Yonder Airlines): Thanks everyone for joining. Let's dive into security posture.\n\n[00:08:00] Kevin (Blue Yonder Airlines): The timeline for technical validation is aggressive. We need to validate the assumptions.\n\n[00:13:00] David Chen (Microsoft): The timeline for budget approval is aggressive. We need to validate the assumptions.\n\n[00:16:00] Kevin (Blue Yonder Airlines): Let me add some context -- we've been working on budget approval and found that the current vendor contract has a 90-day exit clause we need to plan around.\n\n[00:19:00] David Chen (Microsoft): I agree with that assessment. From our side, the main concern is integration complexity.\n\n[00:22:00] David Chen (Microsoft): I agree with that assessment. From our side, the main concern is vendor dependencies.\n\n[00:26:00] Robert Singh (Blue Yonder Airlines): I agree with that assessment. From our side, the main concern is stakeholder alignment.\n\n[00:31:00] David Chen (Microsoft): On the security posture front, we've made progress but there are still blockers around data residency.\n\n[00:34:00] Robert Singh (Blue Yonder Airlines): On the security posture front, we've made progress but there are still blockers around stakeholder alignment.\n\n[00:37:00] Robert Singh (Blue Yonder Airlines): Our VP reviewed this and has concerns about resource allocation. Can we address those?",
+      "metadata": {
+        "freshness": "2024-02-16T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "short"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-tenure-senior",
+    "data-partially-missing",
+    "persona-geo-emea"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions",
+      "contact-stakeholder-map"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "MSX updates warranted from decisions"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "multi-stakeholder-meeting-transcript-->-decision-d",
+    "required_artifacts": [
+      "Decision log with speaker attribution",
+      "action distribution by role",
+      "stakeholder map delta",
+      "MSX update proposals",
+      "due dates extracted"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF47-O trap (Distribution-by-role rigid when meeting was peer-collaborative); produces complete Decision log with speaker attribution, action distribution by role, stakeholder map delta, MSX updat",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF47-O failure pattern",
+      "Score 1: Output exhibits the full FM-WF47-O failure mode (Distribution-by-role rigid when meeting was peer-collaborative)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct security posture decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF47-O -- Distribution-by-role rigid when meeting was peer-collaborative",
+    "Guardrail axis scored neutrally -- focus on whether output served the user's actual need"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

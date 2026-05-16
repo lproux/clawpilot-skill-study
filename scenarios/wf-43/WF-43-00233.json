@@ -1,0 +1,112 @@
+{
+  "scenario_id": "WF-43-00233",
+  "workflow_id": "WF-43",
+  "workflow_name": "Discovery Call Transcript -> Opportunity Build",
+  "seed": 4300275,
+  "tier": 4,
+  "intent": "happy",
+  "targeted_failure_mode": null,
+  "persona": "Manager",
+  "fixture_id": "FX-009",
+  "user_message": "I need you to process this email thread from VanArsdel Ltd. Multiple stakeholders are involved -- it's complex.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "VanArsdel Ltd",
+        "account_id": "ACC-3ORLVDXJ",
+        "opportunities": [
+          {
+            "name": "VanArsdel Data Platform Migration",
+            "stage": "Propose",
+            "amount": 210000,
+            "close_date": "2024-06-13"
+          },
+          {
+            "name": "VanArsdel M365 E5 Upsell",
+            "stage": "Prospect",
+            "amount": 280000,
+            "close_date": "2024-06-13"
+          },
+          {
+            "name": "VanArsdel Power Platform",
+            "stage": "Prospect",
+            "amount": 350000,
+            "close_date": "2024-09-08"
+          }
+        ],
+        "acr_current": 68769.78,
+        "health_flag": "Healthy",
+        "owner": "Tom Rodriguez"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: consumption trend Discussion - VanArsdel Ltd\nDate: 2024-01-06\nDuration: 45 minutes\nAttendees: Karen Patel (VanArsdel Ltd), Tom Rodriguez (Microsoft), David (VanArsdel Ltd)\n\n[00:01:30] Karen Patel (VanArsdel Ltd): Thanks everyone for joining. Let's dive into consumption trend.\n\n[00:06:00] Tom Rodriguez (Microsoft): On the consumption trend front, we've made progress but there are still blockers around resource allocation.\n\n[00:08:00] Karen Patel (VanArsdel Ltd): Our architect reviewed this and has concerns about resource allocation. Can we address those?\n\n[00:13:00] David (VanArsdel Ltd): Let me add some context -- we've been working on cost optimization and found that the cost projections need to factor in reserved instance pricing for accuracy.\n\n[00:15:00] David (VanArsdel Ltd): Let me add some context -- we've been working on cost optimization and found that the current vendor contract has a 90-day exit clause we need to plan around.\n\n[00:17:00] Tom Rodriguez (Microsoft): The timeline for technical validation is aggressive. We need to validate the assumptions.\n\n[00:20:00] Tom Rodriguez (Microsoft): The timeline for budget approval is aggressive. We need to validate the assumptions.\n\n[00:25:00] Tom Rodriguez (Microsoft): Our architect reviewed this and has concerns about performance requirements. Can we address those?",
+      "metadata": {
+        "freshness": "2024-02-25T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "long"
+      }
+    }
+  ],
+  "perturbations": [
+    "signal-strength-noisy",
+    "persona-segment-smb-mid"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "opportunity creation warranted"
+      },
+      {
+        "target_skill": "solution-value-design-coach",
+        "condition": "solution sketch needed from discovery signals"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "discovery-call-transcript-->-opportunity-build",
+    "required_artifacts": [
+      "BANT signal extraction with evidence quotes",
+      "opportunity proposal with stage/value/close-date",
+      "confidence labels",
+      "solution sketch suggestion",
+      "follow-up actions"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Complete, well-structured output matching the Discovery Call Transcript -> Opportunity Build template with all required artifacts present and actionable",
+      "Score 3: Output covers main requirements but missing one or two secondary artifacts or lacking specificity",
+      "Score 1: Output is generic, missing key artifacts, or fails to address the specific request"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct consumption trend decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

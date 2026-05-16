@@ -1,0 +1,145 @@
+{
+  "scenario_id": "WF-01-00010",
+  "workflow_id": "WF-01",
+  "workflow_name": "Monday Morning Portfolio Triage",
+  "seed": 100052,
+  "tier": 3,
+  "intent": "happy",
+  "targeted_failure_mode": null,
+  "persona": "DSSP",
+  "fixture_id": "FX-013",
+  "user_message": "[AUTOMATION TRIGGER] Daily automation: Scheduled run before user's first Monday meeting; or on-dema. Account: Coho Winery.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Coho Winery",
+        "account_id": "ACC-W5BNG4OC",
+        "opportunities": [
+          {
+            "name": "Coho Copilot Adoption",
+            "stage": "Close",
+            "amount": 210000,
+            "close_date": "2023-11-10"
+          },
+          {
+            "name": "Coho Azure AI Services",
+            "stage": "Qualify",
+            "amount": 280000,
+            "close_date": "2024-04-26"
+          },
+          {
+            "name": "Coho Azure Virtual Desktop",
+            "stage": "Qualify",
+            "amount": 125000,
+            "close_date": "2024-11-17"
+          }
+        ],
+        "acr_current": 107808.75,
+        "health_flag": "At Risk",
+        "owner": "Ahmed Hassan"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Coho Winery - executive brief",
+        "start": "2024-03-15T15:00:00-05:00",
+        "end": "2024-03-12T15:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Ahmed Hassan",
+            "email": "ahmed.hassan@microsoft.com"
+          },
+          {
+            "name": "Eric Kim",
+            "email": "eric.kim@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "contract_event",
+            "detail": "Signal detected for Coho Winery: there's a compliance requirement we hadn't accounted for in the original scope",
+            "date": "2024-03-08"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-09T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-tenure-junior",
+    "routing-ambiguous-2skills"
+  ],
+  "expected_routing": {
+    "entry_skill": "portfolio-account-planning-coach",
+    "modules": [
+      "daily-weekly-planning",
+      "account-health-prioritization"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "customer-meeting-prep-outreach-coach",
+        "condition": "customer meetings exist this week"
+      },
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "stale records detected"
+      },
+      {
+        "target_skill": "acr-signal-to-opportunity-coach",
+        "condition": "ACR signals match top accounts"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "monday-morning-portfolio-triage",
+    "required_artifacts": [
+      "Top 5-10 accounts ranked by urgency x impact",
+      "reason per account",
+      "named next action with owner",
+      "time-block plan for the week",
+      "populated handoff queue"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Complete, well-structured output matching the Monday Morning Portfolio Triage template with all required artifacts present and actionable",
+      "Score 3: Output covers main requirements but missing one or two secondary artifacts or lacking specificity",
+      "Score 1: Output is generic, missing key artifacts, or fails to address the specific request"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct executive brief decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

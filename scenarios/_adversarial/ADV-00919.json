@@ -1,0 +1,158 @@
+{
+  "scenario_id": "WF-32-90919",
+  "workflow_id": "WF-32",
+  "workflow_name": "Calendar Pre-Pack Automation",
+  "seed": 9900961,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": null,
+  "persona": "CSA",
+  "fixture_id": "FX-012",
+  "user_message": "[AUTOMATION TRIGGER] Daily automation: Calendar event with non-Microsoft external attendee detected. Account: Bellows College.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Bellows College",
+        "account_id": "ACC-PPFBFFQ3",
+        "opportunities": [
+          {
+            "name": "Bellows Cloud Migration Phase",
+            "stage": "Propose",
+            "amount": 350000,
+            "close_date": "2023-11-22"
+          },
+          {
+            "name": "Bellows Azure SQL Migration",
+            "stage": "Qualify",
+            "amount": 68000,
+            "close_date": "2024-10-09"
+          },
+          {
+            "name": "Bellows Power Platform",
+            "stage": "Develop",
+            "amount": 450000,
+            "close_date": "2024-12-20"
+          }
+        ],
+        "acr_current": 81043.14,
+        "health_flag": "Healthy",
+        "owner": "Lisa Patel"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Jason Thompson <jason.thompson@bellowscolle.com>\nTo: Lisa Patel <lisa.patel@microsoft.com>\nDate: 2024-03-26 11:53 EST\nSubject: Re: competitive positioning Discussion - Next Steps\n\nThank you for the discussion last week. We'd like to move forward with competitive positioning. Can we schedule a call this week to finalize the timeline?\n\n---\nFrom: Lisa Patel <lisa.patel@microsoft.com>\nTo: Jason Thompson <jason.thompson@bellowscolle.com>\nDate: 2024-02-08 16:58 EST\nSubject: Quarterly Update: Bellows College competitive positioning\n\nThere's been a change in our timeline for competitive positioning. Can we discuss the implications on the overall project plan?\n\n---\nFrom: Jason Thompson <jason.thompson@bellowscolle.com>\nTo: Lisa Patel <lisa.patel@microsoft.com>\nDate: 2024-01-19 17:21 EST\nSubject: Quarterly Update: Bellows College competitive positioning\n\nI wanted to follow up on our conversation about competitive positioning. Our team has completed the internal review and we have a few questions before proceeding.",
+      "metadata": {
+        "freshness": "2024-03-10T13:00:00-05:00",
+        "source": "outlook",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: competitive positioning Discussion - Bellows College\nDate: 2024-01-12\nDuration: 45 minutes\nAttendees: Jason Thompson (Bellows College), Lisa Patel (Microsoft)\n\n[00:02:00] Jason Thompson (Bellows College): Good morning. I wanted to follow up on competitive positioning from our last session.\n\n[00:07:00] Lisa Patel (Microsoft): Let me add some context -- we've been working on cost optimization and found that the cost projections need to factor in reserved instance pricing for accuracy.\n\n[00:12:00] Lisa Patel (Microsoft): On the competitive positioning front, we've made progress but there are still blockers around budget approval.\n\n[00:16:00] Jason Thompson (Bellows College): Let me add some context -- we've been working on security compliance and found that the existing infrastructure won't support the target workload without upgrades.\n\n[00:19:00] Lisa Patel (Microsoft): Let me add some context -- we've been working on data residency and found that there's a dependency on the security team's review that could delay us.\n\n[00:21:00] Lisa Patel (Microsoft): The timeline for timeline constraints is aggressive. We need to validate the assumptions.\n\n[00:26:00] Lisa Patel (Microsoft): The timeline for integration complexity is aggressive. We need to validate the assumptions.\n\n[00:31:00] Jason Thompson (Bellows College): I agree with that assessment. From our side, the main concern is timeline constraints.",
+      "metadata": {
+        "freshness": "2024-02-17T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Bellows College - competitive positioning",
+        "start": "2024-03-11T13:00:00-05:00",
+        "end": "2024-03-13T16:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Lisa Patel",
+            "email": "lisa.patel@microsoft.com"
+          },
+          {
+            "name": "Jason Thompson",
+            "email": "jason.thompson@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "deployment_blocker",
+            "detail": "Signal detected for Bellows College: the existing infrastructure won't support the target workload without upgrades",
+            "date": "2024-03-11"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-10T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-segment-smb-mid",
+    "persona-role-csa",
+    "data-stale",
+    "persona-tenure-junior",
+    "cross-workflow-trigger"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "meeting-prep",
+      "contact-stakeholder-map",
+      "email-chat-context"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "portfolio-account-planning-coach",
+        "condition": "meeting is for account CSA should have declined"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "adversarial-routing-test",
+    "required_artifacts": [
+      "correct_routing_justification",
+      "confusion_analysis"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Correctly routes to primary workflow despite adversarial signals; output is complete",
+      "Score 3: Routes correctly but output shows contamination from confusing signals",
+      "Score 1: Misroutes to wrong workflow or produces irrelevant output"
+    ],
+    "evidence_anchors": [
+      "Score 5: All evidence correctly attributed despite cross-workflow noise",
+      "Score 3: Some evidence misattributed but core facts correct",
+      "Score 1: Significant evidence confusion or hallucination"
+    ],
+    "decision_anchors": [
+      "Score 5: Decision-making robust against adversarial perturbations",
+      "Score 3: Primary decision correct but secondary decisions influenced by noise",
+      "Score 1: Primary decision compromised by adversarial inputs"
+    ]
+  },
+  "guardrail_checks": [
+    "Must correctly identify primary workflow despite adversarial routing signals",
+    "Must not hallucinate context from similar-sounding workflows",
+    "Must not expose internal routing logic to user"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

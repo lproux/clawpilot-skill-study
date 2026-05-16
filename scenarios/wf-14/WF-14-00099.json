@@ -1,0 +1,155 @@
+{
+  "scenario_id": "WF-14-00099",
+  "workflow_id": "WF-14",
+  "workflow_name": "Stakeholder Map Generation",
+  "seed": 1400141,
+  "tier": 1,
+  "intent": "design-redesign",
+  "targeted_failure_mode": null,
+  "persona": "CSA",
+  "fixture_id": "FX-041",
+  "user_message": "Quick one -- generate the watchlist on Quantum Analytics. ",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Quantum Analytics",
+        "account_id": "ACC-ZJSZDYNL",
+        "opportunities": [
+          {
+            "name": "Quantum Azure Infrastructure",
+            "stage": "Qualify",
+            "amount": 68000,
+            "close_date": "2024-04-14"
+          },
+          {
+            "name": "Quantum Data Platform Migration",
+            "stage": "Develop",
+            "amount": 450000,
+            "close_date": "2024-07-16"
+          },
+          {
+            "name": "Quantum Dynamics 365 Implementation",
+            "stage": "Qualify",
+            "amount": 68000,
+            "close_date": "2024-07-17"
+          }
+        ],
+        "acr_current": 21322.6,
+        "health_flag": "At Risk",
+        "owner": "Marcus Williams"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Robert Foster <robert.foster@quantumanaly.com>\nTo: Marcus Williams <marcus.williams@microsoft.com>\nDate: 2024-03-11 15:00 EST\nSubject: deployment blockers - Action Required\n\nI wanted to follow up on our conversation about deployment blockers. Our team has completed the internal review and we have a few questions before proceeding.\n\n---\nFrom: Marcus Williams <marcus.williams@microsoft.com>\nTo: Robert Foster <robert.foster@quantumanaly.com>\nDate: 2024-01-12 13:09 EST\nSubject: Re: deployment blockers Discussion - Next Steps\n\nThank you for the discussion last week. We'd like to move forward with deployment blockers. Can we schedule a call this week to finalize the timeline?",
+      "metadata": {
+        "freshness": "2024-03-04T14:00:00-05:00",
+        "source": "outlook",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: deployment blockers Discussion - Quantum Analytics\nDate: 2024-01-01\nDuration: 45 minutes\nAttendees: Robert Foster (Quantum Analytics), Marcus Williams (Microsoft), David (Quantum Analytics)\n\n[00:01:15] Robert Foster (Quantum Analytics): Appreciate everyone making time. The main agenda today is deployment blockers.\n\n[00:06:00] Marcus Williams (Microsoft): Our architect reviewed this and has concerns about data residency. Can we address those?\n\n[00:09:00] Marcus Williams (Microsoft): The timeline for stakeholder alignment is aggressive. We need to validate the assumptions.\n\n[00:13:00] David (Quantum Analytics): Our team lead reviewed this and has concerns about stakeholder alignment. Can we address those?\n\n[00:17:00] Robert Foster (Quantum Analytics): On the deployment blockers front, we've made progress but there are still blockers around performance requirements.\n\n[00:22:00] Robert Foster (Quantum Analytics): The timeline for data residency is aggressive. We need to validate the assumptions.\n\n[00:27:00] David (Quantum Analytics): Our CTO reviewed this and has concerns about integration complexity. Can we address those?\n\n[00:30:00] Marcus Williams (Microsoft): Our VP reviewed this and has concerns about security compliance. Can we address those?\n\n[00:33:00] David (Quantum Analytics): I agree with that assessment. From our side, the main concern is resource allocation.\n\n[00:37:00] Robert Foster (Quantum Analytics): The timeline for resource allocation is aggressive. We need to validate the assumptions.\n\n[00:39:00] Robert Foster (Quantum Analytics): Let me add some context -- we've been working on technical validation and found that the cost projections need to factor in reserved instance pricing for accuracy.",
+      "metadata": {
+        "freshness": "2024-01-11T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "mixed",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Quantum Analytics - deployment blockers",
+        "start": "2024-03-15T11:00:00-05:00",
+        "end": "2024-03-15T13:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Marcus Williams",
+            "email": "marcus.williams@microsoft.com"
+          },
+          {
+            "name": "Robert Foster",
+            "email": "robert.foster@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "security_alert",
+            "detail": "Signal detected for Quantum Analytics: the current vendor contract has a 90-day exit clause we need to plan around",
+            "date": "2024-03-11"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-tenure-senior",
+    "signal-strength-faint",
+    "persona-geo-latam"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "contact-stakeholder-map"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "stakeholder-map-generation",
+    "required_artifacts": [
+      "Stakeholder map with roles (decision-maker",
+      "influencer",
+      "champion",
+      "blocker)",
+      "recency labels"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Complete, well-structured output matching the Stakeholder Map Generation template with all required artifacts present and actionable",
+      "Score 3: Output covers main requirements but missing one or two secondary artifacts or lacking specificity",
+      "Score 1: Output is generic, missing key artifacts, or fails to address the specific request"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct deployment blockers decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Produce structural verdict on whether current routing adequately serves this scenario"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "verdict-on-structural",
+    "verdict_required_axes": [
+      "routing",
+      "evidence"
+    ]
+  }
+}

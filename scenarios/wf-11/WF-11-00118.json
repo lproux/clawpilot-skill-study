@@ -1,0 +1,137 @@
+{
+  "scenario_id": "WF-11-00118",
+  "workflow_id": "WF-11",
+  "workflow_name": "Pre-Meeting Brief",
+  "seed": 1100160,
+  "tier": 2,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": "FM-WF11-K",
+  "persona": "DSSP",
+  "fixture_id": "FX-029",
+  "user_message": "Working on Consolidated Messenger's forecast prep -- need you to draft the follow-up.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Consolidated Messenger",
+        "account_id": "ACC-LVS79LOG",
+        "opportunities": [
+          {
+            "name": "Consolidated Azure AI Services",
+            "stage": "Propose",
+            "amount": 280000,
+            "close_date": "2024-12-11"
+          },
+          {
+            "name": "Consolidated Security Modernization",
+            "stage": "Prospect",
+            "amount": 210000,
+            "close_date": "2024-04-06"
+          },
+          {
+            "name": "Consolidated Azure Arc Deployment",
+            "stage": "Close",
+            "amount": 125000,
+            "close_date": "2024-05-02"
+          }
+        ],
+        "acr_current": 0,
+        "health_flag": "Unknown",
+        "owner": "Tom Rodriguez"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Sarah Singh <sarah.singh@consolidated.com>\nTo: Tom Rodriguez <tom.rodriguez@microsoft.com>\nDate: 2024-02-12 09:07 EST\nSubject: URGENT: forecast prep Issue at Consolidated Messenger\n\nI wanted to follow up on our conversation about forecast prep. Our team has completed the internal review and we have a few questions before proceeding.\n\n---\nFrom: Tom Rodriguez <tom.rodriguez@microsoft.com>\nTo: Sarah Singh <sarah.singh@consolidated.com>\nDate: 2024-01-27 17:38 EST\nSubject: Re: forecast prep Discussion - Next Steps\n\nThere's been a change in our timeline for forecast prep. Can we discuss the implications on the overall project plan?",
+      "metadata": {
+        "freshness": "2024-02-24T10:00:00-05:00",
+        "source": "outlook",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: forecast prep Discussion - Consolidated Messenger\nDate: 2024-01-09\nDuration: 45 minutes\nAttendees: Sarah Singh (Consolidated Messenger), Tom Rodriguez (Microsoft)\n\n[00:02:00] Sarah Singh (Consolidated Messenger): Good morning. I wanted to follow up on forecast prep from our last session.\n\n[00:08:00] Sarah Singh (Consolidated Messenger): On the forecast prep front, we've made progress but there are still blockers around timeline constraints.\n\n[00:11:00] Sarah Singh (Consolidated Messenger): Our CTO reviewed this and has concerns about performance requirements. Can we address those?\n\n[00:16:00] Tom Rodriguez (Microsoft): Our director reviewed this and has concerns about vendor dependencies. Can we address those?\n\n[00:20:00] Tom Rodriguez (Microsoft): On the forecast prep front, we've made progress but there are still blockers around partner engagement.\n\n[00:23:00] Sarah Singh (Consolidated Messenger): Our CTO reviewed this and has concerns about technical validation. Can we address those?\n\n[00:26:00] Sarah Singh (Consolidated Messenger): I agree with that assessment. From our side, the main concern is budget approval.",
+      "metadata": {
+        "freshness": "2024-02-17T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "mixed",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Consolidated Messenger - forecast prep",
+        "start": "2024-03-14T11:00:00-05:00",
+        "end": "2024-03-14T13:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Tom Rodriguez",
+            "email": "tom.rodriguez@microsoft.com"
+          },
+          {
+            "name": "Sarah Singh",
+            "email": "sarah.singh@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-segment-smb-mid",
+    "persona-geo-na",
+    "data-partially-missing"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "meeting-prep",
+      "contact-stakeholder-map"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "pre-meeting-brief",
+    "required_artifacts": [
+      "One-page brief with attendee context",
+      "account snapshot",
+      "talking points",
+      "likely objections",
+      "open items from last meeting"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF11-K trap (One-page constraint hurts complex meetings); produces complete One-page brief with attendee context, account snapshot, talking points, likely objections, open item",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF11-K failure pattern",
+      "Score 1: Output exhibits the full FM-WF11-K failure mode (One-page constraint hurts complex meetings)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct forecast prep decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF11-K -- One-page constraint hurts complex meetings",
+    "Guardrail axis scored neutrally -- focus on whether output served the user's actual need"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

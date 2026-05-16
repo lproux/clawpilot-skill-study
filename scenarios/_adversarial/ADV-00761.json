@@ -1,0 +1,121 @@
+{
+  "scenario_id": "WF-11-90761",
+  "workflow_id": "WF-11",
+  "workflow_name": "Pre-Meeting Brief",
+  "seed": 9900803,
+  "tier": 2,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": null,
+  "persona": "CSA",
+  "fixture_id": "FX-004",
+  "user_message": "Need help with Adventure Works -- investigate the decline. The CSA flagged this as at-risk yesterday.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Adventure Works",
+        "account_id": "ACC-TBZ7Q87G",
+        "opportunities": [
+          {
+            "name": "Adventure Data Platform Migration",
+            "stage": "Propose",
+            "amount": 210000,
+            "close_date": "2024-12-19"
+          }
+        ],
+        "acr_current": 34613.91,
+        "health_flag": "Healthy",
+        "owner": "Sarah Kim"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Michael Patel <michael.patel@adventurewor.com>\nTo: Sarah Kim <sarah.kim@microsoft.com>\nDate: 2024-03-15 15:06 EST\nSubject: URGENT: territory planning Issue at Adventure Works\n\nJust checking in on the territory planning proposal. Our Data Platform Lead is asking for a status update before the board meeting next week.\n\n---\nFrom: Sarah Kim <sarah.kim@microsoft.com>\nTo: Michael Patel <michael.patel@adventurewor.com>\nDate: 2024-02-16 11:06 EST\nSubject: URGENT: territory planning Issue at Adventure Works\n\nThere's been a change in our timeline for territory planning. Can we discuss the implications on the overall project plan?",
+      "metadata": {
+        "freshness": "2024-03-14T16:00:00-05:00",
+        "source": "outlook",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: territory planning Discussion - Adventure Works\nDate: 2024-01-01\nDuration: 45 minutes\nAttendees: Michael Patel (Adventure Works), Sarah Kim (Microsoft)\n\n[00:02:00] Michael Patel (Adventure Works): Good morning. I wanted to follow up on territory planning from our last session.\n\n[00:06:00] Sarah Kim (Microsoft): Our director reviewed this and has concerns about vendor dependencies. Can we address those?\n\n[00:08:00] Sarah Kim (Microsoft): On the territory planning front, we've made progress but there are still blockers around partner engagement.\n\n[00:13:00] Sarah Kim (Microsoft): Let me add some context -- we've been working on cost optimization and found that the current vendor contract has a 90-day exit clause we need to plan around.\n\n[00:17:00] Michael Patel (Adventure Works): The timeline for vendor dependencies is aggressive. We need to validate the assumptions.\n\n[00:22:00] Michael Patel (Adventure Works): On the territory planning front, we've made progress but there are still blockers around budget approval.\n\n[00:27:00] Michael Patel (Adventure Works): Let me add some context -- we've been working on timeline constraints and found that the existing infrastructure won't support the target workload without upgrades.\n\n[00:32:00] Michael Patel (Adventure Works): I agree with that assessment. From our side, the main concern is timeline constraints.\n\n[00:37:00] Sarah Kim (Microsoft): On the territory planning front, we've made progress but there are still blockers around performance requirements.",
+      "metadata": {
+        "freshness": "2024-03-19T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Adventure Works - territory planning",
+        "start": "2024-03-13T12:00:00-05:00",
+        "end": "2024-03-11T10:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Sarah Kim",
+            "email": "sarah.kim@microsoft.com"
+          },
+          {
+            "name": "Michael Patel",
+            "email": "michael.patel@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    }
+  ],
+  "perturbations": [
+    "data-fresh",
+    "persona-tenure-mid",
+    "cross-workflow-trigger"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "meeting-prep",
+      "contact-stakeholder-map"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "adversarial-routing-test",
+    "required_artifacts": [
+      "correct_routing_justification",
+      "confusion_analysis"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Correctly routes to primary workflow despite adversarial signals; output is complete",
+      "Score 3: Routes correctly but output shows contamination from confusing signals",
+      "Score 1: Misroutes to wrong workflow or produces irrelevant output"
+    ],
+    "evidence_anchors": [
+      "Score 5: All evidence correctly attributed despite cross-workflow noise",
+      "Score 3: Some evidence misattributed but core facts correct",
+      "Score 1: Significant evidence confusion or hallucination"
+    ],
+    "decision_anchors": [
+      "Score 5: Decision-making robust against adversarial perturbations",
+      "Score 3: Primary decision correct but secondary decisions influenced by noise",
+      "Score 1: Primary decision compromised by adversarial inputs"
+    ]
+  },
+  "guardrail_checks": [
+    "Must correctly identify primary workflow despite adversarial routing signals",
+    "Must not hallucinate context from similar-sounding workflows",
+    "Must not expose internal routing logic to user"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

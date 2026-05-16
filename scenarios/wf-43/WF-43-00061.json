@@ -1,0 +1,102 @@
+{
+  "scenario_id": "WF-43-00061",
+  "workflow_id": "WF-43",
+  "workflow_name": "Discovery Call Transcript -> Opportunity Build",
+  "seed": 4300103,
+  "tier": 4,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": "FM-WF43-P",
+  "persona": "DSSP",
+  "fixture_id": "FX-015",
+  "user_message": "Can you extract the renewal risk from this escalation email for Fourth Coffee? This is a renewal account with declining consumption.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Fourth Coffee",
+        "account_id": "ACC-A7MFL3SV",
+        "opportunities": [
+          {
+            "name": "Fourth Data Platform Migration",
+            "stage": "Qualify",
+            "amount": 210000,
+            "close_date": "2023-12-04"
+          }
+        ],
+        "acr_current": 114958.25,
+        "health_flag": "Healthy",
+        "owner": "Raj Mehta"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: renewal risk Discussion - Fourth Coffee\nDate: 2024-03-08\nDuration: 45 minutes\nAttendees: David Rivera (Fourth Coffee), Raj Mehta (Microsoft)\n\n[00:02:00] David Rivera (Fourth Coffee): Good morning. I wanted to follow up on renewal risk from our last session.\n\n[00:07:00] David Rivera (Fourth Coffee): Our architect reviewed this and has concerns about partner engagement. Can we address those?\n\n[00:11:00] David Rivera (Fourth Coffee): I agree with that assessment. From our side, the main concern is integration complexity.\n\n[00:16:00] David Rivera (Fourth Coffee): On the renewal risk front, we've made progress but there are still blockers around performance requirements.\n\n[00:21:00] David Rivera (Fourth Coffee): Let me add some context -- we've been working on partner engagement and found that there's a compliance requirement we hadn't accounted for in the original scope.\n\n[00:23:00] David Rivera (Fourth Coffee): The timeline for data residency is aggressive. We need to validate the assumptions.\n\n[00:27:00] Raj Mehta (Microsoft): I agree with that assessment. From our side, the main concern is resource allocation.",
+      "metadata": {
+        "freshness": "2024-03-13T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "short"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-segment-smb-small",
+    "persona-role-dssp"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "opportunity creation warranted"
+      },
+      {
+        "target_skill": "solution-value-design-coach",
+        "condition": "solution sketch needed from discovery signals"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "discovery-call-transcript-->-opportunity-build",
+    "required_artifacts": [
+      "BANT signal extraction with evidence quotes",
+      "opportunity proposal with stage/value/close-date",
+      "confidence labels",
+      "solution sketch suggestion",
+      "follow-up actions"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF43-P trap (Opportunity creation routes through pipeline-hygiene when CSA could commit direc); produces complete BANT signal extraction with evidence quotes, opportunity proposal with stage/value/close-date, confi",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF43-P failure pattern",
+      "Score 1: Output exhibits the full FM-WF43-P failure mode (Opportunity creation routes through pipeline-hygiene when CSA could commit direc)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct renewal risk decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF43-P -- Opportunity creation routes through pipeline-hygiene when CSA could commit direc",
+    "Guardrail axis scored neutrally -- focus on whether output served the user's actual need"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

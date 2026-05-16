@@ -1,0 +1,99 @@
+{
+  "scenario_id": "WF-34-00220",
+  "workflow_id": "WF-34",
+  "workflow_name": "Customer Escalation Email -> Risk Brief + Manager Loop",
+  "seed": 3400262,
+  "tier": 4,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": "FM-WF34-L",
+  "persona": "DSSP",
+  "fixture_id": "FX-033",
+  "user_message": "Pulling in context from Parnell Aerospace's exec meeting notes -- need to build the analysis for the migration architecture.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Parnell Aerospace",
+        "account_id": "ACC-0H065FH7",
+        "opportunities": [
+          {
+            "name": "Parnell Dynamics 365 Implementation",
+            "stage": "Close",
+            "amount": 350000,
+            "close_date": "2024-11-03"
+          }
+        ],
+        "acr_current": 0,
+        "health_flag": "Healthy",
+        "owner": "Ahmed Hassan"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Christopher Martinez <christopher.martinez@parnellaeros.com>\nTo: Ahmed Hassan <ahmed.hassan@microsoft.com>\nDate: 2024-03-28 12:18 EST\nSubject: URGENT: migration architecture Issue at Parnell Aerospace\n\nThere's been a change in our timeline for migration architecture. Can we discuss the implications on the overall project plan?\n\n---\nFrom: Ahmed Hassan <ahmed.hassan@microsoft.com>\nTo: Christopher Martinez <christopher.martinez@parnellaeros.com>\nDate: 2024-02-27 12:49 EST\nSubject: Follow-up: migration architecture Review\n\nWe've been evaluating the options and have decided to proceed with migration architecture. What are the next steps from your side?\n\n---\nFrom: Christopher Martinez <christopher.martinez@parnellaeros.com>\nTo: Ahmed Hassan <ahmed.hassan@microsoft.com>\nDate: 2024-01-09 16:44 EST\nSubject: URGENT: migration architecture Issue at Parnell Aerospace\n\nWe've been evaluating the options and have decided to proceed with migration architecture. What are the next steps from your side?",
+      "metadata": {
+        "freshness": "2024-02-03T10:00:00-05:00",
+        "source": "outlook",
+        "length_class": "short"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-segment-smb-small",
+    "persona-geo-na"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "email-chat-context",
+      "follow-up-and-decisions",
+      "contact-stakeholder-map"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "forecast-business-review-coach",
+        "condition": "escalation warrants forecast/risk update"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "customer-escalation-email-->-risk-brief-+-manager-",
+    "required_artifacts": [
+      "Severity assessment",
+      "manager risk brief",
+      "customer-facing draft response",
+      "stakeholder map delta",
+      "forecast/risk impact"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF34-L trap (Draft-only default delays response when speed itself is the right move); produces complete Severity assessment, manager risk brief, customer-facing draft response, stakeholder map delta, fore",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF34-L failure pattern",
+      "Score 1: Output exhibits the full FM-WF34-L failure mode (Draft-only default delays response when speed itself is the right move)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct migration architecture decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF34-L -- Draft-only default delays response when speed itself is the right move",
+    "Guardrail axis scored neutrally -- focus on whether output served the user's actual need"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

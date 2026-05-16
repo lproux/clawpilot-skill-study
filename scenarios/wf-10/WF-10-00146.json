@@ -1,0 +1,95 @@
+{
+  "scenario_id": "WF-10-00146",
+  "workflow_id": "WF-10",
+  "workflow_name": "Deployment Blocker Triage",
+  "seed": 1000188,
+  "tier": 2,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF10-B",
+  "persona": "Manager",
+  "fixture_id": "FX-035",
+  "user_message": "I need you to process this support ticket from Treyarch Global. This is a renewal account with declining consumption.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Treyarch Global",
+        "account_id": "ACC-YBG804XY",
+        "opportunities": [
+          {
+            "name": "Treyarch Azure DevOps",
+            "stage": "Close",
+            "amount": 89000,
+            "close_date": "2024-05-02"
+          },
+          {
+            "name": "Treyarch Azure AI Services",
+            "stage": "Qualify",
+            "amount": 450000,
+            "close_date": "2024-05-13"
+          }
+        ],
+        "acr_current": 48495.65,
+        "health_flag": "Healthy",
+        "owner": "Raj Mehta"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-tenure-mid",
+    "data-partially-missing"
+  ],
+  "expected_routing": {
+    "entry_skill": "acr-signal-to-opportunity-coach",
+    "modules": [
+      "signal-to-opportunity"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "funding-partner-activation-coach",
+        "condition": "partner engagement needed"
+      },
+      {
+        "target_skill": "customer-meeting-prep-outreach-coach",
+        "condition": "customer outreach needed to unblock"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "deployment-blocker-triage",
+    "required_artifacts": [
+      "Blocker classification (technical/commercial/organizational)",
+      "prioritized unblock actions with owners",
+      "partner engagement recommendation"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF10-B trap (Confuses technical blocker with commercial one); produces complete Blocker classification (technical/commercial/organizational), prioritized unblock actions with owner",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF10-B failure pattern",
+      "Score 1: Output exhibits the full FM-WF10-B failure mode (Confuses technical blocker with commercial one)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct escalation triage decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF10-B -- Confuses technical blocker with commercial one"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

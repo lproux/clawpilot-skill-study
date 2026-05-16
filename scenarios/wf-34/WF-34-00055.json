@@ -1,0 +1,117 @@
+{
+  "scenario_id": "WF-34-00055",
+  "workflow_id": "WF-34",
+  "workflow_name": "Customer Escalation Email -> Risk Brief + Manager Loop",
+  "seed": 3400097,
+  "tier": 4,
+  "intent": "design-redesign",
+  "targeted_failure_mode": "FM-WF34-N",
+  "persona": "DSSP",
+  "fixture_id": "FX-003",
+  "user_message": "Can you extract the deployment blockers from this support ticket for Northwind Traders? ",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Northwind Traders",
+        "account_id": "ACC-X86FSRU2",
+        "opportunities": [
+          {
+            "name": "Northwind Azure Arc Deployment",
+            "stage": "Propose",
+            "amount": 89000,
+            "close_date": "2024-09-05"
+          },
+          {
+            "name": "Northwind Copilot Adoption",
+            "stage": "Develop",
+            "amount": 175000,
+            "close_date": "2024-06-22"
+          },
+          {
+            "name": "Northwind Intune Rollout",
+            "stage": "Close",
+            "amount": 350000,
+            "close_date": "2024-04-19"
+          }
+        ],
+        "acr_current": 54067.74,
+        "health_flag": "Healthy",
+        "owner": "Ahmed Hassan"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Sandra Taylor <sandra.taylor@northwindtra.com>\nTo: Ahmed Hassan <ahmed.hassan@microsoft.com>\nDate: 2024-03-05 15:12 EST\nSubject: Re: Re: deployment blockers Timeline\n\nThank you for the discussion last week. We'd like to move forward with deployment blockers. Can we schedule a call this week to finalize the timeline?\n\n---\nFrom: Ahmed Hassan <ahmed.hassan@microsoft.com>\nTo: Sandra Taylor <sandra.taylor@northwindtra.com>\nDate: 2024-01-25 15:34 EST\nSubject: Quarterly Update: Northwind Traders deployment blockers\n\nOur team encountered some challenges with deployment blockers. Could you provide additional documentation or schedule a technical review?",
+      "metadata": {
+        "freshness": "2024-02-23T17:00:00-05:00",
+        "source": "outlook",
+        "length_class": "medium"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-geo-na",
+    "data-fresh",
+    "routing-ambiguous-2skills",
+    "persona-segment-smb-corporate"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "email-chat-context",
+      "follow-up-and-decisions",
+      "contact-stakeholder-map"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "forecast-business-review-coach",
+        "condition": "escalation warrants forecast/risk update"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "customer-escalation-email-->-risk-brief-+-manager-",
+    "required_artifacts": [
+      "Severity assessment",
+      "manager risk brief",
+      "customer-facing draft response",
+      "stakeholder map delta",
+      "forecast/risk impact"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF34-N trap (Escalation routing doesn't natively engage support/delivery teams); produces complete Severity assessment, manager risk brief, customer-facing draft response, stakeholder map delta, fore",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF34-N failure pattern",
+      "Score 1: Output exhibits the full FM-WF34-N failure mode (Escalation routing doesn't natively engage support/delivery teams)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct deployment blockers decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF34-N -- Escalation routing doesn't natively engage support/delivery teams",
+    "Produce structural verdict on whether current routing adequately serves this scenario"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "verdict-on-structural",
+    "verdict_required_axes": [
+      "routing",
+      "evidence"
+    ]
+  }
+}

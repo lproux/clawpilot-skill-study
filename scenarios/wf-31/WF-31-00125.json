@@ -1,0 +1,109 @@
+{
+  "scenario_id": "WF-31-00125",
+  "workflow_id": "WF-31",
+  "workflow_name": "SL4 Customer 360 Forecast Roll-Up",
+  "seed": 3100167,
+  "tier": 3,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF31-E",
+  "persona": "Manager",
+  "fixture_id": "FX-043",
+  "user_message": "I need you to process this email thread from Pacific Northwest Outfitters. There's been no activity for 45 days and I'm worried.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Pacific Northwest Outfitters",
+        "account_id": "ACC-6SYIFEPT",
+        "opportunities": [
+          {
+            "name": "Pacific Azure Arc Deployment",
+            "stage": "Qualify",
+            "amount": 45000,
+            "close_date": "2024-04-15"
+          },
+          {
+            "name": "Pacific M365 E5 Upsell",
+            "stage": "Qualify",
+            "amount": 560000,
+            "close_date": "2024-11-15"
+          }
+        ],
+        "acr_current": 81560.32,
+        "health_flag": "Healthy",
+        "owner": "Ahmed Hassan"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "deployment_blocker",
+            "detail": "Signal detected for Pacific Northwest Outfitters: the migration can proceed in phases to reduce risk",
+            "date": "2024-03-08"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-10T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-role-manager",
+    "data-inconsistent",
+    "persona-geo-emea",
+    "persona-tenure-junior"
+  ],
+  "expected_routing": {
+    "entry_skill": "forecast-business-review-coach",
+    "modules": [
+      "committed-milestone-forecast"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "solution-value-design-coach",
+        "condition": "Customer 360 unavailable, Kusto BI fallback needed"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "sl4-customer-360-forecast-roll-up",
+    "required_artifacts": [
+      "SL4-level forecast rollup with source attribution",
+      "hierarchy alignment",
+      "period boundary reconciliation"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF31-E trap (Confuses SL4 hierarchy levels (parent/child reversed)); produces complete SL4-level forecast rollup with source attribution, hierarchy alignment, period boundary reconciliati",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF31-E failure pattern",
+      "Score 1: Output exhibits the full FM-WF31-E failure mode (Confuses SL4 hierarchy levels (parent/child reversed))"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct escalation triage decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF31-E -- Confuses SL4 hierarchy levels (parent/child reversed)"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

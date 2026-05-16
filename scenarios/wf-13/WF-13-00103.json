@@ -1,0 +1,109 @@
+{
+  "scenario_id": "WF-13-00103",
+  "workflow_id": "WF-13",
+  "workflow_name": "Dark Customer Re-Engagement Sequence",
+  "seed": 1300145,
+  "tier": 2,
+  "intent": "happy",
+  "targeted_failure_mode": null,
+  "persona": "DSSP",
+  "fixture_id": "FX-049",
+  "user_message": "[AUTOMATION TRIGGER] Scheduled Account flagged as dark (no interaction in 60+ days) or user initiated for Iron Creek Mining.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Iron Creek Mining",
+        "account_id": "ACC-WVPLFPK6",
+        "opportunities": [
+          {
+            "name": "Iron Azure DevOps",
+            "stage": "Qualify",
+            "amount": 350000,
+            "close_date": "2024-10-28"
+          },
+          {
+            "name": "Iron Azure Virtual Desktop",
+            "stage": "Develop",
+            "amount": 280000,
+            "close_date": "2024-06-02"
+          },
+          {
+            "name": "Iron Azure SQL Migration",
+            "stage": "Qualify",
+            "amount": 68000,
+            "close_date": "2024-05-06"
+          }
+        ],
+        "acr_current": 10924.12,
+        "health_flag": "Healthy",
+        "owner": "Tom Rodriguez"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "deployment_blocker",
+            "detail": "Signal detected for Iron Creek Mining: the migration can proceed in phases to reduce risk",
+            "date": "2024-03-10"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-tenure-mid",
+    "data-contradictory",
+    "persona-segment-smb-small"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "dark-customer-outreach",
+      "contact-stakeholder-map"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "dark-customer-re-engagement-sequence",
+    "required_artifacts": [
+      "Multi-touch re-engagement sequence with channel selection",
+      "timing",
+      "personalized messaging per touch",
+      "stop conditions"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Complete, well-structured output matching the Dark Customer Re-Engagement Sequence template with all required artifacts present and actionable",
+      "Score 3: Output covers main requirements but missing one or two secondary artifacts or lacking specificity",
+      "Score 1: Output is generic, missing key artifacts, or fails to address the specific request"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct security posture decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

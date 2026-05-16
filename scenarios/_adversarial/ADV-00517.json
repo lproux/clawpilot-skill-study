@@ -1,0 +1,113 @@
+{
+  "scenario_id": "WF-52-90517",
+  "workflow_id": "WF-52",
+  "workflow_name": "Internal Account Review Transcript -> Team Actions",
+  "seed": 9900559,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": null,
+  "persona": "DSSP",
+  "fixture_id": "FX-010",
+  "user_message": "Working on Trey Research's renewal risk. Got the email thread -- help me pull the context.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Trey Research",
+        "account_id": "ACC-5HZOG7IO",
+        "opportunities": [
+          {
+            "name": "Trey Security Modernization",
+            "stage": "Develop",
+            "amount": 280000,
+            "close_date": "2024-10-02"
+          },
+          {
+            "name": "Trey Azure Virtual Desktop",
+            "stage": "Develop",
+            "amount": 280000,
+            "close_date": "2024-08-19"
+          },
+          {
+            "name": "Trey Copilot Adoption",
+            "stage": "Close",
+            "amount": 450000,
+            "close_date": "2024-08-15"
+          }
+        ],
+        "acr_current": 39542.17,
+        "health_flag": "Healthy",
+        "owner": "Michelle Park"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: renewal risk Discussion - Trey Research\nDate: 2024-01-28\nDuration: 45 minutes\nAttendees: Daniel Doyle (Trey Research), Michelle Park (Microsoft), Priya (Trey Research)\n\n[00:01:30] Daniel Doyle (Trey Research): Thanks everyone for joining. Let's dive into renewal risk.\n\n[00:08:00] Priya (Trey Research): Let me add some context -- we've been working on integration complexity and found that the current vendor contract has a 90-day exit clause we need to plan around.\n\n[00:13:00] Michelle Park (Microsoft): On the renewal risk front, we've made progress but there are still blockers around vendor dependencies.\n\n[00:17:00] Priya (Trey Research): On the renewal risk front, we've made progress but there are still blockers around vendor dependencies.\n\n[00:21:00] Michelle Park (Microsoft): Let me add some context -- we've been working on partner engagement and found that the migration can proceed in phases to reduce risk.\n\n[00:23:00] Daniel Doyle (Trey Research): The timeline for stakeholder alignment is aggressive. We need to validate the assumptions.",
+      "metadata": {
+        "freshness": "2024-02-04T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "medium"
+      }
+    }
+  ],
+  "perturbations": [
+    "signal-strength-noisy",
+    "persona-tenure-mid",
+    "data-fresh",
+    "persona-segment-smb-corporate",
+    "cross-workflow-trigger"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "forecast-business-review-coach",
+        "condition": "team coaching or risk review input"
+      },
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "MSX updates warranted from review"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "adversarial-routing-test",
+    "required_artifacts": [
+      "correct_routing_justification",
+      "confusion_analysis"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Correctly routes to primary workflow despite adversarial signals; output is complete",
+      "Score 3: Routes correctly but output shows contamination from confusing signals",
+      "Score 1: Misroutes to wrong workflow or produces irrelevant output"
+    ],
+    "evidence_anchors": [
+      "Score 5: All evidence correctly attributed despite cross-workflow noise",
+      "Score 3: Some evidence misattributed but core facts correct",
+      "Score 1: Significant evidence confusion or hallucination"
+    ],
+    "decision_anchors": [
+      "Score 5: Decision-making robust against adversarial perturbations",
+      "Score 3: Primary decision correct but secondary decisions influenced by noise",
+      "Score 1: Primary decision compromised by adversarial inputs"
+    ]
+  },
+  "guardrail_checks": [
+    "Must correctly identify primary workflow despite adversarial routing signals",
+    "Must not hallucinate context from similar-sounding workflows",
+    "Must not expose internal routing logic to user"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

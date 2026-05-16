@@ -1,0 +1,127 @@
+{
+  "scenario_id": "WF-41-00043",
+  "workflow_id": "WF-41",
+  "workflow_name": "Dark-Customer Re-Emergence",
+  "seed": 4100085,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF41-B",
+  "persona": "DSSP",
+  "fixture_id": "FX-029",
+  "user_message": "Pulling in context from Consolidated Messenger's support ticket -- need to draft the follow-up for the whitespace analysis.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Consolidated Messenger",
+        "account_id": "ACC-LVS79LOG",
+        "opportunities": [
+          {
+            "name": "Consolidated Azure AI Services",
+            "stage": "Propose",
+            "amount": 280000,
+            "close_date": "2024-12-11"
+          },
+          {
+            "name": "Consolidated Security Modernization",
+            "stage": "Prospect",
+            "amount": 210000,
+            "close_date": "2024-04-06"
+          },
+          {
+            "name": "Consolidated Azure Arc Deployment",
+            "stage": "Close",
+            "amount": 125000,
+            "close_date": "2024-05-02"
+          }
+        ],
+        "acr_current": 0,
+        "health_flag": "Unknown",
+        "owner": "Tom Rodriguez"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Sarah Singh <sarah.singh@consolidated.com>\nTo: Tom Rodriguez <tom.rodriguez@microsoft.com>\nDate: 2024-03-04 11:04 EST\nSubject: whitespace analysis - Action Required\n\nI wanted to follow up on our conversation about whitespace analysis. Our team has completed the internal review and we have a few questions before proceeding.\n\n---\nFrom: Tom Rodriguez <tom.rodriguez@microsoft.com>\nTo: Sarah Singh <sarah.singh@consolidated.com>\nDate: 2024-02-08 10:02 EST\nSubject: Quarterly Update: Consolidated Messenger whitespace analysis\n\nWe've been evaluating the options and have decided to proceed with whitespace analysis. What are the next steps from your side?\n\n---\nFrom: Sarah Singh <sarah.singh@consolidated.com>\nTo: Tom Rodriguez <tom.rodriguez@microsoft.com>\nDate: 2024-01-04 16:27 EST\nSubject: whitespace analysis - Action Required\n\nJust checking in on the whitespace analysis proposal. Our DevOps Lead is asking for a status update before the board meeting next week.",
+      "metadata": {
+        "freshness": "2024-02-27T14:00:00-05:00",
+        "source": "outlook",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "consumption_decline",
+            "detail": "Signal detected for Consolidated Messenger: the current vendor contract has a 90-day exit clause we need to plan around",
+            "date": "2024-03-06"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-tenure-mid",
+    "data-partially-missing",
+    "signal-strength-noisy",
+    "persona-role-dssp"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "email-chat-context",
+      "contact-stakeholder-map"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "MSX records need dark-period hygiene catchup"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "dark-customer-re-emergence",
+    "required_artifacts": [
+      "Context reconstruction",
+      "re-qualification assessment",
+      "response draft (appropriate tone)",
+      "stakeholder verification plan",
+      "MSX hygiene catchup proposals"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF41-B trap (Skips stakeholder-verification step); produces complete Context reconstruction, re-qualification assessment, response draft (appropriate tone), stakeholder ",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF41-B failure pattern",
+      "Score 1: Output exhibits the full FM-WF41-B failure mode (Skips stakeholder-verification step)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct whitespace analysis decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF41-B -- Skips stakeholder-verification step"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

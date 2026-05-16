@@ -1,0 +1,102 @@
+{
+  "scenario_id": "WF-49-00095",
+  "workflow_id": "WF-49",
+  "workflow_name": "Workshop Transcript -> ECIF + Partner + Follow-up",
+  "seed": 4900137,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF49-E",
+  "persona": "Manager",
+  "fixture_id": "FX-033",
+  "user_message": "Give me the manager view on this Parnell Aerospace support ticket. The customer escalated this morning.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Parnell Aerospace",
+        "account_id": "ACC-0H065FH7",
+        "opportunities": [
+          {
+            "name": "Parnell Dynamics 365 Implementation",
+            "stage": "Close",
+            "amount": 350000,
+            "close_date": "2024-11-03"
+          }
+        ],
+        "acr_current": 0,
+        "health_flag": "Healthy",
+        "owner": "Ahmed Hassan"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: renewal risk Discussion - Parnell Aerospace\nDate: 2024-02-02\nDuration: 45 minutes\nAttendees: Christopher Martinez (Parnell Aerospace), Ahmed Hassan (Microsoft), Priya (Parnell Aerospace)\n\n[00:02:00] Christopher Martinez (Parnell Aerospace): Good morning. I wanted to follow up on renewal risk from our last session.\n\n[00:06:00] Priya (Parnell Aerospace): Our CTO reviewed this and has concerns about timeline constraints. Can we address those?\n\n[00:11:00] Priya (Parnell Aerospace): The timeline for resource allocation is aggressive. We need to validate the assumptions.\n\n[00:16:00] Christopher Martinez (Parnell Aerospace): On the renewal risk front, we've made progress but there are still blockers around integration complexity.\n\n[00:19:00] Christopher Martinez (Parnell Aerospace): Our CTO reviewed this and has concerns about partner engagement. Can we address those?\n\n[00:22:00] Ahmed Hassan (Microsoft): On the renewal risk front, we've made progress but there are still blockers around performance requirements.\n\n[00:26:00] Priya (Parnell Aerospace): Let me add some context -- we've been working on vendor dependencies and found that there's a dependency on the security team's review that could delay us.",
+      "metadata": {
+        "freshness": "2024-02-26T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "long"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-geo-na",
+    "persona-tenure-junior",
+    "data-partially-missing"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "funding-partner-activation-coach",
+        "condition": "ECIF workscope or partner engagement warranted"
+      },
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "milestone updates warranted"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "workshop-transcript-->-ecif-+-partner-+-follow-up",
+    "required_artifacts": [
+      "Workshop recap",
+      "ECIF workscope draft (if warranted)",
+      "partner plan",
+      "follow-up items with owners",
+      "milestone update proposals"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF49-E trap (Skips customer-side ownership in workscope); produces complete Workshop recap, ECIF workscope draft (if warranted), partner plan, follow-up items with owners, mile",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF49-E failure pattern",
+      "Score 1: Output exhibits the full FM-WF49-E failure mode (Skips customer-side ownership in workscope)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct renewal risk decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF49-E -- Skips customer-side ownership in workscope"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

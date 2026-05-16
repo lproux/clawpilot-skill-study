@@ -1,0 +1,114 @@
+{
+  "scenario_id": "WF-38-00095",
+  "workflow_id": "WF-38",
+  "workflow_name": "Champion-Change Email Signal -> Re-engagement Plan",
+  "seed": 3800137,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF38-E",
+  "persona": "Manager",
+  "fixture_id": "FX-033",
+  "user_message": "Just came out of whitespace analysis with Parnell Aerospace. Turn this into my brief and pull out the asks.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Parnell Aerospace",
+        "account_id": "ACC-0H065FH7",
+        "opportunities": [
+          {
+            "name": "Parnell Dynamics 365 Implementation",
+            "stage": "Close",
+            "amount": 350000,
+            "close_date": "2024-11-03"
+          }
+        ],
+        "acr_current": 0,
+        "health_flag": "Healthy",
+        "owner": "Ahmed Hassan"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Christopher Martinez <christopher.martinez@parnellaeros.com>\nTo: Ahmed Hassan <ahmed.hassan@microsoft.com>\nDate: 2024-03-17 08:28 EST\nSubject: Re: whitespace analysis Discussion - Next Steps\n\nThere's been a change in our timeline for whitespace analysis. Can we discuss the implications on the overall project plan?\n\n---\nFrom: Ahmed Hassan <ahmed.hassan@microsoft.com>\nTo: Christopher Martinez <christopher.martinez@parnellaeros.com>\nDate: 2024-02-04 15:38 EST\nSubject: URGENT: whitespace analysis Issue at Parnell Aerospace\n\nThere's been a change in our timeline for whitespace analysis. Can we discuss the implications on the overall project plan?\n\n---\nFrom: Christopher Martinez <christopher.martinez@parnellaeros.com>\nTo: Ahmed Hassan <ahmed.hassan@microsoft.com>\nDate: 2024-01-05 10:36 EST\nSubject: URGENT: whitespace analysis Issue at Parnell Aerospace\n\nThank you for the discussion last week. We'd like to move forward with whitespace analysis. Can we schedule a call this week to finalize the timeline?",
+      "metadata": {
+        "freshness": "2024-02-21T11:00:00-05:00",
+        "source": "outlook",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "deployment_blocker",
+            "detail": "Signal detected for Parnell Aerospace: there's a compliance requirement we hadn't accounted for in the original scope",
+            "date": "2024-03-08"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-09T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "routing-clear",
+    "persona-segment-smb-small"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "contact-stakeholder-map",
+      "email-chat-context",
+      "dark-customer-outreach"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "contact and opportunity records need updating"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "champion-change-email-signal-->-re-engagement-plan",
+    "required_artifacts": [
+      "Stakeholder map delta",
+      "opportunity-at-risk assessment",
+      "re-engagement plan",
+      "contact update proposals",
+      "warm-handoff draft (if champion willing)"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF38-E trap (Re-engagement sequence generic, not tied to this champion's known relationships); produces complete Stakeholder map delta, opportunity-at-risk assessment, re-engagement plan, contact update proposals,",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF38-E failure pattern",
+      "Score 1: Output exhibits the full FM-WF38-E failure mode (Re-engagement sequence generic, not tied to this champion's known relationships)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct whitespace analysis decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF38-E -- Re-engagement sequence generic, not tied to this champion's known relationships"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

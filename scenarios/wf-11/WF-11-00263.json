@@ -1,0 +1,132 @@
+{
+  "scenario_id": "WF-11-00263",
+  "workflow_id": "WF-11",
+  "workflow_name": "Pre-Meeting Brief",
+  "seed": 1100305,
+  "tier": 2,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": "FM-WF11-L",
+  "persona": "Manager",
+  "fixture_id": "FX-019",
+  "user_message": "I need the team view on renewal risk. I think there's an opportunity here but need to validate.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Lucerne Publishing",
+        "account_id": "ACC-2JXCFRG8",
+        "opportunities": [
+          {
+            "name": "Lucerne Copilot Adoption",
+            "stage": "Propose",
+            "amount": 210000,
+            "close_date": "2023-11-19"
+          },
+          {
+            "name": "Lucerne Data Platform Migration",
+            "stage": "Prospect",
+            "amount": 45000,
+            "close_date": "2024-11-16"
+          }
+        ],
+        "acr_current": 39791.19,
+        "health_flag": "Healthy",
+        "owner": "Tom Rodriguez"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Laura Anderson <laura.anderson@lucernepubli.com>\nTo: Tom Rodriguez <tom.rodriguez@microsoft.com>\nDate: 2024-02-18 09:29 EST\nSubject: Re: Re: renewal risk Timeline\n\nThank you for the discussion last week. We'd like to move forward with renewal risk. Can we schedule a call this week to finalize the timeline?\n\n---\nFrom: Tom Rodriguez <tom.rodriguez@microsoft.com>\nTo: Laura Anderson <laura.anderson@lucernepubli.com>\nDate: 2024-01-23 09:28 EST\nSubject: Quarterly Update: Lucerne Publishing renewal risk\n\nThere's been a change in our timeline for renewal risk. Can we discuss the implications on the overall project plan?",
+      "metadata": {
+        "freshness": "2024-02-16T12:00:00-05:00",
+        "source": "outlook",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: renewal risk Discussion - Lucerne Publishing\nDate: 2024-03-01\nDuration: 45 minutes\nAttendees: Laura Anderson (Lucerne Publishing), Tom Rodriguez (Microsoft), Michelle (Lucerne Publishing)\n\n[00:02:00] Laura Anderson (Lucerne Publishing): Good morning. I wanted to follow up on renewal risk from our last session.\n\n[00:05:00] Michelle (Lucerne Publishing): On the renewal risk front, we've made progress but there are still blockers around partner engagement.\n\n[00:10:00] Tom Rodriguez (Microsoft): Our VP reviewed this and has concerns about stakeholder alignment. Can we address those?\n\n[00:15:00] Tom Rodriguez (Microsoft): On the renewal risk front, we've made progress but there are still blockers around partner engagement.\n\n[00:19:00] Michelle (Lucerne Publishing): The timeline for security compliance is aggressive. We need to validate the assumptions.\n\n[00:23:00] Laura Anderson (Lucerne Publishing): Let me add some context -- we've been working on technical validation and found that there's a compliance requirement we hadn't accounted for in the original scope.",
+      "metadata": {
+        "freshness": "2024-02-22T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "mixed",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Lucerne Publishing - renewal risk",
+        "start": "2024-03-11T14:00:00-05:00",
+        "end": "2024-03-15T16:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Tom Rodriguez",
+            "email": "tom.rodriguez@microsoft.com"
+          },
+          {
+            "name": "Laura Anderson",
+            "email": "laura.anderson@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-tenure-senior",
+    "data-stale",
+    "persona-segment-smb-corporate",
+    "persona-geo-na"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "meeting-prep",
+      "contact-stakeholder-map"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "pre-meeting-brief",
+    "required_artifacts": [
+      "One-page brief with attendee context",
+      "account snapshot",
+      "talking points",
+      "likely objections",
+      "open items from last meeting"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF11-L trap (Draft-only posture delays time-sensitive sends); produces complete One-page brief with attendee context, account snapshot, talking points, likely objections, open item",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF11-L failure pattern",
+      "Score 1: Output exhibits the full FM-WF11-L failure mode (Draft-only posture delays time-sensitive sends)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct renewal risk decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF11-L -- Draft-only posture delays time-sensitive sends",
+    "Guardrail axis scored neutrally -- focus on whether output served the user's actual need"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

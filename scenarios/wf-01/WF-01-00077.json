@@ -1,0 +1,135 @@
+{
+  "scenario_id": "WF-01-00077",
+  "workflow_id": "WF-01",
+  "workflow_name": "Monday Morning Portfolio Triage",
+  "seed": 100119,
+  "tier": 3,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": "FM-WF01-K",
+  "persona": "Manager",
+  "fixture_id": "FX-047",
+  "user_message": "[AUTOMATION TRIGGER] System detected Scheduled run before user's first Monday meeting; or on-dema for account Evergreen Solutions. Generating output.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Evergreen Solutions",
+        "account_id": "ACC-S7KJN805",
+        "opportunities": [
+          {
+            "name": "Evergreen Azure AI Services",
+            "stage": "Qualify",
+            "amount": 175000,
+            "close_date": "2024-12-26"
+          }
+        ],
+        "acr_current": 19865.64,
+        "health_flag": "Healthy",
+        "owner": "David Chen"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Evergreen Solutions - escalation triage",
+        "start": "2024-03-11T09:00:00-05:00",
+        "end": "2024-03-13T10:00:00-05:00",
+        "attendees": [
+          {
+            "name": "David Chen",
+            "email": "david.chen@microsoft.com"
+          },
+          {
+            "name": "Samantha Okafor",
+            "email": "samantha.okafor@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "deployment_blocker",
+            "detail": "Signal detected for Evergreen Solutions: the migration can proceed in phases to reduce risk",
+            "date": "2024-03-11"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-09T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-tenure-junior",
+    "persona-role-manager"
+  ],
+  "expected_routing": {
+    "entry_skill": "portfolio-account-planning-coach",
+    "modules": [
+      "daily-weekly-planning",
+      "account-health-prioritization"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "customer-meeting-prep-outreach-coach",
+        "condition": "customer meetings exist this week"
+      },
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "stale records detected"
+      },
+      {
+        "target_skill": "acr-signal-to-opportunity-coach",
+        "condition": "ACR signals match top accounts"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "monday-morning-portfolio-triage",
+    "required_artifacts": [
+      "Top 5-10 accounts ranked by urgency x impact",
+      "reason per account",
+      "named next action with owner",
+      "time-block plan for the week",
+      "populated handoff queue"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF01-K trap (Prioritization rubric weights all five factors equally when severity should domi); produces complete Top 5-10 accounts ranked by urgency x impact, reason per account, named next action with owner, time",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF01-K failure pattern",
+      "Score 1: Output exhibits the full FM-WF01-K failure mode (Prioritization rubric weights all five factors equally when severity should domi)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct escalation triage decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF01-K -- Prioritization rubric weights all five factors equally when severity should domi",
+    "Guardrail axis scored neutrally -- focus on whether output served the user's actual need"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

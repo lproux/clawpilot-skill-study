@@ -1,0 +1,150 @@
+{
+  "scenario_id": "WF-14-00066",
+  "workflow_id": "WF-14",
+  "workflow_name": "Stakeholder Map Generation",
+  "seed": 1400108,
+  "tier": 1,
+  "intent": "happy",
+  "targeted_failure_mode": null,
+  "persona": "CSA",
+  "fixture_id": "FX-025",
+  "user_message": "This just came in from Laura Nguyen at Adatum Corporation. Can you prep a brief?",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Adatum Corporation",
+        "account_id": "ACC-ELNED368",
+        "opportunities": [
+          {
+            "name": "Adatum Azure Virtual Desktop",
+            "stage": "Qualify",
+            "amount": 175000,
+            "close_date": "2023-12-18"
+          },
+          {
+            "name": "Adatum Azure SQL Migration",
+            "stage": "Close",
+            "amount": 125000,
+            "close_date": "2024-10-09"
+          },
+          {
+            "name": "Adatum Azure Arc Deployment",
+            "stage": "Propose",
+            "amount": 210000,
+            "close_date": "2024-12-01"
+          }
+        ],
+        "acr_current": 14124.54,
+        "health_flag": "At Risk",
+        "owner": "Raj Mehta"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Laura Nguyen <laura.nguyen@adatumcorpor.com>\nTo: Raj Mehta <raj.mehta@microsoft.com>\nDate: 2024-03-10 16:56 EST\nSubject: Re: Re: security posture Timeline\n\nOur team encountered some challenges with security posture. Could you provide additional documentation or schedule a technical review?\n\n---\nFrom: Raj Mehta <raj.mehta@microsoft.com>\nTo: Laura Nguyen <laura.nguyen@adatumcorpor.com>\nDate: 2024-02-15 16:27 EST\nSubject: URGENT: security posture Issue at Adatum Corporation\n\nWe've been evaluating the options and have decided to proceed with security posture. What are the next steps from your side?\n\n---\nFrom: Laura Nguyen <laura.nguyen@adatumcorpor.com>\nTo: Raj Mehta <raj.mehta@microsoft.com>\nDate: 2024-01-04 10:18 EST\nSubject: URGENT: security posture Issue at Adatum Corporation\n\nOur team encountered some challenges with security posture. Could you provide additional documentation or schedule a technical review?",
+      "metadata": {
+        "freshness": "2024-02-16T08:00:00-05:00",
+        "source": "outlook",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: security posture Discussion - Adatum Corporation\nDate: 2024-01-16\nDuration: 45 minutes\nAttendees: Laura Nguyen (Adatum Corporation), Raj Mehta (Microsoft), Michelle (Adatum Corporation)\n\n[00:01:15] Laura Nguyen (Adatum Corporation): Appreciate everyone making time. The main agenda today is security posture.\n\n[00:06:00] Michelle (Adatum Corporation): On the security posture front, we've made progress but there are still blockers around data residency.\n\n[00:09:00] Michelle (Adatum Corporation): Let me add some context -- we've been working on security compliance and found that the current vendor contract has a 90-day exit clause we need to plan around.\n\n[00:14:00] Michelle (Adatum Corporation): Our director reviewed this and has concerns about timeline constraints. Can we address those?\n\n[00:19:00] Laura Nguyen (Adatum Corporation): On the security posture front, we've made progress but there are still blockers around cost optimization.\n\n[00:21:00] Michelle (Adatum Corporation): The timeline for stakeholder alignment is aggressive. We need to validate the assumptions.\n\n[00:23:00] Michelle (Adatum Corporation): The timeline for resource allocation is aggressive. We need to validate the assumptions.\n\n[00:28:00] Michelle (Adatum Corporation): The timeline for data residency is aggressive. We need to validate the assumptions.",
+      "metadata": {
+        "freshness": "2024-01-25T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "mixed",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Adatum Corporation - security posture",
+        "start": "2024-03-15T10:00:00-05:00",
+        "end": "2024-03-12T13:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Raj Mehta",
+            "email": "raj.mehta@microsoft.com"
+          },
+          {
+            "name": "Laura Nguyen",
+            "email": "laura.nguyen@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "security_alert",
+            "detail": "Signal detected for Adatum Corporation: there's a dependency on the security team's review that could delay us",
+            "date": "2024-03-05"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-10T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-geo-na",
+    "persona-role-csa",
+    "data-stale"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "contact-stakeholder-map"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "stakeholder-map-generation",
+    "required_artifacts": [
+      "Stakeholder map with roles (decision-maker",
+      "influencer",
+      "champion",
+      "blocker)",
+      "recency labels"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Complete, well-structured output matching the Stakeholder Map Generation template with all required artifacts present and actionable",
+      "Score 3: Output covers main requirements but missing one or two secondary artifacts or lacking specificity",
+      "Score 1: Output is generic, missing key artifacts, or fails to address the specific request"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct security posture decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

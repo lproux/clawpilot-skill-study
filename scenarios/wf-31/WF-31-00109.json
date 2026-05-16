@@ -1,0 +1,102 @@
+{
+  "scenario_id": "WF-31-00109",
+  "workflow_id": "WF-31",
+  "workflow_name": "SL4 Customer 360 Forecast Roll-Up",
+  "seed": 3100151,
+  "tier": 3,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": "FM-WF31-K",
+  "persona": "DSSP",
+  "fixture_id": "FX-011",
+  "user_message": "Can you extract the forecast prep from this email thread for Alpine Ski House? We had a deep-dive last month -- need the follow-up.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Alpine Ski House",
+        "account_id": "ACC-UIKNWGJ7",
+        "opportunities": [
+          {
+            "name": "Alpine Azure Virtual Desktop",
+            "stage": "Propose",
+            "amount": 560000,
+            "close_date": "2023-12-14"
+          }
+        ],
+        "acr_current": 115928.19,
+        "health_flag": "At Risk",
+        "owner": "Marcus Williams"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "consumption_decline",
+            "detail": "Signal detected for Alpine Ski House: there's a compliance requirement we hadn't accounted for in the original scope",
+            "date": "2024-03-05"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-09T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-geo-apac",
+    "persona-role-dssp"
+  ],
+  "expected_routing": {
+    "entry_skill": "forecast-business-review-coach",
+    "modules": [
+      "committed-milestone-forecast"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "solution-value-design-coach",
+        "condition": "Customer 360 unavailable, Kusto BI fallback needed"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "sl4-customer-360-forecast-roll-up",
+    "required_artifacts": [
+      "SL4-level forecast rollup with source attribution",
+      "hierarchy alignment",
+      "period boundary reconciliation"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF31-K trap (Rigid Customer-360-first policy fails when BI is known to have fresher data); produces complete SL4-level forecast rollup with source attribution, hierarchy alignment, period boundary reconciliati",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF31-K failure pattern",
+      "Score 1: Output exhibits the full FM-WF31-K failure mode (Rigid Customer-360-first policy fails when BI is known to have fresher data)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct forecast prep decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF31-K -- Rigid Customer-360-first policy fails when BI is known to have fresher data",
+    "Guardrail axis scored neutrally -- focus on whether output served the user's actual need"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

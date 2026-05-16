@@ -1,0 +1,119 @@
+{
+  "scenario_id": "WF-07-00176",
+  "workflow_id": "WF-07",
+  "workflow_name": "SPA Triage Friday",
+  "seed": 700218,
+  "tier": 2,
+  "intent": "design-redesign",
+  "targeted_failure_mode": "FM-WF07-I",
+  "persona": "Manager",
+  "fixture_id": "FX-045",
+  "user_message": "[AUTOMATION TRIGGER] Daily automation: Friday scheduled automation for SPA batch triage. Account: Azure Ridge Partners.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Azure Ridge Partners",
+        "account_id": "ACC-URB6CCFS",
+        "opportunities": [
+          {
+            "name": "Azure Cloud Migration Phase",
+            "stage": "Develop",
+            "amount": 210000,
+            "close_date": "2024-09-05"
+          },
+          {
+            "name": "Azure Cloud Migration Phase",
+            "stage": "Close",
+            "amount": 560000,
+            "close_date": "2024-10-05"
+          },
+          {
+            "name": "Azure Intune Rollout",
+            "stage": "Develop",
+            "amount": 280000,
+            "close_date": "2024-10-01"
+          }
+        ],
+        "acr_current": 189461.39,
+        "health_flag": "Unknown",
+        "owner": "Raj Mehta"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "consumption_decline",
+            "detail": "Signal detected for Azure Ridge Partners: there's a dependency on the security team's review that could delay us",
+            "date": "2024-03-11"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-10T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-segment-smb-mid",
+    "persona-geo-emea",
+    "routing-clear"
+  ],
+  "expected_routing": {
+    "entry_skill": "acr-signal-to-opportunity-coach",
+    "modules": [
+      "spa-recommendation-triage",
+      "signal-to-opportunity"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "accepted SPA creates opportunity needing MSX write"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "spa-triage-friday",
+    "required_artifacts": [
+      "Per-SPA disposition (accept/decline/escalate) with rationale",
+      "proposed opportunities for accepted SPAs"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF07-I trap (SPA triage and opportunity creation should be tighter loop); produces complete Per-SPA disposition (accept/decline/escalate) with rationale, proposed opportunities for accepted SP",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF07-I failure pattern",
+      "Score 1: Output exhibits the full FM-WF07-I failure mode (SPA triage and opportunity creation should be tighter loop)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct partner engagement decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF07-I -- SPA triage and opportunity creation should be tighter loop",
+    "Produce structural verdict on whether current routing adequately serves this scenario"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "verdict-on-structural",
+    "verdict_required_axes": [
+      "routing",
+      "evidence"
+    ]
+  }
+}

@@ -1,0 +1,135 @@
+{
+  "scenario_id": "WF-11-00303",
+  "workflow_id": "WF-11",
+  "workflow_name": "Pre-Meeting Brief",
+  "seed": 1100345,
+  "tier": 2,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF11-B",
+  "persona": "CSA",
+  "fixture_id": "FX-049",
+  "user_message": "Can you pull the context on Iron Creek Mining? I need to draft the follow-up.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Iron Creek Mining",
+        "account_id": "ACC-WVPLFPK6",
+        "opportunities": [
+          {
+            "name": "Iron Azure DevOps",
+            "stage": "Qualify",
+            "amount": 350000,
+            "close_date": "2024-10-28"
+          },
+          {
+            "name": "Iron Azure Virtual Desktop",
+            "stage": "Develop",
+            "amount": 280000,
+            "close_date": "2024-06-02"
+          },
+          {
+            "name": "Iron Azure SQL Migration",
+            "stage": "Qualify",
+            "amount": 68000,
+            "close_date": "2024-05-06"
+          }
+        ],
+        "acr_current": 10924.12,
+        "health_flag": "Healthy",
+        "owner": "Tom Rodriguez"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Karen Berg <karen.berg@ironcreekmin.com>\nTo: Tom Rodriguez <tom.rodriguez@microsoft.com>\nDate: 2024-03-25 16:14 EST\nSubject: Quarterly Update: Iron Creek Mining whitespace analysis\n\nOur team encountered some challenges with whitespace analysis. Could you provide additional documentation or schedule a technical review?\n\n---\nFrom: Tom Rodriguez <tom.rodriguez@microsoft.com>\nTo: Karen Berg <karen.berg@ironcreekmin.com>\nDate: 2024-02-15 09:17 EST\nSubject: Re: Re: whitespace analysis Timeline\n\nOur team encountered some challenges with whitespace analysis. Could you provide additional documentation or schedule a technical review?\n\n---\nFrom: Karen Berg <karen.berg@ironcreekmin.com>\nTo: Tom Rodriguez <tom.rodriguez@microsoft.com>\nDate: 2024-01-02 16:32 EST\nSubject: whitespace analysis - Action Required\n\nWe've been evaluating the options and have decided to proceed with whitespace analysis. What are the next steps from your side?",
+      "metadata": {
+        "freshness": "2024-03-27T15:00:00-05:00",
+        "source": "outlook",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: whitespace analysis Discussion - Iron Creek Mining\nDate: 2024-02-11\nDuration: 45 minutes\nAttendees: Karen Berg (Iron Creek Mining), Tom Rodriguez (Microsoft)\n\n[00:01:30] Karen Berg (Iron Creek Mining): Thanks everyone for joining. Let's dive into whitespace analysis.\n\n[00:06:00] Tom Rodriguez (Microsoft): Let me add some context -- we've been working on budget approval and found that the migration can proceed in phases to reduce risk.\n\n[00:11:00] Karen Berg (Iron Creek Mining): I agree with that assessment. From our side, the main concern is budget approval.\n\n[00:13:00] Tom Rodriguez (Microsoft): The timeline for vendor dependencies is aggressive. We need to validate the assumptions.\n\n[00:16:00] Karen Berg (Iron Creek Mining): Our team lead reviewed this and has concerns about timeline constraints. Can we address those?\n\n[00:19:00] Karen Berg (Iron Creek Mining): Our team lead reviewed this and has concerns about data residency. Can we address those?\n\n[00:21:00] Karen Berg (Iron Creek Mining): Let me add some context -- we've been working on stakeholder alignment and found that there's a compliance requirement we hadn't accounted for in the original scope.\n\n[00:24:00] Karen Berg (Iron Creek Mining): Our VP reviewed this and has concerns about budget approval. Can we address those?\n\n[00:26:00] Karen Berg (Iron Creek Mining): Our architect reviewed this and has concerns about vendor dependencies. Can we address those?\n\n[00:30:00] Karen Berg (Iron Creek Mining): The timeline for vendor dependencies is aggressive. We need to validate the assumptions.\n\n[00:34:00] Karen Berg (Iron Creek Mining): The timeline for vendor dependencies is aggressive. We need to validate the assumptions.",
+      "metadata": {
+        "freshness": "2024-02-02T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "mixed",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Iron Creek Mining - whitespace analysis",
+        "start": "2024-03-12T13:00:00-05:00",
+        "end": "2024-03-12T15:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Tom Rodriguez",
+            "email": "tom.rodriguez@microsoft.com"
+          },
+          {
+            "name": "Karen Berg",
+            "email": "karen.berg@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-segment-smb-small",
+    "persona-tenure-mid"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "meeting-prep",
+      "contact-stakeholder-map"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "pre-meeting-brief",
+    "required_artifacts": [
+      "One-page brief with attendee context",
+      "account snapshot",
+      "talking points",
+      "likely objections",
+      "open items from last meeting"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF11-B trap (Exposes raw email/chat content in customer-facing language); produces complete One-page brief with attendee context, account snapshot, talking points, likely objections, open item",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF11-B failure pattern",
+      "Score 1: Output exhibits the full FM-WF11-B failure mode (Exposes raw email/chat content in customer-facing language)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct whitespace analysis decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF11-B -- Exposes raw email/chat content in customer-facing language"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

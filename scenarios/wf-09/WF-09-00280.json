@@ -1,0 +1,123 @@
+{
+  "scenario_id": "WF-09-00280",
+  "workflow_id": "WF-09",
+  "workflow_name": "Consumption-at-Risk Watchlist",
+  "seed": 900322,
+  "tier": 3,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": "FM-WF09-L",
+  "persona": "DSSP",
+  "fixture_id": "FX-003",
+  "user_message": "[AUTOMATION TRIGGER] Daily automation: Daily automated watchlist generation or on-demand 'which acc. Account: Northwind Traders.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Northwind Traders",
+        "account_id": "ACC-X86FSRU2",
+        "opportunities": [
+          {
+            "name": "Northwind Azure Arc Deployment",
+            "stage": "Propose",
+            "amount": 89000,
+            "close_date": "2024-09-05"
+          },
+          {
+            "name": "Northwind Copilot Adoption",
+            "stage": "Develop",
+            "amount": 175000,
+            "close_date": "2024-06-22"
+          },
+          {
+            "name": "Northwind Intune Rollout",
+            "stage": "Close",
+            "amount": 350000,
+            "close_date": "2024-04-19"
+          }
+        ],
+        "acr_current": 54067.74,
+        "health_flag": "Healthy",
+        "owner": "Ahmed Hassan"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "contract_event",
+            "detail": "Signal detected for Northwind Traders: the cost projections need to factor in reserved instance pricing for accuracy",
+            "date": "2024-03-10"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-10T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "signal-strength-noisy",
+    "persona-geo-na",
+    "persona-tenure-senior",
+    "data-fresh"
+  ],
+  "expected_routing": {
+    "entry_skill": "acr-signal-to-opportunity-coach",
+    "modules": [
+      "acr-data-access",
+      "acr-health-forecast"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "at-risk account has stale records"
+      },
+      {
+        "target_skill": "customer-meeting-prep-outreach-coach",
+        "condition": "outreach needed for at-risk account"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "consumption-at-risk-watchlist",
+    "required_artifacts": [
+      "Prioritized watchlist (max 15 accounts) with risk driver",
+      "confidence",
+      "recovery actions",
+      "delta from yesterday",
+      "owner per account"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF09-L trap (15-account cap suppresses tail risk); produces complete Prioritized watchlist (max 15 accounts) with risk driver, confidence, recovery actions, delta from y",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF09-L failure pattern",
+      "Score 1: Output exhibits the full FM-WF09-L failure mode (15-account cap suppresses tail risk)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct territory planning decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF09-L -- 15-account cap suppresses tail risk",
+    "Guardrail axis scored neutrally -- focus on whether output served the user's actual need"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

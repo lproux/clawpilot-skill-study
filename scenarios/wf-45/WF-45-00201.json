@@ -1,0 +1,133 @@
+{
+  "scenario_id": "WF-45-00201",
+  "workflow_id": "WF-45",
+  "workflow_name": "QBR Transcript -> Health + Whitespace + Renewal Risk",
+  "seed": 4500243,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF45-A",
+  "persona": "CSA",
+  "fixture_id": "FX-045",
+  "user_message": "Thomas Okafor at Azure Ridge Partners just sent this. Help me build the analysis.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Azure Ridge Partners",
+        "account_id": "ACC-URB6CCFS",
+        "opportunities": [
+          {
+            "name": "Azure Cloud Migration Phase",
+            "stage": "Develop",
+            "amount": 210000,
+            "close_date": "2024-09-05"
+          },
+          {
+            "name": "Azure Cloud Migration Phase",
+            "stage": "Close",
+            "amount": 560000,
+            "close_date": "2024-10-05"
+          },
+          {
+            "name": "Azure Intune Rollout",
+            "stage": "Develop",
+            "amount": 280000,
+            "close_date": "2024-10-01"
+          }
+        ],
+        "acr_current": 189461.39,
+        "health_flag": "Unknown",
+        "owner": "Raj Mehta"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: competitive positioning Discussion - Azure Ridge Partners\nDate: 2024-03-03\nDuration: 45 minutes\nAttendees: Thomas Okafor (Azure Ridge Partners), Raj Mehta (Microsoft), Priya (Azure Ridge Partners)\n\n[00:02:00] Thomas Okafor (Azure Ridge Partners): Good morning. I wanted to follow up on competitive positioning from our last session.\n\n[00:08:00] Raj Mehta (Microsoft): I agree with that assessment. From our side, the main concern is vendor dependencies.\n\n[00:11:00] Raj Mehta (Microsoft): Our team lead reviewed this and has concerns about integration complexity. Can we address those?\n\n[00:15:00] Raj Mehta (Microsoft): Let me add some context -- we've been working on performance requirements and found that there's a compliance requirement we hadn't accounted for in the original scope.\n\n[00:19:00] Thomas Okafor (Azure Ridge Partners): The timeline for performance requirements is aggressive. We need to validate the assumptions.\n\n[00:23:00] Raj Mehta (Microsoft): Our VP reviewed this and has concerns about resource allocation. Can we address those?\n\n[00:26:00] Raj Mehta (Microsoft): Let me add some context -- we've been working on timeline constraints and found that there's a compliance requirement we hadn't accounted for in the original scope.\n\n[00:28:00] Raj Mehta (Microsoft): Our architect reviewed this and has concerns about budget approval. Can we address those?\n\n[00:32:00] Raj Mehta (Microsoft): The timeline for data residency is aggressive. We need to validate the assumptions.\n\n[00:37:00] Raj Mehta (Microsoft): On the competitive positioning front, we've made progress but there are still blockers around vendor dependencies.",
+      "metadata": {
+        "freshness": "2024-03-04T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "contract_event",
+            "detail": "Signal detected for Azure Ridge Partners: the existing infrastructure won't support the target workload without upgrades",
+            "date": "2024-03-07"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-10T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-tenure-mid",
+    "persona-geo-emea"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "portfolio-account-planning-coach",
+        "condition": "health assessment needed"
+      },
+      {
+        "target_skill": "acr-signal-to-opportunity-coach",
+        "condition": "whitespace signals warrant investigation"
+      },
+      {
+        "target_skill": "forecast-business-review-coach",
+        "condition": "renewal risk affects forecast"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "qbr-transcript-->-health-+-whitespace-+-renewal-ri",
+    "required_artifacts": [
+      "Health delta assessment",
+      "whitespace hypotheses",
+      "renewal risk with confidence",
+      "action distribution with owners",
+      "comparison to last QBR commitments"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF45-A trap (Health delta stated without QBR-moment evidence); produces complete Health delta assessment, whitespace hypotheses, renewal risk with confidence, action distribution wi",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF45-A failure pattern",
+      "Score 1: Output exhibits the full FM-WF45-A failure mode (Health delta stated without QBR-moment evidence)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct competitive positioning decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF45-A -- Health delta stated without QBR-moment evidence"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

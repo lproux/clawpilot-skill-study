@@ -1,0 +1,146 @@
+{
+  "scenario_id": "WF-32-00277",
+  "workflow_id": "WF-32",
+  "workflow_name": "Calendar Pre-Pack Automation",
+  "seed": 3200319,
+  "tier": 4,
+  "intent": "happy",
+  "targeted_failure_mode": null,
+  "persona": "DSSP",
+  "fixture_id": "FX-047",
+  "user_message": "[AUTOMATION TRIGGER] Daily automation: Calendar event with non-Microsoft external attendee detected. Account: Evergreen Solutions.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Evergreen Solutions",
+        "account_id": "ACC-S7KJN805",
+        "opportunities": [
+          {
+            "name": "Evergreen Azure AI Services",
+            "stage": "Qualify",
+            "amount": 175000,
+            "close_date": "2024-12-26"
+          }
+        ],
+        "acr_current": 19865.64,
+        "health_flag": "Healthy",
+        "owner": "David Chen"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Samantha Okafor <samantha.okafor@evergreensol.com>\nTo: David Chen <david.chen@microsoft.com>\nDate: 2024-03-12 12:24 EST\nSubject: escalation triage - Action Required\n\nWe've been evaluating the options and have decided to proceed with escalation triage. What are the next steps from your side?\n\n---\nFrom: David Chen <david.chen@microsoft.com>\nTo: Samantha Okafor <samantha.okafor@evergreensol.com>\nDate: 2024-02-21 13:07 EST\nSubject: Quarterly Update: Evergreen Solutions escalation triage\n\nOur team encountered some challenges with escalation triage. Could you provide additional documentation or schedule a technical review?\n\n---\nFrom: Samantha Okafor <samantha.okafor@evergreensol.com>\nTo: David Chen <david.chen@microsoft.com>\nDate: 2024-01-10 12:01 EST\nSubject: URGENT: escalation triage Issue at Evergreen Solutions\n\nI wanted to follow up on our conversation about escalation triage. Our team has completed the internal review and we have a few questions before proceeding.",
+      "metadata": {
+        "freshness": "2024-03-06T14:00:00-05:00",
+        "source": "outlook",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: escalation triage Discussion - Evergreen Solutions\nDate: 2024-03-14\nDuration: 45 minutes\nAttendees: Samantha Okafor (Evergreen Solutions), David Chen (Microsoft), David (Evergreen Solutions)\n\n[00:01:30] Samantha Okafor (Evergreen Solutions): Thanks everyone for joining. Let's dive into escalation triage.\n\n[00:06:00] Samantha Okafor (Evergreen Solutions): Let me add some context -- we've been working on timeline constraints and found that the migration can proceed in phases to reduce risk.\n\n[00:09:00] David Chen (Microsoft): On the escalation triage front, we've made progress but there are still blockers around integration complexity.\n\n[00:14:00] Samantha Okafor (Evergreen Solutions): The timeline for timeline constraints is aggressive. We need to validate the assumptions.\n\n[00:18:00] Samantha Okafor (Evergreen Solutions): I agree with that assessment. From our side, the main concern is resource allocation.\n\n[00:22:00] Samantha Okafor (Evergreen Solutions): I agree with that assessment. From our side, the main concern is security compliance.\n\n[00:26:00] David Chen (Microsoft): On the escalation triage front, we've made progress but there are still blockers around budget approval.\n\n[00:29:00] Samantha Okafor (Evergreen Solutions): I agree with that assessment. From our side, the main concern is integration complexity.",
+      "metadata": {
+        "freshness": "2024-01-04T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "mixed",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Evergreen Solutions - escalation triage",
+        "start": "2024-03-11T10:00:00-05:00",
+        "end": "2024-03-11T14:00:00-05:00",
+        "attendees": [
+          {
+            "name": "David Chen",
+            "email": "david.chen@microsoft.com"
+          },
+          {
+            "name": "Samantha Okafor",
+            "email": "samantha.okafor@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "deployment_blocker",
+            "detail": "Signal detected for Evergreen Solutions: the existing infrastructure won't support the target workload without upgrades",
+            "date": "2024-03-08"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-tenure-mid",
+    "persona-role-dssp",
+    "routing-clear"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "meeting-prep",
+      "contact-stakeholder-map",
+      "email-chat-context"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "portfolio-account-planning-coach",
+        "condition": "meeting is for account CSA should have declined"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "calendar-pre-pack-automation",
+    "required_artifacts": [
+      "Pre-pack brief with attendee context",
+      "account snapshot",
+      "talking points",
+      "likely objections",
+      "open items"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Complete, well-structured output matching the Calendar Pre-Pack Automation template with all required artifacts present and actionable",
+      "Score 3: Output covers main requirements but missing one or two secondary artifacts or lacking specificity",
+      "Score 1: Output is generic, missing key artifacts, or fails to address the specific request"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct escalation triage decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

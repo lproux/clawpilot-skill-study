@@ -1,0 +1,108 @@
+{
+  "scenario_id": "WF-49-00064",
+  "workflow_id": "WF-49",
+  "workflow_name": "Workshop Transcript -> ECIF + Partner + Follow-up",
+  "seed": 4900106,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF49-H",
+  "persona": "DSSP",
+  "fixture_id": "FX-021",
+  "user_message": "Can you extract the forecast prep from this meeting transcript for Nod Publishers? I think there's an opportunity here but need to validate.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Nod Publishers",
+        "account_id": "ACC-BFJJI6LY",
+        "opportunities": [
+          {
+            "name": "Nod Azure SQL Migration",
+            "stage": "Close",
+            "amount": 45000,
+            "close_date": "2023-10-06"
+          },
+          {
+            "name": "Nod Intune Rollout",
+            "stage": "Develop",
+            "amount": 560000,
+            "close_date": "2024-12-16"
+          }
+        ],
+        "acr_current": 111088.58,
+        "health_flag": "At Risk",
+        "owner": "Marcus Williams"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: forecast prep Discussion - Nod Publishers\nDate: 2024-01-21\nDuration: 45 minutes\nAttendees: Samantha Singh (Nod Publishers), Marcus Williams (Microsoft), Kevin (Nod Publishers)\n\n[00:02:00] Samantha Singh (Nod Publishers): Good morning. I wanted to follow up on forecast prep from our last session.\n\n[00:07:00] Kevin (Nod Publishers): Let me add some context -- we've been working on data residency and found that the current vendor contract has a 90-day exit clause we need to plan around.\n\n[00:11:00] Marcus Williams (Microsoft): Let me add some context -- we've been working on vendor dependencies and found that there's a compliance requirement we hadn't accounted for in the original scope.\n\n[00:14:00] Samantha Singh (Nod Publishers): Our team lead reviewed this and has concerns about stakeholder alignment. Can we address those?\n\n[00:16:00] Kevin (Nod Publishers): On the forecast prep front, we've made progress but there are still blockers around performance requirements.\n\n[00:21:00] Samantha Singh (Nod Publishers): Let me add some context -- we've been working on technical validation and found that the existing infrastructure won't support the target workload without upgrades.\n\n[00:26:00] Kevin (Nod Publishers): Let me add some context -- we've been working on budget approval and found that there's a dependency on the security team's review that could delay us.\n\n[00:29:00] Samantha Singh (Nod Publishers): The timeline for performance requirements is aggressive. We need to validate the assumptions.",
+      "metadata": {
+        "freshness": "2024-01-15T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "medium"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-geo-apac",
+    "data-stale",
+    "persona-tenure-senior"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "funding-partner-activation-coach",
+        "condition": "ECIF workscope or partner engagement warranted"
+      },
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "milestone updates warranted"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "workshop-transcript-->-ecif-+-partner-+-follow-up",
+    "required_artifacts": [
+      "Workshop recap",
+      "ECIF workscope draft (if warranted)",
+      "partner plan",
+      "follow-up items with owners",
+      "milestone update proposals"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF49-H trap (Invents customer-side approvers); produces complete Workshop recap, ECIF workscope draft (if warranted), partner plan, follow-up items with owners, mile",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF49-H failure pattern",
+      "Score 1: Output exhibits the full FM-WF49-H failure mode (Invents customer-side approvers)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct forecast prep decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF49-H -- Invents customer-side approvers"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

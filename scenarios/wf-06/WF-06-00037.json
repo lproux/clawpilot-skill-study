@@ -1,0 +1,115 @@
+{
+  "scenario_id": "WF-06-00037",
+  "workflow_id": "WF-06",
+  "workflow_name": "ACR Decline Investigation",
+  "seed": 600079,
+  "tier": 3,
+  "intent": "design-redesign",
+  "targeted_failure_mode": "FM-WF06-M",
+  "persona": "DSSP",
+  "fixture_id": "FX-017",
+  "user_message": "Can you extract the partner engagement from this support ticket for Humongous Insurance? ",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Humongous Insurance",
+        "account_id": "ACC-3AB2FT8E",
+        "opportunities": [
+          {
+            "name": "Humongous Cloud Migration Phase",
+            "stage": "Qualify",
+            "amount": 175000,
+            "close_date": "2023-10-27"
+          }
+        ],
+        "acr_current": 73720.59,
+        "health_flag": "Healthy",
+        "owner": "David Chen"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "consumption_decline",
+            "detail": "Signal detected for Humongous Insurance: the migration can proceed in phases to reduce risk",
+            "date": "2024-03-11"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-10T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "routing-ambiguous-2skills",
+    "data-stale",
+    "persona-geo-latam",
+    "persona-role-dssp"
+  ],
+  "expected_routing": {
+    "entry_skill": "acr-signal-to-opportunity-coach",
+    "modules": [
+      "acr-data-access",
+      "acr-health-forecast",
+      "signal-to-opportunity"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "funding-partner-activation-coach",
+        "condition": "contract/billing is the driver"
+      },
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "opportunity records need updating"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "acr-decline-investigation",
+    "required_artifacts": [
+      "Ranked hypotheses for decline with evidence",
+      "recovery actions with owners",
+      "timeline",
+      "confidence labels"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF06-M trap (ACR-decline spans 3+ skills with no unified investigation primitive); produces complete Ranked hypotheses for decline with evidence, recovery actions with owners, timeline, confidence labe",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF06-M failure pattern",
+      "Score 1: Output exhibits the full FM-WF06-M failure mode (ACR-decline spans 3+ skills with no unified investigation primitive)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct partner engagement decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF06-M -- ACR-decline spans 3+ skills with no unified investigation primitive",
+    "Produce structural verdict on whether current routing adequately serves this scenario"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "verdict-on-structural",
+    "verdict_required_axes": [
+      "routing",
+      "evidence"
+    ]
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "scenario_id": "WF-47-00005",
+  "workflow_id": "WF-47",
+  "workflow_name": "Multi-Stakeholder Meeting Transcript -> Decision Distribution",
+  "seed": 4700047,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF47-D",
+  "persona": "Manager",
+  "fixture_id": "FX-003",
+  "user_message": "I need you to process this email thread from Northwind Traders. I met with them last week but can't remember the details.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Northwind Traders",
+        "account_id": "ACC-X86FSRU2",
+        "opportunities": [
+          {
+            "name": "Northwind Azure Arc Deployment",
+            "stage": "Propose",
+            "amount": 89000,
+            "close_date": "2024-09-05"
+          },
+          {
+            "name": "Northwind Copilot Adoption",
+            "stage": "Develop",
+            "amount": 175000,
+            "close_date": "2024-06-22"
+          },
+          {
+            "name": "Northwind Intune Rollout",
+            "stage": "Close",
+            "amount": 350000,
+            "close_date": "2024-04-19"
+          }
+        ],
+        "acr_current": 54067.74,
+        "health_flag": "Healthy",
+        "owner": "Ahmed Hassan"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: whitespace analysis Discussion - Northwind Traders\nDate: 2024-03-05\nDuration: 45 minutes\nAttendees: Sandra Taylor (Northwind Traders), Ahmed Hassan (Microsoft)\n\n[00:01:30] Sandra Taylor (Northwind Traders): Thanks everyone for joining. Let's dive into whitespace analysis.\n\n[00:06:00] Sandra Taylor (Northwind Traders): Our director reviewed this and has concerns about stakeholder alignment. Can we address those?\n\n[00:08:00] Sandra Taylor (Northwind Traders): Our VP reviewed this and has concerns about performance requirements. Can we address those?\n\n[00:12:00] Sandra Taylor (Northwind Traders): I agree with that assessment. From our side, the main concern is technical validation.\n\n[00:14:00] Ahmed Hassan (Microsoft): Our team lead reviewed this and has concerns about timeline constraints. Can we address those?\n\n[00:18:00] Ahmed Hassan (Microsoft): The timeline for timeline constraints is aggressive. We need to validate the assumptions.\n\n[00:21:00] Sandra Taylor (Northwind Traders): I agree with that assessment. From our side, the main concern is resource allocation.\n\n[00:24:00] Sandra Taylor (Northwind Traders): I agree with that assessment. From our side, the main concern is timeline constraints.\n\n[00:27:00] Sandra Taylor (Northwind Traders): Our team lead reviewed this and has concerns about vendor dependencies. Can we address those?\n\n[00:30:00] Ahmed Hassan (Microsoft): Our director reviewed this and has concerns about budget approval. Can we address those?\n\n[00:32:00] Sandra Taylor (Northwind Traders): On the whitespace analysis front, we've made progress but there are still blockers around vendor dependencies.",
+      "metadata": {
+        "freshness": "2024-03-03T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "long"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-tenure-junior",
+    "persona-geo-na",
+    "signal-strength-faint",
+    "data-fresh"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions",
+      "contact-stakeholder-map"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "MSX updates warranted from decisions"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "multi-stakeholder-meeting-transcript-->-decision-d",
+    "required_artifacts": [
+      "Decision log with speaker attribution",
+      "action distribution by role",
+      "stakeholder map delta",
+      "MSX update proposals",
+      "due dates extracted"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF47-D trap (Actions distributed to wrong role); produces complete Decision log with speaker attribution, action distribution by role, stakeholder map delta, MSX updat",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF47-D failure pattern",
+      "Score 1: Output exhibits the full FM-WF47-D failure mode (Actions distributed to wrong role)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct whitespace analysis decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF47-D -- Actions distributed to wrong role"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

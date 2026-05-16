@@ -1,0 +1,123 @@
+{
+  "scenario_id": "WF-37-91037",
+  "workflow_id": "WF-37",
+  "workflow_name": "Customer Outage/Complaint Email -> Triage + Escalation",
+  "seed": 9901079,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": null,
+  "persona": "DSSP",
+  "fixture_id": "FX-030",
+  "user_message": "Pulling in context from First Up Consultants's exec meeting notes -- need to prep a brief for the territory planning.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "First Up Consultants",
+        "account_id": "ACC-M3ON3CTQ",
+        "opportunities": [
+          {
+            "name": "First M365 E5 Upsell",
+            "stage": "Develop",
+            "amount": 210000,
+            "close_date": "2024-12-12"
+          },
+          {
+            "name": "First Security Modernization",
+            "stage": "Develop",
+            "amount": 210000,
+            "close_date": "2024-07-15"
+          },
+          {
+            "name": "First Azure Arc Deployment",
+            "stage": "Develop",
+            "amount": 45000,
+            "close_date": "2024-09-18"
+          }
+        ],
+        "acr_current": 38672.15,
+        "health_flag": "Unknown",
+        "owner": "Michelle Park"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Michael Schmidt <michael.schmidt@firstupconsu.com>\nTo: Michelle Park <michelle.park@microsoft.com>\nDate: 2024-03-27 12:29 EST\nSubject: URGENT: territory planning Issue at First Up Consultants\n\nWe've been evaluating the options and have decided to proceed with territory planning. What are the next steps from your side?\n\n---\nFrom: Michelle Park <michelle.park@microsoft.com>\nTo: Michael Schmidt <michael.schmidt@firstupconsu.com>\nDate: 2024-02-12 16:26 EST\nSubject: Re: Re: territory planning Timeline\n\nThere's been a change in our timeline for territory planning. Can we discuss the implications on the overall project plan?\n\n---\nFrom: Michael Schmidt <michael.schmidt@firstupconsu.com>\nTo: Michelle Park <michelle.park@microsoft.com>\nDate: 2024-01-27 10:57 EST\nSubject: URGENT: territory planning Issue at First Up Consultants\n\nI wanted to follow up on our conversation about territory planning. Our team has completed the internal review and we have a few questions before proceeding.",
+      "metadata": {
+        "freshness": "2024-02-03T10:00:00-05:00",
+        "source": "outlook",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "security_alert",
+            "detail": "Signal detected for First Up Consultants: there's a compliance requirement we hadn't accounted for in the original scope",
+            "date": "2024-03-05"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-10T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "routing-ambiguous-2skills",
+    "persona-geo-apac",
+    "persona-role-dssp",
+    "cross-workflow-trigger"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "email-chat-context"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "acr-signal-to-opportunity-coach",
+        "condition": "outage impacts major workload ACR"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "adversarial-routing-test",
+    "required_artifacts": [
+      "correct_routing_justification",
+      "confusion_analysis"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Correctly routes to primary workflow despite adversarial signals; output is complete",
+      "Score 3: Routes correctly but output shows contamination from confusing signals",
+      "Score 1: Misroutes to wrong workflow or produces irrelevant output"
+    ],
+    "evidence_anchors": [
+      "Score 5: All evidence correctly attributed despite cross-workflow noise",
+      "Score 3: Some evidence misattributed but core facts correct",
+      "Score 1: Significant evidence confusion or hallucination"
+    ],
+    "decision_anchors": [
+      "Score 5: Decision-making robust against adversarial perturbations",
+      "Score 3: Primary decision correct but secondary decisions influenced by noise",
+      "Score 1: Primary decision compromised by adversarial inputs"
+    ]
+  },
+  "guardrail_checks": [
+    "Must correctly identify primary workflow despite adversarial routing signals",
+    "Must not hallucinate context from similar-sounding workflows",
+    "Must not expose internal routing logic to user"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

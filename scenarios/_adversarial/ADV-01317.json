@@ -1,0 +1,109 @@
+{
+  "scenario_id": "WF-47-91317",
+  "workflow_id": "WF-47",
+  "workflow_name": "Multi-Stakeholder Meeting Transcript -> Decision Distribution",
+  "seed": 9901359,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": null,
+  "persona": "DSSP",
+  "fixture_id": "FX-010",
+  "user_message": "Pulling in context from Trey Research's email thread -- need to map the stakeholders for the account health.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Trey Research",
+        "account_id": "ACC-5HZOG7IO",
+        "opportunities": [
+          {
+            "name": "Trey Security Modernization",
+            "stage": "Develop",
+            "amount": 280000,
+            "close_date": "2024-10-02"
+          },
+          {
+            "name": "Trey Azure Virtual Desktop",
+            "stage": "Develop",
+            "amount": 280000,
+            "close_date": "2024-08-19"
+          },
+          {
+            "name": "Trey Copilot Adoption",
+            "stage": "Close",
+            "amount": 450000,
+            "close_date": "2024-08-15"
+          }
+        ],
+        "acr_current": 39542.17,
+        "health_flag": "Healthy",
+        "owner": "Michelle Park"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: account health Discussion - Trey Research\nDate: 2024-01-21\nDuration: 45 minutes\nAttendees: Daniel Doyle (Trey Research), Michelle Park (Microsoft)\n\n[00:01:15] Daniel Doyle (Trey Research): Appreciate everyone making time. The main agenda today is account health.\n\n[00:07:00] Daniel Doyle (Trey Research): Our director reviewed this and has concerns about partner engagement. Can we address those?\n\n[00:11:00] Michelle Park (Microsoft): Let me add some context -- we've been working on performance requirements and found that the existing infrastructure won't support the target workload without upgrades.\n\n[00:13:00] Daniel Doyle (Trey Research): The timeline for stakeholder alignment is aggressive. We need to validate the assumptions.\n\n[00:17:00] Daniel Doyle (Trey Research): Our team lead reviewed this and has concerns about performance requirements. Can we address those?\n\n[00:22:00] Michelle Park (Microsoft): The timeline for security compliance is aggressive. We need to validate the assumptions.\n\n[00:27:00] Daniel Doyle (Trey Research): I agree with that assessment. From our side, the main concern is cost optimization.\n\n[00:30:00] Daniel Doyle (Trey Research): The timeline for data residency is aggressive. We need to validate the assumptions.\n\n[00:33:00] Michelle Park (Microsoft): I agree with that assessment. From our side, the main concern is integration complexity.\n\n[00:38:00] Michelle Park (Microsoft): Our CTO reviewed this and has concerns about technical validation. Can we address those?\n\n[00:41:00] Daniel Doyle (Trey Research): Our architect reviewed this and has concerns about timeline constraints. Can we address those?",
+      "metadata": {
+        "freshness": "2024-02-09T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "long"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-geo-apac",
+    "persona-segment-smb-corporate",
+    "persona-role-dssp",
+    "routing-trap"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions",
+      "contact-stakeholder-map"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "MSX updates warranted from decisions"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "adversarial-routing-test",
+    "required_artifacts": [
+      "correct_routing_justification",
+      "confusion_analysis"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Correctly routes to primary workflow despite adversarial signals; output is complete",
+      "Score 3: Routes correctly but output shows contamination from confusing signals",
+      "Score 1: Misroutes to wrong workflow or produces irrelevant output"
+    ],
+    "evidence_anchors": [
+      "Score 5: All evidence correctly attributed despite cross-workflow noise",
+      "Score 3: Some evidence misattributed but core facts correct",
+      "Score 1: Significant evidence confusion or hallucination"
+    ],
+    "decision_anchors": [
+      "Score 5: Decision-making robust against adversarial perturbations",
+      "Score 3: Primary decision correct but secondary decisions influenced by noise",
+      "Score 1: Primary decision compromised by adversarial inputs"
+    ]
+  },
+  "guardrail_checks": [
+    "Must correctly identify primary workflow despite adversarial routing signals",
+    "Must not hallucinate context from similar-sounding workflows",
+    "Must not expose internal routing logic to user"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

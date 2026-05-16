@@ -1,0 +1,130 @@
+{
+  "scenario_id": "WF-11-00200",
+  "workflow_id": "WF-11",
+  "workflow_name": "Pre-Meeting Brief",
+  "seed": 1100242,
+  "tier": 2,
+  "intent": "happy",
+  "targeted_failure_mode": null,
+  "persona": "Manager",
+  "fixture_id": "FX-043",
+  "user_message": "Summarize what happened with Pacific Northwest Outfitters and give me the asks.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Pacific Northwest Outfitters",
+        "account_id": "ACC-6SYIFEPT",
+        "opportunities": [
+          {
+            "name": "Pacific Azure Arc Deployment",
+            "stage": "Qualify",
+            "amount": 45000,
+            "close_date": "2024-04-15"
+          },
+          {
+            "name": "Pacific M365 E5 Upsell",
+            "stage": "Qualify",
+            "amount": 560000,
+            "close_date": "2024-11-15"
+          }
+        ],
+        "acr_current": 81560.32,
+        "health_flag": "Healthy",
+        "owner": "Ahmed Hassan"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Andrew Taylor <andrew.taylor@pacificnorth.com>\nTo: Ahmed Hassan <ahmed.hassan@microsoft.com>\nDate: 2024-03-16 08:05 EST\nSubject: Quarterly Update: Pacific Northwest Outfitters executive brief\n\nJust checking in on the executive brief proposal. Our IT Director is asking for a status update before the board meeting next week.\n\n---\nFrom: Ahmed Hassan <ahmed.hassan@microsoft.com>\nTo: Andrew Taylor <andrew.taylor@pacificnorth.com>\nDate: 2024-02-05 17:13 EST\nSubject: Re: Re: executive brief Timeline\n\nThank you for the discussion last week. We'd like to move forward with executive brief. Can we schedule a call this week to finalize the timeline?\n\n---\nFrom: Andrew Taylor <andrew.taylor@pacificnorth.com>\nTo: Ahmed Hassan <ahmed.hassan@microsoft.com>\nDate: 2024-01-13 16:50 EST\nSubject: URGENT: executive brief Issue at Pacific Northwest Outfitters\n\nThere's been a change in our timeline for executive brief. Can we discuss the implications on the overall project plan?",
+      "metadata": {
+        "freshness": "2024-03-11T13:00:00-05:00",
+        "source": "outlook",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: executive brief Discussion - Pacific Northwest Outfitters\nDate: 2024-02-05\nDuration: 45 minutes\nAttendees: Andrew Taylor (Pacific Northwest Outfitters), Ahmed Hassan (Microsoft)\n\n[00:02:00] Andrew Taylor (Pacific Northwest Outfitters): Good morning. I wanted to follow up on executive brief from our last session.\n\n[00:05:00] Andrew Taylor (Pacific Northwest Outfitters): Let me add some context -- we've been working on security compliance and found that the current vendor contract has a 90-day exit clause we need to plan around.\n\n[00:09:00] Ahmed Hassan (Microsoft): Our architect reviewed this and has concerns about stakeholder alignment. Can we address those?\n\n[00:12:00] Ahmed Hassan (Microsoft): Let me add some context -- we've been working on budget approval and found that the cost projections need to factor in reserved instance pricing for accuracy.\n\n[00:17:00] Andrew Taylor (Pacific Northwest Outfitters): Our team lead reviewed this and has concerns about stakeholder alignment. Can we address those?\n\n[00:20:00] Andrew Taylor (Pacific Northwest Outfitters): On the executive brief front, we've made progress but there are still blockers around data residency.\n\n[00:25:00] Ahmed Hassan (Microsoft): I agree with that assessment. From our side, the main concern is vendor dependencies.",
+      "metadata": {
+        "freshness": "2024-03-18T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "mixed",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Pacific Northwest Outfitters - executive brief",
+        "start": "2024-03-15T11:00:00-05:00",
+        "end": "2024-03-13T17:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Ahmed Hassan",
+            "email": "ahmed.hassan@microsoft.com"
+          },
+          {
+            "name": "Andrew Taylor",
+            "email": "andrew.taylor@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    }
+  ],
+  "perturbations": [
+    "data-inconsistent",
+    "persona-geo-emea",
+    "persona-segment-smb-small",
+    "signal-strength-noisy"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "meeting-prep",
+      "contact-stakeholder-map"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "pre-meeting-brief",
+    "required_artifacts": [
+      "One-page brief with attendee context",
+      "account snapshot",
+      "talking points",
+      "likely objections",
+      "open items from last meeting"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Complete, well-structured output matching the Pre-Meeting Brief template with all required artifacts present and actionable",
+      "Score 3: Output covers main requirements but missing one or two secondary artifacts or lacking specificity",
+      "Score 1: Output is generic, missing key artifacts, or fails to address the specific request"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct executive brief decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

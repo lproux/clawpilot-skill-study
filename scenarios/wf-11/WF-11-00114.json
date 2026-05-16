@@ -1,0 +1,131 @@
+{
+  "scenario_id": "WF-11-00114",
+  "workflow_id": "WF-11",
+  "workflow_name": "Pre-Meeting Brief",
+  "seed": 1100156,
+  "tier": 2,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF11-E",
+  "persona": "CSA",
+  "fixture_id": "FX-021",
+  "user_message": "Before my call with Nod Publishers, prepare the forecast. ",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Nod Publishers",
+        "account_id": "ACC-BFJJI6LY",
+        "opportunities": [
+          {
+            "name": "Nod Azure SQL Migration",
+            "stage": "Close",
+            "amount": 45000,
+            "close_date": "2023-10-06"
+          },
+          {
+            "name": "Nod Intune Rollout",
+            "stage": "Develop",
+            "amount": 560000,
+            "close_date": "2024-12-16"
+          }
+        ],
+        "acr_current": 111088.58,
+        "health_flag": "At Risk",
+        "owner": "Marcus Williams"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Samantha Singh <samantha.singh@nodpublisher.com>\nTo: Marcus Williams <marcus.williams@microsoft.com>\nDate: 2024-03-22 16:19 EST\nSubject: Re: Re: deployment blockers Timeline\n\nI wanted to follow up on our conversation about deployment blockers. Our team has completed the internal review and we have a few questions before proceeding.\n\n---\nFrom: Marcus Williams <marcus.williams@microsoft.com>\nTo: Samantha Singh <samantha.singh@nodpublisher.com>\nDate: 2024-02-18 16:33 EST\nSubject: URGENT: deployment blockers Issue at Nod Publishers\n\nOur team encountered some challenges with deployment blockers. Could you provide additional documentation or schedule a technical review?\n\n---\nFrom: Samantha Singh <samantha.singh@nodpublisher.com>\nTo: Marcus Williams <marcus.williams@microsoft.com>\nDate: 2024-01-19 16:34 EST\nSubject: deployment blockers - Action Required\n\nWe've been evaluating the options and have decided to proceed with deployment blockers. What are the next steps from your side?",
+      "metadata": {
+        "freshness": "2024-02-20T15:00:00-05:00",
+        "source": "outlook",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: deployment blockers Discussion - Nod Publishers\nDate: 2024-02-26\nDuration: 45 minutes\nAttendees: Samantha Singh (Nod Publishers), Marcus Williams (Microsoft)\n\n[00:02:00] Samantha Singh (Nod Publishers): Good morning. I wanted to follow up on deployment blockers from our last session.\n\n[00:08:00] Samantha Singh (Nod Publishers): Let me add some context -- we've been working on timeline constraints and found that there's a compliance requirement we hadn't accounted for in the original scope.\n\n[00:13:00] Samantha Singh (Nod Publishers): Our team lead reviewed this and has concerns about security compliance. Can we address those?\n\n[00:15:00] Marcus Williams (Microsoft): Let me add some context -- we've been working on integration complexity and found that there's a dependency on the security team's review that could delay us.\n\n[00:17:00] Samantha Singh (Nod Publishers): Our architect reviewed this and has concerns about security compliance. Can we address those?\n\n[00:20:00] Marcus Williams (Microsoft): The timeline for data residency is aggressive. We need to validate the assumptions.\n\n[00:25:00] Samantha Singh (Nod Publishers): On the deployment blockers front, we've made progress but there are still blockers around technical validation.\n\n[00:28:00] Marcus Williams (Microsoft): On the deployment blockers front, we've made progress but there are still blockers around technical validation.",
+      "metadata": {
+        "freshness": "2024-01-22T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Nod Publishers - deployment blockers",
+        "start": "2024-03-13T10:00:00-05:00",
+        "end": "2024-03-12T17:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Marcus Williams",
+            "email": "marcus.williams@microsoft.com"
+          },
+          {
+            "name": "Samantha Singh",
+            "email": "samantha.singh@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-segment-smb-mid",
+    "data-stale",
+    "persona-tenure-junior",
+    "persona-role-csa"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "meeting-prep",
+      "contact-stakeholder-map"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "pre-meeting-brief",
+    "required_artifacts": [
+      "One-page brief with attendee context",
+      "account snapshot",
+      "talking points",
+      "likely objections",
+      "open items from last meeting"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF11-E trap (Misses the most recent thread); produces complete One-page brief with attendee context, account snapshot, talking points, likely objections, open item",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF11-E failure pattern",
+      "Score 1: Output exhibits the full FM-WF11-E failure mode (Misses the most recent thread)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct deployment blockers decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF11-E -- Misses the most recent thread"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

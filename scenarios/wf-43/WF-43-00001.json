@@ -1,0 +1,115 @@
+{
+  "scenario_id": "WF-43-00001",
+  "workflow_id": "WF-43",
+  "workflow_name": "Discovery Call Transcript -> Opportunity Build",
+  "seed": 4300043,
+  "tier": 4,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": "FM-WF43-P",
+  "persona": "DSSP",
+  "fixture_id": "FX-045",
+  "user_message": "Pulling in context from Azure Ridge Partners's escalation email -- need to create the summary for the territory planning.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Azure Ridge Partners",
+        "account_id": "ACC-URB6CCFS",
+        "opportunities": [
+          {
+            "name": "Azure Cloud Migration Phase",
+            "stage": "Develop",
+            "amount": 210000,
+            "close_date": "2024-09-05"
+          },
+          {
+            "name": "Azure Cloud Migration Phase",
+            "stage": "Close",
+            "amount": 560000,
+            "close_date": "2024-10-05"
+          },
+          {
+            "name": "Azure Intune Rollout",
+            "stage": "Develop",
+            "amount": 280000,
+            "close_date": "2024-10-01"
+          }
+        ],
+        "acr_current": 189461.39,
+        "health_flag": "Unknown",
+        "owner": "Raj Mehta"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: territory planning Discussion - Azure Ridge Partners\nDate: 2024-02-02\nDuration: 45 minutes\nAttendees: Thomas Okafor (Azure Ridge Partners), Raj Mehta (Microsoft), Kevin (Azure Ridge Partners)\n\n[00:02:00] Thomas Okafor (Azure Ridge Partners): Good morning. I wanted to follow up on territory planning from our last session.\n\n[00:05:00] Thomas Okafor (Azure Ridge Partners): Let me add some context -- we've been working on data residency and found that there's a dependency on the security team's review that could delay us.\n\n[00:10:00] Kevin (Azure Ridge Partners): Let me add some context -- we've been working on data residency and found that the cost projections need to factor in reserved instance pricing for accuracy.\n\n[00:14:00] Raj Mehta (Microsoft): The timeline for partner engagement is aggressive. We need to validate the assumptions.\n\n[00:17:00] Kevin (Azure Ridge Partners): The timeline for budget approval is aggressive. We need to validate the assumptions.\n\n[00:20:00] Kevin (Azure Ridge Partners): The timeline for resource allocation is aggressive. We need to validate the assumptions.",
+      "metadata": {
+        "freshness": "2024-01-20T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "medium"
+      }
+    }
+  ],
+  "perturbations": [
+    "data-inconsistent",
+    "persona-tenure-mid",
+    "persona-segment-smb-mid"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "opportunity creation warranted"
+      },
+      {
+        "target_skill": "solution-value-design-coach",
+        "condition": "solution sketch needed from discovery signals"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "discovery-call-transcript-->-opportunity-build",
+    "required_artifacts": [
+      "BANT signal extraction with evidence quotes",
+      "opportunity proposal with stage/value/close-date",
+      "confidence labels",
+      "solution sketch suggestion",
+      "follow-up actions"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF43-P trap (Opportunity creation routes through pipeline-hygiene when CSA could commit direc); produces complete BANT signal extraction with evidence quotes, opportunity proposal with stage/value/close-date, confi",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF43-P failure pattern",
+      "Score 1: Output exhibits the full FM-WF43-P failure mode (Opportunity creation routes through pipeline-hygiene when CSA could commit direc)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct territory planning decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF43-P -- Opportunity creation routes through pipeline-hygiene when CSA could commit direc",
+    "Guardrail axis scored neutrally -- focus on whether output served the user's actual need"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

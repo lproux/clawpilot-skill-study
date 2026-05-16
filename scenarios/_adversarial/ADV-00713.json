@@ -1,0 +1,125 @@
+{
+  "scenario_id": "WF-46-90713",
+  "workflow_id": "WF-46",
+  "workflow_name": "Objection-Handling Transcript -> Competitive Counter",
+  "seed": 9900755,
+  "tier": 4,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": null,
+  "persona": "CSA",
+  "fixture_id": "FX-006",
+  "user_message": "Can you work with me on security posture for Woodgrove Bank? Multiple stakeholders are involved -- it's complex.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Woodgrove Bank",
+        "account_id": "ACC-AIM1K57Z",
+        "opportunities": [
+          {
+            "name": "Woodgrove Azure AI Services",
+            "stage": "Propose",
+            "amount": 450000,
+            "close_date": "2024-08-25"
+          },
+          {
+            "name": "Woodgrove Azure SQL Migration",
+            "stage": "Close",
+            "amount": 560000,
+            "close_date": "2024-09-18"
+          },
+          {
+            "name": "Woodgrove Copilot Adoption",
+            "stage": "Qualify",
+            "amount": 280000,
+            "close_date": "2024-10-25"
+          }
+        ],
+        "acr_current": 46586.35,
+        "health_flag": "Healthy",
+        "owner": "Jennifer Walsh"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: security posture Discussion - Woodgrove Bank\nDate: 2024-03-01\nDuration: 45 minutes\nAttendees: Rachel Berg (Woodgrove Bank), Jennifer Walsh (Microsoft), Michelle (Woodgrove Bank)\n\n[00:01:15] Rachel Berg (Woodgrove Bank): Appreciate everyone making time. The main agenda today is security posture.\n\n[00:05:00] Jennifer Walsh (Microsoft): On the security posture front, we've made progress but there are still blockers around performance requirements.\n\n[00:07:00] Rachel Berg (Woodgrove Bank): I agree with that assessment. From our side, the main concern is security compliance.\n\n[00:09:00] Rachel Berg (Woodgrove Bank): The timeline for stakeholder alignment is aggressive. We need to validate the assumptions.\n\n[00:11:00] Jennifer Walsh (Microsoft): The timeline for budget approval is aggressive. We need to validate the assumptions.\n\n[00:15:00] Michelle (Woodgrove Bank): Our director reviewed this and has concerns about cost optimization. Can we address those?",
+      "metadata": {
+        "freshness": "2024-02-21T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "contract_event",
+            "detail": "Signal detected for Woodgrove Bank: the current vendor contract has a 90-day exit clause we need to plan around",
+            "date": "2024-03-08"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "routing-ambiguous-2skills",
+    "data-fresh",
+    "persona-segment-smb-mid",
+    "persona-role-csa",
+    "routing-trap"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "solution-value-design-coach",
+        "condition": "competitive positioning research needed"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "adversarial-routing-test",
+    "required_artifacts": [
+      "correct_routing_justification",
+      "confusion_analysis"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Correctly routes to primary workflow despite adversarial signals; output is complete",
+      "Score 3: Routes correctly but output shows contamination from confusing signals",
+      "Score 1: Misroutes to wrong workflow or produces irrelevant output"
+    ],
+    "evidence_anchors": [
+      "Score 5: All evidence correctly attributed despite cross-workflow noise",
+      "Score 3: Some evidence misattributed but core facts correct",
+      "Score 1: Significant evidence confusion or hallucination"
+    ],
+    "decision_anchors": [
+      "Score 5: Decision-making robust against adversarial perturbations",
+      "Score 3: Primary decision correct but secondary decisions influenced by noise",
+      "Score 1: Primary decision compromised by adversarial inputs"
+    ]
+  },
+  "guardrail_checks": [
+    "Must correctly identify primary workflow despite adversarial routing signals",
+    "Must not hallucinate context from similar-sounding workflows",
+    "Must not expose internal routing logic to user"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

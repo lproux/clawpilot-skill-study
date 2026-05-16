@@ -1,0 +1,125 @@
+{
+  "scenario_id": "WF-37-00049",
+  "workflow_id": "WF-37",
+  "workflow_name": "Customer Outage/Complaint Email -> Triage + Escalation",
+  "seed": 3700091,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF37-B",
+  "persona": "DSSP",
+  "fixture_id": "FX-041",
+  "user_message": "Can you extract the consumption trend from this meeting transcript for Quantum Analytics? I met with them last week but can't remember the details.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Quantum Analytics",
+        "account_id": "ACC-ZJSZDYNL",
+        "opportunities": [
+          {
+            "name": "Quantum Azure Infrastructure",
+            "stage": "Qualify",
+            "amount": 68000,
+            "close_date": "2024-04-14"
+          },
+          {
+            "name": "Quantum Data Platform Migration",
+            "stage": "Develop",
+            "amount": 450000,
+            "close_date": "2024-07-16"
+          },
+          {
+            "name": "Quantum Dynamics 365 Implementation",
+            "stage": "Qualify",
+            "amount": 68000,
+            "close_date": "2024-07-17"
+          }
+        ],
+        "acr_current": 21322.6,
+        "health_flag": "At Risk",
+        "owner": "Marcus Williams"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Robert Foster <robert.foster@quantumanaly.com>\nTo: Marcus Williams <marcus.williams@microsoft.com>\nDate: 2024-03-13 14:01 EST\nSubject: consumption trend - Action Required\n\nI wanted to follow up on our conversation about consumption trend. Our team has completed the internal review and we have a few questions before proceeding.\n\n---\nFrom: Marcus Williams <marcus.williams@microsoft.com>\nTo: Robert Foster <robert.foster@quantumanaly.com>\nDate: 2024-02-12 08:12 EST\nSubject: Quarterly Update: Quantum Analytics consumption trend\n\nWe've been evaluating the options and have decided to proceed with consumption trend. What are the next steps from your side?\n\n---\nFrom: Robert Foster <robert.foster@quantumanaly.com>\nTo: Marcus Williams <marcus.williams@microsoft.com>\nDate: 2024-01-03 13:31 EST\nSubject: Follow-up: consumption trend Review\n\nJust checking in on the consumption trend proposal. Our Head of Digital is asking for a status update before the board meeting next week.",
+      "metadata": {
+        "freshness": "2024-03-11T15:00:00-05:00",
+        "source": "outlook",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "deployment_blocker",
+            "detail": "Signal detected for Quantum Analytics: the current vendor contract has a 90-day exit clause we need to plan around",
+            "date": "2024-03-11"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-role-dssp",
+    "routing-ambiguous-2skills",
+    "persona-segment-smb-corporate"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "email-chat-context"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "acr-signal-to-opportunity-coach",
+        "condition": "outage impacts major workload ACR"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "customer-outage/complaint-email-->-triage-+-escala",
+    "required_artifacts": [
+      "Severity triage",
+      "root-cause hypothesis (labeled as hypothesis)",
+      "customer response draft",
+      "ACR risk flag",
+      "escalation routing"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF37-B trap (Over-escalates a routine service complaint); produces complete Severity triage, root-cause hypothesis (labeled as hypothesis), customer response draft, ACR risk fl",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF37-B failure pattern",
+      "Score 1: Output exhibits the full FM-WF37-B failure mode (Over-escalates a routine service complaint)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct consumption trend decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF37-B -- Over-escalates a routine service complaint"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

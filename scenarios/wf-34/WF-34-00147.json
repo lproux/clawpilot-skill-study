@@ -1,0 +1,105 @@
+{
+  "scenario_id": "WF-34-00147",
+  "workflow_id": "WF-34",
+  "workflow_name": "Customer Escalation Email -> Risk Brief + Manager Loop",
+  "seed": 3400189,
+  "tier": 4,
+  "intent": "happy",
+  "targeted_failure_mode": null,
+  "persona": "CSA",
+  "fixture_id": "FX-037",
+  "user_message": "I have this exec meeting notes from Woodgrove Labs that needs identify the blockers. Board meeting is next week.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Woodgrove Labs",
+        "account_id": "ACC-WZHG8AQ3",
+        "opportunities": [
+          {
+            "name": "Woodgrove Power Platform",
+            "stage": "Qualify",
+            "amount": 210000,
+            "close_date": "2024-12-15"
+          },
+          {
+            "name": "Woodgrove AKS Deployment",
+            "stage": "Propose",
+            "amount": 125000,
+            "close_date": "2024-05-21"
+          }
+        ],
+        "acr_current": 204547.55,
+        "health_flag": "At Risk",
+        "owner": "David Chen"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Robert Petrov <robert.petrov@woodgrovelab.com>\nTo: David Chen <david.chen@microsoft.com>\nDate: 2024-03-26 17:45 EST\nSubject: Quarterly Update: Woodgrove Labs deployment blockers\n\nJust checking in on the deployment blockers proposal. Our CFO is asking for a status update before the board meeting next week.\n\n---\nFrom: David Chen <david.chen@microsoft.com>\nTo: Robert Petrov <robert.petrov@woodgrovelab.com>\nDate: 2024-01-05 14:21 EST\nSubject: URGENT: deployment blockers Issue at Woodgrove Labs\n\nThere's been a change in our timeline for deployment blockers. Can we discuss the implications on the overall project plan?",
+      "metadata": {
+        "freshness": "2024-03-25T15:00:00-05:00",
+        "source": "outlook",
+        "length_class": "medium"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-segment-smb-small",
+    "persona-geo-na",
+    "routing-ambiguous-2skills",
+    "data-inconsistent"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "email-chat-context",
+      "follow-up-and-decisions",
+      "contact-stakeholder-map"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "forecast-business-review-coach",
+        "condition": "escalation warrants forecast/risk update"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "customer-escalation-email-->-risk-brief-+-manager-",
+    "required_artifacts": [
+      "Severity assessment",
+      "manager risk brief",
+      "customer-facing draft response",
+      "stakeholder map delta",
+      "forecast/risk impact"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Complete, well-structured output matching the Customer Escalation Email -> Risk Brief + Manager Loop template with all required artifacts present and actionable",
+      "Score 3: Output covers main requirements but missing one or two secondary artifacts or lacking specificity",
+      "Score 1: Output is generic, missing key artifacts, or fails to address the specific request"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct deployment blockers decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

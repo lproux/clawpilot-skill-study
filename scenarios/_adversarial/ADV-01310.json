@@ -1,0 +1,158 @@
+{
+  "scenario_id": "WF-32-91310",
+  "workflow_id": "WF-32",
+  "workflow_name": "Calendar Pre-Pack Automation",
+  "seed": 9901352,
+  "tier": 4,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": null,
+  "persona": "DSSP",
+  "fixture_id": "FX-003",
+  "user_message": "[AUTOMATION TRIGGER] System detected Calendar event with non-Microsoft external attendee detected for account Northwind Traders. Generating output.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Northwind Traders",
+        "account_id": "ACC-X86FSRU2",
+        "opportunities": [
+          {
+            "name": "Northwind Azure Arc Deployment",
+            "stage": "Propose",
+            "amount": 89000,
+            "close_date": "2024-09-05"
+          },
+          {
+            "name": "Northwind Copilot Adoption",
+            "stage": "Develop",
+            "amount": 175000,
+            "close_date": "2024-06-22"
+          },
+          {
+            "name": "Northwind Intune Rollout",
+            "stage": "Close",
+            "amount": 350000,
+            "close_date": "2024-04-19"
+          }
+        ],
+        "acr_current": 54067.74,
+        "health_flag": "Healthy",
+        "owner": "Ahmed Hassan"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Sandra Taylor <sandra.taylor@northwindtra.com>\nTo: Ahmed Hassan <ahmed.hassan@microsoft.com>\nDate: 2024-03-19 13:33 EST\nSubject: Re: executive brief Discussion - Next Steps\n\nThere's been a change in our timeline for executive brief. Can we discuss the implications on the overall project plan?\n\n---\nFrom: Ahmed Hassan <ahmed.hassan@microsoft.com>\nTo: Sandra Taylor <sandra.taylor@northwindtra.com>\nDate: 2024-02-08 12:53 EST\nSubject: Follow-up: executive brief Review\n\nJust checking in on the executive brief proposal. Our Head of Digital is asking for a status update before the board meeting next week.\n\n---\nFrom: Sandra Taylor <sandra.taylor@northwindtra.com>\nTo: Ahmed Hassan <ahmed.hassan@microsoft.com>\nDate: 2024-01-13 17:18 EST\nSubject: Follow-up: executive brief Review\n\nI wanted to follow up on our conversation about executive brief. Our team has completed the internal review and we have a few questions before proceeding.",
+      "metadata": {
+        "freshness": "2024-02-06T12:00:00-05:00",
+        "source": "outlook",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: executive brief Discussion - Northwind Traders\nDate: 2024-01-13\nDuration: 45 minutes\nAttendees: Sandra Taylor (Northwind Traders), Ahmed Hassan (Microsoft), Priya (Northwind Traders)\n\n[00:01:15] Sandra Taylor (Northwind Traders): Appreciate everyone making time. The main agenda today is executive brief.\n\n[00:05:00] Priya (Northwind Traders): The timeline for stakeholder alignment is aggressive. We need to validate the assumptions.\n\n[00:10:00] Sandra Taylor (Northwind Traders): The timeline for data residency is aggressive. We need to validate the assumptions.\n\n[00:15:00] Ahmed Hassan (Microsoft): Let me add some context -- we've been working on technical validation and found that there's a dependency on the security team's review that could delay us.\n\n[00:20:00] Ahmed Hassan (Microsoft): On the executive brief front, we've made progress but there are still blockers around vendor dependencies.\n\n[00:22:00] Ahmed Hassan (Microsoft): I agree with that assessment. From our side, the main concern is timeline constraints.",
+      "metadata": {
+        "freshness": "2024-01-17T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Northwind Traders - executive brief",
+        "start": "2024-03-11T10:00:00-05:00",
+        "end": "2024-03-15T14:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Ahmed Hassan",
+            "email": "ahmed.hassan@microsoft.com"
+          },
+          {
+            "name": "Sandra Taylor",
+            "email": "sandra.taylor@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "consumption_decline",
+            "detail": "Signal detected for Northwind Traders: the migration can proceed in phases to reduce risk",
+            "date": "2024-03-10"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-10T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-tenure-mid",
+    "persona-segment-smb-corporate",
+    "persona-geo-na",
+    "signal-strength-faint",
+    "routing-ambiguous-3skills"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "meeting-prep",
+      "contact-stakeholder-map",
+      "email-chat-context"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "portfolio-account-planning-coach",
+        "condition": "meeting is for account CSA should have declined"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "adversarial-routing-test",
+    "required_artifacts": [
+      "correct_routing_justification",
+      "confusion_analysis"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Correctly routes to primary workflow despite adversarial signals; output is complete",
+      "Score 3: Routes correctly but output shows contamination from confusing signals",
+      "Score 1: Misroutes to wrong workflow or produces irrelevant output"
+    ],
+    "evidence_anchors": [
+      "Score 5: All evidence correctly attributed despite cross-workflow noise",
+      "Score 3: Some evidence misattributed but core facts correct",
+      "Score 1: Significant evidence confusion or hallucination"
+    ],
+    "decision_anchors": [
+      "Score 5: Decision-making robust against adversarial perturbations",
+      "Score 3: Primary decision correct but secondary decisions influenced by noise",
+      "Score 1: Primary decision compromised by adversarial inputs"
+    ]
+  },
+  "guardrail_checks": [
+    "Must correctly identify primary workflow despite adversarial routing signals",
+    "Must not hallucinate context from similar-sounding workflows",
+    "Must not expose internal routing logic to user"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

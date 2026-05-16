@@ -1,0 +1,121 @@
+{
+  "scenario_id": "WF-02-00158",
+  "workflow_id": "WF-02",
+  "workflow_name": "Account 360 Deep Dive",
+  "seed": 200200,
+  "tier": 2,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF02-E",
+  "persona": "Manager",
+  "fixture_id": "FX-009",
+  "user_message": "I need you to process this meeting transcript from VanArsdel Ltd. I met with them last week but can't remember the details.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "VanArsdel Ltd",
+        "account_id": "ACC-3ORLVDXJ",
+        "opportunities": [
+          {
+            "name": "VanArsdel Data Platform Migration",
+            "stage": "Propose",
+            "amount": 210000,
+            "close_date": "2024-06-13"
+          },
+          {
+            "name": "VanArsdel M365 E5 Upsell",
+            "stage": "Prospect",
+            "amount": 280000,
+            "close_date": "2024-06-13"
+          },
+          {
+            "name": "VanArsdel Power Platform",
+            "stage": "Prospect",
+            "amount": 350000,
+            "close_date": "2024-09-08"
+          }
+        ],
+        "acr_current": 68769.78,
+        "health_flag": "Healthy",
+        "owner": "Tom Rodriguez"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "deployment_blocker",
+            "detail": "Signal detected for VanArsdel Ltd: the current vendor contract has a 90-day exit clause we need to plan around",
+            "date": "2024-03-05"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-10T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "signal-strength-faint",
+    "persona-geo-na",
+    "persona-segment-smb-mid"
+  ],
+  "expected_routing": {
+    "entry_skill": "portfolio-account-planning-coach",
+    "modules": [
+      "account-review",
+      "whitespace-growth-hypotheses"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "acr-signal-to-opportunity-coach",
+        "condition": "ACR signals warrant investigation"
+      },
+      {
+        "target_skill": "customer-meeting-prep-outreach-coach",
+        "condition": "stakeholder engagement needed"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "account-360-deep-dive",
+    "required_artifacts": [
+      "Comprehensive account narrative with health assessment",
+      "opportunity landscape",
+      "whitespace hypotheses",
+      "stakeholder map status",
+      "recommended next actions"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF02-E trap (Confuses status flags with hygiene issues); produces complete Comprehensive account narrative with health assessment, opportunity landscape, whitespace hypotheses",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF02-E failure pattern",
+      "Score 1: Output exhibits the full FM-WF02-E failure mode (Confuses status flags with hygiene issues)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct competitive positioning decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF02-E -- Confuses status flags with hygiene issues"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

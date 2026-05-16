@@ -1,0 +1,125 @@
+{
+  "scenario_id": "WF-33-00056",
+  "workflow_id": "WF-33",
+  "workflow_name": "Customer Inquiry Thread -> Response + Pipeline Note",
+  "seed": 3300098,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF33-M",
+  "persona": "Manager",
+  "fixture_id": "FX-005",
+  "user_message": "I need you to process this meeting transcript from Tailspin Toys. I think there's an opportunity here but need to validate.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Tailspin Toys",
+        "account_id": "ACC-JXC3G9ET",
+        "opportunities": [
+          {
+            "name": "Tailspin Azure Virtual Desktop",
+            "stage": "Close",
+            "amount": 560000,
+            "close_date": "2024-09-15"
+          },
+          {
+            "name": "Tailspin Azure SQL Migration",
+            "stage": "Prospect",
+            "amount": 125000,
+            "close_date": "2024-10-05"
+          },
+          {
+            "name": "Tailspin Dynamics 365 Implementation",
+            "stage": "Propose",
+            "amount": 45000,
+            "close_date": "2024-08-10"
+          }
+        ],
+        "acr_current": 122043.29,
+        "health_flag": "Healthy",
+        "owner": "Raj Mehta"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Steven Wilson <steven.wilson@tailspintoys.com>\nTo: Raj Mehta <raj.mehta@microsoft.com>\nDate: 2024-03-15 15:43 EST\nSubject: Re: Re: security posture Timeline\n\nThank you for the discussion last week. We'd like to move forward with security posture. Can we schedule a call this week to finalize the timeline?\n\n---\nFrom: Raj Mehta <raj.mehta@microsoft.com>\nTo: Steven Wilson <steven.wilson@tailspintoys.com>\nDate: 2024-02-17 13:12 EST\nSubject: Follow-up: security posture Review\n\nThank you for the discussion last week. We'd like to move forward with security posture. Can we schedule a call this week to finalize the timeline?\n\n---\nFrom: Steven Wilson <steven.wilson@tailspintoys.com>\nTo: Raj Mehta <raj.mehta@microsoft.com>\nDate: 2024-01-09 09:04 EST\nSubject: security posture - Action Required\n\nThank you for the discussion last week. We'd like to move forward with security posture. Can we schedule a call this week to finalize the timeline?",
+      "metadata": {
+        "freshness": "2024-03-09T09:00:00-05:00",
+        "source": "outlook",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "security_alert",
+            "detail": "Signal detected for Tailspin Toys: there's a dependency on the security team's review that could delay us",
+            "date": "2024-03-09"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-09T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-geo-apac",
+    "routing-clear"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "email-chat-context",
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "MSX update warranted from thread content"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "customer-inquiry-thread-->-response-+-pipeline-not",
+    "required_artifacts": [
+      "Thread analysis",
+      "draft response",
+      "waiting-on-whom assessment",
+      "MSX pipeline note proposal (if warranted)",
+      "urgency calibration"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF33-M trap (No urgency calibration when thread shows time-sensitivity); produces complete Thread analysis, draft response, waiting-on-whom assessment, MSX pipeline note proposal (if warrante",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF33-M failure pattern",
+      "Score 1: Output exhibits the full FM-WF33-M failure mode (No urgency calibration when thread shows time-sensitivity)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct security posture decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF33-M -- No urgency calibration when thread shows time-sensitivity"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

@@ -1,0 +1,135 @@
+{
+  "scenario_id": "WF-11-00085",
+  "workflow_id": "WF-11",
+  "workflow_name": "Pre-Meeting Brief",
+  "seed": 1100127,
+  "tier": 2,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF11-G",
+  "persona": "DSSP",
+  "fixture_id": "FX-013",
+  "user_message": "The CSA escalated Coho Winery to me -- can you build the analysis?",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Coho Winery",
+        "account_id": "ACC-W5BNG4OC",
+        "opportunities": [
+          {
+            "name": "Coho Copilot Adoption",
+            "stage": "Close",
+            "amount": 210000,
+            "close_date": "2023-11-10"
+          },
+          {
+            "name": "Coho Azure AI Services",
+            "stage": "Qualify",
+            "amount": 280000,
+            "close_date": "2024-04-26"
+          },
+          {
+            "name": "Coho Azure Virtual Desktop",
+            "stage": "Qualify",
+            "amount": 125000,
+            "close_date": "2024-11-17"
+          }
+        ],
+        "acr_current": 107808.75,
+        "health_flag": "At Risk",
+        "owner": "Ahmed Hassan"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Eric Kim <eric.kim@cohowinery.com>\nTo: Ahmed Hassan <ahmed.hassan@microsoft.com>\nDate: 2024-03-01 13:13 EST\nSubject: Follow-up: migration architecture Review\n\nWe've been evaluating the options and have decided to proceed with migration architecture. What are the next steps from your side?\n\n---\nFrom: Ahmed Hassan <ahmed.hassan@microsoft.com>\nTo: Eric Kim <eric.kim@cohowinery.com>\nDate: 2024-02-05 13:58 EST\nSubject: Follow-up: migration architecture Review\n\nOur team encountered some challenges with migration architecture. Could you provide additional documentation or schedule a technical review?\n\n---\nFrom: Eric Kim <eric.kim@cohowinery.com>\nTo: Ahmed Hassan <ahmed.hassan@microsoft.com>\nDate: 2024-01-19 09:14 EST\nSubject: Follow-up: migration architecture Review\n\nI wanted to follow up on our conversation about migration architecture. Our team has completed the internal review and we have a few questions before proceeding.",
+      "metadata": {
+        "freshness": "2024-03-25T08:00:00-05:00",
+        "source": "outlook",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: migration architecture Discussion - Coho Winery\nDate: 2024-03-04\nDuration: 45 minutes\nAttendees: Eric Kim (Coho Winery), Ahmed Hassan (Microsoft)\n\n[00:01:30] Eric Kim (Coho Winery): Thanks everyone for joining. Let's dive into migration architecture.\n\n[00:06:00] Ahmed Hassan (Microsoft): Our VP reviewed this and has concerns about data residency. Can we address those?\n\n[00:11:00] Eric Kim (Coho Winery): Our team lead reviewed this and has concerns about resource allocation. Can we address those?\n\n[00:13:00] Eric Kim (Coho Winery): Let me add some context -- we've been working on resource allocation and found that the cost projections need to factor in reserved instance pricing for accuracy.\n\n[00:18:00] Ahmed Hassan (Microsoft): Let me add some context -- we've been working on resource allocation and found that there's a dependency on the security team's review that could delay us.\n\n[00:23:00] Eric Kim (Coho Winery): The timeline for resource allocation is aggressive. We need to validate the assumptions.",
+      "metadata": {
+        "freshness": "2024-01-17T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Coho Winery - migration architecture",
+        "start": "2024-03-13T16:00:00-05:00",
+        "end": "2024-03-13T10:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Ahmed Hassan",
+            "email": "ahmed.hassan@microsoft.com"
+          },
+          {
+            "name": "Eric Kim",
+            "email": "eric.kim@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    }
+  ],
+  "perturbations": [
+    "signal-strength-faint",
+    "persona-role-dssp"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "meeting-prep",
+      "contact-stakeholder-map"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "pre-meeting-brief",
+    "required_artifacts": [
+      "One-page brief with attendee context",
+      "account snapshot",
+      "talking points",
+      "likely objections",
+      "open items from last meeting"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF11-G trap (Misattributes attendee role); produces complete One-page brief with attendee context, account snapshot, talking points, likely objections, open item",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF11-G failure pattern",
+      "Score 1: Output exhibits the full FM-WF11-G failure mode (Misattributes attendee role)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct migration architecture decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF11-G -- Misattributes attendee role"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "scenario_id": "WF-19-00032",
+  "workflow_id": "WF-19",
+  "workflow_name": "Competitive Displacement Brief",
+  "seed": 1900074,
+  "tier": 2,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF19-C",
+  "persona": "Manager",
+  "fixture_id": "FX-007",
+  "user_message": "I need you to process this exec meeting notes from Litware Inc. Multiple stakeholders are involved -- it's complex.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Litware Inc",
+        "account_id": "ACC-658MPDXQ",
+        "opportunities": [
+          {
+            "name": "Litware Security Modernization",
+            "stage": "Prospect",
+            "amount": 280000,
+            "close_date": "2024-09-23"
+          }
+        ],
+        "acr_current": 76577.96,
+        "health_flag": "Healthy",
+        "owner": "David Chen"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "deployment_blocker",
+            "detail": "Signal detected for Litware Inc: the cost projections need to factor in reserved instance pricing for accuracy",
+            "date": "2024-03-09"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-10T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-role-manager",
+    "routing-clear",
+    "persona-tenure-junior",
+    "persona-geo-apac"
+  ],
+  "expected_routing": {
+    "entry_skill": "solution-value-design-coach",
+    "modules": [
+      "competitive-positioning",
+      "solution-research"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "funding-partner-activation-coach",
+        "condition": "partner needed for displacement execution"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "competitive-displacement-brief",
+    "required_artifacts": [
+      "Competitive brief with honest strength/weakness assessment",
+      "displacement positioning",
+      "motion plan with owner",
+      "timeline"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF19-C trap (Template positioning without customer fit); produces complete Competitive brief with honest strength/weakness assessment, displacement positioning, motion plan wi",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF19-C failure pattern",
+      "Score 1: Output exhibits the full FM-WF19-C failure mode (Template positioning without customer fit)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct forecast prep decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF19-C -- Template positioning without customer fit"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

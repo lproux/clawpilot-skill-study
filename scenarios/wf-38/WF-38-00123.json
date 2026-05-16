@@ -1,0 +1,122 @@
+{
+  "scenario_id": "WF-38-00123",
+  "workflow_id": "WF-38",
+  "workflow_name": "Champion-Change Email Signal -> Re-engagement Plan",
+  "seed": 3800165,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF38-H",
+  "persona": "CSA",
+  "fixture_id": "FX-039",
+  "user_message": "Kevin Lee at Fabrikam Residences just sent this. Help me map the stakeholders.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Fabrikam Residences",
+        "account_id": "ACC-5JSOIRD0",
+        "opportunities": [
+          {
+            "name": "Fabrikam Power Platform",
+            "stage": "Prospect",
+            "amount": 175000,
+            "close_date": "2024-06-08"
+          },
+          {
+            "name": "Fabrikam Cloud Migration Phase",
+            "stage": "Develop",
+            "amount": 450000,
+            "close_date": "2024-11-24"
+          }
+        ],
+        "acr_current": 32488.07,
+        "health_flag": "Healthy",
+        "owner": "Tom Rodriguez"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Kevin Lee <kevin.lee@fabrikamresi.com>\nTo: Tom Rodriguez <tom.rodriguez@microsoft.com>\nDate: 2024-03-15 17:19 EST\nSubject: Re: migration architecture Discussion - Next Steps\n\nI wanted to follow up on our conversation about migration architecture. Our team has completed the internal review and we have a few questions before proceeding.\n\n---\nFrom: Tom Rodriguez <tom.rodriguez@microsoft.com>\nTo: Kevin Lee <kevin.lee@fabrikamresi.com>\nDate: 2024-02-19 17:15 EST\nSubject: Quarterly Update: Fabrikam Residences migration architecture\n\nThank you for the discussion last week. We'd like to move forward with migration architecture. Can we schedule a call this week to finalize the timeline?",
+      "metadata": {
+        "freshness": "2024-02-13T16:00:00-05:00",
+        "source": "outlook",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "deployment_blocker",
+            "detail": "Signal detected for Fabrikam Residences: the existing infrastructure won't support the target workload without upgrades",
+            "date": "2024-03-06"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-09T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-geo-emea",
+    "persona-role-csa",
+    "data-inconsistent",
+    "signal-strength-noisy"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "contact-stakeholder-map",
+      "email-chat-context",
+      "dark-customer-outreach"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "contact and opportunity records need updating"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "champion-change-email-signal-->-re-engagement-plan",
+    "required_artifacts": [
+      "Stakeholder map delta",
+      "opportunity-at-risk assessment",
+      "re-engagement plan",
+      "contact update proposals",
+      "warm-handoff draft (if champion willing)"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF38-H trap (Confuses role-change with departure); produces complete Stakeholder map delta, opportunity-at-risk assessment, re-engagement plan, contact update proposals,",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF38-H failure pattern",
+      "Score 1: Output exhibits the full FM-WF38-H failure mode (Confuses role-change with departure)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct migration architecture decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF38-H -- Confuses role-change with departure"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

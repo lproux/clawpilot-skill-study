@@ -1,0 +1,120 @@
+{
+  "scenario_id": "WF-40-00178",
+  "workflow_id": "WF-40",
+  "workflow_name": "Decision-Maker Reply -> BPF Advance Check",
+  "seed": 4000220,
+  "tier": 4,
+  "intent": "design-redesign",
+  "targeted_failure_mode": "FM-WF40-O",
+  "persona": "DSSP",
+  "fixture_id": "FX-049",
+  "user_message": "Pulling in context from Iron Creek Mining's email thread -- need to investigate the decline for the competitive positioning.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Iron Creek Mining",
+        "account_id": "ACC-WVPLFPK6",
+        "opportunities": [
+          {
+            "name": "Iron Azure DevOps",
+            "stage": "Qualify",
+            "amount": 350000,
+            "close_date": "2024-10-28"
+          },
+          {
+            "name": "Iron Azure Virtual Desktop",
+            "stage": "Develop",
+            "amount": 280000,
+            "close_date": "2024-06-02"
+          },
+          {
+            "name": "Iron Azure SQL Migration",
+            "stage": "Qualify",
+            "amount": 68000,
+            "close_date": "2024-05-06"
+          }
+        ],
+        "acr_current": 10924.12,
+        "health_flag": "Healthy",
+        "owner": "Tom Rodriguez"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Karen Berg <karen.berg@ironcreekmin.com>\nTo: Tom Rodriguez <tom.rodriguez@microsoft.com>\nDate: 2024-03-09 14:00 EST\nSubject: Quarterly Update: Iron Creek Mining competitive positioning\n\nOur team encountered some challenges with competitive positioning. Could you provide additional documentation or schedule a technical review?\n\n---\nFrom: Tom Rodriguez <tom.rodriguez@microsoft.com>\nTo: Karen Berg <karen.berg@ironcreekmin.com>\nDate: 2024-02-25 17:31 EST\nSubject: Follow-up: competitive positioning Review\n\nWe've been evaluating the options and have decided to proceed with competitive positioning. What are the next steps from your side?\n\n---\nFrom: Karen Berg <karen.berg@ironcreekmin.com>\nTo: Tom Rodriguez <tom.rodriguez@microsoft.com>\nDate: 2024-01-06 15:01 EST\nSubject: Quarterly Update: Iron Creek Mining competitive positioning\n\nOur team encountered some challenges with competitive positioning. Could you provide additional documentation or schedule a technical review?",
+      "metadata": {
+        "freshness": "2024-02-05T13:00:00-05:00",
+        "source": "outlook",
+        "length_class": "long"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-tenure-junior",
+    "persona-role-dssp",
+    "data-contradictory",
+    "routing-clear"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "email-chat-context",
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "BPF advance warranted"
+      },
+      {
+        "target_skill": "forecast-business-review-coach",
+        "condition": "forecast category change warranted"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "decision-maker-reply-->-bpf-advance-check",
+    "required_artifacts": [
+      "Commitment assessment",
+      "BPF advance verdict",
+      "milestone proposal",
+      "forecast category recommendation",
+      "acknowledgment draft"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF40-O trap (Decision-email triggers across BPF/forecast/milestone -- no unified writeback pr); produces complete Commitment assessment, BPF advance verdict, milestone proposal, forecast category recommendation, ac",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF40-O failure pattern",
+      "Score 1: Output exhibits the full FM-WF40-O failure mode (Decision-email triggers across BPF/forecast/milestone -- no unified writeback pr)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct competitive positioning decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF40-O -- Decision-email triggers across BPF/forecast/milestone -- no unified writeback pr",
+    "Produce structural verdict on whether current routing adequately serves this scenario"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "verdict-on-structural",
+    "verdict_required_axes": [
+      "routing",
+      "evidence"
+    ]
+  }
+}

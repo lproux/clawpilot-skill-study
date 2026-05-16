@@ -1,0 +1,113 @@
+{
+  "scenario_id": "WF-20-00140",
+  "workflow_id": "WF-20",
+  "workflow_name": "Workload Modernization Plan",
+  "seed": 2000182,
+  "tier": 3,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": "FM-WF20-L",
+  "persona": "Manager",
+  "fixture_id": "FX-023",
+  "user_message": "I need you to process this exec meeting notes from Wide World Importers. There's been no activity for 45 days and I'm worried.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Wide World Importers",
+        "account_id": "ACC-Q026BTUQ",
+        "opportunities": [
+          {
+            "name": "Wide AKS Deployment",
+            "stage": "Close",
+            "amount": 125000,
+            "close_date": "2023-12-01"
+          },
+          {
+            "name": "Wide Intune Rollout",
+            "stage": "Close",
+            "amount": 89000,
+            "close_date": "2024-04-18"
+          }
+        ],
+        "acr_current": 61965.63,
+        "health_flag": "At Risk",
+        "owner": "Ahmed Hassan"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "security_alert",
+            "detail": "Signal detected for Wide World Importers: the migration can proceed in phases to reduce risk",
+            "date": "2024-03-05"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-09T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-role-manager",
+    "persona-segment-smb-corporate",
+    "signal-strength-faint",
+    "persona-geo-na"
+  ],
+  "expected_routing": {
+    "entry_skill": "solution-value-design-coach",
+    "modules": [
+      "migration-architecture",
+      "solution-research"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "funding-partner-activation-coach",
+        "condition": "funding eligibility check needed"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "workload-modernization-plan",
+    "required_artifacts": [
+      "Phased modernization plan (assess",
+      "migrate",
+      "optimize",
+      "innovate) with success criteria per phase",
+      "funding options"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF20-L trap (Funding-partner integration adds context-switching); produces complete Phased modernization plan (assess, migrate, optimize, innovate) with success criteria per phase, fun",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF20-L failure pattern",
+      "Score 1: Output exhibits the full FM-WF20-L failure mode (Funding-partner integration adds context-switching)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct partner engagement decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF20-L -- Funding-partner integration adds context-switching",
+    "Guardrail axis scored neutrally -- focus on whether output served the user's actual need"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

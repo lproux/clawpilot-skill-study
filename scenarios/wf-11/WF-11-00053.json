@@ -1,0 +1,138 @@
+{
+  "scenario_id": "WF-11-00053",
+  "workflow_id": "WF-11",
+  "workflow_name": "Pre-Meeting Brief",
+  "seed": 1100095,
+  "tier": 2,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": "FM-WF11-K",
+  "persona": "Manager",
+  "fixture_id": "FX-049",
+  "user_message": "I need the team view on whitespace analysis. The CSA flagged this as at-risk yesterday.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Iron Creek Mining",
+        "account_id": "ACC-WVPLFPK6",
+        "opportunities": [
+          {
+            "name": "Iron Azure DevOps",
+            "stage": "Qualify",
+            "amount": 350000,
+            "close_date": "2024-10-28"
+          },
+          {
+            "name": "Iron Azure Virtual Desktop",
+            "stage": "Develop",
+            "amount": 280000,
+            "close_date": "2024-06-02"
+          },
+          {
+            "name": "Iron Azure SQL Migration",
+            "stage": "Qualify",
+            "amount": 68000,
+            "close_date": "2024-05-06"
+          }
+        ],
+        "acr_current": 10924.12,
+        "health_flag": "Healthy",
+        "owner": "Tom Rodriguez"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Karen Berg <karen.berg@ironcreekmin.com>\nTo: Tom Rodriguez <tom.rodriguez@microsoft.com>\nDate: 2024-03-13 10:24 EST\nSubject: Re: Re: whitespace analysis Timeline\n\nThere's been a change in our timeline for whitespace analysis. Can we discuss the implications on the overall project plan?\n\n---\nFrom: Tom Rodriguez <tom.rodriguez@microsoft.com>\nTo: Karen Berg <karen.berg@ironcreekmin.com>\nDate: 2024-02-17 13:30 EST\nSubject: Quarterly Update: Iron Creek Mining whitespace analysis\n\nThank you for the discussion last week. We'd like to move forward with whitespace analysis. Can we schedule a call this week to finalize the timeline?\n\n---\nFrom: Karen Berg <karen.berg@ironcreekmin.com>\nTo: Tom Rodriguez <tom.rodriguez@microsoft.com>\nDate: 2024-01-05 13:50 EST\nSubject: Re: whitespace analysis Discussion - Next Steps\n\nThere's been a change in our timeline for whitespace analysis. Can we discuss the implications on the overall project plan?",
+      "metadata": {
+        "freshness": "2024-03-19T14:00:00-05:00",
+        "source": "outlook",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: whitespace analysis Discussion - Iron Creek Mining\nDate: 2024-02-27\nDuration: 45 minutes\nAttendees: Karen Berg (Iron Creek Mining), Tom Rodriguez (Microsoft), Priya (Iron Creek Mining)\n\n[00:02:00] Karen Berg (Iron Creek Mining): Good morning. I wanted to follow up on whitespace analysis from our last session.\n\n[00:08:00] Karen Berg (Iron Creek Mining): Let me add some context -- we've been working on cost optimization and found that the current vendor contract has a 90-day exit clause we need to plan around.\n\n[00:12:00] Karen Berg (Iron Creek Mining): Our director reviewed this and has concerns about partner engagement. Can we address those?\n\n[00:17:00] Priya (Iron Creek Mining): The timeline for vendor dependencies is aggressive. We need to validate the assumptions.\n\n[00:19:00] Priya (Iron Creek Mining): I agree with that assessment. From our side, the main concern is security compliance.\n\n[00:21:00] Priya (Iron Creek Mining): The timeline for stakeholder alignment is aggressive. We need to validate the assumptions.\n\n[00:24:00] Tom Rodriguez (Microsoft): On the whitespace analysis front, we've made progress but there are still blockers around stakeholder alignment.\n\n[00:26:00] Karen Berg (Iron Creek Mining): I agree with that assessment. From our side, the main concern is integration complexity.\n\n[00:31:00] Karen Berg (Iron Creek Mining): On the whitespace analysis front, we've made progress but there are still blockers around data residency.",
+      "metadata": {
+        "freshness": "2024-02-11T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Iron Creek Mining - whitespace analysis",
+        "start": "2024-03-12T16:00:00-05:00",
+        "end": "2024-03-14T14:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Tom Rodriguez",
+            "email": "tom.rodriguez@microsoft.com"
+          },
+          {
+            "name": "Karen Berg",
+            "email": "karen.berg@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    }
+  ],
+  "perturbations": [
+    "signal-strength-faint",
+    "persona-geo-apac",
+    "data-contradictory",
+    "persona-tenure-mid"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "meeting-prep",
+      "contact-stakeholder-map"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "pre-meeting-brief",
+    "required_artifacts": [
+      "One-page brief with attendee context",
+      "account snapshot",
+      "talking points",
+      "likely objections",
+      "open items from last meeting"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF11-K trap (One-page constraint hurts complex meetings); produces complete One-page brief with attendee context, account snapshot, talking points, likely objections, open item",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF11-K failure pattern",
+      "Score 1: Output exhibits the full FM-WF11-K failure mode (One-page constraint hurts complex meetings)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct whitespace analysis decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF11-K -- One-page constraint hurts complex meetings",
+    "Guardrail axis scored neutrally -- focus on whether output served the user's actual need"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

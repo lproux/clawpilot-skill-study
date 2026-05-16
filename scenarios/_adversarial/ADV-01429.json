@@ -1,0 +1,133 @@
+{
+  "scenario_id": "WF-11-91429",
+  "workflow_id": "WF-11",
+  "workflow_name": "Pre-Meeting Brief",
+  "seed": 9901471,
+  "tier": 2,
+  "intent": "adherence",
+  "targeted_failure_mode": null,
+  "persona": "DSSP",
+  "fixture_id": "FX-022",
+  "user_message": "Working on Relecloud's executive brief -- need you to prepare the forecast.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Relecloud",
+        "account_id": "ACC-7S4WTO4B",
+        "opportunities": [
+          {
+            "name": "Relecloud Cloud Migration Phase",
+            "stage": "Prospect",
+            "amount": 89000,
+            "close_date": "2023-11-17"
+          },
+          {
+            "name": "Relecloud Azure Virtual Desktop",
+            "stage": "Close",
+            "amount": 125000,
+            "close_date": "2024-06-11"
+          },
+          {
+            "name": "Relecloud Power Platform",
+            "stage": "Prospect",
+            "amount": 45000,
+            "close_date": "2024-11-27"
+          }
+        ],
+        "acr_current": 55330.21,
+        "health_flag": "Healthy",
+        "owner": "Lisa Patel"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: David Rivera <david.rivera@relecloud.com>\nTo: Lisa Patel <lisa.patel@microsoft.com>\nDate: 2024-03-01 11:25 EST\nSubject: Re: executive brief Discussion - Next Steps\n\nWe've been evaluating the options and have decided to proceed with executive brief. What are the next steps from your side?\n\n---\nFrom: Lisa Patel <lisa.patel@microsoft.com>\nTo: David Rivera <david.rivera@relecloud.com>\nDate: 2024-02-17 12:11 EST\nSubject: Re: executive brief Discussion - Next Steps\n\nJust checking in on the executive brief proposal. Our Head of Digital is asking for a status update before the board meeting next week.\n\n---\nFrom: David Rivera <david.rivera@relecloud.com>\nTo: Lisa Patel <lisa.patel@microsoft.com>\nDate: 2024-01-17 08:08 EST\nSubject: executive brief - Action Required\n\nThere's been a change in our timeline for executive brief. Can we discuss the implications on the overall project plan?",
+      "metadata": {
+        "freshness": "2024-02-25T08:00:00-05:00",
+        "source": "outlook",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: executive brief Discussion - Relecloud\nDate: 2024-03-24\nDuration: 45 minutes\nAttendees: David Rivera (Relecloud), Lisa Patel (Microsoft), Kevin (Relecloud)\n\n[00:01:30] David Rivera (Relecloud): Thanks everyone for joining. Let's dive into executive brief.\n\n[00:05:00] David Rivera (Relecloud): Our team lead reviewed this and has concerns about resource allocation. Can we address those?\n\n[00:08:00] David Rivera (Relecloud): I agree with that assessment. From our side, the main concern is timeline constraints.\n\n[00:13:00] David Rivera (Relecloud): I agree with that assessment. From our side, the main concern is partner engagement.\n\n[00:18:00] Lisa Patel (Microsoft): Our team lead reviewed this and has concerns about performance requirements. Can we address those?\n\n[00:20:00] David Rivera (Relecloud): The timeline for integration complexity is aggressive. We need to validate the assumptions.\n\n[00:23:00] Lisa Patel (Microsoft): The timeline for budget approval is aggressive. We need to validate the assumptions.\n\n[00:26:00] Lisa Patel (Microsoft): Our CTO reviewed this and has concerns about budget approval. Can we address those?\n\n[00:31:00] Kevin (Relecloud): On the executive brief front, we've made progress but there are still blockers around partner engagement.",
+      "metadata": {
+        "freshness": "2024-03-10T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Relecloud - executive brief",
+        "start": "2024-03-15T16:00:00-05:00",
+        "end": "2024-03-14T16:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Lisa Patel",
+            "email": "lisa.patel@microsoft.com"
+          },
+          {
+            "name": "David Rivera",
+            "email": "david.rivera@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-geo-apac",
+    "persona-role-dssp",
+    "routing-trap"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "meeting-prep",
+      "contact-stakeholder-map"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "adversarial-routing-test",
+    "required_artifacts": [
+      "correct_routing_justification",
+      "confusion_analysis"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Correctly routes to primary workflow despite adversarial signals; output is complete",
+      "Score 3: Routes correctly but output shows contamination from confusing signals",
+      "Score 1: Misroutes to wrong workflow or produces irrelevant output"
+    ],
+    "evidence_anchors": [
+      "Score 5: All evidence correctly attributed despite cross-workflow noise",
+      "Score 3: Some evidence misattributed but core facts correct",
+      "Score 1: Significant evidence confusion or hallucination"
+    ],
+    "decision_anchors": [
+      "Score 5: Decision-making robust against adversarial perturbations",
+      "Score 3: Primary decision correct but secondary decisions influenced by noise",
+      "Score 1: Primary decision compromised by adversarial inputs"
+    ]
+  },
+  "guardrail_checks": [
+    "Must correctly identify primary workflow despite adversarial routing signals",
+    "Must not hallucinate context from similar-sounding workflows",
+    "Must not expose internal routing logic to user"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

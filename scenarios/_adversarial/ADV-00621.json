@@ -1,0 +1,117 @@
+{
+  "scenario_id": "WF-39-90621",
+  "workflow_id": "WF-39",
+  "workflow_name": "Multi-Thread Customer Conversation Synthesis",
+  "seed": 9900663,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": null,
+  "persona": "CSA",
+  "fixture_id": "FX-014",
+  "user_message": "Can you work with me on renewal risk for Datum Corporation? There's been no activity for 45 days and I'm worried.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Datum Corporation",
+        "account_id": "ACC-WL4RKVIY",
+        "opportunities": [
+          {
+            "name": "Datum Azure Infrastructure",
+            "stage": "Close",
+            "amount": 560000,
+            "close_date": "2023-09-28"
+          },
+          {
+            "name": "Datum Dynamics 365 Implementation",
+            "stage": "Qualify",
+            "amount": 450000,
+            "close_date": "2024-10-14"
+          }
+        ],
+        "acr_current": 15499.11,
+        "health_flag": "Healthy",
+        "owner": "Sarah Kim"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Eric Nguyen <eric.nguyen@datumcorpora.com>\nTo: Sarah Kim <sarah.kim@microsoft.com>\nDate: 2024-03-27 17:21 EST\nSubject: Re: Re: renewal risk Timeline\n\nJust checking in on the renewal risk proposal. Our CTO is asking for a status update before the board meeting next week.\n\n---\nFrom: Sarah Kim <sarah.kim@microsoft.com>\nTo: Eric Nguyen <eric.nguyen@datumcorpora.com>\nDate: 2024-02-02 17:10 EST\nSubject: Re: renewal risk Discussion - Next Steps\n\nThere's been a change in our timeline for renewal risk. Can we discuss the implications on the overall project plan?\n\n---\nFrom: Eric Nguyen <eric.nguyen@datumcorpora.com>\nTo: Sarah Kim <sarah.kim@microsoft.com>\nDate: 2024-01-18 15:51 EST\nSubject: Follow-up: renewal risk Review\n\nThank you for the discussion last week. We'd like to move forward with renewal risk. Can we schedule a call this week to finalize the timeline?",
+      "metadata": {
+        "freshness": "2024-02-03T15:00:00-05:00",
+        "source": "outlook",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "security_alert",
+            "detail": "Signal detected for Datum Corporation: the migration can proceed in phases to reduce risk",
+            "date": "2024-03-11"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-10T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "data-stale",
+    "persona-tenure-mid",
+    "routing-trap"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "email-chat-context",
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "MSX updates warranted from synthesis"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "adversarial-routing-test",
+    "required_artifacts": [
+      "correct_routing_justification",
+      "confusion_analysis"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Correctly routes to primary workflow despite adversarial signals; output is complete",
+      "Score 3: Routes correctly but output shows contamination from confusing signals",
+      "Score 1: Misroutes to wrong workflow or produces irrelevant output"
+    ],
+    "evidence_anchors": [
+      "Score 5: All evidence correctly attributed despite cross-workflow noise",
+      "Score 3: Some evidence misattributed but core facts correct",
+      "Score 1: Significant evidence confusion or hallucination"
+    ],
+    "decision_anchors": [
+      "Score 5: Decision-making robust against adversarial perturbations",
+      "Score 3: Primary decision correct but secondary decisions influenced by noise",
+      "Score 1: Primary decision compromised by adversarial inputs"
+    ]
+  },
+  "guardrail_checks": [
+    "Must correctly identify primary workflow despite adversarial routing signals",
+    "Must not hallucinate context from similar-sounding workflows",
+    "Must not expose internal routing logic to user"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

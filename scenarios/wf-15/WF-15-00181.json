@@ -1,0 +1,94 @@
+{
+  "scenario_id": "WF-15-00181",
+  "workflow_id": "WF-15",
+  "workflow_name": "Visual Meeting Packet (Executive Brief)",
+  "seed": 1500223,
+  "tier": 3,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF15-I",
+  "persona": "DSSP",
+  "fixture_id": "FX-005",
+  "user_message": "Can you extract the territory planning from this email thread for Tailspin Toys? I met with them last week but can't remember the details.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Tailspin Toys",
+        "account_id": "ACC-JXC3G9ET",
+        "opportunities": [
+          {
+            "name": "Tailspin Azure Virtual Desktop",
+            "stage": "Close",
+            "amount": 560000,
+            "close_date": "2024-09-15"
+          },
+          {
+            "name": "Tailspin Azure SQL Migration",
+            "stage": "Prospect",
+            "amount": 125000,
+            "close_date": "2024-10-05"
+          },
+          {
+            "name": "Tailspin Dynamics 365 Implementation",
+            "stage": "Propose",
+            "amount": 45000,
+            "close_date": "2024-08-10"
+          }
+        ],
+        "acr_current": 122043.29,
+        "health_flag": "Healthy",
+        "owner": "Raj Mehta"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    }
+  ],
+  "perturbations": [
+    "signal-strength-noisy",
+    "data-fresh"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "meeting-prep",
+      "contact-stakeholder-map"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "visual-meeting-packet-(executive-brief)",
+    "required_artifacts": [
+      "Visual executive packet with cover page",
+      "exec summary",
+      "opportunity ladder",
+      "solution narrative",
+      "asks section"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF15-I trap (Cover page lacks meeting purpose); produces complete Visual executive packet with cover page, exec summary, opportunity ladder, solution narrative, asks ",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF15-I failure pattern",
+      "Score 1: Output exhibits the full FM-WF15-I failure mode (Cover page lacks meeting purpose)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct territory planning decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF15-I -- Cover page lacks meeting purpose"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

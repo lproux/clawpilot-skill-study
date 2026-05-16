@@ -1,0 +1,114 @@
+{
+  "scenario_id": "WF-06-00109",
+  "workflow_id": "WF-06",
+  "workflow_name": "ACR Decline Investigation",
+  "seed": 600151,
+  "tier": 3,
+  "intent": "design-redesign",
+  "targeted_failure_mode": "FM-WF06-M",
+  "persona": "DSSP",
+  "fixture_id": "FX-011",
+  "user_message": "Pulling in context from Alpine Ski House's exec meeting notes -- need to identify the blockers for the QBR preparation.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Alpine Ski House",
+        "account_id": "ACC-UIKNWGJ7",
+        "opportunities": [
+          {
+            "name": "Alpine Azure Virtual Desktop",
+            "stage": "Propose",
+            "amount": 560000,
+            "close_date": "2023-12-14"
+          }
+        ],
+        "acr_current": 115928.19,
+        "health_flag": "At Risk",
+        "owner": "Marcus Williams"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "contract_event",
+            "detail": "Signal detected for Alpine Ski House: there's a compliance requirement we hadn't accounted for in the original scope",
+            "date": "2024-03-08"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-10T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-geo-apac",
+    "persona-role-dssp",
+    "persona-tenure-mid"
+  ],
+  "expected_routing": {
+    "entry_skill": "acr-signal-to-opportunity-coach",
+    "modules": [
+      "acr-data-access",
+      "acr-health-forecast",
+      "signal-to-opportunity"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "funding-partner-activation-coach",
+        "condition": "contract/billing is the driver"
+      },
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "opportunity records need updating"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "acr-decline-investigation",
+    "required_artifacts": [
+      "Ranked hypotheses for decline with evidence",
+      "recovery actions with owners",
+      "timeline",
+      "confidence labels"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF06-M trap (ACR-decline spans 3+ skills with no unified investigation primitive); produces complete Ranked hypotheses for decline with evidence, recovery actions with owners, timeline, confidence labe",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF06-M failure pattern",
+      "Score 1: Output exhibits the full FM-WF06-M failure mode (ACR-decline spans 3+ skills with no unified investigation primitive)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct QBR preparation decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF06-M -- ACR-decline spans 3+ skills with no unified investigation primitive",
+    "Produce structural verdict on whether current routing adequately serves this scenario"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "verdict-on-structural",
+    "verdict_required_axes": [
+      "routing",
+      "evidence"
+    ]
+  }
+}

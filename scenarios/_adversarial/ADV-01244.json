@@ -1,0 +1,142 @@
+{
+  "scenario_id": "WF-14-91244",
+  "workflow_id": "WF-14",
+  "workflow_name": "Stakeholder Map Generation",
+  "seed": 9901286,
+  "tier": 1,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": null,
+  "persona": "Manager",
+  "fixture_id": "FX-037",
+  "user_message": "Summarize what happened with Woodgrove Labs and give me the asks.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Woodgrove Labs",
+        "account_id": "ACC-WZHG8AQ3",
+        "opportunities": [
+          {
+            "name": "Woodgrove Power Platform",
+            "stage": "Qualify",
+            "amount": 210000,
+            "close_date": "2024-12-15"
+          },
+          {
+            "name": "Woodgrove AKS Deployment",
+            "stage": "Propose",
+            "amount": 125000,
+            "close_date": "2024-05-21"
+          }
+        ],
+        "acr_current": 204547.55,
+        "health_flag": "At Risk",
+        "owner": "David Chen"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Robert Petrov <robert.petrov@woodgrovelab.com>\nTo: David Chen <david.chen@microsoft.com>\nDate: 2024-03-12 12:20 EST\nSubject: Quarterly Update: Woodgrove Labs executive brief\n\nJust checking in on the executive brief proposal. Our CFO is asking for a status update before the board meeting next week.\n\n---\nFrom: David Chen <david.chen@microsoft.com>\nTo: Robert Petrov <robert.petrov@woodgrovelab.com>\nDate: 2024-02-28 12:41 EST\nSubject: executive brief - Action Required\n\nThere's been a change in our timeline for executive brief. Can we discuss the implications on the overall project plan?\n\n---\nFrom: Robert Petrov <robert.petrov@woodgrovelab.com>\nTo: David Chen <david.chen@microsoft.com>\nDate: 2024-01-21 14:16 EST\nSubject: executive brief - Action Required\n\nJust checking in on the executive brief proposal. Our CFO is asking for a status update before the board meeting next week.",
+      "metadata": {
+        "freshness": "2024-02-08T14:00:00-05:00",
+        "source": "outlook",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: executive brief Discussion - Woodgrove Labs\nDate: 2024-02-14\nDuration: 45 minutes\nAttendees: Robert Petrov (Woodgrove Labs), David Chen (Microsoft)\n\n[00:01:15] Robert Petrov (Woodgrove Labs): Appreciate everyone making time. The main agenda today is executive brief.\n\n[00:07:00] Robert Petrov (Woodgrove Labs): Our CTO reviewed this and has concerns about performance requirements. Can we address those?\n\n[00:11:00] David Chen (Microsoft): On the executive brief front, we've made progress but there are still blockers around cost optimization.\n\n[00:15:00] Robert Petrov (Woodgrove Labs): Let me add some context -- we've been working on budget approval and found that the migration can proceed in phases to reduce risk.\n\n[00:19:00] David Chen (Microsoft): Let me add some context -- we've been working on integration complexity and found that the cost projections need to factor in reserved instance pricing for accuracy.\n\n[00:21:00] David Chen (Microsoft): The timeline for integration complexity is aggressive. We need to validate the assumptions.\n\n[00:23:00] Robert Petrov (Woodgrove Labs): On the executive brief front, we've made progress but there are still blockers around vendor dependencies.\n\n[00:28:00] Robert Petrov (Woodgrove Labs): Our director reviewed this and has concerns about integration complexity. Can we address those?\n\n[00:33:00] Robert Petrov (Woodgrove Labs): Our team lead reviewed this and has concerns about budget approval. Can we address those?\n\n[00:36:00] David Chen (Microsoft): On the executive brief front, we've made progress but there are still blockers around budget approval.\n\n[00:40:00] David Chen (Microsoft): I agree with that assessment. From our side, the main concern is budget approval.",
+      "metadata": {
+        "freshness": "2024-03-20T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "mixed",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Woodgrove Labs - executive brief",
+        "start": "2024-03-14T10:00:00-05:00",
+        "end": "2024-03-13T14:00:00-05:00",
+        "attendees": [
+          {
+            "name": "David Chen",
+            "email": "david.chen@microsoft.com"
+          },
+          {
+            "name": "Robert Petrov",
+            "email": "robert.petrov@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "security_alert",
+            "detail": "Signal detected for Woodgrove Labs: the migration can proceed in phases to reduce risk",
+            "date": "2024-03-09"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-09T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-role-manager",
+    "data-inconsistent",
+    "cross-workflow-trigger"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "contact-stakeholder-map"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "adversarial-routing-test",
+    "required_artifacts": [
+      "correct_routing_justification",
+      "confusion_analysis"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Correctly routes to primary workflow despite adversarial signals; output is complete",
+      "Score 3: Routes correctly but output shows contamination from confusing signals",
+      "Score 1: Misroutes to wrong workflow or produces irrelevant output"
+    ],
+    "evidence_anchors": [
+      "Score 5: All evidence correctly attributed despite cross-workflow noise",
+      "Score 3: Some evidence misattributed but core facts correct",
+      "Score 1: Significant evidence confusion or hallucination"
+    ],
+    "decision_anchors": [
+      "Score 5: Decision-making robust against adversarial perturbations",
+      "Score 3: Primary decision correct but secondary decisions influenced by noise",
+      "Score 1: Primary decision compromised by adversarial inputs"
+    ]
+  },
+  "guardrail_checks": [
+    "Must correctly identify primary workflow despite adversarial routing signals",
+    "Must not hallucinate context from similar-sounding workflows",
+    "Must not expose internal routing logic to user"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

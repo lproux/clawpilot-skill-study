@@ -1,0 +1,133 @@
+{
+  "scenario_id": "WF-45-00068",
+  "workflow_id": "WF-45",
+  "workflow_name": "QBR Transcript -> Health + Whitespace + Renewal Risk",
+  "seed": 4500110,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF45-H",
+  "persona": "Manager",
+  "fixture_id": "FX-029",
+  "user_message": "I need you to process this exec meeting notes from Consolidated Messenger. I think there's an opportunity here but need to validate.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Consolidated Messenger",
+        "account_id": "ACC-LVS79LOG",
+        "opportunities": [
+          {
+            "name": "Consolidated Azure AI Services",
+            "stage": "Propose",
+            "amount": 280000,
+            "close_date": "2024-12-11"
+          },
+          {
+            "name": "Consolidated Security Modernization",
+            "stage": "Prospect",
+            "amount": 210000,
+            "close_date": "2024-04-06"
+          },
+          {
+            "name": "Consolidated Azure Arc Deployment",
+            "stage": "Close",
+            "amount": 125000,
+            "close_date": "2024-05-02"
+          }
+        ],
+        "acr_current": 0,
+        "health_flag": "Unknown",
+        "owner": "Tom Rodriguez"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: executive brief Discussion - Consolidated Messenger\nDate: 2024-01-12\nDuration: 45 minutes\nAttendees: Sarah Singh (Consolidated Messenger), Tom Rodriguez (Microsoft), Michelle (Consolidated Messenger)\n\n[00:02:00] Sarah Singh (Consolidated Messenger): Good morning. I wanted to follow up on executive brief from our last session.\n\n[00:06:00] Michelle (Consolidated Messenger): The timeline for vendor dependencies is aggressive. We need to validate the assumptions.\n\n[00:08:00] Sarah Singh (Consolidated Messenger): The timeline for data residency is aggressive. We need to validate the assumptions.\n\n[00:11:00] Michelle (Consolidated Messenger): Let me add some context -- we've been working on security compliance and found that there's a dependency on the security team's review that could delay us.\n\n[00:15:00] Tom Rodriguez (Microsoft): On the executive brief front, we've made progress but there are still blockers around stakeholder alignment.\n\n[00:20:00] Michelle (Consolidated Messenger): I agree with that assessment. From our side, the main concern is integration complexity.\n\n[00:23:00] Tom Rodriguez (Microsoft): On the executive brief front, we've made progress but there are still blockers around vendor dependencies.\n\n[00:26:00] Sarah Singh (Consolidated Messenger): Let me add some context -- we've been working on partner engagement and found that there's a dependency on the security team's review that could delay us.\n\n[00:30:00] Tom Rodriguez (Microsoft): On the executive brief front, we've made progress but there are still blockers around data residency.\n\n[00:34:00] Michelle (Consolidated Messenger): Let me add some context -- we've been working on performance requirements and found that there's a compliance requirement we hadn't accounted for in the original scope.\n\n[00:38:00] Sarah Singh (Consolidated Messenger): Our VP reviewed this and has concerns about technical validation. Can we address those?",
+      "metadata": {
+        "freshness": "2024-02-22T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "deployment_blocker",
+            "detail": "Signal detected for Consolidated Messenger: the cost projections need to factor in reserved instance pricing for accuracy",
+            "date": "2024-03-08"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-09T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-geo-na",
+    "persona-segment-smb-mid"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "portfolio-account-planning-coach",
+        "condition": "health assessment needed"
+      },
+      {
+        "target_skill": "acr-signal-to-opportunity-coach",
+        "condition": "whitespace signals warrant investigation"
+      },
+      {
+        "target_skill": "forecast-business-review-coach",
+        "condition": "renewal risk affects forecast"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "qbr-transcript-->-health-+-whitespace-+-renewal-ri",
+    "required_artifacts": [
+      "Health delta assessment",
+      "whitespace hypotheses",
+      "renewal risk with confidence",
+      "action distribution with owners",
+      "comparison to last QBR commitments"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF45-H trap (Skips comparison to last QBR's commitments); produces complete Health delta assessment, whitespace hypotheses, renewal risk with confidence, action distribution wi",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF45-H failure pattern",
+      "Score 1: Output exhibits the full FM-WF45-H failure mode (Skips comparison to last QBR's commitments)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct executive brief decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF45-H -- Skips comparison to last QBR's commitments"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

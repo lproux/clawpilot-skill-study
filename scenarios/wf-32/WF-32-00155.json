@@ -1,0 +1,159 @@
+{
+  "scenario_id": "WF-32-00155",
+  "workflow_id": "WF-32",
+  "workflow_name": "Calendar Pre-Pack Automation",
+  "seed": 3200197,
+  "tier": 4,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": "FM-WF32-R",
+  "persona": "Manager",
+  "fixture_id": "FX-003",
+  "user_message": "[AUTOMATION TRIGGER] System detected Calendar event with non-Microsoft external attendee detected for account Northwind Traders. Generating output.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Northwind Traders",
+        "account_id": "ACC-X86FSRU2",
+        "opportunities": [
+          {
+            "name": "Northwind Azure Arc Deployment",
+            "stage": "Propose",
+            "amount": 89000,
+            "close_date": "2024-09-05"
+          },
+          {
+            "name": "Northwind Copilot Adoption",
+            "stage": "Develop",
+            "amount": 175000,
+            "close_date": "2024-06-22"
+          },
+          {
+            "name": "Northwind Intune Rollout",
+            "stage": "Close",
+            "amount": 350000,
+            "close_date": "2024-04-19"
+          }
+        ],
+        "acr_current": 54067.74,
+        "health_flag": "Healthy",
+        "owner": "Ahmed Hassan"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Sandra Taylor <sandra.taylor@northwindtra.com>\nTo: Ahmed Hassan <ahmed.hassan@microsoft.com>\nDate: 2024-03-11 15:53 EST\nSubject: executive brief - Action Required\n\nI wanted to follow up on our conversation about executive brief. Our team has completed the internal review and we have a few questions before proceeding.\n\n---\nFrom: Ahmed Hassan <ahmed.hassan@microsoft.com>\nTo: Sandra Taylor <sandra.taylor@northwindtra.com>\nDate: 2024-02-23 15:59 EST\nSubject: Re: executive brief Discussion - Next Steps\n\nThere's been a change in our timeline for executive brief. Can we discuss the implications on the overall project plan?\n\n---\nFrom: Sandra Taylor <sandra.taylor@northwindtra.com>\nTo: Ahmed Hassan <ahmed.hassan@microsoft.com>\nDate: 2024-01-25 11:31 EST\nSubject: Follow-up: executive brief Review\n\nWe've been evaluating the options and have decided to proceed with executive brief. What are the next steps from your side?",
+      "metadata": {
+        "freshness": "2024-02-24T13:00:00-05:00",
+        "source": "outlook",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: executive brief Discussion - Northwind Traders\nDate: 2024-02-17\nDuration: 45 minutes\nAttendees: Sandra Taylor (Northwind Traders), Ahmed Hassan (Microsoft)\n\n[00:01:15] Sandra Taylor (Northwind Traders): Appreciate everyone making time. The main agenda today is executive brief.\n\n[00:08:00] Sandra Taylor (Northwind Traders): Let me add some context -- we've been working on vendor dependencies and found that there's a dependency on the security team's review that could delay us.\n\n[00:13:00] Sandra Taylor (Northwind Traders): I agree with that assessment. From our side, the main concern is resource allocation.\n\n[00:16:00] Sandra Taylor (Northwind Traders): The timeline for security compliance is aggressive. We need to validate the assumptions.\n\n[00:21:00] Ahmed Hassan (Microsoft): On the executive brief front, we've made progress but there are still blockers around vendor dependencies.\n\n[00:23:00] Sandra Taylor (Northwind Traders): The timeline for technical validation is aggressive. We need to validate the assumptions.\n\n[00:25:00] Sandra Taylor (Northwind Traders): Our architect reviewed this and has concerns about resource allocation. Can we address those?",
+      "metadata": {
+        "freshness": "2024-01-28T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Northwind Traders - executive brief",
+        "start": "2024-03-15T10:00:00-05:00",
+        "end": "2024-03-12T10:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Ahmed Hassan",
+            "email": "ahmed.hassan@microsoft.com"
+          },
+          {
+            "name": "Sandra Taylor",
+            "email": "sandra.taylor@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "deployment_blocker",
+            "detail": "Signal detected for Northwind Traders: the cost projections need to factor in reserved instance pricing for accuracy",
+            "date": "2024-03-08"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-10T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-segment-smb-corporate",
+    "persona-geo-na"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "meeting-prep",
+      "contact-stakeholder-map",
+      "email-chat-context"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "portfolio-account-planning-coach",
+        "condition": "meeting is for account CSA should have declined"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "calendar-pre-pack-automation",
+    "required_artifacts": [
+      "Pre-pack brief with attendee context",
+      "account snapshot",
+      "talking points",
+      "likely objections",
+      "open items"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF32-R trap (Non-Microsoft attendee as the sole filter misses partner-led meetings with valua); produces complete Pre-pack brief with attendee context, account snapshot, talking points, likely objections, open item",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF32-R failure pattern",
+      "Score 1: Output exhibits the full FM-WF32-R failure mode (Non-Microsoft attendee as the sole filter misses partner-led meetings with valua)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct executive brief decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF32-R -- Non-Microsoft attendee as the sole filter misses partner-led meetings with valua",
+    "Guardrail axis scored neutrally -- focus on whether output served the user's actual need"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

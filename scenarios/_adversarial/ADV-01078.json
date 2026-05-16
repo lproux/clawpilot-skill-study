@@ -1,0 +1,143 @@
+{
+  "scenario_id": "WF-14-91078",
+  "workflow_id": "WF-14",
+  "workflow_name": "Stakeholder Map Generation",
+  "seed": 9901120,
+  "tier": 1,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": null,
+  "persona": "CSA",
+  "fixture_id": "FX-021",
+  "user_message": "Quick one -- run the hygiene check on Nod Publishers. ",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Nod Publishers",
+        "account_id": "ACC-BFJJI6LY",
+        "opportunities": [
+          {
+            "name": "Nod Azure SQL Migration",
+            "stage": "Close",
+            "amount": 45000,
+            "close_date": "2023-10-06"
+          },
+          {
+            "name": "Nod Intune Rollout",
+            "stage": "Develop",
+            "amount": 560000,
+            "close_date": "2024-12-16"
+          }
+        ],
+        "acr_current": 111088.58,
+        "health_flag": "At Risk",
+        "owner": "Marcus Williams"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Samantha Singh <samantha.singh@nodpublisher.com>\nTo: Marcus Williams <marcus.williams@microsoft.com>\nDate: 2024-03-21 17:08 EST\nSubject: Quarterly Update: Nod Publishers account health\n\nThere's been a change in our timeline for account health. Can we discuss the implications on the overall project plan?\n\n---\nFrom: Marcus Williams <marcus.williams@microsoft.com>\nTo: Samantha Singh <samantha.singh@nodpublisher.com>\nDate: 2024-02-06 12:57 EST\nSubject: Quarterly Update: Nod Publishers account health\n\nOur team encountered some challenges with account health. Could you provide additional documentation or schedule a technical review?\n\n---\nFrom: Samantha Singh <samantha.singh@nodpublisher.com>\nTo: Marcus Williams <marcus.williams@microsoft.com>\nDate: 2024-01-08 09:05 EST\nSubject: Re: Re: account health Timeline\n\nThank you for the discussion last week. We'd like to move forward with account health. Can we schedule a call this week to finalize the timeline?",
+      "metadata": {
+        "freshness": "2024-03-01T17:00:00-05:00",
+        "source": "outlook",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: account health Discussion - Nod Publishers\nDate: 2024-02-16\nDuration: 45 minutes\nAttendees: Samantha Singh (Nod Publishers), Marcus Williams (Microsoft)\n\n[00:01:30] Samantha Singh (Nod Publishers): Thanks everyone for joining. Let's dive into account health.\n\n[00:07:00] Samantha Singh (Nod Publishers): Let me add some context -- we've been working on timeline constraints and found that there's a compliance requirement we hadn't accounted for in the original scope.\n\n[00:11:00] Samantha Singh (Nod Publishers): Let me add some context -- we've been working on stakeholder alignment and found that the migration can proceed in phases to reduce risk.\n\n[00:16:00] Marcus Williams (Microsoft): Let me add some context -- we've been working on technical validation and found that the current vendor contract has a 90-day exit clause we need to plan around.\n\n[00:19:00] Marcus Williams (Microsoft): The timeline for performance requirements is aggressive. We need to validate the assumptions.\n\n[00:22:00] Samantha Singh (Nod Publishers): On the account health front, we've made progress but there are still blockers around timeline constraints.\n\n[00:27:00] Samantha Singh (Nod Publishers): On the account health front, we've made progress but there are still blockers around stakeholder alignment.",
+      "metadata": {
+        "freshness": "2024-02-27T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Nod Publishers - account health",
+        "start": "2024-03-14T14:00:00-05:00",
+        "end": "2024-03-15T17:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Marcus Williams",
+            "email": "marcus.williams@microsoft.com"
+          },
+          {
+            "name": "Samantha Singh",
+            "email": "samantha.singh@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "contract_event",
+            "detail": "Signal detected for Nod Publishers: the cost projections need to factor in reserved instance pricing for accuracy",
+            "date": "2024-03-11"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-segment-smb-mid",
+    "persona-role-csa",
+    "persona-geo-apac",
+    "routing-trap"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "contact-stakeholder-map"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "adversarial-routing-test",
+    "required_artifacts": [
+      "correct_routing_justification",
+      "confusion_analysis"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Correctly routes to primary workflow despite adversarial signals; output is complete",
+      "Score 3: Routes correctly but output shows contamination from confusing signals",
+      "Score 1: Misroutes to wrong workflow or produces irrelevant output"
+    ],
+    "evidence_anchors": [
+      "Score 5: All evidence correctly attributed despite cross-workflow noise",
+      "Score 3: Some evidence misattributed but core facts correct",
+      "Score 1: Significant evidence confusion or hallucination"
+    ],
+    "decision_anchors": [
+      "Score 5: Decision-making robust against adversarial perturbations",
+      "Score 3: Primary decision correct but secondary decisions influenced by noise",
+      "Score 1: Primary decision compromised by adversarial inputs"
+    ]
+  },
+  "guardrail_checks": [
+    "Must correctly identify primary workflow despite adversarial routing signals",
+    "Must not hallucinate context from similar-sounding workflows",
+    "Must not expose internal routing logic to user"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

@@ -1,0 +1,138 @@
+{
+  "scenario_id": "WF-11-00201",
+  "workflow_id": "WF-11",
+  "workflow_name": "Pre-Meeting Brief",
+  "seed": 1100243,
+  "tier": 2,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": "FM-WF11-L",
+  "persona": "CSA",
+  "fixture_id": "FX-045",
+  "user_message": "Before my call with Azure Ridge Partners, assess the risk. We had a deep-dive last month -- need the follow-up.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Azure Ridge Partners",
+        "account_id": "ACC-URB6CCFS",
+        "opportunities": [
+          {
+            "name": "Azure Cloud Migration Phase",
+            "stage": "Develop",
+            "amount": 210000,
+            "close_date": "2024-09-05"
+          },
+          {
+            "name": "Azure Cloud Migration Phase",
+            "stage": "Close",
+            "amount": 560000,
+            "close_date": "2024-10-05"
+          },
+          {
+            "name": "Azure Intune Rollout",
+            "stage": "Develop",
+            "amount": 280000,
+            "close_date": "2024-10-01"
+          }
+        ],
+        "acr_current": 189461.39,
+        "health_flag": "Unknown",
+        "owner": "Raj Mehta"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Thomas Okafor <thomas.okafor@azureridgepa.com>\nTo: Raj Mehta <raj.mehta@microsoft.com>\nDate: 2024-03-08 16:31 EST\nSubject: Quarterly Update: Azure Ridge Partners consumption trend\n\nJust checking in on the consumption trend proposal. Our CFO is asking for a status update before the board meeting next week.\n\n---\nFrom: Raj Mehta <raj.mehta@microsoft.com>\nTo: Thomas Okafor <thomas.okafor@azureridgepa.com>\nDate: 2024-02-26 15:42 EST\nSubject: Re: Re: consumption trend Timeline\n\nJust checking in on the consumption trend proposal. Our CFO is asking for a status update before the board meeting next week.\n\n---\nFrom: Thomas Okafor <thomas.okafor@azureridgepa.com>\nTo: Raj Mehta <raj.mehta@microsoft.com>\nDate: 2024-01-08 08:47 EST\nSubject: URGENT: consumption trend Issue at Azure Ridge Partners\n\nOur team encountered some challenges with consumption trend. Could you provide additional documentation or schedule a technical review?",
+      "metadata": {
+        "freshness": "2024-03-16T09:00:00-05:00",
+        "source": "outlook",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: consumption trend Discussion - Azure Ridge Partners\nDate: 2024-02-09\nDuration: 45 minutes\nAttendees: Thomas Okafor (Azure Ridge Partners), Raj Mehta (Microsoft)\n\n[00:01:30] Thomas Okafor (Azure Ridge Partners): Thanks everyone for joining. Let's dive into consumption trend.\n\n[00:08:00] Raj Mehta (Microsoft): On the consumption trend front, we've made progress but there are still blockers around data residency.\n\n[00:12:00] Raj Mehta (Microsoft): Our CTO reviewed this and has concerns about stakeholder alignment. Can we address those?\n\n[00:16:00] Raj Mehta (Microsoft): Let me add some context -- we've been working on vendor dependencies and found that there's a dependency on the security team's review that could delay us.\n\n[00:18:00] Raj Mehta (Microsoft): Our architect reviewed this and has concerns about budget approval. Can we address those?\n\n[00:23:00] Thomas Okafor (Azure Ridge Partners): Let me add some context -- we've been working on technical validation and found that the existing infrastructure won't support the target workload without upgrades.\n\n[00:27:00] Thomas Okafor (Azure Ridge Partners): On the consumption trend front, we've made progress but there are still blockers around vendor dependencies.\n\n[00:31:00] Raj Mehta (Microsoft): Let me add some context -- we've been working on integration complexity and found that the cost projections need to factor in reserved instance pricing for accuracy.",
+      "metadata": {
+        "freshness": "2024-03-03T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Azure Ridge Partners - consumption trend",
+        "start": "2024-03-13T15:00:00-05:00",
+        "end": "2024-03-13T11:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Raj Mehta",
+            "email": "raj.mehta@microsoft.com"
+          },
+          {
+            "name": "Thomas Okafor",
+            "email": "thomas.okafor@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    }
+  ],
+  "perturbations": [
+    "data-inconsistent",
+    "persona-geo-emea",
+    "persona-segment-smb-mid",
+    "persona-tenure-junior"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "meeting-prep",
+      "contact-stakeholder-map"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "pre-meeting-brief",
+    "required_artifacts": [
+      "One-page brief with attendee context",
+      "account snapshot",
+      "talking points",
+      "likely objections",
+      "open items from last meeting"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF11-L trap (Draft-only posture delays time-sensitive sends); produces complete One-page brief with attendee context, account snapshot, talking points, likely objections, open item",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF11-L failure pattern",
+      "Score 1: Output exhibits the full FM-WF11-L failure mode (Draft-only posture delays time-sensitive sends)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct consumption trend decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF11-L -- Draft-only posture delays time-sensitive sends",
+    "Guardrail axis scored neutrally -- focus on whether output served the user's actual need"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

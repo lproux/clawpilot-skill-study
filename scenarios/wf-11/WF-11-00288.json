@@ -1,0 +1,131 @@
+{
+  "scenario_id": "WF-11-00288",
+  "workflow_id": "WF-11",
+  "workflow_name": "Pre-Meeting Brief",
+  "seed": 1100330,
+  "tier": 2,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF11-I",
+  "persona": "CSA",
+  "fixture_id": "FX-019",
+  "user_message": "Before my call with Lucerne Publishing, generate the watchlist. There's been no activity for 45 days and I'm worried.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Lucerne Publishing",
+        "account_id": "ACC-2JXCFRG8",
+        "opportunities": [
+          {
+            "name": "Lucerne Copilot Adoption",
+            "stage": "Propose",
+            "amount": 210000,
+            "close_date": "2023-11-19"
+          },
+          {
+            "name": "Lucerne Data Platform Migration",
+            "stage": "Prospect",
+            "amount": 45000,
+            "close_date": "2024-11-16"
+          }
+        ],
+        "acr_current": 39791.19,
+        "health_flag": "Healthy",
+        "owner": "Tom Rodriguez"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Laura Anderson <laura.anderson@lucernepubli.com>\nTo: Tom Rodriguez <tom.rodriguez@microsoft.com>\nDate: 2024-03-11 12:40 EST\nSubject: Re: Re: consumption trend Timeline\n\nWe've been evaluating the options and have decided to proceed with consumption trend. What are the next steps from your side?\n\n---\nFrom: Tom Rodriguez <tom.rodriguez@microsoft.com>\nTo: Laura Anderson <laura.anderson@lucernepubli.com>\nDate: 2024-02-07 13:03 EST\nSubject: Quarterly Update: Lucerne Publishing consumption trend\n\nI wanted to follow up on our conversation about consumption trend. Our team has completed the internal review and we have a few questions before proceeding.\n\n---\nFrom: Laura Anderson <laura.anderson@lucernepubli.com>\nTo: Tom Rodriguez <tom.rodriguez@microsoft.com>\nDate: 2024-01-15 08:07 EST\nSubject: Follow-up: consumption trend Review\n\nOur team encountered some challenges with consumption trend. Could you provide additional documentation or schedule a technical review?",
+      "metadata": {
+        "freshness": "2024-02-28T08:00:00-05:00",
+        "source": "outlook",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: consumption trend Discussion - Lucerne Publishing\nDate: 2024-01-05\nDuration: 45 minutes\nAttendees: Laura Anderson (Lucerne Publishing), Tom Rodriguez (Microsoft)\n\n[00:01:30] Laura Anderson (Lucerne Publishing): Thanks everyone for joining. Let's dive into consumption trend.\n\n[00:05:00] Tom Rodriguez (Microsoft): Our VP reviewed this and has concerns about budget approval. Can we address those?\n\n[00:07:00] Tom Rodriguez (Microsoft): The timeline for performance requirements is aggressive. We need to validate the assumptions.\n\n[00:10:00] Tom Rodriguez (Microsoft): Our CTO reviewed this and has concerns about resource allocation. Can we address those?\n\n[00:15:00] Tom Rodriguez (Microsoft): Our team lead reviewed this and has concerns about timeline constraints. Can we address those?\n\n[00:17:00] Tom Rodriguez (Microsoft): Our team lead reviewed this and has concerns about stakeholder alignment. Can we address those?",
+      "metadata": {
+        "freshness": "2024-01-18T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "mixed",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Lucerne Publishing - consumption trend",
+        "start": "2024-03-15T15:00:00-05:00",
+        "end": "2024-03-15T14:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Tom Rodriguez",
+            "email": "tom.rodriguez@microsoft.com"
+          },
+          {
+            "name": "Laura Anderson",
+            "email": "laura.anderson@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-role-csa",
+    "persona-geo-na",
+    "persona-tenure-senior",
+    "data-stale"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "meeting-prep",
+      "contact-stakeholder-map"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "pre-meeting-brief",
+    "required_artifacts": [
+      "One-page brief with attendee context",
+      "account snapshot",
+      "talking points",
+      "likely objections",
+      "open items from last meeting"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF11-I trap (Over-summarizes -- loses specific recent context); produces complete One-page brief with attendee context, account snapshot, talking points, likely objections, open item",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF11-I failure pattern",
+      "Score 1: Output exhibits the full FM-WF11-I failure mode (Over-summarizes -- loses specific recent context)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct consumption trend decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF11-I -- Over-summarizes -- loses specific recent context"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

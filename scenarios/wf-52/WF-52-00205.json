@@ -1,0 +1,114 @@
+{
+  "scenario_id": "WF-52-00205",
+  "workflow_id": "WF-52",
+  "workflow_name": "Internal Account Review Transcript -> Team Actions",
+  "seed": 5200247,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF52-G",
+  "persona": "DSSP",
+  "fixture_id": "FX-003",
+  "user_message": "Working on Northwind Traders's executive brief. Got the escalation email -- help me identify the blockers.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Northwind Traders",
+        "account_id": "ACC-X86FSRU2",
+        "opportunities": [
+          {
+            "name": "Northwind Azure Arc Deployment",
+            "stage": "Propose",
+            "amount": 89000,
+            "close_date": "2024-09-05"
+          },
+          {
+            "name": "Northwind Copilot Adoption",
+            "stage": "Develop",
+            "amount": 175000,
+            "close_date": "2024-06-22"
+          },
+          {
+            "name": "Northwind Intune Rollout",
+            "stage": "Close",
+            "amount": 350000,
+            "close_date": "2024-04-19"
+          }
+        ],
+        "acr_current": 54067.74,
+        "health_flag": "Healthy",
+        "owner": "Ahmed Hassan"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: executive brief Discussion - Northwind Traders\nDate: 2024-01-19\nDuration: 45 minutes\nAttendees: Sandra Taylor (Northwind Traders), Ahmed Hassan (Microsoft)\n\n[00:02:00] Sandra Taylor (Northwind Traders): Good morning. I wanted to follow up on executive brief from our last session.\n\n[00:05:00] Ahmed Hassan (Microsoft): Let me add some context -- we've been working on security compliance and found that the migration can proceed in phases to reduce risk.\n\n[00:08:00] Sandra Taylor (Northwind Traders): Our architect reviewed this and has concerns about resource allocation. Can we address those?\n\n[00:10:00] Sandra Taylor (Northwind Traders): The timeline for timeline constraints is aggressive. We need to validate the assumptions.\n\n[00:15:00] Sandra Taylor (Northwind Traders): I agree with that assessment. From our side, the main concern is partner engagement.\n\n[00:18:00] Sandra Taylor (Northwind Traders): The timeline for stakeholder alignment is aggressive. We need to validate the assumptions.\n\n[00:20:00] Sandra Taylor (Northwind Traders): Let me add some context -- we've been working on stakeholder alignment and found that there's a compliance requirement we hadn't accounted for in the original scope.\n\n[00:25:00] Sandra Taylor (Northwind Traders): I agree with that assessment. From our side, the main concern is budget approval.",
+      "metadata": {
+        "freshness": "2024-01-11T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "short"
+      }
+    }
+  ],
+  "perturbations": [
+    "data-fresh",
+    "persona-tenure-junior",
+    "persona-geo-na"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "forecast-business-review-coach",
+        "condition": "team coaching or risk review input"
+      },
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "MSX updates warranted from review"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "internal-account-review-transcript-->-team-actions",
+    "required_artifacts": [
+      "Team action items with owners",
+      "coaching notes (constructive frame)",
+      "customer-facing draft (sanitized)",
+      "manager decision items",
+      "MSX update proposals"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF52-G trap (Invents action items from speculative discussion); produces complete Team action items with owners, coaching notes (constructive frame), customer-facing draft (sanitized",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF52-G failure pattern",
+      "Score 1: Output exhibits the full FM-WF52-G failure mode (Invents action items from speculative discussion)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct executive brief decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF52-G -- Invents action items from speculative discussion"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

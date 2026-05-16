@@ -1,0 +1,150 @@
+{
+  "scenario_id": "WF-14-90182",
+  "workflow_id": "WF-14",
+  "workflow_name": "Stakeholder Map Generation",
+  "seed": 9900224,
+  "tier": 1,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": null,
+  "persona": "DSSP",
+  "fixture_id": "FX-025",
+  "user_message": "The CSA escalated Adatum Corporation to me -- can you prep a brief?",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Adatum Corporation",
+        "account_id": "ACC-ELNED368",
+        "opportunities": [
+          {
+            "name": "Adatum Azure Virtual Desktop",
+            "stage": "Qualify",
+            "amount": 175000,
+            "close_date": "2023-12-18"
+          },
+          {
+            "name": "Adatum Azure SQL Migration",
+            "stage": "Close",
+            "amount": 125000,
+            "close_date": "2024-10-09"
+          },
+          {
+            "name": "Adatum Azure Arc Deployment",
+            "stage": "Propose",
+            "amount": 210000,
+            "close_date": "2024-12-01"
+          }
+        ],
+        "acr_current": 14124.54,
+        "health_flag": "At Risk",
+        "owner": "Raj Mehta"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Laura Nguyen <laura.nguyen@adatumcorpor.com>\nTo: Raj Mehta <raj.mehta@microsoft.com>\nDate: 2024-03-26 11:59 EST\nSubject: Re: Re: whitespace analysis Timeline\n\nJust checking in on the whitespace analysis proposal. Our Infrastructure Manager is asking for a status update before the board meeting next week.\n\n---\nFrom: Raj Mehta <raj.mehta@microsoft.com>\nTo: Laura Nguyen <laura.nguyen@adatumcorpor.com>\nDate: 2024-02-26 16:45 EST\nSubject: URGENT: whitespace analysis Issue at Adatum Corporation\n\nOur team encountered some challenges with whitespace analysis. Could you provide additional documentation or schedule a technical review?\n\n---\nFrom: Laura Nguyen <laura.nguyen@adatumcorpor.com>\nTo: Raj Mehta <raj.mehta@microsoft.com>\nDate: 2024-01-10 09:33 EST\nSubject: Re: Re: whitespace analysis Timeline\n\nI wanted to follow up on our conversation about whitespace analysis. Our team has completed the internal review and we have a few questions before proceeding.",
+      "metadata": {
+        "freshness": "2024-02-01T08:00:00-05:00",
+        "source": "outlook",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: whitespace analysis Discussion - Adatum Corporation\nDate: 2024-02-22\nDuration: 45 minutes\nAttendees: Laura Nguyen (Adatum Corporation), Raj Mehta (Microsoft)\n\n[00:02:00] Laura Nguyen (Adatum Corporation): Good morning. I wanted to follow up on whitespace analysis from our last session.\n\n[00:06:00] Raj Mehta (Microsoft): Our team lead reviewed this and has concerns about partner engagement. Can we address those?\n\n[00:08:00] Laura Nguyen (Adatum Corporation): I agree with that assessment. From our side, the main concern is integration complexity.\n\n[00:13:00] Raj Mehta (Microsoft): Our architect reviewed this and has concerns about resource allocation. Can we address those?\n\n[00:15:00] Laura Nguyen (Adatum Corporation): Our team lead reviewed this and has concerns about integration complexity. Can we address those?\n\n[00:19:00] Raj Mehta (Microsoft): On the whitespace analysis front, we've made progress but there are still blockers around technical validation.\n\n[00:24:00] Raj Mehta (Microsoft): Our CTO reviewed this and has concerns about performance requirements. Can we address those?\n\n[00:29:00] Raj Mehta (Microsoft): Our VP reviewed this and has concerns about budget approval. Can we address those?\n\n[00:34:00] Laura Nguyen (Adatum Corporation): Let me add some context -- we've been working on integration complexity and found that there's a dependency on the security team's review that could delay us.",
+      "metadata": {
+        "freshness": "2024-01-27T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Adatum Corporation - whitespace analysis",
+        "start": "2024-03-15T11:00:00-05:00",
+        "end": "2024-03-13T15:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Raj Mehta",
+            "email": "raj.mehta@microsoft.com"
+          },
+          {
+            "name": "Laura Nguyen",
+            "email": "laura.nguyen@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "consumption_decline",
+            "detail": "Signal detected for Adatum Corporation: the current vendor contract has a 90-day exit clause we need to plan around",
+            "date": "2024-03-05"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-10T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "signal-strength-noisy",
+    "data-stale",
+    "persona-geo-na",
+    "persona-tenure-mid",
+    "routing-ambiguous-3skills"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "contact-stakeholder-map"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "adversarial-routing-test",
+    "required_artifacts": [
+      "correct_routing_justification",
+      "confusion_analysis"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Correctly routes to primary workflow despite adversarial signals; output is complete",
+      "Score 3: Routes correctly but output shows contamination from confusing signals",
+      "Score 1: Misroutes to wrong workflow or produces irrelevant output"
+    ],
+    "evidence_anchors": [
+      "Score 5: All evidence correctly attributed despite cross-workflow noise",
+      "Score 3: Some evidence misattributed but core facts correct",
+      "Score 1: Significant evidence confusion or hallucination"
+    ],
+    "decision_anchors": [
+      "Score 5: Decision-making robust against adversarial perturbations",
+      "Score 3: Primary decision correct but secondary decisions influenced by noise",
+      "Score 1: Primary decision compromised by adversarial inputs"
+    ]
+  },
+  "guardrail_checks": [
+    "Must correctly identify primary workflow despite adversarial routing signals",
+    "Must not hallucinate context from similar-sounding workflows",
+    "Must not expose internal routing logic to user"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

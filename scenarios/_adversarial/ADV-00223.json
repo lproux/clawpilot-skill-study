@@ -1,0 +1,131 @@
+{
+  "scenario_id": "WF-12-90223",
+  "workflow_id": "WF-12",
+  "workflow_name": "Post-Meeting Follow-Up",
+  "seed": 9900265,
+  "tier": 3,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": null,
+  "persona": "DSSP",
+  "fixture_id": "FX-016",
+  "user_message": "Pulling in context from Graphic Design Institute's support ticket -- need to generate the watchlist for the account health.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Graphic Design Institute",
+        "account_id": "ACC-HIKSYLTX",
+        "opportunities": [
+          {
+            "name": "Graphic Azure DevOps",
+            "stage": "Propose",
+            "amount": 450000,
+            "close_date": "2023-09-06"
+          },
+          {
+            "name": "Graphic Azure Infrastructure",
+            "stage": "Prospect",
+            "amount": 125000,
+            "close_date": "2024-11-14"
+          },
+          {
+            "name": "Graphic Azure Arc Deployment",
+            "stage": "Develop",
+            "amount": 45000,
+            "close_date": "2024-10-28"
+          }
+        ],
+        "acr_current": 10042.75,
+        "health_flag": "Healthy",
+        "owner": "Jennifer Walsh"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: account health Discussion - Graphic Design Institute\nDate: 2024-03-05\nDuration: 45 minutes\nAttendees: Maria Park (Graphic Design Institute), Jennifer Walsh (Microsoft)\n\n[00:01:15] Maria Park (Graphic Design Institute): Appreciate everyone making time. The main agenda today is account health.\n\n[00:08:00] Maria Park (Graphic Design Institute): Let me add some context -- we've been working on data residency and found that there's a compliance requirement we hadn't accounted for in the original scope.\n\n[00:13:00] Maria Park (Graphic Design Institute): The timeline for resource allocation is aggressive. We need to validate the assumptions.\n\n[00:16:00] Maria Park (Graphic Design Institute): Let me add some context -- we've been working on vendor dependencies and found that the current vendor contract has a 90-day exit clause we need to plan around.\n\n[00:20:00] Jennifer Walsh (Microsoft): Our CTO reviewed this and has concerns about performance requirements. Can we address those?\n\n[00:22:00] Jennifer Walsh (Microsoft): Our architect reviewed this and has concerns about technical validation. Can we address those?\n\n[00:24:00] Maria Park (Graphic Design Institute): The timeline for timeline constraints is aggressive. We need to validate the assumptions.\n\n[00:28:00] Maria Park (Graphic Design Institute): On the account health front, we've made progress but there are still blockers around security compliance.",
+      "metadata": {
+        "freshness": "2024-01-27T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "mixed",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Graphic Design Institute - account health",
+        "start": "2024-03-12T10:00:00-05:00",
+        "end": "2024-03-15T14:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Jennifer Walsh",
+            "email": "jennifer.walsh@microsoft.com"
+          },
+          {
+            "name": "Maria Park",
+            "email": "maria.park@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    }
+  ],
+  "perturbations": [
+    "data-stale",
+    "persona-role-dssp",
+    "persona-segment-smb-corporate",
+    "routing-trap"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions",
+      "email-chat-context"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "MSX updates warranted from meeting outcomes"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "adversarial-routing-test",
+    "required_artifacts": [
+      "correct_routing_justification",
+      "confusion_analysis"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Correctly routes to primary workflow despite adversarial signals; output is complete",
+      "Score 3: Routes correctly but output shows contamination from confusing signals",
+      "Score 1: Misroutes to wrong workflow or produces irrelevant output"
+    ],
+    "evidence_anchors": [
+      "Score 5: All evidence correctly attributed despite cross-workflow noise",
+      "Score 3: Some evidence misattributed but core facts correct",
+      "Score 1: Significant evidence confusion or hallucination"
+    ],
+    "decision_anchors": [
+      "Score 5: Decision-making robust against adversarial perturbations",
+      "Score 3: Primary decision correct but secondary decisions influenced by noise",
+      "Score 1: Primary decision compromised by adversarial inputs"
+    ]
+  },
+  "guardrail_checks": [
+    "Must correctly identify primary workflow despite adversarial routing signals",
+    "Must not hallucinate context from similar-sounding workflows",
+    "Must not expose internal routing logic to user"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

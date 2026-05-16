@@ -1,0 +1,138 @@
+{
+  "scenario_id": "WF-11-00199",
+  "workflow_id": "WF-11",
+  "workflow_name": "Pre-Meeting Brief",
+  "seed": 1100241,
+  "tier": 2,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": "FM-WF11-L",
+  "persona": "DSSP",
+  "fixture_id": "FX-041",
+  "user_message": "Working on Quantum Analytics's partner engagement -- need you to prepare the forecast.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Quantum Analytics",
+        "account_id": "ACC-ZJSZDYNL",
+        "opportunities": [
+          {
+            "name": "Quantum Azure Infrastructure",
+            "stage": "Qualify",
+            "amount": 68000,
+            "close_date": "2024-04-14"
+          },
+          {
+            "name": "Quantum Data Platform Migration",
+            "stage": "Develop",
+            "amount": 450000,
+            "close_date": "2024-07-16"
+          },
+          {
+            "name": "Quantum Dynamics 365 Implementation",
+            "stage": "Qualify",
+            "amount": 68000,
+            "close_date": "2024-07-17"
+          }
+        ],
+        "acr_current": 21322.6,
+        "health_flag": "At Risk",
+        "owner": "Marcus Williams"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Robert Foster <robert.foster@quantumanaly.com>\nTo: Marcus Williams <marcus.williams@microsoft.com>\nDate: 2024-03-18 08:22 EST\nSubject: Re: partner engagement Discussion - Next Steps\n\nJust checking in on the partner engagement proposal. Our Head of Digital is asking for a status update before the board meeting next week.\n\n---\nFrom: Marcus Williams <marcus.williams@microsoft.com>\nTo: Robert Foster <robert.foster@quantumanaly.com>\nDate: 2024-02-16 10:28 EST\nSubject: Follow-up: partner engagement Review\n\nJust checking in on the partner engagement proposal. Our Head of Digital is asking for a status update before the board meeting next week.\n\n---\nFrom: Robert Foster <robert.foster@quantumanaly.com>\nTo: Marcus Williams <marcus.williams@microsoft.com>\nDate: 2024-01-17 10:36 EST\nSubject: Re: Re: partner engagement Timeline\n\nJust checking in on the partner engagement proposal. Our Head of Digital is asking for a status update before the board meeting next week.",
+      "metadata": {
+        "freshness": "2024-02-02T08:00:00-05:00",
+        "source": "outlook",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: partner engagement Discussion - Quantum Analytics\nDate: 2024-01-03\nDuration: 45 minutes\nAttendees: Robert Foster (Quantum Analytics), Marcus Williams (Microsoft), Priya (Quantum Analytics)\n\n[00:01:30] Robert Foster (Quantum Analytics): Thanks everyone for joining. Let's dive into partner engagement.\n\n[00:06:00] Priya (Quantum Analytics): On the partner engagement front, we've made progress but there are still blockers around cost optimization.\n\n[00:08:00] Marcus Williams (Microsoft): Our VP reviewed this and has concerns about timeline constraints. Can we address those?\n\n[00:10:00] Robert Foster (Quantum Analytics): Let me add some context -- we've been working on technical validation and found that the current vendor contract has a 90-day exit clause we need to plan around.\n\n[00:14:00] Marcus Williams (Microsoft): I agree with that assessment. From our side, the main concern is performance requirements.\n\n[00:16:00] Priya (Quantum Analytics): I agree with that assessment. From our side, the main concern is budget approval.\n\n[00:20:00] Marcus Williams (Microsoft): On the partner engagement front, we've made progress but there are still blockers around security compliance.\n\n[00:22:00] Priya (Quantum Analytics): Let me add some context -- we've been working on vendor dependencies and found that there's a dependency on the security team's review that could delay us.\n\n[00:27:00] Priya (Quantum Analytics): Let me add some context -- we've been working on budget approval and found that there's a compliance requirement we hadn't accounted for in the original scope.",
+      "metadata": {
+        "freshness": "2024-03-22T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "mixed",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Quantum Analytics - partner engagement",
+        "start": "2024-03-15T16:00:00-05:00",
+        "end": "2024-03-12T13:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Marcus Williams",
+            "email": "marcus.williams@microsoft.com"
+          },
+          {
+            "name": "Robert Foster",
+            "email": "robert.foster@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-segment-smb-corporate",
+    "persona-tenure-senior",
+    "data-inconsistent",
+    "routing-ambiguous-2skills"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "meeting-prep",
+      "contact-stakeholder-map"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "pre-meeting-brief",
+    "required_artifacts": [
+      "One-page brief with attendee context",
+      "account snapshot",
+      "talking points",
+      "likely objections",
+      "open items from last meeting"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF11-L trap (Draft-only posture delays time-sensitive sends); produces complete One-page brief with attendee context, account snapshot, talking points, likely objections, open item",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF11-L failure pattern",
+      "Score 1: Output exhibits the full FM-WF11-L failure mode (Draft-only posture delays time-sensitive sends)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct partner engagement decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF11-L -- Draft-only posture delays time-sensitive sends",
+    "Guardrail axis scored neutrally -- focus on whether output served the user's actual need"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

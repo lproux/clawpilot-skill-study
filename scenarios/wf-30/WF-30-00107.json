@@ -1,0 +1,95 @@
+{
+  "scenario_id": "WF-30-00107",
+  "workflow_id": "WF-30",
+  "workflow_name": "Stage Advancement Readiness",
+  "seed": 3000149,
+  "tier": 3,
+  "intent": "design-redesign",
+  "targeted_failure_mode": "FM-WF30-L",
+  "persona": "Manager",
+  "fixture_id": "FX-007",
+  "user_message": "Give me the manager view on this Litware Inc email thread. Renewal conversation is tomorrow.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Litware Inc",
+        "account_id": "ACC-658MPDXQ",
+        "opportunities": [
+          {
+            "name": "Litware Security Modernization",
+            "stage": "Prospect",
+            "amount": 280000,
+            "close_date": "2024-09-23"
+          }
+        ],
+        "acr_current": 76577.96,
+        "health_flag": "Healthy",
+        "owner": "David Chen"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    }
+  ],
+  "perturbations": [
+    "data-fresh",
+    "signal-strength-faint",
+    "persona-geo-apac",
+    "persona-tenure-junior"
+  ],
+  "expected_routing": {
+    "entry_skill": "pipeline-msx-hygiene-coach",
+    "modules": [
+      "stage-close-readiness",
+      "writeback-approval-guardrails"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "forecast-business-review-coach",
+        "condition": "stage advance affects forecast category"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "stage-advancement-readiness",
+    "required_artifacts": [
+      "Per-criterion readiness verdict",
+      "evidence gaps",
+      "writeback proposal for stage advance (if ready)",
+      "forecast implications"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF30-L trap (Writeback proposals don't allow batch approval across multiple correlated opport); produces complete Per-criterion readiness verdict, evidence gaps, writeback proposal for stage advance (if ready), for",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF30-L failure pattern",
+      "Score 1: Output exhibits the full FM-WF30-L failure mode (Writeback proposals don't allow batch approval across multiple correlated opport)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct pipeline hygiene decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF30-L -- Writeback proposals don't allow batch approval across multiple correlated opport",
+    "Write proposals must require explicit user approval",
+    "Produce structural verdict on whether current routing adequately serves this scenario"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "verdict-on-structural",
+    "verdict_required_axes": [
+      "routing",
+      "evidence"
+    ]
+  }
+}

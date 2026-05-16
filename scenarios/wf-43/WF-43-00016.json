@@ -1,0 +1,115 @@
+{
+  "scenario_id": "WF-43-00016",
+  "workflow_id": "WF-43",
+  "workflow_name": "Discovery Call Transcript -> Opportunity Build",
+  "seed": 4300058,
+  "tier": 4,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": "FM-WF43-P",
+  "persona": "DSSP",
+  "fixture_id": "FX-025",
+  "user_message": "Working on Adatum Corporation's escalation triage. Got the support ticket -- help me build the analysis.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Adatum Corporation",
+        "account_id": "ACC-ELNED368",
+        "opportunities": [
+          {
+            "name": "Adatum Azure Virtual Desktop",
+            "stage": "Qualify",
+            "amount": 175000,
+            "close_date": "2023-12-18"
+          },
+          {
+            "name": "Adatum Azure SQL Migration",
+            "stage": "Close",
+            "amount": 125000,
+            "close_date": "2024-10-09"
+          },
+          {
+            "name": "Adatum Azure Arc Deployment",
+            "stage": "Propose",
+            "amount": 210000,
+            "close_date": "2024-12-01"
+          }
+        ],
+        "acr_current": 14124.54,
+        "health_flag": "At Risk",
+        "owner": "Raj Mehta"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: escalation triage Discussion - Adatum Corporation\nDate: 2024-03-03\nDuration: 45 minutes\nAttendees: Laura Nguyen (Adatum Corporation), Raj Mehta (Microsoft), Michelle (Adatum Corporation)\n\n[00:01:30] Laura Nguyen (Adatum Corporation): Thanks everyone for joining. Let's dive into escalation triage.\n\n[00:05:00] Raj Mehta (Microsoft): I agree with that assessment. From our side, the main concern is data residency.\n\n[00:09:00] Laura Nguyen (Adatum Corporation): Our VP reviewed this and has concerns about budget approval. Can we address those?\n\n[00:12:00] Michelle (Adatum Corporation): On the escalation triage front, we've made progress but there are still blockers around performance requirements.\n\n[00:14:00] Michelle (Adatum Corporation): Our team lead reviewed this and has concerns about cost optimization. Can we address those?\n\n[00:18:00] Raj Mehta (Microsoft): I agree with that assessment. From our side, the main concern is data residency.\n\n[00:23:00] Michelle (Adatum Corporation): I agree with that assessment. From our side, the main concern is cost optimization.\n\n[00:28:00] Raj Mehta (Microsoft): I agree with that assessment. From our side, the main concern is cost optimization.\n\n[00:31:00] Michelle (Adatum Corporation): Let me add some context -- we've been working on stakeholder alignment and found that there's a dependency on the security team's review that could delay us.\n\n[00:36:00] Michelle (Adatum Corporation): Our VP reviewed this and has concerns about data residency. Can we address those?",
+      "metadata": {
+        "freshness": "2024-03-28T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "medium"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-tenure-junior",
+    "persona-geo-na",
+    "persona-role-dssp"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "opportunity creation warranted"
+      },
+      {
+        "target_skill": "solution-value-design-coach",
+        "condition": "solution sketch needed from discovery signals"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "discovery-call-transcript-->-opportunity-build",
+    "required_artifacts": [
+      "BANT signal extraction with evidence quotes",
+      "opportunity proposal with stage/value/close-date",
+      "confidence labels",
+      "solution sketch suggestion",
+      "follow-up actions"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF43-P trap (Opportunity creation routes through pipeline-hygiene when CSA could commit direc); produces complete BANT signal extraction with evidence quotes, opportunity proposal with stage/value/close-date, confi",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF43-P failure pattern",
+      "Score 1: Output exhibits the full FM-WF43-P failure mode (Opportunity creation routes through pipeline-hygiene when CSA could commit direc)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct escalation triage decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF43-P -- Opportunity creation routes through pipeline-hygiene when CSA could commit direc",
+    "Guardrail axis scored neutrally -- focus on whether output served the user's actual need"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

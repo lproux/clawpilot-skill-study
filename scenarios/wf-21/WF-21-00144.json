@@ -1,0 +1,110 @@
+{
+  "scenario_id": "WF-21-00144",
+  "workflow_id": "WF-21",
+  "workflow_name": "ECIF Workscope Draft",
+  "seed": 2100186,
+  "tier": 2,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF21-C",
+  "persona": "CSA",
+  "fixture_id": "FX-031",
+  "user_message": "Just got this from Patricia Kim at Liberty's Delightful Sinful Bakery -- I need help figuring out account health. Need this before my 2pm call.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Liberty's Delightful Sinful Bakery",
+        "account_id": "ACC-A2FZGZWL",
+        "opportunities": [
+          {
+            "name": "Liberty's Dynamics 365 Implementation",
+            "stage": "Develop",
+            "amount": 89000,
+            "close_date": "2024-12-10"
+          },
+          {
+            "name": "Liberty's AKS Deployment",
+            "stage": "Qualify",
+            "amount": 89000,
+            "close_date": "2024-12-24"
+          },
+          {
+            "name": "Liberty's Azure Infrastructure",
+            "stage": "Develop",
+            "amount": 450000,
+            "close_date": "2024-04-08"
+          }
+        ],
+        "acr_current": 0,
+        "health_flag": "Healthy",
+        "owner": "Marcus Williams"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "consumption_decline",
+            "detail": "Signal detected for Liberty's Delightful Sinful Bakery: there's a dependency on the security team's review that could delay us",
+            "date": "2024-03-06"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-role-csa",
+    "routing-ambiguous-2skills"
+  ],
+  "expected_routing": {
+    "entry_skill": "funding-partner-activation-coach",
+    "modules": [
+      "funding-eligibility",
+      "partner-evaluation"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "ecif-workscope-draft",
+    "required_artifacts": [
+      "ECIF workscope draft with measurable deliverables",
+      "qualified partner",
+      "effort estimate",
+      "eligibility caveat",
+      "opportunity linkage"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF21-C trap (Deliverables not measurable); produces complete ECIF workscope draft with measurable deliverables, qualified partner, effort estimate, eligibility c",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF21-C failure pattern",
+      "Score 1: Output exhibits the full FM-WF21-C failure mode (Deliverables not measurable)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct account health decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF21-C -- Deliverables not measurable"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

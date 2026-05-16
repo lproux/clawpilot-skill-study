@@ -1,0 +1,129 @@
+{
+  "scenario_id": "WF-48-00058",
+  "workflow_id": "WF-48",
+  "workflow_name": "Roadmap Meeting Transcript -> Forecast Sequencing",
+  "seed": 4800100,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF48-C",
+  "persona": "DSSP",
+  "fixture_id": "FX-009",
+  "user_message": "Can you extract the competitive positioning from this escalation email for VanArsdel Ltd? There's been no activity for 45 days and I'm worried.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "VanArsdel Ltd",
+        "account_id": "ACC-3ORLVDXJ",
+        "opportunities": [
+          {
+            "name": "VanArsdel Data Platform Migration",
+            "stage": "Propose",
+            "amount": 210000,
+            "close_date": "2024-06-13"
+          },
+          {
+            "name": "VanArsdel M365 E5 Upsell",
+            "stage": "Prospect",
+            "amount": 280000,
+            "close_date": "2024-06-13"
+          },
+          {
+            "name": "VanArsdel Power Platform",
+            "stage": "Prospect",
+            "amount": 350000,
+            "close_date": "2024-09-08"
+          }
+        ],
+        "acr_current": 68769.78,
+        "health_flag": "Healthy",
+        "owner": "Tom Rodriguez"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: competitive positioning Discussion - VanArsdel Ltd\nDate: 2024-01-02\nDuration: 45 minutes\nAttendees: Karen Patel (VanArsdel Ltd), Tom Rodriguez (Microsoft), Kevin (VanArsdel Ltd)\n\n[00:01:30] Karen Patel (VanArsdel Ltd): Thanks everyone for joining. Let's dive into competitive positioning.\n\n[00:06:00] Kevin (VanArsdel Ltd): On the competitive positioning front, we've made progress but there are still blockers around resource allocation.\n\n[00:08:00] Tom Rodriguez (Microsoft): Our VP reviewed this and has concerns about security compliance. Can we address those?\n\n[00:12:00] Tom Rodriguez (Microsoft): The timeline for resource allocation is aggressive. We need to validate the assumptions.\n\n[00:14:00] Tom Rodriguez (Microsoft): Let me add some context -- we've been working on budget approval and found that there's a compliance requirement we hadn't accounted for in the original scope.\n\n[00:18:00] Tom Rodriguez (Microsoft): I agree with that assessment. From our side, the main concern is timeline constraints.\n\n[00:20:00] Tom Rodriguez (Microsoft): Our CTO reviewed this and has concerns about partner engagement. Can we address those?\n\n[00:25:00] Karen Patel (VanArsdel Ltd): Our VP reviewed this and has concerns about data residency. Can we address those?\n\n[00:27:00] Karen Patel (VanArsdel Ltd): Let me add some context -- we've been working on performance requirements and found that there's a compliance requirement we hadn't accounted for in the original scope.\n\n[00:31:00] Tom Rodriguez (Microsoft): The timeline for data residency is aggressive. We need to validate the assumptions.",
+      "metadata": {
+        "freshness": "2024-03-06T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "mixed",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "consumption_decline",
+            "detail": "Signal detected for VanArsdel Ltd: the current vendor contract has a 90-day exit clause we need to plan around",
+            "date": "2024-03-08"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-09T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-tenure-senior",
+    "persona-geo-na"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "milestone and date updates needed"
+      },
+      {
+        "target_skill": "forecast-business-review-coach",
+        "condition": "forecast sequencing affected"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "roadmap-meeting-transcript-->-forecast-sequencing",
+    "required_artifacts": [
+      "Roadmap-to-forecast mapping",
+      "milestone date proposals",
+      "opportunity sequencing",
+      "new opportunity proposals (if signaled)",
+      "forecast impact with confidence"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF48-C trap (Over-confidently dates a customer's vague 'later this year'); produces complete Roadmap-to-forecast mapping, milestone date proposals, opportunity sequencing, new opportunity propo",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF48-C failure pattern",
+      "Score 1: Output exhibits the full FM-WF48-C failure mode (Over-confidently dates a customer's vague 'later this year')"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct competitive positioning decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF48-C -- Over-confidently dates a customer's vague 'later this year'"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

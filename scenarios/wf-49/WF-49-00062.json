@@ -1,0 +1,102 @@
+{
+  "scenario_id": "WF-49-00062",
+  "workflow_id": "WF-49",
+  "workflow_name": "Workshop Transcript -> ECIF + Partner + Follow-up",
+  "seed": 4900104,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF49-E",
+  "persona": "Manager",
+  "fixture_id": "FX-017",
+  "user_message": "I need you to process this support ticket from Humongous Insurance. I think there's an opportunity here but need to validate.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Humongous Insurance",
+        "account_id": "ACC-3AB2FT8E",
+        "opportunities": [
+          {
+            "name": "Humongous Cloud Migration Phase",
+            "stage": "Qualify",
+            "amount": 175000,
+            "close_date": "2023-10-27"
+          }
+        ],
+        "acr_current": 73720.59,
+        "health_flag": "Healthy",
+        "owner": "David Chen"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: QBR preparation Discussion - Humongous Insurance\nDate: 2024-01-26\nDuration: 45 minutes\nAttendees: Michael Petrov (Humongous Insurance), David Chen (Microsoft)\n\n[00:01:15] Michael Petrov (Humongous Insurance): Appreciate everyone making time. The main agenda today is QBR preparation.\n\n[00:07:00] David Chen (Microsoft): The timeline for technical validation is aggressive. We need to validate the assumptions.\n\n[00:09:00] David Chen (Microsoft): Our team lead reviewed this and has concerns about budget approval. Can we address those?\n\n[00:12:00] Michael Petrov (Humongous Insurance): Our team lead reviewed this and has concerns about technical validation. Can we address those?\n\n[00:17:00] Michael Petrov (Humongous Insurance): The timeline for data residency is aggressive. We need to validate the assumptions.\n\n[00:22:00] David Chen (Microsoft): The timeline for vendor dependencies is aggressive. We need to validate the assumptions.",
+      "metadata": {
+        "freshness": "2024-02-04T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "mixed",
+        "length_class": "medium"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-tenure-senior",
+    "persona-role-manager",
+    "persona-segment-smb-small"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "funding-partner-activation-coach",
+        "condition": "ECIF workscope or partner engagement warranted"
+      },
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "milestone updates warranted"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "workshop-transcript-->-ecif-+-partner-+-follow-up",
+    "required_artifacts": [
+      "Workshop recap",
+      "ECIF workscope draft (if warranted)",
+      "partner plan",
+      "follow-up items with owners",
+      "milestone update proposals"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF49-E trap (Skips customer-side ownership in workscope); produces complete Workshop recap, ECIF workscope draft (if warranted), partner plan, follow-up items with owners, mile",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF49-E failure pattern",
+      "Score 1: Output exhibits the full FM-WF49-E failure mode (Skips customer-side ownership in workscope)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct QBR preparation decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF49-E -- Skips customer-side ownership in workscope"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

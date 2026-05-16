@@ -1,0 +1,136 @@
+{
+  "scenario_id": "WF-11-00094",
+  "workflow_id": "WF-11",
+  "workflow_name": "Pre-Meeting Brief",
+  "seed": 1100136,
+  "tier": 2,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF11-D",
+  "persona": "DSSP",
+  "fixture_id": "FX-031",
+  "user_message": "Working on Liberty's Delightful Sinful Bakery's partner engagement -- need you to build the analysis.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Liberty's Delightful Sinful Bakery",
+        "account_id": "ACC-A2FZGZWL",
+        "opportunities": [
+          {
+            "name": "Liberty's Dynamics 365 Implementation",
+            "stage": "Develop",
+            "amount": 89000,
+            "close_date": "2024-12-10"
+          },
+          {
+            "name": "Liberty's AKS Deployment",
+            "stage": "Qualify",
+            "amount": 89000,
+            "close_date": "2024-12-24"
+          },
+          {
+            "name": "Liberty's Azure Infrastructure",
+            "stage": "Develop",
+            "amount": 450000,
+            "close_date": "2024-04-08"
+          }
+        ],
+        "acr_current": 0,
+        "health_flag": "Healthy",
+        "owner": "Marcus Williams"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Patricia Kim <patricia.kim@libertysdeli.com>\nTo: Marcus Williams <marcus.williams@microsoft.com>\nDate: 2024-03-14 11:07 EST\nSubject: Re: Re: partner engagement Timeline\n\nJust checking in on the partner engagement proposal. Our Director of IT is asking for a status update before the board meeting next week.\n\n---\nFrom: Marcus Williams <marcus.williams@microsoft.com>\nTo: Patricia Kim <patricia.kim@libertysdeli.com>\nDate: 2024-01-05 11:12 EST\nSubject: Re: Re: partner engagement Timeline\n\nThere's been a change in our timeline for partner engagement. Can we discuss the implications on the overall project plan?",
+      "metadata": {
+        "freshness": "2024-03-20T12:00:00-05:00",
+        "source": "outlook",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: partner engagement Discussion - Liberty's Delightful Sinful Bakery\nDate: 2024-01-16\nDuration: 45 minutes\nAttendees: Patricia Kim (Liberty's Delightful Sinful Bakery), Marcus Williams (Microsoft)\n\n[00:02:00] Patricia Kim (Liberty's Delightful Sinful Bakery): Good morning. I wanted to follow up on partner engagement from our last session.\n\n[00:06:00] Marcus Williams (Microsoft): I agree with that assessment. From our side, the main concern is cost optimization.\n\n[00:08:00] Marcus Williams (Microsoft): Let me add some context -- we've been working on technical validation and found that the migration can proceed in phases to reduce risk.\n\n[00:11:00] Marcus Williams (Microsoft): Our director reviewed this and has concerns about technical validation. Can we address those?\n\n[00:15:00] Patricia Kim (Liberty's Delightful Sinful Bakery): The timeline for resource allocation is aggressive. We need to validate the assumptions.\n\n[00:18:00] Patricia Kim (Liberty's Delightful Sinful Bakery): Our VP reviewed this and has concerns about partner engagement. Can we address those?\n\n[00:22:00] Patricia Kim (Liberty's Delightful Sinful Bakery): I agree with that assessment. From our side, the main concern is data residency.\n\n[00:27:00] Patricia Kim (Liberty's Delightful Sinful Bakery): I agree with that assessment. From our side, the main concern is security compliance.\n\n[00:32:00] Marcus Williams (Microsoft): Let me add some context -- we've been working on budget approval and found that there's a compliance requirement we hadn't accounted for in the original scope.",
+      "metadata": {
+        "freshness": "2024-01-26T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Liberty's Delightful Sinful Bakery - partner engagement",
+        "start": "2024-03-11T16:00:00-05:00",
+        "end": "2024-03-12T14:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Marcus Williams",
+            "email": "marcus.williams@microsoft.com"
+          },
+          {
+            "name": "Patricia Kim",
+            "email": "patricia.kim@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-role-dssp",
+    "persona-tenure-senior",
+    "data-partially-missing"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "meeting-prep",
+      "contact-stakeholder-map"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "pre-meeting-brief",
+    "required_artifacts": [
+      "One-page brief with attendee context",
+      "account snapshot",
+      "talking points",
+      "likely objections",
+      "open items from last meeting"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF11-D trap (Invents attendee context when none exists); produces complete One-page brief with attendee context, account snapshot, talking points, likely objections, open item",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF11-D failure pattern",
+      "Score 1: Output exhibits the full FM-WF11-D failure mode (Invents attendee context when none exists)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct partner engagement decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF11-D -- Invents attendee context when none exists"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

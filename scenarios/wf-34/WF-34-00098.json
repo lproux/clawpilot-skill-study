@@ -1,0 +1,105 @@
+{
+  "scenario_id": "WF-34-00098",
+  "workflow_id": "WF-34",
+  "workflow_name": "Customer Escalation Email -> Risk Brief + Manager Loop",
+  "seed": 3400140,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF34-K",
+  "persona": "Manager",
+  "fixture_id": "FX-039",
+  "user_message": "Give me the manager view on this Fabrikam Residences meeting transcript. Board meeting is next week.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Fabrikam Residences",
+        "account_id": "ACC-5JSOIRD0",
+        "opportunities": [
+          {
+            "name": "Fabrikam Power Platform",
+            "stage": "Prospect",
+            "amount": 175000,
+            "close_date": "2024-06-08"
+          },
+          {
+            "name": "Fabrikam Cloud Migration Phase",
+            "stage": "Develop",
+            "amount": 450000,
+            "close_date": "2024-11-24"
+          }
+        ],
+        "acr_current": 32488.07,
+        "health_flag": "Healthy",
+        "owner": "Tom Rodriguez"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Kevin Lee <kevin.lee@fabrikamresi.com>\nTo: Tom Rodriguez <tom.rodriguez@microsoft.com>\nDate: 2024-03-17 16:10 EST\nSubject: Follow-up: escalation triage Review\n\nOur team encountered some challenges with escalation triage. Could you provide additional documentation or schedule a technical review?\n\n---\nFrom: Tom Rodriguez <tom.rodriguez@microsoft.com>\nTo: Kevin Lee <kevin.lee@fabrikamresi.com>\nDate: 2024-02-11 15:46 EST\nSubject: Re: escalation triage Discussion - Next Steps\n\nWe've been evaluating the options and have decided to proceed with escalation triage. What are the next steps from your side?\n\n---\nFrom: Kevin Lee <kevin.lee@fabrikamresi.com>\nTo: Tom Rodriguez <tom.rodriguez@microsoft.com>\nDate: 2024-01-01 13:07 EST\nSubject: Quarterly Update: Fabrikam Residences escalation triage\n\nOur team encountered some challenges with escalation triage. Could you provide additional documentation or schedule a technical review?",
+      "metadata": {
+        "freshness": "2024-02-13T16:00:00-05:00",
+        "source": "outlook",
+        "length_class": "long"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-segment-smb-small",
+    "persona-geo-emea",
+    "data-inconsistent"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "email-chat-context",
+      "follow-up-and-decisions",
+      "contact-stakeholder-map"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "forecast-business-review-coach",
+        "condition": "escalation warrants forecast/risk update"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "customer-escalation-email-->-risk-brief-+-manager-",
+    "required_artifacts": [
+      "Severity assessment",
+      "manager risk brief",
+      "customer-facing draft response",
+      "stakeholder map delta",
+      "forecast/risk impact"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF34-K trap (Manager loop missing accountability owner); produces complete Severity assessment, manager risk brief, customer-facing draft response, stakeholder map delta, fore",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF34-K failure pattern",
+      "Score 1: Output exhibits the full FM-WF34-K failure mode (Manager loop missing accountability owner)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct escalation triage decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF34-K -- Manager loop missing accountability owner"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

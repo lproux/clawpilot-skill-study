@@ -1,0 +1,101 @@
+{
+  "scenario_id": "WF-43-80303",
+  "workflow_id": "WF-43",
+  "workflow_name": "Discovery Call Transcript -> Opportunity Build",
+  "seed": 8800345,
+  "tier": 4,
+  "intent": "happy",
+  "targeted_failure_mode": null,
+  "persona": "CSA",
+  "fixture_id": "FX-004",
+  "user_message": "Just got this from Michael Patel at Adventure Works -- I need help figuring out deployment blockers. Renewal conversation is tomorrow.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Adventure Works",
+        "account_id": "ACC-TBZ7Q87G",
+        "opportunities": [
+          {
+            "name": "Adventure Data Platform Migration",
+            "stage": "Propose",
+            "amount": 210000,
+            "close_date": "2024-12-19"
+          }
+        ],
+        "acr_current": 34613.91,
+        "health_flag": "Healthy",
+        "owner": "Sarah Kim"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: deployment blockers Discussion - Adventure Works\nDate: 2024-03-14\nDuration: 45 minutes\nAttendees: Michael Patel (Adventure Works), Sarah Kim (Microsoft), Michelle (Adventure Works)\n\n[00:01:15] Michael Patel (Adventure Works): Appreciate everyone making time. The main agenda today is deployment blockers.\n\n[00:07:00] Michael Patel (Adventure Works): On the deployment blockers front, we've made progress but there are still blockers around vendor dependencies.\n\n[00:09:00] Michelle (Adventure Works): Our director reviewed this and has concerns about technical validation. Can we address those?\n\n[00:12:00] Sarah Kim (Microsoft): On the deployment blockers front, we've made progress but there are still blockers around stakeholder alignment.\n\n[00:15:00] Michelle (Adventure Works): Our architect reviewed this and has concerns about stakeholder alignment. Can we address those?\n\n[00:19:00] Michelle (Adventure Works): Let me add some context -- we've been working on budget approval and found that the cost projections need to factor in reserved instance pricing for accuracy.",
+      "metadata": {
+        "freshness": "2024-02-25T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "mixed",
+        "length_class": "medium"
+      }
+    }
+  ],
+  "perturbations": [
+    "routing-clear",
+    "data-fresh",
+    "persona-role-csa"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "opportunity creation warranted"
+      },
+      {
+        "target_skill": "solution-value-design-coach",
+        "condition": "solution sketch needed from discovery signals"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "discovery-call-transcript-->-opportunity-build",
+    "required_artifacts": [
+      "BANT signal extraction with evidence quotes",
+      "opportunity proposal with stage/value/close-date",
+      "confidence labels",
+      "solution sketch suggestion",
+      "follow-up actions"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Perfect execution of the golden-path workflow with all artifacts complete and actionable",
+      "Score 3: Core output correct but missing polish or one secondary artifact",
+      "Score 1: Fails to produce expected output for a clean, unambiguous request"
+    ],
+    "evidence_anchors": [
+      "Score 5: All evidence correctly sourced and attributed; no hallucination",
+      "Score 3: Minor attribution gap but no fabrication",
+      "Score 1: Evidence fabricated or significantly misattributed"
+    ],
+    "decision_anchors": [
+      "Score 5: All decisions correct for this straightforward scenario",
+      "Score 3: Primary decision correct; minor secondary issue",
+      "Score 1: Primary decision wrong despite clear inputs"
+    ]
+  },
+  "guardrail_checks": [
+    "Clean golden-path scenario -- all guardrails should pass trivially",
+    "Must not over-complicate a straightforward request"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

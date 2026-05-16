@@ -1,0 +1,98 @@
+{
+  "scenario_id": "WF-44-00020",
+  "workflow_id": "WF-44",
+  "workflow_name": "Technical Deep-Dive Transcript -> Architecture + Blockers",
+  "seed": 4400062,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF44-E",
+  "persona": "Manager",
+  "fixture_id": "FX-033",
+  "user_message": "Give me the manager view on this Parnell Aerospace escalation email. Board meeting is next week.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Parnell Aerospace",
+        "account_id": "ACC-0H065FH7",
+        "opportunities": [
+          {
+            "name": "Parnell Dynamics 365 Implementation",
+            "stage": "Close",
+            "amount": 350000,
+            "close_date": "2024-11-03"
+          }
+        ],
+        "acr_current": 0,
+        "health_flag": "Healthy",
+        "owner": "Ahmed Hassan"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: account health Discussion - Parnell Aerospace\nDate: 2024-02-15\nDuration: 45 minutes\nAttendees: Christopher Martinez (Parnell Aerospace), Ahmed Hassan (Microsoft), Kevin (Parnell Aerospace)\n\n[00:01:15] Christopher Martinez (Parnell Aerospace): Appreciate everyone making time. The main agenda today is account health.\n\n[00:06:00] Kevin (Parnell Aerospace): On the account health front, we've made progress but there are still blockers around resource allocation.\n\n[00:08:00] Christopher Martinez (Parnell Aerospace): Our architect reviewed this and has concerns about integration complexity. Can we address those?\n\n[00:11:00] Kevin (Parnell Aerospace): Our director reviewed this and has concerns about cost optimization. Can we address those?\n\n[00:16:00] Ahmed Hassan (Microsoft): Let me add some context -- we've been working on budget approval and found that there's a compliance requirement we hadn't accounted for in the original scope.\n\n[00:19:00] Ahmed Hassan (Microsoft): Let me add some context -- we've been working on budget approval and found that the existing infrastructure won't support the target workload without upgrades.",
+      "metadata": {
+        "freshness": "2024-02-15T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "medium"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-geo-na",
+    "persona-segment-smb-small",
+    "persona-tenure-junior"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "solution-value-design-coach",
+        "condition": "architecture sketch needed from technical signals"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "technical-deep-dive-transcript-->-architecture-+-b",
+    "required_artifacts": [
+      "Architecture summary",
+      "blocker inventory (tech/commercial/org)",
+      "open questions",
+      "sequencing recommendation",
+      "specialist routing"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF44-E trap (Over-fits to a Microsoft product mentioned in passing); produces complete Architecture summary, blocker inventory (tech/commercial/org), open questions, sequencing recommenda",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF44-E failure pattern",
+      "Score 1: Output exhibits the full FM-WF44-E failure mode (Over-fits to a Microsoft product mentioned in passing)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct account health decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF44-E -- Over-fits to a Microsoft product mentioned in passing"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

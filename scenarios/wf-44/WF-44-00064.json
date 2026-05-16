@@ -1,0 +1,105 @@
+{
+  "scenario_id": "WF-44-00064",
+  "workflow_id": "WF-44",
+  "workflow_name": "Technical Deep-Dive Transcript -> Architecture + Blockers",
+  "seed": 4400106,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF44-A",
+  "persona": "DSSP",
+  "fixture_id": "FX-021",
+  "user_message": "Pulling in context from Nod Publishers's email thread -- need to pull the context for the QBR preparation.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Nod Publishers",
+        "account_id": "ACC-BFJJI6LY",
+        "opportunities": [
+          {
+            "name": "Nod Azure SQL Migration",
+            "stage": "Close",
+            "amount": 45000,
+            "close_date": "2023-10-06"
+          },
+          {
+            "name": "Nod Intune Rollout",
+            "stage": "Develop",
+            "amount": 560000,
+            "close_date": "2024-12-16"
+          }
+        ],
+        "acr_current": 111088.58,
+        "health_flag": "At Risk",
+        "owner": "Marcus Williams"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: QBR preparation Discussion - Nod Publishers\nDate: 2024-02-16\nDuration: 45 minutes\nAttendees: Samantha Singh (Nod Publishers), Marcus Williams (Microsoft), Kevin (Nod Publishers)\n\n[00:02:00] Samantha Singh (Nod Publishers): Good morning. I wanted to follow up on QBR preparation from our last session.\n\n[00:08:00] Samantha Singh (Nod Publishers): Our team lead reviewed this and has concerns about timeline constraints. Can we address those?\n\n[00:10:00] Marcus Williams (Microsoft): The timeline for cost optimization is aggressive. We need to validate the assumptions.\n\n[00:12:00] Marcus Williams (Microsoft): On the QBR preparation front, we've made progress but there are still blockers around integration complexity.\n\n[00:17:00] Kevin (Nod Publishers): The timeline for technical validation is aggressive. We need to validate the assumptions.\n\n[00:19:00] Samantha Singh (Nod Publishers): The timeline for resource allocation is aggressive. We need to validate the assumptions.\n\n[00:21:00] Samantha Singh (Nod Publishers): On the QBR preparation front, we've made progress but there are still blockers around technical validation.\n\n[00:26:00] Marcus Williams (Microsoft): I agree with that assessment. From our side, the main concern is cost optimization.\n\n[00:31:00] Marcus Williams (Microsoft): I agree with that assessment. From our side, the main concern is partner engagement.\n\n[00:35:00] Samantha Singh (Nod Publishers): On the QBR preparation front, we've made progress but there are still blockers around budget approval.",
+      "metadata": {
+        "freshness": "2024-03-12T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "long"
+      }
+    }
+  ],
+  "perturbations": [
+    "data-stale",
+    "persona-segment-smb-mid",
+    "persona-geo-apac",
+    "persona-tenure-mid"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "solution-value-design-coach",
+        "condition": "architecture sketch needed from technical signals"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "technical-deep-dive-transcript-->-architecture-+-b",
+    "required_artifacts": [
+      "Architecture summary",
+      "blocker inventory (tech/commercial/org)",
+      "open questions",
+      "sequencing recommendation",
+      "specialist routing"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF44-A trap (Architecture summary states customer-environment facts that were assumed not con); produces complete Architecture summary, blocker inventory (tech/commercial/org), open questions, sequencing recommenda",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF44-A failure pattern",
+      "Score 1: Output exhibits the full FM-WF44-A failure mode (Architecture summary states customer-environment facts that were assumed not con)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct QBR preparation decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF44-A -- Architecture summary states customer-environment facts that were assumed not con"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

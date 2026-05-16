@@ -1,0 +1,135 @@
+{
+  "scenario_id": "WF-11-80479",
+  "workflow_id": "WF-11",
+  "workflow_name": "Pre-Meeting Brief",
+  "seed": 8800521,
+  "tier": 2,
+  "intent": "happy",
+  "targeted_failure_mode": null,
+  "persona": "Manager",
+  "fixture_id": "FX-010",
+  "user_message": "Summarize what happened with Trey Research and give me the asks.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Trey Research",
+        "account_id": "ACC-5HZOG7IO",
+        "opportunities": [
+          {
+            "name": "Trey Security Modernization",
+            "stage": "Develop",
+            "amount": 280000,
+            "close_date": "2024-10-02"
+          },
+          {
+            "name": "Trey Azure Virtual Desktop",
+            "stage": "Develop",
+            "amount": 280000,
+            "close_date": "2024-08-19"
+          },
+          {
+            "name": "Trey Copilot Adoption",
+            "stage": "Close",
+            "amount": 450000,
+            "close_date": "2024-08-15"
+          }
+        ],
+        "acr_current": 39542.17,
+        "health_flag": "Healthy",
+        "owner": "Michelle Park"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Daniel Doyle <daniel.doyle@treyresearch.com>\nTo: Michelle Park <michelle.park@microsoft.com>\nDate: 2024-03-11 10:11 EST\nSubject: Quarterly Update: Trey Research escalation triage\n\nJust checking in on the escalation triage proposal. Our CTO is asking for a status update before the board meeting next week.\n\n---\nFrom: Michelle Park <michelle.park@microsoft.com>\nTo: Daniel Doyle <daniel.doyle@treyresearch.com>\nDate: 2024-02-28 15:56 EST\nSubject: Follow-up: escalation triage Review\n\nJust checking in on the escalation triage proposal. Our CTO is asking for a status update before the board meeting next week.\n\n---\nFrom: Daniel Doyle <daniel.doyle@treyresearch.com>\nTo: Michelle Park <michelle.park@microsoft.com>\nDate: 2024-01-21 15:00 EST\nSubject: escalation triage - Action Required\n\nOur team encountered some challenges with escalation triage. Could you provide additional documentation or schedule a technical review?",
+      "metadata": {
+        "freshness": "2024-02-24T09:00:00-05:00",
+        "source": "outlook",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: escalation triage Discussion - Trey Research\nDate: 2024-02-09\nDuration: 45 minutes\nAttendees: Daniel Doyle (Trey Research), Michelle Park (Microsoft)\n\n[00:02:00] Daniel Doyle (Trey Research): Good morning. I wanted to follow up on escalation triage from our last session.\n\n[00:08:00] Michelle Park (Microsoft): The timeline for timeline constraints is aggressive. We need to validate the assumptions.\n\n[00:12:00] Daniel Doyle (Trey Research): Let me add some context -- we've been working on technical validation and found that there's a dependency on the security team's review that could delay us.\n\n[00:17:00] Daniel Doyle (Trey Research): The timeline for stakeholder alignment is aggressive. We need to validate the assumptions.\n\n[00:21:00] Daniel Doyle (Trey Research): Our VP reviewed this and has concerns about technical validation. Can we address those?\n\n[00:24:00] Daniel Doyle (Trey Research): Let me add some context -- we've been working on stakeholder alignment and found that there's a compliance requirement we hadn't accounted for in the original scope.\n\n[00:26:00] Michelle Park (Microsoft): On the escalation triage front, we've made progress but there are still blockers around technical validation.\n\n[00:31:00] Daniel Doyle (Trey Research): I agree with that assessment. From our side, the main concern is budget approval.\n\n[00:35:00] Daniel Doyle (Trey Research): The timeline for vendor dependencies is aggressive. We need to validate the assumptions.\n\n[00:37:00] Michelle Park (Microsoft): Let me add some context -- we've been working on performance requirements and found that the migration can proceed in phases to reduce risk.",
+      "metadata": {
+        "freshness": "2024-01-24T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "mixed",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Trey Research - escalation triage",
+        "start": "2024-03-15T09:00:00-05:00",
+        "end": "2024-03-11T11:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Michelle Park",
+            "email": "michelle.park@microsoft.com"
+          },
+          {
+            "name": "Daniel Doyle",
+            "email": "daniel.doyle@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    }
+  ],
+  "perturbations": [
+    "routing-clear",
+    "data-fresh",
+    "persona-role-manager"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "meeting-prep",
+      "contact-stakeholder-map"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "pre-meeting-brief",
+    "required_artifacts": [
+      "One-page brief with attendee context",
+      "account snapshot",
+      "talking points",
+      "likely objections",
+      "open items from last meeting"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Perfect execution of the golden-path workflow with all artifacts complete and actionable",
+      "Score 3: Core output correct but missing polish or one secondary artifact",
+      "Score 1: Fails to produce expected output for a clean, unambiguous request"
+    ],
+    "evidence_anchors": [
+      "Score 5: All evidence correctly sourced and attributed; no hallucination",
+      "Score 3: Minor attribution gap but no fabrication",
+      "Score 1: Evidence fabricated or significantly misattributed"
+    ],
+    "decision_anchors": [
+      "Score 5: All decisions correct for this straightforward scenario",
+      "Score 3: Primary decision correct; minor secondary issue",
+      "Score 1: Primary decision wrong despite clear inputs"
+    ]
+  },
+  "guardrail_checks": [
+    "Clean golden-path scenario -- all guardrails should pass trivially",
+    "Must not over-complicate a straightforward request"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

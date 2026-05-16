@@ -1,0 +1,123 @@
+{
+  "scenario_id": "WF-45-00145",
+  "workflow_id": "WF-45",
+  "workflow_name": "QBR Transcript -> Health + Whitespace + Renewal Risk",
+  "seed": 4500187,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF45-C",
+  "persona": "DSSP",
+  "fixture_id": "FX-033",
+  "user_message": "Working on Parnell Aerospace's pipeline hygiene. Got the escalation email -- help me triage this.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Parnell Aerospace",
+        "account_id": "ACC-0H065FH7",
+        "opportunities": [
+          {
+            "name": "Parnell Dynamics 365 Implementation",
+            "stage": "Close",
+            "amount": 350000,
+            "close_date": "2024-11-03"
+          }
+        ],
+        "acr_current": 0,
+        "health_flag": "Healthy",
+        "owner": "Ahmed Hassan"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: pipeline hygiene Discussion - Parnell Aerospace\nDate: 2024-01-03\nDuration: 45 minutes\nAttendees: Christopher Martinez (Parnell Aerospace), Ahmed Hassan (Microsoft), David (Parnell Aerospace)\n\n[00:01:30] Christopher Martinez (Parnell Aerospace): Thanks everyone for joining. Let's dive into pipeline hygiene.\n\n[00:07:00] David (Parnell Aerospace): Let me add some context -- we've been working on data residency and found that the existing infrastructure won't support the target workload without upgrades.\n\n[00:10:00] Christopher Martinez (Parnell Aerospace): I agree with that assessment. From our side, the main concern is data residency.\n\n[00:12:00] David (Parnell Aerospace): The timeline for technical validation is aggressive. We need to validate the assumptions.\n\n[00:15:00] David (Parnell Aerospace): Let me add some context -- we've been working on cost optimization and found that the current vendor contract has a 90-day exit clause we need to plan around.\n\n[00:20:00] Ahmed Hassan (Microsoft): Let me add some context -- we've been working on performance requirements and found that the cost projections need to factor in reserved instance pricing for accuracy.\n\n[00:22:00] Christopher Martinez (Parnell Aerospace): I agree with that assessment. From our side, the main concern is budget approval.\n\n[00:26:00] Christopher Martinez (Parnell Aerospace): Let me add some context -- we've been working on partner engagement and found that the existing infrastructure won't support the target workload without upgrades.\n\n[00:28:00] Christopher Martinez (Parnell Aerospace): I agree with that assessment. From our side, the main concern is resource allocation.\n\n[00:30:00] Christopher Martinez (Parnell Aerospace): I agree with that assessment. From our side, the main concern is cost optimization.\n\n[00:32:00] Ahmed Hassan (Microsoft): On the pipeline hygiene front, we've made progress but there are still blockers around security compliance.",
+      "metadata": {
+        "freshness": "2024-01-28T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "contract_event",
+            "detail": "Signal detected for Parnell Aerospace: there's a compliance requirement we hadn't accounted for in the original scope",
+            "date": "2024-03-11"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-10T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-geo-na",
+    "data-partially-missing",
+    "persona-segment-smb-small",
+    "persona-tenure-junior"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "portfolio-account-planning-coach",
+        "condition": "health assessment needed"
+      },
+      {
+        "target_skill": "acr-signal-to-opportunity-coach",
+        "condition": "whitespace signals warrant investigation"
+      },
+      {
+        "target_skill": "forecast-business-review-coach",
+        "condition": "renewal risk affects forecast"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "qbr-transcript-->-health-+-whitespace-+-renewal-ri",
+    "required_artifacts": [
+      "Health delta assessment",
+      "whitespace hypotheses",
+      "renewal risk with confidence",
+      "action distribution with owners",
+      "comparison to last QBR commitments"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF45-C trap (Whitespace hypotheses ignore customer's stated priorities); produces complete Health delta assessment, whitespace hypotheses, renewal risk with confidence, action distribution wi",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF45-C failure pattern",
+      "Score 1: Output exhibits the full FM-WF45-C failure mode (Whitespace hypotheses ignore customer's stated priorities)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct pipeline hygiene decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF45-C -- Whitespace hypotheses ignore customer's stated priorities"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

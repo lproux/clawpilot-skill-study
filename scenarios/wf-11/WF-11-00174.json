@@ -1,0 +1,137 @@
+{
+  "scenario_id": "WF-11-00174",
+  "workflow_id": "WF-11",
+  "workflow_name": "Pre-Meeting Brief",
+  "seed": 1100216,
+  "tier": 2,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": "FM-WF11-K",
+  "persona": "CSA",
+  "fixture_id": "FX-041",
+  "user_message": "Before my call with Quantum Analytics, create the summary. ",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Quantum Analytics",
+        "account_id": "ACC-ZJSZDYNL",
+        "opportunities": [
+          {
+            "name": "Quantum Azure Infrastructure",
+            "stage": "Qualify",
+            "amount": 68000,
+            "close_date": "2024-04-14"
+          },
+          {
+            "name": "Quantum Data Platform Migration",
+            "stage": "Develop",
+            "amount": 450000,
+            "close_date": "2024-07-16"
+          },
+          {
+            "name": "Quantum Dynamics 365 Implementation",
+            "stage": "Qualify",
+            "amount": 68000,
+            "close_date": "2024-07-17"
+          }
+        ],
+        "acr_current": 21322.6,
+        "health_flag": "At Risk",
+        "owner": "Marcus Williams"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Robert Foster <robert.foster@quantumanaly.com>\nTo: Marcus Williams <marcus.williams@microsoft.com>\nDate: 2024-03-16 11:50 EST\nSubject: renewal risk - Action Required\n\nThank you for the discussion last week. We'd like to move forward with renewal risk. Can we schedule a call this week to finalize the timeline?\n\n---\nFrom: Marcus Williams <marcus.williams@microsoft.com>\nTo: Robert Foster <robert.foster@quantumanaly.com>\nDate: 2024-01-05 17:38 EST\nSubject: Follow-up: renewal risk Review\n\nThank you for the discussion last week. We'd like to move forward with renewal risk. Can we schedule a call this week to finalize the timeline?",
+      "metadata": {
+        "freshness": "2024-03-05T10:00:00-05:00",
+        "source": "outlook",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: renewal risk Discussion - Quantum Analytics\nDate: 2024-02-04\nDuration: 45 minutes\nAttendees: Robert Foster (Quantum Analytics), Marcus Williams (Microsoft), Priya (Quantum Analytics)\n\n[00:01:15] Robert Foster (Quantum Analytics): Appreciate everyone making time. The main agenda today is renewal risk.\n\n[00:05:00] Priya (Quantum Analytics): Let me add some context -- we've been working on resource allocation and found that the existing infrastructure won't support the target workload without upgrades.\n\n[00:07:00] Marcus Williams (Microsoft): On the renewal risk front, we've made progress but there are still blockers around security compliance.\n\n[00:09:00] Priya (Quantum Analytics): Our team lead reviewed this and has concerns about stakeholder alignment. Can we address those?\n\n[00:13:00] Robert Foster (Quantum Analytics): Let me add some context -- we've been working on vendor dependencies and found that the existing infrastructure won't support the target workload without upgrades.\n\n[00:16:00] Priya (Quantum Analytics): Our CTO reviewed this and has concerns about security compliance. Can we address those?\n\n[00:21:00] Priya (Quantum Analytics): I agree with that assessment. From our side, the main concern is integration complexity.\n\n[00:26:00] Priya (Quantum Analytics): I agree with that assessment. From our side, the main concern is vendor dependencies.\n\n[00:30:00] Priya (Quantum Analytics): Let me add some context -- we've been working on budget approval and found that there's a dependency on the security team's review that could delay us.",
+      "metadata": {
+        "freshness": "2024-01-24T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Quantum Analytics - renewal risk",
+        "start": "2024-03-15T16:00:00-05:00",
+        "end": "2024-03-14T15:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Marcus Williams",
+            "email": "marcus.williams@microsoft.com"
+          },
+          {
+            "name": "Robert Foster",
+            "email": "robert.foster@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    }
+  ],
+  "perturbations": [
+    "signal-strength-noisy",
+    "data-inconsistent",
+    "persona-role-csa"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "meeting-prep",
+      "contact-stakeholder-map"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "pre-meeting-brief",
+    "required_artifacts": [
+      "One-page brief with attendee context",
+      "account snapshot",
+      "talking points",
+      "likely objections",
+      "open items from last meeting"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF11-K trap (One-page constraint hurts complex meetings); produces complete One-page brief with attendee context, account snapshot, talking points, likely objections, open item",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF11-K failure pattern",
+      "Score 1: Output exhibits the full FM-WF11-K failure mode (One-page constraint hurts complex meetings)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct renewal risk decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF11-K -- One-page constraint hurts complex meetings",
+    "Guardrail axis scored neutrally -- focus on whether output served the user's actual need"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

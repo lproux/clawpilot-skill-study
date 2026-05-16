@@ -1,0 +1,154 @@
+{
+  "scenario_id": "WF-32-00064",
+  "workflow_id": "WF-32",
+  "workflow_name": "Calendar Pre-Pack Automation",
+  "seed": 3200106,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF32-C",
+  "persona": "DSSP",
+  "fixture_id": "FX-021",
+  "user_message": "[AUTOMATION TRIGGER] System detected Calendar event with non-Microsoft external attendee detected for account Nod Publishers. Generating output.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Nod Publishers",
+        "account_id": "ACC-BFJJI6LY",
+        "opportunities": [
+          {
+            "name": "Nod Azure SQL Migration",
+            "stage": "Close",
+            "amount": 45000,
+            "close_date": "2023-10-06"
+          },
+          {
+            "name": "Nod Intune Rollout",
+            "stage": "Develop",
+            "amount": 560000,
+            "close_date": "2024-12-16"
+          }
+        ],
+        "acr_current": 111088.58,
+        "health_flag": "At Risk",
+        "owner": "Marcus Williams"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Samantha Singh <samantha.singh@nodpublisher.com>\nTo: Marcus Williams <marcus.williams@microsoft.com>\nDate: 2024-03-16 08:23 EST\nSubject: Re: Re: account health Timeline\n\nThere's been a change in our timeline for account health. Can we discuss the implications on the overall project plan?\n\n---\nFrom: Marcus Williams <marcus.williams@microsoft.com>\nTo: Samantha Singh <samantha.singh@nodpublisher.com>\nDate: 2024-02-05 08:27 EST\nSubject: account health - Action Required\n\nI wanted to follow up on our conversation about account health. Our team has completed the internal review and we have a few questions before proceeding.\n\n---\nFrom: Samantha Singh <samantha.singh@nodpublisher.com>\nTo: Marcus Williams <marcus.williams@microsoft.com>\nDate: 2024-01-17 11:08 EST\nSubject: Re: account health Discussion - Next Steps\n\nThank you for the discussion last week. We'd like to move forward with account health. Can we schedule a call this week to finalize the timeline?",
+      "metadata": {
+        "freshness": "2024-02-06T10:00:00-05:00",
+        "source": "outlook",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: account health Discussion - Nod Publishers\nDate: 2024-03-13\nDuration: 45 minutes\nAttendees: Samantha Singh (Nod Publishers), Marcus Williams (Microsoft)\n\n[00:01:30] Samantha Singh (Nod Publishers): Thanks everyone for joining. Let's dive into account health.\n\n[00:05:00] Marcus Williams (Microsoft): Let me add some context -- we've been working on resource allocation and found that the cost projections need to factor in reserved instance pricing for accuracy.\n\n[00:08:00] Marcus Williams (Microsoft): Our director reviewed this and has concerns about data residency. Can we address those?\n\n[00:11:00] Marcus Williams (Microsoft): On the account health front, we've made progress but there are still blockers around technical validation.\n\n[00:13:00] Marcus Williams (Microsoft): On the account health front, we've made progress but there are still blockers around vendor dependencies.\n\n[00:15:00] Marcus Williams (Microsoft): On the account health front, we've made progress but there are still blockers around security compliance.\n\n[00:17:00] Samantha Singh (Nod Publishers): On the account health front, we've made progress but there are still blockers around vendor dependencies.\n\n[00:21:00] Samantha Singh (Nod Publishers): I agree with that assessment. From our side, the main concern is security compliance.\n\n[00:25:00] Marcus Williams (Microsoft): The timeline for performance requirements is aggressive. We need to validate the assumptions.",
+      "metadata": {
+        "freshness": "2024-01-27T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Nod Publishers - account health",
+        "start": "2024-03-15T16:00:00-05:00",
+        "end": "2024-03-12T10:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Marcus Williams",
+            "email": "marcus.williams@microsoft.com"
+          },
+          {
+            "name": "Samantha Singh",
+            "email": "samantha.singh@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "deployment_blocker",
+            "detail": "Signal detected for Nod Publishers: the current vendor contract has a 90-day exit clause we need to plan around",
+            "date": "2024-03-08"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-10T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "data-stale",
+    "persona-role-dssp",
+    "persona-tenure-senior",
+    "persona-segment-smb-mid"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "meeting-prep",
+      "contact-stakeholder-map",
+      "email-chat-context"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "portfolio-account-planning-coach",
+        "condition": "meeting is for account CSA should have declined"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "calendar-pre-pack-automation",
+    "required_artifacts": [
+      "Pre-pack brief with attendee context",
+      "account snapshot",
+      "talking points",
+      "likely objections",
+      "open items"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF32-C trap (Includes raw email/chat content rather than summary); produces complete Pre-pack brief with attendee context, account snapshot, talking points, likely objections, open item",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF32-C failure pattern",
+      "Score 1: Output exhibits the full FM-WF32-C failure mode (Includes raw email/chat content rather than summary)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct account health decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF32-C -- Includes raw email/chat content rather than summary"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

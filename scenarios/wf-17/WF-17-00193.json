@@ -1,0 +1,118 @@
+{
+  "scenario_id": "WF-17-00193",
+  "workflow_id": "WF-17",
+  "workflow_name": "Migration Architecture Sketch",
+  "seed": 1700235,
+  "tier": 3,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF17-E",
+  "persona": "DSSP",
+  "fixture_id": "FX-029",
+  "user_message": "Pulling in context from Consolidated Messenger's support ticket -- need to map the stakeholders for the migration architecture.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Consolidated Messenger",
+        "account_id": "ACC-LVS79LOG",
+        "opportunities": [
+          {
+            "name": "Consolidated Azure AI Services",
+            "stage": "Propose",
+            "amount": 280000,
+            "close_date": "2024-12-11"
+          },
+          {
+            "name": "Consolidated Security Modernization",
+            "stage": "Prospect",
+            "amount": 210000,
+            "close_date": "2024-04-06"
+          },
+          {
+            "name": "Consolidated Azure Arc Deployment",
+            "stage": "Close",
+            "amount": 125000,
+            "close_date": "2024-05-02"
+          }
+        ],
+        "acr_current": 0,
+        "health_flag": "Unknown",
+        "owner": "Tom Rodriguez"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "security_alert",
+            "detail": "Signal detected for Consolidated Messenger: the migration can proceed in phases to reduce risk",
+            "date": "2024-03-05"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-09T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-tenure-senior",
+    "persona-segment-smb-mid",
+    "data-partially-missing",
+    "persona-role-dssp"
+  ],
+  "expected_routing": {
+    "entry_skill": "solution-value-design-coach",
+    "modules": [
+      "migration-architecture",
+      "solution-research"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "funding-partner-activation-coach",
+        "condition": "ECIF or partner engagement needed for migration"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "migration-architecture-sketch",
+    "required_artifacts": [
+      "Architecture sketch with service recommendations (justified)",
+      "migration sequencing",
+      "dependency map",
+      "cost discussion",
+      "compliance notes"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF17-E trap (Over-fits to a hot Microsoft product without customer signal); produces complete Architecture sketch with service recommendations (justified), migration sequencing, dependency map, ",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF17-E failure pattern",
+      "Score 1: Output exhibits the full FM-WF17-E failure mode (Over-fits to a hot Microsoft product without customer signal)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct migration architecture decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF17-E -- Over-fits to a hot Microsoft product without customer signal"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

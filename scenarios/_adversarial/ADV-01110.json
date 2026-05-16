@@ -1,0 +1,134 @@
+{
+  "scenario_id": "WF-11-91110",
+  "workflow_id": "WF-11",
+  "workflow_name": "Pre-Meeting Brief",
+  "seed": 9901152,
+  "tier": 2,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": null,
+  "persona": "Manager",
+  "fixture_id": "FX-003",
+  "user_message": "Give me the partner engagement for my team. Manager is asking for an update today.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Northwind Traders",
+        "account_id": "ACC-X86FSRU2",
+        "opportunities": [
+          {
+            "name": "Northwind Azure Arc Deployment",
+            "stage": "Propose",
+            "amount": 89000,
+            "close_date": "2024-09-05"
+          },
+          {
+            "name": "Northwind Copilot Adoption",
+            "stage": "Develop",
+            "amount": 175000,
+            "close_date": "2024-06-22"
+          },
+          {
+            "name": "Northwind Intune Rollout",
+            "stage": "Close",
+            "amount": 350000,
+            "close_date": "2024-04-19"
+          }
+        ],
+        "acr_current": 54067.74,
+        "health_flag": "Healthy",
+        "owner": "Ahmed Hassan"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Sandra Taylor <sandra.taylor@northwindtra.com>\nTo: Ahmed Hassan <ahmed.hassan@microsoft.com>\nDate: 2024-03-28 14:31 EST\nSubject: URGENT: partner engagement Issue at Northwind Traders\n\nJust checking in on the partner engagement proposal. Our Head of Digital is asking for a status update before the board meeting next week.\n\n---\nFrom: Ahmed Hassan <ahmed.hassan@microsoft.com>\nTo: Sandra Taylor <sandra.taylor@northwindtra.com>\nDate: 2024-02-21 10:56 EST\nSubject: Quarterly Update: Northwind Traders partner engagement\n\nOur team encountered some challenges with partner engagement. Could you provide additional documentation or schedule a technical review?\n\n---\nFrom: Sandra Taylor <sandra.taylor@northwindtra.com>\nTo: Ahmed Hassan <ahmed.hassan@microsoft.com>\nDate: 2024-01-07 09:56 EST\nSubject: Follow-up: partner engagement Review\n\nOur team encountered some challenges with partner engagement. Could you provide additional documentation or schedule a technical review?",
+      "metadata": {
+        "freshness": "2024-02-10T16:00:00-05:00",
+        "source": "outlook",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: partner engagement Discussion - Northwind Traders\nDate: 2024-02-12\nDuration: 45 minutes\nAttendees: Sandra Taylor (Northwind Traders), Ahmed Hassan (Microsoft)\n\n[00:01:15] Sandra Taylor (Northwind Traders): Appreciate everyone making time. The main agenda today is partner engagement.\n\n[00:08:00] Ahmed Hassan (Microsoft): On the partner engagement front, we've made progress but there are still blockers around data residency.\n\n[00:10:00] Sandra Taylor (Northwind Traders): Our director reviewed this and has concerns about vendor dependencies. Can we address those?\n\n[00:15:00] Sandra Taylor (Northwind Traders): On the partner engagement front, we've made progress but there are still blockers around technical validation.\n\n[00:20:00] Ahmed Hassan (Microsoft): I agree with that assessment. From our side, the main concern is security compliance.\n\n[00:24:00] Sandra Taylor (Northwind Traders): Let me add some context -- we've been working on integration complexity and found that the existing infrastructure won't support the target workload without upgrades.\n\n[00:27:00] Ahmed Hassan (Microsoft): The timeline for security compliance is aggressive. We need to validate the assumptions.\n\n[00:32:00] Sandra Taylor (Northwind Traders): I agree with that assessment. From our side, the main concern is budget approval.\n\n[00:35:00] Ahmed Hassan (Microsoft): On the partner engagement front, we've made progress but there are still blockers around security compliance.\n\n[00:40:00] Sandra Taylor (Northwind Traders): Let me add some context -- we've been working on performance requirements and found that the current vendor contract has a 90-day exit clause we need to plan around.",
+      "metadata": {
+        "freshness": "2024-03-27T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Northwind Traders - partner engagement",
+        "start": "2024-03-11T11:00:00-05:00",
+        "end": "2024-03-14T10:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Ahmed Hassan",
+            "email": "ahmed.hassan@microsoft.com"
+          },
+          {
+            "name": "Sandra Taylor",
+            "email": "sandra.taylor@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-segment-smb-corporate",
+    "signal-strength-noisy",
+    "persona-role-manager",
+    "cross-workflow-trigger"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "meeting-prep",
+      "contact-stakeholder-map"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "adversarial-routing-test",
+    "required_artifacts": [
+      "correct_routing_justification",
+      "confusion_analysis"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Correctly routes to primary workflow despite adversarial signals; output is complete",
+      "Score 3: Routes correctly but output shows contamination from confusing signals",
+      "Score 1: Misroutes to wrong workflow or produces irrelevant output"
+    ],
+    "evidence_anchors": [
+      "Score 5: All evidence correctly attributed despite cross-workflow noise",
+      "Score 3: Some evidence misattributed but core facts correct",
+      "Score 1: Significant evidence confusion or hallucination"
+    ],
+    "decision_anchors": [
+      "Score 5: Decision-making robust against adversarial perturbations",
+      "Score 3: Primary decision correct but secondary decisions influenced by noise",
+      "Score 1: Primary decision compromised by adversarial inputs"
+    ]
+  },
+  "guardrail_checks": [
+    "Must correctly identify primary workflow despite adversarial routing signals",
+    "Must not hallucinate context from similar-sounding workflows",
+    "Must not expose internal routing logic to user"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

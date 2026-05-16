@@ -1,0 +1,124 @@
+{
+  "scenario_id": "WF-51-00091",
+  "workflow_id": "WF-51",
+  "workflow_name": "Partner Triangulation Transcript -> Plan Distribution",
+  "seed": 5100133,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF51-E",
+  "persona": "DSSP",
+  "fixture_id": "FX-025",
+  "user_message": "Working on Adatum Corporation's escalation triage. Got the exec meeting notes -- help me identify the blockers.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Adatum Corporation",
+        "account_id": "ACC-ELNED368",
+        "opportunities": [
+          {
+            "name": "Adatum Azure Virtual Desktop",
+            "stage": "Qualify",
+            "amount": 175000,
+            "close_date": "2023-12-18"
+          },
+          {
+            "name": "Adatum Azure SQL Migration",
+            "stage": "Close",
+            "amount": 125000,
+            "close_date": "2024-10-09"
+          },
+          {
+            "name": "Adatum Azure Arc Deployment",
+            "stage": "Propose",
+            "amount": 210000,
+            "close_date": "2024-12-01"
+          }
+        ],
+        "acr_current": 14124.54,
+        "health_flag": "At Risk",
+        "owner": "Raj Mehta"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: escalation triage Discussion - Adatum Corporation\nDate: 2024-01-01\nDuration: 45 minutes\nAttendees: Laura Nguyen (Adatum Corporation), Raj Mehta (Microsoft)\n\n[00:01:30] Laura Nguyen (Adatum Corporation): Thanks everyone for joining. Let's dive into escalation triage.\n\n[00:08:00] Laura Nguyen (Adatum Corporation): Let me add some context -- we've been working on resource allocation and found that there's a compliance requirement we hadn't accounted for in the original scope.\n\n[00:11:00] Laura Nguyen (Adatum Corporation): Let me add some context -- we've been working on partner engagement and found that the cost projections need to factor in reserved instance pricing for accuracy.\n\n[00:14:00] Raj Mehta (Microsoft): The timeline for cost optimization is aggressive. We need to validate the assumptions.\n\n[00:17:00] Laura Nguyen (Adatum Corporation): The timeline for resource allocation is aggressive. We need to validate the assumptions.\n\n[00:22:00] Laura Nguyen (Adatum Corporation): On the escalation triage front, we've made progress but there are still blockers around technical validation.\n\n[00:27:00] Laura Nguyen (Adatum Corporation): The timeline for vendor dependencies is aggressive. We need to validate the assumptions.\n\n[00:29:00] Laura Nguyen (Adatum Corporation): I agree with that assessment. From our side, the main concern is integration complexity.\n\n[00:33:00] Laura Nguyen (Adatum Corporation): On the escalation triage front, we've made progress but there are still blockers around vendor dependencies.",
+      "metadata": {
+        "freshness": "2024-02-08T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "security_alert",
+            "detail": "Signal detected for Adatum Corporation: there's a compliance requirement we hadn't accounted for in the original scope",
+            "date": "2024-03-08"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-10T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-segment-smb-mid",
+    "persona-role-dssp"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "funding-partner-activation-coach",
+        "condition": "funding or partner evaluation needed"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "partner-triangulation-transcript-->-plan-distribut",
+    "required_artifacts": [
+      "Tri-party action distribution (MS/partner/customer owners)",
+      "funding eligibility assessment",
+      "follow-up sequence with tri-party coordination",
+      "conflict-of-interest check"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF51-E trap (Misattributes statements across three parties); produces complete Tri-party action distribution (MS/partner/customer owners), funding eligibility assessment, follow-u",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF51-E failure pattern",
+      "Score 1: Output exhibits the full FM-WF51-E failure mode (Misattributes statements across three parties)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct escalation triage decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF51-E -- Misattributes statements across three parties"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

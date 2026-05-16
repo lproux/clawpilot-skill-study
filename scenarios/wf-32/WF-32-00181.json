@@ -1,0 +1,158 @@
+{
+  "scenario_id": "WF-32-00181",
+  "workflow_id": "WF-32",
+  "workflow_name": "Calendar Pre-Pack Automation",
+  "seed": 3200223,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF32-C",
+  "persona": "DSSP",
+  "fixture_id": "FX-005",
+  "user_message": "[AUTOMATION TRIGGER] Scheduled Calendar event with non-Microsoft external attendee detected initiated for Tailspin Toys.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Tailspin Toys",
+        "account_id": "ACC-JXC3G9ET",
+        "opportunities": [
+          {
+            "name": "Tailspin Azure Virtual Desktop",
+            "stage": "Close",
+            "amount": 560000,
+            "close_date": "2024-09-15"
+          },
+          {
+            "name": "Tailspin Azure SQL Migration",
+            "stage": "Prospect",
+            "amount": 125000,
+            "close_date": "2024-10-05"
+          },
+          {
+            "name": "Tailspin Dynamics 365 Implementation",
+            "stage": "Propose",
+            "amount": 45000,
+            "close_date": "2024-08-10"
+          }
+        ],
+        "acr_current": 122043.29,
+        "health_flag": "Healthy",
+        "owner": "Raj Mehta"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Steven Wilson <steven.wilson@tailspintoys.com>\nTo: Raj Mehta <raj.mehta@microsoft.com>\nDate: 2024-03-28 09:01 EST\nSubject: Re: Re: competitive positioning Timeline\n\nThere's been a change in our timeline for competitive positioning. Can we discuss the implications on the overall project plan?\n\n---\nFrom: Raj Mehta <raj.mehta@microsoft.com>\nTo: Steven Wilson <steven.wilson@tailspintoys.com>\nDate: 2024-02-15 17:11 EST\nSubject: URGENT: competitive positioning Issue at Tailspin Toys\n\nWe've been evaluating the options and have decided to proceed with competitive positioning. What are the next steps from your side?\n\n---\nFrom: Steven Wilson <steven.wilson@tailspintoys.com>\nTo: Raj Mehta <raj.mehta@microsoft.com>\nDate: 2024-01-11 14:25 EST\nSubject: Re: Re: competitive positioning Timeline\n\nThere's been a change in our timeline for competitive positioning. Can we discuss the implications on the overall project plan?",
+      "metadata": {
+        "freshness": "2024-03-17T13:00:00-05:00",
+        "source": "outlook",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: competitive positioning Discussion - Tailspin Toys\nDate: 2024-01-10\nDuration: 45 minutes\nAttendees: Steven Wilson (Tailspin Toys), Raj Mehta (Microsoft)\n\n[00:02:00] Steven Wilson (Tailspin Toys): Good morning. I wanted to follow up on competitive positioning from our last session.\n\n[00:05:00] Steven Wilson (Tailspin Toys): Our director reviewed this and has concerns about security compliance. Can we address those?\n\n[00:10:00] Steven Wilson (Tailspin Toys): The timeline for performance requirements is aggressive. We need to validate the assumptions.\n\n[00:15:00] Steven Wilson (Tailspin Toys): Our architect reviewed this and has concerns about performance requirements. Can we address those?\n\n[00:19:00] Raj Mehta (Microsoft): I agree with that assessment. From our side, the main concern is stakeholder alignment.\n\n[00:23:00] Raj Mehta (Microsoft): Our VP reviewed this and has concerns about data residency. Can we address those?\n\n[00:28:00] Steven Wilson (Tailspin Toys): Our VP reviewed this and has concerns about data residency. Can we address those?\n\n[00:33:00] Steven Wilson (Tailspin Toys): On the competitive positioning front, we've made progress but there are still blockers around security compliance.",
+      "metadata": {
+        "freshness": "2024-03-27T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Tailspin Toys - competitive positioning",
+        "start": "2024-03-11T16:00:00-05:00",
+        "end": "2024-03-14T10:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Raj Mehta",
+            "email": "raj.mehta@microsoft.com"
+          },
+          {
+            "name": "Steven Wilson",
+            "email": "steven.wilson@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "deployment_blocker",
+            "detail": "Signal detected for Tailspin Toys: the migration can proceed in phases to reduce risk",
+            "date": "2024-03-11"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "signal-strength-faint",
+    "persona-role-dssp"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "meeting-prep",
+      "contact-stakeholder-map",
+      "email-chat-context"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "portfolio-account-planning-coach",
+        "condition": "meeting is for account CSA should have declined"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "calendar-pre-pack-automation",
+    "required_artifacts": [
+      "Pre-pack brief with attendee context",
+      "account snapshot",
+      "talking points",
+      "likely objections",
+      "open items"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF32-C trap (Includes raw email/chat content rather than summary); produces complete Pre-pack brief with attendee context, account snapshot, talking points, likely objections, open item",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF32-C failure pattern",
+      "Score 1: Output exhibits the full FM-WF32-C failure mode (Includes raw email/chat content rather than summary)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct competitive positioning decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF32-C -- Includes raw email/chat content rather than summary"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

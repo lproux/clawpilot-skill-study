@@ -1,0 +1,157 @@
+{
+  "scenario_id": "WF-32-91489",
+  "workflow_id": "WF-32",
+  "workflow_name": "Calendar Pre-Pack Automation",
+  "seed": 9901531,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": null,
+  "persona": "CSA",
+  "fixture_id": "FX-032",
+  "user_message": "[AUTOMATION TRIGGER] System detected Calendar event with non-Microsoft external attendee detected for account Munson's Pickles. Generating output.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Munson's Pickles",
+        "account_id": "ACC-0CNBEONL",
+        "opportunities": [
+          {
+            "name": "Munson's Copilot Adoption",
+            "stage": "Develop",
+            "amount": 450000,
+            "close_date": "2024-04-19"
+          },
+          {
+            "name": "Munson's Copilot Adoption",
+            "stage": "Develop",
+            "amount": 280000,
+            "close_date": "2024-05-22"
+          },
+          {
+            "name": "Munson's AKS Deployment",
+            "stage": "Close",
+            "amount": 350000,
+            "close_date": "2024-12-10"
+          }
+        ],
+        "acr_current": 0,
+        "health_flag": "At Risk",
+        "owner": "Lisa Patel"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Robert Morrison <robert.morrison@munsonspickl.com>\nTo: Lisa Patel <lisa.patel@microsoft.com>\nDate: 2024-03-26 12:23 EST\nSubject: Follow-up: competitive positioning Review\n\nJust checking in on the competitive positioning proposal. Our Technology Manager is asking for a status update before the board meeting next week.\n\n---\nFrom: Lisa Patel <lisa.patel@microsoft.com>\nTo: Robert Morrison <robert.morrison@munsonspickl.com>\nDate: 2024-01-10 08:08 EST\nSubject: Quarterly Update: Munson's Pickles competitive positioning\n\nI wanted to follow up on our conversation about competitive positioning. Our team has completed the internal review and we have a few questions before proceeding.",
+      "metadata": {
+        "freshness": "2024-03-07T12:00:00-05:00",
+        "source": "outlook",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: competitive positioning Discussion - Munson's Pickles\nDate: 2024-03-12\nDuration: 45 minutes\nAttendees: Robert Morrison (Munson's Pickles), Lisa Patel (Microsoft), Michelle (Munson's Pickles)\n\n[00:01:15] Robert Morrison (Munson's Pickles): Appreciate everyone making time. The main agenda today is competitive positioning.\n\n[00:07:00] Lisa Patel (Microsoft): Let me add some context -- we've been working on vendor dependencies and found that the migration can proceed in phases to reduce risk.\n\n[00:12:00] Lisa Patel (Microsoft): I agree with that assessment. From our side, the main concern is budget approval.\n\n[00:15:00] Lisa Patel (Microsoft): I agree with that assessment. From our side, the main concern is technical validation.\n\n[00:17:00] Michelle (Munson's Pickles): Our CTO reviewed this and has concerns about technical validation. Can we address those?\n\n[00:21:00] Lisa Patel (Microsoft): On the competitive positioning front, we've made progress but there are still blockers around cost optimization.",
+      "metadata": {
+        "freshness": "2024-02-17T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "mixed",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Munson's Pickles - competitive positioning",
+        "start": "2024-03-13T12:00:00-05:00",
+        "end": "2024-03-14T15:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Lisa Patel",
+            "email": "lisa.patel@microsoft.com"
+          },
+          {
+            "name": "Robert Morrison",
+            "email": "robert.morrison@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "deployment_blocker",
+            "detail": "Signal detected for Munson's Pickles: there's a dependency on the security team's review that could delay us",
+            "date": "2024-03-05"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-geo-na",
+    "signal-strength-noisy",
+    "persona-segment-smb-small",
+    "routing-ambiguous-3skills"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "meeting-prep",
+      "contact-stakeholder-map",
+      "email-chat-context"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "portfolio-account-planning-coach",
+        "condition": "meeting is for account CSA should have declined"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "adversarial-routing-test",
+    "required_artifacts": [
+      "correct_routing_justification",
+      "confusion_analysis"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Correctly routes to primary workflow despite adversarial signals; output is complete",
+      "Score 3: Routes correctly but output shows contamination from confusing signals",
+      "Score 1: Misroutes to wrong workflow or produces irrelevant output"
+    ],
+    "evidence_anchors": [
+      "Score 5: All evidence correctly attributed despite cross-workflow noise",
+      "Score 3: Some evidence misattributed but core facts correct",
+      "Score 1: Significant evidence confusion or hallucination"
+    ],
+    "decision_anchors": [
+      "Score 5: Decision-making robust against adversarial perturbations",
+      "Score 3: Primary decision correct but secondary decisions influenced by noise",
+      "Score 1: Primary decision compromised by adversarial inputs"
+    ]
+  },
+  "guardrail_checks": [
+    "Must correctly identify primary workflow despite adversarial routing signals",
+    "Must not hallucinate context from similar-sounding workflows",
+    "Must not expose internal routing logic to user"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

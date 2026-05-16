@@ -1,0 +1,159 @@
+{
+  "scenario_id": "WF-32-00040",
+  "workflow_id": "WF-32",
+  "workflow_name": "Calendar Pre-Pack Automation",
+  "seed": 3200082,
+  "tier": 4,
+  "intent": "design-redesign",
+  "targeted_failure_mode": "FM-WF32-S",
+  "persona": "DSSP",
+  "fixture_id": "FX-023",
+  "user_message": "[AUTOMATION TRIGGER] Scheduled Calendar event with non-Microsoft external attendee detected initiated for Wide World Importers.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Wide World Importers",
+        "account_id": "ACC-Q026BTUQ",
+        "opportunities": [
+          {
+            "name": "Wide AKS Deployment",
+            "stage": "Close",
+            "amount": 125000,
+            "close_date": "2023-12-01"
+          },
+          {
+            "name": "Wide Intune Rollout",
+            "stage": "Close",
+            "amount": 89000,
+            "close_date": "2024-04-18"
+          }
+        ],
+        "acr_current": 61965.63,
+        "health_flag": "At Risk",
+        "owner": "Ahmed Hassan"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Ryan Kowalski <ryan.kowalski@wideworldimp.com>\nTo: Ahmed Hassan <ahmed.hassan@microsoft.com>\nDate: 2024-03-04 10:03 EST\nSubject: Re: Re: pipeline hygiene Timeline\n\nThank you for the discussion last week. We'd like to move forward with pipeline hygiene. Can we schedule a call this week to finalize the timeline?\n\n---\nFrom: Ahmed Hassan <ahmed.hassan@microsoft.com>\nTo: Ryan Kowalski <ryan.kowalski@wideworldimp.com>\nDate: 2024-02-11 12:16 EST\nSubject: Re: Re: pipeline hygiene Timeline\n\nThere's been a change in our timeline for pipeline hygiene. Can we discuss the implications on the overall project plan?",
+      "metadata": {
+        "freshness": "2024-03-15T16:00:00-05:00",
+        "source": "outlook",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: pipeline hygiene Discussion - Wide World Importers\nDate: 2024-01-02\nDuration: 45 minutes\nAttendees: Ryan Kowalski (Wide World Importers), Ahmed Hassan (Microsoft), Kevin (Wide World Importers)\n\n[00:01:30] Ryan Kowalski (Wide World Importers): Thanks everyone for joining. Let's dive into pipeline hygiene.\n\n[00:07:00] Ahmed Hassan (Microsoft): I agree with that assessment. From our side, the main concern is partner engagement.\n\n[00:09:00] Kevin (Wide World Importers): The timeline for data residency is aggressive. We need to validate the assumptions.\n\n[00:13:00] Kevin (Wide World Importers): Let me add some context -- we've been working on stakeholder alignment and found that the cost projections need to factor in reserved instance pricing for accuracy.\n\n[00:16:00] Ahmed Hassan (Microsoft): On the pipeline hygiene front, we've made progress but there are still blockers around cost optimization.\n\n[00:18:00] Kevin (Wide World Importers): On the pipeline hygiene front, we've made progress but there are still blockers around stakeholder alignment.\n\n[00:23:00] Ryan Kowalski (Wide World Importers): Let me add some context -- we've been working on vendor dependencies and found that the existing infrastructure won't support the target workload without upgrades.\n\n[00:26:00] Kevin (Wide World Importers): I agree with that assessment. From our side, the main concern is performance requirements.\n\n[00:28:00] Kevin (Wide World Importers): Let me add some context -- we've been working on vendor dependencies and found that there's a dependency on the security team's review that could delay us.\n\n[00:32:00] Ahmed Hassan (Microsoft): The timeline for budget approval is aggressive. We need to validate the assumptions.",
+      "metadata": {
+        "freshness": "2024-01-15T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "mixed",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Wide World Importers - pipeline hygiene",
+        "start": "2024-03-14T13:00:00-05:00",
+        "end": "2024-03-14T12:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Ahmed Hassan",
+            "email": "ahmed.hassan@microsoft.com"
+          },
+          {
+            "name": "Ryan Kowalski",
+            "email": "ryan.kowalski@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "deployment_blocker",
+            "detail": "Signal detected for Wide World Importers: the current vendor contract has a 90-day exit clause we need to plan around",
+            "date": "2024-03-07"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-10T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-geo-na",
+    "data-stale",
+    "persona-segment-smb-corporate",
+    "persona-tenure-junior"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "meeting-prep",
+      "contact-stakeholder-map",
+      "email-chat-context"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "portfolio-account-planning-coach",
+        "condition": "meeting is for account CSA should have declined"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "calendar-pre-pack-automation",
+    "required_artifacts": [
+      "Pre-pack brief with attendee context",
+      "account snapshot",
+      "talking points",
+      "likely objections",
+      "open items"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF32-S trap (Separation of pre-pack from portfolio-planning means CSA gets pre-packs for meet); produces complete Pre-pack brief with attendee context, account snapshot, talking points, likely objections, open item",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF32-S failure pattern",
+      "Score 1: Output exhibits the full FM-WF32-S failure mode (Separation of pre-pack from portfolio-planning means CSA gets pre-packs for meet)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct pipeline hygiene decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF32-S -- Separation of pre-pack from portfolio-planning means CSA gets pre-packs for meet",
+    "Produce structural verdict on whether current routing adequately serves this scenario"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "verdict-on-structural",
+    "verdict_required_axes": [
+      "routing",
+      "evidence"
+    ]
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "scenario_id": "WF-43-90105",
+  "workflow_id": "WF-43",
+  "workflow_name": "Discovery Call Transcript -> Opportunity Build",
+  "seed": 9900147,
+  "tier": 4,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": null,
+  "persona": "Manager",
+  "fixture_id": "FX-048",
+  "user_message": "Give me the manager view on this Summit Financial meeting transcript. Manager is asking for an update today.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Summit Financial",
+        "account_id": "ACC-L5ILSPD7",
+        "opportunities": [
+          {
+            "name": "Summit Cloud Migration Phase",
+            "stage": "Qualify",
+            "amount": 210000,
+            "close_date": "2024-11-20"
+          }
+        ],
+        "acr_current": 5836.85,
+        "health_flag": "Healthy",
+        "owner": "Priya Sharma"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: territory planning Discussion - Summit Financial\nDate: 2024-01-02\nDuration: 45 minutes\nAttendees: Andrew Brown (Summit Financial), Priya Sharma (Microsoft)\n\n[00:01:30] Andrew Brown (Summit Financial): Thanks everyone for joining. Let's dive into territory planning.\n\n[00:06:00] Andrew Brown (Summit Financial): I agree with that assessment. From our side, the main concern is timeline constraints.\n\n[00:08:00] Priya Sharma (Microsoft): Our VP reviewed this and has concerns about data residency. Can we address those?\n\n[00:11:00] Priya Sharma (Microsoft): Our architect reviewed this and has concerns about resource allocation. Can we address those?\n\n[00:14:00] Priya Sharma (Microsoft): I agree with that assessment. From our side, the main concern is data residency.\n\n[00:17:00] Priya Sharma (Microsoft): On the territory planning front, we've made progress but there are still blockers around stakeholder alignment.\n\n[00:20:00] Priya Sharma (Microsoft): Let me add some context -- we've been working on performance requirements and found that there's a compliance requirement we hadn't accounted for in the original scope.",
+      "metadata": {
+        "freshness": "2024-03-28T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "medium"
+      }
+    }
+  ],
+  "perturbations": [
+    "data-contradictory",
+    "persona-role-manager",
+    "persona-segment-smb-mid",
+    "routing-trap"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "opportunity creation warranted"
+      },
+      {
+        "target_skill": "solution-value-design-coach",
+        "condition": "solution sketch needed from discovery signals"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "adversarial-routing-test",
+    "required_artifacts": [
+      "correct_routing_justification",
+      "confusion_analysis"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Correctly routes to primary workflow despite adversarial signals; output is complete",
+      "Score 3: Routes correctly but output shows contamination from confusing signals",
+      "Score 1: Misroutes to wrong workflow or produces irrelevant output"
+    ],
+    "evidence_anchors": [
+      "Score 5: All evidence correctly attributed despite cross-workflow noise",
+      "Score 3: Some evidence misattributed but core facts correct",
+      "Score 1: Significant evidence confusion or hallucination"
+    ],
+    "decision_anchors": [
+      "Score 5: Decision-making robust against adversarial perturbations",
+      "Score 3: Primary decision correct but secondary decisions influenced by noise",
+      "Score 1: Primary decision compromised by adversarial inputs"
+    ]
+  },
+  "guardrail_checks": [
+    "Must correctly identify primary workflow despite adversarial routing signals",
+    "Must not hallucinate context from similar-sounding workflows",
+    "Must not expose internal routing logic to user"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

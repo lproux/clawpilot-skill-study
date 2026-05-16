@@ -1,0 +1,106 @@
+{
+  "scenario_id": "WF-47-00025",
+  "workflow_id": "WF-47",
+  "workflow_name": "Multi-Stakeholder Meeting Transcript -> Decision Distribution",
+  "seed": 4700067,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF47-B",
+  "persona": "DSSP",
+  "fixture_id": "FX-043",
+  "user_message": "Can you extract the security posture from this support ticket for Pacific Northwest Outfitters? Multiple stakeholders are involved -- it's complex.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Pacific Northwest Outfitters",
+        "account_id": "ACC-6SYIFEPT",
+        "opportunities": [
+          {
+            "name": "Pacific Azure Arc Deployment",
+            "stage": "Qualify",
+            "amount": 45000,
+            "close_date": "2024-04-15"
+          },
+          {
+            "name": "Pacific M365 E5 Upsell",
+            "stage": "Qualify",
+            "amount": 560000,
+            "close_date": "2024-11-15"
+          }
+        ],
+        "acr_current": 81560.32,
+        "health_flag": "Healthy",
+        "owner": "Ahmed Hassan"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: security posture Discussion - Pacific Northwest Outfitters\nDate: 2024-01-19\nDuration: 45 minutes\nAttendees: Andrew Taylor (Pacific Northwest Outfitters), Ahmed Hassan (Microsoft), Michelle (Pacific Northwest Outfitters)\n\n[00:01:15] Andrew Taylor (Pacific Northwest Outfitters): Appreciate everyone making time. The main agenda today is security posture.\n\n[00:07:00] Ahmed Hassan (Microsoft): On the security posture front, we've made progress but there are still blockers around technical validation.\n\n[00:09:00] Ahmed Hassan (Microsoft): The timeline for vendor dependencies is aggressive. We need to validate the assumptions.\n\n[00:13:00] Michelle (Pacific Northwest Outfitters): Our team lead reviewed this and has concerns about data residency. Can we address those?\n\n[00:16:00] Andrew Taylor (Pacific Northwest Outfitters): The timeline for technical validation is aggressive. We need to validate the assumptions.\n\n[00:20:00] Michelle (Pacific Northwest Outfitters): The timeline for cost optimization is aggressive. We need to validate the assumptions.\n\n[00:24:00] Ahmed Hassan (Microsoft): Our team lead reviewed this and has concerns about cost optimization. Can we address those?\n\n[00:26:00] Michelle (Pacific Northwest Outfitters): Our CTO reviewed this and has concerns about data residency. Can we address those?",
+      "metadata": {
+        "freshness": "2024-01-14T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "medium"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-tenure-senior",
+    "persona-geo-emea",
+    "persona-segment-smb-small",
+    "data-inconsistent"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions",
+      "contact-stakeholder-map"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "MSX updates warranted from decisions"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "multi-stakeholder-meeting-transcript-->-decision-d",
+    "required_artifacts": [
+      "Decision log with speaker attribution",
+      "action distribution by role",
+      "stakeholder map delta",
+      "MSX update proposals",
+      "due dates extracted"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF47-B trap (Confuses dissent with discussion); produces complete Decision log with speaker attribution, action distribution by role, stakeholder map delta, MSX updat",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF47-B failure pattern",
+      "Score 1: Output exhibits the full FM-WF47-B failure mode (Confuses dissent with discussion)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct security posture decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF47-B -- Confuses dissent with discussion"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

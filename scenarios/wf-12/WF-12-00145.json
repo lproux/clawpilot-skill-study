@@ -1,0 +1,120 @@
+{
+  "scenario_id": "WF-12-00145",
+  "workflow_id": "WF-12",
+  "workflow_name": "Post-Meeting Follow-Up",
+  "seed": 1200187,
+  "tier": 3,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF12-B",
+  "persona": "DSSP",
+  "fixture_id": "FX-033",
+  "user_message": "Working on Parnell Aerospace's deployment blockers. Got the meeting transcript -- help me draft the follow-up.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Parnell Aerospace",
+        "account_id": "ACC-0H065FH7",
+        "opportunities": [
+          {
+            "name": "Parnell Dynamics 365 Implementation",
+            "stage": "Close",
+            "amount": 350000,
+            "close_date": "2024-11-03"
+          }
+        ],
+        "acr_current": 0,
+        "health_flag": "Healthy",
+        "owner": "Ahmed Hassan"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: deployment blockers Discussion - Parnell Aerospace\nDate: 2024-02-07\nDuration: 45 minutes\nAttendees: Christopher Martinez (Parnell Aerospace), Ahmed Hassan (Microsoft), David (Parnell Aerospace)\n\n[00:02:00] Christopher Martinez (Parnell Aerospace): Good morning. I wanted to follow up on deployment blockers from our last session.\n\n[00:05:00] David (Parnell Aerospace): I agree with that assessment. From our side, the main concern is performance requirements.\n\n[00:07:00] David (Parnell Aerospace): On the deployment blockers front, we've made progress but there are still blockers around data residency.\n\n[00:10:00] Christopher Martinez (Parnell Aerospace): Our team lead reviewed this and has concerns about budget approval. Can we address those?\n\n[00:13:00] Christopher Martinez (Parnell Aerospace): On the deployment blockers front, we've made progress but there are still blockers around resource allocation.\n\n[00:16:00] David (Parnell Aerospace): Our architect reviewed this and has concerns about timeline constraints. Can we address those?",
+      "metadata": {
+        "freshness": "2024-01-16T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "mixed",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Parnell Aerospace - deployment blockers",
+        "start": "2024-03-12T16:00:00-05:00",
+        "end": "2024-03-13T14:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Ahmed Hassan",
+            "email": "ahmed.hassan@microsoft.com"
+          },
+          {
+            "name": "Christopher Martinez",
+            "email": "christopher.martinez@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-geo-na",
+    "persona-segment-smb-small"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions",
+      "email-chat-context"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "MSX updates warranted from meeting outcomes"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "post-meeting-follow-up",
+    "required_artifacts": [
+      "Decision log",
+      "action items with owners and due dates",
+      "customer-facing follow-up email draft",
+      "MSX writeback proposals"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF12-B trap (Actions without owner); produces complete Decision log, action items with owners and due dates, customer-facing follow-up email draft, MSX wri",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF12-B failure pattern",
+      "Score 1: Output exhibits the full FM-WF12-B failure mode (Actions without owner)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct deployment blockers decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF12-B -- Actions without owner",
+    "Write proposals must require explicit user approval"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

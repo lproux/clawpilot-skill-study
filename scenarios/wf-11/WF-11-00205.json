@@ -1,0 +1,136 @@
+{
+  "scenario_id": "WF-11-00205",
+  "workflow_id": "WF-11",
+  "workflow_name": "Pre-Meeting Brief",
+  "seed": 1100247,
+  "tier": 2,
+  "intent": "happy",
+  "targeted_failure_mode": null,
+  "persona": "DSSP",
+  "fixture_id": "FX-003",
+  "user_message": "The CSA escalated Northwind Traders to me -- can you run the hygiene check?",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Northwind Traders",
+        "account_id": "ACC-X86FSRU2",
+        "opportunities": [
+          {
+            "name": "Northwind Azure Arc Deployment",
+            "stage": "Propose",
+            "amount": 89000,
+            "close_date": "2024-09-05"
+          },
+          {
+            "name": "Northwind Copilot Adoption",
+            "stage": "Develop",
+            "amount": 175000,
+            "close_date": "2024-06-22"
+          },
+          {
+            "name": "Northwind Intune Rollout",
+            "stage": "Close",
+            "amount": 350000,
+            "close_date": "2024-04-19"
+          }
+        ],
+        "acr_current": 54067.74,
+        "health_flag": "Healthy",
+        "owner": "Ahmed Hassan"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Sandra Taylor <sandra.taylor@northwindtra.com>\nTo: Ahmed Hassan <ahmed.hassan@microsoft.com>\nDate: 2024-03-09 13:07 EST\nSubject: competitive positioning - Action Required\n\nWe've been evaluating the options and have decided to proceed with competitive positioning. What are the next steps from your side?\n\n---\nFrom: Ahmed Hassan <ahmed.hassan@microsoft.com>\nTo: Sandra Taylor <sandra.taylor@northwindtra.com>\nDate: 2024-02-01 15:55 EST\nSubject: Re: Re: competitive positioning Timeline\n\nThere's been a change in our timeline for competitive positioning. Can we discuss the implications on the overall project plan?\n\n---\nFrom: Sandra Taylor <sandra.taylor@northwindtra.com>\nTo: Ahmed Hassan <ahmed.hassan@microsoft.com>\nDate: 2024-01-01 12:43 EST\nSubject: URGENT: competitive positioning Issue at Northwind Traders\n\nOur team encountered some challenges with competitive positioning. Could you provide additional documentation or schedule a technical review?",
+      "metadata": {
+        "freshness": "2024-03-23T09:00:00-05:00",
+        "source": "outlook",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: competitive positioning Discussion - Northwind Traders\nDate: 2024-02-18\nDuration: 45 minutes\nAttendees: Sandra Taylor (Northwind Traders), Ahmed Hassan (Microsoft)\n\n[00:01:30] Sandra Taylor (Northwind Traders): Thanks everyone for joining. Let's dive into competitive positioning.\n\n[00:07:00] Ahmed Hassan (Microsoft): Let me add some context -- we've been working on cost optimization and found that there's a dependency on the security team's review that could delay us.\n\n[00:12:00] Ahmed Hassan (Microsoft): The timeline for security compliance is aggressive. We need to validate the assumptions.\n\n[00:14:00] Ahmed Hassan (Microsoft): On the competitive positioning front, we've made progress but there are still blockers around timeline constraints.\n\n[00:17:00] Ahmed Hassan (Microsoft): Our CTO reviewed this and has concerns about budget approval. Can we address those?\n\n[00:22:00] Ahmed Hassan (Microsoft): I agree with that assessment. From our side, the main concern is performance requirements.\n\n[00:26:00] Sandra Taylor (Northwind Traders): The timeline for budget approval is aggressive. We need to validate the assumptions.\n\n[00:28:00] Sandra Taylor (Northwind Traders): On the competitive positioning front, we've made progress but there are still blockers around technical validation.\n\n[00:33:00] Sandra Taylor (Northwind Traders): On the competitive positioning front, we've made progress but there are still blockers around technical validation.\n\n[00:37:00] Sandra Taylor (Northwind Traders): Let me add some context -- we've been working on resource allocation and found that there's a dependency on the security team's review that could delay us.\n\n[00:40:00] Sandra Taylor (Northwind Traders): Let me add some context -- we've been working on resource allocation and found that there's a dependency on the security team's review that could delay us.",
+      "metadata": {
+        "freshness": "2024-03-11T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "mixed",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Northwind Traders - competitive positioning",
+        "start": "2024-03-13T11:00:00-05:00",
+        "end": "2024-03-14T12:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Ahmed Hassan",
+            "email": "ahmed.hassan@microsoft.com"
+          },
+          {
+            "name": "Sandra Taylor",
+            "email": "sandra.taylor@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    }
+  ],
+  "perturbations": [
+    "signal-strength-faint",
+    "persona-segment-smb-corporate",
+    "persona-role-dssp",
+    "persona-tenure-senior"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "meeting-prep",
+      "contact-stakeholder-map"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "pre-meeting-brief",
+    "required_artifacts": [
+      "One-page brief with attendee context",
+      "account snapshot",
+      "talking points",
+      "likely objections",
+      "open items from last meeting"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Complete, well-structured output matching the Pre-Meeting Brief template with all required artifacts present and actionable",
+      "Score 3: Output covers main requirements but missing one or two secondary artifacts or lacking specificity",
+      "Score 1: Output is generic, missing key artifacts, or fails to address the specific request"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct competitive positioning decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

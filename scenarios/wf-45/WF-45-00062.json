@@ -1,0 +1,127 @@
+{
+  "scenario_id": "WF-45-00062",
+  "workflow_id": "WF-45",
+  "workflow_name": "QBR Transcript -> Health + Whitespace + Renewal Risk",
+  "seed": 4500104,
+  "tier": 4,
+  "intent": "design-redesign",
+  "targeted_failure_mode": "FM-WF45-P",
+  "persona": "Manager",
+  "fixture_id": "FX-017",
+  "user_message": "I need you to process this escalation email from Humongous Insurance. This is a renewal account with declining consumption.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Humongous Insurance",
+        "account_id": "ACC-3AB2FT8E",
+        "opportunities": [
+          {
+            "name": "Humongous Cloud Migration Phase",
+            "stage": "Qualify",
+            "amount": 175000,
+            "close_date": "2023-10-27"
+          }
+        ],
+        "acr_current": 73720.59,
+        "health_flag": "Healthy",
+        "owner": "David Chen"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: deployment blockers Discussion - Humongous Insurance\nDate: 2024-03-04\nDuration: 45 minutes\nAttendees: Michael Petrov (Humongous Insurance), David Chen (Microsoft)\n\n[00:01:15] Michael Petrov (Humongous Insurance): Appreciate everyone making time. The main agenda today is deployment blockers.\n\n[00:06:00] Michael Petrov (Humongous Insurance): Let me add some context -- we've been working on vendor dependencies and found that the cost projections need to factor in reserved instance pricing for accuracy.\n\n[00:08:00] David Chen (Microsoft): Let me add some context -- we've been working on technical validation and found that the migration can proceed in phases to reduce risk.\n\n[00:11:00] Michael Petrov (Humongous Insurance): The timeline for performance requirements is aggressive. We need to validate the assumptions.\n\n[00:14:00] David Chen (Microsoft): On the deployment blockers front, we've made progress but there are still blockers around partner engagement.\n\n[00:16:00] David Chen (Microsoft): I agree with that assessment. From our side, the main concern is data residency.\n\n[00:19:00] Michael Petrov (Humongous Insurance): Let me add some context -- we've been working on cost optimization and found that the existing infrastructure won't support the target workload without upgrades.",
+      "metadata": {
+        "freshness": "2024-02-21T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "mixed",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "deployment_blocker",
+            "detail": "Signal detected for Humongous Insurance: the existing infrastructure won't support the target workload without upgrades",
+            "date": "2024-03-10"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-geo-latam",
+    "persona-segment-smb-small",
+    "persona-tenure-junior"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "portfolio-account-planning-coach",
+        "condition": "health assessment needed"
+      },
+      {
+        "target_skill": "acr-signal-to-opportunity-coach",
+        "condition": "whitespace signals warrant investigation"
+      },
+      {
+        "target_skill": "forecast-business-review-coach",
+        "condition": "renewal risk affects forecast"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "qbr-transcript-->-health-+-whitespace-+-renewal-ri",
+    "required_artifacts": [
+      "Health delta assessment",
+      "whitespace hypotheses",
+      "renewal risk with confidence",
+      "action distribution with owners",
+      "comparison to last QBR commitments"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF45-P trap (Action distribution doesn't natively bind to MSX commitment tracking); produces complete Health delta assessment, whitespace hypotheses, renewal risk with confidence, action distribution wi",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF45-P failure pattern",
+      "Score 1: Output exhibits the full FM-WF45-P failure mode (Action distribution doesn't natively bind to MSX commitment tracking)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct deployment blockers decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF45-P -- Action distribution doesn't natively bind to MSX commitment tracking",
+    "Produce structural verdict on whether current routing adequately serves this scenario"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "verdict-on-structural",
+    "verdict_required_axes": [
+      "routing",
+      "evidence"
+    ]
+  }
+}

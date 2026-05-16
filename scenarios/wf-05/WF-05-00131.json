@@ -1,0 +1,97 @@
+{
+  "scenario_id": "WF-05-00131",
+  "workflow_id": "WF-05",
+  "workflow_name": "Manager Weekly Portfolio Rollup",
+  "seed": 500173,
+  "tier": 2,
+  "intent": "design-redesign",
+  "targeted_failure_mode": "FM-WF05-H",
+  "persona": "Manager",
+  "fixture_id": "FX-005",
+  "user_message": "[AUTOMATION TRIGGER] Scheduled Weekly scheduled automation or manager request for team roll initiated for Tailspin Toys.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Tailspin Toys",
+        "account_id": "ACC-JXC3G9ET",
+        "opportunities": [
+          {
+            "name": "Tailspin Azure Virtual Desktop",
+            "stage": "Close",
+            "amount": 560000,
+            "close_date": "2024-09-15"
+          },
+          {
+            "name": "Tailspin Azure SQL Migration",
+            "stage": "Prospect",
+            "amount": 125000,
+            "close_date": "2024-10-05"
+          },
+          {
+            "name": "Tailspin Dynamics 365 Implementation",
+            "stage": "Propose",
+            "amount": 45000,
+            "close_date": "2024-08-10"
+          }
+        ],
+        "acr_current": 122043.29,
+        "health_flag": "Healthy",
+        "owner": "Raj Mehta"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    }
+  ],
+  "perturbations": [
+    "data-fresh",
+    "persona-tenure-senior"
+  ],
+  "expected_routing": {
+    "entry_skill": "portfolio-account-planning-coach",
+    "modules": [
+      "manager-portfolio-review"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "manager-weekly-portfolio-rollup",
+    "required_artifacts": [
+      "One-page team rollup with wins",
+      "risks (coaching-framed)",
+      "asks for skip-level",
+      "week-over-week delta"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF05-H trap (Manager-portfolio-review monolithic when modular rollup would serve different au); produces complete One-page team rollup with wins, risks (coaching-framed), asks for skip-level, week-over-week delta",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF05-H failure pattern",
+      "Score 1: Output exhibits the full FM-WF05-H failure mode (Manager-portfolio-review monolithic when modular rollup would serve different au)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct territory planning decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF05-H -- Manager-portfolio-review monolithic when modular rollup would serve different au",
+    "Produce structural verdict on whether current routing adequately serves this scenario"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "verdict-on-structural",
+    "verdict_required_axes": [
+      "routing",
+      "evidence"
+    ]
+  }
+}

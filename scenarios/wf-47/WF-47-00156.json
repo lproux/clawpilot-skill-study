@@ -1,0 +1,111 @@
+{
+  "scenario_id": "WF-47-00156",
+  "workflow_id": "WF-47",
+  "workflow_name": "Multi-Stakeholder Meeting Transcript -> Decision Distribution",
+  "seed": 4700198,
+  "tier": 4,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": "FM-WF47-O",
+  "persona": "CSA",
+  "fixture_id": "FX-005",
+  "user_message": "I have this email thread from Tailspin Toys that needs generate the watchlist. Need this before my 2pm call.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Tailspin Toys",
+        "account_id": "ACC-JXC3G9ET",
+        "opportunities": [
+          {
+            "name": "Tailspin Azure Virtual Desktop",
+            "stage": "Close",
+            "amount": 560000,
+            "close_date": "2024-09-15"
+          },
+          {
+            "name": "Tailspin Azure SQL Migration",
+            "stage": "Prospect",
+            "amount": 125000,
+            "close_date": "2024-10-05"
+          },
+          {
+            "name": "Tailspin Dynamics 365 Implementation",
+            "stage": "Propose",
+            "amount": 45000,
+            "close_date": "2024-08-10"
+          }
+        ],
+        "acr_current": 122043.29,
+        "health_flag": "Healthy",
+        "owner": "Raj Mehta"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: renewal risk Discussion - Tailspin Toys\nDate: 2024-03-15\nDuration: 45 minutes\nAttendees: Steven Wilson (Tailspin Toys), Raj Mehta (Microsoft), Priya (Tailspin Toys)\n\n[00:02:00] Steven Wilson (Tailspin Toys): Good morning. I wanted to follow up on renewal risk from our last session.\n\n[00:08:00] Priya (Tailspin Toys): Our VP reviewed this and has concerns about performance requirements. Can we address those?\n\n[00:11:00] Steven Wilson (Tailspin Toys): Let me add some context -- we've been working on partner engagement and found that the current vendor contract has a 90-day exit clause we need to plan around.\n\n[00:16:00] Raj Mehta (Microsoft): Our VP reviewed this and has concerns about integration complexity. Can we address those?\n\n[00:18:00] Priya (Tailspin Toys): Our CTO reviewed this and has concerns about cost optimization. Can we address those?\n\n[00:20:00] Raj Mehta (Microsoft): On the renewal risk front, we've made progress but there are still blockers around integration complexity.\n\n[00:25:00] Raj Mehta (Microsoft): On the renewal risk front, we've made progress but there are still blockers around performance requirements.\n\n[00:30:00] Steven Wilson (Tailspin Toys): I agree with that assessment. From our side, the main concern is performance requirements.\n\n[00:34:00] Priya (Tailspin Toys): The timeline for data residency is aggressive. We need to validate the assumptions.\n\n[00:37:00] Steven Wilson (Tailspin Toys): The timeline for timeline constraints is aggressive. We need to validate the assumptions.\n\n[00:39:00] Raj Mehta (Microsoft): Our team lead reviewed this and has concerns about security compliance. Can we address those?",
+      "metadata": {
+        "freshness": "2024-03-01T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "medium"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-segment-smb-small",
+    "persona-geo-apac"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions",
+      "contact-stakeholder-map"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "MSX updates warranted from decisions"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "multi-stakeholder-meeting-transcript-->-decision-d",
+    "required_artifacts": [
+      "Decision log with speaker attribution",
+      "action distribution by role",
+      "stakeholder map delta",
+      "MSX update proposals",
+      "due dates extracted"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF47-O trap (Distribution-by-role rigid when meeting was peer-collaborative); produces complete Decision log with speaker attribution, action distribution by role, stakeholder map delta, MSX updat",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF47-O failure pattern",
+      "Score 1: Output exhibits the full FM-WF47-O failure mode (Distribution-by-role rigid when meeting was peer-collaborative)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct renewal risk decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF47-O -- Distribution-by-role rigid when meeting was peer-collaborative",
+    "Guardrail axis scored neutrally -- focus on whether output served the user's actual need"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

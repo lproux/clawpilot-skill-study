@@ -1,0 +1,119 @@
+{
+  "scenario_id": "WF-12-00134",
+  "workflow_id": "WF-12",
+  "workflow_name": "Post-Meeting Follow-Up",
+  "seed": 1200176,
+  "tier": 3,
+  "intent": "happy",
+  "targeted_failure_mode": null,
+  "persona": "Manager",
+  "fixture_id": "FX-011",
+  "user_message": "Give me the manager view on this Alpine Ski House support ticket. ",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Alpine Ski House",
+        "account_id": "ACC-UIKNWGJ7",
+        "opportunities": [
+          {
+            "name": "Alpine Azure Virtual Desktop",
+            "stage": "Propose",
+            "amount": 560000,
+            "close_date": "2023-12-14"
+          }
+        ],
+        "acr_current": 115928.19,
+        "health_flag": "At Risk",
+        "owner": "Marcus Williams"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: consumption trend Discussion - Alpine Ski House\nDate: 2024-03-14\nDuration: 45 minutes\nAttendees: Brian Yamamoto (Alpine Ski House), Marcus Williams (Microsoft)\n\n[00:01:15] Brian Yamamoto (Alpine Ski House): Appreciate everyone making time. The main agenda today is consumption trend.\n\n[00:07:00] Brian Yamamoto (Alpine Ski House): The timeline for vendor dependencies is aggressive. We need to validate the assumptions.\n\n[00:12:00] Marcus Williams (Microsoft): Let me add some context -- we've been working on security compliance and found that the cost projections need to factor in reserved instance pricing for accuracy.\n\n[00:14:00] Marcus Williams (Microsoft): Our CTO reviewed this and has concerns about security compliance. Can we address those?\n\n[00:16:00] Marcus Williams (Microsoft): I agree with that assessment. From our side, the main concern is security compliance.\n\n[00:20:00] Marcus Williams (Microsoft): Let me add some context -- we've been working on integration complexity and found that the cost projections need to factor in reserved instance pricing for accuracy.\n\n[00:22:00] Brian Yamamoto (Alpine Ski House): Our team lead reviewed this and has concerns about partner engagement. Can we address those?\n\n[00:26:00] Brian Yamamoto (Alpine Ski House): On the consumption trend front, we've made progress but there are still blockers around security compliance.",
+      "metadata": {
+        "freshness": "2024-02-08T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Alpine Ski House - consumption trend",
+        "start": "2024-03-12T10:00:00-05:00",
+        "end": "2024-03-13T16:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Marcus Williams",
+            "email": "marcus.williams@microsoft.com"
+          },
+          {
+            "name": "Brian Yamamoto",
+            "email": "brian.yamamoto@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-geo-apac",
+    "persona-segment-smb-mid"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions",
+      "email-chat-context"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "MSX updates warranted from meeting outcomes"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "post-meeting-follow-up",
+    "required_artifacts": [
+      "Decision log",
+      "action items with owners and due dates",
+      "customer-facing follow-up email draft",
+      "MSX writeback proposals"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Complete, well-structured output matching the Post-Meeting Follow-Up template with all required artifacts present and actionable",
+      "Score 3: Output covers main requirements but missing one or two secondary artifacts or lacking specificity",
+      "Score 1: Output is generic, missing key artifacts, or fails to address the specific request"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct consumption trend decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Write proposals must require explicit user approval"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

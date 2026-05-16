@@ -1,0 +1,115 @@
+{
+  "scenario_id": "WF-49-00135",
+  "workflow_id": "WF-49",
+  "workflow_name": "Workshop Transcript -> ECIF + Partner + Follow-up",
+  "seed": 4900177,
+  "tier": 4,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": "FM-WF49-L",
+  "persona": "CSA",
+  "fixture_id": "FX-013",
+  "user_message": "I have this meeting transcript from Coho Winery that needs triage this. Need this before my 2pm call.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Coho Winery",
+        "account_id": "ACC-W5BNG4OC",
+        "opportunities": [
+          {
+            "name": "Coho Copilot Adoption",
+            "stage": "Close",
+            "amount": 210000,
+            "close_date": "2023-11-10"
+          },
+          {
+            "name": "Coho Azure AI Services",
+            "stage": "Qualify",
+            "amount": 280000,
+            "close_date": "2024-04-26"
+          },
+          {
+            "name": "Coho Azure Virtual Desktop",
+            "stage": "Qualify",
+            "amount": 125000,
+            "close_date": "2024-11-17"
+          }
+        ],
+        "acr_current": 107808.75,
+        "health_flag": "At Risk",
+        "owner": "Ahmed Hassan"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: security posture Discussion - Coho Winery\nDate: 2024-01-16\nDuration: 45 minutes\nAttendees: Eric Kim (Coho Winery), Ahmed Hassan (Microsoft), David (Coho Winery)\n\n[00:01:30] Eric Kim (Coho Winery): Thanks everyone for joining. Let's dive into security posture.\n\n[00:07:00] David (Coho Winery): Let me add some context -- we've been working on technical validation and found that the existing infrastructure won't support the target workload without upgrades.\n\n[00:09:00] David (Coho Winery): Our VP reviewed this and has concerns about performance requirements. Can we address those?\n\n[00:11:00] Ahmed Hassan (Microsoft): The timeline for security compliance is aggressive. We need to validate the assumptions.\n\n[00:14:00] Ahmed Hassan (Microsoft): The timeline for integration complexity is aggressive. We need to validate the assumptions.\n\n[00:16:00] Ahmed Hassan (Microsoft): Our architect reviewed this and has concerns about data residency. Can we address those?\n\n[00:20:00] Eric Kim (Coho Winery): Let me add some context -- we've been working on vendor dependencies and found that the migration can proceed in phases to reduce risk.",
+      "metadata": {
+        "freshness": "2024-03-17T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "medium"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-geo-na",
+    "data-stale",
+    "routing-clear"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "funding-partner-activation-coach",
+        "condition": "ECIF workscope or partner engagement warranted"
+      },
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "milestone updates warranted"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "workshop-transcript-->-ecif-+-partner-+-follow-up",
+    "required_artifacts": [
+      "Workshop recap",
+      "ECIF workscope draft (if warranted)",
+      "partner plan",
+      "follow-up items with owners",
+      "milestone update proposals"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF49-L trap (Workshop-output-to-ECIF-workscope pipeline rigid when partial workshops warrant ); produces complete Workshop recap, ECIF workscope draft (if warranted), partner plan, follow-up items with owners, mile",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF49-L failure pattern",
+      "Score 1: Output exhibits the full FM-WF49-L failure mode (Workshop-output-to-ECIF-workscope pipeline rigid when partial workshops warrant )"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct security posture decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF49-L -- Workshop-output-to-ECIF-workscope pipeline rigid when partial workshops warrant ",
+    "Guardrail axis scored neutrally -- focus on whether output served the user's actual need"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

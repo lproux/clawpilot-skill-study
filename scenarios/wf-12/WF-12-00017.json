@@ -1,0 +1,132 @@
+{
+  "scenario_id": "WF-12-00017",
+  "workflow_id": "WF-12",
+  "workflow_name": "Post-Meeting Follow-Up",
+  "seed": 1200059,
+  "tier": 3,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF12-A",
+  "persona": "Manager",
+  "fixture_id": "FX-027",
+  "user_message": "Give me the manager view on this Blue Yonder Airlines meeting transcript. Board meeting is next week.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Blue Yonder Airlines",
+        "account_id": "ACC-6ZHK5AIU",
+        "opportunities": [
+          {
+            "name": "Blue Dynamics 365 Implementation",
+            "stage": "Close",
+            "amount": 210000,
+            "close_date": "2024-04-22"
+          },
+          {
+            "name": "Blue Azure Infrastructure",
+            "stage": "Prospect",
+            "amount": 350000,
+            "close_date": "2024-08-05"
+          },
+          {
+            "name": "Blue Copilot Adoption",
+            "stage": "Prospect",
+            "amount": 210000,
+            "close_date": "2024-12-03"
+          }
+        ],
+        "acr_current": 0,
+        "health_flag": "At Risk",
+        "owner": "David Chen"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: migration architecture Discussion - Blue Yonder Airlines\nDate: 2024-01-05\nDuration: 45 minutes\nAttendees: Robert Singh (Blue Yonder Airlines), David Chen (Microsoft)\n\n[00:01:30] Robert Singh (Blue Yonder Airlines): Thanks everyone for joining. Let's dive into migration architecture.\n\n[00:07:00] Robert Singh (Blue Yonder Airlines): The timeline for security compliance is aggressive. We need to validate the assumptions.\n\n[00:12:00] David Chen (Microsoft): I agree with that assessment. From our side, the main concern is integration complexity.\n\n[00:16:00] Robert Singh (Blue Yonder Airlines): Let me add some context -- we've been working on partner engagement and found that the cost projections need to factor in reserved instance pricing for accuracy.\n\n[00:21:00] Robert Singh (Blue Yonder Airlines): The timeline for resource allocation is aggressive. We need to validate the assumptions.\n\n[00:23:00] Robert Singh (Blue Yonder Airlines): I agree with that assessment. From our side, the main concern is performance requirements.\n\n[00:25:00] David Chen (Microsoft): I agree with that assessment. From our side, the main concern is budget approval.\n\n[00:28:00] David Chen (Microsoft): Our architect reviewed this and has concerns about performance requirements. Can we address those?\n\n[00:32:00] Robert Singh (Blue Yonder Airlines): I agree with that assessment. From our side, the main concern is cost optimization.",
+      "metadata": {
+        "freshness": "2024-02-01T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Blue Yonder Airlines - migration architecture",
+        "start": "2024-03-14T15:00:00-05:00",
+        "end": "2024-03-11T16:00:00-05:00",
+        "attendees": [
+          {
+            "name": "David Chen",
+            "email": "david.chen@microsoft.com"
+          },
+          {
+            "name": "Robert Singh",
+            "email": "robert.singh@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    }
+  ],
+  "perturbations": [
+    "data-partially-missing",
+    "persona-geo-emea"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions",
+      "email-chat-context"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "MSX updates warranted from meeting outcomes"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "post-meeting-follow-up",
+    "required_artifacts": [
+      "Decision log",
+      "action items with owners and due dates",
+      "customer-facing follow-up email draft",
+      "MSX writeback proposals"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF12-A trap (Conflates discussion with decision); produces complete Decision log, action items with owners and due dates, customer-facing follow-up email draft, MSX wri",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF12-A failure pattern",
+      "Score 1: Output exhibits the full FM-WF12-A failure mode (Conflates discussion with decision)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct migration architecture decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF12-A -- Conflates discussion with decision",
+    "Write proposals must require explicit user approval"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

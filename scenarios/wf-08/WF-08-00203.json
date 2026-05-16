@@ -1,0 +1,115 @@
+{
+  "scenario_id": "WF-08-00203",
+  "workflow_id": "WF-08",
+  "workflow_name": "CxObserve Signal-to-Opportunity Conversion",
+  "seed": 800245,
+  "tier": 3,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF08-G",
+  "persona": "Manager",
+  "fixture_id": "FX-049",
+  "user_message": "I need you to process this support ticket from Iron Creek Mining. I met with them last week but can't remember the details.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Iron Creek Mining",
+        "account_id": "ACC-WVPLFPK6",
+        "opportunities": [
+          {
+            "name": "Iron Azure DevOps",
+            "stage": "Qualify",
+            "amount": 350000,
+            "close_date": "2024-10-28"
+          },
+          {
+            "name": "Iron Azure Virtual Desktop",
+            "stage": "Develop",
+            "amount": 280000,
+            "close_date": "2024-06-02"
+          },
+          {
+            "name": "Iron Azure SQL Migration",
+            "stage": "Qualify",
+            "amount": 68000,
+            "close_date": "2024-05-06"
+          }
+        ],
+        "acr_current": 10924.12,
+        "health_flag": "Healthy",
+        "owner": "Tom Rodriguez"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "security_alert",
+            "detail": "Signal detected for Iron Creek Mining: the current vendor contract has a 90-day exit clause we need to plan around",
+            "date": "2024-03-09"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-segment-smb-small",
+    "routing-clear",
+    "persona-role-manager"
+  ],
+  "expected_routing": {
+    "entry_skill": "acr-signal-to-opportunity-coach",
+    "modules": [
+      "signal-to-opportunity"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "opportunity creation approved"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "cxobserve-signal-to-opportunity-conversion",
+    "required_artifacts": [
+      "Signal assessment with confidence",
+      "opportunity hypothesis with value-lever framing",
+      "deduplication check",
+      "suggested next action"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF08-G trap (Misclassifies signal type (renewal vs expansion vs risk)); produces complete Signal assessment with confidence, opportunity hypothesis with value-lever framing, deduplication ch",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF08-G failure pattern",
+      "Score 1: Output exhibits the full FM-WF08-G failure mode (Misclassifies signal type (renewal vs expansion vs risk))"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct migration architecture decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF08-G -- Misclassifies signal type (renewal vs expansion vs risk)"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

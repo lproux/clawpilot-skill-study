@@ -1,0 +1,115 @@
+{
+  "scenario_id": "WF-40-00249",
+  "workflow_id": "WF-40",
+  "workflow_name": "Decision-Maker Reply -> BPF Advance Check",
+  "seed": 4000291,
+  "tier": 4,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": "FM-WF40-L",
+  "persona": "CSA",
+  "fixture_id": "FX-041",
+  "user_message": "Just got this from Robert Foster at Quantum Analytics -- I need help figuring out partner engagement. The customer escalated this morning.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Quantum Analytics",
+        "account_id": "ACC-ZJSZDYNL",
+        "opportunities": [
+          {
+            "name": "Quantum Azure Infrastructure",
+            "stage": "Qualify",
+            "amount": 68000,
+            "close_date": "2024-04-14"
+          },
+          {
+            "name": "Quantum Data Platform Migration",
+            "stage": "Develop",
+            "amount": 450000,
+            "close_date": "2024-07-16"
+          },
+          {
+            "name": "Quantum Dynamics 365 Implementation",
+            "stage": "Qualify",
+            "amount": 68000,
+            "close_date": "2024-07-17"
+          }
+        ],
+        "acr_current": 21322.6,
+        "health_flag": "At Risk",
+        "owner": "Marcus Williams"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Robert Foster <robert.foster@quantumanaly.com>\nTo: Marcus Williams <marcus.williams@microsoft.com>\nDate: 2024-03-12 11:45 EST\nSubject: URGENT: partner engagement Issue at Quantum Analytics\n\nOur team encountered some challenges with partner engagement. Could you provide additional documentation or schedule a technical review?\n\n---\nFrom: Marcus Williams <marcus.williams@microsoft.com>\nTo: Robert Foster <robert.foster@quantumanaly.com>\nDate: 2024-01-22 12:10 EST\nSubject: partner engagement - Action Required\n\nJust checking in on the partner engagement proposal. Our Head of Digital is asking for a status update before the board meeting next week.",
+      "metadata": {
+        "freshness": "2024-03-26T08:00:00-05:00",
+        "source": "outlook",
+        "length_class": "medium"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-tenure-mid",
+    "data-inconsistent",
+    "persona-role-csa"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "email-chat-context",
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "BPF advance warranted"
+      },
+      {
+        "target_skill": "forecast-business-review-coach",
+        "condition": "forecast category change warranted"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "decision-maker-reply-->-bpf-advance-check",
+    "required_artifacts": [
+      "Commitment assessment",
+      "BPF advance verdict",
+      "milestone proposal",
+      "forecast category recommendation",
+      "acknowledgment draft"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF40-L trap (Requiring approval for an obvious milestone update derived from the email create); produces complete Commitment assessment, BPF advance verdict, milestone proposal, forecast category recommendation, ac",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF40-L failure pattern",
+      "Score 1: Output exhibits the full FM-WF40-L failure mode (Requiring approval for an obvious milestone update derived from the email create)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct partner engagement decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF40-L -- Requiring approval for an obvious milestone update derived from the email create",
+    "Guardrail axis scored neutrally -- focus on whether output served the user's actual need"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

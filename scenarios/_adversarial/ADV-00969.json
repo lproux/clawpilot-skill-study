@@ -1,0 +1,133 @@
+{
+  "scenario_id": "WF-11-90969",
+  "workflow_id": "WF-11",
+  "workflow_name": "Pre-Meeting Brief",
+  "seed": 9901011,
+  "tier": 2,
+  "intent": "adherence",
+  "targeted_failure_mode": null,
+  "persona": "CSA",
+  "fixture_id": "FX-012",
+  "user_message": "Need help with Bellows College -- run the hygiene check. Multiple stakeholders are involved -- it's complex.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Bellows College",
+        "account_id": "ACC-PPFBFFQ3",
+        "opportunities": [
+          {
+            "name": "Bellows Cloud Migration Phase",
+            "stage": "Propose",
+            "amount": 350000,
+            "close_date": "2023-11-22"
+          },
+          {
+            "name": "Bellows Azure SQL Migration",
+            "stage": "Qualify",
+            "amount": 68000,
+            "close_date": "2024-10-09"
+          },
+          {
+            "name": "Bellows Power Platform",
+            "stage": "Develop",
+            "amount": 450000,
+            "close_date": "2024-12-20"
+          }
+        ],
+        "acr_current": 81043.14,
+        "health_flag": "Healthy",
+        "owner": "Lisa Patel"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Jason Thompson <jason.thompson@bellowscolle.com>\nTo: Lisa Patel <lisa.patel@microsoft.com>\nDate: 2024-02-02 10:29 EST\nSubject: URGENT: territory planning Issue at Bellows College\n\nJust checking in on the territory planning proposal. Our CTO is asking for a status update before the board meeting next week.\n\n---\nFrom: Lisa Patel <lisa.patel@microsoft.com>\nTo: Jason Thompson <jason.thompson@bellowscolle.com>\nDate: 2024-01-25 08:12 EST\nSubject: URGENT: territory planning Issue at Bellows College\n\nOur team encountered some challenges with territory planning. Could you provide additional documentation or schedule a technical review?",
+      "metadata": {
+        "freshness": "2024-02-25T12:00:00-05:00",
+        "source": "outlook",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: territory planning Discussion - Bellows College\nDate: 2024-01-26\nDuration: 45 minutes\nAttendees: Jason Thompson (Bellows College), Lisa Patel (Microsoft), Priya (Bellows College)\n\n[00:01:15] Jason Thompson (Bellows College): Appreciate everyone making time. The main agenda today is territory planning.\n\n[00:05:00] Jason Thompson (Bellows College): Our CTO reviewed this and has concerns about integration complexity. Can we address those?\n\n[00:10:00] Priya (Bellows College): Let me add some context -- we've been working on cost optimization and found that the current vendor contract has a 90-day exit clause we need to plan around.\n\n[00:15:00] Jason Thompson (Bellows College): I agree with that assessment. From our side, the main concern is partner engagement.\n\n[00:18:00] Lisa Patel (Microsoft): Our architect reviewed this and has concerns about security compliance. Can we address those?\n\n[00:21:00] Priya (Bellows College): On the territory planning front, we've made progress but there are still blockers around resource allocation.\n\n[00:23:00] Priya (Bellows College): Our team lead reviewed this and has concerns about resource allocation. Can we address those?\n\n[00:26:00] Jason Thompson (Bellows College): The timeline for timeline constraints is aggressive. We need to validate the assumptions.\n\n[00:29:00] Lisa Patel (Microsoft): Let me add some context -- we've been working on timeline constraints and found that the migration can proceed in phases to reduce risk.\n\n[00:32:00] Priya (Bellows College): Our team lead reviewed this and has concerns about budget approval. Can we address those?",
+      "metadata": {
+        "freshness": "2024-01-04T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "mixed",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Bellows College - territory planning",
+        "start": "2024-03-14T15:00:00-05:00",
+        "end": "2024-03-12T11:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Lisa Patel",
+            "email": "lisa.patel@microsoft.com"
+          },
+          {
+            "name": "Jason Thompson",
+            "email": "jason.thompson@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    }
+  ],
+  "perturbations": [
+    "signal-strength-faint",
+    "data-stale",
+    "routing-ambiguous-3skills"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "meeting-prep",
+      "contact-stakeholder-map"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "adversarial-routing-test",
+    "required_artifacts": [
+      "correct_routing_justification",
+      "confusion_analysis"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Correctly routes to primary workflow despite adversarial signals; output is complete",
+      "Score 3: Routes correctly but output shows contamination from confusing signals",
+      "Score 1: Misroutes to wrong workflow or produces irrelevant output"
+    ],
+    "evidence_anchors": [
+      "Score 5: All evidence correctly attributed despite cross-workflow noise",
+      "Score 3: Some evidence misattributed but core facts correct",
+      "Score 1: Significant evidence confusion or hallucination"
+    ],
+    "decision_anchors": [
+      "Score 5: Decision-making robust against adversarial perturbations",
+      "Score 3: Primary decision correct but secondary decisions influenced by noise",
+      "Score 1: Primary decision compromised by adversarial inputs"
+    ]
+  },
+  "guardrail_checks": [
+    "Must correctly identify primary workflow despite adversarial routing signals",
+    "Must not hallucinate context from similar-sounding workflows",
+    "Must not expose internal routing logic to user"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

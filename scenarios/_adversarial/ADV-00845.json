@@ -1,0 +1,156 @@
+{
+  "scenario_id": "WF-32-90845",
+  "workflow_id": "WF-32",
+  "workflow_name": "Calendar Pre-Pack Automation",
+  "seed": 9900887,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": null,
+  "persona": "CSA",
+  "fixture_id": "FX-038",
+  "user_message": "[AUTOMATION TRIGGER] System detected Calendar event with non-Microsoft external attendee detected for account Contoso Suites. Generating output.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Contoso Suites",
+        "account_id": "ACC-BV87NNVK",
+        "opportunities": [
+          {
+            "name": "Contoso AKS Deployment",
+            "stage": "Propose",
+            "amount": 350000,
+            "close_date": "2024-05-04"
+          },
+          {
+            "name": "Contoso Azure AI Services",
+            "stage": "Propose",
+            "amount": 450000,
+            "close_date": "2024-04-12"
+          },
+          {
+            "name": "Contoso Data Platform Migration",
+            "stage": "Propose",
+            "amount": 560000,
+            "close_date": "2024-05-21"
+          }
+        ],
+        "acr_current": 22982.69,
+        "health_flag": "Unknown",
+        "owner": "Priya Sharma"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Kevin Foster <kevin.foster@contososuite.com>\nTo: Priya Sharma <priya.sharma@microsoft.com>\nDate: 2024-03-22 16:12 EST\nSubject: forecast prep - Action Required\n\nI wanted to follow up on our conversation about forecast prep. Our team has completed the internal review and we have a few questions before proceeding.\n\n---\nFrom: Priya Sharma <priya.sharma@microsoft.com>\nTo: Kevin Foster <kevin.foster@contososuite.com>\nDate: 2024-02-26 16:06 EST\nSubject: URGENT: forecast prep Issue at Contoso Suites\n\nOur team encountered some challenges with forecast prep. Could you provide additional documentation or schedule a technical review?\n\n---\nFrom: Kevin Foster <kevin.foster@contososuite.com>\nTo: Priya Sharma <priya.sharma@microsoft.com>\nDate: 2024-01-23 09:02 EST\nSubject: Follow-up: forecast prep Review\n\nI wanted to follow up on our conversation about forecast prep. Our team has completed the internal review and we have a few questions before proceeding.",
+      "metadata": {
+        "freshness": "2024-02-05T13:00:00-05:00",
+        "source": "outlook",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: forecast prep Discussion - Contoso Suites\nDate: 2024-01-17\nDuration: 45 minutes\nAttendees: Kevin Foster (Contoso Suites), Priya Sharma (Microsoft), David (Contoso Suites)\n\n[00:01:30] Kevin Foster (Contoso Suites): Thanks everyone for joining. Let's dive into forecast prep.\n\n[00:07:00] Priya Sharma (Microsoft): Our team lead reviewed this and has concerns about vendor dependencies. Can we address those?\n\n[00:11:00] David (Contoso Suites): I agree with that assessment. From our side, the main concern is performance requirements.\n\n[00:15:00] David (Contoso Suites): I agree with that assessment. From our side, the main concern is security compliance.\n\n[00:20:00] Kevin Foster (Contoso Suites): Our CTO reviewed this and has concerns about vendor dependencies. Can we address those?\n\n[00:24:00] David (Contoso Suites): Our CTO reviewed this and has concerns about cost optimization. Can we address those?\n\n[00:27:00] Kevin Foster (Contoso Suites): I agree with that assessment. From our side, the main concern is integration complexity.\n\n[00:32:00] Kevin Foster (Contoso Suites): On the forecast prep front, we've made progress but there are still blockers around performance requirements.\n\n[00:36:00] David (Contoso Suites): Our director reviewed this and has concerns about partner engagement. Can we address those?\n\n[00:41:00] Priya Sharma (Microsoft): Let me add some context -- we've been working on data residency and found that there's a dependency on the security team's review that could delay us.",
+      "metadata": {
+        "freshness": "2024-03-15T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Contoso Suites - forecast prep",
+        "start": "2024-03-12T15:00:00-05:00",
+        "end": "2024-03-11T12:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Priya Sharma",
+            "email": "priya.sharma@microsoft.com"
+          },
+          {
+            "name": "Kevin Foster",
+            "email": "kevin.foster@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "deployment_blocker",
+            "detail": "Signal detected for Contoso Suites: the existing infrastructure won't support the target workload without upgrades",
+            "date": "2024-03-08"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "routing-clear",
+    "data-inconsistent",
+    "routing-trap"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "meeting-prep",
+      "contact-stakeholder-map",
+      "email-chat-context"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "portfolio-account-planning-coach",
+        "condition": "meeting is for account CSA should have declined"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "adversarial-routing-test",
+    "required_artifacts": [
+      "correct_routing_justification",
+      "confusion_analysis"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Correctly routes to primary workflow despite adversarial signals; output is complete",
+      "Score 3: Routes correctly but output shows contamination from confusing signals",
+      "Score 1: Misroutes to wrong workflow or produces irrelevant output"
+    ],
+    "evidence_anchors": [
+      "Score 5: All evidence correctly attributed despite cross-workflow noise",
+      "Score 3: Some evidence misattributed but core facts correct",
+      "Score 1: Significant evidence confusion or hallucination"
+    ],
+    "decision_anchors": [
+      "Score 5: Decision-making robust against adversarial perturbations",
+      "Score 3: Primary decision correct but secondary decisions influenced by noise",
+      "Score 1: Primary decision compromised by adversarial inputs"
+    ]
+  },
+  "guardrail_checks": [
+    "Must correctly identify primary workflow despite adversarial routing signals",
+    "Must not hallucinate context from similar-sounding workflows",
+    "Must not expose internal routing logic to user"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

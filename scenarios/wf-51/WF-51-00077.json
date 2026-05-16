@@ -1,0 +1,111 @@
+{
+  "scenario_id": "WF-51-00077",
+  "workflow_id": "WF-51",
+  "workflow_name": "Partner Triangulation Transcript -> Plan Distribution",
+  "seed": 5100119,
+  "tier": 4,
+  "intent": "happy",
+  "targeted_failure_mode": null,
+  "persona": "Manager",
+  "fixture_id": "FX-047",
+  "user_message": "Just came out of account health with Evergreen Solutions. Turn this into my brief and pull out the asks.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Evergreen Solutions",
+        "account_id": "ACC-S7KJN805",
+        "opportunities": [
+          {
+            "name": "Evergreen Azure AI Services",
+            "stage": "Qualify",
+            "amount": 175000,
+            "close_date": "2024-12-26"
+          }
+        ],
+        "acr_current": 19865.64,
+        "health_flag": "Healthy",
+        "owner": "David Chen"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: account health Discussion - Evergreen Solutions\nDate: 2024-03-18\nDuration: 45 minutes\nAttendees: Samantha Okafor (Evergreen Solutions), David Chen (Microsoft), Michelle (Evergreen Solutions)\n\n[00:02:00] Samantha Okafor (Evergreen Solutions): Good morning. I wanted to follow up on account health from our last session.\n\n[00:07:00] Michelle (Evergreen Solutions): On the account health front, we've made progress but there are still blockers around technical validation.\n\n[00:12:00] David Chen (Microsoft): Our architect reviewed this and has concerns about security compliance. Can we address those?\n\n[00:16:00] Samantha Okafor (Evergreen Solutions): Let me add some context -- we've been working on performance requirements and found that there's a dependency on the security team's review that could delay us.\n\n[00:18:00] David Chen (Microsoft): Our CTO reviewed this and has concerns about resource allocation. Can we address those?\n\n[00:23:00] Michelle (Evergreen Solutions): On the account health front, we've made progress but there are still blockers around budget approval.\n\n[00:28:00] Michelle (Evergreen Solutions): I agree with that assessment. From our side, the main concern is data residency.\n\n[00:30:00] David Chen (Microsoft): The timeline for vendor dependencies is aggressive. We need to validate the assumptions.\n\n[00:35:00] Samantha Okafor (Evergreen Solutions): I agree with that assessment. From our side, the main concern is data residency.\n\n[00:40:00] Samantha Okafor (Evergreen Solutions): On the account health front, we've made progress but there are still blockers around resource allocation.\n\n[00:44:00] David Chen (Microsoft): I agree with that assessment. From our side, the main concern is performance requirements.",
+      "metadata": {
+        "freshness": "2024-02-23T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "deployment_blocker",
+            "detail": "Signal detected for Evergreen Solutions: there's a compliance requirement we hadn't accounted for in the original scope",
+            "date": "2024-03-10"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "data-contradictory",
+    "signal-strength-faint"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "funding-partner-activation-coach",
+        "condition": "funding or partner evaluation needed"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "partner-triangulation-transcript-->-plan-distribut",
+    "required_artifacts": [
+      "Tri-party action distribution (MS/partner/customer owners)",
+      "funding eligibility assessment",
+      "follow-up sequence with tri-party coordination",
+      "conflict-of-interest check"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Complete, well-structured output matching the Partner Triangulation Transcript -> Plan Distribution template with all required artifacts present and actionable",
+      "Score 3: Output covers main requirements but missing one or two secondary artifacts or lacking specificity",
+      "Score 1: Output is generic, missing key artifacts, or fails to address the specific request"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct account health decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

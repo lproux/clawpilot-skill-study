@@ -1,0 +1,152 @@
+{
+  "scenario_id": "WF-32-00190",
+  "workflow_id": "WF-32",
+  "workflow_name": "Calendar Pre-Pack Automation",
+  "seed": 3200232,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF32-G",
+  "persona": "DSSP",
+  "fixture_id": "FX-023",
+  "user_message": "[AUTOMATION TRIGGER] Daily automation: Calendar event with non-Microsoft external attendee detected. Account: Wide World Importers.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Wide World Importers",
+        "account_id": "ACC-Q026BTUQ",
+        "opportunities": [
+          {
+            "name": "Wide AKS Deployment",
+            "stage": "Close",
+            "amount": 125000,
+            "close_date": "2023-12-01"
+          },
+          {
+            "name": "Wide Intune Rollout",
+            "stage": "Close",
+            "amount": 89000,
+            "close_date": "2024-04-18"
+          }
+        ],
+        "acr_current": 61965.63,
+        "health_flag": "At Risk",
+        "owner": "Ahmed Hassan"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Ryan Kowalski <ryan.kowalski@wideworldimp.com>\nTo: Ahmed Hassan <ahmed.hassan@microsoft.com>\nDate: 2024-03-27 14:54 EST\nSubject: Re: consumption trend Discussion - Next Steps\n\nWe've been evaluating the options and have decided to proceed with consumption trend. What are the next steps from your side?\n\n---\nFrom: Ahmed Hassan <ahmed.hassan@microsoft.com>\nTo: Ryan Kowalski <ryan.kowalski@wideworldimp.com>\nDate: 2024-02-03 16:45 EST\nSubject: Re: consumption trend Discussion - Next Steps\n\nThank you for the discussion last week. We'd like to move forward with consumption trend. Can we schedule a call this week to finalize the timeline?\n\n---\nFrom: Ryan Kowalski <ryan.kowalski@wideworldimp.com>\nTo: Ahmed Hassan <ahmed.hassan@microsoft.com>\nDate: 2024-01-15 16:59 EST\nSubject: URGENT: consumption trend Issue at Wide World Importers\n\nI wanted to follow up on our conversation about consumption trend. Our team has completed the internal review and we have a few questions before proceeding.",
+      "metadata": {
+        "freshness": "2024-03-09T13:00:00-05:00",
+        "source": "outlook",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: consumption trend Discussion - Wide World Importers\nDate: 2024-02-27\nDuration: 45 minutes\nAttendees: Ryan Kowalski (Wide World Importers), Ahmed Hassan (Microsoft), Michelle (Wide World Importers)\n\n[00:02:00] Ryan Kowalski (Wide World Importers): Good morning. I wanted to follow up on consumption trend from our last session.\n\n[00:05:00] Michelle (Wide World Importers): Our architect reviewed this and has concerns about security compliance. Can we address those?\n\n[00:07:00] Ahmed Hassan (Microsoft): On the consumption trend front, we've made progress but there are still blockers around integration complexity.\n\n[00:12:00] Ahmed Hassan (Microsoft): Our architect reviewed this and has concerns about stakeholder alignment. Can we address those?\n\n[00:15:00] Michelle (Wide World Importers): I agree with that assessment. From our side, the main concern is security compliance.\n\n[00:19:00] Ryan Kowalski (Wide World Importers): On the consumption trend front, we've made progress but there are still blockers around stakeholder alignment.",
+      "metadata": {
+        "freshness": "2024-01-09T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Wide World Importers - consumption trend",
+        "start": "2024-03-15T15:00:00-05:00",
+        "end": "2024-03-13T12:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Ahmed Hassan",
+            "email": "ahmed.hassan@microsoft.com"
+          },
+          {
+            "name": "Ryan Kowalski",
+            "email": "ryan.kowalski@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "consumption_decline",
+            "detail": "Signal detected for Wide World Importers: the migration can proceed in phases to reduce risk",
+            "date": "2024-03-11"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-tenure-junior",
+    "persona-role-dssp"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "meeting-prep",
+      "contact-stakeholder-map",
+      "email-chat-context"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "portfolio-account-planning-coach",
+        "condition": "meeting is for account CSA should have declined"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "calendar-pre-pack-automation",
+    "required_artifacts": [
+      "Pre-pack brief with attendee context",
+      "account snapshot",
+      "talking points",
+      "likely objections",
+      "open items"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF32-G trap (Generic talking points unattached to this meeting's specifics); produces complete Pre-pack brief with attendee context, account snapshot, talking points, likely objections, open item",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF32-G failure pattern",
+      "Score 1: Output exhibits the full FM-WF32-G failure mode (Generic talking points unattached to this meeting's specifics)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct consumption trend decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF32-G -- Generic talking points unattached to this meeting's specifics"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

@@ -1,0 +1,140 @@
+{
+  "scenario_id": "WF-14-00154",
+  "workflow_id": "WF-14",
+  "workflow_name": "Stakeholder Map Generation",
+  "seed": 1400196,
+  "tier": 1,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF14-D",
+  "persona": "DSSP",
+  "fixture_id": "FX-001",
+  "user_message": "I need to prepare the forecast for the Contoso Ltd engagement. Multiple stakeholders are involved -- it's complex.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Contoso Ltd",
+        "account_id": "ACC-VWW2DK8X",
+        "opportunities": [
+          {
+            "name": "Contoso Power Platform",
+            "stage": "Propose",
+            "amount": 560000,
+            "close_date": "2024-12-28"
+          }
+        ],
+        "acr_current": 78949.7,
+        "health_flag": "Healthy",
+        "owner": "Marcus Williams"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Angela Doyle <angela.doyle@contosoltd.com>\nTo: Marcus Williams <marcus.williams@microsoft.com>\nDate: 2024-03-13 17:11 EST\nSubject: whitespace analysis - Action Required\n\nOur team encountered some challenges with whitespace analysis. Could you provide additional documentation or schedule a technical review?\n\n---\nFrom: Marcus Williams <marcus.williams@microsoft.com>\nTo: Angela Doyle <angela.doyle@contosoltd.com>\nDate: 2024-01-05 16:45 EST\nSubject: URGENT: whitespace analysis Issue at Contoso Ltd\n\nJust checking in on the whitespace analysis proposal. Our Director of IT is asking for a status update before the board meeting next week.",
+      "metadata": {
+        "freshness": "2024-02-24T16:00:00-05:00",
+        "source": "outlook",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: whitespace analysis Discussion - Contoso Ltd\nDate: 2024-03-25\nDuration: 45 minutes\nAttendees: Angela Doyle (Contoso Ltd), Marcus Williams (Microsoft), David (Contoso Ltd)\n\n[00:01:15] Angela Doyle (Contoso Ltd): Appreciate everyone making time. The main agenda today is whitespace analysis.\n\n[00:05:00] Marcus Williams (Microsoft): I agree with that assessment. From our side, the main concern is vendor dependencies.\n\n[00:08:00] Angela Doyle (Contoso Ltd): Our CTO reviewed this and has concerns about cost optimization. Can we address those?\n\n[00:12:00] David (Contoso Ltd): The timeline for vendor dependencies is aggressive. We need to validate the assumptions.\n\n[00:16:00] Angela Doyle (Contoso Ltd): The timeline for cost optimization is aggressive. We need to validate the assumptions.\n\n[00:19:00] Marcus Williams (Microsoft): Let me add some context -- we've been working on security compliance and found that there's a compliance requirement we hadn't accounted for in the original scope.",
+      "metadata": {
+        "freshness": "2024-02-26T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Contoso Ltd - whitespace analysis",
+        "start": "2024-03-11T12:00:00-05:00",
+        "end": "2024-03-12T14:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Marcus Williams",
+            "email": "marcus.williams@microsoft.com"
+          },
+          {
+            "name": "Angela Doyle",
+            "email": "angela.doyle@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "consumption_decline",
+            "detail": "Signal detected for Contoso Ltd: the migration can proceed in phases to reduce risk",
+            "date": "2024-03-09"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-10T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-role-dssp",
+    "persona-tenure-mid",
+    "signal-strength-noisy",
+    "data-fresh"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "contact-stakeholder-map"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "stakeholder-map-generation",
+    "required_artifacts": [
+      "Stakeholder map with roles (decision-maker",
+      "influencer",
+      "champion",
+      "blocker)",
+      "recency labels"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF14-D trap (Claims champion without evidence); produces complete Stakeholder map with roles (decision-maker, influencer, champion, blocker), recency labels, confiden",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF14-D failure pattern",
+      "Score 1: Output exhibits the full FM-WF14-D failure mode (Claims champion without evidence)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct whitespace analysis decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF14-D -- Claims champion without evidence"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

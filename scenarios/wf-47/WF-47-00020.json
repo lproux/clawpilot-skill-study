@@ -1,0 +1,101 @@
+{
+  "scenario_id": "WF-47-00020",
+  "workflow_id": "WF-47",
+  "workflow_name": "Multi-Stakeholder Meeting Transcript -> Decision Distribution",
+  "seed": 4700062,
+  "tier": 4,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": "FM-WF47-N",
+  "persona": "Manager",
+  "fixture_id": "FX-033",
+  "user_message": "Just came out of security posture with Parnell Aerospace. Turn this into my brief and pull out the asks.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Parnell Aerospace",
+        "account_id": "ACC-0H065FH7",
+        "opportunities": [
+          {
+            "name": "Parnell Dynamics 365 Implementation",
+            "stage": "Close",
+            "amount": 350000,
+            "close_date": "2024-11-03"
+          }
+        ],
+        "acr_current": 0,
+        "health_flag": "Healthy",
+        "owner": "Ahmed Hassan"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: security posture Discussion - Parnell Aerospace\nDate: 2024-02-23\nDuration: 45 minutes\nAttendees: Christopher Martinez (Parnell Aerospace), Ahmed Hassan (Microsoft)\n\n[00:01:15] Christopher Martinez (Parnell Aerospace): Appreciate everyone making time. The main agenda today is security posture.\n\n[00:06:00] Ahmed Hassan (Microsoft): Our director reviewed this and has concerns about security compliance. Can we address those?\n\n[00:09:00] Christopher Martinez (Parnell Aerospace): Let me add some context -- we've been working on integration complexity and found that the current vendor contract has a 90-day exit clause we need to plan around.\n\n[00:14:00] Ahmed Hassan (Microsoft): I agree with that assessment. From our side, the main concern is vendor dependencies.\n\n[00:17:00] Christopher Martinez (Parnell Aerospace): Our CTO reviewed this and has concerns about timeline constraints. Can we address those?\n\n[00:20:00] Ahmed Hassan (Microsoft): Our CTO reviewed this and has concerns about timeline constraints. Can we address those?\n\n[00:23:00] Ahmed Hassan (Microsoft): The timeline for timeline constraints is aggressive. We need to validate the assumptions.\n\n[00:27:00] Ahmed Hassan (Microsoft): The timeline for vendor dependencies is aggressive. We need to validate the assumptions.\n\n[00:31:00] Ahmed Hassan (Microsoft): Let me add some context -- we've been working on integration complexity and found that there's a compliance requirement we hadn't accounted for in the original scope.\n\n[00:34:00] Christopher Martinez (Parnell Aerospace): Our team lead reviewed this and has concerns about resource allocation. Can we address those?",
+      "metadata": {
+        "freshness": "2024-01-09T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "mixed",
+        "length_class": "short"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-segment-smb-small",
+    "data-partially-missing",
+    "persona-geo-na",
+    "routing-ambiguous-2skills"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions",
+      "contact-stakeholder-map"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "MSX updates warranted from decisions"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "multi-stakeholder-meeting-transcript-->-decision-d",
+    "required_artifacts": [
+      "Decision log with speaker attribution",
+      "action distribution by role",
+      "stakeholder map delta",
+      "MSX update proposals",
+      "due dates extracted"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF47-N trap (Follow-up-and-decisions module assumes named speakers when transcript has 'Speak); produces complete Decision log with speaker attribution, action distribution by role, stakeholder map delta, MSX updat",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF47-N failure pattern",
+      "Score 1: Output exhibits the full FM-WF47-N failure mode (Follow-up-and-decisions module assumes named speakers when transcript has 'Speak)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct security posture decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF47-N -- Follow-up-and-decisions module assumes named speakers when transcript has 'Speak",
+    "Guardrail axis scored neutrally -- focus on whether output served the user's actual need"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

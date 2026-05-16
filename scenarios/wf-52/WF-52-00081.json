@@ -1,0 +1,116 @@
+{
+  "scenario_id": "WF-52-00081",
+  "workflow_id": "WF-52",
+  "workflow_name": "Internal Account Review Transcript -> Team Actions",
+  "seed": 5200123,
+  "tier": 4,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": "FM-WF52-M",
+  "persona": "CSA",
+  "fixture_id": "FX-005",
+  "user_message": "Just got this from Steven Wilson at Tailspin Toys -- I need help figuring out forecast prep. ",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Tailspin Toys",
+        "account_id": "ACC-JXC3G9ET",
+        "opportunities": [
+          {
+            "name": "Tailspin Azure Virtual Desktop",
+            "stage": "Close",
+            "amount": 560000,
+            "close_date": "2024-09-15"
+          },
+          {
+            "name": "Tailspin Azure SQL Migration",
+            "stage": "Prospect",
+            "amount": 125000,
+            "close_date": "2024-10-05"
+          },
+          {
+            "name": "Tailspin Dynamics 365 Implementation",
+            "stage": "Propose",
+            "amount": 45000,
+            "close_date": "2024-08-10"
+          }
+        ],
+        "acr_current": 122043.29,
+        "health_flag": "Healthy",
+        "owner": "Raj Mehta"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: forecast prep Discussion - Tailspin Toys\nDate: 2024-01-11\nDuration: 45 minutes\nAttendees: Steven Wilson (Tailspin Toys), Raj Mehta (Microsoft), David (Tailspin Toys)\n\n[00:01:15] Steven Wilson (Tailspin Toys): Appreciate everyone making time. The main agenda today is forecast prep.\n\n[00:06:00] Steven Wilson (Tailspin Toys): Let me add some context -- we've been working on vendor dependencies and found that the cost projections need to factor in reserved instance pricing for accuracy.\n\n[00:09:00] Steven Wilson (Tailspin Toys): On the forecast prep front, we've made progress but there are still blockers around technical validation.\n\n[00:14:00] David (Tailspin Toys): Our VP reviewed this and has concerns about timeline constraints. Can we address those?\n\n[00:19:00] Raj Mehta (Microsoft): The timeline for timeline constraints is aggressive. We need to validate the assumptions.\n\n[00:24:00] Steven Wilson (Tailspin Toys): Our CTO reviewed this and has concerns about cost optimization. Can we address those?\n\n[00:29:00] David (Tailspin Toys): On the forecast prep front, we've made progress but there are still blockers around security compliance.",
+      "metadata": {
+        "freshness": "2024-02-03T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "long"
+      }
+    }
+  ],
+  "perturbations": [
+    "data-fresh",
+    "persona-role-csa",
+    "persona-segment-smb-small",
+    "routing-clear"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "forecast-business-review-coach",
+        "condition": "team coaching or risk review input"
+      },
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "MSX updates warranted from review"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "internal-account-review-transcript-->-team-actions",
+    "required_artifacts": [
+      "Team action items with owners",
+      "coaching notes (constructive frame)",
+      "customer-facing draft (sanitized)",
+      "manager decision items",
+      "MSX update proposals"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF52-M trap (Rigid coaching frame when direct feedback was the right move); produces complete Team action items with owners, coaching notes (constructive frame), customer-facing draft (sanitized",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF52-M failure pattern",
+      "Score 1: Output exhibits the full FM-WF52-M failure mode (Rigid coaching frame when direct feedback was the right move)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct forecast prep decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF52-M -- Rigid coaching frame when direct feedback was the right move",
+    "Guardrail axis scored neutrally -- focus on whether output served the user's actual need"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

@@ -1,0 +1,150 @@
+{
+  "scenario_id": "WF-14-80118",
+  "workflow_id": "WF-14",
+  "workflow_name": "Stakeholder Map Generation",
+  "seed": 8800160,
+  "tier": 1,
+  "intent": "happy",
+  "targeted_failure_mode": null,
+  "persona": "DSSP",
+  "fixture_id": "FX-009",
+  "user_message": "Help me build account health for VanArsdel Ltd. There's been no activity for 45 days and I'm worried.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "VanArsdel Ltd",
+        "account_id": "ACC-3ORLVDXJ",
+        "opportunities": [
+          {
+            "name": "VanArsdel Data Platform Migration",
+            "stage": "Propose",
+            "amount": 210000,
+            "close_date": "2024-06-13"
+          },
+          {
+            "name": "VanArsdel M365 E5 Upsell",
+            "stage": "Prospect",
+            "amount": 280000,
+            "close_date": "2024-06-13"
+          },
+          {
+            "name": "VanArsdel Power Platform",
+            "stage": "Prospect",
+            "amount": 350000,
+            "close_date": "2024-09-08"
+          }
+        ],
+        "acr_current": 68769.78,
+        "health_flag": "Healthy",
+        "owner": "Tom Rodriguez"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Karen Patel <karen.patel@vanarsdelltd.com>\nTo: Tom Rodriguez <tom.rodriguez@microsoft.com>\nDate: 2024-03-07 08:27 EST\nSubject: account health - Action Required\n\nThank you for the discussion last week. We'd like to move forward with account health. Can we schedule a call this week to finalize the timeline?\n\n---\nFrom: Tom Rodriguez <tom.rodriguez@microsoft.com>\nTo: Karen Patel <karen.patel@vanarsdelltd.com>\nDate: 2024-02-07 12:00 EST\nSubject: Re: Re: account health Timeline\n\nJust checking in on the account health proposal. Our CTO is asking for a status update before the board meeting next week.\n\n---\nFrom: Karen Patel <karen.patel@vanarsdelltd.com>\nTo: Tom Rodriguez <tom.rodriguez@microsoft.com>\nDate: 2024-01-09 11:26 EST\nSubject: Follow-up: account health Review\n\nI wanted to follow up on our conversation about account health. Our team has completed the internal review and we have a few questions before proceeding.",
+      "metadata": {
+        "freshness": "2024-02-28T11:00:00-05:00",
+        "source": "outlook",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: account health Discussion - VanArsdel Ltd\nDate: 2024-03-18\nDuration: 45 minutes\nAttendees: Karen Patel (VanArsdel Ltd), Tom Rodriguez (Microsoft), Priya (VanArsdel Ltd)\n\n[00:01:15] Karen Patel (VanArsdel Ltd): Appreciate everyone making time. The main agenda today is account health.\n\n[00:07:00] Tom Rodriguez (Microsoft): Our architect reviewed this and has concerns about cost optimization. Can we address those?\n\n[00:11:00] Karen Patel (VanArsdel Ltd): I agree with that assessment. From our side, the main concern is resource allocation.\n\n[00:14:00] Priya (VanArsdel Ltd): Let me add some context -- we've been working on vendor dependencies and found that the current vendor contract has a 90-day exit clause we need to plan around.\n\n[00:19:00] Priya (VanArsdel Ltd): Our VP reviewed this and has concerns about resource allocation. Can we address those?\n\n[00:24:00] Priya (VanArsdel Ltd): Let me add some context -- we've been working on stakeholder alignment and found that there's a dependency on the security team's review that could delay us.\n\n[00:29:00] Priya (VanArsdel Ltd): On the account health front, we've made progress but there are still blockers around data residency.\n\n[00:33:00] Karen Patel (VanArsdel Ltd): Our team lead reviewed this and has concerns about technical validation. Can we address those?",
+      "metadata": {
+        "freshness": "2024-01-08T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "VanArsdel Ltd - account health",
+        "start": "2024-03-15T16:00:00-05:00",
+        "end": "2024-03-13T12:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Tom Rodriguez",
+            "email": "tom.rodriguez@microsoft.com"
+          },
+          {
+            "name": "Karen Patel",
+            "email": "karen.patel@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "contract_event",
+            "detail": "Signal detected for VanArsdel Ltd: the cost projections need to factor in reserved instance pricing for accuracy",
+            "date": "2024-03-10"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-10T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "routing-clear",
+    "data-fresh",
+    "persona-role-dssp"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "contact-stakeholder-map"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "stakeholder-map-generation",
+    "required_artifacts": [
+      "Stakeholder map with roles (decision-maker",
+      "influencer",
+      "champion",
+      "blocker)",
+      "recency labels"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Perfect execution of the golden-path workflow with all artifacts complete and actionable",
+      "Score 3: Core output correct but missing polish or one secondary artifact",
+      "Score 1: Fails to produce expected output for a clean, unambiguous request"
+    ],
+    "evidence_anchors": [
+      "Score 5: All evidence correctly sourced and attributed; no hallucination",
+      "Score 3: Minor attribution gap but no fabrication",
+      "Score 1: Evidence fabricated or significantly misattributed"
+    ],
+    "decision_anchors": [
+      "Score 5: All decisions correct for this straightforward scenario",
+      "Score 3: Primary decision correct; minor secondary issue",
+      "Score 1: Primary decision wrong despite clear inputs"
+    ]
+  },
+  "guardrail_checks": [
+    "Clean golden-path scenario -- all guardrails should pass trivially",
+    "Must not over-complicate a straightforward request"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

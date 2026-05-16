@@ -1,0 +1,123 @@
+{
+  "scenario_id": "WF-45-00177",
+  "workflow_id": "WF-45",
+  "workflow_name": "QBR Transcript -> Health + Whitespace + Renewal Risk",
+  "seed": 4500219,
+  "tier": 4,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": "FM-WF45-N",
+  "persona": "CSA",
+  "fixture_id": "FX-047",
+  "user_message": "Can you work with me on security posture for Evergreen Solutions? There's been no activity for 45 days and I'm worried.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Evergreen Solutions",
+        "account_id": "ACC-S7KJN805",
+        "opportunities": [
+          {
+            "name": "Evergreen Azure AI Services",
+            "stage": "Qualify",
+            "amount": 175000,
+            "close_date": "2024-12-26"
+          }
+        ],
+        "acr_current": 19865.64,
+        "health_flag": "Healthy",
+        "owner": "David Chen"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: security posture Discussion - Evergreen Solutions\nDate: 2024-03-05\nDuration: 45 minutes\nAttendees: Samantha Okafor (Evergreen Solutions), David Chen (Microsoft)\n\n[00:02:00] Samantha Okafor (Evergreen Solutions): Good morning. I wanted to follow up on security posture from our last session.\n\n[00:08:00] Samantha Okafor (Evergreen Solutions): Our VP reviewed this and has concerns about vendor dependencies. Can we address those?\n\n[00:13:00] Samantha Okafor (Evergreen Solutions): Let me add some context -- we've been working on resource allocation and found that the cost projections need to factor in reserved instance pricing for accuracy.\n\n[00:18:00] Samantha Okafor (Evergreen Solutions): I agree with that assessment. From our side, the main concern is partner engagement.\n\n[00:23:00] David Chen (Microsoft): Let me add some context -- we've been working on security compliance and found that the existing infrastructure won't support the target workload without upgrades.\n\n[00:27:00] Samantha Okafor (Evergreen Solutions): Our VP reviewed this and has concerns about resource allocation. Can we address those?\n\n[00:32:00] David Chen (Microsoft): The timeline for partner engagement is aggressive. We need to validate the assumptions.\n\n[00:36:00] David Chen (Microsoft): The timeline for data residency is aggressive. We need to validate the assumptions.\n\n[00:40:00] Samantha Okafor (Evergreen Solutions): I agree with that assessment. From our side, the main concern is integration complexity.\n\n[00:44:00] David Chen (Microsoft): Let me add some context -- we've been working on security compliance and found that the current vendor contract has a 90-day exit clause we need to plan around.",
+      "metadata": {
+        "freshness": "2024-02-24T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "mixed",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "deployment_blocker",
+            "detail": "Signal detected for Evergreen Solutions: there's a dependency on the security team's review that could delay us",
+            "date": "2024-03-09"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-09T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-geo-na",
+    "persona-tenure-mid",
+    "persona-role-csa"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "portfolio-account-planning-coach",
+        "condition": "health assessment needed"
+      },
+      {
+        "target_skill": "acr-signal-to-opportunity-coach",
+        "condition": "whitespace signals warrant investigation"
+      },
+      {
+        "target_skill": "forecast-business-review-coach",
+        "condition": "renewal risk affects forecast"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "qbr-transcript-->-health-+-whitespace-+-renewal-ri",
+    "required_artifacts": [
+      "Health delta assessment",
+      "whitespace hypotheses",
+      "renewal risk with confidence",
+      "action distribution with owners",
+      "comparison to last QBR commitments"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF45-N trap (Whitespace hypotheses generated per QBR when only some are warranted); produces complete Health delta assessment, whitespace hypotheses, renewal risk with confidence, action distribution wi",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF45-N failure pattern",
+      "Score 1: Output exhibits the full FM-WF45-N failure mode (Whitespace hypotheses generated per QBR when only some are warranted)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct security posture decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF45-N -- Whitespace hypotheses generated per QBR when only some are warranted",
+    "Guardrail axis scored neutrally -- focus on whether output served the user's actual need"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

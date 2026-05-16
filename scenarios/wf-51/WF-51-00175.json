@@ -1,0 +1,118 @@
+{
+  "scenario_id": "WF-51-00175",
+  "workflow_id": "WF-51",
+  "workflow_name": "Partner Triangulation Transcript -> Plan Distribution",
+  "seed": 5100217,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF51-E",
+  "persona": "DSSP",
+  "fixture_id": "FX-043",
+  "user_message": "Can you extract the security posture from this email thread for Pacific Northwest Outfitters? I met with them last week but can't remember the details.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Pacific Northwest Outfitters",
+        "account_id": "ACC-6SYIFEPT",
+        "opportunities": [
+          {
+            "name": "Pacific Azure Arc Deployment",
+            "stage": "Qualify",
+            "amount": 45000,
+            "close_date": "2024-04-15"
+          },
+          {
+            "name": "Pacific M365 E5 Upsell",
+            "stage": "Qualify",
+            "amount": 560000,
+            "close_date": "2024-11-15"
+          }
+        ],
+        "acr_current": 81560.32,
+        "health_flag": "Healthy",
+        "owner": "Ahmed Hassan"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: security posture Discussion - Pacific Northwest Outfitters\nDate: 2024-02-12\nDuration: 45 minutes\nAttendees: Andrew Taylor (Pacific Northwest Outfitters), Ahmed Hassan (Microsoft)\n\n[00:01:15] Andrew Taylor (Pacific Northwest Outfitters): Appreciate everyone making time. The main agenda today is security posture.\n\n[00:07:00] Andrew Taylor (Pacific Northwest Outfitters): On the security posture front, we've made progress but there are still blockers around budget approval.\n\n[00:12:00] Ahmed Hassan (Microsoft): Let me add some context -- we've been working on cost optimization and found that the existing infrastructure won't support the target workload without upgrades.\n\n[00:14:00] Andrew Taylor (Pacific Northwest Outfitters): The timeline for resource allocation is aggressive. We need to validate the assumptions.\n\n[00:16:00] Ahmed Hassan (Microsoft): The timeline for integration complexity is aggressive. We need to validate the assumptions.\n\n[00:21:00] Ahmed Hassan (Microsoft): Our director reviewed this and has concerns about timeline constraints. Can we address those?\n\n[00:25:00] Andrew Taylor (Pacific Northwest Outfitters): The timeline for integration complexity is aggressive. We need to validate the assumptions.",
+      "metadata": {
+        "freshness": "2024-03-04T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "mixed",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "deployment_blocker",
+            "detail": "Signal detected for Pacific Northwest Outfitters: the existing infrastructure won't support the target workload without upgrades",
+            "date": "2024-03-09"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-09T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-segment-smb-small",
+    "persona-role-dssp"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "funding-partner-activation-coach",
+        "condition": "funding or partner evaluation needed"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "partner-triangulation-transcript-->-plan-distribut",
+    "required_artifacts": [
+      "Tri-party action distribution (MS/partner/customer owners)",
+      "funding eligibility assessment",
+      "follow-up sequence with tri-party coordination",
+      "conflict-of-interest check"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF51-E trap (Misattributes statements across three parties); produces complete Tri-party action distribution (MS/partner/customer owners), funding eligibility assessment, follow-u",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF51-E failure pattern",
+      "Score 1: Output exhibits the full FM-WF51-E failure mode (Misattributes statements across three parties)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct security posture decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF51-E -- Misattributes statements across three parties"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

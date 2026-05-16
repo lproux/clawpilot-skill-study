@@ -1,0 +1,117 @@
+{
+  "scenario_id": "WF-48-00111",
+  "workflow_id": "WF-48",
+  "workflow_name": "Roadmap Meeting Transcript -> Forecast Sequencing",
+  "seed": 4800153,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF48-K",
+  "persona": "CSA",
+  "fixture_id": "FX-015",
+  "user_message": "David Rivera at Fourth Coffee just sent this. Help me build the narrative.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Fourth Coffee",
+        "account_id": "ACC-A7MFL3SV",
+        "opportunities": [
+          {
+            "name": "Fourth Data Platform Migration",
+            "stage": "Qualify",
+            "amount": 210000,
+            "close_date": "2023-12-04"
+          }
+        ],
+        "acr_current": 114958.25,
+        "health_flag": "Healthy",
+        "owner": "Raj Mehta"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: renewal risk Discussion - Fourth Coffee\nDate: 2024-02-26\nDuration: 45 minutes\nAttendees: David Rivera (Fourth Coffee), Raj Mehta (Microsoft), Michelle (Fourth Coffee)\n\n[00:01:15] David Rivera (Fourth Coffee): Appreciate everyone making time. The main agenda today is renewal risk.\n\n[00:06:00] Raj Mehta (Microsoft): I agree with that assessment. From our side, the main concern is data residency.\n\n[00:11:00] David Rivera (Fourth Coffee): Let me add some context -- we've been working on budget approval and found that the current vendor contract has a 90-day exit clause we need to plan around.\n\n[00:15:00] David Rivera (Fourth Coffee): Our team lead reviewed this and has concerns about performance requirements. Can we address those?\n\n[00:20:00] Raj Mehta (Microsoft): Our architect reviewed this and has concerns about performance requirements. Can we address those?\n\n[00:25:00] Michelle (Fourth Coffee): The timeline for partner engagement is aggressive. We need to validate the assumptions.\n\n[00:30:00] Raj Mehta (Microsoft): The timeline for resource allocation is aggressive. We need to validate the assumptions.\n\n[00:34:00] Michelle (Fourth Coffee): Let me add some context -- we've been working on integration complexity and found that there's a compliance requirement we hadn't accounted for in the original scope.\n\n[00:38:00] Raj Mehta (Microsoft): Our team lead reviewed this and has concerns about timeline constraints. Can we address those?\n\n[00:40:00] David Rivera (Fourth Coffee): Let me add some context -- we've been working on data residency and found that the migration can proceed in phases to reduce risk.",
+      "metadata": {
+        "freshness": "2024-03-03T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "deployment_blocker",
+            "detail": "Signal detected for Fourth Coffee: the cost projections need to factor in reserved instance pricing for accuracy",
+            "date": "2024-03-11"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-10T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-segment-smb-small",
+    "persona-geo-na"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "milestone and date updates needed"
+      },
+      {
+        "target_skill": "forecast-business-review-coach",
+        "condition": "forecast sequencing affected"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "roadmap-meeting-transcript-->-forecast-sequencing",
+    "required_artifacts": [
+      "Roadmap-to-forecast mapping",
+      "milestone date proposals",
+      "opportunity sequencing",
+      "new opportunity proposals (if signaled)",
+      "forecast impact with confidence"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF48-K trap (Proposes close-date changes without authority signal); produces complete Roadmap-to-forecast mapping, milestone date proposals, opportunity sequencing, new opportunity propo",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF48-K failure pattern",
+      "Score 1: Output exhibits the full FM-WF48-K failure mode (Proposes close-date changes without authority signal)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct renewal risk decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF48-K -- Proposes close-date changes without authority signal"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

@@ -1,0 +1,126 @@
+{
+  "scenario_id": "WF-27-00128",
+  "workflow_id": "WF-27",
+  "workflow_name": "Gap-to-Target Diagnostic",
+  "seed": 2700170,
+  "tier": 3,
+  "intent": "design-redesign",
+  "targeted_failure_mode": "FM-WF27-M",
+  "persona": "Manager",
+  "fixture_id": "FX-049",
+  "user_message": "I need you to process this meeting transcript from Iron Creek Mining. The CSA flagged this as at-risk yesterday.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Iron Creek Mining",
+        "account_id": "ACC-WVPLFPK6",
+        "opportunities": [
+          {
+            "name": "Iron Azure DevOps",
+            "stage": "Qualify",
+            "amount": 350000,
+            "close_date": "2024-10-28"
+          },
+          {
+            "name": "Iron Azure Virtual Desktop",
+            "stage": "Develop",
+            "amount": 280000,
+            "close_date": "2024-06-02"
+          },
+          {
+            "name": "Iron Azure SQL Migration",
+            "stage": "Qualify",
+            "amount": 68000,
+            "close_date": "2024-05-06"
+          }
+        ],
+        "acr_current": 10924.12,
+        "health_flag": "Healthy",
+        "owner": "Tom Rodriguez"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "contract_event",
+            "detail": "Signal detected for Iron Creek Mining: the current vendor contract has a 90-day exit clause we need to plan around",
+            "date": "2024-03-07"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-10T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-segment-smb-small",
+    "persona-tenure-senior",
+    "persona-geo-apac",
+    "signal-strength-noisy"
+  ],
+  "expected_routing": {
+    "entry_skill": "forecast-business-review-coach",
+    "modules": [
+      "gap-to-target-review"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "acr-signal-to-opportunity-coach",
+        "condition": "consumption is the gap driver"
+      },
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "record fixes needed for accurate gap"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "gap-to-target-diagnostic",
+    "required_artifacts": [
+      "Gap decomposition (coverage",
+      "conversion",
+      "value",
+      "timing)",
+      "recovery options with probability estimates"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF27-M trap (Separation of gap-to-target from portfolio-planning produces fragmented narrativ); produces complete Gap decomposition (coverage, conversion, value, timing), recovery options with probability estimates",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF27-M failure pattern",
+      "Score 1: Output exhibits the full FM-WF27-M failure mode (Separation of gap-to-target from portfolio-planning produces fragmented narrativ)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct partner engagement decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF27-M -- Separation of gap-to-target from portfolio-planning produces fragmented narrativ",
+    "Produce structural verdict on whether current routing adequately serves this scenario"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "verdict-on-structural",
+    "verdict_required_axes": [
+      "routing",
+      "evidence"
+    ]
+  }
+}

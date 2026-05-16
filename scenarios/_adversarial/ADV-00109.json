@@ -1,0 +1,118 @@
+{
+  "scenario_id": "WF-38-90109",
+  "workflow_id": "WF-38",
+  "workflow_name": "Champion-Change Email Signal -> Re-engagement Plan",
+  "seed": 9900151,
+  "tier": 4,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": null,
+  "persona": "CSA",
+  "fixture_id": "FX-002",
+  "user_message": "Ryan Patel at Fabrikam Inc just sent this. Help me create the summary.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Fabrikam Inc",
+        "account_id": "ACC-L0850H8R",
+        "opportunities": [
+          {
+            "name": "Fabrikam Dynamics 365 Implementation",
+            "stage": "Close",
+            "amount": 560000,
+            "close_date": "2024-05-11"
+          },
+          {
+            "name": "Fabrikam Security Modernization",
+            "stage": "Qualify",
+            "amount": 280000,
+            "close_date": "2024-04-13"
+          }
+        ],
+        "acr_current": 10580.82,
+        "health_flag": "Healthy",
+        "owner": "Lisa Patel"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Ryan Patel <ryan.patel@fabrikaminc.com>\nTo: Lisa Patel <lisa.patel@microsoft.com>\nDate: 2024-03-17 16:15 EST\nSubject: consumption trend - Action Required\n\nJust checking in on the consumption trend proposal. Our IT Director is asking for a status update before the board meeting next week.\n\n---\nFrom: Lisa Patel <lisa.patel@microsoft.com>\nTo: Ryan Patel <ryan.patel@fabrikaminc.com>\nDate: 2024-02-27 10:27 EST\nSubject: Quarterly Update: Fabrikam Inc consumption trend\n\nThere's been a change in our timeline for consumption trend. Can we discuss the implications on the overall project plan?\n\n---\nFrom: Ryan Patel <ryan.patel@fabrikaminc.com>\nTo: Lisa Patel <lisa.patel@microsoft.com>\nDate: 2024-01-24 16:09 EST\nSubject: URGENT: consumption trend Issue at Fabrikam Inc\n\nThank you for the discussion last week. We'd like to move forward with consumption trend. Can we schedule a call this week to finalize the timeline?",
+      "metadata": {
+        "freshness": "2024-03-26T16:00:00-05:00",
+        "source": "outlook",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "contract_event",
+            "detail": "Signal detected for Fabrikam Inc: the current vendor contract has a 90-day exit clause we need to plan around",
+            "date": "2024-03-11"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-segment-smb-small",
+    "persona-role-csa",
+    "routing-ambiguous-3skills"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "contact-stakeholder-map",
+      "email-chat-context",
+      "dark-customer-outreach"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "contact and opportunity records need updating"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "adversarial-routing-test",
+    "required_artifacts": [
+      "correct_routing_justification",
+      "confusion_analysis"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Correctly routes to primary workflow despite adversarial signals; output is complete",
+      "Score 3: Routes correctly but output shows contamination from confusing signals",
+      "Score 1: Misroutes to wrong workflow or produces irrelevant output"
+    ],
+    "evidence_anchors": [
+      "Score 5: All evidence correctly attributed despite cross-workflow noise",
+      "Score 3: Some evidence misattributed but core facts correct",
+      "Score 1: Significant evidence confusion or hallucination"
+    ],
+    "decision_anchors": [
+      "Score 5: Decision-making robust against adversarial perturbations",
+      "Score 3: Primary decision correct but secondary decisions influenced by noise",
+      "Score 1: Primary decision compromised by adversarial inputs"
+    ]
+  },
+  "guardrail_checks": [
+    "Must correctly identify primary workflow despite adversarial routing signals",
+    "Must not hallucinate context from similar-sounding workflows",
+    "Must not expose internal routing logic to user"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

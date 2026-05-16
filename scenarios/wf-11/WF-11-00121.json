@@ -1,0 +1,129 @@
+{
+  "scenario_id": "WF-11-00121",
+  "workflow_id": "WF-11",
+  "workflow_name": "Pre-Meeting Brief",
+  "seed": 1100163,
+  "tier": 2,
+  "intent": "happy",
+  "targeted_failure_mode": null,
+  "persona": "DSSP",
+  "fixture_id": "FX-035",
+  "user_message": "Can you help me map the stakeholders? The customer (Treyarch Global) is asking about consumption trend.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Treyarch Global",
+        "account_id": "ACC-YBG804XY",
+        "opportunities": [
+          {
+            "name": "Treyarch Azure DevOps",
+            "stage": "Close",
+            "amount": 89000,
+            "close_date": "2024-05-02"
+          },
+          {
+            "name": "Treyarch Azure AI Services",
+            "stage": "Qualify",
+            "amount": 450000,
+            "close_date": "2024-05-13"
+          }
+        ],
+        "acr_current": 48495.65,
+        "health_flag": "Healthy",
+        "owner": "Raj Mehta"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Laura Schmidt <laura.schmidt@treyarchglob.com>\nTo: Raj Mehta <raj.mehta@microsoft.com>\nDate: 2024-02-23 14:20 EST\nSubject: URGENT: consumption trend Issue at Treyarch Global\n\nWe've been evaluating the options and have decided to proceed with consumption trend. What are the next steps from your side?\n\n---\nFrom: Raj Mehta <raj.mehta@microsoft.com>\nTo: Laura Schmidt <laura.schmidt@treyarchglob.com>\nDate: 2024-01-27 10:22 EST\nSubject: URGENT: consumption trend Issue at Treyarch Global\n\nI wanted to follow up on our conversation about consumption trend. Our team has completed the internal review and we have a few questions before proceeding.",
+      "metadata": {
+        "freshness": "2024-02-27T10:00:00-05:00",
+        "source": "outlook",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: consumption trend Discussion - Treyarch Global\nDate: 2024-03-26\nDuration: 45 minutes\nAttendees: Laura Schmidt (Treyarch Global), Raj Mehta (Microsoft)\n\n[00:02:00] Laura Schmidt (Treyarch Global): Good morning. I wanted to follow up on consumption trend from our last session.\n\n[00:06:00] Laura Schmidt (Treyarch Global): Let me add some context -- we've been working on partner engagement and found that the existing infrastructure won't support the target workload without upgrades.\n\n[00:11:00] Raj Mehta (Microsoft): On the consumption trend front, we've made progress but there are still blockers around partner engagement.\n\n[00:15:00] Raj Mehta (Microsoft): Our team lead reviewed this and has concerns about cost optimization. Can we address those?\n\n[00:17:00] Raj Mehta (Microsoft): Let me add some context -- we've been working on partner engagement and found that the migration can proceed in phases to reduce risk.\n\n[00:22:00] Laura Schmidt (Treyarch Global): Our architect reviewed this and has concerns about data residency. Can we address those?",
+      "metadata": {
+        "freshness": "2024-01-02T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Treyarch Global - consumption trend",
+        "start": "2024-03-11T15:00:00-05:00",
+        "end": "2024-03-11T16:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Raj Mehta",
+            "email": "raj.mehta@microsoft.com"
+          },
+          {
+            "name": "Laura Schmidt",
+            "email": "laura.schmidt@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-geo-latam",
+    "persona-role-dssp",
+    "data-partially-missing"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "meeting-prep",
+      "contact-stakeholder-map"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "pre-meeting-brief",
+    "required_artifacts": [
+      "One-page brief with attendee context",
+      "account snapshot",
+      "talking points",
+      "likely objections",
+      "open items from last meeting"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Complete, well-structured output matching the Pre-Meeting Brief template with all required artifacts present and actionable",
+      "Score 3: Output covers main requirements but missing one or two secondary artifacts or lacking specificity",
+      "Score 1: Output is generic, missing key artifacts, or fails to address the specific request"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct consumption trend decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

@@ -1,0 +1,145 @@
+{
+  "scenario_id": "WF-14-00171",
+  "workflow_id": "WF-14",
+  "workflow_name": "Stakeholder Map Generation",
+  "seed": 1400213,
+  "tier": 1,
+  "intent": "happy",
+  "targeted_failure_mode": null,
+  "persona": "CSA",
+  "fixture_id": "FX-035",
+  "user_message": "Hey, can you run the hygiene check for Treyarch Global? Renewal conversation is tomorrow.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Treyarch Global",
+        "account_id": "ACC-YBG804XY",
+        "opportunities": [
+          {
+            "name": "Treyarch Azure DevOps",
+            "stage": "Close",
+            "amount": 89000,
+            "close_date": "2024-05-02"
+          },
+          {
+            "name": "Treyarch Azure AI Services",
+            "stage": "Qualify",
+            "amount": 450000,
+            "close_date": "2024-05-13"
+          }
+        ],
+        "acr_current": 48495.65,
+        "health_flag": "Healthy",
+        "owner": "Raj Mehta"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Laura Schmidt <laura.schmidt@treyarchglob.com>\nTo: Raj Mehta <raj.mehta@microsoft.com>\nDate: 2024-03-20 16:23 EST\nSubject: Quarterly Update: Treyarch Global partner engagement\n\nI wanted to follow up on our conversation about partner engagement. Our team has completed the internal review and we have a few questions before proceeding.\n\n---\nFrom: Raj Mehta <raj.mehta@microsoft.com>\nTo: Laura Schmidt <laura.schmidt@treyarchglob.com>\nDate: 2024-02-21 08:32 EST\nSubject: Re: partner engagement Discussion - Next Steps\n\nWe've been evaluating the options and have decided to proceed with partner engagement. What are the next steps from your side?\n\n---\nFrom: Laura Schmidt <laura.schmidt@treyarchglob.com>\nTo: Raj Mehta <raj.mehta@microsoft.com>\nDate: 2024-01-19 17:32 EST\nSubject: Quarterly Update: Treyarch Global partner engagement\n\nThere's been a change in our timeline for partner engagement. Can we discuss the implications on the overall project plan?",
+      "metadata": {
+        "freshness": "2024-03-06T16:00:00-05:00",
+        "source": "outlook",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: partner engagement Discussion - Treyarch Global\nDate: 2024-03-13\nDuration: 45 minutes\nAttendees: Laura Schmidt (Treyarch Global), Raj Mehta (Microsoft), Priya (Treyarch Global)\n\n[00:02:00] Laura Schmidt (Treyarch Global): Good morning. I wanted to follow up on partner engagement from our last session.\n\n[00:08:00] Laura Schmidt (Treyarch Global): I agree with that assessment. From our side, the main concern is resource allocation.\n\n[00:11:00] Raj Mehta (Microsoft): The timeline for stakeholder alignment is aggressive. We need to validate the assumptions.\n\n[00:15:00] Raj Mehta (Microsoft): The timeline for security compliance is aggressive. We need to validate the assumptions.\n\n[00:19:00] Priya (Treyarch Global): I agree with that assessment. From our side, the main concern is stakeholder alignment.\n\n[00:22:00] Raj Mehta (Microsoft): On the partner engagement front, we've made progress but there are still blockers around partner engagement.\n\n[00:26:00] Raj Mehta (Microsoft): On the partner engagement front, we've made progress but there are still blockers around timeline constraints.\n\n[00:31:00] Raj Mehta (Microsoft): Let me add some context -- we've been working on performance requirements and found that there's a compliance requirement we hadn't accounted for in the original scope.\n\n[00:35:00] Laura Schmidt (Treyarch Global): On the partner engagement front, we've made progress but there are still blockers around vendor dependencies.",
+      "metadata": {
+        "freshness": "2024-01-12T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Treyarch Global - partner engagement",
+        "start": "2024-03-15T11:00:00-05:00",
+        "end": "2024-03-14T14:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Raj Mehta",
+            "email": "raj.mehta@microsoft.com"
+          },
+          {
+            "name": "Laura Schmidt",
+            "email": "laura.schmidt@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "security_alert",
+            "detail": "Signal detected for Treyarch Global: there's a dependency on the security team's review that could delay us",
+            "date": "2024-03-11"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-09T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-role-csa",
+    "persona-tenure-mid",
+    "data-partially-missing",
+    "routing-ambiguous-2skills"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "contact-stakeholder-map"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "stakeholder-map-generation",
+    "required_artifacts": [
+      "Stakeholder map with roles (decision-maker",
+      "influencer",
+      "champion",
+      "blocker)",
+      "recency labels"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Complete, well-structured output matching the Stakeholder Map Generation template with all required artifacts present and actionable",
+      "Score 3: Output covers main requirements but missing one or two secondary artifacts or lacking specificity",
+      "Score 1: Output is generic, missing key artifacts, or fails to address the specific request"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct partner engagement decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

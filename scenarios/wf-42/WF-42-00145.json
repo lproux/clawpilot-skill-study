@@ -1,0 +1,117 @@
+{
+  "scenario_id": "WF-42-00145",
+  "workflow_id": "WF-42",
+  "workflow_name": "Cross-Sell Trigger Email",
+  "seed": 4200187,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF42-B",
+  "persona": "DSSP",
+  "fixture_id": "FX-033",
+  "user_message": "Can you extract the QBR preparation from this support ticket for Parnell Aerospace? This is a renewal account with declining consumption.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Parnell Aerospace",
+        "account_id": "ACC-0H065FH7",
+        "opportunities": [
+          {
+            "name": "Parnell Dynamics 365 Implementation",
+            "stage": "Close",
+            "amount": 350000,
+            "close_date": "2024-11-03"
+          }
+        ],
+        "acr_current": 0,
+        "health_flag": "Healthy",
+        "owner": "Ahmed Hassan"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Christopher Martinez <christopher.martinez@parnellaeros.com>\nTo: Ahmed Hassan <ahmed.hassan@microsoft.com>\nDate: 2024-03-17 16:04 EST\nSubject: Re: QBR preparation Discussion - Next Steps\n\nThank you for the discussion last week. We'd like to move forward with QBR preparation. Can we schedule a call this week to finalize the timeline?\n\n---\nFrom: Ahmed Hassan <ahmed.hassan@microsoft.com>\nTo: Christopher Martinez <christopher.martinez@parnellaeros.com>\nDate: 2024-02-05 16:08 EST\nSubject: QBR preparation - Action Required\n\nJust checking in on the QBR preparation proposal. Our VP Operations is asking for a status update before the board meeting next week.\n\n---\nFrom: Christopher Martinez <christopher.martinez@parnellaeros.com>\nTo: Ahmed Hassan <ahmed.hassan@microsoft.com>\nDate: 2024-01-08 12:47 EST\nSubject: Follow-up: QBR preparation Review\n\nJust checking in on the QBR preparation proposal. Our VP Operations is asking for a status update before the board meeting next week.",
+      "metadata": {
+        "freshness": "2024-03-25T09:00:00-05:00",
+        "source": "outlook",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "consumption_decline",
+            "detail": "Signal detected for Parnell Aerospace: the current vendor contract has a 90-day exit clause we need to plan around",
+            "date": "2024-03-10"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-10T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-role-dssp",
+    "persona-segment-smb-small",
+    "persona-tenure-senior"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "email-chat-context"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "acr-signal-to-opportunity-coach",
+        "condition": "cross-sell signal warrants opportunity assessment"
+      },
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "opportunity creation warranted"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "cross-sell-trigger-email",
+    "required_artifacts": [
+      "Signal assessment",
+      "opportunity hypothesis with confidence",
+      "ownership routing",
+      "response draft",
+      "next-step sequence with timing"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF42-B trap (Creates opportunity proposal without sufficient signal); produces complete Signal assessment, opportunity hypothesis with confidence, ownership routing, response draft, next-s",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF42-B failure pattern",
+      "Score 1: Output exhibits the full FM-WF42-B failure mode (Creates opportunity proposal without sufficient signal)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct QBR preparation decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF42-B -- Creates opportunity proposal without sufficient signal"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

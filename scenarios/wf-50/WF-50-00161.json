@@ -1,0 +1,98 @@
+{
+  "scenario_id": "WF-50-00161",
+  "workflow_id": "WF-50",
+  "workflow_name": "Executive Meeting Transcript -> Manager Brief + Asks",
+  "seed": 5000203,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF50-J",
+  "persona": "Manager",
+  "fixture_id": "FX-015",
+  "user_message": "Just came out of renewal risk with Fourth Coffee. Turn this into my brief and pull out the asks.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Fourth Coffee",
+        "account_id": "ACC-A7MFL3SV",
+        "opportunities": [
+          {
+            "name": "Fourth Data Platform Migration",
+            "stage": "Qualify",
+            "amount": 210000,
+            "close_date": "2023-12-04"
+          }
+        ],
+        "acr_current": 114958.25,
+        "health_flag": "Healthy",
+        "owner": "Raj Mehta"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: renewal risk Discussion - Fourth Coffee\nDate: 2024-02-08\nDuration: 45 minutes\nAttendees: David Rivera (Fourth Coffee), Raj Mehta (Microsoft), Kevin (Fourth Coffee)\n\n[00:01:15] David Rivera (Fourth Coffee): Appreciate everyone making time. The main agenda today is renewal risk.\n\n[00:08:00] Kevin (Fourth Coffee): I agree with that assessment. From our side, the main concern is partner engagement.\n\n[00:12:00] David Rivera (Fourth Coffee): Let me add some context -- we've been working on timeline constraints and found that the existing infrastructure won't support the target workload without upgrades.\n\n[00:16:00] Kevin (Fourth Coffee): Let me add some context -- we've been working on timeline constraints and found that the current vendor contract has a 90-day exit clause we need to plan around.\n\n[00:19:00] David Rivera (Fourth Coffee): I agree with that assessment. From our side, the main concern is budget approval.\n\n[00:24:00] Kevin (Fourth Coffee): On the renewal risk front, we've made progress but there are still blockers around security compliance.\n\n[00:26:00] Raj Mehta (Microsoft): On the renewal risk front, we've made progress but there are still blockers around technical validation.",
+      "metadata": {
+        "freshness": "2024-02-02T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "long"
+      }
+    }
+  ],
+  "perturbations": [
+    "signal-strength-noisy",
+    "persona-geo-na",
+    "data-stale"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "forecast-business-review-coach",
+        "condition": "business review narrative input from exec meeting"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "executive-meeting-transcript-->-manager-brief-+-as",
+    "required_artifacts": [
+      "Executive brief (strategic density)",
+      "asks section (actionable for exec)",
+      "risk register",
+      "skip-level follow-up plan",
+      "exec sponsor identification"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF50-J trap (Brief tone mismatched to executive register (too tactical)); produces complete Executive brief (strategic density), asks section (actionable for exec), risk register, skip-level f",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF50-J failure pattern",
+      "Score 1: Output exhibits the full FM-WF50-J failure mode (Brief tone mismatched to executive register (too tactical))"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct renewal risk decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF50-J -- Brief tone mismatched to executive register (too tactical)"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

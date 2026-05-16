@@ -1,0 +1,102 @@
+{
+  "scenario_id": "WF-52-00170",
+  "workflow_id": "WF-52",
+  "workflow_name": "Internal Account Review Transcript -> Team Actions",
+  "seed": 5200212,
+  "tier": 4,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": "FM-WF52-M",
+  "persona": "Manager",
+  "fixture_id": "FX-033",
+  "user_message": "Just came out of escalation triage with Parnell Aerospace. Turn this into my brief and pull out the asks.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Parnell Aerospace",
+        "account_id": "ACC-0H065FH7",
+        "opportunities": [
+          {
+            "name": "Parnell Dynamics 365 Implementation",
+            "stage": "Close",
+            "amount": 350000,
+            "close_date": "2024-11-03"
+          }
+        ],
+        "acr_current": 0,
+        "health_flag": "Healthy",
+        "owner": "Ahmed Hassan"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: escalation triage Discussion - Parnell Aerospace\nDate: 2024-01-10\nDuration: 45 minutes\nAttendees: Christopher Martinez (Parnell Aerospace), Ahmed Hassan (Microsoft)\n\n[00:02:00] Christopher Martinez (Parnell Aerospace): Good morning. I wanted to follow up on escalation triage from our last session.\n\n[00:08:00] Ahmed Hassan (Microsoft): I agree with that assessment. From our side, the main concern is security compliance.\n\n[00:12:00] Ahmed Hassan (Microsoft): On the escalation triage front, we've made progress but there are still blockers around stakeholder alignment.\n\n[00:14:00] Ahmed Hassan (Microsoft): Let me add some context -- we've been working on timeline constraints and found that the cost projections need to factor in reserved instance pricing for accuracy.\n\n[00:17:00] Ahmed Hassan (Microsoft): I agree with that assessment. From our side, the main concern is timeline constraints.\n\n[00:19:00] Christopher Martinez (Parnell Aerospace): Let me add some context -- we've been working on resource allocation and found that the existing infrastructure won't support the target workload without upgrades.\n\n[00:21:00] Ahmed Hassan (Microsoft): Our VP reviewed this and has concerns about integration complexity. Can we address those?",
+      "metadata": {
+        "freshness": "2024-02-15T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "long"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-geo-na",
+    "signal-strength-faint"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "forecast-business-review-coach",
+        "condition": "team coaching or risk review input"
+      },
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "MSX updates warranted from review"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "internal-account-review-transcript-->-team-actions",
+    "required_artifacts": [
+      "Team action items with owners",
+      "coaching notes (constructive frame)",
+      "customer-facing draft (sanitized)",
+      "manager decision items",
+      "MSX update proposals"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF52-M trap (Rigid coaching frame when direct feedback was the right move); produces complete Team action items with owners, coaching notes (constructive frame), customer-facing draft (sanitized",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF52-M failure pattern",
+      "Score 1: Output exhibits the full FM-WF52-M failure mode (Rigid coaching frame when direct feedback was the right move)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct escalation triage decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF52-M -- Rigid coaching frame when direct feedback was the right move",
+    "Guardrail axis scored neutrally -- focus on whether output served the user's actual need"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

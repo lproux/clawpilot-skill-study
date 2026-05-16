@@ -1,0 +1,109 @@
+{
+  "scenario_id": "WF-43-00165",
+  "workflow_id": "WF-43",
+  "workflow_name": "Discovery Call Transcript -> Opportunity Build",
+  "seed": 4300207,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF43-G",
+  "persona": "CSA",
+  "fixture_id": "FX-023",
+  "user_message": "Just got this from Ryan Kowalski at Wide World Importers -- I need help figuring out deployment blockers. Manager is asking for an update today.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Wide World Importers",
+        "account_id": "ACC-Q026BTUQ",
+        "opportunities": [
+          {
+            "name": "Wide AKS Deployment",
+            "stage": "Close",
+            "amount": 125000,
+            "close_date": "2023-12-01"
+          },
+          {
+            "name": "Wide Intune Rollout",
+            "stage": "Close",
+            "amount": 89000,
+            "close_date": "2024-04-18"
+          }
+        ],
+        "acr_current": 61965.63,
+        "health_flag": "At Risk",
+        "owner": "Ahmed Hassan"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: deployment blockers Discussion - Wide World Importers\nDate: 2024-01-07\nDuration: 45 minutes\nAttendees: Ryan Kowalski (Wide World Importers), Ahmed Hassan (Microsoft)\n\n[00:02:00] Ryan Kowalski (Wide World Importers): Good morning. I wanted to follow up on deployment blockers from our last session.\n\n[00:08:00] Ahmed Hassan (Microsoft): Our architect reviewed this and has concerns about performance requirements. Can we address those?\n\n[00:11:00] Ryan Kowalski (Wide World Importers): The timeline for budget approval is aggressive. We need to validate the assumptions.\n\n[00:14:00] Ryan Kowalski (Wide World Importers): The timeline for budget approval is aggressive. We need to validate the assumptions.\n\n[00:17:00] Ryan Kowalski (Wide World Importers): The timeline for performance requirements is aggressive. We need to validate the assumptions.\n\n[00:22:00] Ryan Kowalski (Wide World Importers): The timeline for security compliance is aggressive. We need to validate the assumptions.",
+      "metadata": {
+        "freshness": "2024-01-01T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "long"
+      }
+    }
+  ],
+  "perturbations": [
+    "data-stale",
+    "persona-role-csa",
+    "signal-strength-faint",
+    "persona-tenure-junior"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "opportunity creation warranted"
+      },
+      {
+        "target_skill": "solution-value-design-coach",
+        "condition": "solution sketch needed from discovery signals"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "discovery-call-transcript-->-opportunity-build",
+    "required_artifacts": [
+      "BANT signal extraction with evidence quotes",
+      "opportunity proposal with stage/value/close-date",
+      "confidence labels",
+      "solution sketch suggestion",
+      "follow-up actions"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF43-G trap (Confuses customer's exploratory question with stated need); produces complete BANT signal extraction with evidence quotes, opportunity proposal with stage/value/close-date, confi",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF43-G failure pattern",
+      "Score 1: Output exhibits the full FM-WF43-G failure mode (Confuses customer's exploratory question with stated need)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct deployment blockers decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF43-G -- Confuses customer's exploratory question with stated need"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

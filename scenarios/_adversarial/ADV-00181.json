@@ -1,0 +1,119 @@
+{
+  "scenario_id": "WF-27-90181",
+  "workflow_id": "WF-27",
+  "workflow_name": "Gap-to-Target Diagnostic",
+  "seed": 9900223,
+  "tier": 3,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": null,
+  "persona": "CSA",
+  "fixture_id": "FX-024",
+  "user_message": "I have this exec meeting notes from Wingtip Toys that needs assess the risk. This is time-sensitive -- customer is waiting.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Wingtip Toys",
+        "account_id": "ACC-7YISWQ5O",
+        "opportunities": [
+          {
+            "name": "Wingtip Dynamics 365 Implementation",
+            "stage": "Develop",
+            "amount": 45000,
+            "close_date": "2023-10-04"
+          },
+          {
+            "name": "Wingtip Azure Virtual Desktop",
+            "stage": "Prospect",
+            "amount": 210000,
+            "close_date": "2024-09-02"
+          },
+          {
+            "name": "Wingtip Copilot Adoption",
+            "stage": "Propose",
+            "amount": 350000,
+            "close_date": "2024-10-23"
+          }
+        ],
+        "acr_current": 53696.89,
+        "health_flag": "Healthy",
+        "owner": "Sarah Kim"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "consumption_decline",
+            "detail": "Signal detected for Wingtip Toys: there's a dependency on the security team's review that could delay us",
+            "date": "2024-03-08"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-10T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-tenure-mid",
+    "persona-segment-smb-small",
+    "data-stale",
+    "persona-role-csa",
+    "cross-workflow-trigger"
+  ],
+  "expected_routing": {
+    "entry_skill": "forecast-business-review-coach",
+    "modules": [
+      "gap-to-target-review"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "acr-signal-to-opportunity-coach",
+        "condition": "consumption is the gap driver"
+      },
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "record fixes needed for accurate gap"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "adversarial-routing-test",
+    "required_artifacts": [
+      "correct_routing_justification",
+      "confusion_analysis"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Correctly routes to primary workflow despite adversarial signals; output is complete",
+      "Score 3: Routes correctly but output shows contamination from confusing signals",
+      "Score 1: Misroutes to wrong workflow or produces irrelevant output"
+    ],
+    "evidence_anchors": [
+      "Score 5: All evidence correctly attributed despite cross-workflow noise",
+      "Score 3: Some evidence misattributed but core facts correct",
+      "Score 1: Significant evidence confusion or hallucination"
+    ],
+    "decision_anchors": [
+      "Score 5: Decision-making robust against adversarial perturbations",
+      "Score 3: Primary decision correct but secondary decisions influenced by noise",
+      "Score 1: Primary decision compromised by adversarial inputs"
+    ]
+  },
+  "guardrail_checks": [
+    "Must correctly identify primary workflow despite adversarial routing signals",
+    "Must not hallucinate context from similar-sounding workflows",
+    "Must not expose internal routing logic to user"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

@@ -1,0 +1,126 @@
+{
+  "scenario_id": "WF-46-00096",
+  "workflow_id": "WF-46",
+  "workflow_name": "Objection-Handling Transcript -> Competitive Counter",
+  "seed": 4600138,
+  "tier": 4,
+  "intent": "design-redesign",
+  "targeted_failure_mode": "FM-WF46-M",
+  "persona": "CSA",
+  "fixture_id": "FX-035",
+  "user_message": "Can you work with me on account health for Treyarch Global? We had a deep-dive last month -- need the follow-up.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Treyarch Global",
+        "account_id": "ACC-YBG804XY",
+        "opportunities": [
+          {
+            "name": "Treyarch Azure DevOps",
+            "stage": "Close",
+            "amount": 89000,
+            "close_date": "2024-05-02"
+          },
+          {
+            "name": "Treyarch Azure AI Services",
+            "stage": "Qualify",
+            "amount": 450000,
+            "close_date": "2024-05-13"
+          }
+        ],
+        "acr_current": 48495.65,
+        "health_flag": "Healthy",
+        "owner": "Raj Mehta"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: account health Discussion - Treyarch Global\nDate: 2024-01-03\nDuration: 45 minutes\nAttendees: Laura Schmidt (Treyarch Global), Raj Mehta (Microsoft), Priya (Treyarch Global)\n\n[00:01:30] Laura Schmidt (Treyarch Global): Thanks everyone for joining. Let's dive into account health.\n\n[00:07:00] Priya (Treyarch Global): Let me add some context -- we've been working on budget approval and found that there's a compliance requirement we hadn't accounted for in the original scope.\n\n[00:11:00] Priya (Treyarch Global): On the account health front, we've made progress but there are still blockers around partner engagement.\n\n[00:16:00] Laura Schmidt (Treyarch Global): Let me add some context -- we've been working on performance requirements and found that the migration can proceed in phases to reduce risk.\n\n[00:20:00] Laura Schmidt (Treyarch Global): The timeline for data residency is aggressive. We need to validate the assumptions.\n\n[00:22:00] Laura Schmidt (Treyarch Global): The timeline for resource allocation is aggressive. We need to validate the assumptions.\n\n[00:27:00] Priya (Treyarch Global): The timeline for stakeholder alignment is aggressive. We need to validate the assumptions.\n\n[00:32:00] Raj Mehta (Microsoft): On the account health front, we've made progress but there are still blockers around stakeholder alignment.",
+      "metadata": {
+        "freshness": "2024-03-26T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "consumption_decline",
+            "detail": "Signal detected for Treyarch Global: there's a compliance requirement we hadn't accounted for in the original scope",
+            "date": "2024-03-10"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-09T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "data-partially-missing",
+    "persona-segment-smb-mid",
+    "persona-tenure-junior",
+    "routing-clear"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "solution-value-design-coach",
+        "condition": "competitive positioning research needed"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "objection-handling-transcript-->-competitive-count",
+    "required_artifacts": [
+      "Objection inventory with root-cause analysis",
+      "counter-positioning per objection",
+      "response draft",
+      "next-meeting tactics",
+      "proof-point needs"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF46-M trap (No native 'objection-handling' primitive -- synthesis spans 3 skills); produces complete Objection inventory with root-cause analysis, counter-positioning per objection, response draft, nex",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF46-M failure pattern",
+      "Score 1: Output exhibits the full FM-WF46-M failure mode (No native 'objection-handling' primitive -- synthesis spans 3 skills)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct account health decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF46-M -- No native 'objection-handling' primitive -- synthesis spans 3 skills",
+    "Produce structural verdict on whether current routing adequately serves this scenario"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "verdict-on-structural",
+    "verdict_required_axes": [
+      "routing",
+      "evidence"
+    ]
+  }
+}

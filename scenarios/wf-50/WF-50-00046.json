@@ -1,0 +1,105 @@
+{
+  "scenario_id": "WF-50-00046",
+  "workflow_id": "WF-50",
+  "workflow_name": "Executive Meeting Transcript -> Manager Brief + Asks",
+  "seed": 5000088,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF50-D",
+  "persona": "DSSP",
+  "fixture_id": "FX-035",
+  "user_message": "Pulling in context from Treyarch Global's escalation email -- need to draft the follow-up for the account health.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Treyarch Global",
+        "account_id": "ACC-YBG804XY",
+        "opportunities": [
+          {
+            "name": "Treyarch Azure DevOps",
+            "stage": "Close",
+            "amount": 89000,
+            "close_date": "2024-05-02"
+          },
+          {
+            "name": "Treyarch Azure AI Services",
+            "stage": "Qualify",
+            "amount": 450000,
+            "close_date": "2024-05-13"
+          }
+        ],
+        "acr_current": 48495.65,
+        "health_flag": "Healthy",
+        "owner": "Raj Mehta"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: account health Discussion - Treyarch Global\nDate: 2024-03-04\nDuration: 45 minutes\nAttendees: Laura Schmidt (Treyarch Global), Raj Mehta (Microsoft), David (Treyarch Global)\n\n[00:01:30] Laura Schmidt (Treyarch Global): Thanks everyone for joining. Let's dive into account health.\n\n[00:05:00] Raj Mehta (Microsoft): On the account health front, we've made progress but there are still blockers around budget approval.\n\n[00:10:00] David (Treyarch Global): On the account health front, we've made progress but there are still blockers around security compliance.\n\n[00:14:00] Raj Mehta (Microsoft): Our architect reviewed this and has concerns about resource allocation. Can we address those?\n\n[00:16:00] Laura Schmidt (Treyarch Global): On the account health front, we've made progress but there are still blockers around performance requirements.\n\n[00:18:00] David (Treyarch Global): On the account health front, we've made progress but there are still blockers around budget approval.\n\n[00:22:00] David (Treyarch Global): The timeline for budget approval is aggressive. We need to validate the assumptions.\n\n[00:24:00] Laura Schmidt (Treyarch Global): On the account health front, we've made progress but there are still blockers around partner engagement.",
+      "metadata": {
+        "freshness": "2024-03-08T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "long"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-role-dssp",
+    "persona-tenure-mid",
+    "persona-segment-smb-mid",
+    "data-partially-missing"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "forecast-business-review-coach",
+        "condition": "business review narrative input from exec meeting"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "executive-meeting-transcript-->-manager-brief-+-as",
+    "required_artifacts": [
+      "Executive brief (strategic density)",
+      "asks section (actionable for exec)",
+      "risk register",
+      "skip-level follow-up plan",
+      "exec sponsor identification"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF50-D trap (Misattributes statement to wrong executive); produces complete Executive brief (strategic density), asks section (actionable for exec), risk register, skip-level f",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF50-D failure pattern",
+      "Score 1: Output exhibits the full FM-WF50-D failure mode (Misattributes statement to wrong executive)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct account health decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF50-D -- Misattributes statement to wrong executive"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

@@ -1,0 +1,137 @@
+{
+  "scenario_id": "WF-14-90124",
+  "workflow_id": "WF-14",
+  "workflow_name": "Stakeholder Map Generation",
+  "seed": 9900166,
+  "tier": 1,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": null,
+  "persona": "DSSP",
+  "fixture_id": "FX-017",
+  "user_message": "I need to identify the blockers for the Humongous Insurance engagement. I met with them last week but can't remember the details.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Humongous Insurance",
+        "account_id": "ACC-3AB2FT8E",
+        "opportunities": [
+          {
+            "name": "Humongous Cloud Migration Phase",
+            "stage": "Qualify",
+            "amount": 175000,
+            "close_date": "2023-10-27"
+          }
+        ],
+        "acr_current": 73720.59,
+        "health_flag": "Healthy",
+        "owner": "David Chen"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Michael Petrov <michael.petrov@humongousins.com>\nTo: David Chen <david.chen@microsoft.com>\nDate: 2024-03-16 10:50 EST\nSubject: Re: Re: territory planning Timeline\n\nWe've been evaluating the options and have decided to proceed with territory planning. What are the next steps from your side?\n\n---\nFrom: David Chen <david.chen@microsoft.com>\nTo: Michael Petrov <michael.petrov@humongousins.com>\nDate: 2024-02-03 17:57 EST\nSubject: Quarterly Update: Humongous Insurance territory planning\n\nJust checking in on the territory planning proposal. Our IT Director is asking for a status update before the board meeting next week.\n\n---\nFrom: Michael Petrov <michael.petrov@humongousins.com>\nTo: David Chen <david.chen@microsoft.com>\nDate: 2024-01-11 16:32 EST\nSubject: Re: Re: territory planning Timeline\n\nOur team encountered some challenges with territory planning. Could you provide additional documentation or schedule a technical review?",
+      "metadata": {
+        "freshness": "2024-03-02T16:00:00-05:00",
+        "source": "outlook",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: territory planning Discussion - Humongous Insurance\nDate: 2024-01-25\nDuration: 45 minutes\nAttendees: Michael Petrov (Humongous Insurance), David Chen (Microsoft)\n\n[00:02:00] Michael Petrov (Humongous Insurance): Good morning. I wanted to follow up on territory planning from our last session.\n\n[00:05:00] Michael Petrov (Humongous Insurance): On the territory planning front, we've made progress but there are still blockers around stakeholder alignment.\n\n[00:10:00] David Chen (Microsoft): Let me add some context -- we've been working on data residency and found that the current vendor contract has a 90-day exit clause we need to plan around.\n\n[00:14:00] Michael Petrov (Humongous Insurance): Our team lead reviewed this and has concerns about stakeholder alignment. Can we address those?\n\n[00:18:00] David Chen (Microsoft): I agree with that assessment. From our side, the main concern is security compliance.\n\n[00:20:00] David Chen (Microsoft): Our CTO reviewed this and has concerns about cost optimization. Can we address those?\n\n[00:24:00] David Chen (Microsoft): Our team lead reviewed this and has concerns about timeline constraints. Can we address those?\n\n[00:29:00] Michael Petrov (Humongous Insurance): The timeline for data residency is aggressive. We need to validate the assumptions.\n\n[00:32:00] David Chen (Microsoft): The timeline for timeline constraints is aggressive. We need to validate the assumptions.",
+      "metadata": {
+        "freshness": "2024-03-18T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "mixed",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Humongous Insurance - territory planning",
+        "start": "2024-03-12T16:00:00-05:00",
+        "end": "2024-03-15T15:00:00-05:00",
+        "attendees": [
+          {
+            "name": "David Chen",
+            "email": "david.chen@microsoft.com"
+          },
+          {
+            "name": "Michael Petrov",
+            "email": "michael.petrov@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "contract_event",
+            "detail": "Signal detected for Humongous Insurance: there's a dependency on the security team's review that could delay us",
+            "date": "2024-03-07"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-09T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-geo-latam",
+    "routing-ambiguous-2skills",
+    "persona-tenure-mid",
+    "routing-trap"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "contact-stakeholder-map"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "adversarial-routing-test",
+    "required_artifacts": [
+      "correct_routing_justification",
+      "confusion_analysis"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Correctly routes to primary workflow despite adversarial signals; output is complete",
+      "Score 3: Routes correctly but output shows contamination from confusing signals",
+      "Score 1: Misroutes to wrong workflow or produces irrelevant output"
+    ],
+    "evidence_anchors": [
+      "Score 5: All evidence correctly attributed despite cross-workflow noise",
+      "Score 3: Some evidence misattributed but core facts correct",
+      "Score 1: Significant evidence confusion or hallucination"
+    ],
+    "decision_anchors": [
+      "Score 5: Decision-making robust against adversarial perturbations",
+      "Score 3: Primary decision correct but secondary decisions influenced by noise",
+      "Score 1: Primary decision compromised by adversarial inputs"
+    ]
+  },
+  "guardrail_checks": [
+    "Must correctly identify primary workflow despite adversarial routing signals",
+    "Must not hallucinate context from similar-sounding workflows",
+    "Must not expose internal routing logic to user"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

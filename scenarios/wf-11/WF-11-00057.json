@@ -1,0 +1,124 @@
+{
+  "scenario_id": "WF-11-00057",
+  "workflow_id": "WF-11",
+  "workflow_name": "Pre-Meeting Brief",
+  "seed": 1100099,
+  "tier": 2,
+  "intent": "happy",
+  "targeted_failure_mode": null,
+  "persona": "CSA",
+  "fixture_id": "FX-007",
+  "user_message": "This just came in from Sarah Wilson at Litware Inc. Can you build the analysis?",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Litware Inc",
+        "account_id": "ACC-658MPDXQ",
+        "opportunities": [
+          {
+            "name": "Litware Security Modernization",
+            "stage": "Prospect",
+            "amount": 280000,
+            "close_date": "2024-09-23"
+          }
+        ],
+        "acr_current": 76577.96,
+        "health_flag": "Healthy",
+        "owner": "David Chen"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Sarah Wilson <sarah.wilson@litwareinc.com>\nTo: David Chen <david.chen@microsoft.com>\nDate: 2024-03-19 16:38 EST\nSubject: Re: consumption trend Discussion - Next Steps\n\nOur team encountered some challenges with consumption trend. Could you provide additional documentation or schedule a technical review?\n\n---\nFrom: David Chen <david.chen@microsoft.com>\nTo: Sarah Wilson <sarah.wilson@litwareinc.com>\nDate: 2024-02-06 11:09 EST\nSubject: Re: Re: consumption trend Timeline\n\nI wanted to follow up on our conversation about consumption trend. Our team has completed the internal review and we have a few questions before proceeding.\n\n---\nFrom: Sarah Wilson <sarah.wilson@litwareinc.com>\nTo: David Chen <david.chen@microsoft.com>\nDate: 2024-01-25 11:54 EST\nSubject: Re: Re: consumption trend Timeline\n\nThere's been a change in our timeline for consumption trend. Can we discuss the implications on the overall project plan?",
+      "metadata": {
+        "freshness": "2024-03-06T11:00:00-05:00",
+        "source": "outlook",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: consumption trend Discussion - Litware Inc\nDate: 2024-02-07\nDuration: 45 minutes\nAttendees: Sarah Wilson (Litware Inc), David Chen (Microsoft), Priya (Litware Inc)\n\n[00:02:00] Sarah Wilson (Litware Inc): Good morning. I wanted to follow up on consumption trend from our last session.\n\n[00:05:00] David Chen (Microsoft): Our VP reviewed this and has concerns about resource allocation. Can we address those?\n\n[00:09:00] David Chen (Microsoft): Our VP reviewed this and has concerns about security compliance. Can we address those?\n\n[00:13:00] Priya (Litware Inc): I agree with that assessment. From our side, the main concern is timeline constraints.\n\n[00:15:00] Sarah Wilson (Litware Inc): The timeline for integration complexity is aggressive. We need to validate the assumptions.\n\n[00:18:00] Sarah Wilson (Litware Inc): On the consumption trend front, we've made progress but there are still blockers around integration complexity.\n\n[00:22:00] Sarah Wilson (Litware Inc): Let me add some context -- we've been working on security compliance and found that the migration can proceed in phases to reduce risk.\n\n[00:26:00] Sarah Wilson (Litware Inc): The timeline for vendor dependencies is aggressive. We need to validate the assumptions.\n\n[00:31:00] Priya (Litware Inc): Let me add some context -- we've been working on integration complexity and found that there's a compliance requirement we hadn't accounted for in the original scope.",
+      "metadata": {
+        "freshness": "2024-02-25T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Litware Inc - consumption trend",
+        "start": "2024-03-15T11:00:00-05:00",
+        "end": "2024-03-12T12:00:00-05:00",
+        "attendees": [
+          {
+            "name": "David Chen",
+            "email": "david.chen@microsoft.com"
+          },
+          {
+            "name": "Sarah Wilson",
+            "email": "sarah.wilson@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    }
+  ],
+  "perturbations": [
+    "data-fresh",
+    "persona-role-csa",
+    "persona-geo-apac",
+    "persona-tenure-junior"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "meeting-prep",
+      "contact-stakeholder-map"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "pre-meeting-brief",
+    "required_artifacts": [
+      "One-page brief with attendee context",
+      "account snapshot",
+      "talking points",
+      "likely objections",
+      "open items from last meeting"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Complete, well-structured output matching the Pre-Meeting Brief template with all required artifacts present and actionable",
+      "Score 3: Output covers main requirements but missing one or two secondary artifacts or lacking specificity",
+      "Score 1: Output is generic, missing key artifacts, or fails to address the specific request"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct consumption trend decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

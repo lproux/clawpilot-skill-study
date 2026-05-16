@@ -1,0 +1,98 @@
+{
+  "scenario_id": "WF-03-00130",
+  "workflow_id": "WF-03",
+  "workflow_name": "Whitespace Opportunity Hunt",
+  "seed": 300172,
+  "tier": 2,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF03-E",
+  "persona": "DSSP",
+  "fixture_id": "FX-003",
+  "user_message": "Pulling in context from Northwind Traders's support ticket -- need to triage this for the deployment blockers.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Northwind Traders",
+        "account_id": "ACC-X86FSRU2",
+        "opportunities": [
+          {
+            "name": "Northwind Azure Arc Deployment",
+            "stage": "Propose",
+            "amount": 89000,
+            "close_date": "2024-09-05"
+          },
+          {
+            "name": "Northwind Copilot Adoption",
+            "stage": "Develop",
+            "amount": 175000,
+            "close_date": "2024-06-22"
+          },
+          {
+            "name": "Northwind Intune Rollout",
+            "stage": "Close",
+            "amount": 350000,
+            "close_date": "2024-04-19"
+          }
+        ],
+        "acr_current": 54067.74,
+        "health_flag": "Healthy",
+        "owner": "Ahmed Hassan"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-role-dssp",
+    "data-fresh"
+  ],
+  "expected_routing": {
+    "entry_skill": "portfolio-account-planning-coach",
+    "modules": [
+      "whitespace-growth-hypotheses"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "acr-signal-to-opportunity-coach",
+        "condition": "hypothesis warrants signal investigation"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "whitespace-opportunity-hunt",
+    "required_artifacts": [
+      "Ranked whitespace hypotheses with feasibility",
+      "urgency",
+      "comparable evidence",
+      "and suggested validation steps"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF03-E trap (Skips validation step (jumps to 'create opportunity')); produces complete Ranked whitespace hypotheses with feasibility, urgency, comparable evidence, and suggested validatio",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF03-E failure pattern",
+      "Score 1: Output exhibits the full FM-WF03-E failure mode (Skips validation step (jumps to 'create opportunity'))"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct deployment blockers decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF03-E -- Skips validation step (jumps to 'create opportunity')"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

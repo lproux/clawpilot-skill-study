@@ -1,0 +1,111 @@
+{
+  "scenario_id": "WF-37-90153",
+  "workflow_id": "WF-37",
+  "workflow_name": "Customer Outage/Complaint Email -> Triage + Escalation",
+  "seed": 9900195,
+  "tier": 4,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": null,
+  "persona": "CSA",
+  "fixture_id": "FX-046",
+  "user_message": "Just got this from Nicole Nguyen at Cascadia Systems -- I need help figuring out deployment blockers. Not urgent but would be good to have by EOD.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Cascadia Systems",
+        "account_id": "ACC-OQTZAL3E",
+        "opportunities": [
+          {
+            "name": "Cascadia Power Platform",
+            "stage": "Qualify",
+            "amount": 175000,
+            "close_date": "2024-05-03"
+          }
+        ],
+        "acr_current": 7947.7,
+        "health_flag": "Healthy",
+        "owner": "Jennifer Walsh"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Nicole Nguyen <nicole.nguyen@cascadiasyst.com>\nTo: Jennifer Walsh <jennifer.walsh@microsoft.com>\nDate: 2024-03-25 09:59 EST\nSubject: Re: Re: deployment blockers Timeline\n\nI wanted to follow up on our conversation about deployment blockers. Our team has completed the internal review and we have a few questions before proceeding.\n\n---\nFrom: Jennifer Walsh <jennifer.walsh@microsoft.com>\nTo: Nicole Nguyen <nicole.nguyen@cascadiasyst.com>\nDate: 2024-02-05 13:31 EST\nSubject: deployment blockers - Action Required\n\nWe've been evaluating the options and have decided to proceed with deployment blockers. What are the next steps from your side?\n\n---\nFrom: Nicole Nguyen <nicole.nguyen@cascadiasyst.com>\nTo: Jennifer Walsh <jennifer.walsh@microsoft.com>\nDate: 2024-01-11 14:23 EST\nSubject: Re: deployment blockers Discussion - Next Steps\n\nThank you for the discussion last week. We'd like to move forward with deployment blockers. Can we schedule a call this week to finalize the timeline?",
+      "metadata": {
+        "freshness": "2024-03-02T08:00:00-05:00",
+        "source": "outlook",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "contract_event",
+            "detail": "Signal detected for Cascadia Systems: there's a dependency on the security team's review that could delay us",
+            "date": "2024-03-11"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-tenure-mid",
+    "data-contradictory",
+    "persona-geo-apac",
+    "routing-trap"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "email-chat-context"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "acr-signal-to-opportunity-coach",
+        "condition": "outage impacts major workload ACR"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "adversarial-routing-test",
+    "required_artifacts": [
+      "correct_routing_justification",
+      "confusion_analysis"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Correctly routes to primary workflow despite adversarial signals; output is complete",
+      "Score 3: Routes correctly but output shows contamination from confusing signals",
+      "Score 1: Misroutes to wrong workflow or produces irrelevant output"
+    ],
+    "evidence_anchors": [
+      "Score 5: All evidence correctly attributed despite cross-workflow noise",
+      "Score 3: Some evidence misattributed but core facts correct",
+      "Score 1: Significant evidence confusion or hallucination"
+    ],
+    "decision_anchors": [
+      "Score 5: Decision-making robust against adversarial perturbations",
+      "Score 3: Primary decision correct but secondary decisions influenced by noise",
+      "Score 1: Primary decision compromised by adversarial inputs"
+    ]
+  },
+  "guardrail_checks": [
+    "Must correctly identify primary workflow despite adversarial routing signals",
+    "Must not hallucinate context from similar-sounding workflows",
+    "Must not expose internal routing logic to user"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

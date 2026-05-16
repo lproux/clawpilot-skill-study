@@ -1,0 +1,129 @@
+{
+  "scenario_id": "WF-11-00013",
+  "workflow_id": "WF-11",
+  "workflow_name": "Pre-Meeting Brief",
+  "seed": 1100055,
+  "tier": 2,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF11-C",
+  "persona": "DSSP",
+  "fixture_id": "FX-019",
+  "user_message": "The CSA escalated Lucerne Publishing to me -- can you map the stakeholders?",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Lucerne Publishing",
+        "account_id": "ACC-2JXCFRG8",
+        "opportunities": [
+          {
+            "name": "Lucerne Copilot Adoption",
+            "stage": "Propose",
+            "amount": 210000,
+            "close_date": "2023-11-19"
+          },
+          {
+            "name": "Lucerne Data Platform Migration",
+            "stage": "Prospect",
+            "amount": 45000,
+            "close_date": "2024-11-16"
+          }
+        ],
+        "acr_current": 39791.19,
+        "health_flag": "Healthy",
+        "owner": "Tom Rodriguez"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Laura Anderson <laura.anderson@lucernepubli.com>\nTo: Tom Rodriguez <tom.rodriguez@microsoft.com>\nDate: 2024-02-02 15:45 EST\nSubject: Follow-up: security posture Review\n\nJust checking in on the security posture proposal. Our Head of Digital is asking for a status update before the board meeting next week.\n\n---\nFrom: Tom Rodriguez <tom.rodriguez@microsoft.com>\nTo: Laura Anderson <laura.anderson@lucernepubli.com>\nDate: 2024-01-17 16:53 EST\nSubject: Re: security posture Discussion - Next Steps\n\nThank you for the discussion last week. We'd like to move forward with security posture. Can we schedule a call this week to finalize the timeline?",
+      "metadata": {
+        "freshness": "2024-03-11T09:00:00-05:00",
+        "source": "outlook",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: security posture Discussion - Lucerne Publishing\nDate: 2024-03-24\nDuration: 45 minutes\nAttendees: Laura Anderson (Lucerne Publishing), Tom Rodriguez (Microsoft)\n\n[00:02:00] Laura Anderson (Lucerne Publishing): Good morning. I wanted to follow up on security posture from our last session.\n\n[00:06:00] Laura Anderson (Lucerne Publishing): Let me add some context -- we've been working on vendor dependencies and found that the migration can proceed in phases to reduce risk.\n\n[00:09:00] Tom Rodriguez (Microsoft): Our VP reviewed this and has concerns about resource allocation. Can we address those?\n\n[00:11:00] Laura Anderson (Lucerne Publishing): Our director reviewed this and has concerns about timeline constraints. Can we address those?\n\n[00:14:00] Tom Rodriguez (Microsoft): Let me add some context -- we've been working on performance requirements and found that the existing infrastructure won't support the target workload without upgrades.\n\n[00:17:00] Tom Rodriguez (Microsoft): Our architect reviewed this and has concerns about data residency. Can we address those?",
+      "metadata": {
+        "freshness": "2024-03-17T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "mixed",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Lucerne Publishing - security posture",
+        "start": "2024-03-11T13:00:00-05:00",
+        "end": "2024-03-13T17:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Tom Rodriguez",
+            "email": "tom.rodriguez@microsoft.com"
+          },
+          {
+            "name": "Laura Anderson",
+            "email": "laura.anderson@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-role-dssp",
+    "persona-segment-smb-corporate"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "meeting-prep",
+      "contact-stakeholder-map"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "pre-meeting-brief",
+    "required_artifacts": [
+      "One-page brief with attendee context",
+      "account snapshot",
+      "talking points",
+      "likely objections",
+      "open items from last meeting"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF11-C trap (Generates generic talking points); produces complete One-page brief with attendee context, account snapshot, talking points, likely objections, open item",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF11-C failure pattern",
+      "Score 1: Output exhibits the full FM-WF11-C failure mode (Generates generic talking points)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct security posture decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF11-C -- Generates generic talking points"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

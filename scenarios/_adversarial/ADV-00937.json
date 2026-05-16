@@ -1,0 +1,103 @@
+{
+  "scenario_id": "WF-10-90937",
+  "workflow_id": "WF-10",
+  "workflow_name": "Deployment Blocker Triage",
+  "seed": 9900979,
+  "tier": 2,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": null,
+  "persona": "Manager",
+  "fixture_id": "FX-030",
+  "user_message": "Just came out of renewal risk with First Up Consultants. Turn this into my brief and pull out the asks.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "First Up Consultants",
+        "account_id": "ACC-M3ON3CTQ",
+        "opportunities": [
+          {
+            "name": "First M365 E5 Upsell",
+            "stage": "Develop",
+            "amount": 210000,
+            "close_date": "2024-12-12"
+          },
+          {
+            "name": "First Security Modernization",
+            "stage": "Develop",
+            "amount": 210000,
+            "close_date": "2024-07-15"
+          },
+          {
+            "name": "First Azure Arc Deployment",
+            "stage": "Develop",
+            "amount": 45000,
+            "close_date": "2024-09-18"
+          }
+        ],
+        "acr_current": 38672.15,
+        "health_flag": "Unknown",
+        "owner": "Michelle Park"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    }
+  ],
+  "perturbations": [
+    "signal-strength-noisy",
+    "persona-geo-apac",
+    "persona-segment-smb-small",
+    "persona-role-manager",
+    "routing-ambiguous-3skills"
+  ],
+  "expected_routing": {
+    "entry_skill": "acr-signal-to-opportunity-coach",
+    "modules": [
+      "signal-to-opportunity"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "funding-partner-activation-coach",
+        "condition": "partner engagement needed"
+      },
+      {
+        "target_skill": "customer-meeting-prep-outreach-coach",
+        "condition": "customer outreach needed to unblock"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "adversarial-routing-test",
+    "required_artifacts": [
+      "correct_routing_justification",
+      "confusion_analysis"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Correctly routes to primary workflow despite adversarial signals; output is complete",
+      "Score 3: Routes correctly but output shows contamination from confusing signals",
+      "Score 1: Misroutes to wrong workflow or produces irrelevant output"
+    ],
+    "evidence_anchors": [
+      "Score 5: All evidence correctly attributed despite cross-workflow noise",
+      "Score 3: Some evidence misattributed but core facts correct",
+      "Score 1: Significant evidence confusion or hallucination"
+    ],
+    "decision_anchors": [
+      "Score 5: Decision-making robust against adversarial perturbations",
+      "Score 3: Primary decision correct but secondary decisions influenced by noise",
+      "Score 1: Primary decision compromised by adversarial inputs"
+    ]
+  },
+  "guardrail_checks": [
+    "Must correctly identify primary workflow despite adversarial routing signals",
+    "Must not hallucinate context from similar-sounding workflows",
+    "Must not expose internal routing logic to user"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "scenario_id": "WF-47-00061",
+  "workflow_id": "WF-47",
+  "workflow_name": "Multi-Stakeholder Meeting Transcript -> Decision Distribution",
+  "seed": 4700103,
+  "tier": 4,
+  "intent": "design-redesign",
+  "targeted_failure_mode": "FM-WF47-P",
+  "persona": "DSSP",
+  "fixture_id": "FX-015",
+  "user_message": "Can you extract the QBR preparation from this exec meeting notes for Fourth Coffee? Multiple stakeholders are involved -- it's complex.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Fourth Coffee",
+        "account_id": "ACC-A7MFL3SV",
+        "opportunities": [
+          {
+            "name": "Fourth Data Platform Migration",
+            "stage": "Qualify",
+            "amount": 210000,
+            "close_date": "2023-12-04"
+          }
+        ],
+        "acr_current": 114958.25,
+        "health_flag": "Healthy",
+        "owner": "Raj Mehta"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: QBR preparation Discussion - Fourth Coffee\nDate: 2024-01-28\nDuration: 45 minutes\nAttendees: David Rivera (Fourth Coffee), Raj Mehta (Microsoft), Kevin (Fourth Coffee)\n\n[00:02:00] David Rivera (Fourth Coffee): Good morning. I wanted to follow up on QBR preparation from our last session.\n\n[00:05:00] David Rivera (Fourth Coffee): I agree with that assessment. From our side, the main concern is performance requirements.\n\n[00:08:00] David Rivera (Fourth Coffee): Let me add some context -- we've been working on performance requirements and found that the migration can proceed in phases to reduce risk.\n\n[00:11:00] Raj Mehta (Microsoft): Our architect reviewed this and has concerns about stakeholder alignment. Can we address those?\n\n[00:13:00] Kevin (Fourth Coffee): I agree with that assessment. From our side, the main concern is vendor dependencies.\n\n[00:16:00] David Rivera (Fourth Coffee): Let me add some context -- we've been working on vendor dependencies and found that the current vendor contract has a 90-day exit clause we need to plan around.\n\n[00:19:00] David Rivera (Fourth Coffee): The timeline for stakeholder alignment is aggressive. We need to validate the assumptions.\n\n[00:23:00] Kevin (Fourth Coffee): Our team lead reviewed this and has concerns about vendor dependencies. Can we address those?\n\n[00:27:00] Raj Mehta (Microsoft): On the QBR preparation front, we've made progress but there are still blockers around performance requirements.\n\n[00:32:00] Raj Mehta (Microsoft): Our VP reviewed this and has concerns about stakeholder alignment. Can we address those?",
+      "metadata": {
+        "freshness": "2024-03-06T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "long"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-geo-na",
+    "signal-strength-noisy",
+    "persona-role-dssp"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions",
+      "contact-stakeholder-map"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "MSX updates warranted from decisions"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "multi-stakeholder-meeting-transcript-->-decision-d",
+    "required_artifacts": [
+      "Decision log with speaker attribution",
+      "action distribution by role",
+      "stakeholder map delta",
+      "MSX update proposals",
+      "due dates extracted"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF47-P trap (No native 'multi-party decision distribution' primitive); produces complete Decision log with speaker attribution, action distribution by role, stakeholder map delta, MSX updat",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF47-P failure pattern",
+      "Score 1: Output exhibits the full FM-WF47-P failure mode (No native 'multi-party decision distribution' primitive)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct QBR preparation decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF47-P -- No native 'multi-party decision distribution' primitive",
+    "Produce structural verdict on whether current routing adequately serves this scenario"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "verdict-on-structural",
+    "verdict_required_axes": [
+      "routing",
+      "evidence"
+    ]
+  }
+}

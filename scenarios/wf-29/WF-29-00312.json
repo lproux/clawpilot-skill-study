@@ -1,0 +1,83 @@
+{
+  "scenario_id": "WF-29-00312",
+  "workflow_id": "WF-29",
+  "workflow_name": "Pipeline Hygiene Sweep",
+  "seed": 2900354,
+  "tier": 3,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": "FM-WF29-M",
+  "persona": "CSA",
+  "fixture_id": "FX-017",
+  "user_message": "[AUTOMATION TRIGGER] System detected Daily scheduled automation or user requests pipeline hygiene for account Humongous Insurance. Generating output.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Humongous Insurance",
+        "account_id": "ACC-3AB2FT8E",
+        "opportunities": [
+          {
+            "name": "Humongous Cloud Migration Phase",
+            "stage": "Qualify",
+            "amount": 175000,
+            "close_date": "2023-10-27"
+          }
+        ],
+        "acr_current": 73720.59,
+        "health_flag": "Healthy",
+        "owner": "David Chen"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-geo-latam",
+    "persona-tenure-mid"
+  ],
+  "expected_routing": {
+    "entry_skill": "pipeline-msx-hygiene-coach",
+    "modules": [
+      "opportunity-milestone-hygiene",
+      "pipeline-review-digest",
+      "writeback-approval-guardrails"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "pipeline-hygiene-sweep",
+    "required_artifacts": [
+      "Delta digest of hygiene defects (not status issues)",
+      "writeback proposals with evidence_source per field",
+      "approval queue"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF29-M trap (Requiring approval for low-stakes obvious fixes creates friction); produces complete Delta digest of hygiene defects (not status issues), writeback proposals with evidence_source per fi",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF29-M failure pattern",
+      "Score 1: Output exhibits the full FM-WF29-M failure mode (Requiring approval for low-stakes obvious fixes creates friction)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct renewal risk decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF29-M -- Requiring approval for low-stakes obvious fixes creates friction",
+    "Write proposals must require explicit user approval",
+    "Guardrail axis scored neutrally -- focus on whether output served the user's actual need"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

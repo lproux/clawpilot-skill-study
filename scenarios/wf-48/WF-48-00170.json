@@ -1,0 +1,117 @@
+{
+  "scenario_id": "WF-48-00170",
+  "workflow_id": "WF-48",
+  "workflow_name": "Roadmap Meeting Transcript -> Forecast Sequencing",
+  "seed": 4800212,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF48-B",
+  "persona": "Manager",
+  "fixture_id": "FX-033",
+  "user_message": "Give me the manager view on this Parnell Aerospace support ticket. Board meeting is next week.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Parnell Aerospace",
+        "account_id": "ACC-0H065FH7",
+        "opportunities": [
+          {
+            "name": "Parnell Dynamics 365 Implementation",
+            "stage": "Close",
+            "amount": 350000,
+            "close_date": "2024-11-03"
+          }
+        ],
+        "acr_current": 0,
+        "health_flag": "Healthy",
+        "owner": "Ahmed Hassan"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: executive brief Discussion - Parnell Aerospace\nDate: 2024-01-07\nDuration: 45 minutes\nAttendees: Christopher Martinez (Parnell Aerospace), Ahmed Hassan (Microsoft), Michelle (Parnell Aerospace)\n\n[00:02:00] Christopher Martinez (Parnell Aerospace): Good morning. I wanted to follow up on executive brief from our last session.\n\n[00:07:00] Michelle (Parnell Aerospace): The timeline for cost optimization is aggressive. We need to validate the assumptions.\n\n[00:12:00] Michelle (Parnell Aerospace): The timeline for technical validation is aggressive. We need to validate the assumptions.\n\n[00:16:00] Ahmed Hassan (Microsoft): On the executive brief front, we've made progress but there are still blockers around stakeholder alignment.\n\n[00:18:00] Ahmed Hassan (Microsoft): Let me add some context -- we've been working on integration complexity and found that the migration can proceed in phases to reduce risk.\n\n[00:23:00] Michelle (Parnell Aerospace): Let me add some context -- we've been working on resource allocation and found that there's a dependency on the security team's review that could delay us.\n\n[00:28:00] Christopher Martinez (Parnell Aerospace): Let me add some context -- we've been working on resource allocation and found that the current vendor contract has a 90-day exit clause we need to plan around.\n\n[00:33:00] Ahmed Hassan (Microsoft): On the executive brief front, we've made progress but there are still blockers around resource allocation.\n\n[00:38:00] Ahmed Hassan (Microsoft): The timeline for integration complexity is aggressive. We need to validate the assumptions.\n\n[00:42:00] Christopher Martinez (Parnell Aerospace): Our VP reviewed this and has concerns about security compliance. Can we address those?",
+      "metadata": {
+        "freshness": "2024-01-02T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "mixed",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "deployment_blocker",
+            "detail": "Signal detected for Parnell Aerospace: the current vendor contract has a 90-day exit clause we need to plan around",
+            "date": "2024-03-10"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-09T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-role-manager",
+    "persona-geo-na"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "milestone and date updates needed"
+      },
+      {
+        "target_skill": "forecast-business-review-coach",
+        "condition": "forecast sequencing affected"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "roadmap-meeting-transcript-->-forecast-sequencing",
+    "required_artifacts": [
+      "Roadmap-to-forecast mapping",
+      "milestone date proposals",
+      "opportunity sequencing",
+      "new opportunity proposals (if signaled)",
+      "forecast impact with confidence"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF48-B trap (Proposes milestone date updates that violate dependencies); produces complete Roadmap-to-forecast mapping, milestone date proposals, opportunity sequencing, new opportunity propo",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF48-B failure pattern",
+      "Score 1: Output exhibits the full FM-WF48-B failure mode (Proposes milestone date updates that violate dependencies)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct executive brief decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF48-B -- Proposes milestone date updates that violate dependencies"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

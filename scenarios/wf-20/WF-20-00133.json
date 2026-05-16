@@ -1,0 +1,116 @@
+{
+  "scenario_id": "WF-20-00133",
+  "workflow_id": "WF-20",
+  "workflow_name": "Workload Modernization Plan",
+  "seed": 2000175,
+  "tier": 3,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF20-E",
+  "persona": "DSSP",
+  "fixture_id": "FX-009",
+  "user_message": "Working on VanArsdel Ltd's forecast prep. Got the support ticket -- help me run the hygiene check.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "VanArsdel Ltd",
+        "account_id": "ACC-3ORLVDXJ",
+        "opportunities": [
+          {
+            "name": "VanArsdel Data Platform Migration",
+            "stage": "Propose",
+            "amount": 210000,
+            "close_date": "2024-06-13"
+          },
+          {
+            "name": "VanArsdel M365 E5 Upsell",
+            "stage": "Prospect",
+            "amount": 280000,
+            "close_date": "2024-06-13"
+          },
+          {
+            "name": "VanArsdel Power Platform",
+            "stage": "Prospect",
+            "amount": 350000,
+            "close_date": "2024-09-08"
+          }
+        ],
+        "acr_current": 68769.78,
+        "health_flag": "Healthy",
+        "owner": "Tom Rodriguez"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "consumption_decline",
+            "detail": "Signal detected for VanArsdel Ltd: there's a compliance requirement we hadn't accounted for in the original scope",
+            "date": "2024-03-05"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-10T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-role-dssp",
+    "persona-segment-smb-mid"
+  ],
+  "expected_routing": {
+    "entry_skill": "solution-value-design-coach",
+    "modules": [
+      "migration-architecture",
+      "solution-research"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "funding-partner-activation-coach",
+        "condition": "funding eligibility check needed"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "workload-modernization-plan",
+    "required_artifacts": [
+      "Phased modernization plan (assess",
+      "migrate",
+      "optimize",
+      "innovate) with success criteria per phase",
+      "funding options"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF20-E trap (Skips optimize phase entirely); produces complete Phased modernization plan (assess, migrate, optimize, innovate) with success criteria per phase, fun",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF20-E failure pattern",
+      "Score 1: Output exhibits the full FM-WF20-E failure mode (Skips optimize phase entirely)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct forecast prep decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF20-E -- Skips optimize phase entirely"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

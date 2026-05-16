@@ -1,0 +1,112 @@
+{
+  "scenario_id": "WF-43-00010",
+  "workflow_id": "WF-43",
+  "workflow_name": "Discovery Call Transcript -> Opportunity Build",
+  "seed": 4300052,
+  "tier": 4,
+  "intent": "happy",
+  "targeted_failure_mode": null,
+  "persona": "DSSP",
+  "fixture_id": "FX-013",
+  "user_message": "Can you extract the partner engagement from this exec meeting notes for Coho Winery? Multiple stakeholders are involved -- it's complex.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Coho Winery",
+        "account_id": "ACC-W5BNG4OC",
+        "opportunities": [
+          {
+            "name": "Coho Copilot Adoption",
+            "stage": "Close",
+            "amount": 210000,
+            "close_date": "2023-11-10"
+          },
+          {
+            "name": "Coho Azure AI Services",
+            "stage": "Qualify",
+            "amount": 280000,
+            "close_date": "2024-04-26"
+          },
+          {
+            "name": "Coho Azure Virtual Desktop",
+            "stage": "Qualify",
+            "amount": 125000,
+            "close_date": "2024-11-17"
+          }
+        ],
+        "acr_current": 107808.75,
+        "health_flag": "At Risk",
+        "owner": "Ahmed Hassan"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: partner engagement Discussion - Coho Winery\nDate: 2024-02-25\nDuration: 45 minutes\nAttendees: Eric Kim (Coho Winery), Ahmed Hassan (Microsoft), Kevin (Coho Winery)\n\n[00:02:00] Eric Kim (Coho Winery): Good morning. I wanted to follow up on partner engagement from our last session.\n\n[00:07:00] Kevin (Coho Winery): On the partner engagement front, we've made progress but there are still blockers around data residency.\n\n[00:12:00] Eric Kim (Coho Winery): Our VP reviewed this and has concerns about vendor dependencies. Can we address those?\n\n[00:15:00] Eric Kim (Coho Winery): Our CTO reviewed this and has concerns about integration complexity. Can we address those?\n\n[00:20:00] Ahmed Hassan (Microsoft): Our VP reviewed this and has concerns about stakeholder alignment. Can we address those?\n\n[00:23:00] Eric Kim (Coho Winery): Let me add some context -- we've been working on data residency and found that the existing infrastructure won't support the target workload without upgrades.\n\n[00:28:00] Eric Kim (Coho Winery): Let me add some context -- we've been working on vendor dependencies and found that the current vendor contract has a 90-day exit clause we need to plan around.\n\n[00:32:00] Kevin (Coho Winery): I agree with that assessment. From our side, the main concern is performance requirements.\n\n[00:36:00] Kevin (Coho Winery): The timeline for partner engagement is aggressive. We need to validate the assumptions.\n\n[00:39:00] Eric Kim (Coho Winery): On the partner engagement front, we've made progress but there are still blockers around budget approval.\n\n[00:44:00] Kevin (Coho Winery): Let me add some context -- we've been working on partner engagement and found that the migration can proceed in phases to reduce risk.",
+      "metadata": {
+        "freshness": "2024-01-19T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "mixed",
+        "length_class": "short"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-segment-smb-corporate",
+    "data-stale"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "opportunity creation warranted"
+      },
+      {
+        "target_skill": "solution-value-design-coach",
+        "condition": "solution sketch needed from discovery signals"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "discovery-call-transcript-->-opportunity-build",
+    "required_artifacts": [
+      "BANT signal extraction with evidence quotes",
+      "opportunity proposal with stage/value/close-date",
+      "confidence labels",
+      "solution sketch suggestion",
+      "follow-up actions"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Complete, well-structured output matching the Discovery Call Transcript -> Opportunity Build template with all required artifacts present and actionable",
+      "Score 3: Output covers main requirements but missing one or two secondary artifacts or lacking specificity",
+      "Score 1: Output is generic, missing key artifacts, or fails to address the specific request"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct partner engagement decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

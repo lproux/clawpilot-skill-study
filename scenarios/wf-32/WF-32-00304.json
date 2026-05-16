@@ -1,0 +1,147 @@
+{
+  "scenario_id": "WF-32-00304",
+  "workflow_id": "WF-32",
+  "workflow_name": "Calendar Pre-Pack Automation",
+  "seed": 3200346,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF32-M",
+  "persona": "DSSP",
+  "fixture_id": "FX-001",
+  "user_message": "[AUTOMATION TRIGGER] System detected Calendar event with non-Microsoft external attendee detected for account Contoso Ltd. Generating output.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Contoso Ltd",
+        "account_id": "ACC-VWW2DK8X",
+        "opportunities": [
+          {
+            "name": "Contoso Power Platform",
+            "stage": "Propose",
+            "amount": 560000,
+            "close_date": "2024-12-28"
+          }
+        ],
+        "acr_current": 78949.7,
+        "health_flag": "Healthy",
+        "owner": "Marcus Williams"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Angela Doyle <angela.doyle@contosoltd.com>\nTo: Marcus Williams <marcus.williams@microsoft.com>\nDate: 2024-03-03 13:43 EST\nSubject: Follow-up: territory planning Review\n\nThere's been a change in our timeline for territory planning. Can we discuss the implications on the overall project plan?\n\n---\nFrom: Marcus Williams <marcus.williams@microsoft.com>\nTo: Angela Doyle <angela.doyle@contosoltd.com>\nDate: 2024-02-21 17:54 EST\nSubject: Follow-up: territory planning Review\n\nWe've been evaluating the options and have decided to proceed with territory planning. What are the next steps from your side?\n\n---\nFrom: Angela Doyle <angela.doyle@contosoltd.com>\nTo: Marcus Williams <marcus.williams@microsoft.com>\nDate: 2024-01-11 12:46 EST\nSubject: Follow-up: territory planning Review\n\nWe've been evaluating the options and have decided to proceed with territory planning. What are the next steps from your side?",
+      "metadata": {
+        "freshness": "2024-02-04T09:00:00-05:00",
+        "source": "outlook",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: territory planning Discussion - Contoso Ltd\nDate: 2024-01-23\nDuration: 45 minutes\nAttendees: Angela Doyle (Contoso Ltd), Marcus Williams (Microsoft)\n\n[00:02:00] Angela Doyle (Contoso Ltd): Good morning. I wanted to follow up on territory planning from our last session.\n\n[00:06:00] Angela Doyle (Contoso Ltd): Our director reviewed this and has concerns about technical validation. Can we address those?\n\n[00:10:00] Angela Doyle (Contoso Ltd): The timeline for data residency is aggressive. We need to validate the assumptions.\n\n[00:14:00] Angela Doyle (Contoso Ltd): I agree with that assessment. From our side, the main concern is partner engagement.\n\n[00:18:00] Marcus Williams (Microsoft): The timeline for partner engagement is aggressive. We need to validate the assumptions.\n\n[00:21:00] Angela Doyle (Contoso Ltd): Our architect reviewed this and has concerns about data residency. Can we address those?\n\n[00:26:00] Angela Doyle (Contoso Ltd): On the territory planning front, we've made progress but there are still blockers around stakeholder alignment.\n\n[00:31:00] Angela Doyle (Contoso Ltd): Our VP reviewed this and has concerns about technical validation. Can we address those?",
+      "metadata": {
+        "freshness": "2024-01-01T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Contoso Ltd - territory planning",
+        "start": "2024-03-12T13:00:00-05:00",
+        "end": "2024-03-15T10:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Marcus Williams",
+            "email": "marcus.williams@microsoft.com"
+          },
+          {
+            "name": "Angela Doyle",
+            "email": "angela.doyle@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "contract_event",
+            "detail": "Signal detected for Contoso Ltd: the cost projections need to factor in reserved instance pricing for accuracy",
+            "date": "2024-03-07"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-role-dssp",
+    "persona-tenure-junior",
+    "data-fresh"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "meeting-prep",
+      "contact-stakeholder-map",
+      "email-chat-context"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "portfolio-account-planning-coach",
+        "condition": "meeting is for account CSA should have declined"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "calendar-pre-pack-automation",
+    "required_artifacts": [
+      "Pre-pack brief with attendee context",
+      "account snapshot",
+      "talking points",
+      "likely objections",
+      "open items"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF32-M trap (Pre-pack arrives <30 min before meeting (timing failure)); produces complete Pre-pack brief with attendee context, account snapshot, talking points, likely objections, open item",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF32-M failure pattern",
+      "Score 1: Output exhibits the full FM-WF32-M failure mode (Pre-pack arrives <30 min before meeting (timing failure))"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct territory planning decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF32-M -- Pre-pack arrives <30 min before meeting (timing failure)"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

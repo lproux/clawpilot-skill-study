@@ -1,0 +1,126 @@
+{
+  "scenario_id": "WF-51-00106",
+  "workflow_id": "WF-51",
+  "workflow_name": "Partner Triangulation Transcript -> Plan Distribution",
+  "seed": 5100148,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF51-I",
+  "persona": "DSSP",
+  "fixture_id": "FX-005",
+  "user_message": "Working on Tailspin Toys's consumption trend. Got the support ticket -- help me pull the context.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Tailspin Toys",
+        "account_id": "ACC-JXC3G9ET",
+        "opportunities": [
+          {
+            "name": "Tailspin Azure Virtual Desktop",
+            "stage": "Close",
+            "amount": 560000,
+            "close_date": "2024-09-15"
+          },
+          {
+            "name": "Tailspin Azure SQL Migration",
+            "stage": "Prospect",
+            "amount": 125000,
+            "close_date": "2024-10-05"
+          },
+          {
+            "name": "Tailspin Dynamics 365 Implementation",
+            "stage": "Propose",
+            "amount": 45000,
+            "close_date": "2024-08-10"
+          }
+        ],
+        "acr_current": 122043.29,
+        "health_flag": "Healthy",
+        "owner": "Raj Mehta"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: consumption trend Discussion - Tailspin Toys\nDate: 2024-03-09\nDuration: 45 minutes\nAttendees: Steven Wilson (Tailspin Toys), Raj Mehta (Microsoft)\n\n[00:01:30] Steven Wilson (Tailspin Toys): Thanks everyone for joining. Let's dive into consumption trend.\n\n[00:06:00] Raj Mehta (Microsoft): Our architect reviewed this and has concerns about cost optimization. Can we address those?\n\n[00:09:00] Steven Wilson (Tailspin Toys): On the consumption trend front, we've made progress but there are still blockers around partner engagement.\n\n[00:13:00] Steven Wilson (Tailspin Toys): The timeline for integration complexity is aggressive. We need to validate the assumptions.\n\n[00:15:00] Raj Mehta (Microsoft): I agree with that assessment. From our side, the main concern is vendor dependencies.\n\n[00:20:00] Raj Mehta (Microsoft): I agree with that assessment. From our side, the main concern is technical validation.\n\n[00:24:00] Raj Mehta (Microsoft): On the consumption trend front, we've made progress but there are still blockers around budget approval.\n\n[00:26:00] Steven Wilson (Tailspin Toys): I agree with that assessment. From our side, the main concern is performance requirements.\n\n[00:29:00] Raj Mehta (Microsoft): I agree with that assessment. From our side, the main concern is timeline constraints.",
+      "metadata": {
+        "freshness": "2024-01-12T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "security_alert",
+            "detail": "Signal detected for Tailspin Toys: the cost projections need to factor in reserved instance pricing for accuracy",
+            "date": "2024-03-06"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-10T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "data-fresh",
+    "persona-geo-apac",
+    "routing-clear",
+    "persona-segment-smb-small"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "funding-partner-activation-coach",
+        "condition": "funding or partner evaluation needed"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "partner-triangulation-transcript-->-plan-distribut",
+    "required_artifacts": [
+      "Tri-party action distribution (MS/partner/customer owners)",
+      "funding eligibility assessment",
+      "follow-up sequence with tri-party coordination",
+      "conflict-of-interest check"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF51-I trap (Invents partner capability not in transcript); produces complete Tri-party action distribution (MS/partner/customer owners), funding eligibility assessment, follow-u",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF51-I failure pattern",
+      "Score 1: Output exhibits the full FM-WF51-I failure mode (Invents partner capability not in transcript)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct consumption trend decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF51-I -- Invents partner capability not in transcript"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

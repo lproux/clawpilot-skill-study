@@ -1,0 +1,114 @@
+{
+  "scenario_id": "WF-46-00007",
+  "workflow_id": "WF-46",
+  "workflow_name": "Objection-Handling Transcript -> Competitive Counter",
+  "seed": 4600049,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF46-E",
+  "persona": "DSSP",
+  "fixture_id": "FX-007",
+  "user_message": "Can you extract the migration architecture from this support ticket for Litware Inc? This is a renewal account with declining consumption.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Litware Inc",
+        "account_id": "ACC-658MPDXQ",
+        "opportunities": [
+          {
+            "name": "Litware Security Modernization",
+            "stage": "Prospect",
+            "amount": 280000,
+            "close_date": "2024-09-23"
+          }
+        ],
+        "acr_current": 76577.96,
+        "health_flag": "Healthy",
+        "owner": "David Chen"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: migration architecture Discussion - Litware Inc\nDate: 2024-01-18\nDuration: 45 minutes\nAttendees: Sarah Wilson (Litware Inc), David Chen (Microsoft), David (Litware Inc)\n\n[00:02:00] Sarah Wilson (Litware Inc): Good morning. I wanted to follow up on migration architecture from our last session.\n\n[00:05:00] David (Litware Inc): The timeline for cost optimization is aggressive. We need to validate the assumptions.\n\n[00:10:00] David Chen (Microsoft): Our architect reviewed this and has concerns about technical validation. Can we address those?\n\n[00:13:00] David Chen (Microsoft): The timeline for integration complexity is aggressive. We need to validate the assumptions.\n\n[00:17:00] David (Litware Inc): The timeline for performance requirements is aggressive. We need to validate the assumptions.\n\n[00:19:00] David (Litware Inc): The timeline for data residency is aggressive. We need to validate the assumptions.",
+      "metadata": {
+        "freshness": "2024-01-26T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "contract_event",
+            "detail": "Signal detected for Litware Inc: the existing infrastructure won't support the target workload without upgrades",
+            "date": "2024-03-11"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-09T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "routing-clear",
+    "persona-role-dssp",
+    "data-fresh"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "solution-value-design-coach",
+        "condition": "competitive positioning research needed"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "objection-handling-transcript-->-competitive-count",
+    "required_artifacts": [
+      "Objection inventory with root-cause analysis",
+      "counter-positioning per objection",
+      "response draft",
+      "next-meeting tactics",
+      "proof-point needs"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF46-E trap (Skips 'is this real objection or stalling tactic' assessment); produces complete Objection inventory with root-cause analysis, counter-positioning per objection, response draft, nex",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF46-E failure pattern",
+      "Score 1: Output exhibits the full FM-WF46-E failure mode (Skips 'is this real objection or stalling tactic' assessment)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct migration architecture decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF46-E -- Skips 'is this real objection or stalling tactic' assessment"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

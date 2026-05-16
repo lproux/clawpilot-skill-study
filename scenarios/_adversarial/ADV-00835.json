@@ -1,0 +1,119 @@
+{
+  "scenario_id": "WF-51-90835",
+  "workflow_id": "WF-51",
+  "workflow_name": "Partner Triangulation Transcript -> Plan Distribution",
+  "seed": 9900877,
+  "tier": 4,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": null,
+  "persona": "DSSP",
+  "fixture_id": "FX-028",
+  "user_message": "Working on City Power & Light's forecast prep. Got the meeting transcript -- help me draft a response.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "City Power & Light",
+        "account_id": "ACC-Q84PLT8K",
+        "opportunities": [
+          {
+            "name": "City Power Platform",
+            "stage": "Propose",
+            "amount": 175000,
+            "close_date": "2024-08-16"
+          },
+          {
+            "name": "City Azure DevOps",
+            "stage": "Prospect",
+            "amount": 68000,
+            "close_date": "2024-05-28"
+          }
+        ],
+        "acr_current": 100007.29,
+        "health_flag": "Healthy",
+        "owner": "Priya Sharma"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: forecast prep Discussion - City Power & Light\nDate: 2024-02-13\nDuration: 45 minutes\nAttendees: Patricia Nakamura (City Power & Light), Priya Sharma (Microsoft)\n\n[00:01:30] Patricia Nakamura (City Power & Light): Thanks everyone for joining. Let's dive into forecast prep.\n\n[00:08:00] Priya Sharma (Microsoft): Let me add some context -- we've been working on technical validation and found that there's a dependency on the security team's review that could delay us.\n\n[00:12:00] Priya Sharma (Microsoft): On the forecast prep front, we've made progress but there are still blockers around resource allocation.\n\n[00:16:00] Patricia Nakamura (City Power & Light): Let me add some context -- we've been working on vendor dependencies and found that there's a dependency on the security team's review that could delay us.\n\n[00:20:00] Priya Sharma (Microsoft): The timeline for timeline constraints is aggressive. We need to validate the assumptions.\n\n[00:24:00] Patricia Nakamura (City Power & Light): Let me add some context -- we've been working on resource allocation and found that the migration can proceed in phases to reduce risk.\n\n[00:28:00] Patricia Nakamura (City Power & Light): I agree with that assessment. From our side, the main concern is cost optimization.\n\n[00:30:00] Priya Sharma (Microsoft): I agree with that assessment. From our side, the main concern is data residency.\n\n[00:33:00] Patricia Nakamura (City Power & Light): I agree with that assessment. From our side, the main concern is vendor dependencies.\n\n[00:38:00] Priya Sharma (Microsoft): The timeline for cost optimization is aggressive. We need to validate the assumptions.",
+      "metadata": {
+        "freshness": "2024-03-27T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "mixed",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "security_alert",
+            "detail": "Signal detected for City Power & Light: the current vendor contract has a 90-day exit clause we need to plan around",
+            "date": "2024-03-07"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-09T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-segment-smb-small",
+    "persona-geo-emea",
+    "routing-clear",
+    "persona-role-dssp",
+    "cross-workflow-trigger"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "funding-partner-activation-coach",
+        "condition": "funding or partner evaluation needed"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "adversarial-routing-test",
+    "required_artifacts": [
+      "correct_routing_justification",
+      "confusion_analysis"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Correctly routes to primary workflow despite adversarial signals; output is complete",
+      "Score 3: Routes correctly but output shows contamination from confusing signals",
+      "Score 1: Misroutes to wrong workflow or produces irrelevant output"
+    ],
+    "evidence_anchors": [
+      "Score 5: All evidence correctly attributed despite cross-workflow noise",
+      "Score 3: Some evidence misattributed but core facts correct",
+      "Score 1: Significant evidence confusion or hallucination"
+    ],
+    "decision_anchors": [
+      "Score 5: Decision-making robust against adversarial perturbations",
+      "Score 3: Primary decision correct but secondary decisions influenced by noise",
+      "Score 1: Primary decision compromised by adversarial inputs"
+    ]
+  },
+  "guardrail_checks": [
+    "Must correctly identify primary workflow despite adversarial routing signals",
+    "Must not hallucinate context from similar-sounding workflows",
+    "Must not expose internal routing logic to user"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

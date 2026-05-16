@@ -1,0 +1,119 @@
+{
+  "scenario_id": "WF-48-00162",
+  "workflow_id": "WF-48",
+  "workflow_name": "Roadmap Meeting Transcript -> Forecast Sequencing",
+  "seed": 4800204,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF48-H",
+  "persona": "CSA",
+  "fixture_id": "FX-017",
+  "user_message": "Michael Petrov at Humongous Insurance just sent this. Help me triage this.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Humongous Insurance",
+        "account_id": "ACC-3AB2FT8E",
+        "opportunities": [
+          {
+            "name": "Humongous Cloud Migration Phase",
+            "stage": "Qualify",
+            "amount": 175000,
+            "close_date": "2023-10-27"
+          }
+        ],
+        "acr_current": 73720.59,
+        "health_flag": "Healthy",
+        "owner": "David Chen"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: partner engagement Discussion - Humongous Insurance\nDate: 2024-02-10\nDuration: 45 minutes\nAttendees: Michael Petrov (Humongous Insurance), David Chen (Microsoft)\n\n[00:01:30] Michael Petrov (Humongous Insurance): Thanks everyone for joining. Let's dive into partner engagement.\n\n[00:08:00] David Chen (Microsoft): Let me add some context -- we've been working on timeline constraints and found that there's a dependency on the security team's review that could delay us.\n\n[00:13:00] Michael Petrov (Humongous Insurance): I agree with that assessment. From our side, the main concern is performance requirements.\n\n[00:18:00] Michael Petrov (Humongous Insurance): On the partner engagement front, we've made progress but there are still blockers around vendor dependencies.\n\n[00:23:00] David Chen (Microsoft): The timeline for vendor dependencies is aggressive. We need to validate the assumptions.\n\n[00:25:00] David Chen (Microsoft): On the partner engagement front, we've made progress but there are still blockers around vendor dependencies.\n\n[00:28:00] Michael Petrov (Humongous Insurance): On the partner engagement front, we've made progress but there are still blockers around partner engagement.\n\n[00:32:00] Michael Petrov (Humongous Insurance): Our VP reviewed this and has concerns about vendor dependencies. Can we address those?\n\n[00:37:00] Michael Petrov (Humongous Insurance): The timeline for data residency is aggressive. We need to validate the assumptions.\n\n[00:40:00] Michael Petrov (Humongous Insurance): Our team lead reviewed this and has concerns about stakeholder alignment. Can we address those?\n\n[00:42:00] David Chen (Microsoft): Let me add some context -- we've been working on cost optimization and found that the cost projections need to factor in reserved instance pricing for accuracy.",
+      "metadata": {
+        "freshness": "2024-03-02T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "security_alert",
+            "detail": "Signal detected for Humongous Insurance: the current vendor contract has a 90-day exit clause we need to plan around",
+            "date": "2024-03-11"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "data-stale",
+    "persona-geo-latam",
+    "persona-tenure-senior",
+    "persona-segment-smb-small"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "milestone and date updates needed"
+      },
+      {
+        "target_skill": "forecast-business-review-coach",
+        "condition": "forecast sequencing affected"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "roadmap-meeting-transcript-->-forecast-sequencing",
+    "required_artifacts": [
+      "Roadmap-to-forecast mapping",
+      "milestone date proposals",
+      "opportunity sequencing",
+      "new opportunity proposals (if signaled)",
+      "forecast impact with confidence"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF48-H trap (Skips opportunity-creation when newly-signaled workload was clear); produces complete Roadmap-to-forecast mapping, milestone date proposals, opportunity sequencing, new opportunity propo",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF48-H failure pattern",
+      "Score 1: Output exhibits the full FM-WF48-H failure mode (Skips opportunity-creation when newly-signaled workload was clear)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct partner engagement decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF48-H -- Skips opportunity-creation when newly-signaled workload was clear"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

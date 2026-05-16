@@ -1,0 +1,108 @@
+{
+  "scenario_id": "WF-52-00148",
+  "workflow_id": "WF-52",
+  "workflow_name": "Internal Account Review Transcript -> Team Actions",
+  "seed": 5200190,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF52-K",
+  "persona": "DSSP",
+  "fixture_id": "FX-039",
+  "user_message": "Can you extract the QBR preparation from this email thread for Fabrikam Residences? This is a renewal account with declining consumption.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Fabrikam Residences",
+        "account_id": "ACC-5JSOIRD0",
+        "opportunities": [
+          {
+            "name": "Fabrikam Power Platform",
+            "stage": "Prospect",
+            "amount": 175000,
+            "close_date": "2024-06-08"
+          },
+          {
+            "name": "Fabrikam Cloud Migration Phase",
+            "stage": "Develop",
+            "amount": 450000,
+            "close_date": "2024-11-24"
+          }
+        ],
+        "acr_current": 32488.07,
+        "health_flag": "Healthy",
+        "owner": "Tom Rodriguez"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: QBR preparation Discussion - Fabrikam Residences\nDate: 2024-01-28\nDuration: 45 minutes\nAttendees: Kevin Lee (Fabrikam Residences), Tom Rodriguez (Microsoft), Kevin (Fabrikam Residences)\n\n[00:02:00] Kevin Lee (Fabrikam Residences): Good morning. I wanted to follow up on QBR preparation from our last session.\n\n[00:06:00] Tom Rodriguez (Microsoft): On the QBR preparation front, we've made progress but there are still blockers around stakeholder alignment.\n\n[00:08:00] Kevin Lee (Fabrikam Residences): On the QBR preparation front, we've made progress but there are still blockers around security compliance.\n\n[00:11:00] Kevin (Fabrikam Residences): Let me add some context -- we've been working on budget approval and found that there's a compliance requirement we hadn't accounted for in the original scope.\n\n[00:15:00] Tom Rodriguez (Microsoft): Let me add some context -- we've been working on integration complexity and found that the cost projections need to factor in reserved instance pricing for accuracy.\n\n[00:20:00] Kevin Lee (Fabrikam Residences): Let me add some context -- we've been working on resource allocation and found that the cost projections need to factor in reserved instance pricing for accuracy.\n\n[00:24:00] Kevin (Fabrikam Residences): Our director reviewed this and has concerns about partner engagement. Can we address those?\n\n[00:29:00] Tom Rodriguez (Microsoft): On the QBR preparation front, we've made progress but there are still blockers around vendor dependencies.\n\n[00:32:00] Kevin Lee (Fabrikam Residences): On the QBR preparation front, we've made progress but there are still blockers around security compliance.",
+      "metadata": {
+        "freshness": "2024-03-01T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "short"
+      }
+    }
+  ],
+  "perturbations": [
+    "data-inconsistent",
+    "persona-geo-emea",
+    "persona-role-dssp"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "forecast-business-review-coach",
+        "condition": "team coaching or risk review input"
+      },
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "MSX updates warranted from review"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "internal-account-review-transcript-->-team-actions",
+    "required_artifacts": [
+      "Team action items with owners",
+      "coaching notes (constructive frame)",
+      "customer-facing draft (sanitized)",
+      "manager decision items",
+      "MSX update proposals"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF52-K trap (MSX update proposals duplicate items already tracked); produces complete Team action items with owners, coaching notes (constructive frame), customer-facing draft (sanitized",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF52-K failure pattern",
+      "Score 1: Output exhibits the full FM-WF52-K failure mode (MSX update proposals duplicate items already tracked)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct QBR preparation decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF52-K -- MSX update proposals duplicate items already tracked"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "scenario_id": "WF-31-00123",
+  "workflow_id": "WF-31",
+  "workflow_name": "SL4 Customer 360 Forecast Roll-Up",
+  "seed": 3100165,
+  "tier": 3,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF31-F",
+  "persona": "CSA",
+  "fixture_id": "FX-039",
+  "user_message": "Kevin Lee at Fabrikam Residences just sent this. Help me identify the blockers.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Fabrikam Residences",
+        "account_id": "ACC-5JSOIRD0",
+        "opportunities": [
+          {
+            "name": "Fabrikam Power Platform",
+            "stage": "Prospect",
+            "amount": 175000,
+            "close_date": "2024-06-08"
+          },
+          {
+            "name": "Fabrikam Cloud Migration Phase",
+            "stage": "Develop",
+            "amount": 450000,
+            "close_date": "2024-11-24"
+          }
+        ],
+        "acr_current": 32488.07,
+        "health_flag": "Healthy",
+        "owner": "Tom Rodriguez"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "consumption_decline",
+            "detail": "Signal detected for Fabrikam Residences: the migration can proceed in phases to reduce risk",
+            "date": "2024-03-11"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-09T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-tenure-mid",
+    "persona-geo-emea"
+  ],
+  "expected_routing": {
+    "entry_skill": "forecast-business-review-coach",
+    "modules": [
+      "committed-milestone-forecast"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "solution-value-design-coach",
+        "condition": "Customer 360 unavailable, Kusto BI fallback needed"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "sl4-customer-360-forecast-roll-up",
+    "required_artifacts": [
+      "SL4-level forecast rollup with source attribution",
+      "hierarchy alignment",
+      "period boundary reconciliation"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF31-F trap (Mismatches milestone-record SL4 alignment to consumption SL4); produces complete SL4-level forecast rollup with source attribution, hierarchy alignment, period boundary reconciliati",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF31-F failure pattern",
+      "Score 1: Output exhibits the full FM-WF31-F failure mode (Mismatches milestone-record SL4 alignment to consumption SL4)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct consumption trend decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF31-F -- Mismatches milestone-record SL4 alignment to consumption SL4"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

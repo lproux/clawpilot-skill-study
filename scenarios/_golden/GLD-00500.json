@@ -1,0 +1,146 @@
+{
+  "scenario_id": "WF-32-80500",
+  "workflow_id": "WF-32",
+  "workflow_name": "Calendar Pre-Pack Automation",
+  "seed": 8800542,
+  "tier": 4,
+  "intent": "happy",
+  "targeted_failure_mode": null,
+  "persona": "Manager",
+  "fixture_id": "FX-001",
+  "user_message": "[AUTOMATION TRIGGER] Scheduled Calendar event with non-Microsoft external attendee detected initiated for Contoso Ltd.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Contoso Ltd",
+        "account_id": "ACC-VWW2DK8X",
+        "opportunities": [
+          {
+            "name": "Contoso Power Platform",
+            "stage": "Propose",
+            "amount": 560000,
+            "close_date": "2024-12-28"
+          }
+        ],
+        "acr_current": 78949.7,
+        "health_flag": "Healthy",
+        "owner": "Marcus Williams"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Angela Doyle <angela.doyle@contosoltd.com>\nTo: Marcus Williams <marcus.williams@microsoft.com>\nDate: 2024-03-11 09:41 EST\nSubject: Re: Re: whitespace analysis Timeline\n\nJust checking in on the whitespace analysis proposal. Our Director of IT is asking for a status update before the board meeting next week.\n\n---\nFrom: Marcus Williams <marcus.williams@microsoft.com>\nTo: Angela Doyle <angela.doyle@contosoltd.com>\nDate: 2024-02-23 15:24 EST\nSubject: whitespace analysis - Action Required\n\nThere's been a change in our timeline for whitespace analysis. Can we discuss the implications on the overall project plan?\n\n---\nFrom: Angela Doyle <angela.doyle@contosoltd.com>\nTo: Marcus Williams <marcus.williams@microsoft.com>\nDate: 2024-01-15 12:10 EST\nSubject: Re: whitespace analysis Discussion - Next Steps\n\nThank you for the discussion last week. We'd like to move forward with whitespace analysis. Can we schedule a call this week to finalize the timeline?",
+      "metadata": {
+        "freshness": "2024-03-08T15:00:00-05:00",
+        "source": "outlook",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: whitespace analysis Discussion - Contoso Ltd\nDate: 2024-01-04\nDuration: 45 minutes\nAttendees: Angela Doyle (Contoso Ltd), Marcus Williams (Microsoft), Kevin (Contoso Ltd)\n\n[00:01:15] Angela Doyle (Contoso Ltd): Appreciate everyone making time. The main agenda today is whitespace analysis.\n\n[00:05:00] Kevin (Contoso Ltd): Let me add some context -- we've been working on cost optimization and found that the existing infrastructure won't support the target workload without upgrades.\n\n[00:08:00] Kevin (Contoso Ltd): Let me add some context -- we've been working on cost optimization and found that there's a dependency on the security team's review that could delay us.\n\n[00:13:00] Angela Doyle (Contoso Ltd): Let me add some context -- we've been working on vendor dependencies and found that the current vendor contract has a 90-day exit clause we need to plan around.\n\n[00:15:00] Angela Doyle (Contoso Ltd): The timeline for partner engagement is aggressive. We need to validate the assumptions.\n\n[00:20:00] Angela Doyle (Contoso Ltd): On the whitespace analysis front, we've made progress but there are still blockers around stakeholder alignment.\n\n[00:23:00] Kevin (Contoso Ltd): Our director reviewed this and has concerns about timeline constraints. Can we address those?\n\n[00:27:00] Kevin (Contoso Ltd): Let me add some context -- we've been working on budget approval and found that the cost projections need to factor in reserved instance pricing for accuracy.\n\n[00:32:00] Kevin (Contoso Ltd): Let me add some context -- we've been working on integration complexity and found that the cost projections need to factor in reserved instance pricing for accuracy.\n\n[00:36:00] Marcus Williams (Microsoft): I agree with that assessment. From our side, the main concern is partner engagement.",
+      "metadata": {
+        "freshness": "2024-02-26T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Contoso Ltd - whitespace analysis",
+        "start": "2024-03-11T16:00:00-05:00",
+        "end": "2024-03-15T15:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Marcus Williams",
+            "email": "marcus.williams@microsoft.com"
+          },
+          {
+            "name": "Angela Doyle",
+            "email": "angela.doyle@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "consumption_decline",
+            "detail": "Signal detected for Contoso Ltd: the existing infrastructure won't support the target workload without upgrades",
+            "date": "2024-03-11"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-10T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "routing-clear",
+    "data-fresh",
+    "persona-role-manager"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "meeting-prep",
+      "contact-stakeholder-map",
+      "email-chat-context"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "portfolio-account-planning-coach",
+        "condition": "meeting is for account CSA should have declined"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "calendar-pre-pack-automation",
+    "required_artifacts": [
+      "Pre-pack brief with attendee context",
+      "account snapshot",
+      "talking points",
+      "likely objections",
+      "open items"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Perfect execution of the golden-path workflow with all artifacts complete and actionable",
+      "Score 3: Core output correct but missing polish or one secondary artifact",
+      "Score 1: Fails to produce expected output for a clean, unambiguous request"
+    ],
+    "evidence_anchors": [
+      "Score 5: All evidence correctly sourced and attributed; no hallucination",
+      "Score 3: Minor attribution gap but no fabrication",
+      "Score 1: Evidence fabricated or significantly misattributed"
+    ],
+    "decision_anchors": [
+      "Score 5: All decisions correct for this straightforward scenario",
+      "Score 3: Primary decision correct; minor secondary issue",
+      "Score 1: Primary decision wrong despite clear inputs"
+    ]
+  },
+  "guardrail_checks": [
+    "Clean golden-path scenario -- all guardrails should pass trivially",
+    "Must not over-complicate a straightforward request"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

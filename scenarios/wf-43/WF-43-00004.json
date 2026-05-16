@@ -1,0 +1,102 @@
+{
+  "scenario_id": "WF-43-00004",
+  "workflow_id": "WF-43",
+  "workflow_name": "Discovery Call Transcript -> Opportunity Build",
+  "seed": 4300046,
+  "tier": 4,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": "FM-WF43-P",
+  "persona": "DSSP",
+  "fixture_id": "FX-001",
+  "user_message": "Working on Contoso Ltd's escalation triage. Got the support ticket -- help me prepare the forecast.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Contoso Ltd",
+        "account_id": "ACC-VWW2DK8X",
+        "opportunities": [
+          {
+            "name": "Contoso Power Platform",
+            "stage": "Propose",
+            "amount": 560000,
+            "close_date": "2024-12-28"
+          }
+        ],
+        "acr_current": 78949.7,
+        "health_flag": "Healthy",
+        "owner": "Marcus Williams"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: escalation triage Discussion - Contoso Ltd\nDate: 2024-01-08\nDuration: 45 minutes\nAttendees: Angela Doyle (Contoso Ltd), Marcus Williams (Microsoft), Priya (Contoso Ltd)\n\n[00:02:00] Angela Doyle (Contoso Ltd): Good morning. I wanted to follow up on escalation triage from our last session.\n\n[00:05:00] Marcus Williams (Microsoft): I agree with that assessment. From our side, the main concern is integration complexity.\n\n[00:08:00] Marcus Williams (Microsoft): The timeline for integration complexity is aggressive. We need to validate the assumptions.\n\n[00:11:00] Priya (Contoso Ltd): I agree with that assessment. From our side, the main concern is data residency.\n\n[00:14:00] Angela Doyle (Contoso Ltd): I agree with that assessment. From our side, the main concern is vendor dependencies.\n\n[00:19:00] Priya (Contoso Ltd): Let me add some context -- we've been working on timeline constraints and found that the existing infrastructure won't support the target workload without upgrades.\n\n[00:24:00] Priya (Contoso Ltd): Let me add some context -- we've been working on security compliance and found that the existing infrastructure won't support the target workload without upgrades.\n\n[00:29:00] Marcus Williams (Microsoft): I agree with that assessment. From our side, the main concern is resource allocation.\n\n[00:33:00] Priya (Contoso Ltd): The timeline for security compliance is aggressive. We need to validate the assumptions.\n\n[00:35:00] Angela Doyle (Contoso Ltd): Our director reviewed this and has concerns about cost optimization. Can we address those?\n\n[00:39:00] Angela Doyle (Contoso Ltd): On the escalation triage front, we've made progress but there are still blockers around resource allocation.",
+      "metadata": {
+        "freshness": "2024-02-17T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "long"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-segment-smb-corporate",
+    "routing-clear"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "opportunity creation warranted"
+      },
+      {
+        "target_skill": "solution-value-design-coach",
+        "condition": "solution sketch needed from discovery signals"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "discovery-call-transcript-->-opportunity-build",
+    "required_artifacts": [
+      "BANT signal extraction with evidence quotes",
+      "opportunity proposal with stage/value/close-date",
+      "confidence labels",
+      "solution sketch suggestion",
+      "follow-up actions"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF43-P trap (Opportunity creation routes through pipeline-hygiene when CSA could commit direc); produces complete BANT signal extraction with evidence quotes, opportunity proposal with stage/value/close-date, confi",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF43-P failure pattern",
+      "Score 1: Output exhibits the full FM-WF43-P failure mode (Opportunity creation routes through pipeline-hygiene when CSA could commit direc)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct escalation triage decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF43-P -- Opportunity creation routes through pipeline-hygiene when CSA could commit direc",
+    "Guardrail axis scored neutrally -- focus on whether output served the user's actual need"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

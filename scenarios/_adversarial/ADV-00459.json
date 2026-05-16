@@ -1,0 +1,117 @@
+{
+  "scenario_id": "WF-46-90459",
+  "workflow_id": "WF-46",
+  "workflow_name": "Objection-Handling Transcript -> Competitive Counter",
+  "seed": 9900501,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": null,
+  "persona": "DSSP",
+  "fixture_id": "FX-002",
+  "user_message": "Can you extract the renewal risk from this email thread for Fabrikam Inc? I met with them last week but can't remember the details.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Fabrikam Inc",
+        "account_id": "ACC-L0850H8R",
+        "opportunities": [
+          {
+            "name": "Fabrikam Dynamics 365 Implementation",
+            "stage": "Close",
+            "amount": 560000,
+            "close_date": "2024-05-11"
+          },
+          {
+            "name": "Fabrikam Security Modernization",
+            "stage": "Qualify",
+            "amount": 280000,
+            "close_date": "2024-04-13"
+          }
+        ],
+        "acr_current": 10580.82,
+        "health_flag": "Healthy",
+        "owner": "Lisa Patel"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: renewal risk Discussion - Fabrikam Inc\nDate: 2024-01-28\nDuration: 45 minutes\nAttendees: Ryan Patel (Fabrikam Inc), Lisa Patel (Microsoft)\n\n[00:01:15] Ryan Patel (Fabrikam Inc): Appreciate everyone making time. The main agenda today is renewal risk.\n\n[00:06:00] Ryan Patel (Fabrikam Inc): The timeline for budget approval is aggressive. We need to validate the assumptions.\n\n[00:10:00] Lisa Patel (Microsoft): The timeline for resource allocation is aggressive. We need to validate the assumptions.\n\n[00:14:00] Lisa Patel (Microsoft): The timeline for vendor dependencies is aggressive. We need to validate the assumptions.\n\n[00:19:00] Lisa Patel (Microsoft): On the renewal risk front, we've made progress but there are still blockers around vendor dependencies.\n\n[00:24:00] Lisa Patel (Microsoft): The timeline for budget approval is aggressive. We need to validate the assumptions.\n\n[00:26:00] Lisa Patel (Microsoft): The timeline for data residency is aggressive. We need to validate the assumptions.",
+      "metadata": {
+        "freshness": "2024-01-09T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "deployment_blocker",
+            "detail": "Signal detected for Fabrikam Inc: there's a compliance requirement we hadn't accounted for in the original scope",
+            "date": "2024-03-11"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "signal-strength-noisy",
+    "persona-segment-smb-small",
+    "routing-trap"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "solution-value-design-coach",
+        "condition": "competitive positioning research needed"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "adversarial-routing-test",
+    "required_artifacts": [
+      "correct_routing_justification",
+      "confusion_analysis"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Correctly routes to primary workflow despite adversarial signals; output is complete",
+      "Score 3: Routes correctly but output shows contamination from confusing signals",
+      "Score 1: Misroutes to wrong workflow or produces irrelevant output"
+    ],
+    "evidence_anchors": [
+      "Score 5: All evidence correctly attributed despite cross-workflow noise",
+      "Score 3: Some evidence misattributed but core facts correct",
+      "Score 1: Significant evidence confusion or hallucination"
+    ],
+    "decision_anchors": [
+      "Score 5: Decision-making robust against adversarial perturbations",
+      "Score 3: Primary decision correct but secondary decisions influenced by noise",
+      "Score 1: Primary decision compromised by adversarial inputs"
+    ]
+  },
+  "guardrail_checks": [
+    "Must correctly identify primary workflow despite adversarial routing signals",
+    "Must not hallucinate context from similar-sounding workflows",
+    "Must not expose internal routing logic to user"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

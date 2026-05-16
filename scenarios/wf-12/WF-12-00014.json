@@ -1,0 +1,128 @@
+{
+  "scenario_id": "WF-12-00014",
+  "workflow_id": "WF-12",
+  "workflow_name": "Post-Meeting Follow-Up",
+  "seed": 1200056,
+  "tier": 3,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF12-E",
+  "persona": "Manager",
+  "fixture_id": "FX-021",
+  "user_message": "I need you to process this meeting transcript from Nod Publishers. Multiple stakeholders are involved -- it's complex.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Nod Publishers",
+        "account_id": "ACC-BFJJI6LY",
+        "opportunities": [
+          {
+            "name": "Nod Azure SQL Migration",
+            "stage": "Close",
+            "amount": 45000,
+            "close_date": "2023-10-06"
+          },
+          {
+            "name": "Nod Intune Rollout",
+            "stage": "Develop",
+            "amount": 560000,
+            "close_date": "2024-12-16"
+          }
+        ],
+        "acr_current": 111088.58,
+        "health_flag": "At Risk",
+        "owner": "Marcus Williams"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: forecast prep Discussion - Nod Publishers\nDate: 2024-02-09\nDuration: 45 minutes\nAttendees: Samantha Singh (Nod Publishers), Marcus Williams (Microsoft), Priya (Nod Publishers)\n\n[00:01:30] Samantha Singh (Nod Publishers): Thanks everyone for joining. Let's dive into forecast prep.\n\n[00:08:00] Marcus Williams (Microsoft): I agree with that assessment. From our side, the main concern is resource allocation.\n\n[00:13:00] Samantha Singh (Nod Publishers): Let me add some context -- we've been working on integration complexity and found that the current vendor contract has a 90-day exit clause we need to plan around.\n\n[00:15:00] Priya (Nod Publishers): The timeline for stakeholder alignment is aggressive. We need to validate the assumptions.\n\n[00:19:00] Priya (Nod Publishers): Let me add some context -- we've been working on data residency and found that the existing infrastructure won't support the target workload without upgrades.\n\n[00:21:00] Priya (Nod Publishers): Let me add some context -- we've been working on data residency and found that the migration can proceed in phases to reduce risk.\n\n[00:26:00] Marcus Williams (Microsoft): I agree with that assessment. From our side, the main concern is performance requirements.\n\n[00:31:00] Priya (Nod Publishers): The timeline for budget approval is aggressive. We need to validate the assumptions.\n\n[00:34:00] Marcus Williams (Microsoft): Our VP reviewed this and has concerns about technical validation. Can we address those?\n\n[00:39:00] Marcus Williams (Microsoft): On the forecast prep front, we've made progress but there are still blockers around security compliance.\n\n[00:43:00] Priya (Nod Publishers): The timeline for cost optimization is aggressive. We need to validate the assumptions.",
+      "metadata": {
+        "freshness": "2024-03-02T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Nod Publishers - forecast prep",
+        "start": "2024-03-14T15:00:00-05:00",
+        "end": "2024-03-15T11:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Marcus Williams",
+            "email": "marcus.williams@microsoft.com"
+          },
+          {
+            "name": "Samantha Singh",
+            "email": "samantha.singh@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-segment-smb-mid",
+    "persona-role-manager",
+    "persona-geo-apac",
+    "persona-tenure-senior"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions",
+      "email-chat-context"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "MSX updates warranted from meeting outcomes"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "post-meeting-follow-up",
+    "required_artifacts": [
+      "Decision log",
+      "action items with owners and due dates",
+      "customer-facing follow-up email draft",
+      "MSX writeback proposals"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF12-E trap (Follow-up email tone doesn't match meeting register); produces complete Decision log, action items with owners and due dates, customer-facing follow-up email draft, MSX wri",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF12-E failure pattern",
+      "Score 1: Output exhibits the full FM-WF12-E failure mode (Follow-up email tone doesn't match meeting register)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct forecast prep decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF12-E -- Follow-up email tone doesn't match meeting register",
+    "Write proposals must require explicit user approval"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

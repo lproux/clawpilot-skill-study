@@ -1,0 +1,95 @@
+{
+  "scenario_id": "WF-15-00008",
+  "workflow_id": "WF-15",
+  "workflow_name": "Visual Meeting Packet (Executive Brief)",
+  "seed": 1500050,
+  "tier": 3,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF15-B",
+  "persona": "Manager",
+  "fixture_id": "FX-009",
+  "user_message": "Just came out of pipeline hygiene with VanArsdel Ltd. Turn this into my brief and pull out the asks.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "VanArsdel Ltd",
+        "account_id": "ACC-3ORLVDXJ",
+        "opportunities": [
+          {
+            "name": "VanArsdel Data Platform Migration",
+            "stage": "Propose",
+            "amount": 210000,
+            "close_date": "2024-06-13"
+          },
+          {
+            "name": "VanArsdel M365 E5 Upsell",
+            "stage": "Prospect",
+            "amount": 280000,
+            "close_date": "2024-06-13"
+          },
+          {
+            "name": "VanArsdel Power Platform",
+            "stage": "Prospect",
+            "amount": 350000,
+            "close_date": "2024-09-08"
+          }
+        ],
+        "acr_current": 68769.78,
+        "health_flag": "Healthy",
+        "owner": "Tom Rodriguez"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-role-manager",
+    "persona-segment-smb-mid",
+    "persona-geo-na"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "meeting-prep",
+      "contact-stakeholder-map"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "visual-meeting-packet-(executive-brief)",
+    "required_artifacts": [
+      "Visual executive packet with cover page",
+      "exec summary",
+      "opportunity ladder",
+      "solution narrative",
+      "asks section"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF15-B trap (Produces text-only output (defeats the visual purpose)); produces complete Visual executive packet with cover page, exec summary, opportunity ladder, solution narrative, asks ",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF15-B failure pattern",
+      "Score 1: Output exhibits the full FM-WF15-B failure mode (Produces text-only output (defeats the visual purpose))"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct pipeline hygiene decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF15-B -- Produces text-only output (defeats the visual purpose)"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

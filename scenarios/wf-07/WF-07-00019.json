@@ -1,0 +1,116 @@
+{
+  "scenario_id": "WF-07-00019",
+  "workflow_id": "WF-07",
+  "workflow_name": "SPA Triage Friday",
+  "seed": 700061,
+  "tier": 2,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": "FM-WF07-G",
+  "persona": "DSSP",
+  "fixture_id": "FX-031",
+  "user_message": "[AUTOMATION TRIGGER] Scheduled Friday scheduled automation for SPA batch triage initiated for Liberty's Delightful Sinful Bakery.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Liberty's Delightful Sinful Bakery",
+        "account_id": "ACC-A2FZGZWL",
+        "opportunities": [
+          {
+            "name": "Liberty's Dynamics 365 Implementation",
+            "stage": "Develop",
+            "amount": 89000,
+            "close_date": "2024-12-10"
+          },
+          {
+            "name": "Liberty's AKS Deployment",
+            "stage": "Qualify",
+            "amount": 89000,
+            "close_date": "2024-12-24"
+          },
+          {
+            "name": "Liberty's Azure Infrastructure",
+            "stage": "Develop",
+            "amount": 450000,
+            "close_date": "2024-04-08"
+          }
+        ],
+        "acr_current": 0,
+        "health_flag": "Healthy",
+        "owner": "Marcus Williams"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "security_alert",
+            "detail": "Signal detected for Liberty's Delightful Sinful Bakery: the current vendor contract has a 90-day exit clause we need to plan around",
+            "date": "2024-03-06"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-role-dssp",
+    "persona-geo-na",
+    "persona-tenure-mid",
+    "data-partially-missing"
+  ],
+  "expected_routing": {
+    "entry_skill": "acr-signal-to-opportunity-coach",
+    "modules": [
+      "spa-recommendation-triage",
+      "signal-to-opportunity"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "accepted SPA creates opportunity needing MSX write"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "spa-triage-friday",
+    "required_artifacts": [
+      "Per-SPA disposition (accept/decline/escalate) with rationale",
+      "proposed opportunities for accepted SPAs"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF07-G trap (Friday cadence misses urgent mid-week SPAs); produces complete Per-SPA disposition (accept/decline/escalate) with rationale, proposed opportunities for accepted SP",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF07-G failure pattern",
+      "Score 1: Output exhibits the full FM-WF07-G failure mode (Friday cadence misses urgent mid-week SPAs)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct account health decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF07-G -- Friday cadence misses urgent mid-week SPAs",
+    "Guardrail axis scored neutrally -- focus on whether output served the user's actual need"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

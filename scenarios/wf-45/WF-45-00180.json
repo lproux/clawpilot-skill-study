@@ -1,0 +1,134 @@
+{
+  "scenario_id": "WF-45-00180",
+  "workflow_id": "WF-45",
+  "workflow_name": "QBR Transcript -> Health + Whitespace + Renewal Risk",
+  "seed": 4500222,
+  "tier": 4,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": "FM-WF45-M",
+  "persona": "CSA",
+  "fixture_id": "FX-003",
+  "user_message": "Just got this from Sandra Taylor at Northwind Traders -- I need help figuring out partner engagement. This is time-sensitive -- customer is waiting.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Northwind Traders",
+        "account_id": "ACC-X86FSRU2",
+        "opportunities": [
+          {
+            "name": "Northwind Azure Arc Deployment",
+            "stage": "Propose",
+            "amount": 89000,
+            "close_date": "2024-09-05"
+          },
+          {
+            "name": "Northwind Copilot Adoption",
+            "stage": "Develop",
+            "amount": 175000,
+            "close_date": "2024-06-22"
+          },
+          {
+            "name": "Northwind Intune Rollout",
+            "stage": "Close",
+            "amount": 350000,
+            "close_date": "2024-04-19"
+          }
+        ],
+        "acr_current": 54067.74,
+        "health_flag": "Healthy",
+        "owner": "Ahmed Hassan"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: partner engagement Discussion - Northwind Traders\nDate: 2024-01-11\nDuration: 45 minutes\nAttendees: Sandra Taylor (Northwind Traders), Ahmed Hassan (Microsoft)\n\n[00:01:15] Sandra Taylor (Northwind Traders): Appreciate everyone making time. The main agenda today is partner engagement.\n\n[00:08:00] Ahmed Hassan (Microsoft): Our team lead reviewed this and has concerns about performance requirements. Can we address those?\n\n[00:11:00] Ahmed Hassan (Microsoft): Our CTO reviewed this and has concerns about performance requirements. Can we address those?\n\n[00:16:00] Ahmed Hassan (Microsoft): Let me add some context -- we've been working on data residency and found that the current vendor contract has a 90-day exit clause we need to plan around.\n\n[00:18:00] Ahmed Hassan (Microsoft): Our director reviewed this and has concerns about technical validation. Can we address those?\n\n[00:23:00] Ahmed Hassan (Microsoft): The timeline for cost optimization is aggressive. We need to validate the assumptions.\n\n[00:25:00] Ahmed Hassan (Microsoft): The timeline for resource allocation is aggressive. We need to validate the assumptions.\n\n[00:29:00] Sandra Taylor (Northwind Traders): On the partner engagement front, we've made progress but there are still blockers around integration complexity.\n\n[00:31:00] Sandra Taylor (Northwind Traders): Let me add some context -- we've been working on partner engagement and found that the current vendor contract has a 90-day exit clause we need to plan around.\n\n[00:35:00] Sandra Taylor (Northwind Traders): I agree with that assessment. From our side, the main concern is resource allocation.",
+      "metadata": {
+        "freshness": "2024-03-28T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "contract_event",
+            "detail": "Signal detected for Northwind Traders: the current vendor contract has a 90-day exit clause we need to plan around",
+            "date": "2024-03-11"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-09T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "data-fresh",
+    "routing-ambiguous-2skills"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "portfolio-account-planning-coach",
+        "condition": "health assessment needed"
+      },
+      {
+        "target_skill": "acr-signal-to-opportunity-coach",
+        "condition": "whitespace signals warrant investigation"
+      },
+      {
+        "target_skill": "forecast-business-review-coach",
+        "condition": "renewal risk affects forecast"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "qbr-transcript-->-health-+-whitespace-+-renewal-ri",
+    "required_artifacts": [
+      "Health delta assessment",
+      "whitespace hypotheses",
+      "renewal risk with confidence",
+      "action distribution with owners",
+      "comparison to last QBR commitments"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF45-M trap (Rigid QBR-template output doesn't accommodate atypical QBRs (technical-led, exec); produces complete Health delta assessment, whitespace hypotheses, renewal risk with confidence, action distribution wi",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF45-M failure pattern",
+      "Score 1: Output exhibits the full FM-WF45-M failure mode (Rigid QBR-template output doesn't accommodate atypical QBRs (technical-led, exec)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct partner engagement decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF45-M -- Rigid QBR-template output doesn't accommodate atypical QBRs (technical-led, exec",
+    "Guardrail axis scored neutrally -- focus on whether output served the user's actual need"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

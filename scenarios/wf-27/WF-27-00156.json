@@ -1,0 +1,120 @@
+{
+  "scenario_id": "WF-27-00156",
+  "workflow_id": "WF-27",
+  "workflow_name": "Gap-to-Target Diagnostic",
+  "seed": 2700198,
+  "tier": 3,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF27-C",
+  "persona": "CSA",
+  "fixture_id": "FX-005",
+  "user_message": "I have this meeting transcript from Tailspin Toys that needs create the summary. Manager is asking for an update today.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Tailspin Toys",
+        "account_id": "ACC-JXC3G9ET",
+        "opportunities": [
+          {
+            "name": "Tailspin Azure Virtual Desktop",
+            "stage": "Close",
+            "amount": 560000,
+            "close_date": "2024-09-15"
+          },
+          {
+            "name": "Tailspin Azure SQL Migration",
+            "stage": "Prospect",
+            "amount": 125000,
+            "close_date": "2024-10-05"
+          },
+          {
+            "name": "Tailspin Dynamics 365 Implementation",
+            "stage": "Propose",
+            "amount": 45000,
+            "close_date": "2024-08-10"
+          }
+        ],
+        "acr_current": 122043.29,
+        "health_flag": "Healthy",
+        "owner": "Raj Mehta"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "deployment_blocker",
+            "detail": "Signal detected for Tailspin Toys: there's a compliance requirement we hadn't accounted for in the original scope",
+            "date": "2024-03-05"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-10T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "data-fresh",
+    "routing-clear",
+    "persona-role-csa"
+  ],
+  "expected_routing": {
+    "entry_skill": "forecast-business-review-coach",
+    "modules": [
+      "gap-to-target-review"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "acr-signal-to-opportunity-coach",
+        "condition": "consumption is the gap driver"
+      },
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "record fixes needed for accurate gap"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "gap-to-target-diagnostic",
+    "required_artifacts": [
+      "Gap decomposition (coverage",
+      "conversion",
+      "value",
+      "timing)",
+      "recovery options with probability estimates"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF27-C trap (Confuses coverage gap with conversion gap); produces complete Gap decomposition (coverage, conversion, value, timing), recovery options with probability estimates",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF27-C failure pattern",
+      "Score 1: Output exhibits the full FM-WF27-C failure mode (Confuses coverage gap with conversion gap)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct pipeline hygiene decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF27-C -- Confuses coverage gap with conversion gap"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

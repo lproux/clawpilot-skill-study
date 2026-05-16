@@ -1,0 +1,155 @@
+{
+  "scenario_id": "WF-32-00248",
+  "workflow_id": "WF-32",
+  "workflow_name": "Calendar Pre-Pack Automation",
+  "seed": 3200290,
+  "tier": 4,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": "FM-WF32-Q",
+  "persona": "Manager",
+  "fixture_id": "FX-039",
+  "user_message": "[AUTOMATION TRIGGER] System detected Calendar event with non-Microsoft external attendee detected for account Fabrikam Residences. Generating output.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Fabrikam Residences",
+        "account_id": "ACC-5JSOIRD0",
+        "opportunities": [
+          {
+            "name": "Fabrikam Power Platform",
+            "stage": "Prospect",
+            "amount": 175000,
+            "close_date": "2024-06-08"
+          },
+          {
+            "name": "Fabrikam Cloud Migration Phase",
+            "stage": "Develop",
+            "amount": 450000,
+            "close_date": "2024-11-24"
+          }
+        ],
+        "acr_current": 32488.07,
+        "health_flag": "Healthy",
+        "owner": "Tom Rodriguez"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Kevin Lee <kevin.lee@fabrikamresi.com>\nTo: Tom Rodriguez <tom.rodriguez@microsoft.com>\nDate: 2024-03-25 14:05 EST\nSubject: Quarterly Update: Fabrikam Residences consumption trend\n\nThank you for the discussion last week. We'd like to move forward with consumption trend. Can we schedule a call this week to finalize the timeline?\n\n---\nFrom: Tom Rodriguez <tom.rodriguez@microsoft.com>\nTo: Kevin Lee <kevin.lee@fabrikamresi.com>\nDate: 2024-02-05 08:11 EST\nSubject: Re: Re: consumption trend Timeline\n\nJust checking in on the consumption trend proposal. Our VP Operations is asking for a status update before the board meeting next week.\n\n---\nFrom: Kevin Lee <kevin.lee@fabrikamresi.com>\nTo: Tom Rodriguez <tom.rodriguez@microsoft.com>\nDate: 2024-01-23 11:09 EST\nSubject: Quarterly Update: Fabrikam Residences consumption trend\n\nJust checking in on the consumption trend proposal. Our VP Operations is asking for a status update before the board meeting next week.",
+      "metadata": {
+        "freshness": "2024-03-14T12:00:00-05:00",
+        "source": "outlook",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: consumption trend Discussion - Fabrikam Residences\nDate: 2024-02-25\nDuration: 45 minutes\nAttendees: Kevin Lee (Fabrikam Residences), Tom Rodriguez (Microsoft), David (Fabrikam Residences)\n\n[00:01:30] Kevin Lee (Fabrikam Residences): Thanks everyone for joining. Let's dive into consumption trend.\n\n[00:08:00] David (Fabrikam Residences): On the consumption trend front, we've made progress but there are still blockers around cost optimization.\n\n[00:13:00] Tom Rodriguez (Microsoft): The timeline for cost optimization is aggressive. We need to validate the assumptions.\n\n[00:18:00] Tom Rodriguez (Microsoft): The timeline for vendor dependencies is aggressive. We need to validate the assumptions.\n\n[00:20:00] David (Fabrikam Residences): I agree with that assessment. From our side, the main concern is budget approval.\n\n[00:22:00] Kevin Lee (Fabrikam Residences): Our CTO reviewed this and has concerns about data residency. Can we address those?\n\n[00:26:00] David (Fabrikam Residences): Our architect reviewed this and has concerns about data residency. Can we address those?\n\n[00:29:00] Tom Rodriguez (Microsoft): On the consumption trend front, we've made progress but there are still blockers around partner engagement.\n\n[00:34:00] Kevin Lee (Fabrikam Residences): I agree with that assessment. From our side, the main concern is technical validation.\n\n[00:38:00] Kevin Lee (Fabrikam Residences): Let me add some context -- we've been working on partner engagement and found that the migration can proceed in phases to reduce risk.\n\n[00:43:00] David (Fabrikam Residences): Let me add some context -- we've been working on resource allocation and found that the existing infrastructure won't support the target workload without upgrades.",
+      "metadata": {
+        "freshness": "2024-03-21T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Fabrikam Residences - consumption trend",
+        "start": "2024-03-12T10:00:00-05:00",
+        "end": "2024-03-11T12:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Tom Rodriguez",
+            "email": "tom.rodriguez@microsoft.com"
+          },
+          {
+            "name": "Kevin Lee",
+            "email": "kevin.lee@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "contract_event",
+            "detail": "Signal detected for Fabrikam Residences: the current vendor contract has a 90-day exit clause we need to plan around",
+            "date": "2024-03-09"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-10T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "signal-strength-noisy",
+    "persona-segment-smb-small",
+    "persona-geo-emea",
+    "persona-tenure-mid"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "meeting-prep",
+      "contact-stakeholder-map",
+      "email-chat-context"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "portfolio-account-planning-coach",
+        "condition": "meeting is for account CSA should have declined"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "calendar-pre-pack-automation",
+    "required_artifacts": [
+      "Pre-pack brief with attendee context",
+      "account snapshot",
+      "talking points",
+      "likely objections",
+      "open items"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF32-Q trap (Daily-Automation generating pre-packs for every meeting creates noise vs filteri); produces complete Pre-pack brief with attendee context, account snapshot, talking points, likely objections, open item",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF32-Q failure pattern",
+      "Score 1: Output exhibits the full FM-WF32-Q failure mode (Daily-Automation generating pre-packs for every meeting creates noise vs filteri)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct consumption trend decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF32-Q -- Daily-Automation generating pre-packs for every meeting creates noise vs filteri",
+    "Guardrail axis scored neutrally -- focus on whether output served the user's actual need"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

@@ -1,0 +1,149 @@
+{
+  "scenario_id": "WF-32-00259",
+  "workflow_id": "WF-32",
+  "workflow_name": "Calendar Pre-Pack Automation",
+  "seed": 3200301,
+  "tier": 4,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": "FM-WF32-R",
+  "persona": "DSSP",
+  "fixture_id": "FX-011",
+  "user_message": "[AUTOMATION TRIGGER] Scheduled Calendar event with non-Microsoft external attendee detected initiated for Alpine Ski House.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Alpine Ski House",
+        "account_id": "ACC-UIKNWGJ7",
+        "opportunities": [
+          {
+            "name": "Alpine Azure Virtual Desktop",
+            "stage": "Propose",
+            "amount": 560000,
+            "close_date": "2023-12-14"
+          }
+        ],
+        "acr_current": 115928.19,
+        "health_flag": "At Risk",
+        "owner": "Marcus Williams"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Brian Yamamoto <brian.yamamoto@alpineskihou.com>\nTo: Marcus Williams <marcus.williams@microsoft.com>\nDate: 2024-03-28 16:08 EST\nSubject: Re: account health Discussion - Next Steps\n\nOur team encountered some challenges with account health. Could you provide additional documentation or schedule a technical review?\n\n---\nFrom: Marcus Williams <marcus.williams@microsoft.com>\nTo: Brian Yamamoto <brian.yamamoto@alpineskihou.com>\nDate: 2024-02-03 17:46 EST\nSubject: URGENT: account health Issue at Alpine Ski House\n\nWe've been evaluating the options and have decided to proceed with account health. What are the next steps from your side?\n\n---\nFrom: Brian Yamamoto <brian.yamamoto@alpineskihou.com>\nTo: Marcus Williams <marcus.williams@microsoft.com>\nDate: 2024-01-28 12:35 EST\nSubject: Quarterly Update: Alpine Ski House account health\n\nOur team encountered some challenges with account health. Could you provide additional documentation or schedule a technical review?",
+      "metadata": {
+        "freshness": "2024-03-25T15:00:00-05:00",
+        "source": "outlook",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: account health Discussion - Alpine Ski House\nDate: 2024-02-11\nDuration: 45 minutes\nAttendees: Brian Yamamoto (Alpine Ski House), Marcus Williams (Microsoft)\n\n[00:01:15] Brian Yamamoto (Alpine Ski House): Appreciate everyone making time. The main agenda today is account health.\n\n[00:07:00] Marcus Williams (Microsoft): I agree with that assessment. From our side, the main concern is stakeholder alignment.\n\n[00:10:00] Brian Yamamoto (Alpine Ski House): I agree with that assessment. From our side, the main concern is partner engagement.\n\n[00:13:00] Brian Yamamoto (Alpine Ski House): On the account health front, we've made progress but there are still blockers around data residency.\n\n[00:17:00] Marcus Williams (Microsoft): On the account health front, we've made progress but there are still blockers around security compliance.\n\n[00:21:00] Marcus Williams (Microsoft): The timeline for stakeholder alignment is aggressive. We need to validate the assumptions.\n\n[00:23:00] Brian Yamamoto (Alpine Ski House): Let me add some context -- we've been working on timeline constraints and found that the migration can proceed in phases to reduce risk.\n\n[00:25:00] Brian Yamamoto (Alpine Ski House): I agree with that assessment. From our side, the main concern is technical validation.\n\n[00:30:00] Marcus Williams (Microsoft): Our architect reviewed this and has concerns about technical validation. Can we address those?\n\n[00:34:00] Marcus Williams (Microsoft): I agree with that assessment. From our side, the main concern is data residency.",
+      "metadata": {
+        "freshness": "2024-03-28T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "mixed",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Alpine Ski House - account health",
+        "start": "2024-03-11T15:00:00-05:00",
+        "end": "2024-03-11T13:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Marcus Williams",
+            "email": "marcus.williams@microsoft.com"
+          },
+          {
+            "name": "Brian Yamamoto",
+            "email": "brian.yamamoto@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "contract_event",
+            "detail": "Signal detected for Alpine Ski House: there's a dependency on the security team's review that could delay us",
+            "date": "2024-03-09"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-segment-smb-mid",
+    "routing-clear",
+    "data-stale",
+    "persona-tenure-junior"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "meeting-prep",
+      "contact-stakeholder-map",
+      "email-chat-context"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "portfolio-account-planning-coach",
+        "condition": "meeting is for account CSA should have declined"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "calendar-pre-pack-automation",
+    "required_artifacts": [
+      "Pre-pack brief with attendee context",
+      "account snapshot",
+      "talking points",
+      "likely objections",
+      "open items"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF32-R trap (Non-Microsoft attendee as the sole filter misses partner-led meetings with valua); produces complete Pre-pack brief with attendee context, account snapshot, talking points, likely objections, open item",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF32-R failure pattern",
+      "Score 1: Output exhibits the full FM-WF32-R failure mode (Non-Microsoft attendee as the sole filter misses partner-led meetings with valua)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct account health decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF32-R -- Non-Microsoft attendee as the sole filter misses partner-led meetings with valua",
+    "Guardrail axis scored neutrally -- focus on whether output served the user's actual need"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

@@ -1,0 +1,142 @@
+{
+  "scenario_id": "WF-11-00105",
+  "workflow_id": "WF-11",
+  "workflow_name": "Pre-Meeting Brief",
+  "seed": 1100147,
+  "tier": 2,
+  "intent": "design-redesign",
+  "targeted_failure_mode": "FM-WF11-M",
+  "persona": "CSA",
+  "fixture_id": "FX-003",
+  "user_message": "Before my call with Northwind Traders, draft the follow-up. I met with them last week but can't remember the details.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Northwind Traders",
+        "account_id": "ACC-X86FSRU2",
+        "opportunities": [
+          {
+            "name": "Northwind Azure Arc Deployment",
+            "stage": "Propose",
+            "amount": 89000,
+            "close_date": "2024-09-05"
+          },
+          {
+            "name": "Northwind Copilot Adoption",
+            "stage": "Develop",
+            "amount": 175000,
+            "close_date": "2024-06-22"
+          },
+          {
+            "name": "Northwind Intune Rollout",
+            "stage": "Close",
+            "amount": 350000,
+            "close_date": "2024-04-19"
+          }
+        ],
+        "acr_current": 54067.74,
+        "health_flag": "Healthy",
+        "owner": "Ahmed Hassan"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Sandra Taylor <sandra.taylor@northwindtra.com>\nTo: Ahmed Hassan <ahmed.hassan@microsoft.com>\nDate: 2024-03-26 09:23 EST\nSubject: Follow-up: pipeline hygiene Review\n\nThere's been a change in our timeline for pipeline hygiene. Can we discuss the implications on the overall project plan?\n\n---\nFrom: Ahmed Hassan <ahmed.hassan@microsoft.com>\nTo: Sandra Taylor <sandra.taylor@northwindtra.com>\nDate: 2024-02-09 12:39 EST\nSubject: URGENT: pipeline hygiene Issue at Northwind Traders\n\nOur team encountered some challenges with pipeline hygiene. Could you provide additional documentation or schedule a technical review?\n\n---\nFrom: Sandra Taylor <sandra.taylor@northwindtra.com>\nTo: Ahmed Hassan <ahmed.hassan@microsoft.com>\nDate: 2024-01-27 16:22 EST\nSubject: pipeline hygiene - Action Required\n\nJust checking in on the pipeline hygiene proposal. Our Head of Digital is asking for a status update before the board meeting next week.",
+      "metadata": {
+        "freshness": "2024-03-20T09:00:00-05:00",
+        "source": "outlook",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: pipeline hygiene Discussion - Northwind Traders\nDate: 2024-01-07\nDuration: 45 minutes\nAttendees: Sandra Taylor (Northwind Traders), Ahmed Hassan (Microsoft)\n\n[00:01:30] Sandra Taylor (Northwind Traders): Thanks everyone for joining. Let's dive into pipeline hygiene.\n\n[00:08:00] Ahmed Hassan (Microsoft): I agree with that assessment. From our side, the main concern is integration complexity.\n\n[00:11:00] Sandra Taylor (Northwind Traders): I agree with that assessment. From our side, the main concern is vendor dependencies.\n\n[00:13:00] Ahmed Hassan (Microsoft): The timeline for timeline constraints is aggressive. We need to validate the assumptions.\n\n[00:18:00] Sandra Taylor (Northwind Traders): Let me add some context -- we've been working on vendor dependencies and found that the current vendor contract has a 90-day exit clause we need to plan around.\n\n[00:20:00] Sandra Taylor (Northwind Traders): Let me add some context -- we've been working on partner engagement and found that the cost projections need to factor in reserved instance pricing for accuracy.\n\n[00:25:00] Ahmed Hassan (Microsoft): Our architect reviewed this and has concerns about vendor dependencies. Can we address those?\n\n[00:28:00] Sandra Taylor (Northwind Traders): Let me add some context -- we've been working on security compliance and found that the migration can proceed in phases to reduce risk.",
+      "metadata": {
+        "freshness": "2024-02-02T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Northwind Traders - pipeline hygiene",
+        "start": "2024-03-13T14:00:00-05:00",
+        "end": "2024-03-14T12:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Ahmed Hassan",
+            "email": "ahmed.hassan@microsoft.com"
+          },
+          {
+            "name": "Sandra Taylor",
+            "email": "sandra.taylor@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-geo-na",
+    "persona-role-csa",
+    "data-fresh",
+    "persona-segment-smb-corporate"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "meeting-prep",
+      "contact-stakeholder-map"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "pre-meeting-brief",
+    "required_artifacts": [
+      "One-page brief with attendee context",
+      "account snapshot",
+      "talking points",
+      "likely objections",
+      "open items from last meeting"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF11-M trap (Brief format doesn't natively differentiate first-meeting vs recurring); produces complete One-page brief with attendee context, account snapshot, talking points, likely objections, open item",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF11-M failure pattern",
+      "Score 1: Output exhibits the full FM-WF11-M failure mode (Brief format doesn't natively differentiate first-meeting vs recurring)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct pipeline hygiene decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF11-M -- Brief format doesn't natively differentiate first-meeting vs recurring",
+    "Produce structural verdict on whether current routing adequately serves this scenario"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "verdict-on-structural",
+    "verdict_required_axes": [
+      "routing",
+      "evidence"
+    ]
+  }
+}

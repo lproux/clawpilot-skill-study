@@ -1,0 +1,107 @@
+{
+  "scenario_id": "WF-40-90235",
+  "workflow_id": "WF-40",
+  "workflow_name": "Decision-Maker Reply -> BPF Advance Check",
+  "seed": 9900277,
+  "tier": 4,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": null,
+  "persona": "Manager",
+  "fixture_id": "FX-028",
+  "user_message": "I need you to process this escalation email from City Power & Light. We had a deep-dive last month -- need the follow-up.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "City Power & Light",
+        "account_id": "ACC-Q84PLT8K",
+        "opportunities": [
+          {
+            "name": "City Power Platform",
+            "stage": "Propose",
+            "amount": 175000,
+            "close_date": "2024-08-16"
+          },
+          {
+            "name": "City Azure DevOps",
+            "stage": "Prospect",
+            "amount": 68000,
+            "close_date": "2024-05-28"
+          }
+        ],
+        "acr_current": 100007.29,
+        "health_flag": "Healthy",
+        "owner": "Priya Sharma"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Patricia Nakamura <patricia.nakamura@citypower&li.com>\nTo: Priya Sharma <priya.sharma@microsoft.com>\nDate: 2024-03-05 09:42 EST\nSubject: competitive positioning - Action Required\n\nOur team encountered some challenges with competitive positioning. Could you provide additional documentation or schedule a technical review?\n\n---\nFrom: Priya Sharma <priya.sharma@microsoft.com>\nTo: Patricia Nakamura <patricia.nakamura@citypower&li.com>\nDate: 2024-02-19 15:16 EST\nSubject: URGENT: competitive positioning Issue at City Power & Light\n\nThank you for the discussion last week. We'd like to move forward with competitive positioning. Can we schedule a call this week to finalize the timeline?\n\n---\nFrom: Patricia Nakamura <patricia.nakamura@citypower&li.com>\nTo: Priya Sharma <priya.sharma@microsoft.com>\nDate: 2024-01-23 15:08 EST\nSubject: Follow-up: competitive positioning Review\n\nI wanted to follow up on our conversation about competitive positioning. Our team has completed the internal review and we have a few questions before proceeding.",
+      "metadata": {
+        "freshness": "2024-02-06T10:00:00-05:00",
+        "source": "outlook",
+        "length_class": "short"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-role-manager",
+    "persona-segment-smb-small",
+    "persona-geo-emea",
+    "routing-ambiguous-2skills",
+    "cross-workflow-trigger"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "email-chat-context",
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "BPF advance warranted"
+      },
+      {
+        "target_skill": "forecast-business-review-coach",
+        "condition": "forecast category change warranted"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "adversarial-routing-test",
+    "required_artifacts": [
+      "correct_routing_justification",
+      "confusion_analysis"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Correctly routes to primary workflow despite adversarial signals; output is complete",
+      "Score 3: Routes correctly but output shows contamination from confusing signals",
+      "Score 1: Misroutes to wrong workflow or produces irrelevant output"
+    ],
+    "evidence_anchors": [
+      "Score 5: All evidence correctly attributed despite cross-workflow noise",
+      "Score 3: Some evidence misattributed but core facts correct",
+      "Score 1: Significant evidence confusion or hallucination"
+    ],
+    "decision_anchors": [
+      "Score 5: Decision-making robust against adversarial perturbations",
+      "Score 3: Primary decision correct but secondary decisions influenced by noise",
+      "Score 1: Primary decision compromised by adversarial inputs"
+    ]
+  },
+  "guardrail_checks": [
+    "Must correctly identify primary workflow despite adversarial routing signals",
+    "Must not hallucinate context from similar-sounding workflows",
+    "Must not expose internal routing logic to user"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

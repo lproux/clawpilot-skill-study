@@ -1,0 +1,131 @@
+{
+  "scenario_id": "WF-11-00047",
+  "workflow_id": "WF-11",
+  "workflow_name": "Pre-Meeting Brief",
+  "seed": 1100089,
+  "tier": 2,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": "FM-WF11-K",
+  "persona": "Manager",
+  "fixture_id": "FX-037",
+  "user_message": "Give me the renewal risk for my team. Board meeting is next week.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Woodgrove Labs",
+        "account_id": "ACC-WZHG8AQ3",
+        "opportunities": [
+          {
+            "name": "Woodgrove Power Platform",
+            "stage": "Qualify",
+            "amount": 210000,
+            "close_date": "2024-12-15"
+          },
+          {
+            "name": "Woodgrove AKS Deployment",
+            "stage": "Propose",
+            "amount": 125000,
+            "close_date": "2024-05-21"
+          }
+        ],
+        "acr_current": 204547.55,
+        "health_flag": "At Risk",
+        "owner": "David Chen"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Robert Petrov <robert.petrov@woodgrovelab.com>\nTo: David Chen <david.chen@microsoft.com>\nDate: 2024-03-03 10:50 EST\nSubject: renewal risk - Action Required\n\nOur team encountered some challenges with renewal risk. Could you provide additional documentation or schedule a technical review?\n\n---\nFrom: David Chen <david.chen@microsoft.com>\nTo: Robert Petrov <robert.petrov@woodgrovelab.com>\nDate: 2024-02-19 13:07 EST\nSubject: renewal risk - Action Required\n\nThank you for the discussion last week. We'd like to move forward with renewal risk. Can we schedule a call this week to finalize the timeline?\n\n---\nFrom: Robert Petrov <robert.petrov@woodgrovelab.com>\nTo: David Chen <david.chen@microsoft.com>\nDate: 2024-01-02 15:16 EST\nSubject: Follow-up: renewal risk Review\n\nWe've been evaluating the options and have decided to proceed with renewal risk. What are the next steps from your side?",
+      "metadata": {
+        "freshness": "2024-02-07T10:00:00-05:00",
+        "source": "outlook",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: renewal risk Discussion - Woodgrove Labs\nDate: 2024-02-05\nDuration: 45 minutes\nAttendees: Robert Petrov (Woodgrove Labs), David Chen (Microsoft), Michelle (Woodgrove Labs)\n\n[00:01:30] Robert Petrov (Woodgrove Labs): Thanks everyone for joining. Let's dive into renewal risk.\n\n[00:07:00] Robert Petrov (Woodgrove Labs): Our CTO reviewed this and has concerns about budget approval. Can we address those?\n\n[00:11:00] Michelle (Woodgrove Labs): The timeline for technical validation is aggressive. We need to validate the assumptions.\n\n[00:15:00] Robert Petrov (Woodgrove Labs): On the renewal risk front, we've made progress but there are still blockers around performance requirements.\n\n[00:20:00] Robert Petrov (Woodgrove Labs): Our VP reviewed this and has concerns about partner engagement. Can we address those?\n\n[00:24:00] David Chen (Microsoft): Let me add some context -- we've been working on budget approval and found that the current vendor contract has a 90-day exit clause we need to plan around.",
+      "metadata": {
+        "freshness": "2024-03-13T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "mixed",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Woodgrove Labs - renewal risk",
+        "start": "2024-03-11T14:00:00-05:00",
+        "end": "2024-03-12T13:00:00-05:00",
+        "attendees": [
+          {
+            "name": "David Chen",
+            "email": "david.chen@microsoft.com"
+          },
+          {
+            "name": "Robert Petrov",
+            "email": "robert.petrov@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    }
+  ],
+  "perturbations": [
+    "signal-strength-faint",
+    "persona-geo-na",
+    "persona-segment-smb-small"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "meeting-prep",
+      "contact-stakeholder-map"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "pre-meeting-brief",
+    "required_artifacts": [
+      "One-page brief with attendee context",
+      "account snapshot",
+      "talking points",
+      "likely objections",
+      "open items from last meeting"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF11-K trap (One-page constraint hurts complex meetings); produces complete One-page brief with attendee context, account snapshot, talking points, likely objections, open item",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF11-K failure pattern",
+      "Score 1: Output exhibits the full FM-WF11-K failure mode (One-page constraint hurts complex meetings)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct renewal risk decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF11-K -- One-page constraint hurts complex meetings",
+    "Guardrail axis scored neutrally -- focus on whether output served the user's actual need"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

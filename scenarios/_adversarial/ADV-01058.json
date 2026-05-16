@@ -1,0 +1,117 @@
+{
+  "scenario_id": "WF-48-91058",
+  "workflow_id": "WF-48",
+  "workflow_name": "Roadmap Meeting Transcript -> Forecast Sequencing",
+  "seed": 9901100,
+  "tier": 4,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": null,
+  "persona": "CSA",
+  "fixture_id": "FX-001",
+  "user_message": "Just got this from Angela Doyle at Contoso Ltd -- I need help figuring out pipeline hygiene. Manager is asking for an update today.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Contoso Ltd",
+        "account_id": "ACC-VWW2DK8X",
+        "opportunities": [
+          {
+            "name": "Contoso Power Platform",
+            "stage": "Propose",
+            "amount": 560000,
+            "close_date": "2024-12-28"
+          }
+        ],
+        "acr_current": 78949.7,
+        "health_flag": "Healthy",
+        "owner": "Marcus Williams"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: pipeline hygiene Discussion - Contoso Ltd\nDate: 2024-02-10\nDuration: 45 minutes\nAttendees: Angela Doyle (Contoso Ltd), Marcus Williams (Microsoft)\n\n[00:02:00] Angela Doyle (Contoso Ltd): Good morning. I wanted to follow up on pipeline hygiene from our last session.\n\n[00:06:00] Marcus Williams (Microsoft): Our CTO reviewed this and has concerns about integration complexity. Can we address those?\n\n[00:09:00] Marcus Williams (Microsoft): I agree with that assessment. From our side, the main concern is budget approval.\n\n[00:12:00] Angela Doyle (Contoso Ltd): On the pipeline hygiene front, we've made progress but there are still blockers around vendor dependencies.\n\n[00:16:00] Marcus Williams (Microsoft): Our VP reviewed this and has concerns about timeline constraints. Can we address those?\n\n[00:18:00] Angela Doyle (Contoso Ltd): On the pipeline hygiene front, we've made progress but there are still blockers around integration complexity.\n\n[00:22:00] Angela Doyle (Contoso Ltd): Our architect reviewed this and has concerns about vendor dependencies. Can we address those?\n\n[00:26:00] Angela Doyle (Contoso Ltd): Let me add some context -- we've been working on cost optimization and found that the current vendor contract has a 90-day exit clause we need to plan around.\n\n[00:28:00] Angela Doyle (Contoso Ltd): Our director reviewed this and has concerns about vendor dependencies. Can we address those?\n\n[00:33:00] Angela Doyle (Contoso Ltd): I agree with that assessment. From our side, the main concern is technical validation.\n\n[00:38:00] Angela Doyle (Contoso Ltd): Let me add some context -- we've been working on technical validation and found that there's a dependency on the security team's review that could delay us.",
+      "metadata": {
+        "freshness": "2024-01-05T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "contract_event",
+            "detail": "Signal detected for Contoso Ltd: the current vendor contract has a 90-day exit clause we need to plan around",
+            "date": "2024-03-08"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-09T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "signal-strength-faint",
+    "persona-role-csa",
+    "persona-segment-smb-corporate",
+    "persona-geo-na",
+    "routing-ambiguous-3skills"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "milestone and date updates needed"
+      },
+      {
+        "target_skill": "forecast-business-review-coach",
+        "condition": "forecast sequencing affected"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "adversarial-routing-test",
+    "required_artifacts": [
+      "correct_routing_justification",
+      "confusion_analysis"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Correctly routes to primary workflow despite adversarial signals; output is complete",
+      "Score 3: Routes correctly but output shows contamination from confusing signals",
+      "Score 1: Misroutes to wrong workflow or produces irrelevant output"
+    ],
+    "evidence_anchors": [
+      "Score 5: All evidence correctly attributed despite cross-workflow noise",
+      "Score 3: Some evidence misattributed but core facts correct",
+      "Score 1: Significant evidence confusion or hallucination"
+    ],
+    "decision_anchors": [
+      "Score 5: Decision-making robust against adversarial perturbations",
+      "Score 3: Primary decision correct but secondary decisions influenced by noise",
+      "Score 1: Primary decision compromised by adversarial inputs"
+    ]
+  },
+  "guardrail_checks": [
+    "Must correctly identify primary workflow despite adversarial routing signals",
+    "Must not hallucinate context from similar-sounding workflows",
+    "Must not expose internal routing logic to user"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

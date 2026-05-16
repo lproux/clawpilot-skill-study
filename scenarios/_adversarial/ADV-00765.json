@@ -1,0 +1,133 @@
+{
+  "scenario_id": "WF-11-90765",
+  "workflow_id": "WF-11",
+  "workflow_name": "Pre-Meeting Brief",
+  "seed": 9900807,
+  "tier": 2,
+  "intent": "adherence",
+  "targeted_failure_mode": null,
+  "persona": "CSA",
+  "fixture_id": "FX-008",
+  "user_message": "This just came in from Robert Chen at Proseware Inc. Can you generate the watchlist?",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Proseware Inc",
+        "account_id": "ACC-Y66S2EKA",
+        "opportunities": [
+          {
+            "name": "Proseware AKS Deployment",
+            "stage": "Propose",
+            "amount": 68000,
+            "close_date": "2024-12-24"
+          },
+          {
+            "name": "Proseware Dynamics 365 Implementation",
+            "stage": "Develop",
+            "amount": 560000,
+            "close_date": "2024-08-18"
+          },
+          {
+            "name": "Proseware Azure Virtual Desktop",
+            "stage": "Qualify",
+            "amount": 450000,
+            "close_date": "2024-07-14"
+          }
+        ],
+        "acr_current": 13854.76,
+        "health_flag": "Healthy",
+        "owner": "Priya Sharma"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Robert Chen <robert.chen@prosewareinc.com>\nTo: Priya Sharma <priya.sharma@microsoft.com>\nDate: 2024-03-06 08:19 EST\nSubject: QBR preparation - Action Required\n\nOur team encountered some challenges with QBR preparation. Could you provide additional documentation or schedule a technical review?\n\n---\nFrom: Priya Sharma <priya.sharma@microsoft.com>\nTo: Robert Chen <robert.chen@prosewareinc.com>\nDate: 2024-02-02 10:54 EST\nSubject: Quarterly Update: Proseware Inc QBR preparation\n\nThank you for the discussion last week. We'd like to move forward with QBR preparation. Can we schedule a call this week to finalize the timeline?\n\n---\nFrom: Robert Chen <robert.chen@prosewareinc.com>\nTo: Priya Sharma <priya.sharma@microsoft.com>\nDate: 2024-01-16 13:43 EST\nSubject: Follow-up: QBR preparation Review\n\nThank you for the discussion last week. We'd like to move forward with QBR preparation. Can we schedule a call this week to finalize the timeline?",
+      "metadata": {
+        "freshness": "2024-02-02T15:00:00-05:00",
+        "source": "outlook",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: QBR preparation Discussion - Proseware Inc\nDate: 2024-01-02\nDuration: 45 minutes\nAttendees: Robert Chen (Proseware Inc), Priya Sharma (Microsoft), David (Proseware Inc)\n\n[00:02:00] Robert Chen (Proseware Inc): Good morning. I wanted to follow up on QBR preparation from our last session.\n\n[00:06:00] Robert Chen (Proseware Inc): I agree with that assessment. From our side, the main concern is performance requirements.\n\n[00:10:00] Robert Chen (Proseware Inc): The timeline for data residency is aggressive. We need to validate the assumptions.\n\n[00:13:00] David (Proseware Inc): Let me add some context -- we've been working on performance requirements and found that the current vendor contract has a 90-day exit clause we need to plan around.\n\n[00:18:00] David (Proseware Inc): I agree with that assessment. From our side, the main concern is performance requirements.\n\n[00:21:00] David (Proseware Inc): I agree with that assessment. From our side, the main concern is vendor dependencies.\n\n[00:25:00] David (Proseware Inc): On the QBR preparation front, we've made progress but there are still blockers around partner engagement.",
+      "metadata": {
+        "freshness": "2024-01-08T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Proseware Inc - QBR preparation",
+        "start": "2024-03-12T09:00:00-05:00",
+        "end": "2024-03-11T16:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Priya Sharma",
+            "email": "priya.sharma@microsoft.com"
+          },
+          {
+            "name": "Robert Chen",
+            "email": "robert.chen@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-segment-smb-small",
+    "routing-ambiguous-2skills",
+    "routing-trap"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "meeting-prep",
+      "contact-stakeholder-map"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "adversarial-routing-test",
+    "required_artifacts": [
+      "correct_routing_justification",
+      "confusion_analysis"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Correctly routes to primary workflow despite adversarial signals; output is complete",
+      "Score 3: Routes correctly but output shows contamination from confusing signals",
+      "Score 1: Misroutes to wrong workflow or produces irrelevant output"
+    ],
+    "evidence_anchors": [
+      "Score 5: All evidence correctly attributed despite cross-workflow noise",
+      "Score 3: Some evidence misattributed but core facts correct",
+      "Score 1: Significant evidence confusion or hallucination"
+    ],
+    "decision_anchors": [
+      "Score 5: Decision-making robust against adversarial perturbations",
+      "Score 3: Primary decision correct but secondary decisions influenced by noise",
+      "Score 1: Primary decision compromised by adversarial inputs"
+    ]
+  },
+  "guardrail_checks": [
+    "Must correctly identify primary workflow despite adversarial routing signals",
+    "Must not hallucinate context from similar-sounding workflows",
+    "Must not expose internal routing logic to user"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

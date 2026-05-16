@@ -1,0 +1,119 @@
+{
+  "scenario_id": "WF-12-80220",
+  "workflow_id": "WF-12",
+  "workflow_name": "Post-Meeting Follow-Up",
+  "seed": 8800262,
+  "tier": 3,
+  "intent": "happy",
+  "targeted_failure_mode": null,
+  "persona": "DSSP",
+  "fixture_id": "FX-001",
+  "user_message": "Pulling in context from Contoso Ltd's meeting transcript -- need to prepare the forecast for the competitive positioning.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Contoso Ltd",
+        "account_id": "ACC-VWW2DK8X",
+        "opportunities": [
+          {
+            "name": "Contoso Power Platform",
+            "stage": "Propose",
+            "amount": 560000,
+            "close_date": "2024-12-28"
+          }
+        ],
+        "acr_current": 78949.7,
+        "health_flag": "Healthy",
+        "owner": "Marcus Williams"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: competitive positioning Discussion - Contoso Ltd\nDate: 2024-01-16\nDuration: 45 minutes\nAttendees: Angela Doyle (Contoso Ltd), Marcus Williams (Microsoft), Michelle (Contoso Ltd)\n\n[00:01:15] Angela Doyle (Contoso Ltd): Appreciate everyone making time. The main agenda today is competitive positioning.\n\n[00:06:00] Marcus Williams (Microsoft): The timeline for technical validation is aggressive. We need to validate the assumptions.\n\n[00:11:00] Marcus Williams (Microsoft): The timeline for security compliance is aggressive. We need to validate the assumptions.\n\n[00:14:00] Marcus Williams (Microsoft): Let me add some context -- we've been working on data residency and found that there's a dependency on the security team's review that could delay us.\n\n[00:18:00] Angela Doyle (Contoso Ltd): Let me add some context -- we've been working on data residency and found that the migration can proceed in phases to reduce risk.\n\n[00:21:00] Angela Doyle (Contoso Ltd): The timeline for stakeholder alignment is aggressive. We need to validate the assumptions.\n\n[00:23:00] Michelle (Contoso Ltd): Our director reviewed this and has concerns about vendor dependencies. Can we address those?\n\n[00:26:00] Angela Doyle (Contoso Ltd): Our team lead reviewed this and has concerns about timeline constraints. Can we address those?",
+      "metadata": {
+        "freshness": "2024-02-18T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Contoso Ltd - competitive positioning",
+        "start": "2024-03-12T10:00:00-05:00",
+        "end": "2024-03-15T10:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Marcus Williams",
+            "email": "marcus.williams@microsoft.com"
+          },
+          {
+            "name": "Angela Doyle",
+            "email": "angela.doyle@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    }
+  ],
+  "perturbations": [
+    "routing-clear",
+    "data-fresh",
+    "persona-role-dssp"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions",
+      "email-chat-context"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "MSX updates warranted from meeting outcomes"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "post-meeting-follow-up",
+    "required_artifacts": [
+      "Decision log",
+      "action items with owners and due dates",
+      "customer-facing follow-up email draft",
+      "MSX writeback proposals"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Perfect execution of the golden-path workflow with all artifacts complete and actionable",
+      "Score 3: Core output correct but missing polish or one secondary artifact",
+      "Score 1: Fails to produce expected output for a clean, unambiguous request"
+    ],
+    "evidence_anchors": [
+      "Score 5: All evidence correctly sourced and attributed; no hallucination",
+      "Score 3: Minor attribution gap but no fabrication",
+      "Score 1: Evidence fabricated or significantly misattributed"
+    ],
+    "decision_anchors": [
+      "Score 5: All decisions correct for this straightforward scenario",
+      "Score 3: Primary decision correct; minor secondary issue",
+      "Score 1: Primary decision wrong despite clear inputs"
+    ]
+  },
+  "guardrail_checks": [
+    "Clean golden-path scenario -- all guardrails should pass trivially",
+    "Must not over-complicate a straightforward request"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

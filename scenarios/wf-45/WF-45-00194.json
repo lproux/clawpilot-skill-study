@@ -1,0 +1,135 @@
+{
+  "scenario_id": "WF-45-00194",
+  "workflow_id": "WF-45",
+  "workflow_name": "QBR Transcript -> Health + Whitespace + Renewal Risk",
+  "seed": 4500236,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF45-D",
+  "persona": "Manager",
+  "fixture_id": "FX-031",
+  "user_message": "Just came out of pipeline hygiene with Liberty's Delightful Sinful Bakery. Turn this into my brief and pull out the asks.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Liberty's Delightful Sinful Bakery",
+        "account_id": "ACC-A2FZGZWL",
+        "opportunities": [
+          {
+            "name": "Liberty's Dynamics 365 Implementation",
+            "stage": "Develop",
+            "amount": 89000,
+            "close_date": "2024-12-10"
+          },
+          {
+            "name": "Liberty's AKS Deployment",
+            "stage": "Qualify",
+            "amount": 89000,
+            "close_date": "2024-12-24"
+          },
+          {
+            "name": "Liberty's Azure Infrastructure",
+            "stage": "Develop",
+            "amount": 450000,
+            "close_date": "2024-04-08"
+          }
+        ],
+        "acr_current": 0,
+        "health_flag": "Healthy",
+        "owner": "Marcus Williams"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: pipeline hygiene Discussion - Liberty's Delightful Sinful Bakery\nDate: 2024-02-06\nDuration: 45 minutes\nAttendees: Patricia Kim (Liberty's Delightful Sinful Bakery), Marcus Williams (Microsoft)\n\n[00:01:15] Patricia Kim (Liberty's Delightful Sinful Bakery): Appreciate everyone making time. The main agenda today is pipeline hygiene.\n\n[00:07:00] Marcus Williams (Microsoft): Let me add some context -- we've been working on security compliance and found that the current vendor contract has a 90-day exit clause we need to plan around.\n\n[00:12:00] Patricia Kim (Liberty's Delightful Sinful Bakery): Our CTO reviewed this and has concerns about budget approval. Can we address those?\n\n[00:15:00] Marcus Williams (Microsoft): On the pipeline hygiene front, we've made progress but there are still blockers around security compliance.\n\n[00:19:00] Patricia Kim (Liberty's Delightful Sinful Bakery): I agree with that assessment. From our side, the main concern is security compliance.\n\n[00:22:00] Patricia Kim (Liberty's Delightful Sinful Bakery): The timeline for cost optimization is aggressive. We need to validate the assumptions.\n\n[00:24:00] Marcus Williams (Microsoft): Let me add some context -- we've been working on stakeholder alignment and found that the existing infrastructure won't support the target workload without upgrades.\n\n[00:29:00] Patricia Kim (Liberty's Delightful Sinful Bakery): Let me add some context -- we've been working on budget approval and found that the cost projections need to factor in reserved instance pricing for accuracy.\n\n[00:31:00] Patricia Kim (Liberty's Delightful Sinful Bakery): The timeline for data residency is aggressive. We need to validate the assumptions.\n\n[00:36:00] Patricia Kim (Liberty's Delightful Sinful Bakery): Our architect reviewed this and has concerns about cost optimization. Can we address those?\n\n[00:40:00] Marcus Williams (Microsoft): Let me add some context -- we've been working on resource allocation and found that the existing infrastructure won't support the target workload without upgrades.",
+      "metadata": {
+        "freshness": "2024-02-24T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "deployment_blocker",
+            "detail": "Signal detected for Liberty's Delightful Sinful Bakery: there's a compliance requirement we hadn't accounted for in the original scope",
+            "date": "2024-03-07"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-tenure-mid",
+    "persona-role-manager",
+    "data-partially-missing",
+    "signal-strength-noisy"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "portfolio-account-planning-coach",
+        "condition": "health assessment needed"
+      },
+      {
+        "target_skill": "acr-signal-to-opportunity-coach",
+        "condition": "whitespace signals warrant investigation"
+      },
+      {
+        "target_skill": "forecast-business-review-coach",
+        "condition": "renewal risk affects forecast"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "qbr-transcript-->-health-+-whitespace-+-renewal-ri",
+    "required_artifacts": [
+      "Health delta assessment",
+      "whitespace hypotheses",
+      "renewal risk with confidence",
+      "action distribution with owners",
+      "comparison to last QBR commitments"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF45-D trap (Action distribution missing customer-side owners); produces complete Health delta assessment, whitespace hypotheses, renewal risk with confidence, action distribution wi",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF45-D failure pattern",
+      "Score 1: Output exhibits the full FM-WF45-D failure mode (Action distribution missing customer-side owners)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct pipeline hygiene decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF45-D -- Action distribution missing customer-side owners"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

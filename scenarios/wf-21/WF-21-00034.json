@@ -1,0 +1,101 @@
+{
+  "scenario_id": "WF-21-00034",
+  "workflow_id": "WF-21",
+  "workflow_name": "ECIF Workscope Draft",
+  "seed": 2100076,
+  "tier": 2,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": "FM-WF21-G",
+  "persona": "DSSP",
+  "fixture_id": "FX-011",
+  "user_message": "Can you extract the renewal risk from this meeting transcript for Alpine Ski House? Multiple stakeholders are involved -- it's complex.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Alpine Ski House",
+        "account_id": "ACC-UIKNWGJ7",
+        "opportunities": [
+          {
+            "name": "Alpine Azure Virtual Desktop",
+            "stage": "Propose",
+            "amount": 560000,
+            "close_date": "2023-12-14"
+          }
+        ],
+        "acr_current": 115928.19,
+        "health_flag": "At Risk",
+        "owner": "Marcus Williams"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "consumption_decline",
+            "detail": "Signal detected for Alpine Ski House: the existing infrastructure won't support the target workload without upgrades",
+            "date": "2024-03-07"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-10T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-role-dssp",
+    "data-stale",
+    "persona-geo-apac",
+    "routing-clear"
+  ],
+  "expected_routing": {
+    "entry_skill": "funding-partner-activation-coach",
+    "modules": [
+      "funding-eligibility",
+      "partner-evaluation"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "ecif-workscope-draft",
+    "required_artifacts": [
+      "ECIF workscope draft with measurable deliverables",
+      "qualified partner",
+      "effort estimate",
+      "eligibility caveat",
+      "opportunity linkage"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF21-G trap (Eligibility-likely caveat over-hedges in clear cases); produces complete ECIF workscope draft with measurable deliverables, qualified partner, effort estimate, eligibility c",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF21-G failure pattern",
+      "Score 1: Output exhibits the full FM-WF21-G failure mode (Eligibility-likely caveat over-hedges in clear cases)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct renewal risk decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF21-G -- Eligibility-likely caveat over-hedges in clear cases",
+    "Guardrail axis scored neutrally -- focus on whether output served the user's actual need"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

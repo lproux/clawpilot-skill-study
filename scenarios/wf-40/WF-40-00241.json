@@ -1,0 +1,115 @@
+{
+  "scenario_id": "WF-40-00241",
+  "workflow_id": "WF-40",
+  "workflow_name": "Decision-Maker Reply -> BPF Advance Check",
+  "seed": 4000283,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF40-A",
+  "persona": "DSSP",
+  "fixture_id": "FX-025",
+  "user_message": "Pulling in context from Adatum Corporation's meeting transcript -- need to run the hygiene check for the competitive positioning.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Adatum Corporation",
+        "account_id": "ACC-ELNED368",
+        "opportunities": [
+          {
+            "name": "Adatum Azure Virtual Desktop",
+            "stage": "Qualify",
+            "amount": 175000,
+            "close_date": "2023-12-18"
+          },
+          {
+            "name": "Adatum Azure SQL Migration",
+            "stage": "Close",
+            "amount": 125000,
+            "close_date": "2024-10-09"
+          },
+          {
+            "name": "Adatum Azure Arc Deployment",
+            "stage": "Propose",
+            "amount": 210000,
+            "close_date": "2024-12-01"
+          }
+        ],
+        "acr_current": 14124.54,
+        "health_flag": "At Risk",
+        "owner": "Raj Mehta"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Laura Nguyen <laura.nguyen@adatumcorpor.com>\nTo: Raj Mehta <raj.mehta@microsoft.com>\nDate: 2024-03-19 10:34 EST\nSubject: Re: competitive positioning Discussion - Next Steps\n\nThank you for the discussion last week. We'd like to move forward with competitive positioning. Can we schedule a call this week to finalize the timeline?\n\n---\nFrom: Raj Mehta <raj.mehta@microsoft.com>\nTo: Laura Nguyen <laura.nguyen@adatumcorpor.com>\nDate: 2024-02-14 13:43 EST\nSubject: Re: Re: competitive positioning Timeline\n\nThank you for the discussion last week. We'd like to move forward with competitive positioning. Can we schedule a call this week to finalize the timeline?\n\n---\nFrom: Laura Nguyen <laura.nguyen@adatumcorpor.com>\nTo: Raj Mehta <raj.mehta@microsoft.com>\nDate: 2024-01-20 15:45 EST\nSubject: Re: competitive positioning Discussion - Next Steps\n\nI wanted to follow up on our conversation about competitive positioning. Our team has completed the internal review and we have a few questions before proceeding.",
+      "metadata": {
+        "freshness": "2024-02-28T17:00:00-05:00",
+        "source": "outlook",
+        "length_class": "short"
+      }
+    }
+  ],
+  "perturbations": [
+    "data-stale",
+    "persona-tenure-mid",
+    "signal-strength-faint",
+    "persona-role-dssp"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "email-chat-context",
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "BPF advance warranted"
+      },
+      {
+        "target_skill": "forecast-business-review-coach",
+        "condition": "forecast category change warranted"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "decision-maker-reply-->-bpf-advance-check",
+    "required_artifacts": [
+      "Commitment assessment",
+      "BPF advance verdict",
+      "milestone proposal",
+      "forecast category recommendation",
+      "acknowledgment draft"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF40-A trap (Over-reads commitment (treats general enthusiasm as scope)); produces complete Commitment assessment, BPF advance verdict, milestone proposal, forecast category recommendation, ac",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF40-A failure pattern",
+      "Score 1: Output exhibits the full FM-WF40-A failure mode (Over-reads commitment (treats general enthusiasm as scope))"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct competitive positioning decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF40-A -- Over-reads commitment (treats general enthusiasm as scope)"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

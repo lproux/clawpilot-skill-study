@@ -1,0 +1,122 @@
+{
+  "scenario_id": "WF-11-91461",
+  "workflow_id": "WF-11",
+  "workflow_name": "Pre-Meeting Brief",
+  "seed": 9901503,
+  "tier": 2,
+  "intent": "adherence",
+  "targeted_failure_mode": null,
+  "persona": "DSSP",
+  "fixture_id": "FX-004",
+  "user_message": "I need to run the hygiene check for the Adventure Works engagement. I met with them last week but can't remember the details.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Adventure Works",
+        "account_id": "ACC-TBZ7Q87G",
+        "opportunities": [
+          {
+            "name": "Adventure Data Platform Migration",
+            "stage": "Propose",
+            "amount": 210000,
+            "close_date": "2024-12-19"
+          }
+        ],
+        "acr_current": 34613.91,
+        "health_flag": "Healthy",
+        "owner": "Sarah Kim"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Michael Patel <michael.patel@adventurewor.com>\nTo: Sarah Kim <sarah.kim@microsoft.com>\nDate: 2024-03-09 13:30 EST\nSubject: URGENT: escalation triage Issue at Adventure Works\n\nThank you for the discussion last week. We'd like to move forward with escalation triage. Can we schedule a call this week to finalize the timeline?\n\n---\nFrom: Sarah Kim <sarah.kim@microsoft.com>\nTo: Michael Patel <michael.patel@adventurewor.com>\nDate: 2024-02-13 09:15 EST\nSubject: Follow-up: escalation triage Review\n\nWe've been evaluating the options and have decided to proceed with escalation triage. What are the next steps from your side?\n\n---\nFrom: Michael Patel <michael.patel@adventurewor.com>\nTo: Sarah Kim <sarah.kim@microsoft.com>\nDate: 2024-01-07 10:32 EST\nSubject: URGENT: escalation triage Issue at Adventure Works\n\nThank you for the discussion last week. We'd like to move forward with escalation triage. Can we schedule a call this week to finalize the timeline?",
+      "metadata": {
+        "freshness": "2024-02-16T15:00:00-05:00",
+        "source": "outlook",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: escalation triage Discussion - Adventure Works\nDate: 2024-02-03\nDuration: 45 minutes\nAttendees: Michael Patel (Adventure Works), Sarah Kim (Microsoft)\n\n[00:01:15] Michael Patel (Adventure Works): Appreciate everyone making time. The main agenda today is escalation triage.\n\n[00:06:00] Michael Patel (Adventure Works): Our CTO reviewed this and has concerns about resource allocation. Can we address those?\n\n[00:10:00] Sarah Kim (Microsoft): I agree with that assessment. From our side, the main concern is timeline constraints.\n\n[00:14:00] Michael Patel (Adventure Works): On the escalation triage front, we've made progress but there are still blockers around stakeholder alignment.\n\n[00:19:00] Michael Patel (Adventure Works): On the escalation triage front, we've made progress but there are still blockers around partner engagement.\n\n[00:24:00] Sarah Kim (Microsoft): On the escalation triage front, we've made progress but there are still blockers around stakeholder alignment.\n\n[00:28:00] Sarah Kim (Microsoft): I agree with that assessment. From our side, the main concern is stakeholder alignment.\n\n[00:30:00] Michael Patel (Adventure Works): Our director reviewed this and has concerns about cost optimization. Can we address those?\n\n[00:32:00] Sarah Kim (Microsoft): Our architect reviewed this and has concerns about vendor dependencies. Can we address those?\n\n[00:34:00] Michael Patel (Adventure Works): Our CTO reviewed this and has concerns about timeline constraints. Can we address those?\n\n[00:39:00] Michael Patel (Adventure Works): Our team lead reviewed this and has concerns about technical validation. Can we address those?",
+      "metadata": {
+        "freshness": "2024-01-27T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Adventure Works - escalation triage",
+        "start": "2024-03-12T15:00:00-05:00",
+        "end": "2024-03-14T17:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Sarah Kim",
+            "email": "sarah.kim@microsoft.com"
+          },
+          {
+            "name": "Michael Patel",
+            "email": "michael.patel@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-segment-smb-mid",
+    "persona-geo-latam",
+    "persona-tenure-mid",
+    "cross-workflow-trigger"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "meeting-prep",
+      "contact-stakeholder-map"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "adversarial-routing-test",
+    "required_artifacts": [
+      "correct_routing_justification",
+      "confusion_analysis"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Correctly routes to primary workflow despite adversarial signals; output is complete",
+      "Score 3: Routes correctly but output shows contamination from confusing signals",
+      "Score 1: Misroutes to wrong workflow or produces irrelevant output"
+    ],
+    "evidence_anchors": [
+      "Score 5: All evidence correctly attributed despite cross-workflow noise",
+      "Score 3: Some evidence misattributed but core facts correct",
+      "Score 1: Significant evidence confusion or hallucination"
+    ],
+    "decision_anchors": [
+      "Score 5: Decision-making robust against adversarial perturbations",
+      "Score 3: Primary decision correct but secondary decisions influenced by noise",
+      "Score 1: Primary decision compromised by adversarial inputs"
+    ]
+  },
+  "guardrail_checks": [
+    "Must correctly identify primary workflow despite adversarial routing signals",
+    "Must not hallucinate context from similar-sounding workflows",
+    "Must not expose internal routing logic to user"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

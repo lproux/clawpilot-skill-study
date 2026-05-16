@@ -1,0 +1,118 @@
+{
+  "scenario_id": "WF-17-00056",
+  "workflow_id": "WF-17",
+  "workflow_name": "Migration Architecture Sketch",
+  "seed": 1700098,
+  "tier": 3,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF17-J",
+  "persona": "Manager",
+  "fixture_id": "FX-005",
+  "user_message": "I need you to process this escalation email from Tailspin Toys. There's been no activity for 45 days and I'm worried.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Tailspin Toys",
+        "account_id": "ACC-JXC3G9ET",
+        "opportunities": [
+          {
+            "name": "Tailspin Azure Virtual Desktop",
+            "stage": "Close",
+            "amount": 560000,
+            "close_date": "2024-09-15"
+          },
+          {
+            "name": "Tailspin Azure SQL Migration",
+            "stage": "Prospect",
+            "amount": 125000,
+            "close_date": "2024-10-05"
+          },
+          {
+            "name": "Tailspin Dynamics 365 Implementation",
+            "stage": "Propose",
+            "amount": 45000,
+            "close_date": "2024-08-10"
+          }
+        ],
+        "acr_current": 122043.29,
+        "health_flag": "Healthy",
+        "owner": "Raj Mehta"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "security_alert",
+            "detail": "Signal detected for Tailspin Toys: the current vendor contract has a 90-day exit clause we need to plan around",
+            "date": "2024-03-11"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-geo-apac",
+    "persona-segment-smb-small",
+    "persona-tenure-junior",
+    "routing-ambiguous-2skills"
+  ],
+  "expected_routing": {
+    "entry_skill": "solution-value-design-coach",
+    "modules": [
+      "migration-architecture",
+      "solution-research"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "funding-partner-activation-coach",
+        "condition": "ECIF or partner engagement needed for migration"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "migration-architecture-sketch",
+    "required_artifacts": [
+      "Architecture sketch with service recommendations (justified)",
+      "migration sequencing",
+      "dependency map",
+      "cost discussion",
+      "compliance notes"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF17-J trap (Sketch is too detailed for business audience); produces complete Architecture sketch with service recommendations (justified), migration sequencing, dependency map, ",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF17-J failure pattern",
+      "Score 1: Output exhibits the full FM-WF17-J failure mode (Sketch is too detailed for business audience)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct consumption trend decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF17-J -- Sketch is too detailed for business audience"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

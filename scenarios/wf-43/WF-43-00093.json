@@ -1,0 +1,116 @@
+{
+  "scenario_id": "WF-43-00093",
+  "workflow_id": "WF-43",
+  "workflow_name": "Discovery Call Transcript -> Opportunity Build",
+  "seed": 4300135,
+  "tier": 4,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": "FM-WF43-P",
+  "persona": "CSA",
+  "fixture_id": "FX-029",
+  "user_message": "Can you work with me on QBR preparation for Consolidated Messenger? There's been no activity for 45 days and I'm worried.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Consolidated Messenger",
+        "account_id": "ACC-LVS79LOG",
+        "opportunities": [
+          {
+            "name": "Consolidated Azure AI Services",
+            "stage": "Propose",
+            "amount": 280000,
+            "close_date": "2024-12-11"
+          },
+          {
+            "name": "Consolidated Security Modernization",
+            "stage": "Prospect",
+            "amount": 210000,
+            "close_date": "2024-04-06"
+          },
+          {
+            "name": "Consolidated Azure Arc Deployment",
+            "stage": "Close",
+            "amount": 125000,
+            "close_date": "2024-05-02"
+          }
+        ],
+        "acr_current": 0,
+        "health_flag": "Unknown",
+        "owner": "Tom Rodriguez"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: QBR preparation Discussion - Consolidated Messenger\nDate: 2024-02-13\nDuration: 45 minutes\nAttendees: Sarah Singh (Consolidated Messenger), Tom Rodriguez (Microsoft), Priya (Consolidated Messenger)\n\n[00:01:30] Sarah Singh (Consolidated Messenger): Thanks everyone for joining. Let's dive into QBR preparation.\n\n[00:06:00] Sarah Singh (Consolidated Messenger): Our architect reviewed this and has concerns about resource allocation. Can we address those?\n\n[00:08:00] Sarah Singh (Consolidated Messenger): On the QBR preparation front, we've made progress but there are still blockers around stakeholder alignment.\n\n[00:12:00] Tom Rodriguez (Microsoft): On the QBR preparation front, we've made progress but there are still blockers around performance requirements.\n\n[00:16:00] Tom Rodriguez (Microsoft): Let me add some context -- we've been working on partner engagement and found that the migration can proceed in phases to reduce risk.\n\n[00:19:00] Sarah Singh (Consolidated Messenger): The timeline for timeline constraints is aggressive. We need to validate the assumptions.\n\n[00:23:00] Tom Rodriguez (Microsoft): On the QBR preparation front, we've made progress but there are still blockers around partner engagement.\n\n[00:26:00] Priya (Consolidated Messenger): Our VP reviewed this and has concerns about technical validation. Can we address those?",
+      "metadata": {
+        "freshness": "2024-03-26T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "medium"
+      }
+    }
+  ],
+  "perturbations": [
+    "data-partially-missing",
+    "signal-strength-faint",
+    "persona-segment-smb-mid",
+    "persona-geo-na"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "opportunity creation warranted"
+      },
+      {
+        "target_skill": "solution-value-design-coach",
+        "condition": "solution sketch needed from discovery signals"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "discovery-call-transcript-->-opportunity-build",
+    "required_artifacts": [
+      "BANT signal extraction with evidence quotes",
+      "opportunity proposal with stage/value/close-date",
+      "confidence labels",
+      "solution sketch suggestion",
+      "follow-up actions"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF43-P trap (Opportunity creation routes through pipeline-hygiene when CSA could commit direc); produces complete BANT signal extraction with evidence quotes, opportunity proposal with stage/value/close-date, confi",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF43-P failure pattern",
+      "Score 1: Output exhibits the full FM-WF43-P failure mode (Opportunity creation routes through pipeline-hygiene when CSA could commit direc)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct QBR preparation decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF43-P -- Opportunity creation routes through pipeline-hygiene when CSA could commit direc",
+    "Guardrail axis scored neutrally -- focus on whether output served the user's actual need"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

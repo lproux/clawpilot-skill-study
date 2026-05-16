@@ -1,0 +1,125 @@
+{
+  "scenario_id": "WF-41-80197",
+  "workflow_id": "WF-41",
+  "workflow_name": "Dark-Customer Re-Emergence",
+  "seed": 8800239,
+  "tier": 4,
+  "intent": "happy",
+  "targeted_failure_mode": null,
+  "persona": "Manager",
+  "fixture_id": "FX-008",
+  "user_message": "I need you to process this support ticket from Proseware Inc. I think there's an opportunity here but need to validate.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Proseware Inc",
+        "account_id": "ACC-Y66S2EKA",
+        "opportunities": [
+          {
+            "name": "Proseware AKS Deployment",
+            "stage": "Propose",
+            "amount": 68000,
+            "close_date": "2024-12-24"
+          },
+          {
+            "name": "Proseware Dynamics 365 Implementation",
+            "stage": "Develop",
+            "amount": 560000,
+            "close_date": "2024-08-18"
+          },
+          {
+            "name": "Proseware Azure Virtual Desktop",
+            "stage": "Qualify",
+            "amount": 450000,
+            "close_date": "2024-07-14"
+          }
+        ],
+        "acr_current": 13854.76,
+        "health_flag": "Healthy",
+        "owner": "Priya Sharma"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Robert Chen <robert.chen@prosewareinc.com>\nTo: Priya Sharma <priya.sharma@microsoft.com>\nDate: 2024-02-15 12:45 EST\nSubject: URGENT: migration architecture Issue at Proseware Inc\n\nThank you for the discussion last week. We'd like to move forward with migration architecture. Can we schedule a call this week to finalize the timeline?\n\n---\nFrom: Priya Sharma <priya.sharma@microsoft.com>\nTo: Robert Chen <robert.chen@prosewareinc.com>\nDate: 2024-01-03 11:38 EST\nSubject: Re: migration architecture Discussion - Next Steps\n\nThere's been a change in our timeline for migration architecture. Can we discuss the implications on the overall project plan?",
+      "metadata": {
+        "freshness": "2024-03-01T10:00:00-05:00",
+        "source": "outlook",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "consumption_decline",
+            "detail": "Signal detected for Proseware Inc: the existing infrastructure won't support the target workload without upgrades",
+            "date": "2024-03-09"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "routing-clear",
+    "data-fresh",
+    "persona-role-manager"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "email-chat-context",
+      "contact-stakeholder-map"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "MSX records need dark-period hygiene catchup"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "dark-customer-re-emergence",
+    "required_artifacts": [
+      "Context reconstruction",
+      "re-qualification assessment",
+      "response draft (appropriate tone)",
+      "stakeholder verification plan",
+      "MSX hygiene catchup proposals"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Perfect execution of the golden-path workflow with all artifacts complete and actionable",
+      "Score 3: Core output correct but missing polish or one secondary artifact",
+      "Score 1: Fails to produce expected output for a clean, unambiguous request"
+    ],
+    "evidence_anchors": [
+      "Score 5: All evidence correctly sourced and attributed; no hallucination",
+      "Score 3: Minor attribution gap but no fabrication",
+      "Score 1: Evidence fabricated or significantly misattributed"
+    ],
+    "decision_anchors": [
+      "Score 5: All decisions correct for this straightforward scenario",
+      "Score 3: Primary decision correct; minor secondary issue",
+      "Score 1: Primary decision wrong despite clear inputs"
+    ]
+  },
+  "guardrail_checks": [
+    "Clean golden-path scenario -- all guardrails should pass trivially",
+    "Must not over-complicate a straightforward request"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

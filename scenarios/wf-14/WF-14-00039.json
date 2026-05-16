@@ -1,0 +1,146 @@
+{
+  "scenario_id": "WF-14-00039",
+  "workflow_id": "WF-14",
+  "workflow_name": "Stakeholder Map Generation",
+  "seed": 1400081,
+  "tier": 1,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF14-F",
+  "persona": "CSA",
+  "fixture_id": "FX-021",
+  "user_message": "Quick one -- triage this on Nod Publishers. Board meeting is next week.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Nod Publishers",
+        "account_id": "ACC-BFJJI6LY",
+        "opportunities": [
+          {
+            "name": "Nod Azure SQL Migration",
+            "stage": "Close",
+            "amount": 45000,
+            "close_date": "2023-10-06"
+          },
+          {
+            "name": "Nod Intune Rollout",
+            "stage": "Develop",
+            "amount": 560000,
+            "close_date": "2024-12-16"
+          }
+        ],
+        "acr_current": 111088.58,
+        "health_flag": "At Risk",
+        "owner": "Marcus Williams"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Samantha Singh <samantha.singh@nodpublisher.com>\nTo: Marcus Williams <marcus.williams@microsoft.com>\nDate: 2024-03-13 11:34 EST\nSubject: escalation triage - Action Required\n\nWe've been evaluating the options and have decided to proceed with escalation triage. What are the next steps from your side?\n\n---\nFrom: Marcus Williams <marcus.williams@microsoft.com>\nTo: Samantha Singh <samantha.singh@nodpublisher.com>\nDate: 2024-02-12 11:28 EST\nSubject: Follow-up: escalation triage Review\n\nJust checking in on the escalation triage proposal. Our VP Engineering is asking for a status update before the board meeting next week.\n\n---\nFrom: Samantha Singh <samantha.singh@nodpublisher.com>\nTo: Marcus Williams <marcus.williams@microsoft.com>\nDate: 2024-01-08 17:07 EST\nSubject: escalation triage - Action Required\n\nJust checking in on the escalation triage proposal. Our VP Engineering is asking for a status update before the board meeting next week.",
+      "metadata": {
+        "freshness": "2024-03-10T16:00:00-05:00",
+        "source": "outlook",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: escalation triage Discussion - Nod Publishers\nDate: 2024-03-14\nDuration: 45 minutes\nAttendees: Samantha Singh (Nod Publishers), Marcus Williams (Microsoft)\n\n[00:02:00] Samantha Singh (Nod Publishers): Good morning. I wanted to follow up on escalation triage from our last session.\n\n[00:05:00] Samantha Singh (Nod Publishers): On the escalation triage front, we've made progress but there are still blockers around data residency.\n\n[00:08:00] Samantha Singh (Nod Publishers): Let me add some context -- we've been working on cost optimization and found that there's a compliance requirement we hadn't accounted for in the original scope.\n\n[00:10:00] Marcus Williams (Microsoft): I agree with that assessment. From our side, the main concern is budget approval.\n\n[00:12:00] Marcus Williams (Microsoft): Our VP reviewed this and has concerns about integration complexity. Can we address those?\n\n[00:16:00] Samantha Singh (Nod Publishers): Let me add some context -- we've been working on integration complexity and found that there's a dependency on the security team's review that could delay us.\n\n[00:21:00] Marcus Williams (Microsoft): On the escalation triage front, we've made progress but there are still blockers around security compliance.\n\n[00:24:00] Marcus Williams (Microsoft): The timeline for technical validation is aggressive. We need to validate the assumptions.\n\n[00:27:00] Samantha Singh (Nod Publishers): Let me add some context -- we've been working on integration complexity and found that the cost projections need to factor in reserved instance pricing for accuracy.\n\n[00:32:00] Samantha Singh (Nod Publishers): Let me add some context -- we've been working on stakeholder alignment and found that there's a dependency on the security team's review that could delay us.\n\n[00:35:00] Marcus Williams (Microsoft): Let me add some context -- we've been working on cost optimization and found that the current vendor contract has a 90-day exit clause we need to plan around.",
+      "metadata": {
+        "freshness": "2024-01-07T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "mixed",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Nod Publishers - escalation triage",
+        "start": "2024-03-15T13:00:00-05:00",
+        "end": "2024-03-12T16:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Marcus Williams",
+            "email": "marcus.williams@microsoft.com"
+          },
+          {
+            "name": "Samantha Singh",
+            "email": "samantha.singh@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "deployment_blocker",
+            "detail": "Signal detected for Nod Publishers: there's a compliance requirement we hadn't accounted for in the original scope",
+            "date": "2024-03-11"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-10T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-segment-smb-mid",
+    "persona-role-csa",
+    "data-stale",
+    "persona-geo-apac"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "contact-stakeholder-map"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "stakeholder-map-generation",
+    "required_artifacts": [
+      "Stakeholder map with roles (decision-maker",
+      "influencer",
+      "champion",
+      "blocker)",
+      "recency labels"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF14-F trap (Skips technical-decision-maker role); produces complete Stakeholder map with roles (decision-maker, influencer, champion, blocker), recency labels, confiden",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF14-F failure pattern",
+      "Score 1: Output exhibits the full FM-WF14-F failure mode (Skips technical-decision-maker role)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct escalation triage decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF14-F -- Skips technical-decision-maker role"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

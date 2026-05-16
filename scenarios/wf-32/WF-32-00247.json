@@ -1,0 +1,153 @@
+{
+  "scenario_id": "WF-32-00247",
+  "workflow_id": "WF-32",
+  "workflow_name": "Calendar Pre-Pack Automation",
+  "seed": 3200289,
+  "tier": 4,
+  "intent": "happy",
+  "targeted_failure_mode": null,
+  "persona": "DSSP",
+  "fixture_id": "FX-037",
+  "user_message": "[AUTOMATION TRIGGER] Scheduled Calendar event with non-Microsoft external attendee detected initiated for Woodgrove Labs.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Woodgrove Labs",
+        "account_id": "ACC-WZHG8AQ3",
+        "opportunities": [
+          {
+            "name": "Woodgrove Power Platform",
+            "stage": "Qualify",
+            "amount": 210000,
+            "close_date": "2024-12-15"
+          },
+          {
+            "name": "Woodgrove AKS Deployment",
+            "stage": "Propose",
+            "amount": 125000,
+            "close_date": "2024-05-21"
+          }
+        ],
+        "acr_current": 204547.55,
+        "health_flag": "At Risk",
+        "owner": "David Chen"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Robert Petrov <robert.petrov@woodgrovelab.com>\nTo: David Chen <david.chen@microsoft.com>\nDate: 2024-03-03 10:29 EST\nSubject: URGENT: executive brief Issue at Woodgrove Labs\n\nJust checking in on the executive brief proposal. Our CFO is asking for a status update before the board meeting next week.\n\n---\nFrom: David Chen <david.chen@microsoft.com>\nTo: Robert Petrov <robert.petrov@woodgrovelab.com>\nDate: 2024-02-16 17:12 EST\nSubject: Follow-up: executive brief Review\n\nOur team encountered some challenges with executive brief. Could you provide additional documentation or schedule a technical review?\n\n---\nFrom: Robert Petrov <robert.petrov@woodgrovelab.com>\nTo: David Chen <david.chen@microsoft.com>\nDate: 2024-01-20 10:05 EST\nSubject: Re: executive brief Discussion - Next Steps\n\nThere's been a change in our timeline for executive brief. Can we discuss the implications on the overall project plan?",
+      "metadata": {
+        "freshness": "2024-02-09T13:00:00-05:00",
+        "source": "outlook",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: executive brief Discussion - Woodgrove Labs\nDate: 2024-02-12\nDuration: 45 minutes\nAttendees: Robert Petrov (Woodgrove Labs), David Chen (Microsoft)\n\n[00:02:00] Robert Petrov (Woodgrove Labs): Good morning. I wanted to follow up on executive brief from our last session.\n\n[00:08:00] Robert Petrov (Woodgrove Labs): I agree with that assessment. From our side, the main concern is technical validation.\n\n[00:10:00] Robert Petrov (Woodgrove Labs): Let me add some context -- we've been working on vendor dependencies and found that there's a compliance requirement we hadn't accounted for in the original scope.\n\n[00:12:00] David Chen (Microsoft): Let me add some context -- we've been working on data residency and found that there's a compliance requirement we hadn't accounted for in the original scope.\n\n[00:14:00] David Chen (Microsoft): The timeline for performance requirements is aggressive. We need to validate the assumptions.\n\n[00:16:00] David Chen (Microsoft): On the executive brief front, we've made progress but there are still blockers around timeline constraints.\n\n[00:21:00] David Chen (Microsoft): The timeline for data residency is aggressive. We need to validate the assumptions.",
+      "metadata": {
+        "freshness": "2024-02-12T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Woodgrove Labs - executive brief",
+        "start": "2024-03-11T14:00:00-05:00",
+        "end": "2024-03-15T17:00:00-05:00",
+        "attendees": [
+          {
+            "name": "David Chen",
+            "email": "david.chen@microsoft.com"
+          },
+          {
+            "name": "Robert Petrov",
+            "email": "robert.petrov@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "deployment_blocker",
+            "detail": "Signal detected for Woodgrove Labs: the cost projections need to factor in reserved instance pricing for accuracy",
+            "date": "2024-03-10"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-10T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-geo-na",
+    "data-inconsistent",
+    "persona-role-dssp",
+    "persona-tenure-senior"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "meeting-prep",
+      "contact-stakeholder-map",
+      "email-chat-context"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "portfolio-account-planning-coach",
+        "condition": "meeting is for account CSA should have declined"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "calendar-pre-pack-automation",
+    "required_artifacts": [
+      "Pre-pack brief with attendee context",
+      "account snapshot",
+      "talking points",
+      "likely objections",
+      "open items"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Complete, well-structured output matching the Calendar Pre-Pack Automation template with all required artifacts present and actionable",
+      "Score 3: Output covers main requirements but missing one or two secondary artifacts or lacking specificity",
+      "Score 1: Output is generic, missing key artifacts, or fails to address the specific request"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct executive brief decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

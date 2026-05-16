@@ -1,0 +1,108 @@
+{
+  "scenario_id": "WF-43-00223",
+  "workflow_id": "WF-43",
+  "workflow_name": "Discovery Call Transcript -> Opportunity Build",
+  "seed": 4300265,
+  "tier": 4,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": "FM-WF43-N",
+  "persona": "DSSP",
+  "fixture_id": "FX-039",
+  "user_message": "Can you extract the pipeline hygiene from this exec meeting notes for Fabrikam Residences? There's been no activity for 45 days and I'm worried.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Fabrikam Residences",
+        "account_id": "ACC-5JSOIRD0",
+        "opportunities": [
+          {
+            "name": "Fabrikam Power Platform",
+            "stage": "Prospect",
+            "amount": 175000,
+            "close_date": "2024-06-08"
+          },
+          {
+            "name": "Fabrikam Cloud Migration Phase",
+            "stage": "Develop",
+            "amount": 450000,
+            "close_date": "2024-11-24"
+          }
+        ],
+        "acr_current": 32488.07,
+        "health_flag": "Healthy",
+        "owner": "Tom Rodriguez"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: pipeline hygiene Discussion - Fabrikam Residences\nDate: 2024-03-14\nDuration: 45 minutes\nAttendees: Kevin Lee (Fabrikam Residences), Tom Rodriguez (Microsoft)\n\n[00:01:30] Kevin Lee (Fabrikam Residences): Thanks everyone for joining. Let's dive into pipeline hygiene.\n\n[00:07:00] Tom Rodriguez (Microsoft): The timeline for data residency is aggressive. We need to validate the assumptions.\n\n[00:10:00] Tom Rodriguez (Microsoft): On the pipeline hygiene front, we've made progress but there are still blockers around stakeholder alignment.\n\n[00:13:00] Tom Rodriguez (Microsoft): The timeline for integration complexity is aggressive. We need to validate the assumptions.\n\n[00:15:00] Tom Rodriguez (Microsoft): On the pipeline hygiene front, we've made progress but there are still blockers around stakeholder alignment.\n\n[00:18:00] Kevin Lee (Fabrikam Residences): Our team lead reviewed this and has concerns about integration complexity. Can we address those?\n\n[00:21:00] Kevin Lee (Fabrikam Residences): Our team lead reviewed this and has concerns about performance requirements. Can we address those?\n\n[00:24:00] Tom Rodriguez (Microsoft): Let me add some context -- we've been working on performance requirements and found that the current vendor contract has a 90-day exit clause we need to plan around.\n\n[00:27:00] Kevin Lee (Fabrikam Residences): On the pipeline hygiene front, we've made progress but there are still blockers around partner engagement.",
+      "metadata": {
+        "freshness": "2024-01-20T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "mixed",
+        "length_class": "short"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-role-dssp",
+    "persona-geo-emea"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "opportunity creation warranted"
+      },
+      {
+        "target_skill": "solution-value-design-coach",
+        "condition": "solution sketch needed from discovery signals"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "discovery-call-transcript-->-opportunity-build",
+    "required_artifacts": [
+      "BANT signal extraction with evidence quotes",
+      "opportunity proposal with stage/value/close-date",
+      "confidence labels",
+      "solution sketch suggestion",
+      "follow-up actions"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF43-N trap (BANT framework forces structure where customer's discovery doesn't fit it); produces complete BANT signal extraction with evidence quotes, opportunity proposal with stage/value/close-date, confi",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF43-N failure pattern",
+      "Score 1: Output exhibits the full FM-WF43-N failure mode (BANT framework forces structure where customer's discovery doesn't fit it)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct pipeline hygiene decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF43-N -- BANT framework forces structure where customer's discovery doesn't fit it",
+    "Guardrail axis scored neutrally -- focus on whether output served the user's actual need"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

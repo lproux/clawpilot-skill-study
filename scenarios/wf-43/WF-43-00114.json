@@ -1,0 +1,108 @@
+{
+  "scenario_id": "WF-43-00114",
+  "workflow_id": "WF-43",
+  "workflow_name": "Discovery Call Transcript -> Opportunity Build",
+  "seed": 4300156,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF43-J",
+  "persona": "CSA",
+  "fixture_id": "FX-021",
+  "user_message": "Samantha Singh at Nod Publishers just sent this. Help me prep a brief.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Nod Publishers",
+        "account_id": "ACC-BFJJI6LY",
+        "opportunities": [
+          {
+            "name": "Nod Azure SQL Migration",
+            "stage": "Close",
+            "amount": 45000,
+            "close_date": "2023-10-06"
+          },
+          {
+            "name": "Nod Intune Rollout",
+            "stage": "Develop",
+            "amount": 560000,
+            "close_date": "2024-12-16"
+          }
+        ],
+        "acr_current": 111088.58,
+        "health_flag": "At Risk",
+        "owner": "Marcus Williams"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: consumption trend Discussion - Nod Publishers\nDate: 2024-01-20\nDuration: 45 minutes\nAttendees: Samantha Singh (Nod Publishers), Marcus Williams (Microsoft)\n\n[00:01:15] Samantha Singh (Nod Publishers): Appreciate everyone making time. The main agenda today is consumption trend.\n\n[00:08:00] Marcus Williams (Microsoft): Let me add some context -- we've been working on resource allocation and found that there's a dependency on the security team's review that could delay us.\n\n[00:10:00] Samantha Singh (Nod Publishers): I agree with that assessment. From our side, the main concern is vendor dependencies.\n\n[00:14:00] Samantha Singh (Nod Publishers): On the consumption trend front, we've made progress but there are still blockers around stakeholder alignment.\n\n[00:19:00] Samantha Singh (Nod Publishers): Let me add some context -- we've been working on partner engagement and found that there's a dependency on the security team's review that could delay us.\n\n[00:23:00] Marcus Williams (Microsoft): Let me add some context -- we've been working on security compliance and found that the current vendor contract has a 90-day exit clause we need to plan around.\n\n[00:27:00] Samantha Singh (Nod Publishers): The timeline for technical validation is aggressive. We need to validate the assumptions.\n\n[00:29:00] Marcus Williams (Microsoft): Our architect reviewed this and has concerns about integration complexity. Can we address those?\n\n[00:33:00] Marcus Williams (Microsoft): Let me add some context -- we've been working on performance requirements and found that the current vendor contract has a 90-day exit clause we need to plan around.\n\n[00:35:00] Samantha Singh (Nod Publishers): Our CTO reviewed this and has concerns about budget approval. Can we address those?\n\n[00:39:00] Samantha Singh (Nod Publishers): On the consumption trend front, we've made progress but there are still blockers around resource allocation.",
+      "metadata": {
+        "freshness": "2024-01-23T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "long"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-tenure-mid",
+    "persona-role-csa",
+    "persona-segment-smb-mid"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "opportunity creation warranted"
+      },
+      {
+        "target_skill": "solution-value-design-coach",
+        "condition": "solution sketch needed from discovery signals"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "discovery-call-transcript-->-opportunity-build",
+    "required_artifacts": [
+      "BANT signal extraction with evidence quotes",
+      "opportunity proposal with stage/value/close-date",
+      "confidence labels",
+      "solution sketch suggestion",
+      "follow-up actions"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF43-J trap (Solution sketch over-fits to a Microsoft product not actually signaled); produces complete BANT signal extraction with evidence quotes, opportunity proposal with stage/value/close-date, confi",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF43-J failure pattern",
+      "Score 1: Output exhibits the full FM-WF43-J failure mode (Solution sketch over-fits to a Microsoft product not actually signaled)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct consumption trend decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF43-J -- Solution sketch over-fits to a Microsoft product not actually signaled"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "scenario_id": "WF-18-00142",
+  "workflow_id": "WF-18",
+  "workflow_name": "Security / Zero Trust Value Brief",
+  "seed": 1800184,
+  "tier": 1,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF18-B",
+  "persona": "DSSP",
+  "fixture_id": "FX-027",
+  "user_message": "I need to create the summary for the Blue Yonder Airlines engagement. Multiple stakeholders are involved -- it's complex.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Blue Yonder Airlines",
+        "account_id": "ACC-6ZHK5AIU",
+        "opportunities": [
+          {
+            "name": "Blue Dynamics 365 Implementation",
+            "stage": "Close",
+            "amount": 210000,
+            "close_date": "2024-04-22"
+          },
+          {
+            "name": "Blue Azure Infrastructure",
+            "stage": "Prospect",
+            "amount": 350000,
+            "close_date": "2024-08-05"
+          },
+          {
+            "name": "Blue Copilot Adoption",
+            "stage": "Prospect",
+            "amount": 210000,
+            "close_date": "2024-12-03"
+          }
+        ],
+        "acr_current": 0,
+        "health_flag": "At Risk",
+        "owner": "David Chen"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-geo-emea",
+    "persona-segment-smb-small",
+    "routing-ambiguous-2skills",
+    "persona-role-dssp"
+  ],
+  "expected_routing": {
+    "entry_skill": "solution-value-design-coach",
+    "modules": [
+      "security-posture-value",
+      "solution-research"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "security-/-zero-trust-value-brief",
+    "required_artifacts": [
+      "Security value brief with Zero Trust framework mapping",
+      "customer-specific gaps",
+      "proof points",
+      "integration notes for existing tools"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF18-B trap (Invents customer security gaps); produces complete Security value brief with Zero Trust framework mapping, customer-specific gaps, proof points, integr",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF18-B failure pattern",
+      "Score 1: Output exhibits the full FM-WF18-B failure mode (Invents customer security gaps)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct territory planning decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF18-B -- Invents customer security gaps"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "scenario_id": "WF-25-00027",
+  "workflow_id": "WF-25",
+  "workflow_name": "Weekly Forecast Prep",
+  "seed": 2500069,
+  "tier": 2,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF25-C",
+  "persona": "CSA",
+  "fixture_id": "FX-047",
+  "user_message": "[AUTOMATION TRIGGER] Scheduled Weekly scheduled automation or user requests forecast prepar initiated for Evergreen Solutions.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Evergreen Solutions",
+        "account_id": "ACC-S7KJN805",
+        "opportunities": [
+          {
+            "name": "Evergreen Azure AI Services",
+            "stage": "Qualify",
+            "amount": 175000,
+            "close_date": "2024-12-26"
+          }
+        ],
+        "acr_current": 19865.64,
+        "health_flag": "Healthy",
+        "owner": "David Chen"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-tenure-mid",
+    "routing-clear"
+  ],
+  "expected_routing": {
+    "entry_skill": "forecast-business-review-coach",
+    "modules": [
+      "committed-milestone-forecast",
+      "gap-to-target-review"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "hygiene issues discovered during forecast prep"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "weekly-forecast-prep",
+    "required_artifacts": [
+      "Forecast summary with week-over-week delta",
+      "per-opportunity category assessment",
+      "gap analysis",
+      "uncommitted-upside identification",
+      "ask section"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF25-C trap (Confuses hygiene with status); produces complete Forecast summary with week-over-week delta, per-opportunity category assessment, gap analysis, uncom",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF25-C failure pattern",
+      "Score 1: Output exhibits the full FM-WF25-C failure mode (Confuses hygiene with status)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct territory planning decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF25-C -- Confuses hygiene with status"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

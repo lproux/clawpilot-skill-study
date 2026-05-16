@@ -1,0 +1,114 @@
+{
+  "scenario_id": "WF-52-00028",
+  "workflow_id": "WF-52",
+  "workflow_name": "Internal Account Review Transcript -> Team Actions",
+  "seed": 5200070,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF52-E",
+  "persona": "DSSP",
+  "fixture_id": "FX-049",
+  "user_message": "Working on Iron Creek Mining's security posture. Got the escalation email -- help me generate the watchlist.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Iron Creek Mining",
+        "account_id": "ACC-WVPLFPK6",
+        "opportunities": [
+          {
+            "name": "Iron Azure DevOps",
+            "stage": "Qualify",
+            "amount": 350000,
+            "close_date": "2024-10-28"
+          },
+          {
+            "name": "Iron Azure Virtual Desktop",
+            "stage": "Develop",
+            "amount": 280000,
+            "close_date": "2024-06-02"
+          },
+          {
+            "name": "Iron Azure SQL Migration",
+            "stage": "Qualify",
+            "amount": 68000,
+            "close_date": "2024-05-06"
+          }
+        ],
+        "acr_current": 10924.12,
+        "health_flag": "Healthy",
+        "owner": "Tom Rodriguez"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: security posture Discussion - Iron Creek Mining\nDate: 2024-01-25\nDuration: 45 minutes\nAttendees: Karen Berg (Iron Creek Mining), Tom Rodriguez (Microsoft), Michelle (Iron Creek Mining)\n\n[00:02:00] Karen Berg (Iron Creek Mining): Good morning. I wanted to follow up on security posture from our last session.\n\n[00:07:00] Tom Rodriguez (Microsoft): Our team lead reviewed this and has concerns about stakeholder alignment. Can we address those?\n\n[00:11:00] Michelle (Iron Creek Mining): Our CTO reviewed this and has concerns about partner engagement. Can we address those?\n\n[00:16:00] Karen Berg (Iron Creek Mining): On the security posture front, we've made progress but there are still blockers around cost optimization.\n\n[00:21:00] Michelle (Iron Creek Mining): On the security posture front, we've made progress but there are still blockers around timeline constraints.\n\n[00:25:00] Tom Rodriguez (Microsoft): I agree with that assessment. From our side, the main concern is security compliance.\n\n[00:30:00] Michelle (Iron Creek Mining): The timeline for stakeholder alignment is aggressive. We need to validate the assumptions.\n\n[00:35:00] Tom Rodriguez (Microsoft): Our CTO reviewed this and has concerns about data residency. Can we address those?\n\n[00:39:00] Michelle (Iron Creek Mining): I agree with that assessment. From our side, the main concern is resource allocation.\n\n[00:44:00] Tom Rodriguez (Microsoft): Let me add some context -- we've been working on timeline constraints and found that the cost projections need to factor in reserved instance pricing for accuracy.",
+      "metadata": {
+        "freshness": "2024-02-10T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "short"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-tenure-mid",
+    "persona-geo-apac",
+    "persona-segment-smb-small"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "forecast-business-review-coach",
+        "condition": "team coaching or risk review input"
+      },
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "MSX updates warranted from review"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "internal-account-review-transcript-->-team-actions",
+    "required_artifacts": [
+      "Team action items with owners",
+      "coaching notes (constructive frame)",
+      "customer-facing draft (sanitized)",
+      "manager decision items",
+      "MSX update proposals"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF52-E trap (Manager risk brief reuses customer-facing language); produces complete Team action items with owners, coaching notes (constructive frame), customer-facing draft (sanitized",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF52-E failure pattern",
+      "Score 1: Output exhibits the full FM-WF52-E failure mode (Manager risk brief reuses customer-facing language)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct security posture decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF52-E -- Manager risk brief reuses customer-facing language"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

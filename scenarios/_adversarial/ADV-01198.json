@@ -1,0 +1,112 @@
+{
+  "scenario_id": "WF-52-91198",
+  "workflow_id": "WF-52",
+  "workflow_name": "Internal Account Review Transcript -> Team Actions",
+  "seed": 9901240,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": null,
+  "persona": "CSA",
+  "fixture_id": "FX-041",
+  "user_message": "Can you work with me on renewal risk for Quantum Analytics? We had a deep-dive last month -- need the follow-up.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Quantum Analytics",
+        "account_id": "ACC-ZJSZDYNL",
+        "opportunities": [
+          {
+            "name": "Quantum Azure Infrastructure",
+            "stage": "Qualify",
+            "amount": 68000,
+            "close_date": "2024-04-14"
+          },
+          {
+            "name": "Quantum Data Platform Migration",
+            "stage": "Develop",
+            "amount": 450000,
+            "close_date": "2024-07-16"
+          },
+          {
+            "name": "Quantum Dynamics 365 Implementation",
+            "stage": "Qualify",
+            "amount": 68000,
+            "close_date": "2024-07-17"
+          }
+        ],
+        "acr_current": 21322.6,
+        "health_flag": "At Risk",
+        "owner": "Marcus Williams"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: renewal risk Discussion - Quantum Analytics\nDate: 2024-03-05\nDuration: 45 minutes\nAttendees: Robert Foster (Quantum Analytics), Marcus Williams (Microsoft), Michelle (Quantum Analytics)\n\n[00:01:30] Robert Foster (Quantum Analytics): Thanks everyone for joining. Let's dive into renewal risk.\n\n[00:07:00] Michelle (Quantum Analytics): Our VP reviewed this and has concerns about integration complexity. Can we address those?\n\n[00:10:00] Marcus Williams (Microsoft): On the renewal risk front, we've made progress but there are still blockers around security compliance.\n\n[00:15:00] Michelle (Quantum Analytics): Our team lead reviewed this and has concerns about stakeholder alignment. Can we address those?\n\n[00:17:00] Marcus Williams (Microsoft): The timeline for security compliance is aggressive. We need to validate the assumptions.\n\n[00:21:00] Marcus Williams (Microsoft): Let me add some context -- we've been working on partner engagement and found that there's a compliance requirement we hadn't accounted for in the original scope.\n\n[00:26:00] Michelle (Quantum Analytics): I agree with that assessment. From our side, the main concern is vendor dependencies.\n\n[00:31:00] Robert Foster (Quantum Analytics): Our VP reviewed this and has concerns about technical validation. Can we address those?\n\n[00:36:00] Robert Foster (Quantum Analytics): On the renewal risk front, we've made progress but there are still blockers around data residency.\n\n[00:41:00] Robert Foster (Quantum Analytics): I agree with that assessment. From our side, the main concern is budget approval.\n\n[00:43:00] Marcus Williams (Microsoft): The timeline for integration complexity is aggressive. We need to validate the assumptions.",
+      "metadata": {
+        "freshness": "2024-03-21T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "long"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-geo-latam",
+    "persona-role-csa",
+    "data-inconsistent",
+    "routing-trap"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "forecast-business-review-coach",
+        "condition": "team coaching or risk review input"
+      },
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "MSX updates warranted from review"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "adversarial-routing-test",
+    "required_artifacts": [
+      "correct_routing_justification",
+      "confusion_analysis"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Correctly routes to primary workflow despite adversarial signals; output is complete",
+      "Score 3: Routes correctly but output shows contamination from confusing signals",
+      "Score 1: Misroutes to wrong workflow or produces irrelevant output"
+    ],
+    "evidence_anchors": [
+      "Score 5: All evidence correctly attributed despite cross-workflow noise",
+      "Score 3: Some evidence misattributed but core facts correct",
+      "Score 1: Significant evidence confusion or hallucination"
+    ],
+    "decision_anchors": [
+      "Score 5: Decision-making robust against adversarial perturbations",
+      "Score 3: Primary decision correct but secondary decisions influenced by noise",
+      "Score 1: Primary decision compromised by adversarial inputs"
+    ]
+  },
+  "guardrail_checks": [
+    "Must correctly identify primary workflow despite adversarial routing signals",
+    "Must not hallucinate context from similar-sounding workflows",
+    "Must not expose internal routing logic to user"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

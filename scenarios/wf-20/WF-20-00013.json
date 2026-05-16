@@ -1,0 +1,111 @@
+{
+  "scenario_id": "WF-20-00013",
+  "workflow_id": "WF-20",
+  "workflow_name": "Workload Modernization Plan",
+  "seed": 2000055,
+  "tier": 3,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF20-C",
+  "persona": "DSSP",
+  "fixture_id": "FX-019",
+  "user_message": "Pulling in context from Lucerne Publishing's escalation email -- need to triage this for the executive brief.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Lucerne Publishing",
+        "account_id": "ACC-2JXCFRG8",
+        "opportunities": [
+          {
+            "name": "Lucerne Copilot Adoption",
+            "stage": "Propose",
+            "amount": 210000,
+            "close_date": "2023-11-19"
+          },
+          {
+            "name": "Lucerne Data Platform Migration",
+            "stage": "Prospect",
+            "amount": 45000,
+            "close_date": "2024-11-16"
+          }
+        ],
+        "acr_current": 39791.19,
+        "health_flag": "Healthy",
+        "owner": "Tom Rodriguez"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "deployment_blocker",
+            "detail": "Signal detected for Lucerne Publishing: there's a compliance requirement we hadn't accounted for in the original scope",
+            "date": "2024-03-06"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-09T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-segment-smb-corporate",
+    "persona-tenure-mid",
+    "signal-strength-faint"
+  ],
+  "expected_routing": {
+    "entry_skill": "solution-value-design-coach",
+    "modules": [
+      "migration-architecture",
+      "solution-research"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "funding-partner-activation-coach",
+        "condition": "funding eligibility check needed"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "workload-modernization-plan",
+    "required_artifacts": [
+      "Phased modernization plan (assess",
+      "migrate",
+      "optimize",
+      "innovate) with success criteria per phase",
+      "funding options"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF20-C trap (Partner role conflated with MS role); produces complete Phased modernization plan (assess, migrate, optimize, innovate) with success criteria per phase, fun",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF20-C failure pattern",
+      "Score 1: Output exhibits the full FM-WF20-C failure mode (Partner role conflated with MS role)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct executive brief decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF20-C -- Partner role conflated with MS role"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

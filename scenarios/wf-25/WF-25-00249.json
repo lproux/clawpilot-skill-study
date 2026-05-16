@@ -1,0 +1,100 @@
+{
+  "scenario_id": "WF-25-00249",
+  "workflow_id": "WF-25",
+  "workflow_name": "Weekly Forecast Prep",
+  "seed": 2500291,
+  "tier": 2,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF25-D",
+  "persona": "CSA",
+  "fixture_id": "FX-041",
+  "user_message": "[AUTOMATION TRIGGER] Daily automation: Weekly scheduled automation or user requests forecast prepar. Account: Quantum Analytics.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Quantum Analytics",
+        "account_id": "ACC-ZJSZDYNL",
+        "opportunities": [
+          {
+            "name": "Quantum Azure Infrastructure",
+            "stage": "Qualify",
+            "amount": 68000,
+            "close_date": "2024-04-14"
+          },
+          {
+            "name": "Quantum Data Platform Migration",
+            "stage": "Develop",
+            "amount": 450000,
+            "close_date": "2024-07-16"
+          },
+          {
+            "name": "Quantum Dynamics 365 Implementation",
+            "stage": "Qualify",
+            "amount": 68000,
+            "close_date": "2024-07-17"
+          }
+        ],
+        "acr_current": 21322.6,
+        "health_flag": "At Risk",
+        "owner": "Marcus Williams"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-segment-smb-corporate",
+    "data-inconsistent"
+  ],
+  "expected_routing": {
+    "entry_skill": "forecast-business-review-coach",
+    "modules": [
+      "committed-milestone-forecast",
+      "gap-to-target-review"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "hygiene issues discovered during forecast prep"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "weekly-forecast-prep",
+    "required_artifacts": [
+      "Forecast summary with week-over-week delta",
+      "per-opportunity category assessment",
+      "gap analysis",
+      "uncommitted-upside identification",
+      "ask section"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF25-D trap (No week-over-week delta); produces complete Forecast summary with week-over-week delta, per-opportunity category assessment, gap analysis, uncom",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF25-D failure pattern",
+      "Score 1: Output exhibits the full FM-WF25-D failure mode (No week-over-week delta)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct whitespace analysis decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF25-D -- No week-over-week delta"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

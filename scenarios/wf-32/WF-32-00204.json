@@ -1,0 +1,148 @@
+{
+  "scenario_id": "WF-32-00204",
+  "workflow_id": "WF-32",
+  "workflow_name": "Calendar Pre-Pack Automation",
+  "seed": 3200246,
+  "tier": 4,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": "FM-WF32-R",
+  "persona": "CSA",
+  "fixture_id": "FX-001",
+  "user_message": "[AUTOMATION TRIGGER] Scheduled Calendar event with non-Microsoft external attendee detected initiated for Contoso Ltd.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Contoso Ltd",
+        "account_id": "ACC-VWW2DK8X",
+        "opportunities": [
+          {
+            "name": "Contoso Power Platform",
+            "stage": "Propose",
+            "amount": 560000,
+            "close_date": "2024-12-28"
+          }
+        ],
+        "acr_current": 78949.7,
+        "health_flag": "Healthy",
+        "owner": "Marcus Williams"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Angela Doyle <angela.doyle@contosoltd.com>\nTo: Marcus Williams <marcus.williams@microsoft.com>\nDate: 2024-03-12 09:07 EST\nSubject: Re: Re: competitive positioning Timeline\n\nOur team encountered some challenges with competitive positioning. Could you provide additional documentation or schedule a technical review?\n\n---\nFrom: Marcus Williams <marcus.williams@microsoft.com>\nTo: Angela Doyle <angela.doyle@contosoltd.com>\nDate: 2024-02-04 15:44 EST\nSubject: Quarterly Update: Contoso Ltd competitive positioning\n\nJust checking in on the competitive positioning proposal. Our Director of IT is asking for a status update before the board meeting next week.\n\n---\nFrom: Angela Doyle <angela.doyle@contosoltd.com>\nTo: Marcus Williams <marcus.williams@microsoft.com>\nDate: 2024-01-28 13:46 EST\nSubject: Follow-up: competitive positioning Review\n\nWe've been evaluating the options and have decided to proceed with competitive positioning. What are the next steps from your side?",
+      "metadata": {
+        "freshness": "2024-03-20T09:00:00-05:00",
+        "source": "outlook",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: competitive positioning Discussion - Contoso Ltd\nDate: 2024-01-17\nDuration: 45 minutes\nAttendees: Angela Doyle (Contoso Ltd), Marcus Williams (Microsoft), David (Contoso Ltd)\n\n[00:01:15] Angela Doyle (Contoso Ltd): Appreciate everyone making time. The main agenda today is competitive positioning.\n\n[00:06:00] Angela Doyle (Contoso Ltd): The timeline for performance requirements is aggressive. We need to validate the assumptions.\n\n[00:10:00] David (Contoso Ltd): I agree with that assessment. From our side, the main concern is performance requirements.\n\n[00:15:00] David (Contoso Ltd): Our CTO reviewed this and has concerns about timeline constraints. Can we address those?\n\n[00:17:00] Angela Doyle (Contoso Ltd): Let me add some context -- we've been working on integration complexity and found that the cost projections need to factor in reserved instance pricing for accuracy.\n\n[00:19:00] Marcus Williams (Microsoft): Let me add some context -- we've been working on security compliance and found that the current vendor contract has a 90-day exit clause we need to plan around.\n\n[00:21:00] David (Contoso Ltd): Let me add some context -- we've been working on resource allocation and found that the current vendor contract has a 90-day exit clause we need to plan around.\n\n[00:23:00] Marcus Williams (Microsoft): The timeline for security compliance is aggressive. We need to validate the assumptions.\n\n[00:26:00] Angela Doyle (Contoso Ltd): Let me add some context -- we've been working on data residency and found that there's a compliance requirement we hadn't accounted for in the original scope.\n\n[00:30:00] Marcus Williams (Microsoft): I agree with that assessment. From our side, the main concern is security compliance.",
+      "metadata": {
+        "freshness": "2024-01-27T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "mixed",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Contoso Ltd - competitive positioning",
+        "start": "2024-03-12T12:00:00-05:00",
+        "end": "2024-03-14T16:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Marcus Williams",
+            "email": "marcus.williams@microsoft.com"
+          },
+          {
+            "name": "Angela Doyle",
+            "email": "angela.doyle@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "consumption_decline",
+            "detail": "Signal detected for Contoso Ltd: the current vendor contract has a 90-day exit clause we need to plan around",
+            "date": "2024-03-10"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-10T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-geo-na",
+    "signal-strength-faint",
+    "data-fresh"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "meeting-prep",
+      "contact-stakeholder-map",
+      "email-chat-context"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "portfolio-account-planning-coach",
+        "condition": "meeting is for account CSA should have declined"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "calendar-pre-pack-automation",
+    "required_artifacts": [
+      "Pre-pack brief with attendee context",
+      "account snapshot",
+      "talking points",
+      "likely objections",
+      "open items"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF32-R trap (Non-Microsoft attendee as the sole filter misses partner-led meetings with valua); produces complete Pre-pack brief with attendee context, account snapshot, talking points, likely objections, open item",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF32-R failure pattern",
+      "Score 1: Output exhibits the full FM-WF32-R failure mode (Non-Microsoft attendee as the sole filter misses partner-led meetings with valua)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct competitive positioning decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF32-R -- Non-Microsoft attendee as the sole filter misses partner-led meetings with valua",
+    "Guardrail axis scored neutrally -- focus on whether output served the user's actual need"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

@@ -1,0 +1,148 @@
+{
+  "scenario_id": "WF-32-00036",
+  "workflow_id": "WF-32",
+  "workflow_name": "Calendar Pre-Pack Automation",
+  "seed": 3200078,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF32-C",
+  "persona": "CSA",
+  "fixture_id": "FX-015",
+  "user_message": "[AUTOMATION TRIGGER] System detected Calendar event with non-Microsoft external attendee detected for account Fourth Coffee. Generating output.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Fourth Coffee",
+        "account_id": "ACC-A7MFL3SV",
+        "opportunities": [
+          {
+            "name": "Fourth Data Platform Migration",
+            "stage": "Qualify",
+            "amount": 210000,
+            "close_date": "2023-12-04"
+          }
+        ],
+        "acr_current": 114958.25,
+        "health_flag": "Healthy",
+        "owner": "Raj Mehta"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: David Rivera <david.rivera@fourthcoffee.com>\nTo: Raj Mehta <raj.mehta@microsoft.com>\nDate: 2024-03-09 14:39 EST\nSubject: URGENT: competitive positioning Issue at Fourth Coffee\n\nOur team encountered some challenges with competitive positioning. Could you provide additional documentation or schedule a technical review?\n\n---\nFrom: Raj Mehta <raj.mehta@microsoft.com>\nTo: David Rivera <david.rivera@fourthcoffee.com>\nDate: 2024-02-04 10:18 EST\nSubject: Follow-up: competitive positioning Review\n\nJust checking in on the competitive positioning proposal. Our Infrastructure Manager is asking for a status update before the board meeting next week.",
+      "metadata": {
+        "freshness": "2024-02-22T17:00:00-05:00",
+        "source": "outlook",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: competitive positioning Discussion - Fourth Coffee\nDate: 2024-02-28\nDuration: 45 minutes\nAttendees: David Rivera (Fourth Coffee), Raj Mehta (Microsoft), Michelle (Fourth Coffee)\n\n[00:02:00] David Rivera (Fourth Coffee): Good morning. I wanted to follow up on competitive positioning from our last session.\n\n[00:08:00] Raj Mehta (Microsoft): On the competitive positioning front, we've made progress but there are still blockers around vendor dependencies.\n\n[00:13:00] Michelle (Fourth Coffee): The timeline for data residency is aggressive. We need to validate the assumptions.\n\n[00:18:00] Raj Mehta (Microsoft): I agree with that assessment. From our side, the main concern is budget approval.\n\n[00:21:00] Michelle (Fourth Coffee): Our team lead reviewed this and has concerns about cost optimization. Can we address those?\n\n[00:23:00] David Rivera (Fourth Coffee): The timeline for budget approval is aggressive. We need to validate the assumptions.\n\n[00:28:00] David Rivera (Fourth Coffee): On the competitive positioning front, we've made progress but there are still blockers around integration complexity.\n\n[00:33:00] Raj Mehta (Microsoft): Our architect reviewed this and has concerns about technical validation. Can we address those?",
+      "metadata": {
+        "freshness": "2024-03-08T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Fourth Coffee - competitive positioning",
+        "start": "2024-03-14T13:00:00-05:00",
+        "end": "2024-03-14T14:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Raj Mehta",
+            "email": "raj.mehta@microsoft.com"
+          },
+          {
+            "name": "David Rivera",
+            "email": "david.rivera@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "consumption_decline",
+            "detail": "Signal detected for Fourth Coffee: there's a dependency on the security team's review that could delay us",
+            "date": "2024-03-11"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-10T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "routing-ambiguous-2skills",
+    "persona-segment-smb-small",
+    "persona-geo-na",
+    "persona-tenure-junior"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "meeting-prep",
+      "contact-stakeholder-map",
+      "email-chat-context"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "portfolio-account-planning-coach",
+        "condition": "meeting is for account CSA should have declined"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "calendar-pre-pack-automation",
+    "required_artifacts": [
+      "Pre-pack brief with attendee context",
+      "account snapshot",
+      "talking points",
+      "likely objections",
+      "open items"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF32-C trap (Includes raw email/chat content rather than summary); produces complete Pre-pack brief with attendee context, account snapshot, talking points, likely objections, open item",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF32-C failure pattern",
+      "Score 1: Output exhibits the full FM-WF32-C failure mode (Includes raw email/chat content rather than summary)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct competitive positioning decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF32-C -- Includes raw email/chat content rather than summary"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

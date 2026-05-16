@@ -1,0 +1,82 @@
+{
+  "scenario_id": "WF-05-00061",
+  "workflow_id": "WF-05",
+  "workflow_name": "Manager Weekly Portfolio Rollup",
+  "seed": 500103,
+  "tier": 2,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF05-D",
+  "persona": "DSSP",
+  "fixture_id": "FX-015",
+  "user_message": "[AUTOMATION TRIGGER] System detected Weekly scheduled automation or manager request for team roll for account Fourth Coffee. Generating output.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Fourth Coffee",
+        "account_id": "ACC-A7MFL3SV",
+        "opportunities": [
+          {
+            "name": "Fourth Data Platform Migration",
+            "stage": "Qualify",
+            "amount": 210000,
+            "close_date": "2023-12-04"
+          }
+        ],
+        "acr_current": 114958.25,
+        "health_flag": "Healthy",
+        "owner": "Raj Mehta"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-tenure-senior",
+    "persona-role-dssp",
+    "persona-segment-smb-small",
+    "data-stale"
+  ],
+  "expected_routing": {
+    "entry_skill": "portfolio-account-planning-coach",
+    "modules": [
+      "manager-portfolio-review"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "manager-weekly-portfolio-rollup",
+    "required_artifacts": [
+      "One-page team rollup with wins",
+      "risks (coaching-framed)",
+      "asks for skip-level",
+      "week-over-week delta"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF05-D trap (Claims wins without source evidence); produces complete One-page team rollup with wins, risks (coaching-framed), asks for skip-level, week-over-week delta",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF05-D failure pattern",
+      "Score 1: Output exhibits the full FM-WF05-D failure mode (Claims wins without source evidence)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct deployment blockers decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF05-D -- Claims wins without source evidence"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

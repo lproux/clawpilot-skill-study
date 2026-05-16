@@ -1,0 +1,132 @@
+{
+  "scenario_id": "WF-48-00051",
+  "workflow_id": "WF-48",
+  "workflow_name": "Roadmap Meeting Transcript -> Forecast Sequencing",
+  "seed": 4800093,
+  "tier": 4,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": "FM-WF48-M",
+  "persona": "CSA",
+  "fixture_id": "FX-045",
+  "user_message": "Just got this from Thomas Okafor at Azure Ridge Partners -- I need help figuring out partner engagement. ",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Azure Ridge Partners",
+        "account_id": "ACC-URB6CCFS",
+        "opportunities": [
+          {
+            "name": "Azure Cloud Migration Phase",
+            "stage": "Develop",
+            "amount": 210000,
+            "close_date": "2024-09-05"
+          },
+          {
+            "name": "Azure Cloud Migration Phase",
+            "stage": "Close",
+            "amount": 560000,
+            "close_date": "2024-10-05"
+          },
+          {
+            "name": "Azure Intune Rollout",
+            "stage": "Develop",
+            "amount": 280000,
+            "close_date": "2024-10-01"
+          }
+        ],
+        "acr_current": 189461.39,
+        "health_flag": "Unknown",
+        "owner": "Raj Mehta"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: partner engagement Discussion - Azure Ridge Partners\nDate: 2024-01-01\nDuration: 45 minutes\nAttendees: Thomas Okafor (Azure Ridge Partners), Raj Mehta (Microsoft)\n\n[00:01:15] Thomas Okafor (Azure Ridge Partners): Appreciate everyone making time. The main agenda today is partner engagement.\n\n[00:06:00] Raj Mehta (Microsoft): The timeline for security compliance is aggressive. We need to validate the assumptions.\n\n[00:11:00] Thomas Okafor (Azure Ridge Partners): I agree with that assessment. From our side, the main concern is budget approval.\n\n[00:15:00] Raj Mehta (Microsoft): I agree with that assessment. From our side, the main concern is security compliance.\n\n[00:17:00] Thomas Okafor (Azure Ridge Partners): Let me add some context -- we've been working on resource allocation and found that there's a compliance requirement we hadn't accounted for in the original scope.\n\n[00:22:00] Raj Mehta (Microsoft): Our team lead reviewed this and has concerns about cost optimization. Can we address those?\n\n[00:26:00] Thomas Okafor (Azure Ridge Partners): Let me add some context -- we've been working on vendor dependencies and found that there's a dependency on the security team's review that could delay us.\n\n[00:29:00] Thomas Okafor (Azure Ridge Partners): I agree with that assessment. From our side, the main concern is cost optimization.\n\n[00:31:00] Raj Mehta (Microsoft): On the partner engagement front, we've made progress but there are still blockers around performance requirements.",
+      "metadata": {
+        "freshness": "2024-02-14T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "security_alert",
+            "detail": "Signal detected for Azure Ridge Partners: the current vendor contract has a 90-day exit clause we need to plan around",
+            "date": "2024-03-08"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-09T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "signal-strength-faint",
+    "persona-segment-smb-mid",
+    "data-inconsistent",
+    "persona-geo-emea"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "milestone and date updates needed"
+      },
+      {
+        "target_skill": "forecast-business-review-coach",
+        "condition": "forecast sequencing affected"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "roadmap-meeting-transcript-->-forecast-sequencing",
+    "required_artifacts": [
+      "Roadmap-to-forecast mapping",
+      "milestone date proposals",
+      "opportunity sequencing",
+      "new opportunity proposals (if signaled)",
+      "forecast impact with confidence"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF48-M trap (Forecast-business-review separation from opportunity sequencing forces double-pa); produces complete Roadmap-to-forecast mapping, milestone date proposals, opportunity sequencing, new opportunity propo",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF48-M failure pattern",
+      "Score 1: Output exhibits the full FM-WF48-M failure mode (Forecast-business-review separation from opportunity sequencing forces double-pa)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct partner engagement decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF48-M -- Forecast-business-review separation from opportunity sequencing forces double-pa",
+    "Guardrail axis scored neutrally -- focus on whether output served the user's actual need"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

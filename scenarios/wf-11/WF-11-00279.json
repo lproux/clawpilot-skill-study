@@ -1,0 +1,126 @@
+{
+  "scenario_id": "WF-11-00279",
+  "workflow_id": "WF-11",
+  "workflow_name": "Pre-Meeting Brief",
+  "seed": 1100321,
+  "tier": 2,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": "FM-WF11-L",
+  "persona": "CSA",
+  "fixture_id": "FX-001",
+  "user_message": "This just came in from Angela Doyle at Contoso Ltd. Can you prep a brief?",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Contoso Ltd",
+        "account_id": "ACC-VWW2DK8X",
+        "opportunities": [
+          {
+            "name": "Contoso Power Platform",
+            "stage": "Propose",
+            "amount": 560000,
+            "close_date": "2024-12-28"
+          }
+        ],
+        "acr_current": 78949.7,
+        "health_flag": "Healthy",
+        "owner": "Marcus Williams"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Angela Doyle <angela.doyle@contosoltd.com>\nTo: Marcus Williams <marcus.williams@microsoft.com>\nDate: 2024-03-09 09:48 EST\nSubject: Quarterly Update: Contoso Ltd renewal risk\n\nJust checking in on the renewal risk proposal. Our Director of IT is asking for a status update before the board meeting next week.\n\n---\nFrom: Marcus Williams <marcus.williams@microsoft.com>\nTo: Angela Doyle <angela.doyle@contosoltd.com>\nDate: 2024-01-06 15:09 EST\nSubject: Re: renewal risk Discussion - Next Steps\n\nJust checking in on the renewal risk proposal. Our Director of IT is asking for a status update before the board meeting next week.",
+      "metadata": {
+        "freshness": "2024-03-08T12:00:00-05:00",
+        "source": "outlook",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: renewal risk Discussion - Contoso Ltd\nDate: 2024-01-10\nDuration: 45 minutes\nAttendees: Angela Doyle (Contoso Ltd), Marcus Williams (Microsoft), David (Contoso Ltd)\n\n[00:02:00] Angela Doyle (Contoso Ltd): Good morning. I wanted to follow up on renewal risk from our last session.\n\n[00:08:00] David (Contoso Ltd): On the renewal risk front, we've made progress but there are still blockers around partner engagement.\n\n[00:10:00] Angela Doyle (Contoso Ltd): On the renewal risk front, we've made progress but there are still blockers around data residency.\n\n[00:12:00] David (Contoso Ltd): Our CTO reviewed this and has concerns about vendor dependencies. Can we address those?\n\n[00:15:00] David (Contoso Ltd): On the renewal risk front, we've made progress but there are still blockers around resource allocation.\n\n[00:19:00] Angela Doyle (Contoso Ltd): The timeline for resource allocation is aggressive. We need to validate the assumptions.",
+      "metadata": {
+        "freshness": "2024-01-03T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "mixed",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Contoso Ltd - renewal risk",
+        "start": "2024-03-12T16:00:00-05:00",
+        "end": "2024-03-12T10:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Marcus Williams",
+            "email": "marcus.williams@microsoft.com"
+          },
+          {
+            "name": "Angela Doyle",
+            "email": "angela.doyle@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-tenure-mid",
+    "signal-strength-noisy",
+    "data-fresh",
+    "persona-segment-smb-corporate"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "meeting-prep",
+      "contact-stakeholder-map"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "pre-meeting-brief",
+    "required_artifacts": [
+      "One-page brief with attendee context",
+      "account snapshot",
+      "talking points",
+      "likely objections",
+      "open items from last meeting"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF11-L trap (Draft-only posture delays time-sensitive sends); produces complete One-page brief with attendee context, account snapshot, talking points, likely objections, open item",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF11-L failure pattern",
+      "Score 1: Output exhibits the full FM-WF11-L failure mode (Draft-only posture delays time-sensitive sends)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct renewal risk decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF11-L -- Draft-only posture delays time-sensitive sends",
+    "Guardrail axis scored neutrally -- focus on whether output served the user's actual need"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "scenario_id": "WF-52-00089",
+  "workflow_id": "WF-52",
+  "workflow_name": "Internal Account Review Transcript -> Team Actions",
+  "seed": 5200131,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF52-F",
+  "persona": "Manager",
+  "fixture_id": "FX-021",
+  "user_message": "Just came out of migration architecture with Nod Publishers. Turn this into my brief and pull out the asks.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Nod Publishers",
+        "account_id": "ACC-BFJJI6LY",
+        "opportunities": [
+          {
+            "name": "Nod Azure SQL Migration",
+            "stage": "Close",
+            "amount": 45000,
+            "close_date": "2023-10-06"
+          },
+          {
+            "name": "Nod Intune Rollout",
+            "stage": "Develop",
+            "amount": 560000,
+            "close_date": "2024-12-16"
+          }
+        ],
+        "acr_current": 111088.58,
+        "health_flag": "At Risk",
+        "owner": "Marcus Williams"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: migration architecture Discussion - Nod Publishers\nDate: 2024-02-20\nDuration: 45 minutes\nAttendees: Samantha Singh (Nod Publishers), Marcus Williams (Microsoft)\n\n[00:01:15] Samantha Singh (Nod Publishers): Appreciate everyone making time. The main agenda today is migration architecture.\n\n[00:07:00] Samantha Singh (Nod Publishers): The timeline for technical validation is aggressive. We need to validate the assumptions.\n\n[00:10:00] Samantha Singh (Nod Publishers): Our team lead reviewed this and has concerns about performance requirements. Can we address those?\n\n[00:15:00] Samantha Singh (Nod Publishers): On the migration architecture front, we've made progress but there are still blockers around security compliance.\n\n[00:19:00] Samantha Singh (Nod Publishers): The timeline for timeline constraints is aggressive. We need to validate the assumptions.\n\n[00:21:00] Samantha Singh (Nod Publishers): Let me add some context -- we've been working on cost optimization and found that the cost projections need to factor in reserved instance pricing for accuracy.\n\n[00:23:00] Marcus Williams (Microsoft): The timeline for resource allocation is aggressive. We need to validate the assumptions.\n\n[00:25:00] Samantha Singh (Nod Publishers): I agree with that assessment. From our side, the main concern is timeline constraints.\n\n[00:28:00] Samantha Singh (Nod Publishers): On the migration architecture front, we've made progress but there are still blockers around partner engagement.\n\n[00:30:00] Marcus Williams (Microsoft): I agree with that assessment. From our side, the main concern is data residency.",
+      "metadata": {
+        "freshness": "2024-02-08T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "long"
+      }
+    }
+  ],
+  "perturbations": [
+    "routing-clear",
+    "data-stale"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "forecast-business-review-coach",
+        "condition": "team coaching or risk review input"
+      },
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "MSX updates warranted from review"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "internal-account-review-transcript-->-team-actions",
+    "required_artifacts": [
+      "Team action items with owners",
+      "coaching notes (constructive frame)",
+      "customer-facing draft (sanitized)",
+      "manager decision items",
+      "MSX update proposals"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF52-F trap (Skips manager-decision items when consensus was reached); produces complete Team action items with owners, coaching notes (constructive frame), customer-facing draft (sanitized",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF52-F failure pattern",
+      "Score 1: Output exhibits the full FM-WF52-F failure mode (Skips manager-decision items when consensus was reached)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct migration architecture decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF52-F -- Skips manager-decision items when consensus was reached"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

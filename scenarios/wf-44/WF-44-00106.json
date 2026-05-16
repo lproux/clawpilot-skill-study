@@ -1,0 +1,109 @@
+{
+  "scenario_id": "WF-44-00106",
+  "workflow_id": "WF-44",
+  "workflow_name": "Technical Deep-Dive Transcript -> Architecture + Blockers",
+  "seed": 4400148,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF44-H",
+  "persona": "DSSP",
+  "fixture_id": "FX-005",
+  "user_message": "Working on Tailspin Toys's escalation triage. Got the escalation email -- help me run the hygiene check.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Tailspin Toys",
+        "account_id": "ACC-JXC3G9ET",
+        "opportunities": [
+          {
+            "name": "Tailspin Azure Virtual Desktop",
+            "stage": "Close",
+            "amount": 560000,
+            "close_date": "2024-09-15"
+          },
+          {
+            "name": "Tailspin Azure SQL Migration",
+            "stage": "Prospect",
+            "amount": 125000,
+            "close_date": "2024-10-05"
+          },
+          {
+            "name": "Tailspin Dynamics 365 Implementation",
+            "stage": "Propose",
+            "amount": 45000,
+            "close_date": "2024-08-10"
+          }
+        ],
+        "acr_current": 122043.29,
+        "health_flag": "Healthy",
+        "owner": "Raj Mehta"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: escalation triage Discussion - Tailspin Toys\nDate: 2024-01-22\nDuration: 45 minutes\nAttendees: Steven Wilson (Tailspin Toys), Raj Mehta (Microsoft)\n\n[00:01:15] Steven Wilson (Tailspin Toys): Appreciate everyone making time. The main agenda today is escalation triage.\n\n[00:08:00] Steven Wilson (Tailspin Toys): Let me add some context -- we've been working on technical validation and found that there's a dependency on the security team's review that could delay us.\n\n[00:13:00] Steven Wilson (Tailspin Toys): On the escalation triage front, we've made progress but there are still blockers around performance requirements.\n\n[00:16:00] Steven Wilson (Tailspin Toys): Our VP reviewed this and has concerns about timeline constraints. Can we address those?\n\n[00:19:00] Steven Wilson (Tailspin Toys): The timeline for data residency is aggressive. We need to validate the assumptions.\n\n[00:21:00] Steven Wilson (Tailspin Toys): The timeline for security compliance is aggressive. We need to validate the assumptions.\n\n[00:26:00] Steven Wilson (Tailspin Toys): On the escalation triage front, we've made progress but there are still blockers around cost optimization.\n\n[00:30:00] Steven Wilson (Tailspin Toys): Let me add some context -- we've been working on stakeholder alignment and found that there's a dependency on the security team's review that could delay us.\n\n[00:32:00] Steven Wilson (Tailspin Toys): Our CTO reviewed this and has concerns about resource allocation. Can we address those?\n\n[00:35:00] Raj Mehta (Microsoft): The timeline for cost optimization is aggressive. We need to validate the assumptions.",
+      "metadata": {
+        "freshness": "2024-03-03T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "long"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-segment-smb-small",
+    "persona-geo-apac"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "solution-value-design-coach",
+        "condition": "architecture sketch needed from technical signals"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "technical-deep-dive-transcript-->-architecture-+-b",
+    "required_artifacts": [
+      "Architecture summary",
+      "blocker inventory (tech/commercial/org)",
+      "open questions",
+      "sequencing recommendation",
+      "specialist routing"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF44-H trap (Open-questions list is generic 'we should investigate more'); produces complete Architecture summary, blocker inventory (tech/commercial/org), open questions, sequencing recommenda",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF44-H failure pattern",
+      "Score 1: Output exhibits the full FM-WF44-H failure mode (Open-questions list is generic 'we should investigate more')"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct escalation triage decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF44-H -- Open-questions list is generic 'we should investigate more'"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

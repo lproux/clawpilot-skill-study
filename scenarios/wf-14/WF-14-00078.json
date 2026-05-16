@@ -1,0 +1,151 @@
+{
+  "scenario_id": "WF-14-00078",
+  "workflow_id": "WF-14",
+  "workflow_name": "Stakeholder Map Generation",
+  "seed": 1400120,
+  "tier": 1,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF14-F",
+  "persona": "CSA",
+  "fixture_id": "FX-049",
+  "user_message": "Can you pull the context on Iron Creek Mining? I need to build the narrative.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Iron Creek Mining",
+        "account_id": "ACC-WVPLFPK6",
+        "opportunities": [
+          {
+            "name": "Iron Azure DevOps",
+            "stage": "Qualify",
+            "amount": 350000,
+            "close_date": "2024-10-28"
+          },
+          {
+            "name": "Iron Azure Virtual Desktop",
+            "stage": "Develop",
+            "amount": 280000,
+            "close_date": "2024-06-02"
+          },
+          {
+            "name": "Iron Azure SQL Migration",
+            "stage": "Qualify",
+            "amount": 68000,
+            "close_date": "2024-05-06"
+          }
+        ],
+        "acr_current": 10924.12,
+        "health_flag": "Healthy",
+        "owner": "Tom Rodriguez"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Karen Berg <karen.berg@ironcreekmin.com>\nTo: Tom Rodriguez <tom.rodriguez@microsoft.com>\nDate: 2024-03-22 08:37 EST\nSubject: migration architecture - Action Required\n\nI wanted to follow up on our conversation about migration architecture. Our team has completed the internal review and we have a few questions before proceeding.\n\n---\nFrom: Tom Rodriguez <tom.rodriguez@microsoft.com>\nTo: Karen Berg <karen.berg@ironcreekmin.com>\nDate: 2024-02-09 12:54 EST\nSubject: Re: Re: migration architecture Timeline\n\nThere's been a change in our timeline for migration architecture. Can we discuss the implications on the overall project plan?\n\n---\nFrom: Karen Berg <karen.berg@ironcreekmin.com>\nTo: Tom Rodriguez <tom.rodriguez@microsoft.com>\nDate: 2024-01-18 10:34 EST\nSubject: migration architecture - Action Required\n\nWe've been evaluating the options and have decided to proceed with migration architecture. What are the next steps from your side?",
+      "metadata": {
+        "freshness": "2024-03-19T17:00:00-05:00",
+        "source": "outlook",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: migration architecture Discussion - Iron Creek Mining\nDate: 2024-01-09\nDuration: 45 minutes\nAttendees: Karen Berg (Iron Creek Mining), Tom Rodriguez (Microsoft), Kevin (Iron Creek Mining)\n\n[00:02:00] Karen Berg (Iron Creek Mining): Good morning. I wanted to follow up on migration architecture from our last session.\n\n[00:05:00] Tom Rodriguez (Microsoft): I agree with that assessment. From our side, the main concern is technical validation.\n\n[00:08:00] Karen Berg (Iron Creek Mining): Our VP reviewed this and has concerns about technical validation. Can we address those?\n\n[00:10:00] Karen Berg (Iron Creek Mining): Let me add some context -- we've been working on budget approval and found that the existing infrastructure won't support the target workload without upgrades.\n\n[00:12:00] Tom Rodriguez (Microsoft): I agree with that assessment. From our side, the main concern is budget approval.\n\n[00:15:00] Kevin (Iron Creek Mining): The timeline for integration complexity is aggressive. We need to validate the assumptions.\n\n[00:20:00] Kevin (Iron Creek Mining): I agree with that assessment. From our side, the main concern is performance requirements.\n\n[00:25:00] Kevin (Iron Creek Mining): I agree with that assessment. From our side, the main concern is timeline constraints.",
+      "metadata": {
+        "freshness": "2024-03-16T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "mixed",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Iron Creek Mining - migration architecture",
+        "start": "2024-03-15T15:00:00-05:00",
+        "end": "2024-03-13T13:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Tom Rodriguez",
+            "email": "tom.rodriguez@microsoft.com"
+          },
+          {
+            "name": "Karen Berg",
+            "email": "karen.berg@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "consumption_decline",
+            "detail": "Signal detected for Iron Creek Mining: the cost projections need to factor in reserved instance pricing for accuracy",
+            "date": "2024-03-11"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-role-csa",
+    "persona-segment-smb-small",
+    "routing-ambiguous-2skills"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "contact-stakeholder-map"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "stakeholder-map-generation",
+    "required_artifacts": [
+      "Stakeholder map with roles (decision-maker",
+      "influencer",
+      "champion",
+      "blocker)",
+      "recency labels"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF14-F trap (Skips technical-decision-maker role); produces complete Stakeholder map with roles (decision-maker, influencer, champion, blocker), recency labels, confiden",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF14-F failure pattern",
+      "Score 1: Output exhibits the full FM-WF14-F failure mode (Skips technical-decision-maker role)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct migration architecture decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF14-F -- Skips technical-decision-maker role"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

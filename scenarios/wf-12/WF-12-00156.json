@@ -1,0 +1,137 @@
+{
+  "scenario_id": "WF-12-00156",
+  "workflow_id": "WF-12",
+  "workflow_name": "Post-Meeting Follow-Up",
+  "seed": 1200198,
+  "tier": 3,
+  "intent": "design-redesign",
+  "targeted_failure_mode": "FM-WF12-N",
+  "persona": "CSA",
+  "fixture_id": "FX-005",
+  "user_message": "Can you work with me on account health for Tailspin Toys? ",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Tailspin Toys",
+        "account_id": "ACC-JXC3G9ET",
+        "opportunities": [
+          {
+            "name": "Tailspin Azure Virtual Desktop",
+            "stage": "Close",
+            "amount": 560000,
+            "close_date": "2024-09-15"
+          },
+          {
+            "name": "Tailspin Azure SQL Migration",
+            "stage": "Prospect",
+            "amount": 125000,
+            "close_date": "2024-10-05"
+          },
+          {
+            "name": "Tailspin Dynamics 365 Implementation",
+            "stage": "Propose",
+            "amount": 45000,
+            "close_date": "2024-08-10"
+          }
+        ],
+        "acr_current": 122043.29,
+        "health_flag": "Healthy",
+        "owner": "Raj Mehta"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: account health Discussion - Tailspin Toys\nDate: 2024-02-26\nDuration: 45 minutes\nAttendees: Steven Wilson (Tailspin Toys), Raj Mehta (Microsoft)\n\n[00:01:15] Steven Wilson (Tailspin Toys): Appreciate everyone making time. The main agenda today is account health.\n\n[00:05:00] Raj Mehta (Microsoft): Let me add some context -- we've been working on vendor dependencies and found that the migration can proceed in phases to reduce risk.\n\n[00:07:00] Steven Wilson (Tailspin Toys): Our VP reviewed this and has concerns about vendor dependencies. Can we address those?\n\n[00:12:00] Raj Mehta (Microsoft): I agree with that assessment. From our side, the main concern is data residency.\n\n[00:14:00] Steven Wilson (Tailspin Toys): Let me add some context -- we've been working on budget approval and found that the current vendor contract has a 90-day exit clause we need to plan around.\n\n[00:18:00] Raj Mehta (Microsoft): I agree with that assessment. From our side, the main concern is resource allocation.\n\n[00:22:00] Steven Wilson (Tailspin Toys): Our VP reviewed this and has concerns about security compliance. Can we address those?\n\n[00:25:00] Raj Mehta (Microsoft): On the account health front, we've made progress but there are still blockers around cost optimization.\n\n[00:30:00] Steven Wilson (Tailspin Toys): I agree with that assessment. From our side, the main concern is technical validation.\n\n[00:32:00] Steven Wilson (Tailspin Toys): Let me add some context -- we've been working on integration complexity and found that the existing infrastructure won't support the target workload without upgrades.\n\n[00:36:00] Raj Mehta (Microsoft): Our CTO reviewed this and has concerns about integration complexity. Can we address those?",
+      "metadata": {
+        "freshness": "2024-03-07T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Tailspin Toys - account health",
+        "start": "2024-03-15T14:00:00-05:00",
+        "end": "2024-03-15T17:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Raj Mehta",
+            "email": "raj.mehta@microsoft.com"
+          },
+          {
+            "name": "Steven Wilson",
+            "email": "steven.wilson@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-role-csa",
+    "persona-geo-apac"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions",
+      "email-chat-context"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "MSX updates warranted from meeting outcomes"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "post-meeting-follow-up",
+    "required_artifacts": [
+      "Decision log",
+      "action items with owners and due dates",
+      "customer-facing follow-up email draft",
+      "MSX writeback proposals"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF12-N trap (Follow-up + decision-log + MSX-proposal as separate artifacts creates context-sw); produces complete Decision log, action items with owners and due dates, customer-facing follow-up email draft, MSX wri",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF12-N failure pattern",
+      "Score 1: Output exhibits the full FM-WF12-N failure mode (Follow-up + decision-log + MSX-proposal as separate artifacts creates context-sw)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct account health decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF12-N -- Follow-up + decision-log + MSX-proposal as separate artifacts creates context-sw",
+    "Write proposals must require explicit user approval",
+    "Produce structural verdict on whether current routing adequately serves this scenario"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "verdict-on-structural",
+    "verdict_required_axes": [
+      "routing",
+      "evidence"
+    ]
+  }
+}

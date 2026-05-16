@@ -1,0 +1,126 @@
+{
+  "scenario_id": "WF-46-00178",
+  "workflow_id": "WF-46",
+  "workflow_name": "Objection-Handling Transcript -> Competitive Counter",
+  "seed": 4600220,
+  "tier": 4,
+  "intent": "happy",
+  "targeted_failure_mode": null,
+  "persona": "DSSP",
+  "fixture_id": "FX-049",
+  "user_message": "Can you extract the migration architecture from this escalation email for Iron Creek Mining? ",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Iron Creek Mining",
+        "account_id": "ACC-WVPLFPK6",
+        "opportunities": [
+          {
+            "name": "Iron Azure DevOps",
+            "stage": "Qualify",
+            "amount": 350000,
+            "close_date": "2024-10-28"
+          },
+          {
+            "name": "Iron Azure Virtual Desktop",
+            "stage": "Develop",
+            "amount": 280000,
+            "close_date": "2024-06-02"
+          },
+          {
+            "name": "Iron Azure SQL Migration",
+            "stage": "Qualify",
+            "amount": 68000,
+            "close_date": "2024-05-06"
+          }
+        ],
+        "acr_current": 10924.12,
+        "health_flag": "Healthy",
+        "owner": "Tom Rodriguez"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: migration architecture Discussion - Iron Creek Mining\nDate: 2024-02-01\nDuration: 45 minutes\nAttendees: Karen Berg (Iron Creek Mining), Tom Rodriguez (Microsoft), David (Iron Creek Mining)\n\n[00:02:00] Karen Berg (Iron Creek Mining): Good morning. I wanted to follow up on migration architecture from our last session.\n\n[00:05:00] David (Iron Creek Mining): Our CTO reviewed this and has concerns about security compliance. Can we address those?\n\n[00:07:00] Karen Berg (Iron Creek Mining): Let me add some context -- we've been working on budget approval and found that the cost projections need to factor in reserved instance pricing for accuracy.\n\n[00:12:00] Karen Berg (Iron Creek Mining): Our VP reviewed this and has concerns about timeline constraints. Can we address those?\n\n[00:17:00] David (Iron Creek Mining): The timeline for timeline constraints is aggressive. We need to validate the assumptions.\n\n[00:19:00] Tom Rodriguez (Microsoft): Our VP reviewed this and has concerns about budget approval. Can we address those?\n\n[00:24:00] David (Iron Creek Mining): On the migration architecture front, we've made progress but there are still blockers around technical validation.\n\n[00:29:00] Tom Rodriguez (Microsoft): I agree with that assessment. From our side, the main concern is cost optimization.\n\n[00:34:00] Karen Berg (Iron Creek Mining): On the migration architecture front, we've made progress but there are still blockers around stakeholder alignment.",
+      "metadata": {
+        "freshness": "2024-02-27T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "security_alert",
+            "detail": "Signal detected for Iron Creek Mining: the cost projections need to factor in reserved instance pricing for accuracy",
+            "date": "2024-03-07"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "signal-strength-noisy",
+    "data-contradictory",
+    "persona-segment-smb-small",
+    "persona-tenure-junior"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "solution-value-design-coach",
+        "condition": "competitive positioning research needed"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "objection-handling-transcript-->-competitive-count",
+    "required_artifacts": [
+      "Objection inventory with root-cause analysis",
+      "counter-positioning per objection",
+      "response draft",
+      "next-meeting tactics",
+      "proof-point needs"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Complete, well-structured output matching the Objection-Handling Transcript -> Competitive Counter template with all required artifacts present and actionable",
+      "Score 3: Output covers main requirements but missing one or two secondary artifacts or lacking specificity",
+      "Score 1: Output is generic, missing key artifacts, or fails to address the specific request"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct migration architecture decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

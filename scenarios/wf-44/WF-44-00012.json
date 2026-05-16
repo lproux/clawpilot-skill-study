@@ -1,0 +1,98 @@
+{
+  "scenario_id": "WF-44-00012",
+  "workflow_id": "WF-44",
+  "workflow_name": "Technical Deep-Dive Transcript -> Architecture + Blockers",
+  "seed": 4400054,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF44-G",
+  "persona": "CSA",
+  "fixture_id": "FX-017",
+  "user_message": "Can you work with me on account health for Humongous Insurance? Multiple stakeholders are involved -- it's complex.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Humongous Insurance",
+        "account_id": "ACC-3AB2FT8E",
+        "opportunities": [
+          {
+            "name": "Humongous Cloud Migration Phase",
+            "stage": "Qualify",
+            "amount": 175000,
+            "close_date": "2023-10-27"
+          }
+        ],
+        "acr_current": 73720.59,
+        "health_flag": "Healthy",
+        "owner": "David Chen"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: account health Discussion - Humongous Insurance\nDate: 2024-01-27\nDuration: 45 minutes\nAttendees: Michael Petrov (Humongous Insurance), David Chen (Microsoft), Michelle (Humongous Insurance)\n\n[00:01:15] Michael Petrov (Humongous Insurance): Appreciate everyone making time. The main agenda today is account health.\n\n[00:07:00] Michael Petrov (Humongous Insurance): The timeline for technical validation is aggressive. We need to validate the assumptions.\n\n[00:09:00] David Chen (Microsoft): On the account health front, we've made progress but there are still blockers around vendor dependencies.\n\n[00:12:00] David Chen (Microsoft): Let me add some context -- we've been working on resource allocation and found that the migration can proceed in phases to reduce risk.\n\n[00:16:00] Michelle (Humongous Insurance): Let me add some context -- we've been working on vendor dependencies and found that there's a dependency on the security team's review that could delay us.\n\n[00:20:00] David Chen (Microsoft): On the account health front, we've made progress but there are still blockers around technical validation.\n\n[00:25:00] Michael Petrov (Humongous Insurance): Our VP reviewed this and has concerns about stakeholder alignment. Can we address those?",
+      "metadata": {
+        "freshness": "2024-03-25T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "mixed",
+        "length_class": "medium"
+      }
+    }
+  ],
+  "perturbations": [
+    "data-stale",
+    "persona-role-csa",
+    "persona-tenure-mid"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "solution-value-design-coach",
+        "condition": "architecture sketch needed from technical signals"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "technical-deep-dive-transcript-->-architecture-+-b",
+    "required_artifacts": [
+      "Architecture summary",
+      "blocker inventory (tech/commercial/org)",
+      "open questions",
+      "sequencing recommendation",
+      "specialist routing"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF44-G trap (Misattributes technical claim to wrong speaker (CSA vs customer engineer)); produces complete Architecture summary, blocker inventory (tech/commercial/org), open questions, sequencing recommenda",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF44-G failure pattern",
+      "Score 1: Output exhibits the full FM-WF44-G failure mode (Misattributes technical claim to wrong speaker (CSA vs customer engineer))"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct account health decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF44-G -- Misattributes technical claim to wrong speaker (CSA vs customer engineer)"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

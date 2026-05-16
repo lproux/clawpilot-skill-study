@@ -1,0 +1,121 @@
+{
+  "scenario_id": "WF-45-00084",
+  "workflow_id": "WF-45",
+  "workflow_name": "QBR Transcript -> Health + Whitespace + Renewal Risk",
+  "seed": 4500126,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF45-D",
+  "persona": "CSA",
+  "fixture_id": "FX-011",
+  "user_message": "I have this escalation email from Alpine Ski House that needs build the narrative. Renewal conversation is tomorrow.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Alpine Ski House",
+        "account_id": "ACC-UIKNWGJ7",
+        "opportunities": [
+          {
+            "name": "Alpine Azure Virtual Desktop",
+            "stage": "Propose",
+            "amount": 560000,
+            "close_date": "2023-12-14"
+          }
+        ],
+        "acr_current": 115928.19,
+        "health_flag": "At Risk",
+        "owner": "Marcus Williams"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: deployment blockers Discussion - Alpine Ski House\nDate: 2024-01-01\nDuration: 45 minutes\nAttendees: Brian Yamamoto (Alpine Ski House), Marcus Williams (Microsoft), Priya (Alpine Ski House)\n\n[00:01:15] Brian Yamamoto (Alpine Ski House): Appreciate everyone making time. The main agenda today is deployment blockers.\n\n[00:05:00] Marcus Williams (Microsoft): Let me add some context -- we've been working on resource allocation and found that there's a compliance requirement we hadn't accounted for in the original scope.\n\n[00:09:00] Brian Yamamoto (Alpine Ski House): Our CTO reviewed this and has concerns about security compliance. Can we address those?\n\n[00:13:00] Marcus Williams (Microsoft): I agree with that assessment. From our side, the main concern is budget approval.\n\n[00:16:00] Brian Yamamoto (Alpine Ski House): On the deployment blockers front, we've made progress but there are still blockers around resource allocation.\n\n[00:20:00] Marcus Williams (Microsoft): On the deployment blockers front, we've made progress but there are still blockers around timeline constraints.\n\n[00:24:00] Priya (Alpine Ski House): I agree with that assessment. From our side, the main concern is integration complexity.\n\n[00:26:00] Brian Yamamoto (Alpine Ski House): The timeline for stakeholder alignment is aggressive. We need to validate the assumptions.\n\n[00:28:00] Marcus Williams (Microsoft): On the deployment blockers front, we've made progress but there are still blockers around resource allocation.\n\n[00:31:00] Marcus Williams (Microsoft): I agree with that assessment. From our side, the main concern is stakeholder alignment.\n\n[00:36:00] Brian Yamamoto (Alpine Ski House): On the deployment blockers front, we've made progress but there are still blockers around data residency.",
+      "metadata": {
+        "freshness": "2024-03-13T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "consumption_decline",
+            "detail": "Signal detected for Alpine Ski House: the cost projections need to factor in reserved instance pricing for accuracy",
+            "date": "2024-03-10"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-09T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-role-csa",
+    "persona-geo-apac"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "portfolio-account-planning-coach",
+        "condition": "health assessment needed"
+      },
+      {
+        "target_skill": "acr-signal-to-opportunity-coach",
+        "condition": "whitespace signals warrant investigation"
+      },
+      {
+        "target_skill": "forecast-business-review-coach",
+        "condition": "renewal risk affects forecast"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "qbr-transcript-->-health-+-whitespace-+-renewal-ri",
+    "required_artifacts": [
+      "Health delta assessment",
+      "whitespace hypotheses",
+      "renewal risk with confidence",
+      "action distribution with owners",
+      "comparison to last QBR commitments"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF45-D trap (Action distribution missing customer-side owners); produces complete Health delta assessment, whitespace hypotheses, renewal risk with confidence, action distribution wi",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF45-D failure pattern",
+      "Score 1: Output exhibits the full FM-WF45-D failure mode (Action distribution missing customer-side owners)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct deployment blockers decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF45-D -- Action distribution missing customer-side owners"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

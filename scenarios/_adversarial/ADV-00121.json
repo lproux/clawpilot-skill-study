@@ -1,0 +1,127 @@
+{
+  "scenario_id": "WF-11-90121",
+  "workflow_id": "WF-11",
+  "workflow_name": "Pre-Meeting Brief",
+  "seed": 9900163,
+  "tier": 2,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": null,
+  "persona": "CSA",
+  "fixture_id": "FX-014",
+  "user_message": "This just came in from Eric Nguyen at Datum Corporation. Can you create the summary?",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Datum Corporation",
+        "account_id": "ACC-WL4RKVIY",
+        "opportunities": [
+          {
+            "name": "Datum Azure Infrastructure",
+            "stage": "Close",
+            "amount": 560000,
+            "close_date": "2023-09-28"
+          },
+          {
+            "name": "Datum Dynamics 365 Implementation",
+            "stage": "Qualify",
+            "amount": 450000,
+            "close_date": "2024-10-14"
+          }
+        ],
+        "acr_current": 15499.11,
+        "health_flag": "Healthy",
+        "owner": "Sarah Kim"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Eric Nguyen <eric.nguyen@datumcorpora.com>\nTo: Sarah Kim <sarah.kim@microsoft.com>\nDate: 2024-03-11 09:32 EST\nSubject: competitive positioning - Action Required\n\nOur team encountered some challenges with competitive positioning. Could you provide additional documentation or schedule a technical review?\n\n---\nFrom: Sarah Kim <sarah.kim@microsoft.com>\nTo: Eric Nguyen <eric.nguyen@datumcorpora.com>\nDate: 2024-02-24 16:57 EST\nSubject: URGENT: competitive positioning Issue at Datum Corporation\n\nThere's been a change in our timeline for competitive positioning. Can we discuss the implications on the overall project plan?\n\n---\nFrom: Eric Nguyen <eric.nguyen@datumcorpora.com>\nTo: Sarah Kim <sarah.kim@microsoft.com>\nDate: 2024-01-15 15:48 EST\nSubject: Re: competitive positioning Discussion - Next Steps\n\nThank you for the discussion last week. We'd like to move forward with competitive positioning. Can we schedule a call this week to finalize the timeline?",
+      "metadata": {
+        "freshness": "2024-03-10T14:00:00-05:00",
+        "source": "outlook",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: competitive positioning Discussion - Datum Corporation\nDate: 2024-02-07\nDuration: 45 minutes\nAttendees: Eric Nguyen (Datum Corporation), Sarah Kim (Microsoft)\n\n[00:02:00] Eric Nguyen (Datum Corporation): Good morning. I wanted to follow up on competitive positioning from our last session.\n\n[00:06:00] Sarah Kim (Microsoft): The timeline for technical validation is aggressive. We need to validate the assumptions.\n\n[00:11:00] Eric Nguyen (Datum Corporation): I agree with that assessment. From our side, the main concern is partner engagement.\n\n[00:16:00] Eric Nguyen (Datum Corporation): Our CTO reviewed this and has concerns about stakeholder alignment. Can we address those?\n\n[00:20:00] Sarah Kim (Microsoft): The timeline for technical validation is aggressive. We need to validate the assumptions.\n\n[00:24:00] Sarah Kim (Microsoft): I agree with that assessment. From our side, the main concern is performance requirements.\n\n[00:26:00] Eric Nguyen (Datum Corporation): Let me add some context -- we've been working on data residency and found that there's a compliance requirement we hadn't accounted for in the original scope.\n\n[00:29:00] Sarah Kim (Microsoft): The timeline for cost optimization is aggressive. We need to validate the assumptions.\n\n[00:31:00] Sarah Kim (Microsoft): I agree with that assessment. From our side, the main concern is data residency.\n\n[00:33:00] Eric Nguyen (Datum Corporation): I agree with that assessment. From our side, the main concern is stakeholder alignment.\n\n[00:36:00] Sarah Kim (Microsoft): Let me add some context -- we've been working on security compliance and found that the existing infrastructure won't support the target workload without upgrades.",
+      "metadata": {
+        "freshness": "2024-02-16T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "mixed",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Datum Corporation - competitive positioning",
+        "start": "2024-03-14T16:00:00-05:00",
+        "end": "2024-03-11T16:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Sarah Kim",
+            "email": "sarah.kim@microsoft.com"
+          },
+          {
+            "name": "Eric Nguyen",
+            "email": "eric.nguyen@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    }
+  ],
+  "perturbations": [
+    "signal-strength-faint",
+    "persona-segment-smb-mid",
+    "routing-ambiguous-3skills"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "meeting-prep",
+      "contact-stakeholder-map"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "adversarial-routing-test",
+    "required_artifacts": [
+      "correct_routing_justification",
+      "confusion_analysis"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Correctly routes to primary workflow despite adversarial signals; output is complete",
+      "Score 3: Routes correctly but output shows contamination from confusing signals",
+      "Score 1: Misroutes to wrong workflow or produces irrelevant output"
+    ],
+    "evidence_anchors": [
+      "Score 5: All evidence correctly attributed despite cross-workflow noise",
+      "Score 3: Some evidence misattributed but core facts correct",
+      "Score 1: Significant evidence confusion or hallucination"
+    ],
+    "decision_anchors": [
+      "Score 5: Decision-making robust against adversarial perturbations",
+      "Score 3: Primary decision correct but secondary decisions influenced by noise",
+      "Score 1: Primary decision compromised by adversarial inputs"
+    ]
+  },
+  "guardrail_checks": [
+    "Must correctly identify primary workflow despite adversarial routing signals",
+    "Must not hallucinate context from similar-sounding workflows",
+    "Must not expose internal routing logic to user"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

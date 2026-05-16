@@ -1,0 +1,115 @@
+{
+  "scenario_id": "WF-49-00051",
+  "workflow_id": "WF-49",
+  "workflow_name": "Workshop Transcript -> ECIF + Partner + Follow-up",
+  "seed": 4900093,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF49-H",
+  "persona": "CSA",
+  "fixture_id": "FX-045",
+  "user_message": "Thomas Okafor at Azure Ridge Partners just sent this. Help me create the summary.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Azure Ridge Partners",
+        "account_id": "ACC-URB6CCFS",
+        "opportunities": [
+          {
+            "name": "Azure Cloud Migration Phase",
+            "stage": "Develop",
+            "amount": 210000,
+            "close_date": "2024-09-05"
+          },
+          {
+            "name": "Azure Cloud Migration Phase",
+            "stage": "Close",
+            "amount": 560000,
+            "close_date": "2024-10-05"
+          },
+          {
+            "name": "Azure Intune Rollout",
+            "stage": "Develop",
+            "amount": 280000,
+            "close_date": "2024-10-01"
+          }
+        ],
+        "acr_current": 189461.39,
+        "health_flag": "Unknown",
+        "owner": "Raj Mehta"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: pipeline hygiene Discussion - Azure Ridge Partners\nDate: 2024-02-11\nDuration: 45 minutes\nAttendees: Thomas Okafor (Azure Ridge Partners), Raj Mehta (Microsoft)\n\n[00:02:00] Thomas Okafor (Azure Ridge Partners): Good morning. I wanted to follow up on pipeline hygiene from our last session.\n\n[00:06:00] Thomas Okafor (Azure Ridge Partners): Our VP reviewed this and has concerns about security compliance. Can we address those?\n\n[00:08:00] Raj Mehta (Microsoft): Let me add some context -- we've been working on security compliance and found that the migration can proceed in phases to reduce risk.\n\n[00:13:00] Raj Mehta (Microsoft): Our VP reviewed this and has concerns about technical validation. Can we address those?\n\n[00:18:00] Raj Mehta (Microsoft): On the pipeline hygiene front, we've made progress but there are still blockers around budget approval.\n\n[00:23:00] Thomas Okafor (Azure Ridge Partners): I agree with that assessment. From our side, the main concern is vendor dependencies.\n\n[00:27:00] Thomas Okafor (Azure Ridge Partners): On the pipeline hygiene front, we've made progress but there are still blockers around budget approval.\n\n[00:32:00] Raj Mehta (Microsoft): Our director reviewed this and has concerns about cost optimization. Can we address those?\n\n[00:37:00] Thomas Okafor (Azure Ridge Partners): Our VP reviewed this and has concerns about integration complexity. Can we address those?",
+      "metadata": {
+        "freshness": "2024-02-02T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "long"
+      }
+    }
+  ],
+  "perturbations": [
+    "data-inconsistent",
+    "persona-segment-smb-mid",
+    "persona-role-csa",
+    "persona-tenure-junior"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "funding-partner-activation-coach",
+        "condition": "ECIF workscope or partner engagement warranted"
+      },
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "milestone updates warranted"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "workshop-transcript-->-ecif-+-partner-+-follow-up",
+    "required_artifacts": [
+      "Workshop recap",
+      "ECIF workscope draft (if warranted)",
+      "partner plan",
+      "follow-up items with owners",
+      "milestone update proposals"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF49-H trap (Invents customer-side approvers); produces complete Workshop recap, ECIF workscope draft (if warranted), partner plan, follow-up items with owners, mile",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF49-H failure pattern",
+      "Score 1: Output exhibits the full FM-WF49-H failure mode (Invents customer-side approvers)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct pipeline hygiene decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF49-H -- Invents customer-side approvers"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

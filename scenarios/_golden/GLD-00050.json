@@ -1,0 +1,97 @@
+{
+  "scenario_id": "WF-50-80050",
+  "workflow_id": "WF-50",
+  "workflow_name": "Executive Meeting Transcript -> Manager Brief + Asks",
+  "seed": 8800092,
+  "tier": 4,
+  "intent": "happy",
+  "targeted_failure_mode": null,
+  "persona": "Manager",
+  "fixture_id": "FX-001",
+  "user_message": "I need you to process this exec meeting notes from Contoso Ltd. We had a deep-dive last month -- need the follow-up.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Contoso Ltd",
+        "account_id": "ACC-VWW2DK8X",
+        "opportunities": [
+          {
+            "name": "Contoso Power Platform",
+            "stage": "Propose",
+            "amount": 560000,
+            "close_date": "2024-12-28"
+          }
+        ],
+        "acr_current": 78949.7,
+        "health_flag": "Healthy",
+        "owner": "Marcus Williams"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: QBR preparation Discussion - Contoso Ltd\nDate: 2024-01-26\nDuration: 45 minutes\nAttendees: Angela Doyle (Contoso Ltd), Marcus Williams (Microsoft)\n\n[00:02:00] Angela Doyle (Contoso Ltd): Good morning. I wanted to follow up on QBR preparation from our last session.\n\n[00:05:00] Marcus Williams (Microsoft): Our architect reviewed this and has concerns about performance requirements. Can we address those?\n\n[00:08:00] Angela Doyle (Contoso Ltd): I agree with that assessment. From our side, the main concern is stakeholder alignment.\n\n[00:10:00] Angela Doyle (Contoso Ltd): Our architect reviewed this and has concerns about technical validation. Can we address those?\n\n[00:15:00] Angela Doyle (Contoso Ltd): On the QBR preparation front, we've made progress but there are still blockers around performance requirements.\n\n[00:18:00] Angela Doyle (Contoso Ltd): On the QBR preparation front, we've made progress but there are still blockers around stakeholder alignment.\n\n[00:21:00] Angela Doyle (Contoso Ltd): Our director reviewed this and has concerns about technical validation. Can we address those?\n\n[00:23:00] Angela Doyle (Contoso Ltd): Our architect reviewed this and has concerns about data residency. Can we address those?\n\n[00:26:00] Angela Doyle (Contoso Ltd): On the QBR preparation front, we've made progress but there are still blockers around partner engagement.\n\n[00:28:00] Marcus Williams (Microsoft): I agree with that assessment. From our side, the main concern is timeline constraints.\n\n[00:30:00] Angela Doyle (Contoso Ltd): On the QBR preparation front, we've made progress but there are still blockers around technical validation.",
+      "metadata": {
+        "freshness": "2024-01-21T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "medium"
+      }
+    }
+  ],
+  "perturbations": [
+    "routing-clear",
+    "data-fresh",
+    "persona-role-manager"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "forecast-business-review-coach",
+        "condition": "business review narrative input from exec meeting"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "executive-meeting-transcript-->-manager-brief-+-as",
+    "required_artifacts": [
+      "Executive brief (strategic density)",
+      "asks section (actionable for exec)",
+      "risk register",
+      "skip-level follow-up plan",
+      "exec sponsor identification"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Perfect execution of the golden-path workflow with all artifacts complete and actionable",
+      "Score 3: Core output correct but missing polish or one secondary artifact",
+      "Score 1: Fails to produce expected output for a clean, unambiguous request"
+    ],
+    "evidence_anchors": [
+      "Score 5: All evidence correctly sourced and attributed; no hallucination",
+      "Score 3: Minor attribution gap but no fabrication",
+      "Score 1: Evidence fabricated or significantly misattributed"
+    ],
+    "decision_anchors": [
+      "Score 5: All decisions correct for this straightforward scenario",
+      "Score 3: Primary decision correct; minor secondary issue",
+      "Score 1: Primary decision wrong despite clear inputs"
+    ]
+  },
+  "guardrail_checks": [
+    "Clean golden-path scenario -- all guardrails should pass trivially",
+    "Must not over-complicate a straightforward request"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

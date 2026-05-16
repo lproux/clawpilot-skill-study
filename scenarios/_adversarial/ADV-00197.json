@@ -1,0 +1,115 @@
+{
+  "scenario_id": "WF-35-90197",
+  "workflow_id": "WF-35",
+  "workflow_name": "Customer Renewal Email -> Forecast Impact + Path",
+  "seed": 9900239,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": null,
+  "persona": "DSSP",
+  "fixture_id": "FX-040",
+  "user_message": "Can you extract the deployment blockers from this email thread for Prism Media Group? The CSA flagged this as at-risk yesterday.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Prism Media Group",
+        "account_id": "ACC-N5RXCFPK",
+        "opportunities": [
+          {
+            "name": "Prism Dynamics 365 Implementation",
+            "stage": "Propose",
+            "amount": 68000,
+            "close_date": "2024-05-05"
+          }
+        ],
+        "acr_current": 64544.12,
+        "health_flag": "At Risk",
+        "owner": "Michelle Park"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Sarah Schmidt <sarah.schmidt@prismmediagr.com>\nTo: Michelle Park <michelle.park@microsoft.com>\nDate: 2024-03-21 08:37 EST\nSubject: deployment blockers - Action Required\n\nThank you for the discussion last week. We'd like to move forward with deployment blockers. Can we schedule a call this week to finalize the timeline?\n\n---\nFrom: Michelle Park <michelle.park@microsoft.com>\nTo: Sarah Schmidt <sarah.schmidt@prismmediagr.com>\nDate: 2024-02-24 08:35 EST\nSubject: Quarterly Update: Prism Media Group deployment blockers\n\nJust checking in on the deployment blockers proposal. Our Security Manager is asking for a status update before the board meeting next week.\n\n---\nFrom: Sarah Schmidt <sarah.schmidt@prismmediagr.com>\nTo: Michelle Park <michelle.park@microsoft.com>\nDate: 2024-01-18 10:13 EST\nSubject: URGENT: deployment blockers Issue at Prism Media Group\n\nOur team encountered some challenges with deployment blockers. Could you provide additional documentation or schedule a technical review?",
+      "metadata": {
+        "freshness": "2024-02-26T11:00:00-05:00",
+        "source": "outlook",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "security_alert",
+            "detail": "Signal detected for Prism Media Group: the current vendor contract has a 90-day exit clause we need to plan around",
+            "date": "2024-03-08"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-09T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "routing-clear",
+    "persona-geo-latam",
+    "persona-role-dssp",
+    "cross-workflow-trigger"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "email-chat-context"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "funding-partner-activation-coach",
+        "condition": "contract/billing lookup needed"
+      },
+      {
+        "target_skill": "forecast-business-review-coach",
+        "condition": "forecast impact assessment needed"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "adversarial-routing-test",
+    "required_artifacts": [
+      "correct_routing_justification",
+      "confusion_analysis"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Correctly routes to primary workflow despite adversarial signals; output is complete",
+      "Score 3: Routes correctly but output shows contamination from confusing signals",
+      "Score 1: Misroutes to wrong workflow or produces irrelevant output"
+    ],
+    "evidence_anchors": [
+      "Score 5: All evidence correctly attributed despite cross-workflow noise",
+      "Score 3: Some evidence misattributed but core facts correct",
+      "Score 1: Significant evidence confusion or hallucination"
+    ],
+    "decision_anchors": [
+      "Score 5: Decision-making robust against adversarial perturbations",
+      "Score 3: Primary decision correct but secondary decisions influenced by noise",
+      "Score 1: Primary decision compromised by adversarial inputs"
+    ]
+  },
+  "guardrail_checks": [
+    "Must correctly identify primary workflow despite adversarial routing signals",
+    "Must not hallucinate context from similar-sounding workflows",
+    "Must not expose internal routing logic to user"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

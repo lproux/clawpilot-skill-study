@@ -1,0 +1,121 @@
+{
+  "scenario_id": "WF-51-00140",
+  "workflow_id": "WF-51",
+  "workflow_name": "Partner Triangulation Transcript -> Plan Distribution",
+  "seed": 5100182,
+  "tier": 4,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": "FM-WF51-M",
+  "persona": "Manager",
+  "fixture_id": "FX-023",
+  "user_message": "Just came out of whitespace analysis with Wide World Importers. Turn this into my brief and pull out the asks.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Wide World Importers",
+        "account_id": "ACC-Q026BTUQ",
+        "opportunities": [
+          {
+            "name": "Wide AKS Deployment",
+            "stage": "Close",
+            "amount": 125000,
+            "close_date": "2023-12-01"
+          },
+          {
+            "name": "Wide Intune Rollout",
+            "stage": "Close",
+            "amount": 89000,
+            "close_date": "2024-04-18"
+          }
+        ],
+        "acr_current": 61965.63,
+        "health_flag": "At Risk",
+        "owner": "Ahmed Hassan"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: whitespace analysis Discussion - Wide World Importers\nDate: 2024-02-24\nDuration: 45 minutes\nAttendees: Ryan Kowalski (Wide World Importers), Ahmed Hassan (Microsoft), Michelle (Wide World Importers)\n\n[00:01:15] Ryan Kowalski (Wide World Importers): Appreciate everyone making time. The main agenda today is whitespace analysis.\n\n[00:08:00] Michelle (Wide World Importers): The timeline for stakeholder alignment is aggressive. We need to validate the assumptions.\n\n[00:12:00] Ahmed Hassan (Microsoft): Let me add some context -- we've been working on budget approval and found that the current vendor contract has a 90-day exit clause we need to plan around.\n\n[00:17:00] Ahmed Hassan (Microsoft): The timeline for data residency is aggressive. We need to validate the assumptions.\n\n[00:19:00] Michelle (Wide World Importers): I agree with that assessment. From our side, the main concern is performance requirements.\n\n[00:21:00] Ahmed Hassan (Microsoft): The timeline for resource allocation is aggressive. We need to validate the assumptions.\n\n[00:26:00] Michelle (Wide World Importers): Let me add some context -- we've been working on resource allocation and found that the existing infrastructure won't support the target workload without upgrades.\n\n[00:28:00] Michelle (Wide World Importers): Let me add some context -- we've been working on timeline constraints and found that the cost projections need to factor in reserved instance pricing for accuracy.\n\n[00:33:00] Ahmed Hassan (Microsoft): The timeline for vendor dependencies is aggressive. We need to validate the assumptions.\n\n[00:37:00] Michelle (Wide World Importers): The timeline for performance requirements is aggressive. We need to validate the assumptions.\n\n[00:41:00] Michelle (Wide World Importers): Let me add some context -- we've been working on data residency and found that there's a compliance requirement we hadn't accounted for in the original scope.",
+      "metadata": {
+        "freshness": "2024-03-06T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "security_alert",
+            "detail": "Signal detected for Wide World Importers: the current vendor contract has a 90-day exit clause we need to plan around",
+            "date": "2024-03-07"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "signal-strength-noisy",
+    "persona-tenure-mid",
+    "data-stale",
+    "persona-segment-smb-corporate"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "funding-partner-activation-coach",
+        "condition": "funding or partner evaluation needed"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "partner-triangulation-transcript-->-plan-distribut",
+    "required_artifacts": [
+      "Tri-party action distribution (MS/partner/customer owners)",
+      "funding eligibility assessment",
+      "follow-up sequence with tri-party coordination",
+      "conflict-of-interest check"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF51-M trap (Rigid role-distribution when transcript showed fluid joint-execution); produces complete Tri-party action distribution (MS/partner/customer owners), funding eligibility assessment, follow-u",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF51-M failure pattern",
+      "Score 1: Output exhibits the full FM-WF51-M failure mode (Rigid role-distribution when transcript showed fluid joint-execution)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct whitespace analysis decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF51-M -- Rigid role-distribution when transcript showed fluid joint-execution",
+    "Guardrail axis scored neutrally -- focus on whether output served the user's actual need"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

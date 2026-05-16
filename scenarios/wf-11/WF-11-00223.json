@@ -1,0 +1,130 @@
+{
+  "scenario_id": "WF-11-00223",
+  "workflow_id": "WF-11",
+  "workflow_name": "Pre-Meeting Brief",
+  "seed": 1100265,
+  "tier": 2,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF11-H",
+  "persona": "DSSP",
+  "fixture_id": "FX-039",
+  "user_message": "Working on Fabrikam Residences's account health -- need you to prep a brief.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Fabrikam Residences",
+        "account_id": "ACC-5JSOIRD0",
+        "opportunities": [
+          {
+            "name": "Fabrikam Power Platform",
+            "stage": "Prospect",
+            "amount": 175000,
+            "close_date": "2024-06-08"
+          },
+          {
+            "name": "Fabrikam Cloud Migration Phase",
+            "stage": "Develop",
+            "amount": 450000,
+            "close_date": "2024-11-24"
+          }
+        ],
+        "acr_current": 32488.07,
+        "health_flag": "Healthy",
+        "owner": "Tom Rodriguez"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "email_thread",
+      "content": "From: Kevin Lee <kevin.lee@fabrikamresi.com>\nTo: Tom Rodriguez <tom.rodriguez@microsoft.com>\nDate: 2024-03-16 15:27 EST\nSubject: Re: account health Discussion - Next Steps\n\nWe've been evaluating the options and have decided to proceed with account health. What are the next steps from your side?\n\n---\nFrom: Tom Rodriguez <tom.rodriguez@microsoft.com>\nTo: Kevin Lee <kevin.lee@fabrikamresi.com>\nDate: 2024-02-18 11:41 EST\nSubject: Follow-up: account health Review\n\nThere's been a change in our timeline for account health. Can we discuss the implications on the overall project plan?\n\n---\nFrom: Kevin Lee <kevin.lee@fabrikamresi.com>\nTo: Tom Rodriguez <tom.rodriguez@microsoft.com>\nDate: 2024-01-15 16:46 EST\nSubject: URGENT: account health Issue at Fabrikam Residences\n\nOur team encountered some challenges with account health. Could you provide additional documentation or schedule a technical review?",
+      "metadata": {
+        "freshness": "2024-03-24T09:00:00-05:00",
+        "source": "outlook",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: account health Discussion - Fabrikam Residences\nDate: 2024-02-03\nDuration: 45 minutes\nAttendees: Kevin Lee (Fabrikam Residences), Tom Rodriguez (Microsoft)\n\n[00:01:15] Kevin Lee (Fabrikam Residences): Appreciate everyone making time. The main agenda today is account health.\n\n[00:05:00] Tom Rodriguez (Microsoft): On the account health front, we've made progress but there are still blockers around integration complexity.\n\n[00:08:00] Tom Rodriguez (Microsoft): Our architect reviewed this and has concerns about data residency. Can we address those?\n\n[00:12:00] Tom Rodriguez (Microsoft): The timeline for data residency is aggressive. We need to validate the assumptions.\n\n[00:15:00] Kevin Lee (Fabrikam Residences): Our team lead reviewed this and has concerns about stakeholder alignment. Can we address those?\n\n[00:20:00] Tom Rodriguez (Microsoft): Let me add some context -- we've been working on data residency and found that the migration can proceed in phases to reduce risk.\n\n[00:25:00] Tom Rodriguez (Microsoft): Our team lead reviewed this and has concerns about vendor dependencies. Can we address those?\n\n[00:29:00] Kevin Lee (Fabrikam Residences): Let me add some context -- we've been working on data residency and found that the existing infrastructure won't support the target workload without upgrades.\n\n[00:32:00] Tom Rodriguez (Microsoft): The timeline for resource allocation is aggressive. We need to validate the assumptions.\n\n[00:36:00] Kevin Lee (Fabrikam Residences): Our architect reviewed this and has concerns about technical validation. Can we address those?",
+      "metadata": {
+        "freshness": "2024-02-01T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Fabrikam Residences - account health",
+        "start": "2024-03-12T15:00:00-05:00",
+        "end": "2024-03-12T17:00:00-05:00",
+        "attendees": [
+          {
+            "name": "Tom Rodriguez",
+            "email": "tom.rodriguez@microsoft.com"
+          },
+          {
+            "name": "Kevin Lee",
+            "email": "kevin.lee@example.com"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-geo-emea",
+    "persona-segment-smb-small",
+    "persona-role-dssp"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "meeting-prep",
+      "contact-stakeholder-map"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "pre-meeting-brief",
+    "required_artifacts": [
+      "One-page brief with attendee context",
+      "account snapshot",
+      "talking points",
+      "likely objections",
+      "open items from last meeting"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF11-H trap (Skips 'open items from last meeting'); produces complete One-page brief with attendee context, account snapshot, talking points, likely objections, open item",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF11-H failure pattern",
+      "Score 1: Output exhibits the full FM-WF11-H failure mode (Skips 'open items from last meeting')"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct account health decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF11-H -- Skips 'open items from last meeting'"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

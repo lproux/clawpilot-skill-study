@@ -1,0 +1,108 @@
+{
+  "scenario_id": "WF-44-90489",
+  "workflow_id": "WF-44",
+  "workflow_name": "Technical Deep-Dive Transcript -> Architecture + Blockers",
+  "seed": 9900531,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": null,
+  "persona": "DSSP",
+  "fixture_id": "FX-032",
+  "user_message": "Working on Munson's Pickles's account health. Got the escalation email -- help me generate the watchlist.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Munson's Pickles",
+        "account_id": "ACC-0CNBEONL",
+        "opportunities": [
+          {
+            "name": "Munson's Copilot Adoption",
+            "stage": "Develop",
+            "amount": 450000,
+            "close_date": "2024-04-19"
+          },
+          {
+            "name": "Munson's Copilot Adoption",
+            "stage": "Develop",
+            "amount": 280000,
+            "close_date": "2024-05-22"
+          },
+          {
+            "name": "Munson's AKS Deployment",
+            "stage": "Close",
+            "amount": 350000,
+            "close_date": "2024-12-10"
+          }
+        ],
+        "acr_current": 0,
+        "health_flag": "At Risk",
+        "owner": "Lisa Patel"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: account health Discussion - Munson's Pickles\nDate: 2024-02-22\nDuration: 45 minutes\nAttendees: Robert Morrison (Munson's Pickles), Lisa Patel (Microsoft)\n\n[00:01:15] Robert Morrison (Munson's Pickles): Appreciate everyone making time. The main agenda today is account health.\n\n[00:07:00] Robert Morrison (Munson's Pickles): Our CTO reviewed this and has concerns about timeline constraints. Can we address those?\n\n[00:10:00] Lisa Patel (Microsoft): Our team lead reviewed this and has concerns about budget approval. Can we address those?\n\n[00:13:00] Robert Morrison (Munson's Pickles): The timeline for vendor dependencies is aggressive. We need to validate the assumptions.\n\n[00:17:00] Robert Morrison (Munson's Pickles): On the account health front, we've made progress but there are still blockers around performance requirements.\n\n[00:22:00] Lisa Patel (Microsoft): On the account health front, we've made progress but there are still blockers around vendor dependencies.\n\n[00:27:00] Robert Morrison (Munson's Pickles): The timeline for cost optimization is aggressive. We need to validate the assumptions.\n\n[00:31:00] Lisa Patel (Microsoft): Our director reviewed this and has concerns about timeline constraints. Can we address those?\n\n[00:35:00] Robert Morrison (Munson's Pickles): I agree with that assessment. From our side, the main concern is stakeholder alignment.\n\n[00:37:00] Lisa Patel (Microsoft): The timeline for timeline constraints is aggressive. We need to validate the assumptions.",
+      "metadata": {
+        "freshness": "2024-02-14T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "mixed",
+        "length_class": "short"
+      }
+    }
+  ],
+  "perturbations": [
+    "signal-strength-faint",
+    "data-partially-missing",
+    "persona-geo-na",
+    "cross-workflow-trigger"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "solution-value-design-coach",
+        "condition": "architecture sketch needed from technical signals"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "adversarial-routing-test",
+    "required_artifacts": [
+      "correct_routing_justification",
+      "confusion_analysis"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Correctly routes to primary workflow despite adversarial signals; output is complete",
+      "Score 3: Routes correctly but output shows contamination from confusing signals",
+      "Score 1: Misroutes to wrong workflow or produces irrelevant output"
+    ],
+    "evidence_anchors": [
+      "Score 5: All evidence correctly attributed despite cross-workflow noise",
+      "Score 3: Some evidence misattributed but core facts correct",
+      "Score 1: Significant evidence confusion or hallucination"
+    ],
+    "decision_anchors": [
+      "Score 5: Decision-making robust against adversarial perturbations",
+      "Score 3: Primary decision correct but secondary decisions influenced by noise",
+      "Score 1: Primary decision compromised by adversarial inputs"
+    ]
+  },
+  "guardrail_checks": [
+    "Must correctly identify primary workflow despite adversarial routing signals",
+    "Must not hallucinate context from similar-sounding workflows",
+    "Must not expose internal routing logic to user"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

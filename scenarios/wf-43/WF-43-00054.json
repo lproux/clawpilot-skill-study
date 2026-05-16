@@ -1,0 +1,102 @@
+{
+  "scenario_id": "WF-43-00054",
+  "workflow_id": "WF-43",
+  "workflow_name": "Discovery Call Transcript -> Opportunity Build",
+  "seed": 4300096,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF43-E",
+  "persona": "CSA",
+  "fixture_id": "FX-001",
+  "user_message": "Angela Doyle at Contoso Ltd just sent this. Help me prep a brief.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Contoso Ltd",
+        "account_id": "ACC-VWW2DK8X",
+        "opportunities": [
+          {
+            "name": "Contoso Power Platform",
+            "stage": "Propose",
+            "amount": 560000,
+            "close_date": "2024-12-28"
+          }
+        ],
+        "acr_current": 78949.7,
+        "health_flag": "Healthy",
+        "owner": "Marcus Williams"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: partner engagement Discussion - Contoso Ltd\nDate: 2024-03-27\nDuration: 45 minutes\nAttendees: Angela Doyle (Contoso Ltd), Marcus Williams (Microsoft), Kevin (Contoso Ltd)\n\n[00:01:30] Angela Doyle (Contoso Ltd): Thanks everyone for joining. Let's dive into partner engagement.\n\n[00:07:00] Angela Doyle (Contoso Ltd): On the partner engagement front, we've made progress but there are still blockers around data residency.\n\n[00:12:00] Kevin (Contoso Ltd): On the partner engagement front, we've made progress but there are still blockers around security compliance.\n\n[00:14:00] Angela Doyle (Contoso Ltd): On the partner engagement front, we've made progress but there are still blockers around resource allocation.\n\n[00:17:00] Marcus Williams (Microsoft): Let me add some context -- we've been working on cost optimization and found that the migration can proceed in phases to reduce risk.\n\n[00:19:00] Marcus Williams (Microsoft): The timeline for cost optimization is aggressive. We need to validate the assumptions.",
+      "metadata": {
+        "freshness": "2024-02-08T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "short"
+      }
+    }
+  ],
+  "perturbations": [
+    "routing-ambiguous-2skills",
+    "persona-segment-smb-corporate",
+    "persona-role-csa"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "opportunity creation warranted"
+      },
+      {
+        "target_skill": "solution-value-design-coach",
+        "condition": "solution sketch needed from discovery signals"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "discovery-call-transcript-->-opportunity-build",
+    "required_artifacts": [
+      "BANT signal extraction with evidence quotes",
+      "opportunity proposal with stage/value/close-date",
+      "confidence labels",
+      "solution sketch suggestion",
+      "follow-up actions"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF43-E trap (Treats agreement-noise ('yeah,' 'totally') as commitment); produces complete BANT signal extraction with evidence quotes, opportunity proposal with stage/value/close-date, confi",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF43-E failure pattern",
+      "Score 1: Output exhibits the full FM-WF43-E failure mode (Treats agreement-noise ('yeah,' 'totally') as commitment)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct partner engagement decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF43-E -- Treats agreement-noise ('yeah,' 'totally') as commitment"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

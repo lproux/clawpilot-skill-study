@@ -1,0 +1,124 @@
+{
+  "scenario_id": "WF-51-91379",
+  "workflow_id": "WF-51",
+  "workflow_name": "Partner Triangulation Transcript -> Plan Distribution",
+  "seed": 9901421,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": null,
+  "persona": "DSSP",
+  "fixture_id": "FX-022",
+  "user_message": "Pulling in context from Relecloud's meeting transcript -- need to build the narrative for the deployment blockers.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Relecloud",
+        "account_id": "ACC-7S4WTO4B",
+        "opportunities": [
+          {
+            "name": "Relecloud Cloud Migration Phase",
+            "stage": "Prospect",
+            "amount": 89000,
+            "close_date": "2023-11-17"
+          },
+          {
+            "name": "Relecloud Azure Virtual Desktop",
+            "stage": "Close",
+            "amount": 125000,
+            "close_date": "2024-06-11"
+          },
+          {
+            "name": "Relecloud Power Platform",
+            "stage": "Prospect",
+            "amount": 45000,
+            "close_date": "2024-11-27"
+          }
+        ],
+        "acr_current": 55330.21,
+        "health_flag": "Healthy",
+        "owner": "Lisa Patel"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: deployment blockers Discussion - Relecloud\nDate: 2024-03-05\nDuration: 45 minutes\nAttendees: David Rivera (Relecloud), Lisa Patel (Microsoft), Michelle (Relecloud)\n\n[00:01:15] David Rivera (Relecloud): Appreciate everyone making time. The main agenda today is deployment blockers.\n\n[00:08:00] Lisa Patel (Microsoft): Let me add some context -- we've been working on budget approval and found that the current vendor contract has a 90-day exit clause we need to plan around.\n\n[00:10:00] David Rivera (Relecloud): I agree with that assessment. From our side, the main concern is stakeholder alignment.\n\n[00:13:00] Michelle (Relecloud): The timeline for timeline constraints is aggressive. We need to validate the assumptions.\n\n[00:18:00] Lisa Patel (Microsoft): On the deployment blockers front, we've made progress but there are still blockers around vendor dependencies.\n\n[00:21:00] Lisa Patel (Microsoft): The timeline for stakeholder alignment is aggressive. We need to validate the assumptions.\n\n[00:25:00] Michelle (Relecloud): The timeline for stakeholder alignment is aggressive. We need to validate the assumptions.\n\n[00:27:00] Lisa Patel (Microsoft): Our VP reviewed this and has concerns about integration complexity. Can we address those?\n\n[00:29:00] Lisa Patel (Microsoft): The timeline for cost optimization is aggressive. We need to validate the assumptions.\n\n[00:34:00] Lisa Patel (Microsoft): The timeline for security compliance is aggressive. We need to validate the assumptions.\n\n[00:39:00] Michelle (Relecloud): Let me add some context -- we've been working on integration complexity and found that the existing infrastructure won't support the target workload without upgrades.",
+      "metadata": {
+        "freshness": "2024-03-25T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "consumption_decline",
+            "detail": "Signal detected for Relecloud: the migration can proceed in phases to reduce risk",
+            "date": "2024-03-10"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "data-stale",
+    "persona-segment-smb-mid",
+    "signal-strength-noisy",
+    "cross-workflow-trigger"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "funding-partner-activation-coach",
+        "condition": "funding or partner evaluation needed"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "adversarial-routing-test",
+    "required_artifacts": [
+      "correct_routing_justification",
+      "confusion_analysis"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Correctly routes to primary workflow despite adversarial signals; output is complete",
+      "Score 3: Routes correctly but output shows contamination from confusing signals",
+      "Score 1: Misroutes to wrong workflow or produces irrelevant output"
+    ],
+    "evidence_anchors": [
+      "Score 5: All evidence correctly attributed despite cross-workflow noise",
+      "Score 3: Some evidence misattributed but core facts correct",
+      "Score 1: Significant evidence confusion or hallucination"
+    ],
+    "decision_anchors": [
+      "Score 5: Decision-making robust against adversarial perturbations",
+      "Score 3: Primary decision correct but secondary decisions influenced by noise",
+      "Score 1: Primary decision compromised by adversarial inputs"
+    ]
+  },
+  "guardrail_checks": [
+    "Must correctly identify primary workflow despite adversarial routing signals",
+    "Must not hallucinate context from similar-sounding workflows",
+    "Must not expose internal routing logic to user"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

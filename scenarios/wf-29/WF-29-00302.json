@@ -1,0 +1,88 @@
+{
+  "scenario_id": "WF-29-00302",
+  "workflow_id": "WF-29",
+  "workflow_name": "Pipeline Hygiene Sweep",
+  "seed": 2900344,
+  "tier": 3,
+  "intent": "design-redesign",
+  "targeted_failure_mode": "FM-WF29-P",
+  "persona": "Manager",
+  "fixture_id": "FX-047",
+  "user_message": "[AUTOMATION TRIGGER] System detected Daily scheduled automation or user requests pipeline hygiene for account Evergreen Solutions. Generating output.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Evergreen Solutions",
+        "account_id": "ACC-S7KJN805",
+        "opportunities": [
+          {
+            "name": "Evergreen Azure AI Services",
+            "stage": "Qualify",
+            "amount": 175000,
+            "close_date": "2024-12-26"
+          }
+        ],
+        "acr_current": 19865.64,
+        "health_flag": "Healthy",
+        "owner": "David Chen"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-segment-smb-small",
+    "persona-geo-na",
+    "persona-tenure-mid"
+  ],
+  "expected_routing": {
+    "entry_skill": "pipeline-msx-hygiene-coach",
+    "modules": [
+      "opportunity-milestone-hygiene",
+      "pipeline-review-digest",
+      "writeback-approval-guardrails"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "pipeline-hygiene-sweep",
+    "required_artifacts": [
+      "Delta digest of hygiene defects (not status issues)",
+      "writeback proposals with evidence_source per field",
+      "approval queue"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF29-P trap (Delta digest format loses signal for accounts that need a full re-scan); produces complete Delta digest of hygiene defects (not status issues), writeback proposals with evidence_source per fi",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF29-P failure pattern",
+      "Score 1: Output exhibits the full FM-WF29-P failure mode (Delta digest format loses signal for accounts that need a full re-scan)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct security posture decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF29-P -- Delta digest format loses signal for accounts that need a full re-scan",
+    "Write proposals must require explicit user approval",
+    "Produce structural verdict on whether current routing adequately serves this scenario"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "verdict-on-structural",
+    "verdict_required_axes": [
+      "routing",
+      "evidence"
+    ]
+  }
+}

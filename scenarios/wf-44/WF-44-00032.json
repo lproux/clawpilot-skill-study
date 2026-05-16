@@ -1,0 +1,96 @@
+{
+  "scenario_id": "WF-44-00032",
+  "workflow_id": "WF-44",
+  "workflow_name": "Technical Deep-Dive Transcript -> Architecture + Blockers",
+  "seed": 4400074,
+  "tier": 4,
+  "intent": "happy",
+  "targeted_failure_mode": null,
+  "persona": "Manager",
+  "fixture_id": "FX-007",
+  "user_message": "Just came out of QBR preparation with Litware Inc. Turn this into my brief and pull out the asks.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Litware Inc",
+        "account_id": "ACC-658MPDXQ",
+        "opportunities": [
+          {
+            "name": "Litware Security Modernization",
+            "stage": "Prospect",
+            "amount": 280000,
+            "close_date": "2024-09-23"
+          }
+        ],
+        "acr_current": 76577.96,
+        "health_flag": "Healthy",
+        "owner": "David Chen"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: QBR preparation Discussion - Litware Inc\nDate: 2024-03-14\nDuration: 45 minutes\nAttendees: Sarah Wilson (Litware Inc), David Chen (Microsoft)\n\n[00:01:15] Sarah Wilson (Litware Inc): Appreciate everyone making time. The main agenda today is QBR preparation.\n\n[00:05:00] David Chen (Microsoft): On the QBR preparation front, we've made progress but there are still blockers around performance requirements.\n\n[00:07:00] Sarah Wilson (Litware Inc): On the QBR preparation front, we've made progress but there are still blockers around cost optimization.\n\n[00:10:00] Sarah Wilson (Litware Inc): I agree with that assessment. From our side, the main concern is performance requirements.\n\n[00:14:00] David Chen (Microsoft): Our team lead reviewed this and has concerns about partner engagement. Can we address those?\n\n[00:19:00] Sarah Wilson (Litware Inc): Our director reviewed this and has concerns about performance requirements. Can we address those?\n\n[00:21:00] David Chen (Microsoft): Our VP reviewed this and has concerns about integration complexity. Can we address those?\n\n[00:24:00] Sarah Wilson (Litware Inc): I agree with that assessment. From our side, the main concern is budget approval.\n\n[00:27:00] David Chen (Microsoft): The timeline for partner engagement is aggressive. We need to validate the assumptions.\n\n[00:31:00] Sarah Wilson (Litware Inc): I agree with that assessment. From our side, the main concern is partner engagement.\n\n[00:33:00] Sarah Wilson (Litware Inc): The timeline for security compliance is aggressive. We need to validate the assumptions.",
+      "metadata": {
+        "freshness": "2024-03-18T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "numbered",
+        "length_class": "long"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-tenure-junior",
+    "signal-strength-noisy"
+  ],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": [
+      "follow-up-and-decisions"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "solution-value-design-coach",
+        "condition": "architecture sketch needed from technical signals"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "technical-deep-dive-transcript-->-architecture-+-b",
+    "required_artifacts": [
+      "Architecture summary",
+      "blocker inventory (tech/commercial/org)",
+      "open questions",
+      "sequencing recommendation",
+      "specialist routing"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Complete, well-structured output matching the Technical Deep-Dive Transcript -> Architecture + Blockers template with all required artifacts present and actionable",
+      "Score 3: Output covers main requirements but missing one or two secondary artifacts or lacking specificity",
+      "Score 1: Output is generic, missing key artifacts, or fails to address the specific request"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct QBR preparation decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

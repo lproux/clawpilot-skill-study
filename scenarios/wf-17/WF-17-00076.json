@@ -1,0 +1,118 @@
+{
+  "scenario_id": "WF-17-00076",
+  "workflow_id": "WF-17",
+  "workflow_name": "Migration Architecture Sketch",
+  "seed": 1700118,
+  "tier": 3,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF17-G",
+  "persona": "DSSP",
+  "fixture_id": "FX-045",
+  "user_message": "Can you extract the deployment blockers from this escalation email for Azure Ridge Partners? We had a deep-dive last month -- need the follow-up.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Azure Ridge Partners",
+        "account_id": "ACC-URB6CCFS",
+        "opportunities": [
+          {
+            "name": "Azure Cloud Migration Phase",
+            "stage": "Develop",
+            "amount": 210000,
+            "close_date": "2024-09-05"
+          },
+          {
+            "name": "Azure Cloud Migration Phase",
+            "stage": "Close",
+            "amount": 560000,
+            "close_date": "2024-10-05"
+          },
+          {
+            "name": "Azure Intune Rollout",
+            "stage": "Develop",
+            "amount": 280000,
+            "close_date": "2024-10-01"
+          }
+        ],
+        "acr_current": 189461.39,
+        "health_flag": "Unknown",
+        "owner": "Raj Mehta"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "type": "contract_event",
+            "detail": "Signal detected for Azure Ridge Partners: the existing infrastructure won't support the target workload without upgrades",
+            "date": "2024-03-06"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-geo-emea",
+    "persona-role-dssp",
+    "data-inconsistent",
+    "signal-strength-faint"
+  ],
+  "expected_routing": {
+    "entry_skill": "solution-value-design-coach",
+    "modules": [
+      "migration-architecture",
+      "solution-research"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "funding-partner-activation-coach",
+        "condition": "ECIF or partner engagement needed for migration"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "migration-architecture-sketch",
+    "required_artifacts": [
+      "Architecture sketch with service recommendations (justified)",
+      "migration sequencing",
+      "dependency map",
+      "cost discussion",
+      "compliance notes"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF17-G trap (Skips cost discussion when budget signal was present); produces complete Architecture sketch with service recommendations (justified), migration sequencing, dependency map, ",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF17-G failure pattern",
+      "Score 1: Output exhibits the full FM-WF17-G failure mode (Skips cost discussion when budget signal was present)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct deployment blockers decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF17-G -- Skips cost discussion when budget signal was present"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

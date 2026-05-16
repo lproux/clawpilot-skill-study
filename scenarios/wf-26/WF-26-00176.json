@@ -1,0 +1,95 @@
+{
+  "scenario_id": "WF-26-00176",
+  "workflow_id": "WF-26",
+  "workflow_name": "ROB / MBR Narrative",
+  "seed": 2600218,
+  "tier": 3,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": "FM-WF26-L",
+  "persona": "Manager",
+  "fixture_id": "FX-045",
+  "user_message": "Give me the manager view on this Azure Ridge Partners meeting transcript. Not urgent but would be good to have by EOD.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Azure Ridge Partners",
+        "account_id": "ACC-URB6CCFS",
+        "opportunities": [
+          {
+            "name": "Azure Cloud Migration Phase",
+            "stage": "Develop",
+            "amount": 210000,
+            "close_date": "2024-09-05"
+          },
+          {
+            "name": "Azure Cloud Migration Phase",
+            "stage": "Close",
+            "amount": 560000,
+            "close_date": "2024-10-05"
+          },
+          {
+            "name": "Azure Intune Rollout",
+            "stage": "Develop",
+            "amount": 280000,
+            "close_date": "2024-10-01"
+          }
+        ],
+        "acr_current": 189461.39,
+        "health_flag": "Unknown",
+        "owner": "Raj Mehta"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    }
+  ],
+  "perturbations": [
+    "persona-geo-emea",
+    "signal-strength-noisy"
+  ],
+  "expected_routing": {
+    "entry_skill": "forecast-business-review-coach",
+    "modules": [
+      "business-review-narrative",
+      "team-coaching-risk-review"
+    ]
+  },
+  "expected_output_shape": {
+    "template": "rob-/-mbr-narrative",
+    "required_artifacts": [
+      "Narrative arc (opening story",
+      "wins",
+      "risks with mitigation",
+      "asks",
+      "next-period focus) appropriate to review format and length"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF26-L trap (Coaching frame on team risks blunts honest discussion); produces complete Narrative arc (opening story, wins, risks with mitigation, asks, next-period focus) appropriate to r",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF26-L failure pattern",
+      "Score 1: Output exhibits the full FM-WF26-L failure mode (Coaching frame on team risks blunts honest discussion)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct competitive positioning decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF26-L -- Coaching frame on team risks blunts honest discussion",
+    "Guardrail axis scored neutrally -- focus on whether output served the user's actual need"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

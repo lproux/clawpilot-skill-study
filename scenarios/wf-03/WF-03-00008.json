@@ -1,0 +1,99 @@
+{
+  "scenario_id": "WF-03-00008",
+  "workflow_id": "WF-03",
+  "workflow_name": "Whitespace Opportunity Hunt",
+  "seed": 300050,
+  "tier": 2,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF03-B",
+  "persona": "Manager",
+  "fixture_id": "FX-009",
+  "user_message": "Just came out of security posture with VanArsdel Ltd. Turn this into my brief and pull out the asks.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "VanArsdel Ltd",
+        "account_id": "ACC-3ORLVDXJ",
+        "opportunities": [
+          {
+            "name": "VanArsdel Data Platform Migration",
+            "stage": "Propose",
+            "amount": 210000,
+            "close_date": "2024-06-13"
+          },
+          {
+            "name": "VanArsdel M365 E5 Upsell",
+            "stage": "Prospect",
+            "amount": 280000,
+            "close_date": "2024-06-13"
+          },
+          {
+            "name": "VanArsdel Power Platform",
+            "stage": "Prospect",
+            "amount": 350000,
+            "close_date": "2024-09-08"
+          }
+        ],
+        "acr_current": 68769.78,
+        "health_flag": "Healthy",
+        "owner": "Tom Rodriguez"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    }
+  ],
+  "perturbations": [
+    "data-fresh",
+    "persona-segment-smb-mid",
+    "persona-tenure-mid"
+  ],
+  "expected_routing": {
+    "entry_skill": "portfolio-account-planning-coach",
+    "modules": [
+      "whitespace-growth-hypotheses"
+    ],
+    "handoffs": [
+      {
+        "target_skill": "acr-signal-to-opportunity-coach",
+        "condition": "hypothesis warrants signal investigation"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "whitespace-opportunity-hunt",
+    "required_artifacts": [
+      "Ranked whitespace hypotheses with feasibility",
+      "urgency",
+      "comparable evidence",
+      "and suggested validation steps"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Output correctly avoids the FM-WF03-B trap (Recommends workloads the customer already runs); produces complete Ranked whitespace hypotheses with feasibility, urgency, comparable evidence, and suggested validatio",
+      "Score 3: Output partially addresses the scenario but shows signs of the FM-WF03-B failure pattern",
+      "Score 1: Output exhibits the full FM-WF03-B failure mode (Recommends workloads the customer already runs)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim traces to specific input data with correct attribution; no hallucinated facts",
+      "Score 3: Most claims are supported but some attributions are vague or one fact is unsupported",
+      "Score 1: Multiple claims lack evidence basis or contradict input data"
+    ],
+    "decision_anchors": [
+      "Score 5: Correct security posture decisions with appropriate confidence levels; escalation/handoff decisions match contract",
+      "Score 3: Main decision correct but confidence calibration is off or a secondary decision is suboptimal",
+      "Score 1: Primary decision is wrong or contradicts available evidence"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft strategy in customer-facing output",
+    "Must not fabricate data not present in input artifacts",
+    "Target trap: FM-WF03-B -- Recommends workloads the customer already runs"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}
