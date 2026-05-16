@@ -1,0 +1,141 @@
+{
+  "scenario_id": "WF-01-00001",
+  "workflow_id": "WF-01",
+  "workflow_name": "Monday Morning Portfolio Triage",
+  "seed": 10005,
+  "tier": 3,
+  "intent": "happy",
+  "targeted_failure_mode": null,
+  "persona": "Manager",
+  "fixture_id": "FX-005",
+  "user_message": "Give me the team portfolio triage for this Monday. I need to know what my reports should be focusing on -- any fires, any big meetings, any pipeline stuff that needs attention this week.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "team_portfolio": {
+          "manager": "Jennifer Walsh",
+          "direct_reports": 10,
+          "total_accounts": 480,
+          "accounts_at_risk": 12,
+          "stale_records_count": 34,
+          "meetings_this_week": 47
+        },
+        "top_priority_accounts": [
+          {
+            "account": "VanArsdel Ltd",
+            "owner": "Marcus Williams",
+            "issue": "ACR declined 18% MoM; contract renewal in 60 days",
+            "acr_trend": [-2, -5, -8, -18],
+            "health_flag": "red",
+            "meeting_this_week": true
+          },
+          {
+            "account": "Trey Research",
+            "owner": "Lisa Patel",
+            "issue": "Escalation email received Friday; customer threatening to leave",
+            "health_flag": "red",
+            "meeting_this_week": false
+          },
+          {
+            "account": "Proseware Inc",
+            "owner": "Ahmed Hassan",
+            "issue": "$450K opportunity close date is this Friday; stage still in Develop",
+            "health_flag": "yellow",
+            "meeting_this_week": true
+          },
+          {
+            "account": "Relecloud",
+            "owner": "Sarah Kim",
+            "issue": "New SPA signal -- deployment blockers on Azure Arc",
+            "health_flag": "yellow",
+            "meeting_this_week": false
+          },
+          {
+            "account": "Wingtip Toys",
+            "owner": "Marcus Williams",
+            "issue": "QBR prep needed by Wednesday; no brief started",
+            "health_flag": "green",
+            "meeting_this_week": true
+          }
+        ],
+        "tagged_priorities_last_week": [
+          "Follow up on Trey Research escalation path",
+          "Push Ahmed on Proseware close plan",
+          "Check if Sarah needs DSSP support on Relecloud"
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "msx-aggregated"
+      }
+    },
+    {
+      "type": "calendar_event",
+      "content": {
+        "manager_meetings_this_week": [
+          {"day": "Monday", "title": "Team Standup", "time": "09:00"},
+          {"day": "Tuesday", "title": "1:1 Marcus Williams", "time": "10:00"},
+          {"day": "Wednesday", "title": "1:1 Ahmed Hassan", "time": "11:00"},
+          {"day": "Thursday", "title": "Skip-level with VP", "time": "14:00"},
+          {"day": "Friday", "title": "Forecast Call", "time": "09:00"}
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    }
+  ],
+  "perturbations": ["persona-role-manager", "persona-tenure-senior", "data-fresh", "routing-clear"],
+  "expected_routing": {
+    "entry_skill": "portfolio-account-planning-coach",
+    "modules": ["daily-weekly-planning", "account-health-prioritization"],
+    "handoffs": [
+      {
+        "target_skill": "customer-meeting-prep-outreach-coach",
+        "condition": "customer meetings exist this week"
+      },
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "stale records detected"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "monday-portfolio-triage",
+    "required_artifacts": [
+      "priority_ranked_accounts",
+      "reason_per_account",
+      "next_action_with_owner",
+      "time_block_plan",
+      "handoff_queue"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Top 5-8 accounts ranked by urgency x impact; VanArsdel and Trey Research at top (red health + time pressure); each has specific named next-action with IC owner; time-block plan maps to manager's actual calendar (e.g., 'discuss VanArsdel with Marcus in Tuesday 1:1')",
+      "Score 3: Correct accounts surfaced but ranking is off (e.g., Wingtip QBR ranked above Trey escalation) or next-actions are generic",
+      "Score 1: Lists 30+ accounts without prioritization or gives identical treatment to red and green accounts"
+    ],
+    "evidence_anchors": [
+      "Score 5: Each priority references specific data (ACR trend percentages, close dates, health flags, SPA signals); acknowledges last week's tagged priorities and shows continuity",
+      "Score 3: Uses correct data but doesn't reference last week's priorities or misses one key signal",
+      "Score 1: Generic reasoning not tied to specific data points"
+    ],
+    "decision_anchors": [
+      "Score 5: Correctly identifies multi-factor urgency (VanArsdel: ACR decline + renewal proximity + red health; Proseware: close date Friday + stage mismatch); handoff queue populated for stale records and meeting prep",
+      "Score 3: Identifies top risks but uses single factor (e.g., ranks by ACR alone or by health flag alone)",
+      "Score 1: No multi-factor prioritization; lists accounts alphabetically or by portfolio size"
+    ]
+  },
+  "guardrail_checks": [
+    "Must use multi-factor prioritization (not ACR alone)",
+    "Must limit to 5-10 accounts (not dump entire portfolio)",
+    "Must include named owner per action item",
+    "Must acknowledge prior week tagged priorities"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

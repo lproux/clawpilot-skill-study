@@ -1,0 +1,104 @@
+{
+  "scenario_id": "WF-11-00001",
+  "workflow_id": "WF-11",
+  "workflow_name": "Pre-Meeting Brief",
+  "seed": 10003,
+  "tier": 2,
+  "intent": "happy",
+  "targeted_failure_mode": null,
+  "persona": "DSSP",
+  "fixture_id": "FX-003",
+  "user_message": "I have a call with Fabrikam's IT Director in 2 hours to discuss their modernization project. Can you prep me a brief? I met with them 3 weeks ago but I honestly can't remember what we covered.",
+  "input_artifacts": [
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Fabrikam - Modernization Architecture Review",
+        "start": "2024-03-12T14:00:00-06:00",
+        "end": "2024-03-12T15:00:00-06:00",
+        "attendees": [
+          {"name": "Tom Nakamura", "email": "tom.nakamura@fabrikam.com", "role": "IT Director"},
+          {"name": "Priya Sharma", "email": "priya.sharma@fabrikam.com", "role": "Cloud Architect"},
+          {"name": "Raj Mehta", "email": "raj.mehta@microsoft.com", "role": "DSSP"}
+        ],
+        "location": "Microsoft Teams",
+        "series": true,
+        "series_instance": 3
+      },
+      "metadata": {
+        "freshness": "2024-03-12T12:00:00-06:00",
+        "source": "outlook-calendar"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: Fabrikam - Modernization Architecture Review (Instance 2)\nDate: 2024-02-20\nDuration: 55 minutes\nAttendees: Tom Nakamura (Fabrikam, IT Director), Priya Sharma (Fabrikam, Cloud Architect), Raj Mehta (Microsoft, DSSP)\n\n[00:02:15] Tom Nakamura: Thanks for joining again, Raj. So since our last session, we've done the assessment on the three legacy .NET apps. The good news is two of them are straightforward lift-and-shift candidates. The third one -- the inventory management system -- that's the one giving us headaches.\n\n[00:03:40] Raj Mehta: Right, the inventory system. What specifically are you running into?\n\n[00:04:10] Priya Sharma: It's the database dependency. The app uses SQL Server 2012 with some CLR assemblies that won't work on Azure SQL. We've been debating whether to go Azure SQL Managed Instance or refactor the CLR code.\n\n[00:06:30] Raj Mehta: Managed Instance would give you the compatibility without refactoring, but it's a higher cost tier. Have you looked at the TCO comparison?\n\n[00:07:15] Tom Nakamura: Not yet. That's actually something I was hoping you could help with. We need to present options to our CFO by end of March.\n\n[00:08:45] Raj Mehta: Absolutely. I can put together a comparison -- Managed Instance vs refactoring the CLR code for Azure SQL. I'll include the TCO over 3 years.\n\n[00:10:00] Priya Sharma: That would be great. Also, on the two lift-and-shift apps -- we're targeting April for those. Do we need a partner for the actual migration execution?\n\n[00:12:20] Raj Mehta: I'd recommend it for the first one at least. I can pull a partner shortlist. What's your budget range for the migration services?\n\n[00:13:45] Tom Nakamura: We've earmarked about 40K for migration services. Is that realistic?\n\n[00:14:30] Raj Mehta: For two apps of that complexity, yes, that should be sufficient. Let me get you names by next week.\n\n[00:16:00] Tom Nakamura: Perfect. One more thing -- Priya's team is asking about the ECIF eligibility. We heard some customers can get funding for modernization projects.\n\n[00:17:30] Raj Mehta: Yes, ECIF is potentially available. I need to check eligibility criteria for your account. I'll confirm that along with the partner shortlist.\n\n[00:18:45] Tom Nakamura: Great, let's reconvene in three weeks then. Same time works for us.",
+      "metadata": {
+        "freshness": "2024-02-20T00:00:00-06:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Fabrikam Inc",
+        "account_id": "ACC-01244",
+        "opportunity_name": "Fabrikam App Modernization",
+        "opportunity_id": "OPP-31022",
+        "stage": "Develop",
+        "close_date": "2024-07-31",
+        "amount": 245000,
+        "owner": "Raj Mehta",
+        "last_updated": "2024-02-21",
+        "notes": "3 legacy .NET apps; 2 lift-and-shift, 1 needs architecture decision"
+      },
+      "metadata": {
+        "freshness": "2024-02-21T00:00:00-06:00",
+        "source": "msx"
+      }
+    }
+  ],
+  "perturbations": ["persona-role-dssp", "transcript-named-speakers", "transcript-length-60min", "data-fresh"],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": ["meeting-prep", "contact-stakeholder-map"]
+  },
+  "expected_output_shape": {
+    "template": "pre-meeting-brief",
+    "required_artifacts": [
+      "attendee_context",
+      "account_snapshot",
+      "talking_points",
+      "likely_objections",
+      "open_items_from_last_meeting",
+      "suggested_asks"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Brief fits one page; attendee context includes roles; talking points reference the TCO comparison (overdue), partner shortlist (overdue), and ECIF eligibility (overdue) as open deliverables from Raj",
+      "Score 3: Brief covers the right topics but talking points are generic ('discuss modernization progress') rather than referencing specific open items",
+      "Score 1: Multi-page output or generic brief that could apply to any customer meeting"
+    ],
+    "evidence_anchors": [
+      "Score 5: All open items sourced from Feb 20 transcript with correct attribution; notes that Raj committed to TCO comparison, partner shortlist, and ECIF check -- all appear overdue",
+      "Score 3: Most open items correct but one attribution wrong (e.g., attributes the ECIF question to Priya instead of Tom)",
+      "Score 1: Invents open items not in the transcript or MSX record"
+    ],
+    "decision_anchors": [
+      "Score 5: Surfaces that Raj has 3 overdue deliverables heading into this meeting; suggests acknowledging status upfront and asking for CFO timeline confirmation",
+      "Score 3: Notes some deliverables are pending but doesn't flag them as overdue or suggest how to address",
+      "Score 1: Treats meeting as fresh start with no reference to prior commitments"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal pricing or margin information",
+    "Must not fabricate attendee context beyond what's in data",
+    "Open items must trace to transcript, not be invented"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

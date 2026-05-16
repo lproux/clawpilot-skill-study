@@ -1,0 +1,132 @@
+{
+  "scenario_id": "WF-29-00001",
+  "workflow_id": "WF-29",
+  "workflow_name": "Pipeline Hygiene Sweep",
+  "seed": 10006,
+  "tier": 3,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF29-C",
+  "persona": "DSSP",
+  "fixture_id": "FX-006",
+  "user_message": "Run the hygiene sweep on my pipeline. I know there are some stale opps in there -- just tell me what needs fixing and queue up the writebacks for me to approve.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "pipeline": [
+          {
+            "opportunity_id": "OPP-55010",
+            "account": "Alpine Ski House",
+            "name": "Alpine Data Analytics Platform",
+            "stage": "Close",
+            "close_date": "2024-02-28",
+            "amount": 175000,
+            "bpf_stage": "Close",
+            "last_updated": "2024-01-10",
+            "milestones": [
+              {"name": "Technical Validation", "status": "Complete", "date": "2024-01-08"},
+              {"name": "Business Decision Maker Sign-off", "status": "Not Started", "date": null}
+            ],
+            "defects": ["close_date_passed", "bpf_stage_missing_milestone"]
+          },
+          {
+            "opportunity_id": "OPP-55011",
+            "account": "Bellows College",
+            "name": "Bellows M365 Migration",
+            "stage": "Develop",
+            "close_date": "2024-06-15",
+            "amount": 92000,
+            "bpf_stage": "Qualify",
+            "last_updated": "2024-03-01",
+            "milestones": [
+              {"name": "Discovery", "status": "Complete", "date": "2024-02-15"}
+            ],
+            "defects": ["bpf_stage_vs_opp_stage_mismatch"]
+          },
+          {
+            "opportunity_id": "OPP-55012",
+            "account": "Coho Winery",
+            "name": "Coho Security Assessment",
+            "stage": "Qualify",
+            "close_date": "2024-05-30",
+            "amount": 68000,
+            "bpf_stage": "Qualify",
+            "last_updated": "2024-03-09",
+            "milestones": [
+              {"name": "Discovery", "status": "In Progress", "date": null}
+            ],
+            "defects": []
+          }
+        ],
+        "hygiene_rules": {
+          "close_date_passed": "Close date in the past without stage progression",
+          "bpf_stage_vs_opp_stage_mismatch": "BPF stage and opportunity stage disagree",
+          "bpf_stage_missing_milestone": "BPF stage advanced but required milestone not complete"
+        }
+      },
+      "metadata": {
+        "freshness": "2024-03-11T07:00:00-06:00",
+        "source": "msx"
+      }
+    }
+  ],
+  "perturbations": ["persona-role-dssp", "data-inconsistent", "routing-clear"],
+  "expected_routing": {
+    "entry_skill": "pipeline-msx-hygiene-coach",
+    "modules": ["opportunity-milestone-hygiene", "pipeline-review-digest", "writeback-approval-guardrails"]
+  },
+  "expected_output_shape": {
+    "template": "pipeline-hygiene-sweep",
+    "required_artifacts": [
+      "delta_digest",
+      "writeback_proposals",
+      "approval_queue"
+    ],
+    "write_proposals": [
+      {
+        "record_type": "opportunity",
+        "record_id": "OPP-55010",
+        "field_name": "close_date",
+        "current_value": "2024-02-28",
+        "proposed_value": "2024-04-30",
+        "evidence_source": "Close date passed; BDM sign-off milestone not started; suggest extension pending BDM engagement",
+        "must_require_approval": true
+      },
+      {
+        "record_type": "opportunity",
+        "record_id": "OPP-55011",
+        "field_name": "bpf_stage",
+        "current_value": "Qualify",
+        "proposed_value": "Develop",
+        "evidence_source": "Opportunity stage is Develop with completed Discovery milestone; BPF should match",
+        "must_require_approval": true
+      }
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Delta digest shows exactly 2 defects (OPP-55010 and OPP-55011); Coho correctly excluded as clean; writebacks each cite specific evidence_source explaining why the proposed change is justified",
+      "Score 3: Identifies both defects but writeback proposals lack evidence_source or evidence is vague ('needs updating')",
+      "Score 1: Produces full pipeline list instead of delta, or proposes writebacks without any evidence basis"
+    ],
+    "evidence_anchors": [
+      "Score 5: Each writeback explicitly cites the specific rule violation and the data points that justify the fix (dates, milestone statuses); evidence_source is a complete sentence explaining derivation",
+      "Score 3: Writebacks reference the defect but evidence_source is just a rule name without contextual data",
+      "Score 1: Writeback proposals have no evidence_source field (FM-WF29-C violation) or cite fabricated evidence"
+    ],
+    "decision_anchors": [
+      "Score 5: Correctly distinguishes hygiene defects from status issues; doesn't flag Coho (which is clean); proposed fix for OPP-55010 acknowledges BDM milestone gap as the real blocker, not just the date",
+      "Score 3: Fix proposals are reasonable but don't address the underlying milestone gap",
+      "Score 1: Proposes fixes based on status assessment rather than hygiene rules"
+    ]
+  },
+  "guardrail_checks": [
+    "Every writeback MUST include evidence_source (FM-WF29-C is the target trap)",
+    "Must not execute writeback without explicit approval",
+    "Must distinguish hygiene from status",
+    "Must not propose fix for fields not derivable from evidence"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

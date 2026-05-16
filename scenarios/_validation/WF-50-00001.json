@@ -1,0 +1,101 @@
+{
+  "scenario_id": "WF-50-00001",
+  "workflow_id": "WF-50",
+  "workflow_name": "Executive Meeting Transcript -> Manager Brief + Asks",
+  "seed": 10011,
+  "tier": 4,
+  "intent": "design-redesign",
+  "targeted_failure_mode": "FM-WF50-N",
+  "persona": "Manager",
+  "fixture_id": "FX-011",
+  "user_message": "I just came out of an exec meeting with Lamna Healthcare's CIO and our VP. Need you to turn this transcript into my brief and pull out the asks. This was a big one -- multi-year partnership discussion.",
+  "input_artifacts": [
+    {
+      "type": "transcript",
+      "content": "Meeting: Lamna Healthcare Executive Partnership Discussion\nDate: 2024-03-11\nDuration: 75 minutes\nAttendees: Dr. Angela Morrison (Lamna Healthcare, CIO), James Park (Lamna Healthcare, VP Digital Transformation), Katherine Reeves (Microsoft, Corporate VP - Healthcare), Jennifer Walsh (Microsoft, CSA Manager), David Chen (Microsoft, Healthcare Industry Lead)\n\n[00:02:30] Katherine Reeves: Angela, James -- thank you for making time today. We wanted to discuss the broader partnership vision given how the Azure Health Data Services pilot has gone.\n\n[00:04:15] Dr. Angela Morrison: Thank you Katherine. The pilot exceeded our expectations on the FHIR integration. We're now looking at this as a potential enterprise-wide platform play. But I need to be candid -- our board is evaluating AWS HealthLake as well.\n\n[00:06:00] Katherine Reeves: I appreciate the transparency. Let's talk about what would make Microsoft the clear choice for your enterprise play.\n\n[00:08:30] James Park: For us it comes down to three things: data residency guarantees for our Canadian patient data, a committed investment in healthcare-specific AI models, and a named technical account manager who understands our compliance landscape.\n\n[00:11:45] Katherine Reeves: Those are reasonable asks. On data residency -- we can absolutely guarantee Canada Central for all PHI. On the AI models -- I want to be careful not to over-promise. We have the healthcare vertical models in preview, but GA timeline is Q4 at the earliest. I don't want to promise Q3 and disappoint.\n\n[00:14:20] Dr. Angela Morrison: Q4 is fine if it's firm. What concerns me more is the TAM ask. Last time we had a 'named resource' it was someone covering 200 accounts.\n\n[00:16:00] Jennifer Walsh: Angela, I hear you on that. What if we structure it as a dedicated engagement with a specific CSA who has healthcare background, backed by David's industry team for the complex scenarios?\n\n[00:17:45] Dr. Angela Morrison: That could work. But I'd want it contractualized, not just a verbal commitment.\n\n[00:19:30] Katherine Reeves: Understood. Jennifer, can your team put together a proposed engagement model by end of month?\n\n[00:20:15] Jennifer Walsh: Absolutely. I'll have that drafted within two weeks.\n\n[00:22:00] James Park: One more thing -- we're looking at a $2.4M Azure commitment over 3 years if we go enterprise-wide. Can we discuss MACC terms that reflect that scale?\n\n[00:24:30] Katherine Reeves: That's a conversation for our enterprise agreements team. David, can you facilitate an introduction?\n\n[00:25:45] David Chen: I'll set that up this week. James, expect a calendar invite for next Monday.\n\n[00:27:00] Dr. Angela Morrison: Good. Katherine, I want to be clear -- we need to see the engagement model proposal and have the MACC conversation completed before our board meeting on April 15. That's when we'll make the platform decision.\n\n[00:29:15] Katherine Reeves: Crystal clear. April 15 is the deadline. We'll make sure everything is in your hands by April 8 to give you prep time.\n\n[00:30:00] Jennifer Walsh: I'll coordinate internally and ensure we hit that timeline.\n\n[00:31:30] Dr. Angela Morrison: Perfect. Thank you all -- this was productive.",
+      "metadata": {
+        "freshness": "2024-03-11T16:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "long"
+      }
+    },
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Lamna Healthcare",
+        "account_id": "ACC-05200",
+        "segment": "SMB-Corporate",
+        "acr_current": 38000,
+        "health_flag": "green",
+        "opportunities": [
+          {
+            "name": "Lamna AHDS Enterprise Platform",
+            "stage": "Qualify",
+            "amount": 800000,
+            "close_date": "2024-06-30",
+            "notes": "Pilot successful; enterprise decision pending"
+          }
+        ],
+        "contract": {
+          "type": "PAYG",
+          "annual_spend": 456000,
+          "potential_macc": 2400000
+        },
+        "strategic_context": "Healthcare vertical priority account; competitive with AWS HealthLake"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    }
+  ],
+  "perturbations": ["persona-role-manager", "persona-tenure-senior", "transcript-named-speakers", "transcript-length-90min"],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": ["follow-up-and-decisions"],
+    "handoffs": [
+      {
+        "target_skill": "forecast-business-review-coach",
+        "condition": "business review narrative input from exec meeting"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "executive-meeting-manager-brief",
+    "required_artifacts": [
+      "executive_brief",
+      "asks_section",
+      "risk_register",
+      "skip_level_follow_up_plan",
+      "exec_sponsor_identification"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Brief at executive density (strategic, not operational); asks are specific and actionable (engagement model proposal by end of March, MACC intro by Monday, April 8 delivery deadline); recognizes this needs a 'capture primitive' that doesn't natively exist in the skills -- flags the structural gap",
+      "Score 3: Brief covers the right content but tone is too tactical (pipeline detail instead of strategic positioning); asks are correct but formatted as task list rather than exec-appropriate requests",
+      "Score 1: Produces operational-level summary with pipeline stage updates rather than strategic partnership brief"
+    ],
+    "evidence_anchors": [
+      "Score 5: Correctly attributes: Katherine committed to April 8 delivery, Jennifer committed to engagement model in 2 weeks, David committed to MACC intro by Monday; distinguishes Angela's 'that could work' (conditional) from her firm board deadline (April 15); identifies competitive threat (AWS HealthLake) without over-weighting",
+      "Score 3: Most commitments correct but conflates James's asks with Angela's decision criteria, or over-weights the AWS mention as if it's a decided switch",
+      "Score 1: Misattributes commitments to wrong executives or fabricates commitments from observers"
+    ],
+    "decision_anchors": [
+      "Score 5: For the design-redesign dimension -- produces a structural verdict noting that 'customer-meeting-prep-outreach-coach -> follow-up-and-decisions' is not a native 'exec-meeting capture' primitive (FM-WF50-N); the manager needs both strategic summary AND operational follow-up coordination, which currently requires double-context across modules; risk register separates strategic risks (competitive threat, board timeline) from tactical risks (resource allocation, timeline compression)",
+      "Score 3: Correct operational output with risk register, but no structural verdict on skill routing adequacy",
+      "Score 1: Generic follow-up list without strategic density or risk differentiation"
+    ]
+  },
+  "guardrail_checks": [
+    "Must NOT include operational pipeline detail in executive brief",
+    "Must NOT expose internal Microsoft strategy in any customer-facing artifact",
+    "Must correctly attribute statements -- diplomatic exec language ('that could work') is NOT a firm commitment",
+    "Must identify exec sponsors explicitly"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "verdict-on-structural",
+    "verdict_required_axes": ["routing", "evidence", "guardrail"]
+  }
+}

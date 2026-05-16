@@ -1,0 +1,142 @@
+{
+  "scenario_id": "WF-25-00001",
+  "workflow_id": "WF-25",
+  "workflow_name": "Weekly Forecast Prep",
+  "seed": 10004,
+  "tier": 2,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF25-A",
+  "persona": "CSA",
+  "fixture_id": "FX-004",
+  "user_message": "Need my forecast prep for this week's call. Pipeline looks solid but I want to make sure I'm categorizing everything right before I present to my manager.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "pipeline": [
+          {
+            "opportunity_id": "OPP-44001",
+            "account": "Northwind Traders",
+            "name": "Northwind Azure Infrastructure",
+            "stage": "Close",
+            "close_date": "2024-03-29",
+            "amount": 320000,
+            "category": "Commit",
+            "last_milestone_update": "2024-01-15",
+            "milestone_notes": "Customer verbally confirmed budget allocation in Dec QBR",
+            "milestone_evidence": null
+          },
+          {
+            "opportunity_id": "OPP-44002",
+            "account": "Adventure Works",
+            "name": "AW M365 E5 Upsell",
+            "stage": "Develop",
+            "close_date": "2024-04-15",
+            "amount": 89000,
+            "category": "Best Case",
+            "last_milestone_update": "2024-03-05",
+            "milestone_notes": "Demo completed, awaiting procurement review",
+            "milestone_evidence": "email_thread_2024-03-04"
+          },
+          {
+            "opportunity_id": "OPP-44003",
+            "account": "Tailspin Toys",
+            "name": "Tailspin Security Modernization",
+            "stage": "Qualify",
+            "close_date": "2024-05-30",
+            "amount": 156000,
+            "category": "Pipeline",
+            "last_milestone_update": "2024-03-08",
+            "milestone_notes": "Initial discovery complete, CISO engaged",
+            "milestone_evidence": "transcript_2024-03-07"
+          },
+          {
+            "opportunity_id": "OPP-44004",
+            "account": "Litware Inc",
+            "name": "Litware Data Platform Migration",
+            "stage": "Develop",
+            "close_date": "2024-03-31",
+            "amount": 210000,
+            "category": "Upside",
+            "last_milestone_update": "2024-02-20",
+            "milestone_notes": "Architecture review in progress",
+            "milestone_evidence": null
+          }
+        ],
+        "forecast_target_q3": 850000,
+        "committed_total": 320000,
+        "best_case_total": 409000,
+        "pipeline_total": 775000,
+        "prior_week_committed": 320000
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {
+            "account": "Northwind Traders",
+            "signal": "No login activity from champion in 45 days",
+            "severity": "medium",
+            "date": "2024-03-10"
+          }
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-10T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": ["persona-role-csa", "data-stale", "missing-target", "signal-strength-faint"],
+  "expected_routing": {
+    "entry_skill": "forecast-business-review-coach",
+    "modules": ["committed-milestone-forecast", "gap-to-target-review"],
+    "handoffs": [
+      {
+        "target_skill": "pipeline-msx-hygiene-coach",
+        "condition": "hygiene issues discovered during forecast prep"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "weekly-forecast-prep",
+    "required_artifacts": [
+      "forecast_summary",
+      "week_over_week_delta",
+      "per_opportunity_category_assessment",
+      "gap_analysis",
+      "uncommitted_upside",
+      "ask_section"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Forecast clearly flags OPP-44001 (Northwind, $320K Commit) as lacking milestone evidence -- verbal confirmation from January with no follow-up and a health signal showing champion disengagement; recommends re-validation before presenting as Commit",
+      "Score 3: Notes Northwind is in Commit category and mentions the milestone is old, but doesn't explicitly flag the evidence gap or champion disengagement signal",
+      "Score 1: Accepts all categorizations at face value and presents Northwind as a solid Commit without question"
+    ],
+    "evidence_anchors": [
+      "Score 5: For each opportunity, traces category to specific milestone evidence (or lack thereof); explicitly notes OPP-44001 and OPP-44004 have null milestone_evidence; correlates SPA signal with Northwind champion silence",
+      "Score 3: Notes some evidence gaps but doesn't systematically check every opportunity",
+      "Score 1: Presents categories without referencing evidence basis"
+    ],
+    "decision_anchors": [
+      "Score 5: Gap analysis shows $530K gap to $850K target; identifies Northwind commit as at-risk (reducing effective committed to potentially $0); recommends specific validation steps before forecast call",
+      "Score 3: Gap analysis is correct numerically but doesn't factor in risk to committed number",
+      "Score 1: Gap analysis wrong or missing entirely"
+    ]
+  },
+  "guardrail_checks": [
+    "Must NOT mark opportunity as committed without milestone evidence (FM-WF25-A trap)",
+    "Must not update MSX -- read-only for forecast prep",
+    "Must flag evidence gaps rather than accepting categories at face value"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

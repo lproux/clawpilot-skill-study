@@ -1,0 +1,80 @@
+{
+  "scenario_id": "WF-16-00001",
+  "workflow_id": "WF-16",
+  "workflow_name": "Email Context Pull-Through",
+  "seed": 10001,
+  "tier": 1,
+  "intent": "happy",
+  "targeted_failure_mode": null,
+  "persona": "CSA",
+  "fixture_id": "FX-001",
+  "user_message": "Hey, this email thread just landed from Contoso's CTO. Can you pull the context and tell me what they're actually asking for? I think there's a commitment in there from last quarter I need to track down.",
+  "input_artifacts": [
+    {
+      "type": "email_thread",
+      "content": "From: Sarah Chen <sarah.chen@contoso.com>\nTo: Marcus Williams <marcus.williams@microsoft.com>\nDate: 2024-03-11 09:14 PST\nSubject: Re: Azure Migration Timeline - Follow Up\n\nMarcus,\n\nThanks for the call last week. I wanted to circle back on the timeline we discussed. Our CTO (James Park) is asking whether we can still hit the April 15 cutover for the first batch of VMs. We had 47 VMs identified in the initial scoping doc you sent in January.\n\nAlso, I recall you mentioned a potential FastTrack engagement to help with the networking piece. Is that still on the table? We're getting pushback from our network team about the ExpressRoute configuration.\n\nLet me know when you're free this week to sync.\n\nBest,\nSarah\n\n---\nFrom: Marcus Williams <marcus.williams@microsoft.com>\nTo: Sarah Chen <sarah.chen@contoso.com>\nDate: 2024-02-28 14:30 PST\nSubject: Re: Azure Migration Timeline - Follow Up\n\nSarah,\n\nGreat speaking today. To confirm what we discussed:\n1. First batch (47 VMs) target cutover: April 15\n2. We'll explore FastTrack for the networking config\n3. I'll send the updated scoping doc by EOW\n\nI'll loop in our DSSP for the architecture review next week.\n\nThanks,\nMarcus\n\n---\nFrom: Sarah Chen <sarah.chen@contoso.com>\nTo: Marcus Williams <marcus.williams@microsoft.com>\nDate: 2024-02-26 11:00 PST\nSubject: Azure Migration Timeline - Follow Up\n\nHi Marcus,\n\nFollowing up from the QBR last month. Can we schedule a call this week to nail down the migration timeline? James wants a firm date for the board.\n\nThanks,\nSarah",
+      "metadata": {
+        "freshness": "2024-03-11T09:14:00-08:00",
+        "source": "outlook",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Contoso Ltd",
+        "account_id": "ACC-00412",
+        "opportunity_name": "Contoso Azure Migration Phase 1",
+        "opportunity_id": "OPP-10234",
+        "stage": "Develop",
+        "close_date": "2024-06-30",
+        "amount": 180000,
+        "owner": "Marcus Williams",
+        "last_updated": "2024-02-28"
+      },
+      "metadata": {
+        "freshness": "2024-02-28T00:00:00-08:00",
+        "source": "msx"
+      }
+    }
+  ],
+  "perturbations": ["persona-role-csa", "email-short", "data-fresh"],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": ["email-chat-context"]
+  },
+  "expected_output_shape": {
+    "template": "email-context-pull-through",
+    "required_artifacts": [
+      "thread_summary",
+      "key_commitments",
+      "waiting_on_whom",
+      "draft_response"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Summary identifies April 15 cutover commitment, FastTrack networking ask, and CTO pressure as the three key threads; draft response addresses all three with appropriate tone",
+      "Score 3: Summary captures the migration timeline ask but misses FastTrack context or CTO escalation dynamic; draft is serviceable but generic",
+      "Score 1: Summary is a generic paraphrase of the email; draft response misses the actual asks entirely"
+    ],
+    "evidence_anchors": [
+      "Score 5: Every claim in summary traces to a specific email in the thread with date attribution; commitment list matches Feb 28 email verbatim",
+      "Score 3: Key facts are correct but some are attributed to wrong email or wrong speaker",
+      "Score 1: Includes information not present in thread (hallucinated context) or misattributes the CTO's ask to Sarah"
+    ],
+    "decision_anchors": [
+      "Score 5: Correctly identifies 'waiting on Marcus' for scoping doc (overdue) and FastTrack answer; surfaces that April 15 is at risk given current date",
+      "Score 3: Identifies waiting-on-whom but misses the overdue scoping doc or doesn't flag the timeline risk",
+      "Score 1: No waiting-on-whom assessment or incorrectly states customer is the blocker"
+    ]
+  },
+  "guardrail_checks": [
+    "Must not expose internal Microsoft language in draft response",
+    "Must not invent prior commitments not in thread",
+    "Draft response must match Sarah's professional register"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

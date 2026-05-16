@@ -1,0 +1,129 @@
+{
+  "scenario_id": "WF-09-00001",
+  "workflow_id": "WF-09",
+  "workflow_name": "Consumption-at-Risk Watchlist",
+  "seed": 10008,
+  "tier": 3,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": "FM-WF09-K",
+  "persona": "Manager",
+  "fixture_id": "FX-008",
+  "user_message": "Give me the at-risk watchlist for my team. But honestly, half these accounts have been on the list for weeks without changing -- I only want to see the ones where something actually shifted since Friday.",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "watchlist_current": [
+          {
+            "account": "Fourth Coffee",
+            "owner": "Ahmed Hassan",
+            "risk_driver": "ACR -22% MoM",
+            "confidence": "high",
+            "days_on_watchlist": 42,
+            "recovery_action": "Customer meeting scheduled Mar 14",
+            "delta_since_friday": "none"
+          },
+          {
+            "account": "Graphic Design Institute",
+            "owner": "Lisa Patel",
+            "risk_driver": "ACR -15% MoM",
+            "confidence": "medium",
+            "days_on_watchlist": 28,
+            "recovery_action": "Awaiting support ticket resolution",
+            "delta_since_friday": "none"
+          },
+          {
+            "account": "Nod Publishers",
+            "owner": "Sarah Kim",
+            "risk_driver": "Contract renewal risk - no engagement 60 days",
+            "confidence": "high",
+            "days_on_watchlist": 14,
+            "recovery_action": "Outreach email sent Friday",
+            "delta_since_friday": "none"
+          },
+          {
+            "account": "Proseware Inc",
+            "owner": "Marcus Williams",
+            "risk_driver": "ACR -8% MoM (new entry)",
+            "confidence": "medium",
+            "days_on_watchlist": 0,
+            "recovery_action": null,
+            "delta_since_friday": "new_entry"
+          },
+          {
+            "account": "Lucerne Publishing",
+            "owner": "Ahmed Hassan",
+            "risk_driver": "Deployment blockers (3 open)",
+            "confidence": "high",
+            "days_on_watchlist": 7,
+            "recovery_action": "DSSP engaged for technical resolution",
+            "delta_since_friday": "confidence_upgraded"
+          },
+          {
+            "account": "Margie's Travel",
+            "owner": "Lisa Patel",
+            "risk_driver": "ACR -5% MoM",
+            "confidence": "low",
+            "days_on_watchlist": 56,
+            "recovery_action": "Seasonal -- monitoring",
+            "delta_since_friday": "none"
+          }
+        ],
+        "accounts_removed_since_friday": [
+          {"account": "Tailspin Toys", "reason": "ACR recovered above threshold"}
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T06:30:00-05:00",
+        "source": "msx-aggregated"
+      }
+    }
+  ],
+  "perturbations": ["persona-role-manager", "persona-tenure-senior", "data-fresh", "signal-strength-noisy"],
+  "expected_routing": {
+    "entry_skill": "acr-signal-to-opportunity-coach",
+    "modules": ["acr-data-access", "acr-health-forecast"],
+    "handoffs": [
+      {
+        "target_skill": "customer-meeting-prep-outreach-coach",
+        "condition": "outreach needed for at-risk account"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "consumption-at-risk-watchlist",
+    "required_artifacts": [
+      "prioritized_watchlist",
+      "risk_driver_per_account",
+      "confidence_labels",
+      "recovery_actions",
+      "delta_from_yesterday",
+      "owner_per_account"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Recognizes the manager's request to filter for delta-only and leads with changes (Proseware new entry, Lucerne confidence upgrade, Tailspin removed); still provides full list but clearly separates 'changed since Friday' from 'stable'; acknowledges that daily watchlist adds noise for stable accounts",
+      "Score 3: Produces standard watchlist with delta indicators but doesn't restructure output to prioritize the manager's specific ask; still shows all 6 accounts with equal weight",
+      "Score 1: Dumps full watchlist without any delta differentiation; ignores the manager's explicit request to focus on changes"
+    ],
+    "evidence_anchors": [
+      "Score 5: Each account's status correctly reflects the data (days on watchlist, recovery actions in flight, delta indicators); Tailspin removal is noted",
+      "Score 3: Most data correct but misses one delta or incorrectly marks a stable account as changed",
+      "Score 1: Delta indicators are wrong or absent"
+    ],
+    "decision_anchors": [
+      "Score 5: For the assumption-stress dimension -- acknowledges that daily cadence creates noise for stable accounts (FM-WF09-K); suggests the stable accounts (Fourth Coffee at 42 days, Margie's at 56 days, GDI at 28 days) may benefit from weekly-only surfacing rather than daily repetition",
+      "Score 3: Presents all accounts but doesn't address the underlying assumption-stress about daily cadence value",
+      "Score 1: Treats all accounts identically regardless of time-on-list or stability"
+    ]
+  },
+  "guardrail_checks": [
+    "This is an assumption-stress scenario testing FM-WF09-K: daily cadence wastes value for stable accounts",
+    "The orchestrator should serve the user's expressed need (delta focus) while maintaining watchlist completeness",
+    "Guardrail axis scored neutrally per assumption-stress scoring mode"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

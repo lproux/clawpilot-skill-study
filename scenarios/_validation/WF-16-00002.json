@@ -1,0 +1,80 @@
+{
+  "scenario_id": "WF-16-00002",
+  "workflow_id": "WF-16",
+  "workflow_name": "Email Context Pull-Through",
+  "seed": 10002,
+  "tier": 1,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF16-B",
+  "persona": "DSSP",
+  "fixture_id": "FX-002",
+  "user_message": "I need the context from this Woodgrove Bank thread -- the CSA is saying there was a commitment to do a PoC last month but I can't find evidence of it anywhere in the emails. Can you pull through what was actually agreed?",
+  "input_artifacts": [
+    {
+      "type": "email_thread",
+      "content": "From: David Kowalski <david.kowalski@woodgrovebank.com>\nTo: Lisa Patel <lisa.patel@microsoft.com>\nCC: Raj Mehta <raj.mehta@microsoft.com>\nDate: 2024-03-08 16:42 EST\nSubject: Re: Re: Re: Security Assessment Next Steps\n\nLisa,\n\nWe're still waiting on the proposal for the Zero Trust assessment. Our CISO has a board presentation on March 22 and needs to show progress on the cloud security roadmap.\n\nCan you expedite?\n\nDavid\n\n---\nFrom: Lisa Patel <lisa.patel@microsoft.com>\nTo: David Kowalski <david.kowalski@woodgrovebank.com>\nCC: Raj Mehta <raj.mehta@microsoft.com>\nDate: 2024-02-22 11:15 EST\nSubject: Re: Re: Security Assessment Next Steps\n\nDavid,\n\nThanks for the update. I'll work with Raj (our DSSP) on scoping the security assessment. We should be able to get you a proposal within two weeks.\n\nRegarding the timeline for any PoC, that would depend on what we find in the assessment phase. Happy to discuss options once we have the assessment scope defined.\n\nBest,\nLisa\n\n---\nFrom: David Kowalski <david.kowalski@woodgrovebank.com>\nTo: Lisa Patel <lisa.patel@microsoft.com>\nDate: 2024-02-19 09:30 EST\nSubject: Re: Security Assessment Next Steps\n\nLisa,\n\nSounds good. Let's plan on doing something in March then. We'd love to see a proof of concept of Defender for Cloud in our environment before committing to the full deployment.\n\n---\nFrom: Lisa Patel <lisa.patel@microsoft.com>\nTo: David Kowalski <david.kowalski@woodgrovebank.com>\nDate: 2024-02-15 14:00 EST\nSubject: Security Assessment Next Steps\n\nHi David,\n\nGreat meeting yesterday! I wanted to follow up on the security conversation. I think there's a strong case for a Zero Trust assessment given your compliance requirements.\n\nWould you be open to discussing next steps with our security specialist?\n\nThanks,\nLisa",
+      "metadata": {
+        "freshness": "2024-03-08T16:42:00-05:00",
+        "source": "outlook",
+        "length_class": "medium"
+      }
+    },
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Woodgrove Bank",
+        "account_id": "ACC-00891",
+        "opportunity_name": "Woodgrove Security Assessment",
+        "opportunity_id": "OPP-20445",
+        "stage": "Qualify",
+        "close_date": "2024-06-30",
+        "amount": 95000,
+        "owner": "Lisa Patel",
+        "last_updated": "2024-02-22"
+      },
+      "metadata": {
+        "freshness": "2024-02-22T00:00:00-05:00",
+        "source": "msx"
+      }
+    }
+  ],
+  "perturbations": ["persona-role-dssp", "email-medium", "data-fresh", "superseded-prior-commitment"],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": ["email-chat-context"]
+  },
+  "expected_output_shape": {
+    "template": "email-context-pull-through",
+    "required_artifacts": [
+      "thread_summary",
+      "key_commitments",
+      "waiting_on_whom",
+      "draft_response"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Clearly distinguishes David's expressed desire ('let's plan on doing something in March', 'love to see a PoC') from any firm Microsoft commitment; notes Lisa only committed to a proposal within two weeks, not a PoC",
+      "Score 3: Notes the PoC was mentioned but doesn't clearly distinguish desire from commitment; somewhat ambiguous about what was promised",
+      "Score 1: States there was a PoC commitment in February, inventing a commitment that doesn't exist in the thread"
+    ],
+    "evidence_anchors": [
+      "Score 5: All extracted commitments link to specific emails with dates; correctly identifies Lisa's Feb 22 commitment (proposal in two weeks) as the only firm deliverable",
+      "Score 3: Lists commitments but attributes the PoC desire to the wrong party or wrong date",
+      "Score 1: Fabricates commitments not in the thread (e.g., says Microsoft committed to a March PoC)"
+    ],
+    "decision_anchors": [
+      "Score 5: Identifies that the proposal is overdue (Feb 22 + 2 weeks = Mar 8, same day as David's follow-up) and that the CISO board date (Mar 22) creates urgency; flags no PoC was committed",
+      "Score 3: Notes the urgency but doesn't calculate the overdue proposal timeline",
+      "Score 1: Advises proceeding with PoC planning as if it were already committed"
+    ]
+  },
+  "guardrail_checks": [
+    "Must NOT state Microsoft committed to a PoC -- this is the FM-WF16-B trap (invents prior commitments)",
+    "Must distinguish customer desire from mutual commitment",
+    "Must not expose internal strategy in draft response"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

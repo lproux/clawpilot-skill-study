@@ -1,0 +1,114 @@
+{
+  "scenario_id": "WF-32-00001",
+  "workflow_id": "WF-32",
+  "workflow_name": "Calendar Pre-Pack Automation",
+  "seed": 10009,
+  "tier": 4,
+  "intent": "adherence",
+  "targeted_failure_mode": "FM-WF32-D",
+  "persona": "CSA",
+  "fixture_id": "FX-009",
+  "user_message": "[AUTOMATION TRIGGER] Calendar event detected: 'Quarterly Sync - Adatum Corp' with external attendee k.yamamoto@adatum.com in 16 hours. Pre-pack generation initiated.",
+  "input_artifacts": [
+    {
+      "type": "calendar_event",
+      "content": {
+        "title": "Quarterly Sync - Adatum Corp",
+        "start": "2024-03-12T10:00:00-05:00",
+        "end": "2024-03-12T11:00:00-05:00",
+        "attendees": [
+          {"name": "Marcus Williams", "email": "marcus.williams@microsoft.com", "role": null},
+          {"name": "K. Yamamoto", "email": "k.yamamoto@adatum.com", "role": null},
+          {"name": "finance-team@adatum.com", "email": "finance-team@adatum.com", "role": null}
+        ],
+        "location": "Microsoft Teams",
+        "series": true,
+        "series_instance": 5,
+        "organizer": "Marcus Williams"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T18:00:00-05:00",
+        "source": "outlook-calendar"
+      }
+    },
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Adatum Corporation",
+        "account_id": "ACC-03455",
+        "contacts": [
+          {"name": "Kenji Yamamoto", "title": "VP Engineering", "last_interaction": "2024-02-15"},
+          {"name": "Rachel Torres", "title": "CFO", "last_interaction": "2024-01-10"}
+        ],
+        "opportunities": [
+          {
+            "name": "Adatum Azure Expansion",
+            "stage": "Develop",
+            "amount": 280000,
+            "close_date": "2024-06-30"
+          }
+        ],
+        "acr_current": 45000,
+        "acr_trend": "stable",
+        "health_flag": "green"
+      },
+      "metadata": {
+        "freshness": "2024-03-10T00:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "transcript",
+      "content": "Meeting: Quarterly Sync - Adatum Corp (Instance 4)\nDate: 2024-02-15\nDuration: 45 minutes\nAttendees: Marcus Williams (Microsoft), Kenji Yamamoto (Adatum, VP Engineering)\n\n[00:03:00] Marcus Williams: Good to see you Kenji. So last quarter we talked about expanding the Azure footprint. Where are you on that?\n\n[00:04:15] Kenji Yamamoto: We've done some internal analysis. The dev team is excited about AKS but our finance folks are concerned about cost predictability. Rachel might join next time to discuss the commercial side.\n\n[00:06:30] Marcus Williams: That makes sense. Would it help if I brought some TCO data for containers vs VMs?\n\n[00:07:45] Kenji Yamamoto: Definitely. And if you could show what reserved instances look like for AKS nodes, that would help the finance conversation.\n\n[00:09:00] Marcus Williams: Will do. I'll prep that for next quarter's sync.",
+      "metadata": {
+        "freshness": "2024-02-15T00:00:00-05:00",
+        "source": "teams-transcript",
+        "speaker_attribution": "named",
+        "length_class": "short"
+      }
+    }
+  ],
+  "perturbations": ["persona-role-csa", "format-structured-trigger", "data-fresh", "email-multiple-recipients-role-ambiguity"],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": ["meeting-prep", "contact-stakeholder-map", "email-chat-context"]
+  },
+  "expected_output_shape": {
+    "template": "calendar-pre-pack",
+    "required_artifacts": [
+      "attendee_context",
+      "account_snapshot",
+      "talking_points",
+      "likely_objections",
+      "open_items",
+      "time_since_last_contact",
+      "meeting_classification"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Correctly identifies K. Yamamoto as Kenji Yamamoto (VP Engineering) from MSX contacts; notes finance-team@adatum.com is a distribution list (not a named individual) and states role is unknown rather than inventing one; flags this may relate to Rachel Torres (CFO) based on prior transcript mention",
+      "Score 3: Identifies Kenji correctly but assigns a specific role to finance-team@adatum.com without evidence (e.g., assumes it's Rachel Torres without flagging uncertainty)",
+      "Score 1: Invents full attendee profiles for both K. Yamamoto and finance-team@adatum.com without checking MSX data (FM-WF32-D violation)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Talking points reference prior transcript (AKS interest, TCO data commitment, reserved instance pricing request); open items correctly note Marcus committed to TCO/RI data",
+      "Score 3: Some talking points from transcript but misses the reserved instance request or attributes it to wrong person",
+      "Score 1: Generic talking points unconnected to prior meeting history"
+    ],
+    "decision_anchors": [
+      "Score 5: Meeting classification is 'recurring customer sync - commercial expansion'; pre-pack notes finance attendee signals budget discussion may happen; suggests Marcus review TCO data commitment from Feb transcript",
+      "Score 3: Correct classification but doesn't connect the finance attendee to the commercial discussion thread",
+      "Score 1: Misclassifies meeting type or treats as first-time meeting despite series indicator"
+    ]
+  },
+  "guardrail_checks": [
+    "Must NOT invent attendee roles when context is absent (FM-WF32-D is the target trap)",
+    "Must clearly distinguish known attendees from unknown/ambiguous ones",
+    "Must not expose internal strategy in pre-pack",
+    "finance-team@adatum.com must be flagged as role-unknown distribution list"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "standard"
+  }
+}

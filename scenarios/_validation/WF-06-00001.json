@@ -1,0 +1,103 @@
+{
+  "scenario_id": "WF-06-00001",
+  "workflow_id": "WF-06",
+  "workflow_name": "ACR Decline Investigation",
+  "seed": 10007,
+  "tier": 3,
+  "intent": "assumption-stress",
+  "targeted_failure_mode": "FM-WF06-K",
+  "persona": "CSA",
+  "fixture_id": "FX-007",
+  "user_message": "Why is ACR dropping on Datum Corp? It's been sliding for 3 months and I'm pretty sure it's because they cancelled their EA and moved to pay-as-you-go. Can you confirm and give me the recovery plan?",
+  "input_artifacts": [
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Datum Corporation",
+        "account_id": "ACC-02311",
+        "acr_trend_monthly": [142000, 138000, 131000, 118000, 105000, 98000],
+        "acr_trend_labels": ["2023-10", "2023-11", "2023-12", "2024-01", "2024-02", "2024-03"],
+        "workload_decomposition": {
+          "compute_vms": {"trend": [85000, 82000, 78000, 70000, 62000, 58000], "change": "-32%"},
+          "storage": {"trend": [32000, 32000, 31000, 30000, 29000, 28000], "change": "-12%"},
+          "networking": {"trend": [15000, 14000, 13000, 12000, 10000, 9000], "change": "-40%"},
+          "paas_services": {"trend": [10000, 10000, 9000, 6000, 4000, 3000], "change": "-70%"}
+        },
+        "contract_state": {
+          "type": "Enterprise Agreement",
+          "status": "Cancelled",
+          "cancellation_date": "2023-12-15",
+          "current_billing": "Pay-as-you-go (PAYG)",
+          "macc_commitment": null
+        },
+        "customer_health": "red",
+        "deployment_status": "Active but declining",
+        "recent_activity": "Last login: 2024-03-08; Support ticket opened 2024-02-20 re: cost optimization"
+      },
+      "metadata": {
+        "freshness": "2024-03-11T08:00:00-05:00",
+        "source": "msx"
+      }
+    },
+    {
+      "type": "spa_signal",
+      "content": {
+        "signals": [
+          {"type": "contract_change", "detail": "EA cancelled Dec 2023, moved to PAYG", "date": "2023-12-15"},
+          {"type": "support_ticket", "detail": "Customer opened cost optimization request", "date": "2024-02-20"},
+          {"type": "vm_decommission", "detail": "12 VMs deleted in January", "date": "2024-01-18"}
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-10T00:00:00-05:00",
+        "source": "customer-health"
+      }
+    }
+  ],
+  "perturbations": ["persona-role-csa", "data-fresh", "routing-clear", "signal-strength-noisy"],
+  "expected_routing": {
+    "entry_skill": "acr-signal-to-opportunity-coach",
+    "modules": ["acr-data-access", "acr-health-forecast", "signal-to-opportunity"],
+    "handoffs": [
+      {
+        "target_skill": "funding-partner-activation-coach",
+        "condition": "contract/billing is the driver"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "acr-decline-investigation",
+    "required_artifacts": [
+      "ranked_hypotheses",
+      "evidence_per_hypothesis",
+      "recovery_actions",
+      "confidence_labels",
+      "timeline"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Given the CSA has correctly identified the root cause (EA cancellation -> PAYG -> cost sensitivity -> VM decommissions), the orchestrator confirms with evidence rather than forcing ranked-hypothesis ceremony; presents single clear root cause with supporting evidence chain, then moves directly to recovery actions",
+      "Score 3: Produces ranked hypotheses as required by contract but the top hypothesis is correctly identified as EA cancellation; doesn't acknowledge that the CSA already knows the answer",
+      "Score 1: Produces 3-5 ranked hypotheses giving equal weight to alternative explanations when the data clearly shows a single root cause (FM-WF06-K violation would be scored lower in assumption-stress mode)"
+    ],
+    "evidence_anchors": [
+      "Score 5: Evidence chain: EA cancelled Dec 15 -> PAYG transition -> cost sensitivity -> support ticket (cost optimization) -> 12 VMs deleted Jan -> ongoing decline; workload decomposition shows compute/networking hit hardest (VM-heavy workloads)",
+      "Score 3: Identifies EA cancellation and VM deletion but doesn't connect the causal chain fully",
+      "Score 1: Lists data points without causal linkage or invents alternative explanations"
+    ],
+    "decision_anchors": [
+      "Score 5: Recovery actions focus on re-establishing cost predictability (MACC discussion, Reserved Instance optimization, right-sizing guidance) and handoffs to funding-partner-activation for contract re-engagement; timeline is realistic",
+      "Score 3: Recovery actions are correct but generic ('discuss cost optimization with customer')",
+      "Score 1: Proposes recovery actions unrelated to the root cause (e.g., 'increase feature adoption' when the issue is billing)"
+    ]
+  },
+  "guardrail_checks": [
+    "This is an assumption-stress scenario testing FM-WF06-K: requiring ranked hypotheses when single root cause is clear",
+    "Guardrail axis scored neutrally per assumption-stress scoring mode",
+    "Must still present evidence accurately even when questioning the hypothesis-ranking requirement"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "guardrail-neutral"
+  }
+}

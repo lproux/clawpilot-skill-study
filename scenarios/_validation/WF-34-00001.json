@@ -1,0 +1,103 @@
+{
+  "scenario_id": "WF-34-00001",
+  "workflow_id": "WF-34",
+  "workflow_name": "Customer Escalation Email -> Risk Brief + Manager Loop",
+  "seed": 10010,
+  "tier": 4,
+  "intent": "design-redesign",
+  "targeted_failure_mode": "FM-WF34-N",
+  "persona": "DSSP",
+  "fixture_id": "FX-010",
+  "user_message": "Just got this escalation from Wide World Importers. Their Azure SQL is down and they're saying it's been 6 hours. I need to loop in my manager AND get the support team on this -- can you help me triage and draft the communications?",
+  "input_artifacts": [
+    {
+      "type": "email_thread",
+      "content": "From: Patricia Doyle <patricia.doyle@wideworldimporters.com>\nTo: Raj Mehta <raj.mehta@microsoft.com>\nDate: 2024-03-11 14:23 EST\nSubject: URGENT - Production Database Down 6+ Hours\n\nRaj,\n\nI'm escalating this directly to you because support hasn't responded in 6 hours. Our production Azure SQL database has been unreachable since 8:15 AM. This is our order management system -- we're losing approximately $12,000/hour in orders.\n\nOur DBA (Mike Chen) has tried everything on our end. Support ticket #SR-2024-88431 was opened at 8:30 AM and we've had zero updates.\n\nI need someone at Microsoft to treat this as critical immediately. If this isn't resolved by 5 PM today, my CEO will be calling your VP.\n\nPatricia Doyle\nCTO, Wide World Importers\n\n---\nFrom: Raj Mehta <raj.mehta@microsoft.com>\nTo: Patricia Doyle <patricia.doyle@wideworldimporters.com>\nDate: 2024-03-11 14:35 EST\nSubject: Re: URGENT - Production Database Down 6+ Hours\n\nPatricia,\n\nI just saw this and I'm treating it as top priority. Let me immediately:\n1. Escalate SR-2024-88431 internally\n2. Get you a status update within 30 minutes\n3. Loop in my manager for executive visibility\n\nStand by.\n\nRaj",
+      "metadata": {
+        "freshness": "2024-03-11T14:35:00-05:00",
+        "source": "outlook",
+        "length_class": "short"
+      }
+    },
+    {
+      "type": "msx_record",
+      "content": {
+        "account_name": "Wide World Importers",
+        "account_id": "ACC-04102",
+        "health_flag": "yellow",
+        "acr_current": 28000,
+        "contract_renewal": "2024-09-15",
+        "opportunity": {
+          "name": "WWI Azure SQL Premium Tier Upgrade",
+          "stage": "Qualify",
+          "amount": 45000
+        },
+        "prior_escalations": [
+          {"date": "2023-11-02", "issue": "Billing discrepancy", "resolution": "Credited $2,400", "days_to_resolve": 5},
+          {"date": "2023-06-15", "issue": "Performance degradation", "resolution": "Moved to premium tier (temp)", "days_to_resolve": 2}
+        ],
+        "support_tickets_open": [
+          {"id": "SR-2024-88431", "severity": "A", "opened": "2024-03-11T08:30:00-05:00", "status": "Awaiting response", "assigned_to": null}
+        ],
+        "stakeholder_map": [
+          {"name": "Patricia Doyle", "title": "CTO", "influence": "high", "sentiment": "negative-trending"},
+          {"name": "Mike Chen", "title": "DBA", "influence": "medium", "sentiment": "neutral"},
+          {"name": "Robert Kim", "title": "CEO", "influence": "decision-maker", "sentiment": "unknown"}
+        ]
+      },
+      "metadata": {
+        "freshness": "2024-03-11T14:00:00-05:00",
+        "source": "msx"
+      }
+    }
+  ],
+  "perturbations": ["persona-role-dssp", "data-fresh", "urgency-mismatch", "routing-ambiguous-2skills"],
+  "expected_routing": {
+    "entry_skill": "customer-meeting-prep-outreach-coach",
+    "modules": ["email-chat-context", "follow-up-and-decisions", "contact-stakeholder-map"],
+    "handoffs": [
+      {
+        "target_skill": "forecast-business-review-coach",
+        "condition": "escalation warrants forecast/risk update"
+      }
+    ]
+  },
+  "expected_output_shape": {
+    "template": "customer-escalation-risk-brief",
+    "required_artifacts": [
+      "severity_assessment",
+      "manager_risk_brief",
+      "customer_facing_draft",
+      "stakeholder_map_delta",
+      "forecast_risk_impact",
+      "next_step_sequence"
+    ]
+  },
+  "success_rubric": {
+    "usability_anchors": [
+      "Score 5: Produces severity assessment, manager brief, and customer draft -- but also flags that the support/delivery team engagement is OUTSIDE the skill's native routing (FM-WF34-N); explicitly notes the gap: 'escalation routing doesn't natively engage support/delivery teams' and proposes a workaround (manual escalation path, SR ticket escalation steps)",
+      "Score 3: Produces all artifacts correctly but doesn't acknowledge the routing gap; treats support engagement as if it's handled elsewhere without noting it",
+      "Score 1: Ignores the support team dimension entirely, producing only the manager brief and customer draft as if the technical resolution is someone else's problem"
+    ],
+    "evidence_anchors": [
+      "Score 5: Severity assessment uses pattern data (3rd escalation in 9 months, CTO escalating, CEO threat, renewal in 6 months, $12K/hr revenue impact); correctly notes SR-2024-88431 has no assignee after 6 hours",
+      "Score 3: Severity assessment correct but misses the escalation pattern (prior incidents) or the renewal timeline risk",
+      "Score 1: Severity assessment based only on the email tone without data correlation"
+    ],
+    "decision_anchors": [
+      "Score 5: For the design-redesign dimension -- produces a verdict on whether the current skill routing adequately serves this scenario; notes that routing to customer-meeting-prep-outreach-coach for escalation triage forces synthesis across modules when a native 'escalation playbook' would be more direct; next-step sequence includes stop conditions",
+      "Score 3: Correct operational output but no structural verdict on routing adequacy",
+      "Score 1: No acknowledgment of the routing gap; no stop conditions in sequence"
+    ]
+  },
+  "guardrail_checks": [
+    "Customer draft must NOT over-apologize or commit liability",
+    "Must NOT recommend commitments outside CSA/DSSP authority",
+    "Manager brief must NOT reuse customer-facing language",
+    "Must NOT expose internal blame in customer draft"
+  ],
+  "judge_instructions": {
+    "scoring_mode": "verdict-on-structural",
+    "verdict_required_axes": ["routing", "evidence"]
+  }
+}
