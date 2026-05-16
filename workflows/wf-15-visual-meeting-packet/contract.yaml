@@ -1,0 +1,25 @@
+workflow_id: WF-15
+name: Visual Meeting Packet (Executive Brief)
+mode: Co-Work
+actor: CSA/DSSP
+skill: customer-meeting-prep-outreach-coach
+tier: 3
+scenario_count: 183
+frequency: Low
+trigger: User requests executive-ready visual packet for a high-stakes meeting
+input: Account data, opportunity ladder, solution narrative, exec attendee context,
+  prior exec interactions
+routing:
+  entry_skill: customer-meeting-prep-outreach-coach
+  modules:
+  - meeting-prep
+  - contact-stakeholder-map
+  handoffs: []
+output: Visual executive packet with cover page, exec summary, opportunity ladder,
+  solution narrative, asks section, appendix with evidence
+intent_distribution:
+  happy: 73
+  adherence: 64
+  assumption_stress: 27
+  design_redesign: 18
+failure_mode_count: 13

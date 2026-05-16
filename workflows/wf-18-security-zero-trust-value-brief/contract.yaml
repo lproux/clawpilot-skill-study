@@ -1,0 +1,25 @@
+workflow_id: WF-18
+name: Security / Zero Trust Value Brief
+mode: Prompt
+actor: CSA/DSSP
+skill: solution-value-design-coach
+tier: 1
+scenario_count: 217
+frequency: Medium
+trigger: User requests security value brief or Zero Trust positioning for a customer
+input: Customer industry, compliance requirements, known security tooling, organizational
+  size, security incidents if any
+routing:
+  entry_skill: solution-value-design-coach
+  modules:
+  - security-posture-value
+  - solution-research
+  handoffs: []
+output: Security value brief with Zero Trust framework mapping, customer-specific
+  gaps, proof points, integration notes for existing tools
+intent_distribution:
+  happy: 87
+  adherence: 76
+  assumption_stress: 33
+  design_redesign: 22
+failure_mode_count: 5

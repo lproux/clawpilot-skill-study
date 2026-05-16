@@ -1,0 +1,30 @@
+workflow_id: WF-45
+name: QBR Transcript -> Health + Whitespace + Renewal Risk
+mode: Co-Work
+actor: CSA/DSSP/Manager
+skill: customer-meeting-prep-outreach-coach
+tier: 4
+scenario_count: 217
+frequency: Medium
+trigger: QBR meeting transcript available for multi-dimensional extraction
+input: QBR transcript, account health baseline, whitespace context, renewal state,
+  prior QBR commitments, stakeholder participation
+routing:
+  entry_skill: customer-meeting-prep-outreach-coach
+  modules:
+  - follow-up-and-decisions
+  handoffs:
+  - target: portfolio-account-planning-coach
+    condition: health assessment needed
+  - target: acr-signal-to-opportunity-coach
+    condition: whitespace signals warrant investigation
+  - target: forecast-business-review-coach
+    condition: renewal risk affects forecast
+output: Health delta assessment, whitespace hypotheses, renewal risk with confidence,
+  action distribution with owners, comparison to last QBR commitments
+intent_distribution:
+  happy: 87
+  adherence: 76
+  assumption_stress: 33
+  design_redesign: 22
+failure_mode_count: 16

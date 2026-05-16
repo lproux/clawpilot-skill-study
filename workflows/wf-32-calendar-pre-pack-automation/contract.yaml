@@ -1,0 +1,29 @@
+workflow_id: WF-32
+name: Calendar Pre-Pack Automation
+mode: Automation
+actor: CSA/DSSP
+skill: customer-meeting-prep-outreach-coach
+tier: 4
+scenario_count: 317
+frequency: Very High
+trigger: Calendar event with non-Microsoft external attendee detected within next
+  24 hours
+input: Calendar event, attendee domains, prior meeting transcripts for series, email
+  threads with attendees, MSX state, ACR signals, stakeholder map
+routing:
+  entry_skill: customer-meeting-prep-outreach-coach
+  modules:
+  - meeting-prep
+  - contact-stakeholder-map
+  - email-chat-context
+  handoffs:
+  - target: portfolio-account-planning-coach
+    condition: meeting is for account CSA should have declined
+output: Pre-pack brief with attendee context, account snapshot, talking points, likely
+  objections, open items, time-since-last-contact, meeting classification
+intent_distribution:
+  happy: 127
+  adherence: 111
+  assumption_stress: 48
+  design_redesign: 32
+failure_mode_count: 20

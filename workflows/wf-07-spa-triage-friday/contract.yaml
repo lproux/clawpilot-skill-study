@@ -1,0 +1,27 @@
+workflow_id: WF-07
+name: SPA Triage Friday
+mode: Automation
+actor: CSA
+skill: acr-signal-to-opportunity-coach
+tier: 2
+scenario_count: 217
+frequency: Medium
+trigger: Friday scheduled automation for SPA batch triage
+input: Open SPAs for portfolio, account context per SPA, existing opportunities, disposition
+  history
+routing:
+  entry_skill: acr-signal-to-opportunity-coach
+  modules:
+  - spa-recommendation-triage
+  - signal-to-opportunity
+  handoffs:
+  - target: pipeline-msx-hygiene-coach
+    condition: accepted SPA creates opportunity needing MSX write
+output: Per-SPA disposition (accept/decline/escalate) with rationale, proposed opportunities
+  for accepted SPAs
+intent_distribution:
+  happy: 87
+  adherence: 76
+  assumption_stress: 33
+  design_redesign: 22
+failure_mode_count: 9

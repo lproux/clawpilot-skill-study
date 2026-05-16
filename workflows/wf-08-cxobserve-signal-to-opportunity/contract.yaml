@@ -1,0 +1,26 @@
+workflow_id: WF-08
+name: CxObserve Signal-to-Opportunity Conversion
+mode: Co-Work
+actor: CSA
+skill: acr-signal-to-opportunity-coach
+tier: 3
+scenario_count: 250
+frequency: High
+trigger: CxObserve signal received or user asks about signal conversion
+input: CxObserve signal metadata (recency, source, type), account context, existing
+  opportunities, value-lever framework
+routing:
+  entry_skill: acr-signal-to-opportunity-coach
+  modules:
+  - signal-to-opportunity
+  handoffs:
+  - target: pipeline-msx-hygiene-coach
+    condition: opportunity creation approved
+output: Signal assessment with confidence, opportunity hypothesis with value-lever
+  framing, deduplication check, suggested next action
+intent_distribution:
+  happy: 100
+  adherence: 88
+  assumption_stress: 38
+  design_redesign: 25
+failure_mode_count: 13

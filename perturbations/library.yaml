@@ -1,0 +1,141 @@
+perturbation_library:
+  version: "1.0.0"
+  description: >
+    Each scenario applies 0-4 perturbations from this library.
+    Perturbations create variance and reflect real-world input diversity.
+
+  categories:
+
+    persona:
+      - id: persona-role-csa
+        description: Scenario uses CSA persona voice and authority level
+      - id: persona-role-dssp
+        description: Scenario uses DSSP persona voice and authority level
+      - id: persona-role-manager
+        description: Scenario uses Manager persona voice and authority level
+      - id: persona-tenure-junior
+        description: Persona has under 1 year tenure; less familiar with tools and processes
+      - id: persona-tenure-mid
+        description: Persona has 1-4 years tenure; competent but not expert
+      - id: persona-tenure-senior
+        description: Persona has 5+ years tenure; deep institutional knowledge
+      - id: persona-segment-smb-corporate
+        description: Account is upper SMB (larger deals, more stakeholders)
+      - id: persona-segment-smb-mid
+        description: Account is middle SMB (typical deal size and complexity)
+      - id: persona-segment-smb-small
+        description: Account is lower SMB (smaller deals, fewer contacts)
+      - id: persona-geo-na
+        description: North America geography context
+      - id: persona-geo-emea
+        description: EMEA geography context (timezone, compliance, cultural norms)
+      - id: persona-geo-apac
+        description: APAC geography context (timezone, compliance, cultural norms)
+      - id: persona-geo-latam
+        description: LATAM geography context (timezone, compliance, cultural norms)
+
+    data_state:
+      - id: data-fresh
+        description: All data current within 24 hours
+      - id: data-stale
+        description: Timestamps 30-90 days old; data may not reflect current state
+      - id: data-partially-missing
+        description: Some required fields absent in MSX records
+      - id: data-inconsistent
+        description: Related records disagree (e.g., BPF stage vs close date)
+      - id: data-contradictory
+        description: Multiple sources give conflicting answers about the same fact
+      - id: data-empty
+        description: Lookup returns nothing; no prior data exists for this entity
+
+    input_shape_email:
+      - id: email-short
+        description: 1-3 messages in thread
+      - id: email-medium
+        description: 4-8 messages in thread
+      - id: email-long
+        description: 9-15 messages in thread
+      - id: email-fragmented-threading
+        description: Replies out of chronological order; threading broken
+      - id: email-multiple-recipients-role-ambiguity
+        description: Unclear who is the decision-maker among many recipients
+      - id: email-mixed-language
+        description: English plus snippets in another language
+      - id: email-forwarded-chain
+        description: Multiple forwards have stripped context from original thread
+      - id: email-cc-explosion
+        description: 15+ recipients on CC creating noise
+
+    input_shape_transcript:
+      - id: transcript-named-speakers
+        description: Clear speaker attribution with real names
+      - id: transcript-numbered-speakers-only
+        description: Only "Speaker 1", "Speaker 2", etc. with no name mapping
+      - id: transcript-mixed-attribution
+        description: Some speakers named, others only numbered
+      - id: transcript-partial
+        description: Segment missing in middle of transcript
+      - id: transcript-verbose-side-conversations
+        description: Significant noise from off-topic side discussions
+      - id: transcript-agreement-noise-dense
+        description: Heavy agreement tokens ("yeah", "totally", "right") throughout
+      - id: transcript-multi-stakeholder-confusion
+        description: 5+ speakers with overlapping dialogue
+      - id: transcript-length-30min
+        description: Approximately 30-minute meeting transcript
+      - id: transcript-length-60min
+        description: Approximately 60-minute meeting transcript
+      - id: transcript-length-90min
+        description: Approximately 90-minute meeting transcript
+      - id: transcript-teams-format
+        description: Microsoft Teams transcript format with timestamps
+      - id: transcript-zoom-format
+        description: Zoom transcript format
+      - id: transcript-human-typed-notes
+        description: CSA's own fragmentary notes rather than automated transcript
+
+    ambiguity:
+      - id: routing-clear
+        description: One skill obviously owns the request; no ambiguity
+      - id: routing-ambiguous-2skills
+        description: Two skills could legitimately own this request
+      - id: routing-ambiguous-3skills
+        description: Three skills could legitimately own this request
+      - id: routing-trap
+        description: One skill looks right at first glance but is not the correct owner
+      - id: cross-workflow-trigger
+        description: Input contains signals for 2+ workflows simultaneously
+      - id: signal-strength-faint
+        description: Signal is real but subtle; easy to miss
+      - id: signal-strength-noisy
+        description: Signal is clear but surrounded by distractors
+
+    failure_injection:
+      - id: missing-target
+        description: Forecast target absent from data source
+      - id: missing-contract-data
+        description: Contract state unavailable from billing systems
+      - id: fabricated-contact-in-input
+        description: User message references a contact who does not exist in CRM
+      - id: stale-stakeholder-map
+        description: Contact records reflect 6+ month old organizational structure
+      - id: superseded-prior-commitment
+        description: Input mentions a commitment that was later changed or cancelled
+      - id: customer-language-register-mismatch
+        description: Formal customer paired with casual MS-side communications
+      - id: urgency-mismatch
+        description: Input signals urgency but data shows no time pressure (or vice versa)
+      - id: authority-mismatch
+        description: Statement made by non-decision-maker treated as if authoritative
+      - id: cultural-register-trap
+        description: Deferential agreement that does not mean commitment
+
+    format:
+      - id: format-typed
+        description: User typed the message directly
+      - id: format-voice-transcribed
+        description: User dictated; transcription errors present
+      - id: format-structured-trigger
+        description: Calendar or schedule event fired the workflow
+      - id: format-programmatic-trigger
+        description: System-initiated with no user message; automation context only

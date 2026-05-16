@@ -1,0 +1,25 @@
+workflow_id: WF-26
+name: ROB / MBR Narrative
+mode: Co-Work
+actor: Manager
+skill: forecast-business-review-coach
+tier: 3
+scenario_count: 183
+frequency: Low
+trigger: Manager requests ROB or MBR narrative preparation
+input: Team forecast aggregate, wins/losses this period, risk register, IC coaching
+  notes, prior ROB/MBR, target vs actual
+routing:
+  entry_skill: forecast-business-review-coach
+  modules:
+  - business-review-narrative
+  - team-coaching-risk-review
+  handoffs: []
+output: Narrative arc (opening story, wins, risks with mitigation, asks, next-period
+  focus) appropriate to review format and length
+intent_distribution:
+  happy: 73
+  adherence: 64
+  assumption_stress: 27
+  design_redesign: 18
+failure_mode_count: 13

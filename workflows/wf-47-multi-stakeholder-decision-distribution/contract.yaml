@@ -1,0 +1,28 @@
+workflow_id: WF-47
+name: Multi-Stakeholder Meeting Transcript -> Decision Distribution
+mode: Co-Work
+actor: CSA/DSSP
+skill: customer-meeting-prep-outreach-coach
+tier: 4
+scenario_count: 250
+frequency: High
+trigger: Multi-stakeholder meeting transcript available requiring decision and action
+  distribution
+input: Multi-stakeholder transcript (5+ speakers), attendee roles, prior commitments,
+  MSX state, speaker attribution quality
+routing:
+  entry_skill: customer-meeting-prep-outreach-coach
+  modules:
+  - follow-up-and-decisions
+  - contact-stakeholder-map
+  handoffs:
+  - target: pipeline-msx-hygiene-coach
+    condition: MSX updates warranted from decisions
+output: Decision log with speaker attribution, action distribution by role, stakeholder
+  map delta, MSX update proposals, due dates extracted, consensus vs dissent mapping
+intent_distribution:
+  happy: 100
+  adherence: 88
+  assumption_stress: 38
+  design_redesign: 25
+failure_mode_count: 17

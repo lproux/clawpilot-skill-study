@@ -1,0 +1,24 @@
+workflow_id: WF-05
+name: Manager Weekly Portfolio Rollup
+mode: Automation
+actor: Manager
+skill: portfolio-account-planning-coach
+tier: 2
+scenario_count: 217
+frequency: Medium
+trigger: Weekly scheduled automation or manager request for team rollup
+input: 8-12 IC portfolios aggregated, per-IC pipeline state, team-level forecast,
+  risk indicators
+routing:
+  entry_skill: portfolio-account-planning-coach
+  modules:
+  - manager-portfolio-review
+  handoffs: []
+output: One-page team rollup with wins, risks (coaching-framed), asks for skip-level,
+  week-over-week delta
+intent_distribution:
+  happy: 87
+  adherence: 76
+  assumption_stress: 33
+  design_redesign: 22
+failure_mode_count: 8

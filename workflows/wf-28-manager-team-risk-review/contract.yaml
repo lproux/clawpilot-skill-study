@@ -1,0 +1,24 @@
+workflow_id: WF-28
+name: Manager Team Risk Review
+mode: Prompt
+actor: Manager
+skill: forecast-business-review-coach
+tier: 2
+scenario_count: 183
+frequency: Low
+trigger: Manager requests team-level risk assessment
+input: Team pipeline aggregate, per-IC risk indicators, forecast gaps, customer health
+  flags across team, prior risk reviews
+routing:
+  entry_skill: forecast-business-review-coach
+  modules:
+  - team-coaching-risk-review
+  handoffs: []
+output: Ranked risk register with impact-likelihood reasoning, coaching-framed IC
+  mentions, mitigations, skip-level asks
+intent_distribution:
+  happy: 73
+  adherence: 64
+  assumption_stress: 27
+  design_redesign: 18
+failure_mode_count: 9

@@ -1,0 +1,133 @@
+{# Scenario Generation Prompt Template (Jinja2)
+   Inputs: workflow_contract, failure_mode_catalog, targeted_fm, persona, fixture, perturbations, seed
+   Output: A single scenario JSON matching schemas/scenario.schema.json
+#}
+You are generating a single evaluation scenario for the ClawPilot SMB Skills Scientific Workflow Study.
+
+SEED: {{ seed }}
+Use this seed to make deterministic choices throughout generation.
+
+== WORKFLOW CONTRACT ==
+Workflow ID: {{ workflow_contract.workflow_id }}
+Name: {{ workflow_contract.name }}
+Mode: {{ workflow_contract.mode }}
+Actor: {{ workflow_contract.actor }}
+Skill: {{ workflow_contract.skill }}
+Tier: {{ workflow_contract.tier }}
+Trigger: {{ workflow_contract.trigger }}
+Input: {{ workflow_contract.input }}
+Output: {{ workflow_contract.output }}
+
+Routing:
+  Entry skill: {{ workflow_contract.routing.entry_skill }}
+  Modules: {{ workflow_contract.routing.modules | join(', ') }}
+{% if workflow_contract.routing.handoffs %}
+  Handoffs:
+{% for h in workflow_contract.routing.handoffs %}
+    - {{ h.target }} (condition: {{ h.condition }})
+{% endfor %}
+{% endif %}
+
+== FAILURE MODE CATALOG ==
+{{ failure_mode_catalog }}
+
+== TARGETED FAILURE MODE ==
+{% if targeted_fm %}
+Code: {{ targeted_fm.code }}
+Type: {{ targeted_fm.type }}
+Description: {{ targeted_fm.description }}
+
+Your scenario MUST be specifically designed to elicit this failure mode from the orchestrator.
+The user_message, input_artifacts, and fixture state should create conditions where this
+failure mode is the natural mistake an imperfect orchestrator would make.
+{% else %}
+Intent: happy-path (no targeted failure mode)
+Your scenario should be a clear, unambiguous case where a competent orchestrator succeeds.
+{% endif %}
+
+== INTENT ==
+{{ intent }}
+{% if intent == "adherence" %}
+Scoring mode: standard (all 6 axes scored normally)
+{% elif intent == "assumption-stress" %}
+Scoring mode: guardrail-neutral (guardrail axis scored neutrally)
+{% elif intent == "design-redesign" %}
+Scoring mode: verdict-on-structural (routing/evidence/guardrail produce verdicts)
+{% else %}
+Scoring mode: standard
+{% endif %}
+
+== PERSONA ==
+{{ persona | tojson(indent=2) }}
+
+Write the user_message in this persona's voice and vocabulary.
+Use their communication style, urgency patterns, and request patterns as reference.
+
+== FIXTURE ==
+Fixture ID: {{ fixture.fixture_id }}
+Fixture class: {{ fixture.fixture_class }}
+Account: {{ fixture.account.name }} ({{ fixture.account.segment }}, {{ fixture.account.geography }})
+
+{{ fixture | tojson(indent=2) }}
+
+== PERTURBATION VECTOR ==
+{% for p in perturbations %}
+- {{ p.id }}: {{ p.description }}
+{% endfor %}
+{% if not perturbations %}
+(No perturbations applied -- clean baseline)
+{% endif %}
+
+== GENERATION REQUIREMENTS ==
+
+1. user_message: Write a realistic message in the persona's voice that would trigger this workflow.
+   It must sound like something this persona would actually type or dictate.
+
+2. input_artifacts: Create realistic input artifacts (email threads, transcripts, calendar events,
+   MSX records) with REAL-SOUNDING content. No placeholder text like "{email content here}".
+   - Email threads should have realistic subject lines, sender names, body text
+   - Transcripts should have realistic dialogue with speaker attribution
+   - MSX records should match the fixture data
+   - Apply the perturbation vector to shape the input characteristics
+
+3. expected_routing: Based on the workflow contract, specify the correct routing.
+   For design-redesign intent, the "correct" routing may be debatable -- state what the
+   current contract specifies, knowing the judge will produce a verdict on whether it served the user.
+
+4. expected_output_shape: Specify the template and required artifacts the orchestrator should produce.
+   Include write_proposals ONLY if the workflow contract specifies writeback potential.
+
+5. success_rubric: Provide CONCRETE anchors (not generic "should be good"):
+   - usability_anchors: 3+ anchors describing what earns a 5, 3, and 1 on this specific scenario
+   - evidence_anchors: 3+ anchors for evidence integrity scoring
+   - decision_anchors: 3+ anchors for decision quality scoring
+
+6. guardrail_checks: List specific guardrails this scenario probes based on the workflow and FM.
+
+7. judge_instructions: Set scoring_mode based on intent.
+   For design-redesign, include verdict_required_axes.
+
+== OUTPUT FORMAT ==
+
+Return ONLY a valid JSON object matching the scenario schema. No markdown, no explanation.
+The scenario_id should be: {{ scenario_id }}
+
+{
+  "scenario_id": "{{ scenario_id }}",
+  "workflow_id": "{{ workflow_contract.workflow_id }}",
+  "workflow_name": "{{ workflow_contract.name }}",
+  "seed": {{ seed }},
+  "tier": {{ workflow_contract.tier }},
+  "intent": "{{ intent }}",
+  "targeted_failure_mode": {{ targeted_fm.code | tojson if targeted_fm else "null" }},
+  "persona": "{{ persona.persona_id }}",
+  "fixture_id": "{{ fixture.fixture_id }}",
+  "user_message": "...",
+  "input_artifacts": [...],
+  "perturbations": {{ perturbation_ids | tojson }},
+  "expected_routing": {...},
+  "expected_output_shape": {...},
+  "success_rubric": {...},
+  "guardrail_checks": [...],
+  "judge_instructions": {...}
+}

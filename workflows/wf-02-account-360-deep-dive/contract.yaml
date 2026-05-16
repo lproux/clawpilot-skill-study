@@ -1,0 +1,29 @@
+workflow_id: WF-02
+name: Account 360 Deep Dive
+mode: Co-Work
+actor: CSA
+skill: portfolio-account-planning-coach
+tier: 2
+scenario_count: 250
+frequency: High
+trigger: User asks 'give me a full 360 on [account]' or 'what's the story on [account]'
+input: Account record, all opportunities, milestones, contacts, ACR trend, health
+  flags, recent activity, contract state
+routing:
+  entry_skill: portfolio-account-planning-coach
+  modules:
+  - account-review
+  - whitespace-growth-hypotheses
+  handoffs:
+  - target: acr-signal-to-opportunity-coach
+    condition: ACR signals warrant investigation
+  - target: customer-meeting-prep-outreach-coach
+    condition: stakeholder engagement needed
+output: Comprehensive account narrative with health assessment, opportunity landscape,
+  whitespace hypotheses, stakeholder map status, recommended next actions
+intent_distribution:
+  happy: 100
+  adherence: 88
+  assumption_stress: 38
+  design_redesign: 25
+failure_mode_count: 10

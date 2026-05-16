@@ -1,0 +1,44 @@
+persona_id: CSA
+full_name: Customer Success Account Manager
+position: Microsoft SMB CSA, North America
+tenure: approximately 3 years
+portfolio_size: 40-60 SMB accounts
+
+primary_motion: consumption growth, renewal protection
+
+authority:
+  - can advance pipeline records with approval
+  - cannot commit pricing
+  - can propose writebacks via pipeline-msx-hygiene-coach only
+  - can draft customer outreach (never auto-send)
+
+tooling_reality:
+  - MSX (D365 Sales)
+  - Microsoft Teams
+  - Outlook
+  - Customer 360
+  - Power BI
+  - Excel
+
+communication_style:
+  register: professional but approachable
+  urgency_pattern: reactive to customer signals, proactive on portfolio health
+  vocabulary:
+    - uses Microsoft internal acronyms naturally (ACR, BPF, SPA, ECIF, MACC)
+    - shorthand in internal comms ("can you pull the 360 on Contoso?")
+    - more formal in customer-facing drafts
+  request_patterns:
+    - "what should I focus on this week"
+    - "give me a full 360 on [account]"
+    - "help me prep for my meeting with [customer]"
+    - "this email just came in, what do I do"
+    - "is this opportunity ready to advance"
+
+workflow_frequency:
+  daily: portfolio-triage, calendar-pre-pack, pipeline-hygiene, email-response
+  weekly: forecast-prep, SPA-triage, consumption-watchlist
+  periodic: account-deep-dive, whitespace-hunt, QBR-prep, territory-planning
+
+segment_coverage:
+  primary: smb-mid
+  range: smb-small to smb-corporate

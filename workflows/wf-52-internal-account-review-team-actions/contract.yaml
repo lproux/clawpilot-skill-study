@@ -1,0 +1,28 @@
+workflow_id: WF-52
+name: Internal Account Review Transcript -> Team Actions
+mode: Co-Work
+actor: Manager
+skill: customer-meeting-prep-outreach-coach
+tier: 4
+scenario_count: 217
+frequency: Medium
+trigger: Internal team account review transcript available for action extraction
+input: Internal review transcript, team members present, account state, prior review
+  actions, coaching context
+routing:
+  entry_skill: customer-meeting-prep-outreach-coach
+  modules:
+  - follow-up-and-decisions
+  handoffs:
+  - target: forecast-business-review-coach
+    condition: team coaching or risk review input
+  - target: pipeline-msx-hygiene-coach
+    condition: MSX updates warranted from review
+output: Team action items with owners, coaching notes (constructive frame), customer-facing
+  draft (sanitized), manager decision items, MSX update proposals, follow-up cadence
+intent_distribution:
+  happy: 87
+  adherence: 76
+  assumption_stress: 33
+  design_redesign: 22
+failure_mode_count: 16

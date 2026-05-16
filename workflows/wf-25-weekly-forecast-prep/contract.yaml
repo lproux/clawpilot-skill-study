@@ -1,0 +1,27 @@
+workflow_id: WF-25
+name: Weekly Forecast Prep
+mode: Automation
+actor: CSA/DSSP
+skill: forecast-business-review-coach
+tier: 2
+scenario_count: 250
+frequency: High
+trigger: Weekly scheduled automation or user requests forecast preparation
+input: Pipeline state, milestone evidence, forecast targets, prior week forecast,
+  category assignments
+routing:
+  entry_skill: forecast-business-review-coach
+  modules:
+  - committed-milestone-forecast
+  - gap-to-target-review
+  handoffs:
+  - target: pipeline-msx-hygiene-coach
+    condition: hygiene issues discovered during forecast prep
+output: Forecast summary with week-over-week delta, per-opportunity category assessment,
+  gap analysis, uncommitted-upside identification, ask section
+intent_distribution:
+  happy: 100
+  adherence: 88
+  assumption_stress: 38
+  design_redesign: 25
+failure_mode_count: 13

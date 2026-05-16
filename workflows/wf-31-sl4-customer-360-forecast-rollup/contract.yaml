@@ -1,0 +1,26 @@
+workflow_id: WF-31
+name: SL4 Customer 360 Forecast Roll-Up
+mode: Co-Work
+actor: CSA/DSSP/Manager
+skill: forecast-business-review-coach
+tier: 3
+scenario_count: 217
+frequency: Medium
+trigger: User requests SL4-level forecast rollup or Customer 360 data aggregation
+input: Customer 360 data, Kusto BI fallback, SL4 hierarchy, milestone records, consumption
+  data by SL4
+routing:
+  entry_skill: forecast-business-review-coach
+  modules:
+  - committed-milestone-forecast
+  handoffs:
+  - target: solution-value-design-coach
+    condition: Customer 360 unavailable, Kusto BI fallback needed
+output: SL4-level forecast rollup with source attribution, hierarchy alignment, period
+  boundary reconciliation
+intent_distribution:
+  happy: 87
+  adherence: 76
+  assumption_stress: 33
+  design_redesign: 22
+failure_mode_count: 13

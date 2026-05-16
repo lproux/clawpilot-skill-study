@@ -1,0 +1,30 @@
+workflow_id: WF-06
+name: ACR Decline Investigation
+mode: Co-Work
+actor: CSA
+skill: acr-signal-to-opportunity-coach
+tier: 3
+scenario_count: 250
+frequency: High
+trigger: ACR decline signal detected or user asks 'why is ACR dropping on [account]'
+input: ACR trend (workload-level decomposition), contract/billing state, customer
+  health, deployment status, recent activity
+routing:
+  entry_skill: acr-signal-to-opportunity-coach
+  modules:
+  - acr-data-access
+  - acr-health-forecast
+  - signal-to-opportunity
+  handoffs:
+  - target: funding-partner-activation-coach
+    condition: contract/billing is the driver
+  - target: pipeline-msx-hygiene-coach
+    condition: opportunity records need updating
+output: Ranked hypotheses for decline with evidence, recovery actions with owners,
+  timeline, confidence labels
+intent_distribution:
+  happy: 100
+  adherence: 88
+  assumption_stress: 38
+  design_redesign: 25
+failure_mode_count: 13

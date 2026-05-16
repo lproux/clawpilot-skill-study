@@ -1,0 +1,27 @@
+workflow_id: WF-17
+name: Migration Architecture Sketch
+mode: Co-Work
+actor: CSA
+skill: solution-value-design-coach
+tier: 3
+scenario_count: 217
+frequency: Medium
+trigger: User requests migration architecture for a customer workload
+input: Customer current environment, workload details, compliance constraints, budget
+  signals, existing tooling, prior architecture discussions
+routing:
+  entry_skill: solution-value-design-coach
+  modules:
+  - migration-architecture
+  - solution-research
+  handoffs:
+  - target: funding-partner-activation-coach
+    condition: ECIF or partner engagement needed for migration
+output: Architecture sketch with service recommendations (justified), migration sequencing,
+  dependency map, cost discussion, compliance notes
+intent_distribution:
+  happy: 87
+  adherence: 76
+  assumption_stress: 33
+  design_redesign: 22
+failure_mode_count: 13

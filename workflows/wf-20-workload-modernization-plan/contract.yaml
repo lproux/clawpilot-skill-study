@@ -1,0 +1,27 @@
+workflow_id: WF-20
+name: Workload Modernization Plan
+mode: Co-Work
+actor: CSA
+skill: solution-value-design-coach
+tier: 3
+scenario_count: 183
+frequency: Low
+trigger: User requests modernization plan for a customer workload
+input: Current workload state, customer constraints, budget signals, partner availability,
+  existing architecture, compliance requirements
+routing:
+  entry_skill: solution-value-design-coach
+  modules:
+  - migration-architecture
+  - solution-research
+  handoffs:
+  - target: funding-partner-activation-coach
+    condition: funding eligibility check needed
+output: Phased modernization plan (assess, migrate, optimize, innovate) with success
+  criteria per phase, funding options, partner roles, dependencies
+intent_distribution:
+  happy: 73
+  adherence: 64
+  assumption_stress: 27
+  design_redesign: 18
+failure_mode_count: 13

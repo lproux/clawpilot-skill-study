@@ -1,0 +1,24 @@
+workflow_id: WF-23
+name: Partner Shortlist
+mode: Prompt
+actor: CSA/DSSP
+skill: funding-partner-activation-coach
+tier: 1
+scenario_count: 217
+frequency: Medium
+trigger: User requests partner recommendations for a specific engagement
+input: Engagement requirements, customer geography/segment, existing partner relationships,
+  competency needs
+routing:
+  entry_skill: funding-partner-activation-coach
+  modules:
+  - partner-evaluation
+  handoffs: []
+output: Shortlist of 3-5 partners with fit rationale, capability evidence, warm-path
+  notes where available, geography/segment match
+intent_distribution:
+  happy: 87
+  adherence: 76
+  assumption_stress: 33
+  design_redesign: 22
+failure_mode_count: 5

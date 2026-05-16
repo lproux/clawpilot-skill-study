@@ -1,0 +1,26 @@
+workflow_id: WF-50
+name: Executive Meeting Transcript -> Manager Brief + Asks
+mode: Co-Work
+actor: Manager
+skill: customer-meeting-prep-outreach-coach
+tier: 4
+scenario_count: 183
+frequency: Low
+trigger: Executive meeting transcript available requiring manager-level brief extraction
+input: Executive transcript, attendee roles (exec level), prior exec interactions,
+  strategic context, portfolio implications
+routing:
+  entry_skill: customer-meeting-prep-outreach-coach
+  modules:
+  - follow-up-and-decisions
+  handoffs:
+  - target: forecast-business-review-coach
+    condition: business review narrative input from exec meeting
+output: Executive brief (strategic density), asks section (actionable for exec), risk
+  register, skip-level follow-up plan, exec sponsor identification
+intent_distribution:
+  happy: 73
+  adherence: 64
+  assumption_stress: 27
+  design_redesign: 18
+failure_mode_count: 15

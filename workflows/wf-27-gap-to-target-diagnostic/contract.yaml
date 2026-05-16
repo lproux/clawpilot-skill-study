@@ -1,0 +1,28 @@
+workflow_id: WF-27
+name: Gap-to-Target Diagnostic
+mode: Co-Work
+actor: CSA/DSSP/Manager
+skill: forecast-business-review-coach
+tier: 3
+scenario_count: 217
+frequency: Medium
+trigger: User requests gap-to-target analysis or gap surfaces during forecast prep
+input: Forecast targets, current pipeline, committed vs upside, historical conversion
+  rates, ACR trajectory, comparable periods
+routing:
+  entry_skill: forecast-business-review-coach
+  modules:
+  - gap-to-target-review
+  handoffs:
+  - target: acr-signal-to-opportunity-coach
+    condition: consumption is the gap driver
+  - target: pipeline-msx-hygiene-coach
+    condition: record fixes needed for accurate gap
+output: Gap decomposition (coverage, conversion, value, timing), recovery options
+  with probability estimates, comparable-period delta, ask section
+intent_distribution:
+  happy: 87
+  adherence: 76
+  assumption_stress: 33
+  design_redesign: 22
+failure_mode_count: 13

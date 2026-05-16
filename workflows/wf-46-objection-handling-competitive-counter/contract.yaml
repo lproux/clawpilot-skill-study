@@ -1,0 +1,26 @@
+workflow_id: WF-46
+name: Objection-Handling Transcript -> Competitive Counter
+mode: Co-Work
+actor: CSA/DSSP
+skill: customer-meeting-prep-outreach-coach
+tier: 4
+scenario_count: 183
+frequency: Low
+trigger: Meeting transcript contains customer objections requiring competitive counter-positioning
+input: Objection transcript segments, competitor context, customer relationship history,
+  pricing signals, prior objection handling
+routing:
+  entry_skill: customer-meeting-prep-outreach-coach
+  modules:
+  - follow-up-and-decisions
+  handoffs:
+  - target: solution-value-design-coach
+    condition: competitive positioning research needed
+output: Objection inventory with root-cause analysis, counter-positioning per objection,
+  response draft, next-meeting tactics, proof-point needs
+intent_distribution:
+  happy: 73
+  adherence: 64
+  assumption_stress: 27
+  design_redesign: 18
+failure_mode_count: 14

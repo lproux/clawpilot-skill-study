@@ -1,0 +1,28 @@
+workflow_id: WF-10
+name: Deployment Blocker Triage
+mode: Co-Work
+actor: CSA
+skill: acr-signal-to-opportunity-coach
+tier: 2
+scenario_count: 217
+frequency: Medium
+trigger: User identifies deployment blocker or signal surfaces stalled deployment
+input: Deployment status, blocker details, partner engagement state, organizational
+  context, prior blockers at account
+routing:
+  entry_skill: acr-signal-to-opportunity-coach
+  modules:
+  - signal-to-opportunity
+  handoffs:
+  - target: funding-partner-activation-coach
+    condition: partner engagement needed
+  - target: customer-meeting-prep-outreach-coach
+    condition: customer outreach needed to unblock
+output: Blocker classification (technical/commercial/organizational), prioritized
+  unblock actions with owners, partner engagement recommendation
+intent_distribution:
+  happy: 87
+  adherence: 76
+  assumption_stress: 33
+  design_redesign: 22
+failure_mode_count: 8

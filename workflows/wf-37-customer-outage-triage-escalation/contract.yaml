@@ -1,0 +1,26 @@
+workflow_id: WF-37
+name: Customer Outage/Complaint Email -> Triage + Escalation
+mode: Co-Work
+actor: CSA/DSSP
+skill: customer-meeting-prep-outreach-coach
+tier: 4
+scenario_count: 217
+frequency: Medium
+trigger: Customer reports outage or service complaint via email
+input: Outage/complaint email, service health data, ACR impact, support ticket history,
+  prior similar incidents, customer workload profile
+routing:
+  entry_skill: customer-meeting-prep-outreach-coach
+  modules:
+  - email-chat-context
+  handoffs:
+  - target: acr-signal-to-opportunity-coach
+    condition: outage impacts major workload ACR
+output: Severity triage, root-cause hypothesis (labeled as hypothesis), customer response
+  draft, ACR risk flag, escalation routing, prior-incident comparison
+intent_distribution:
+  happy: 87
+  adherence: 76
+  assumption_stress: 33
+  design_redesign: 22
+failure_mode_count: 13

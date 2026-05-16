@@ -1,0 +1,26 @@
+workflow_id: WF-44
+name: Technical Deep-Dive Transcript -> Architecture + Blockers
+mode: Co-Work
+actor: CSA/DSSP
+skill: customer-meeting-prep-outreach-coach
+tier: 4
+scenario_count: 217
+frequency: Medium
+trigger: Technical deep-dive meeting transcript available for architecture extraction
+input: Technical transcript, customer environment context, compliance requirements,
+  speaker attribution, prior architecture discussions
+routing:
+  entry_skill: customer-meeting-prep-outreach-coach
+  modules:
+  - follow-up-and-decisions
+  handoffs:
+  - target: solution-value-design-coach
+    condition: architecture sketch needed from technical signals
+output: Architecture summary, blocker inventory (tech/commercial/org), open questions,
+  sequencing recommendation, specialist routing, follow-up actions
+intent_distribution:
+  happy: 87
+  adherence: 76
+  assumption_stress: 33
+  design_redesign: 22
+failure_mode_count: 15

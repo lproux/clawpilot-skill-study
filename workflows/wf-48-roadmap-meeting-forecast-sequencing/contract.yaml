@@ -1,0 +1,28 @@
+workflow_id: WF-48
+name: Roadmap Meeting Transcript -> Forecast Sequencing
+mode: Co-Work
+actor: CSA/DSSP
+skill: customer-meeting-prep-outreach-coach
+tier: 4
+scenario_count: 217
+frequency: Medium
+trigger: Roadmap discussion transcript available for forecast and sequencing extraction
+input: Roadmap transcript, existing opportunities/milestones, customer priority signals,
+  dependency context, forecast state
+routing:
+  entry_skill: customer-meeting-prep-outreach-coach
+  modules:
+  - follow-up-and-decisions
+  handoffs:
+  - target: pipeline-msx-hygiene-coach
+    condition: milestone and date updates needed
+  - target: forecast-business-review-coach
+    condition: forecast sequencing affected
+output: Roadmap-to-forecast mapping, milestone date proposals, opportunity sequencing,
+  new opportunity proposals (if signaled), forecast impact with confidence
+intent_distribution:
+  happy: 87
+  adherence: 76
+  assumption_stress: 33
+  design_redesign: 22
+failure_mode_count: 16

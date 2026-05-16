@@ -1,0 +1,26 @@
+workflow_id: WF-03
+name: Whitespace Opportunity Hunt
+mode: Co-Work
+actor: CSA
+skill: portfolio-account-planning-coach
+tier: 2
+scenario_count: 217
+frequency: Medium
+trigger: User requests whitespace analysis for an account or portfolio segment
+input: Account workload profile, current opportunities, comparable-customer data,
+  workload TAM data
+routing:
+  entry_skill: portfolio-account-planning-coach
+  modules:
+  - whitespace-growth-hypotheses
+  handoffs:
+  - target: acr-signal-to-opportunity-coach
+    condition: hypothesis warrants signal investigation
+output: Ranked whitespace hypotheses with feasibility, urgency, comparable evidence,
+  and suggested validation steps
+intent_distribution:
+  happy: 87
+  adherence: 76
+  assumption_stress: 33
+  design_redesign: 22
+failure_mode_count: 8

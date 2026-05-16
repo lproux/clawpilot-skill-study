@@ -1,0 +1,25 @@
+workflow_id: WF-22
+name: MACC Consumption Plan
+mode: Co-Work
+actor: CSA
+skill: funding-partner-activation-coach
+tier: 2
+scenario_count: 167
+frequency: Rare
+trigger: User requests MACC consumption planning for a customer with active MACC commitment
+input: MACC commitment details, current drawdown state, ACR trajectory, workload mix,
+  contract timeline
+routing:
+  entry_skill: funding-partner-activation-coach
+  modules:
+  - macc-consumption-plan
+  - contract-billing-lookup
+  handoffs: []
+output: Consumption plan with monthly projection, shortfall risk analysis, commitment
+  band rationale, workload acceleration opportunities
+intent_distribution:
+  happy: 67
+  adherence: 58
+  assumption_stress: 25
+  design_redesign: 17
+failure_mode_count: 8

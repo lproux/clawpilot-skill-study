@@ -1,0 +1,28 @@
+workflow_id: WF-38
+name: Champion-Change Email Signal -> Re-engagement Plan
+mode: Co-Work
+actor: CSA/DSSP
+skill: customer-meeting-prep-outreach-coach
+tier: 4
+scenario_count: 217
+frequency: Medium
+trigger: Signal that a champion or key contact has changed roles or departed
+input: Change signal (email, LinkedIn, bounce), stakeholder map, opportunity state,
+  champion's prior commitments, authority structure
+routing:
+  entry_skill: customer-meeting-prep-outreach-coach
+  modules:
+  - contact-stakeholder-map
+  - email-chat-context
+  - dark-customer-outreach
+  handoffs:
+  - target: pipeline-msx-hygiene-coach
+    condition: contact and opportunity records need updating
+output: Stakeholder map delta, opportunity-at-risk assessment, re-engagement plan,
+  contact update proposals, warm-handoff draft (if champion willing)
+intent_distribution:
+  happy: 87
+  adherence: 76
+  assumption_stress: 33
+  design_redesign: 22
+failure_mode_count: 13

@@ -1,0 +1,32 @@
+workflow_id: WF-01
+name: Monday Morning Portfolio Triage
+mode: Automation
+actor: CSA
+skill: portfolio-account-planning-coach
+tier: 3
+scenario_count: 317
+frequency: Very High
+trigger: Scheduled run before user's first Monday meeting; or on-demand 'what should
+  I focus on this week'
+input: Calendar (current week), MSX portfolio state, ACR rolling 4-week trend, open
+  SPAs, customer-health flags, last user-tagged priorities
+routing:
+  entry_skill: portfolio-account-planning-coach
+  modules:
+  - daily-weekly-planning
+  - account-health-prioritization
+  handoffs:
+  - target: customer-meeting-prep-outreach-coach
+    condition: customer meetings exist this week
+  - target: pipeline-msx-hygiene-coach
+    condition: stale records detected
+  - target: acr-signal-to-opportunity-coach
+    condition: ACR signals match top accounts
+output: Top 5-10 accounts ranked by urgency x impact, reason per account, named next
+  action with owner, time-block plan for the week, populated handoff queue
+intent_distribution:
+  happy: 127
+  adherence: 111
+  assumption_stress: 48
+  design_redesign: 32
+failure_mode_count: 15

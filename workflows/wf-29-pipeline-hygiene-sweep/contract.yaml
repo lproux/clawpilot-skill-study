@@ -1,0 +1,26 @@
+workflow_id: WF-29
+name: Pipeline Hygiene Sweep
+mode: Automation (daily)
+actor: CSA/DSSP
+skill: pipeline-msx-hygiene-coach
+tier: 3
+scenario_count: 317
+frequency: Very High
+trigger: Daily scheduled automation or user requests pipeline hygiene check
+input: Full pipeline state, BPF stages, close dates, milestone records, last-updated
+  timestamps, hygiene-vs-status classifier rules
+routing:
+  entry_skill: pipeline-msx-hygiene-coach
+  modules:
+  - opportunity-milestone-hygiene
+  - pipeline-review-digest
+  - writeback-approval-guardrails
+  handoffs: []
+output: Delta digest of hygiene defects (not status issues), writeback proposals with
+  evidence_source per field, approval queue
+intent_distribution:
+  happy: 127
+  adherence: 111
+  assumption_stress: 48
+  design_redesign: 32
+failure_mode_count: 16

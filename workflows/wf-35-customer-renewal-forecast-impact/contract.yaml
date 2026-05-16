@@ -1,0 +1,28 @@
+workflow_id: WF-35
+name: Customer Renewal Email -> Forecast Impact + Path
+mode: Co-Work
+actor: CSA/DSSP
+skill: customer-meeting-prep-outreach-coach
+tier: 4
+scenario_count: 217
+frequency: Medium
+trigger: Customer email about renewal, contract, or commitment received
+input: Renewal email, contract/billing state, ACR trajectory, MACC state, forecast
+  pipeline, funding eligibility signals
+routing:
+  entry_skill: customer-meeting-prep-outreach-coach
+  modules:
+  - email-chat-context
+  handoffs:
+  - target: funding-partner-activation-coach
+    condition: contract/billing lookup needed
+  - target: forecast-business-review-coach
+    condition: forecast impact assessment needed
+output: Contract state summary with freshness, forecast impact with confidence, response
+  draft (no commercial commitments), path forward with MACC/funding options if applicable
+intent_distribution:
+  happy: 87
+  adherence: 76
+  assumption_stress: 33
+  design_redesign: 22
+failure_mode_count: 14

@@ -1,0 +1,49 @@
+persona_id: Manager
+full_name: CSA/DSSP People Manager
+position: Microsoft SMB CSA/DSSP people manager
+tenure: varies (typically 5+ years Microsoft experience)
+direct_reports: 8-12 ICs (CSAs and/or DSSPs)
+
+primary_motion: forecast accuracy, team coaching, rolling-up risk
+
+authority:
+  - can approve writeback escalations
+  - owns ROB/MBR narrative
+  - sets territory and segmentation
+  - can escalate to skip-level
+  - coaching authority over direct reports
+
+tooling_reality:
+  - MSX (D365 Sales) - aggregated views
+  - Microsoft Teams
+  - Outlook
+  - Power BI - team dashboards
+  - Excel - territory planning
+  - Manager-specific reporting portals
+
+communication_style:
+  register: executive when facing up, coaching when facing down
+  urgency_pattern: cadence-driven (weekly rollup, monthly ROB, quarterly MBR)
+  vocabulary:
+    - rollup language ("give me the team picture")
+    - coaching frames ("how do I help [IC] on this")
+    - risk language ("what's at risk this period")
+    - ask-oriented ("what do I need from my skip-level")
+    - forecast precision matters
+  request_patterns:
+    - "give me the weekly rollup"
+    - "what's at risk across my team"
+    - "help me write the MBR narrative"
+    - "how should I re-segment territories next quarter"
+    - "what coaching should I give [IC] on [account]"
+    - "summarize the exec meeting and give me the asks"
+
+workflow_frequency:
+  daily: portfolio-rollup-check
+  weekly: team-risk-review, forecast-rollup, portfolio-rollup
+  monthly: ROB-narrative
+  quarterly: MBR-narrative, territory-resegmentation
+
+segment_coverage:
+  primary: aggregates from 8-12 IC portfolios
+  range: full SMB spectrum via reports

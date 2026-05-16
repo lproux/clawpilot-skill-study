@@ -1,0 +1,24 @@
+workflow_id: WF-16
+name: Email Context Pull-Through
+mode: Prompt
+actor: CSA/DSSP
+skill: customer-meeting-prep-outreach-coach
+tier: 1
+scenario_count: 317
+frequency: Very High
+trigger: User forwards or references an email thread and asks for context extraction
+  or response draft
+input: Email thread, account context, prior commitments, stakeholder map
+routing:
+  entry_skill: customer-meeting-prep-outreach-coach
+  modules:
+  - email-chat-context
+  handoffs: []
+output: Thread summary, key commitments/asks identified, waiting-on-whom assessment,
+  draft response matching established tone
+intent_distribution:
+  happy: 127
+  adherence: 111
+  assumption_stress: 48
+  design_redesign: 32
+failure_mode_count: 6

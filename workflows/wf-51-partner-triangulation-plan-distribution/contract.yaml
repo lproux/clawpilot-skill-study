@@ -1,0 +1,28 @@
+workflow_id: WF-51
+name: Partner Triangulation Transcript -> Plan Distribution
+mode: Co-Work
+actor: CSA/DSSP
+skill: customer-meeting-prep-outreach-coach
+tier: 4
+scenario_count: 183
+frequency: Low
+trigger: Tri-party (MS + partner + customer) meeting transcript available for plan
+  distribution
+input: Tri-party transcript, partner context, customer requirements, MS-partner-customer
+  role definitions, funding signals, existing partner relationships
+routing:
+  entry_skill: customer-meeting-prep-outreach-coach
+  modules:
+  - follow-up-and-decisions
+  handoffs:
+  - target: funding-partner-activation-coach
+    condition: funding or partner evaluation needed
+output: Tri-party action distribution (MS/partner/customer owners), funding eligibility
+  assessment, follow-up sequence with tri-party coordination, conflict-of-interest
+  check
+intent_distribution:
+  happy: 73
+  adherence: 64
+  assumption_stress: 27
+  design_redesign: 18
+failure_mode_count: 15

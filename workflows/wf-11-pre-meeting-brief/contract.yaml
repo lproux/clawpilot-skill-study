@@ -1,0 +1,26 @@
+workflow_id: WF-11
+name: Pre-Meeting Brief
+mode: Prompt
+actor: CSA/DSSP
+skill: customer-meeting-prep-outreach-coach
+tier: 2
+scenario_count: 317
+frequency: Very High
+trigger: User requests pre-meeting brief or calendar automation triggers before a
+  customer meeting
+input: Calendar event, attendee list, prior meeting transcripts, email threads with
+  attendees, MSX account/opportunity state, stakeholder map
+routing:
+  entry_skill: customer-meeting-prep-outreach-coach
+  modules:
+  - meeting-prep
+  - contact-stakeholder-map
+  handoffs: []
+output: One-page brief with attendee context, account snapshot, talking points, likely
+  objections, open items from last meeting, suggested asks
+intent_distribution:
+  happy: 127
+  adherence: 111
+  assumption_stress: 48
+  design_redesign: 32
+failure_mode_count: 13

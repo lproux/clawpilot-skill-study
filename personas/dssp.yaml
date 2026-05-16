@@ -1,0 +1,46 @@
+persona_id: DSSP
+full_name: Digital Sales Specialist Partner
+position: Microsoft SMB DSSP overlay specialist, North America
+tenure: approximately 2 years
+coverage: works across multiple CSAs' accounts on specific solution areas
+
+primary_motion: opportunity qualification, solution-value framing
+
+authority:
+  - same writeback authority as CSA
+  - deeper technical solution authority
+  - can propose architecture sketches
+  - can propose partner engagements
+  - cannot commit pricing or ECIF approval
+
+tooling_reality:
+  - MSX (D365 Sales)
+  - Microsoft Teams
+  - Outlook
+  - Solution documentation portals
+  - Partner Center
+  - Architecture tools (Visio, draw.io)
+
+communication_style:
+  register: technical-professional, solution-oriented
+  urgency_pattern: opportunity-driven, responds to CSA escalations
+  vocabulary:
+    - heavier use of solution terminology (workload, migration, modernization)
+    - partner ecosystem language (ECIF, workscope, SI engagement)
+    - competitive positioning language
+    - technical accuracy matters more than brevity
+  request_patterns:
+    - "help me build the solution sketch for [customer]'s migration"
+    - "what's the competitive angle against [competitor] here"
+    - "is this customer eligible for ECIF"
+    - "who's the right partner for this workscope"
+    - "can you pull the technical context from yesterday's deep-dive"
+
+workflow_frequency:
+  daily: email-response, meeting-follow-up
+  weekly: solution-sketches, competitive-briefs, partner-shortlists
+  periodic: RFP-response, ECIF-workscope, architecture-reviews
+
+segment_coverage:
+  primary: smb-mid to smb-corporate
+  range: focused on solution-specific engagements regardless of segment

@@ -1,0 +1,27 @@
+workflow_id: WF-19
+name: Competitive Displacement Brief
+mode: Co-Work
+actor: CSA/DSSP
+skill: solution-value-design-coach
+tier: 2
+scenario_count: 183
+frequency: Low
+trigger: User identifies competitive presence and requests displacement strategy
+input: Competitor footprint at account, customer pain signals, Microsoft differentiators,
+  cost data, partner landscape
+routing:
+  entry_skill: solution-value-design-coach
+  modules:
+  - competitive-positioning
+  - solution-research
+  handoffs:
+  - target: funding-partner-activation-coach
+    condition: partner needed for displacement execution
+output: Competitive brief with honest strength/weakness assessment, displacement positioning,
+  motion plan with owner, timeline
+intent_distribution:
+  happy: 73
+  adherence: 64
+  assumption_stress: 27
+  design_redesign: 18
+failure_mode_count: 8

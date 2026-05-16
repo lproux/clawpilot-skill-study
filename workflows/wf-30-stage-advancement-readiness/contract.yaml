@@ -1,0 +1,27 @@
+workflow_id: WF-30
+name: Stage Advancement Readiness
+mode: Co-Work
+actor: CSA/DSSP
+skill: pipeline-msx-hygiene-coach
+tier: 3
+scenario_count: 250
+frequency: High
+trigger: User asks 'is this opportunity ready to advance' or BPF stage review triggered
+input: Opportunity record, milestone evidence, BPF stage requirements, conversion-rate
+  data, downstream prerequisites
+routing:
+  entry_skill: pipeline-msx-hygiene-coach
+  modules:
+  - stage-close-readiness
+  - writeback-approval-guardrails
+  handoffs:
+  - target: forecast-business-review-coach
+    condition: stage advance affects forecast category
+output: Per-criterion readiness verdict, evidence gaps, writeback proposal for stage
+  advance (if ready), forecast implications
+intent_distribution:
+  happy: 100
+  adherence: 88
+  assumption_stress: 38
+  design_redesign: 25
+failure_mode_count: 12

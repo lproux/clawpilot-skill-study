@@ -1,0 +1,384 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "fixture.schema.json",
+  "title": "ClawPilot MSX Account Fixture Schema",
+  "description": "Schema for a synthetic MSX account fixture used in scenario generation",
+  "type": "object",
+  "required": [
+    "fixture_id",
+    "fixture_class",
+    "authored_at",
+    "account",
+    "opportunities",
+    "contacts",
+    "acr_trend",
+    "open_recommendations",
+    "recent_activity_timeline",
+    "customer_health_flags",
+    "contract_billing"
+  ],
+  "properties": {
+    "fixture_id": {
+      "type": "string",
+      "pattern": "^FX-[0-9]{3}$"
+    },
+    "fixture_class": {
+      "type": "string",
+      "enum": ["clean", "stale", "missing", "inconsistent", "contradictory"]
+    },
+    "authored_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "account": {
+      "type": "object",
+      "required": [
+        "account_id",
+        "name",
+        "segment",
+        "geography",
+        "tenure_years",
+        "owner"
+      ],
+      "properties": {
+        "account_id": {
+          "type": "string",
+          "pattern": "^ACC-[A-Z0-9]{8}$"
+        },
+        "name": {
+          "type": "string"
+        },
+        "segment": {
+          "type": "string",
+          "enum": ["smb-small", "smb-mid", "smb-corporate"]
+        },
+        "geography": {
+          "type": "string",
+          "enum": ["NA", "EMEA", "APAC", "LATAM"]
+        },
+        "tenure_years": {
+          "type": "number",
+          "minimum": 0
+        },
+        "owner": {
+          "type": "string"
+        },
+        "industry": {
+          "type": "string"
+        },
+        "employee_count": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "opportunities": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "opportunity_id",
+          "name",
+          "stage",
+          "estimated_value_usd",
+          "bpf_stage"
+        ],
+        "properties": {
+          "opportunity_id": {
+            "type": "string",
+            "pattern": "^OPP-[A-Z0-9]{8}$"
+          },
+          "name": {
+            "type": "string"
+          },
+          "stage": {
+            "type": "string",
+            "enum": [
+              "Prospect",
+              "Qualify",
+              "Develop",
+              "Propose",
+              "Close",
+              "Won",
+              "Lost"
+            ]
+          },
+          "estimated_value_usd": {
+            "type": "number",
+            "minimum": 0
+          },
+          "close_date": {
+            "type": ["string", "null"],
+            "format": "date"
+          },
+          "bpf_stage": {
+            "type": ["string", "null"],
+            "enum": [
+              "Qualify",
+              "Develop",
+              "Propose",
+              "Close",
+              null
+            ]
+          },
+          "forecast_category": {
+            "type": "string",
+            "enum": [
+              "Pipeline",
+              "Best Case",
+              "Committed",
+              "Omitted"
+            ]
+          },
+          "owner": {
+            "type": "string"
+          },
+          "last_updated": {
+            "type": ["string", "null"],
+            "format": "date-time"
+          },
+          "milestones": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["milestone_id", "name", "status"],
+              "properties": {
+                "milestone_id": {
+                  "type": "string",
+                  "pattern": "^MS-[A-Z0-9]{8}$"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "status": {
+                  "type": "string",
+                  "enum": [
+                    "Not Started",
+                    "In Progress",
+                    "Completed",
+                    "Blocked"
+                  ]
+                },
+                "due_date": {
+                  "type": ["string", "null"],
+                  "format": "date"
+                },
+                "completed_date": {
+                  "type": ["string", "null"],
+                  "format": "date"
+                },
+                "owner": {
+                  "type": "string"
+                },
+                "evidence": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "minItems": 1,
+      "maxItems": 5
+    },
+    "contacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["contact_id", "name", "role"],
+        "properties": {
+          "contact_id": {
+            "type": "string",
+            "pattern": "^CON-[A-Z0-9]{8}$"
+          },
+          "name": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string",
+            "format": "email"
+          },
+          "influence_level": {
+            "type": "string",
+            "enum": ["Decision Maker", "Influencer", "Champion", "End User", "Blocker"]
+          },
+          "last_interaction": {
+            "type": ["string", "null"],
+            "format": "date"
+          },
+          "is_current": {
+            "type": "boolean"
+          }
+        }
+      },
+      "minItems": 5,
+      "maxItems": 15
+    },
+    "acr_trend": {
+      "type": "object",
+      "required": ["currency", "monthly_values"],
+      "properties": {
+        "currency": {
+          "type": "string",
+          "const": "USD"
+        },
+        "monthly_values": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["month", "value_usd"],
+            "properties": {
+              "month": {
+                "type": "string",
+                "pattern": "^[0-9]{4}-[0-9]{2}$"
+              },
+              "value_usd": {
+                "type": "number",
+                "minimum": 0
+              },
+              "workload_breakdown": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "number"
+                }
+              }
+            }
+          },
+          "minItems": 12,
+          "maxItems": 12,
+          "description": "Rolling 12-month ACR at monthly resolution"
+        }
+      }
+    },
+    "open_recommendations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["recommendation_id", "type", "description", "created_at"],
+        "properties": {
+          "recommendation_id": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "enum": ["SPA", "CxObserve", "Advisor", "Manual"]
+          },
+          "description": {
+            "type": "string"
+          },
+          "priority": {
+            "type": "string",
+            "enum": ["High", "Medium", "Low"]
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "status": {
+            "type": "string",
+            "enum": ["New", "Acknowledged", "In Progress", "Dismissed"]
+          }
+        }
+      },
+      "minItems": 0,
+      "maxItems": 8
+    },
+    "recent_activity_timeline": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["date", "activity_type", "description"],
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date"
+          },
+          "activity_type": {
+            "type": "string",
+            "enum": [
+              "meeting",
+              "email",
+              "call",
+              "msx_update",
+              "spa_received",
+              "escalation",
+              "contract_event",
+              "deployment"
+            ]
+          },
+          "description": {
+            "type": "string"
+          },
+          "participants": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "description": "Last 90 days of activity"
+    },
+    "customer_health_flags": {
+      "type": "object",
+      "properties": {
+        "overall_health": {
+          "type": "string",
+          "enum": ["Healthy", "At Risk", "Critical", "Unknown"]
+        },
+        "engagement_score": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "consumption_trend": {
+          "type": "string",
+          "enum": ["Growing", "Stable", "Declining", "Volatile"]
+        },
+        "renewal_risk": {
+          "type": "string",
+          "enum": ["Low", "Medium", "High", "Unknown"]
+        },
+        "last_assessed": {
+          "type": ["string", "null"],
+          "format": "date"
+        }
+      }
+    },
+    "contract_billing": {
+      "type": "object",
+      "required": ["subscription_type"],
+      "properties": {
+        "subscription_type": {
+          "type": "string",
+          "enum": ["CSP", "MCA", "EA", "PAYG"]
+        },
+        "contract_end_date": {
+          "type": ["string", "null"],
+          "format": "date"
+        },
+        "macc_commitment_usd": {
+          "type": ["number", "null"],
+          "minimum": 0
+        },
+        "macc_consumed_usd": {
+          "type": ["number", "null"],
+          "minimum": 0
+        },
+        "billing_frequency": {
+          "type": "string",
+          "enum": ["Monthly", "Annual", "Prepaid"]
+        },
+        "auto_renew": {
+          "type": "boolean"
+        }
+      }
+    }
+  }
+}

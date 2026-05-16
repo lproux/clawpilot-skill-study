@@ -1,0 +1,30 @@
+workflow_id: WF-09
+name: Consumption-at-Risk Watchlist
+mode: Automation
+actor: CSA
+skill: acr-signal-to-opportunity-coach
+tier: 3
+scenario_count: 317
+frequency: Very High
+trigger: Daily automated watchlist generation or on-demand 'which accounts are at
+  risk'
+input: ACR trends (all portfolio accounts), contract events, customer health, recovery
+  actions in flight, prior watchlists
+routing:
+  entry_skill: acr-signal-to-opportunity-coach
+  modules:
+  - acr-data-access
+  - acr-health-forecast
+  handoffs:
+  - target: pipeline-msx-hygiene-coach
+    condition: at-risk account has stale records
+  - target: customer-meeting-prep-outreach-coach
+    condition: outreach needed for at-risk account
+output: Prioritized watchlist (max 15 accounts) with risk driver, confidence, recovery
+  actions, delta from yesterday, owner per account
+intent_distribution:
+  happy: 127
+  adherence: 111
+  assumption_stress: 48
+  design_redesign: 32
+failure_mode_count: 14

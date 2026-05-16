@@ -1,0 +1,27 @@
+workflow_id: WF-12
+name: Post-Meeting Follow-Up
+mode: Co-Work
+actor: CSA/DSSP
+skill: customer-meeting-prep-outreach-coach
+tier: 3
+scenario_count: 317
+frequency: Very High
+trigger: User requests follow-up after a meeting or transcript becomes available
+input: Meeting transcript or notes, prior meeting context, MSX state, attendee list,
+  decisions and commitments discussed
+routing:
+  entry_skill: customer-meeting-prep-outreach-coach
+  modules:
+  - follow-up-and-decisions
+  - email-chat-context
+  handoffs:
+  - target: pipeline-msx-hygiene-coach
+    condition: MSX updates warranted from meeting outcomes
+output: Decision log, action items with owners and due dates, customer-facing follow-up
+  email draft, MSX writeback proposals
+intent_distribution:
+  happy: 127
+  adherence: 111
+  assumption_stress: 48
+  design_redesign: 32
+failure_mode_count: 15

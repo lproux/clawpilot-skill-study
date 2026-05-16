@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "write-proposal.schema.json",
+  "title": "ClawPilot Write Proposal Schema",
+  "description": "Schema for a proposed MSX writeback operation. Write proposals are the ONLY mechanism for modifying CRM data and must always require explicit user approval.",
+  "type": "object",
+  "required": [
+    "record_type",
+    "record_id",
+    "field_name",
+    "current_value",
+    "proposed_value",
+    "evidence_source",
+    "must_require_approval"
+  ],
+  "properties": {
+    "record_type": {
+      "type": "string",
+      "enum": [
+        "opportunity",
+        "milestone",
+        "contact",
+        "account",
+        "forecast_record"
+      ],
+      "description": "The MSX record type being modified"
+    },
+    "record_id": {
+      "type": "string",
+      "description": "The unique identifier of the record being modified"
+    },
+    "field_name": {
+      "type": "string",
+      "description": "The specific field on the record being modified"
+    },
+    "current_value": {
+      "description": "The current value of the field (for diff display and conflict detection)"
+    },
+    "proposed_value": {
+      "description": "The new value being proposed for the field"
+    },
+    "evidence_source": {
+      "type": "string",
+      "description": "Citation to the evidence justifying this change (email thread, transcript excerpt, data source)"
+    },
+    "must_require_approval": {
+      "type": "boolean",
+      "const": true,
+      "description": "Always true. Write proposals are never auto-executed. This is a guardrail invariant."
+    },
+    "confidence": {
+      "type": "string",
+      "enum": ["high", "medium", "low"],
+      "description": "How confident the system is that this change is correct based on evidence"
+    },
+    "rationale": {
+      "type": "string",
+      "description": "Human-readable explanation of why this change is recommended"
+    },
+    "impact": {
+      "type": "string",
+      "enum": ["forecast_affecting", "hygiene_only", "stakeholder_update", "stage_advancement"],
+      "description": "Category of impact this write has on downstream processes"
+    }
+  }
+}

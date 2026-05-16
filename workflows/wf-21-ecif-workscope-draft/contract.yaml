@@ -1,0 +1,25 @@
+workflow_id: WF-21
+name: ECIF Workscope Draft
+mode: Co-Work
+actor: CSA/DSSP
+skill: funding-partner-activation-coach
+tier: 2
+scenario_count: 183
+frequency: Low
+trigger: User requests ECIF workscope draft for a qualified engagement
+input: Opportunity record, customer requirements, partner candidates, ECIF eligibility
+  signals, prior workscopes at account
+routing:
+  entry_skill: funding-partner-activation-coach
+  modules:
+  - funding-eligibility
+  - partner-evaluation
+  handoffs: []
+output: ECIF workscope draft with measurable deliverables, qualified partner, effort
+  estimate, eligibility caveat, opportunity linkage
+intent_distribution:
+  happy: 73
+  adherence: 64
+  assumption_stress: 27
+  design_redesign: 18
+failure_mode_count: 8

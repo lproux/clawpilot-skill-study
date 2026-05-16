@@ -1,0 +1,29 @@
+workflow_id: WF-49
+name: Workshop Transcript -> ECIF + Partner + Follow-up
+mode: Co-Work
+actor: CSA/DSSP
+skill: customer-meeting-prep-outreach-coach
+tier: 4
+scenario_count: 183
+frequency: Low
+trigger: Workshop or technical session transcript available requiring ECIF/partner/follow-up
+  extraction
+input: Workshop transcript, ECIF eligibility context, partner landscape, customer
+  requirements discussed, milestone state
+routing:
+  entry_skill: customer-meeting-prep-outreach-coach
+  modules:
+  - follow-up-and-decisions
+  handoffs:
+  - target: funding-partner-activation-coach
+    condition: ECIF workscope or partner engagement warranted
+  - target: pipeline-msx-hygiene-coach
+    condition: milestone updates warranted
+output: Workshop recap, ECIF workscope draft (if warranted), partner plan, follow-up
+  items with owners, milestone update proposals
+intent_distribution:
+  happy: 73
+  adherence: 64
+  assumption_stress: 27
+  design_redesign: 18
+failure_mode_count: 15

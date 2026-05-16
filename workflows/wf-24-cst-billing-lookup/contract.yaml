@@ -1,0 +1,23 @@
+workflow_id: WF-24
+name: CST / Billing Lookup
+mode: Prompt
+actor: CSA/DSSP
+skill: funding-partner-activation-coach
+tier: 1
+scenario_count: 250
+frequency: High
+trigger: User requests contract or billing information for a customer
+input: Account identifier, billing system data, contract records
+routing:
+  entry_skill: funding-partner-activation-coach
+  modules:
+  - contract-billing-lookup
+  handoffs: []
+output: Contract summary with freshness labels, subscription type, renewal date, MACC
+  state if applicable, billing frequency
+intent_distribution:
+  happy: 100
+  adherence: 88
+  assumption_stress: 38
+  design_redesign: 25
+failure_mode_count: 5

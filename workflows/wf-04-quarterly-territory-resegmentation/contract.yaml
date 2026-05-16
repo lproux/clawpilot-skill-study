@@ -1,0 +1,24 @@
+workflow_id: WF-04
+name: Quarterly Territory Re-segmentation
+mode: Prompt
+actor: Manager
+skill: portfolio-account-planning-coach
+tier: 2
+scenario_count: 167
+frequency: Rare
+trigger: Manager requests territory redesign analysis at quarter boundary
+input: Team roster, current territory assignments, account complexity scores, IC attainment
+  data, team policies
+routing:
+  entry_skill: portfolio-account-planning-coach
+  modules:
+  - manager-portfolio-review
+  handoffs: []
+output: Proposed territory redistribution with complexity balance, projected attainment
+  impact with confidence bands, inequity analysis
+intent_distribution:
+  happy: 67
+  adherence: 58
+  assumption_stress: 25
+  design_redesign: 17
+failure_mode_count: 8

@@ -1,0 +1,23 @@
+workflow_id: WF-14
+name: Stakeholder Map Generation
+mode: Prompt
+actor: CSA/DSSP
+skill: customer-meeting-prep-outreach-coach
+tier: 1
+scenario_count: 250
+frequency: High
+trigger: User requests stakeholder map for an account or in preparation for engagement
+input: Contact records, meeting history, email threads, organizational signals
+routing:
+  entry_skill: customer-meeting-prep-outreach-coach
+  modules:
+  - contact-stakeholder-map
+  handoffs: []
+output: Stakeholder map with roles (decision-maker, influencer, champion, blocker),
+  recency labels, confidence levels, gaps identified
+intent_distribution:
+  happy: 100
+  adherence: 88
+  assumption_stress: 38
+  design_redesign: 25
+failure_mode_count: 6

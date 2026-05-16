@@ -1,0 +1,27 @@
+workflow_id: WF-41
+name: Dark-Customer Re-Emergence
+mode: Co-Work
+actor: CSA/DSSP
+skill: customer-meeting-prep-outreach-coach
+tier: 4
+scenario_count: 217
+frequency: Medium
+trigger: Previously dark customer initiates contact unexpectedly
+input: Re-emergence email/signal, dark-period context, prior opportunity state, ACR
+  during dark period, stakeholder map (stale), current contact validity
+routing:
+  entry_skill: customer-meeting-prep-outreach-coach
+  modules:
+  - email-chat-context
+  - contact-stakeholder-map
+  handoffs:
+  - target: pipeline-msx-hygiene-coach
+    condition: MSX records need dark-period hygiene catchup
+output: Context reconstruction, re-qualification assessment, response draft (appropriate
+  tone), stakeholder verification plan, MSX hygiene catchup proposals
+intent_distribution:
+  happy: 87
+  adherence: 76
+  assumption_stress: 33
+  design_redesign: 22
+failure_mode_count: 13

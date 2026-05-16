@@ -1,0 +1,28 @@
+workflow_id: WF-43
+name: Discovery Call Transcript -> Opportunity Build
+mode: Co-Work
+actor: CSA/DSSP
+skill: customer-meeting-prep-outreach-coach
+tier: 4
+scenario_count: 250
+frequency: High
+trigger: Discovery call transcript available for opportunity extraction
+input: Discovery call transcript, account context, existing opportunities, BANT framework,
+  speaker attribution
+routing:
+  entry_skill: customer-meeting-prep-outreach-coach
+  modules:
+  - follow-up-and-decisions
+  handoffs:
+  - target: pipeline-msx-hygiene-coach
+    condition: opportunity creation warranted
+  - target: solution-value-design-coach
+    condition: solution sketch needed from discovery signals
+output: BANT signal extraction with evidence quotes, opportunity proposal with stage/value/close-date,
+  confidence labels, solution sketch suggestion, follow-up actions
+intent_distribution:
+  happy: 100
+  adherence: 88
+  assumption_stress: 38
+  design_redesign: 25
+failure_mode_count: 18
