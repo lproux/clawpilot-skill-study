@@ -1,0 +1,431 @@
+{
+  "fixture_id": "FX-037",
+  "fixture_class": "inconsistent",
+  "authored_at": "2024-03-15T10:00:00-05:00",
+  "account": {
+    "account_id": "ACC-WZHG8AQ3",
+    "name": "Woodgrove Labs",
+    "segment": "smb-small",
+    "geography": "NA",
+    "tenure_years": 4.1,
+    "owner": "David Chen",
+    "industry": "Pharmaceuticals",
+    "employee_count": 1100
+  },
+  "opportunities": [
+    {
+      "opportunity_id": "OPP-135BUCKX",
+      "name": "Woodgrove Power Platform",
+      "stage": "Qualify",
+      "estimated_value_usd": 210000,
+      "close_date": "2024-12-15",
+      "bpf_stage": "Propose",
+      "forecast_category": "Pipeline",
+      "owner": "David Chen",
+      "last_updated": "2024-03-25T12:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-5LL48LD0",
+          "name": "Discovery",
+          "status": "Completed",
+          "due_date": "2024-07-12",
+          "completed_date": "2024-01-04",
+          "owner": "David Chen",
+          "evidence": "email_thread_3390"
+        }
+      ]
+    },
+    {
+      "opportunity_id": "OPP-B0SJV528",
+      "name": "Woodgrove AKS Deployment",
+      "stage": "Propose",
+      "estimated_value_usd": 125000,
+      "close_date": "2024-05-21",
+      "bpf_stage": "Propose",
+      "forecast_category": "Pipeline",
+      "owner": "David Chen",
+      "last_updated": "2024-03-28T08:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-JXRLJK1Z",
+          "name": "Discovery",
+          "status": "Blocked",
+          "due_date": "2024-03-20",
+          "completed_date": null,
+          "owner": "David Chen",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-0MF4TCGG",
+          "name": "Technical Validation",
+          "status": "Blocked",
+          "due_date": "2024-06-14",
+          "completed_date": null,
+          "owner": "David Chen",
+          "evidence": ""
+        }
+      ]
+    }
+  ],
+  "contacts": [
+    {
+      "contact_id": "CON-2990C9CB",
+      "name": "Robert Petrov",
+      "role": "Executive",
+      "title": "CFO",
+      "email": "robert.petrov@woodgrovelab.com",
+      "influence_level": "Decision Maker",
+      "last_interaction": "2024-01-01",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-S2N57ZZD",
+      "name": "Sandra Wilson",
+      "role": "Technical",
+      "title": "Technology Manager",
+      "email": "sandra.wilson@woodgrovelab.com",
+      "influence_level": "Influencer",
+      "last_interaction": "2024-03-13",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-1C1E8LD1",
+      "name": "Andrew Nakamura",
+      "role": "Finance",
+      "title": "CTO",
+      "email": "andrew.nakamura@woodgrovelab.com",
+      "influence_level": "Champion",
+      "last_interaction": "2024-03-01",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-8K0WG6Y7",
+      "name": "Michael O'Brien",
+      "role": "Business",
+      "title": "VP Engineering",
+      "email": "michael.o'brien@woodgrovelab.com",
+      "influence_level": "End User",
+      "last_interaction": "2024-03-04",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-3AD815VI",
+      "name": "Andrew Anderson",
+      "role": "Operations",
+      "title": "COO",
+      "email": "andrew.anderson@woodgrovelab.com",
+      "influence_level": "Blocker",
+      "last_interaction": "2024-02-17",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-O72Z1SP9",
+      "name": "David Kim",
+      "role": "Business",
+      "title": "Head of Digital",
+      "email": "david.kim@woodgrovelab.com",
+      "influence_level": "End User",
+      "last_interaction": "2024-03-23",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-WT5S9ZWG",
+      "name": "Christopher Yamamoto",
+      "role": "Operations",
+      "title": "Technology Manager",
+      "email": "christopher.yamamoto@woodgrovelab.com",
+      "influence_level": "Champion",
+      "last_interaction": "2024-03-11",
+      "is_current": true
+    }
+  ],
+  "acr_trend": {
+    "currency": "USD",
+    "monthly_values": [
+      {
+        "month": "2023-04",
+        "value_usd": 29599.5,
+        "workload_breakdown": {
+          "compute": 8579.76,
+          "storage": 4072.15,
+          "networking": 5816.11,
+          "paas": 11131.48
+        }
+      },
+      {
+        "month": "2023-05",
+        "value_usd": 102614.64,
+        "workload_breakdown": {
+          "compute": 31551.02,
+          "storage": 25864.16,
+          "networking": 18208.49,
+          "paas": 26990.97
+        }
+      },
+      {
+        "month": "2023-06",
+        "value_usd": 106567.29,
+        "workload_breakdown": {
+          "compute": 35975.03,
+          "storage": 24755.39,
+          "networking": 16437.38,
+          "paas": 29399.49
+        }
+      },
+      {
+        "month": "2023-07",
+        "value_usd": 108307.41,
+        "workload_breakdown": {
+          "compute": 28925.71,
+          "storage": 33990.43,
+          "networking": 16685.17,
+          "paas": 28706.11
+        }
+      },
+      {
+        "month": "2023-08",
+        "value_usd": 107995.03,
+        "workload_breakdown": {
+          "compute": 39697.72,
+          "storage": 20639.4,
+          "networking": 8729.34,
+          "paas": 38928.57
+        }
+      },
+      {
+        "month": "2023-09",
+        "value_usd": 102696.8,
+        "workload_breakdown": {
+          "compute": 36221.59,
+          "storage": 14509.32,
+          "networking": 20118.45,
+          "paas": 31847.43
+        }
+      },
+      {
+        "month": "2023-10",
+        "value_usd": 104988.16,
+        "workload_breakdown": {
+          "compute": 28700.12,
+          "storage": 15808.78,
+          "networking": 25022.04,
+          "paas": 35457.22
+        }
+      },
+      {
+        "month": "2023-11",
+        "value_usd": 103281.94,
+        "workload_breakdown": {
+          "compute": 19549.88,
+          "storage": 27047.63,
+          "networking": 14869.71,
+          "paas": 41814.73
+        }
+      },
+      {
+        "month": "2023-12",
+        "value_usd": 105374.35,
+        "workload_breakdown": {
+          "compute": 41260.9,
+          "storage": 20201.71,
+          "networking": 8187.73,
+          "paas": 35724.01
+        }
+      },
+      {
+        "month": "2024-01",
+        "value_usd": 31612.3,
+        "workload_breakdown": {
+          "compute": 9977.88,
+          "storage": 8477.18,
+          "networking": 4500.45,
+          "paas": 8656.79
+        }
+      },
+      {
+        "month": "2024-02",
+        "value_usd": 102273.77,
+        "workload_breakdown": {
+          "compute": 21679.51,
+          "storage": 15895.7,
+          "networking": 9732.31,
+          "paas": 54966.25
+        }
+      },
+      {
+        "month": "2024-03",
+        "value_usd": 204547.55,
+        "workload_breakdown": {
+          "compute": 85721.61,
+          "storage": 33635.82,
+          "networking": 23252.71,
+          "paas": 61937.42
+        }
+      }
+    ]
+  },
+  "open_recommendations": [
+    {
+      "recommendation_id": "REC-39308",
+      "type": "CxObserve",
+      "description": "Enable Azure Monitor for production workloads",
+      "priority": "High",
+      "created_at": "2024-01-23T10:00:00-05:00",
+      "status": "In Progress"
+    },
+    {
+      "recommendation_id": "REC-91744",
+      "type": "Manual",
+      "description": "Enable Azure Backup for critical databases",
+      "priority": "Medium",
+      "created_at": "2024-03-23T10:00:00-05:00",
+      "status": "New"
+    },
+    {
+      "recommendation_id": "REC-61249",
+      "type": "SPA",
+      "description": "Enable Azure Security Center standard tier",
+      "priority": "Medium",
+      "created_at": "2024-01-15T10:00:00-05:00",
+      "status": "Acknowledged"
+    },
+    {
+      "recommendation_id": "REC-11278",
+      "type": "Manual",
+      "description": "Adopt Azure Policy for compliance governance",
+      "priority": "Medium",
+      "created_at": "2024-02-13T10:00:00-05:00",
+      "status": "Acknowledged"
+    },
+    {
+      "recommendation_id": "REC-53314",
+      "type": "SPA",
+      "description": "Migrate to Azure SQL Managed Instance",
+      "priority": "Low",
+      "created_at": "2024-02-23T10:00:00-05:00",
+      "status": "Dismissed"
+    }
+  ],
+  "recent_activity_timeline": [
+    {
+      "date": "2024-03-23",
+      "activity_type": "escalation",
+      "description": "Customer escalated support ticket response time",
+      "participants": [
+        "Lisa Patel"
+      ]
+    },
+    {
+      "date": "2024-03-22",
+      "activity_type": "call",
+      "description": "Discussed budget approval timeline",
+      "participants": [
+        "Lisa Patel",
+        "Ahmed Hassan"
+      ]
+    },
+    {
+      "date": "2024-03-22",
+      "activity_type": "meeting",
+      "description": "QBR with customer IT team",
+      "participants": [
+        "Lisa Patel",
+        "Raj Mehta"
+      ]
+    },
+    {
+      "date": "2024-03-11",
+      "activity_type": "meeting",
+      "description": "Architecture review session",
+      "participants": [
+        "Ahmed Hassan"
+      ]
+    },
+    {
+      "date": "2024-03-10",
+      "activity_type": "spa_received",
+      "description": "SPA: Cost anomaly detected",
+      "participants": [
+        "Sarah Kim"
+      ]
+    },
+    {
+      "date": "2024-02-03",
+      "activity_type": "deployment",
+      "description": "Migration batch 1 completed",
+      "participants": [
+        "Lisa Patel",
+        "Raj Mehta",
+        "Ahmed Hassan"
+      ]
+    },
+    {
+      "date": "2024-01-25",
+      "activity_type": "spa_received",
+      "description": "SPA: Security recommendation - MFA gaps",
+      "participants": [
+        "Ahmed Hassan"
+      ]
+    },
+    {
+      "date": "2024-01-24",
+      "activity_type": "call",
+      "description": "Escalation triage call",
+      "participants": [
+        "Ahmed Hassan",
+        "Marcus Williams"
+      ]
+    },
+    {
+      "date": "2024-01-23",
+      "activity_type": "meeting",
+      "description": "Executive business review",
+      "participants": [
+        "Sarah Kim"
+      ]
+    },
+    {
+      "date": "2024-01-15",
+      "activity_type": "meeting",
+      "description": "Partner introduction meeting",
+      "participants": [
+        "Lisa Patel"
+      ]
+    },
+    {
+      "date": "2024-01-12",
+      "activity_type": "msx_update",
+      "description": "Updated close date based on customer feedback",
+      "participants": [
+        "Sarah Kim",
+        "Raj Mehta",
+        "Lisa Patel"
+      ]
+    },
+    {
+      "date": "2024-01-04",
+      "activity_type": "email",
+      "description": "Follow-up on support ticket resolution",
+      "participants": [
+        "Raj Mehta",
+        "Lisa Patel",
+        "Marcus Williams"
+      ]
+    }
+  ],
+  "customer_health_flags": {
+    "overall_health": "At Risk",
+    "engagement_score": 89,
+    "consumption_trend": "Stable",
+    "renewal_risk": "Unknown",
+    "last_assessed": "2024-01-24"
+  },
+  "contract_billing": {
+    "subscription_type": "PAYG",
+    "contract_end_date": null,
+    "macc_commitment_usd": null,
+    "macc_consumed_usd": null,
+    "billing_frequency": "Monthly",
+    "auto_renew": false
+  }
+}

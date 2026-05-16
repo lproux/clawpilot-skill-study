@@ -1,0 +1,302 @@
+{
+  "fixture_id": "FX-026",
+  "fixture_class": "missing",
+  "authored_at": "2024-03-15T10:00:00-05:00",
+  "account": {
+    "account_id": "ACC-92KKOK62",
+    "name": "A. Datum",
+    "segment": "smb-mid",
+    "geography": "EMEA",
+    "tenure_years": 1.9,
+    "owner": "Jennifer Walsh",
+    "industry": "Analytics",
+    "employee_count": 180
+  },
+  "opportunities": [
+    {
+      "opportunity_id": "OPP-A1OYM44F",
+      "name": "A. Azure Virtual Desktop",
+      "stage": "Prospect",
+      "estimated_value_usd": 350000,
+      "close_date": "2024-12-18",
+      "bpf_stage": null,
+      "forecast_category": "Pipeline",
+      "owner": "Jennifer Walsh",
+      "last_updated": "2024-02-10T09:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-ROR2GY3N",
+          "name": "Discovery",
+          "status": "Blocked",
+          "due_date": "2024-03-18",
+          "completed_date": null,
+          "owner": "Jennifer Walsh",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-ZA7FAD7D",
+          "name": "Technical Validation",
+          "status": "Blocked",
+          "due_date": "2024-07-19",
+          "completed_date": null,
+          "owner": "Jennifer Walsh",
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "opportunity_id": "OPP-VGEVMBJ8",
+      "name": "A. Copilot Adoption",
+      "stage": "Propose",
+      "estimated_value_usd": 68000,
+      "close_date": "2024-05-09",
+      "bpf_stage": "Propose",
+      "forecast_category": "Pipeline",
+      "owner": "Jennifer Walsh",
+      "last_updated": "2024-02-21T10:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-ONOBZQMC",
+          "name": "Discovery",
+          "status": "Blocked",
+          "due_date": "2024-06-18",
+          "completed_date": null,
+          "owner": "Jennifer Walsh",
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "opportunity_id": "OPP-VS1UK479",
+      "name": "A. AKS Deployment",
+      "stage": "Prospect",
+      "estimated_value_usd": 210000,
+      "close_date": "2024-05-04",
+      "bpf_stage": null,
+      "forecast_category": "Pipeline",
+      "owner": "Jennifer Walsh",
+      "last_updated": "2024-02-08T09:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-SXQT693O",
+          "name": "Discovery",
+          "status": "Not Started",
+          "due_date": "2024-07-17",
+          "completed_date": null,
+          "owner": "Jennifer Walsh",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-RSDOOAN3",
+          "name": "Technical Validation",
+          "status": "Not Started",
+          "due_date": "2024-05-16",
+          "completed_date": null,
+          "owner": "Jennifer Walsh",
+          "evidence": ""
+        }
+      ]
+    }
+  ],
+  "contacts": [
+    {
+      "contact_id": "CON-L6L9IDYV",
+      "name": "Samantha Kowalski",
+      "role": "Finance",
+      "title": "Director of IT",
+      "email": "samantha.kowalski@adatum.com",
+      "influence_level": "Decision Maker",
+      "last_interaction": "2024-01-21",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-WN4DZ2KB",
+      "name": "Michael Petrov",
+      "role": "Executive",
+      "title": "CIO",
+      "email": "michael.petrov@adatum.com",
+      "influence_level": "Influencer",
+      "last_interaction": "2024-01-12",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-XXFTQHGX",
+      "name": "Kevin Kim",
+      "role": "Business",
+      "title": "Security Manager",
+      "email": "kevin.kim@adatum.com",
+      "influence_level": "Champion",
+      "last_interaction": "2024-02-12",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-S51JFW37",
+      "name": "David Brown",
+      "role": "Finance",
+      "title": "Director of IT",
+      "email": "david.brown@adatum.com",
+      "influence_level": "End User",
+      "last_interaction": null,
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-5JJCY4XD",
+      "name": "Patricia Kowalski",
+      "role": "Operations",
+      "title": "Data Platform Lead",
+      "email": "patricia.kowalski@adatum.com",
+      "influence_level": "Blocker",
+      "last_interaction": null,
+      "is_current": true
+    }
+  ],
+  "acr_trend": {
+    "currency": "USD",
+    "monthly_values": [
+      {
+        "month": "2023-04",
+        "value_usd": 14213.87,
+        "workload_breakdown": {
+          "compute": 2656.65,
+          "storage": 2064.76,
+          "networking": 2301.6,
+          "paas": 7190.86
+        }
+      },
+      {
+        "month": "2023-05",
+        "value_usd": 14194.71,
+        "workload_breakdown": {
+          "compute": 3835.56,
+          "storage": 4293.81,
+          "networking": 932.94,
+          "paas": 5132.4
+        }
+      },
+      {
+        "month": "2023-06",
+        "value_usd": 14421.05,
+        "workload_breakdown": {
+          "compute": 4974.97,
+          "storage": 3988.03,
+          "networking": 2019.74,
+          "paas": 3438.31
+        }
+      },
+      {
+        "month": "2023-07",
+        "value_usd": 15037.56,
+        "workload_breakdown": {
+          "compute": 2980.08,
+          "storage": 2361.04,
+          "networking": 2533.39,
+          "paas": 7163.04
+        }
+      },
+      {
+        "month": "2023-08",
+        "value_usd": 0
+      },
+      {
+        "month": "2023-09",
+        "value_usd": 14711.81,
+        "workload_breakdown": {
+          "compute": 2235.73,
+          "storage": 5498.14,
+          "networking": 2646.45,
+          "paas": 4331.49
+        }
+      },
+      {
+        "month": "2023-10",
+        "value_usd": 0
+      },
+      {
+        "month": "2023-11",
+        "value_usd": 0
+      },
+      {
+        "month": "2023-12",
+        "value_usd": 14175.96,
+        "workload_breakdown": {
+          "compute": 5564.9,
+          "storage": 2972.78,
+          "networking": 2514.87,
+          "paas": 3123.41
+        }
+      },
+      {
+        "month": "2024-01",
+        "value_usd": 13834.45,
+        "workload_breakdown": {
+          "compute": 3689.0,
+          "storage": 1646.12,
+          "networking": 2187.78,
+          "paas": 6311.54
+        }
+      },
+      {
+        "month": "2024-02",
+        "value_usd": 13324.64,
+        "workload_breakdown": {
+          "compute": 3738.22,
+          "storage": 3762.95,
+          "networking": 878.52,
+          "paas": 4944.95
+        }
+      },
+      {
+        "month": "2024-03",
+        "value_usd": 13318.66,
+        "workload_breakdown": {
+          "compute": 5418.01,
+          "storage": 2013.67,
+          "networking": 928.99,
+          "paas": 4957.98
+        }
+      }
+    ]
+  },
+  "open_recommendations": [],
+  "recent_activity_timeline": [
+    {
+      "date": "2024-03-15",
+      "activity_type": "deployment",
+      "description": "Migration batch 1 completed",
+      "participants": [
+        "Sarah Kim"
+      ]
+    },
+    {
+      "date": "2024-02-15",
+      "activity_type": "contract_event",
+      "description": "Billing discrepancy flagged",
+      "participants": [
+        "Raj Mehta"
+      ]
+    },
+    {
+      "date": "2024-02-01",
+      "activity_type": "meeting",
+      "description": "Partner introduction meeting",
+      "participants": [
+        "Sarah Kim"
+      ]
+    }
+  ],
+  "customer_health_flags": {
+    "overall_health": "Critical",
+    "engagement_score": 81,
+    "consumption_trend": "Declining",
+    "renewal_risk": "High",
+    "last_assessed": null
+  },
+  "contract_billing": {
+    "subscription_type": "CSP",
+    "contract_end_date": "2024-04-16",
+    "macc_commitment_usd": null,
+    "macc_consumed_usd": null,
+    "billing_frequency": "Monthly",
+    "auto_renew": false
+  }
+}

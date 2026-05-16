@@ -1,0 +1,360 @@
+{
+  "fixture_id": "FX-027",
+  "fixture_class": "missing",
+  "authored_at": "2024-03-15T10:00:00-05:00",
+  "account": {
+    "account_id": "ACC-6ZHK5AIU",
+    "name": "Blue Yonder Airlines",
+    "segment": "smb-small",
+    "geography": "EMEA",
+    "tenure_years": 4.0,
+    "owner": "David Chen",
+    "industry": "Aviation",
+    "employee_count": 3200
+  },
+  "opportunities": [
+    {
+      "opportunity_id": "OPP-ULYUABLL",
+      "name": "Blue Dynamics 365 Implementation",
+      "stage": "Close",
+      "estimated_value_usd": 210000,
+      "close_date": "2024-04-22",
+      "bpf_stage": "Close",
+      "forecast_category": "Committed",
+      "owner": "David Chen",
+      "last_updated": null,
+      "milestones": [
+        {
+          "milestone_id": "MS-FFELNJ9U",
+          "name": "Discovery",
+          "status": "In Progress",
+          "due_date": "2024-07-07",
+          "completed_date": null,
+          "owner": "David Chen",
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "opportunity_id": "OPP-K5FIP7Q9",
+      "name": "Blue Azure Infrastructure",
+      "stage": "Prospect",
+      "estimated_value_usd": 350000,
+      "close_date": "2024-08-05",
+      "bpf_stage": null,
+      "forecast_category": "Pipeline",
+      "owner": "David Chen",
+      "last_updated": "2024-02-06T12:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-GJESMU5W",
+          "name": "Discovery",
+          "status": "In Progress",
+          "due_date": "2024-04-12",
+          "completed_date": null,
+          "owner": "David Chen",
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "opportunity_id": "OPP-8HWUI3O2",
+      "name": "Blue Copilot Adoption",
+      "stage": "Prospect",
+      "estimated_value_usd": 210000,
+      "close_date": "2024-12-03",
+      "bpf_stage": null,
+      "forecast_category": "Pipeline",
+      "owner": "David Chen",
+      "last_updated": null,
+      "milestones": [
+        {
+          "milestone_id": "MS-TNFM7XSD",
+          "name": "Discovery",
+          "status": "Completed",
+          "due_date": "2024-04-25",
+          "completed_date": "2024-02-17",
+          "owner": "David Chen",
+          "evidence": "email_thread_8147"
+        },
+        {
+          "milestone_id": "MS-UUL0UHBZ",
+          "name": "Technical Validation",
+          "status": "Completed",
+          "due_date": "2024-05-09",
+          "completed_date": "2024-02-05",
+          "owner": "David Chen",
+          "evidence": "email_thread_8760"
+        },
+        {
+          "milestone_id": "MS-2XG3ZG8H",
+          "name": "Business Case Approved",
+          "status": "Blocked",
+          "due_date": "2024-03-01",
+          "completed_date": null,
+          "owner": "David Chen",
+          "evidence": ""
+        }
+      ]
+    }
+  ],
+  "contacts": [
+    {
+      "contact_id": "CON-34EFP0SU",
+      "name": "Robert Singh",
+      "role": "Technical",
+      "title": "CIO",
+      "email": "robert.singh@blueyonderai.com",
+      "influence_level": "Decision Maker",
+      "last_interaction": "2024-03-07",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-4GG06U80",
+      "name": "Nicole Martinez",
+      "role": "Technical",
+      "title": "Director of IT",
+      "email": "nicole.martinez@blueyonderai.com",
+      "influence_level": "Influencer",
+      "last_interaction": "2024-02-01",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-826R3Q0Z",
+      "name": "Andrew Torres",
+      "role": "Operations",
+      "title": "Head of Digital",
+      "email": "andrew.torres@blueyonderai.com",
+      "influence_level": "Champion",
+      "last_interaction": null,
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-71RVZ5GO",
+      "name": "Nicole Singh",
+      "role": "Technical",
+      "title": "CIO",
+      "email": "nicole.singh@blueyonderai.com",
+      "influence_level": "End User",
+      "last_interaction": null,
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-8H256XFA",
+      "name": "Karen Berg",
+      "role": "Executive",
+      "title": "VP Operations",
+      "email": "karen.berg@blueyonderai.com",
+      "influence_level": "Blocker",
+      "last_interaction": "2024-03-02",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-NA83QJ2K",
+      "name": "Jennifer Anderson",
+      "role": "Finance",
+      "title": "COO",
+      "email": "jennifer.anderson@blueyonderai.com",
+      "influence_level": "End User",
+      "last_interaction": null,
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-V7HTVATV",
+      "name": "Laura Torres",
+      "role": "Finance",
+      "title": "Director of IT",
+      "email": "laura.torres@blueyonderai.com",
+      "influence_level": "End User",
+      "last_interaction": null,
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-XSD789T1",
+      "name": "Andrew Hansen",
+      "role": "Business",
+      "title": "DevOps Lead",
+      "email": "andrew.hansen@blueyonderai.com",
+      "influence_level": "Blocker",
+      "last_interaction": null,
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-49ZC3HOC",
+      "name": "Christopher Chen",
+      "role": "Operations",
+      "title": "Data Platform Lead",
+      "email": "christopher.chen@blueyonderai.com",
+      "influence_level": "Blocker",
+      "last_interaction": "2024-03-10",
+      "is_current": true
+    }
+  ],
+  "acr_trend": {
+    "currency": "USD",
+    "monthly_values": [
+      {
+        "month": "2023-04",
+        "value_usd": 90189.72,
+        "workload_breakdown": {
+          "compute": 34680.15,
+          "storage": 9022.28,
+          "networking": 17203.2,
+          "paas": 29284.09
+        }
+      },
+      {
+        "month": "2023-05",
+        "value_usd": 0
+      },
+      {
+        "month": "2023-06",
+        "value_usd": 88737.16,
+        "workload_breakdown": {
+          "compute": 16134.23,
+          "storage": 18349.42,
+          "networking": 9658.03,
+          "paas": 44595.47
+        }
+      },
+      {
+        "month": "2023-07",
+        "value_usd": 0
+      },
+      {
+        "month": "2023-08",
+        "value_usd": 92059.19,
+        "workload_breakdown": {
+          "compute": 30528.09,
+          "storage": 12831.63,
+          "networking": 10109.01,
+          "paas": 38590.46
+        }
+      },
+      {
+        "month": "2023-09",
+        "value_usd": 91106.03,
+        "workload_breakdown": {
+          "compute": 28103.42,
+          "storage": 17465.74,
+          "networking": 14150.77,
+          "paas": 31386.1
+        }
+      },
+      {
+        "month": "2023-10",
+        "value_usd": 95445.44,
+        "workload_breakdown": {
+          "compute": 29316.9,
+          "storage": 23830.48,
+          "networking": 17741.86,
+          "paas": 24556.2
+        }
+      },
+      {
+        "month": "2023-11",
+        "value_usd": 94730.82,
+        "workload_breakdown": {
+          "compute": 41762.39,
+          "storage": 17310.77,
+          "networking": 12043.93,
+          "paas": 23613.73
+        }
+      },
+      {
+        "month": "2023-12",
+        "value_usd": 0
+      },
+      {
+        "month": "2024-01",
+        "value_usd": 95661.67,
+        "workload_breakdown": {
+          "compute": 31339.27,
+          "storage": 16324.75,
+          "networking": 18475.44,
+          "paas": 29522.21
+        }
+      },
+      {
+        "month": "2024-02",
+        "value_usd": 98500.94,
+        "workload_breakdown": {
+          "compute": 18430.95,
+          "storage": 34567.48,
+          "networking": 13341.55,
+          "paas": 32160.96
+        }
+      },
+      {
+        "month": "2024-03",
+        "value_usd": 0
+      }
+    ]
+  },
+  "open_recommendations": [
+    {
+      "recommendation_id": "REC-35802",
+      "type": "Manual",
+      "description": "Enable diagnostic logging for all services",
+      "priority": "High",
+      "created_at": "2024-02-20T10:00:00-05:00",
+      "status": "New"
+    }
+  ],
+  "recent_activity_timeline": [
+    {
+      "date": "2024-03-18",
+      "activity_type": "msx_update",
+      "description": "Added new milestone: Technical Validation",
+      "participants": [
+        "Raj Mehta",
+        "Ahmed Hassan",
+        "Sarah Kim"
+      ]
+    },
+    {
+      "date": "2024-01-19",
+      "activity_type": "meeting",
+      "description": "Executive business review",
+      "participants": [
+        "Lisa Patel",
+        "Raj Mehta",
+        "Ahmed Hassan"
+      ]
+    },
+    {
+      "date": "2024-01-04",
+      "activity_type": "msx_update",
+      "description": "Updated close date based on customer feedback",
+      "participants": [
+        "Ahmed Hassan",
+        "Lisa Patel"
+      ]
+    },
+    {
+      "date": "2024-01-02",
+      "activity_type": "email",
+      "description": "Sent renewal reminder to procurement",
+      "participants": [
+        "Sarah Kim",
+        "Marcus Williams",
+        "Lisa Patel"
+      ]
+    }
+  ],
+  "customer_health_flags": {
+    "overall_health": "At Risk",
+    "engagement_score": 90,
+    "consumption_trend": "Growing",
+    "renewal_risk": "Low",
+    "last_assessed": null
+  },
+  "contract_billing": {
+    "subscription_type": "PAYG",
+    "contract_end_date": null,
+    "macc_commitment_usd": null,
+    "macc_consumed_usd": null,
+    "billing_frequency": "Monthly",
+    "auto_renew": false
+  }
+}

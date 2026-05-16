@@ -1,0 +1,444 @@
+{
+  "fixture_id": "FX-024",
+  "fixture_class": "stale",
+  "authored_at": "2024-03-15T10:00:00-05:00",
+  "account": {
+    "account_id": "ACC-7YISWQ5O",
+    "name": "Wingtip Toys",
+    "segment": "smb-small",
+    "geography": "NA",
+    "tenure_years": 6.8,
+    "owner": "Sarah Kim",
+    "industry": "Consumer Goods",
+    "employee_count": 290
+  },
+  "opportunities": [
+    {
+      "opportunity_id": "OPP-1M8RHX0G",
+      "name": "Wingtip Dynamics 365 Implementation",
+      "stage": "Develop",
+      "estimated_value_usd": 45000,
+      "close_date": "2023-10-04",
+      "bpf_stage": "Develop",
+      "forecast_category": "Pipeline",
+      "owner": "Sarah Kim",
+      "last_updated": "2023-06-20T15:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-FDDVMTRG",
+          "name": "Discovery",
+          "status": "Not Started",
+          "due_date": "2024-05-07",
+          "completed_date": null,
+          "owner": "Sarah Kim",
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "opportunity_id": "OPP-7NVL5PM5",
+      "name": "Wingtip Azure Virtual Desktop",
+      "stage": "Prospect",
+      "estimated_value_usd": 210000,
+      "close_date": "2024-09-02",
+      "bpf_stage": null,
+      "forecast_category": "Pipeline",
+      "owner": "Sarah Kim",
+      "last_updated": "2023-08-22T15:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-7I6QWHR7",
+          "name": "Discovery",
+          "status": "Completed",
+          "due_date": "2024-06-02",
+          "completed_date": "2024-02-25",
+          "owner": "Sarah Kim",
+          "evidence": "email_thread_5373"
+        }
+      ]
+    },
+    {
+      "opportunity_id": "OPP-S5JMPNPK",
+      "name": "Wingtip Copilot Adoption",
+      "stage": "Propose",
+      "estimated_value_usd": 350000,
+      "close_date": "2024-10-23",
+      "bpf_stage": "Propose",
+      "forecast_category": "Pipeline",
+      "owner": "Sarah Kim",
+      "last_updated": "2023-08-12T10:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-QAA9BVH1",
+          "name": "Discovery",
+          "status": "Completed",
+          "due_date": "2024-06-01",
+          "completed_date": "2024-03-13",
+          "owner": "Sarah Kim",
+          "evidence": "email_thread_5541"
+        }
+      ]
+    },
+    {
+      "opportunity_id": "OPP-IC254BE2",
+      "name": "Wingtip Security Modernization",
+      "stage": "Develop",
+      "estimated_value_usd": 280000,
+      "close_date": "2024-12-18",
+      "bpf_stage": "Develop",
+      "forecast_category": "Best Case",
+      "owner": "Sarah Kim",
+      "last_updated": "2023-06-24T08:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-6MLE6KKX",
+          "name": "Discovery",
+          "status": "In Progress",
+          "due_date": "2024-07-16",
+          "completed_date": null,
+          "owner": "Sarah Kim",
+          "evidence": ""
+        }
+      ]
+    }
+  ],
+  "contacts": [
+    {
+      "contact_id": "CON-G57SQOC9",
+      "name": "Michael Rivera",
+      "role": "Technical",
+      "title": "Security Manager",
+      "email": "michael.rivera@wingtiptoys.com",
+      "influence_level": "Decision Maker",
+      "last_interaction": "2024-02-14",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-KQ11TGC6",
+      "name": "Sandra Okafor",
+      "role": "Technical",
+      "title": "Security Manager",
+      "email": "sandra.okafor@wingtiptoys.com",
+      "influence_level": "Influencer",
+      "last_interaction": "2024-03-12",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-Q45C83SV",
+      "name": "Angela Yamamoto",
+      "role": "Finance",
+      "title": "CFO",
+      "email": "angela.yamamoto@wingtiptoys.com",
+      "influence_level": "Champion",
+      "last_interaction": "2024-03-28",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-G7JY7TYP",
+      "name": "Nicole Petrov",
+      "role": "Executive",
+      "title": "Director of IT",
+      "email": "nicole.petrov@wingtiptoys.com",
+      "influence_level": "End User",
+      "last_interaction": "2023-01-23",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-W3ZAG6OQ",
+      "name": "Rachel Davis",
+      "role": "Finance",
+      "title": "Cloud Architect",
+      "email": "rachel.davis@wingtiptoys.com",
+      "influence_level": "Blocker",
+      "last_interaction": "2023-06-19",
+      "is_current": false
+    },
+    {
+      "contact_id": "CON-P1JFBFNP",
+      "name": "Samantha Martinez",
+      "role": "Executive",
+      "title": "Security Manager",
+      "email": "samantha.martinez@wingtiptoys.com",
+      "influence_level": "End User",
+      "last_interaction": "2023-03-27",
+      "is_current": false
+    },
+    {
+      "contact_id": "CON-62RASW3Z",
+      "name": "David Foster",
+      "role": "Operations",
+      "title": "Infrastructure Manager",
+      "email": "david.foster@wingtiptoys.com",
+      "influence_level": "End User",
+      "last_interaction": "2023-02-05",
+      "is_current": false
+    },
+    {
+      "contact_id": "CON-UNJW7YBC",
+      "name": "David Torres",
+      "role": "Finance",
+      "title": "Technology Manager",
+      "email": "david.torres@wingtiptoys.com",
+      "influence_level": "End User",
+      "last_interaction": "2023-02-25",
+      "is_current": false
+    },
+    {
+      "contact_id": "CON-CI18D86R",
+      "name": "Jason Chen",
+      "role": "Executive",
+      "title": "Security Manager",
+      "email": "jason.chen@wingtiptoys.com",
+      "influence_level": "Champion",
+      "last_interaction": "2023-06-24",
+      "is_current": false
+    },
+    {
+      "contact_id": "CON-I1GTD5VD",
+      "name": "Brian Kowalski",
+      "role": "Executive",
+      "title": "Head of Digital",
+      "email": "brian.kowalski@wingtiptoys.com",
+      "influence_level": "End User",
+      "last_interaction": "2023-03-23",
+      "is_current": false
+    },
+    {
+      "contact_id": "CON-X6UHC517",
+      "name": "Tamara Chen",
+      "role": "Technical",
+      "title": "COO",
+      "email": "tamara.chen@wingtiptoys.com",
+      "influence_level": "Champion",
+      "last_interaction": "2023-03-18",
+      "is_current": false
+    }
+  ],
+  "acr_trend": {
+    "currency": "USD",
+    "monthly_values": [
+      {
+        "month": "2023-04",
+        "value_usd": 52740.58,
+        "workload_breakdown": {
+          "compute": 11479.67,
+          "storage": 17149.04,
+          "networking": 6995.85,
+          "paas": 17116.02
+        }
+      },
+      {
+        "month": "2023-05",
+        "value_usd": 51854.37,
+        "workload_breakdown": {
+          "compute": 10840.13,
+          "storage": 11976.19,
+          "networking": 10411.0,
+          "paas": 18627.05
+        }
+      },
+      {
+        "month": "2023-06",
+        "value_usd": 51725.11,
+        "workload_breakdown": {
+          "compute": 11744.36,
+          "storage": 7906.35,
+          "networking": 11900.09,
+          "paas": 20174.31
+        }
+      },
+      {
+        "month": "2023-07",
+        "value_usd": 51548.51,
+        "workload_breakdown": {
+          "compute": 9824.59,
+          "storage": 14843.51,
+          "networking": 5037.72,
+          "paas": 21842.7
+        }
+      },
+      {
+        "month": "2023-08",
+        "value_usd": 52868.6,
+        "workload_breakdown": {
+          "compute": 18876.24,
+          "storage": 8846.86,
+          "networking": 8693.14,
+          "paas": 16452.36
+        }
+      },
+      {
+        "month": "2023-09",
+        "value_usd": 53902.36,
+        "workload_breakdown": {
+          "compute": 18073.31,
+          "storage": 15931.34,
+          "networking": 8185.42,
+          "paas": 11712.3
+        }
+      },
+      {
+        "month": "2023-10",
+        "value_usd": 53696.89,
+        "workload_breakdown": {
+          "compute": 11720.55,
+          "storage": 11959.25,
+          "networking": 4952.7,
+          "paas": 25064.38
+        }
+      },
+      {
+        "month": "2023-11",
+        "value_usd": 53696.89,
+        "workload_breakdown": {
+          "compute": 10517.65,
+          "storage": 6745.91,
+          "networking": 14899.71,
+          "paas": 21533.61
+        }
+      },
+      {
+        "month": "2023-12",
+        "value_usd": 53696.89,
+        "workload_breakdown": {
+          "compute": 12087.01,
+          "storage": 10229.42,
+          "networking": 13076.39,
+          "paas": 18304.07
+        }
+      },
+      {
+        "month": "2024-01",
+        "value_usd": 53696.89,
+        "workload_breakdown": {
+          "compute": 8185.87,
+          "storage": 16883.62,
+          "networking": 4925.47,
+          "paas": 23701.92
+        }
+      },
+      {
+        "month": "2024-02",
+        "value_usd": 53696.89,
+        "workload_breakdown": {
+          "compute": 23657.92,
+          "storage": 9438.18,
+          "networking": 4217.76,
+          "paas": 16383.03
+        }
+      },
+      {
+        "month": "2024-03",
+        "value_usd": 53696.89,
+        "workload_breakdown": {
+          "compute": 21017.89,
+          "storage": 10519.32,
+          "networking": 6900.7,
+          "paas": 15258.97
+        }
+      }
+    ]
+  },
+  "open_recommendations": [
+    {
+      "recommendation_id": "REC-10684",
+      "type": "SPA",
+      "description": "Review network security group rules",
+      "priority": "Low",
+      "created_at": "2023-08-06T10:00:00-05:00",
+      "status": "New"
+    },
+    {
+      "recommendation_id": "REC-92732",
+      "type": "CxObserve",
+      "description": "Enable MFA for all admin accounts",
+      "priority": "Medium",
+      "created_at": "2023-03-28T10:00:00-05:00",
+      "status": "Acknowledged"
+    },
+    {
+      "recommendation_id": "REC-32382",
+      "type": "Manual",
+      "description": "Migrate legacy .NET apps to Azure App Service",
+      "priority": "Medium",
+      "created_at": "2023-07-05T10:00:00-05:00",
+      "status": "Acknowledged"
+    },
+    {
+      "recommendation_id": "REC-85497",
+      "type": "SPA",
+      "description": "Enable Azure Security Center standard tier",
+      "priority": "Medium",
+      "created_at": "2023-05-04T10:00:00-05:00",
+      "status": "In Progress"
+    },
+    {
+      "recommendation_id": "REC-70000",
+      "type": "SPA",
+      "description": "Enable diagnostic logging for all services",
+      "priority": "High",
+      "created_at": "2023-04-01T10:00:00-05:00",
+      "status": "Acknowledged"
+    },
+    {
+      "recommendation_id": "REC-98520",
+      "type": "Advisor",
+      "description": "Adopt Azure Policy for compliance governance",
+      "priority": "Low",
+      "created_at": "2023-06-11T10:00:00-05:00",
+      "status": "New"
+    }
+  ],
+  "recent_activity_timeline": [
+    {
+      "date": "2023-12-25",
+      "activity_type": "contract_event",
+      "description": "Contract renewal notification (90 days)",
+      "participants": [
+        "Sarah Kim",
+        "Marcus Williams"
+      ]
+    },
+    {
+      "date": "2023-09-23",
+      "activity_type": "call",
+      "description": "Discussed budget approval timeline",
+      "participants": [
+        "Lisa Patel",
+        "Sarah Kim",
+        "Raj Mehta"
+      ]
+    },
+    {
+      "date": "2023-07-17",
+      "activity_type": "email",
+      "description": "Shared architecture documentation",
+      "participants": [
+        "Lisa Patel"
+      ]
+    },
+    {
+      "date": "2023-07-13",
+      "activity_type": "contract_event",
+      "description": "Contract renewal notification (90 days)",
+      "participants": [
+        "Sarah Kim"
+      ]
+    }
+  ],
+  "customer_health_flags": {
+    "overall_health": "Healthy",
+    "engagement_score": 76,
+    "consumption_trend": "Declining",
+    "renewal_risk": "Medium",
+    "last_assessed": "2023-08-03"
+  },
+  "contract_billing": {
+    "subscription_type": "MCA",
+    "contract_end_date": "2024-08-08",
+    "macc_commitment_usd": 500000,
+    "macc_consumed_usd": 339866.38,
+    "billing_frequency": "Annual",
+    "auto_renew": false
+  }
+}

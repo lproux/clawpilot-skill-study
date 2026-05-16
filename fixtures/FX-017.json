@@ -1,0 +1,357 @@
+{
+  "fixture_id": "FX-017",
+  "fixture_class": "stale",
+  "authored_at": "2024-03-15T10:00:00-05:00",
+  "account": {
+    "account_id": "ACC-3AB2FT8E",
+    "name": "Humongous Insurance",
+    "segment": "smb-small",
+    "geography": "LATAM",
+    "tenure_years": 4.1,
+    "owner": "David Chen",
+    "industry": "Insurance",
+    "employee_count": 4200
+  },
+  "opportunities": [
+    {
+      "opportunity_id": "OPP-GEKVLZJS",
+      "name": "Humongous Cloud Migration Phase",
+      "stage": "Qualify",
+      "estimated_value_usd": 175000,
+      "close_date": "2023-10-27",
+      "bpf_stage": "Qualify",
+      "forecast_category": "Pipeline",
+      "owner": "David Chen",
+      "last_updated": "2023-08-13T15:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-BOBZP5D1",
+          "name": "Discovery",
+          "status": "In Progress",
+          "due_date": "2024-08-03",
+          "completed_date": null,
+          "owner": "David Chen",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-HV2EXEP1",
+          "name": "Technical Validation",
+          "status": "Blocked",
+          "due_date": "2024-08-28",
+          "completed_date": null,
+          "owner": "David Chen",
+          "evidence": ""
+        }
+      ]
+    }
+  ],
+  "contacts": [
+    {
+      "contact_id": "CON-G36HIYGF",
+      "name": "Michael Petrov",
+      "role": "Operations",
+      "title": "IT Director",
+      "email": "michael.petrov@humongousins.com",
+      "influence_level": "Decision Maker",
+      "last_interaction": "2024-02-08",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-20FK3U55",
+      "name": "Angela Nakamura",
+      "role": "Finance",
+      "title": "Data Platform Lead",
+      "email": "angela.nakamura@humongousins.com",
+      "influence_level": "Influencer",
+      "last_interaction": "2024-02-25",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-K1WMXYT1",
+      "name": "Thomas Patel",
+      "role": "Business",
+      "title": "COO",
+      "email": "thomas.patel@humongousins.com",
+      "influence_level": "Champion",
+      "last_interaction": "2024-01-25",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-83FRS1F3",
+      "name": "James Nakamura",
+      "role": "Executive",
+      "title": "Infrastructure Manager",
+      "email": "james.nakamura@humongousins.com",
+      "influence_level": "End User",
+      "last_interaction": "2023-06-14",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-ZR1DWDT2",
+      "name": "Sandra Petrov",
+      "role": "Technical",
+      "title": "DevOps Lead",
+      "email": "sandra.petrov@humongousins.com",
+      "influence_level": "Blocker",
+      "last_interaction": "2023-05-27",
+      "is_current": false
+    },
+    {
+      "contact_id": "CON-I8H8GICG",
+      "name": "Angela Patel",
+      "role": "Finance",
+      "title": "Security Manager",
+      "email": "angela.patel@humongousins.com",
+      "influence_level": "Champion",
+      "last_interaction": "2023-04-17",
+      "is_current": false
+    },
+    {
+      "contact_id": "CON-XU05STTK",
+      "name": "Patricia Kowalski",
+      "role": "Finance",
+      "title": "COO",
+      "email": "patricia.kowalski@humongousins.com",
+      "influence_level": "Champion",
+      "last_interaction": "2023-03-25",
+      "is_current": false
+    },
+    {
+      "contact_id": "CON-BN6XWDV6",
+      "name": "Nicole Jackson",
+      "role": "Finance",
+      "title": "Infrastructure Manager",
+      "email": "nicole.jackson@humongousins.com",
+      "influence_level": "End User",
+      "last_interaction": "2023-03-22",
+      "is_current": false
+    },
+    {
+      "contact_id": "CON-R47PF94T",
+      "name": "William Nguyen",
+      "role": "Operations",
+      "title": "Technology Manager",
+      "email": "william.nguyen@humongousins.com",
+      "influence_level": "Champion",
+      "last_interaction": "2023-06-14",
+      "is_current": false
+    },
+    {
+      "contact_id": "CON-U1JV39YQ",
+      "name": "James Kim",
+      "role": "Technical",
+      "title": "Security Manager",
+      "email": "james.kim@humongousins.com",
+      "influence_level": "End User",
+      "last_interaction": "2023-05-26",
+      "is_current": false
+    },
+    {
+      "contact_id": "CON-7XYGUL4T",
+      "name": "Christopher Morrison",
+      "role": "Business",
+      "title": "Security Manager",
+      "email": "christopher.morrison@humongousins.com",
+      "influence_level": "Blocker",
+      "last_interaction": "2023-02-06",
+      "is_current": false
+    }
+  ],
+  "acr_trend": {
+    "currency": "USD",
+    "monthly_values": [
+      {
+        "month": "2023-04",
+        "value_usd": 72813.55,
+        "workload_breakdown": {
+          "compute": 28515.47,
+          "storage": 10103.88,
+          "networking": 9746.09,
+          "paas": 24448.11
+        }
+      },
+      {
+        "month": "2023-05",
+        "value_usd": 74921.37,
+        "workload_breakdown": {
+          "compute": 25068.67,
+          "storage": 11724.24,
+          "networking": 12353.7,
+          "paas": 25774.75
+        }
+      },
+      {
+        "month": "2023-06",
+        "value_usd": 73578.04,
+        "workload_breakdown": {
+          "compute": 11311.07,
+          "storage": 13327.93,
+          "networking": 18411.04,
+          "paas": 30528.01
+        }
+      },
+      {
+        "month": "2023-07",
+        "value_usd": 72220.13,
+        "workload_breakdown": {
+          "compute": 20632.66,
+          "storage": 17948.36,
+          "networking": 11705.71,
+          "paas": 21933.4
+        }
+      },
+      {
+        "month": "2023-08",
+        "value_usd": 71810.21,
+        "workload_breakdown": {
+          "compute": 12103.88,
+          "storage": 22985.43,
+          "networking": 14075.7,
+          "paas": 22645.2
+        }
+      },
+      {
+        "month": "2023-09",
+        "value_usd": 73720.59,
+        "workload_breakdown": {
+          "compute": 17734.5,
+          "storage": 11495.67,
+          "networking": 10591.85,
+          "paas": 33898.56
+        }
+      },
+      {
+        "month": "2023-10",
+        "value_usd": 73720.59,
+        "workload_breakdown": {
+          "compute": 14866.66,
+          "storage": 19513.4,
+          "networking": 8768.3,
+          "paas": 30572.23
+        }
+      },
+      {
+        "month": "2023-11",
+        "value_usd": 73720.59,
+        "workload_breakdown": {
+          "compute": 26093.52,
+          "storage": 8224.71,
+          "networking": 8291.26,
+          "paas": 31111.1
+        }
+      },
+      {
+        "month": "2023-12",
+        "value_usd": 73720.59,
+        "workload_breakdown": {
+          "compute": 13827.8,
+          "storage": 11341.51,
+          "networking": 20099.09,
+          "paas": 28452.18
+        }
+      },
+      {
+        "month": "2024-01",
+        "value_usd": 73720.59,
+        "workload_breakdown": {
+          "compute": 11731.92,
+          "storage": 24730.38,
+          "networking": 13103.36,
+          "paas": 24154.93
+        }
+      },
+      {
+        "month": "2024-02",
+        "value_usd": 73720.59,
+        "workload_breakdown": {
+          "compute": 13258.33,
+          "storage": 18155.16,
+          "networking": 14852.79,
+          "paas": 27454.32
+        }
+      },
+      {
+        "month": "2024-03",
+        "value_usd": 73720.59,
+        "workload_breakdown": {
+          "compute": 17011.64,
+          "storage": 24622.34,
+          "networking": 14180.0,
+          "paas": 17906.6
+        }
+      }
+    ]
+  },
+  "open_recommendations": [
+    {
+      "recommendation_id": "REC-19738",
+      "type": "Advisor",
+      "description": "Review network security group rules",
+      "priority": "Low",
+      "created_at": "2023-03-10T10:00:00-05:00",
+      "status": "Dismissed"
+    },
+    {
+      "recommendation_id": "REC-86087",
+      "type": "Manual",
+      "description": "Adopt Azure Policy for compliance governance",
+      "priority": "Medium",
+      "created_at": "2023-07-20T10:00:00-05:00",
+      "status": "New"
+    },
+    {
+      "recommendation_id": "REC-89204",
+      "type": "SPA",
+      "description": "Implement Azure Landing Zones",
+      "priority": "High",
+      "created_at": "2023-08-13T10:00:00-05:00",
+      "status": "Dismissed"
+    }
+  ],
+  "recent_activity_timeline": [
+    {
+      "date": "2023-10-08",
+      "activity_type": "escalation",
+      "description": "Customer escalated support ticket response time",
+      "participants": [
+        "Marcus Williams",
+        "Raj Mehta",
+        "Sarah Kim"
+      ]
+    },
+    {
+      "date": "2023-08-08",
+      "activity_type": "spa_received",
+      "description": "SPA: Cost anomaly detected",
+      "participants": [
+        "Lisa Patel",
+        "Raj Mehta",
+        "Marcus Williams"
+      ]
+    },
+    {
+      "date": "2023-07-05",
+      "activity_type": "msx_update",
+      "description": "Added competitive intelligence notes",
+      "participants": [
+        "Lisa Patel",
+        "Marcus Williams"
+      ]
+    }
+  ],
+  "customer_health_flags": {
+    "overall_health": "Healthy",
+    "engagement_score": 74,
+    "consumption_trend": "Growing",
+    "renewal_risk": "Medium",
+    "last_assessed": "2023-05-06"
+  },
+  "contract_billing": {
+    "subscription_type": "PAYG",
+    "contract_end_date": null,
+    "macc_commitment_usd": null,
+    "macc_consumed_usd": null,
+    "billing_frequency": "Monthly",
+    "auto_renew": false
+  }
+}

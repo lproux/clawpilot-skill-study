@@ -1,0 +1,419 @@
+{
+  "fixture_id": "FX-004",
+  "fixture_class": "clean",
+  "authored_at": "2024-03-15T10:00:00-05:00",
+  "account": {
+    "account_id": "ACC-TBZ7Q87G",
+    "name": "Adventure Works",
+    "segment": "smb-mid",
+    "geography": "LATAM",
+    "tenure_years": 2.7,
+    "owner": "Sarah Kim",
+    "industry": "Outdoor Recreation",
+    "employee_count": 450
+  },
+  "opportunities": [
+    {
+      "opportunity_id": "OPP-DACB1VW1",
+      "name": "Adventure Data Platform Migration",
+      "stage": "Propose",
+      "estimated_value_usd": 210000,
+      "close_date": "2024-12-19",
+      "bpf_stage": "Propose",
+      "forecast_category": "Pipeline",
+      "owner": "Sarah Kim",
+      "last_updated": "2024-03-09T12:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-MZG955B1",
+          "name": "Discovery",
+          "status": "Not Started",
+          "due_date": "2024-06-06",
+          "completed_date": null,
+          "owner": "Sarah Kim",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-399PSEJA",
+          "name": "Technical Validation",
+          "status": "In Progress",
+          "due_date": "2024-05-11",
+          "completed_date": null,
+          "owner": "Sarah Kim",
+          "evidence": ""
+        }
+      ]
+    }
+  ],
+  "contacts": [
+    {
+      "contact_id": "CON-YXOIZUIQ",
+      "name": "Michael Patel",
+      "role": "Technical",
+      "title": "Data Platform Lead",
+      "email": "michael.patel@adventurewor.com",
+      "influence_level": "Decision Maker",
+      "last_interaction": "2024-01-09",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-03JWS9YT",
+      "name": "Michelle O'Brien",
+      "role": "Business",
+      "title": "VP Engineering",
+      "email": "michelle.o'brien@adventurewor.com",
+      "influence_level": "Influencer",
+      "last_interaction": "2024-01-26",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-ROH2VY72",
+      "name": "Daniel Kowalski",
+      "role": "Executive",
+      "title": "CFO",
+      "email": "daniel.kowalski@adventurewor.com",
+      "influence_level": "Champion",
+      "last_interaction": "2024-02-02",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-GO3P2DHM",
+      "name": "Samantha Okafor",
+      "role": "Business",
+      "title": "CFO",
+      "email": "samantha.okafor@adventurewor.com",
+      "influence_level": "End User",
+      "last_interaction": "2024-01-04",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-5KNDGRE8",
+      "name": "Angela Morrison",
+      "role": "Operations",
+      "title": "VP Engineering",
+      "email": "angela.morrison@adventurewor.com",
+      "influence_level": "Blocker",
+      "last_interaction": "2024-01-06",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-1FGJCGT4",
+      "name": "Diana White",
+      "role": "Operations",
+      "title": "Head of Digital",
+      "email": "diana.white@adventurewor.com",
+      "influence_level": "End User",
+      "last_interaction": "2024-02-28",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-0GWX9KC3",
+      "name": "Christopher Berg",
+      "role": "Business",
+      "title": "Head of Digital",
+      "email": "christopher.berg@adventurewor.com",
+      "influence_level": "Blocker",
+      "last_interaction": "2024-03-14",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-BT3P4UOG",
+      "name": "Robert O'Brien",
+      "role": "Business",
+      "title": "Infrastructure Manager",
+      "email": "robert.o'brien@adventurewor.com",
+      "influence_level": "Blocker",
+      "last_interaction": "2024-01-11",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-21TGKB3Q",
+      "name": "Brian Chen",
+      "role": "Operations",
+      "title": "CFO",
+      "email": "brian.chen@adventurewor.com",
+      "influence_level": "End User",
+      "last_interaction": "2024-02-27",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-LBLF3KL9",
+      "name": "Eric Wilson",
+      "role": "Finance",
+      "title": "Head of Digital",
+      "email": "eric.wilson@adventurewor.com",
+      "influence_level": "End User",
+      "last_interaction": "2024-01-01",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-GN66ACN8",
+      "name": "Robert Anderson",
+      "role": "Technical",
+      "title": "Head of Digital",
+      "email": "robert.anderson@adventurewor.com",
+      "influence_level": "Blocker",
+      "last_interaction": "2024-02-19",
+      "is_current": true
+    }
+  ],
+  "acr_trend": {
+    "currency": "USD",
+    "monthly_values": [
+      {
+        "month": "2023-04",
+        "value_usd": 36602.28,
+        "workload_breakdown": {
+          "compute": 14220.77,
+          "storage": 8305.56,
+          "networking": 3002.44,
+          "paas": 11073.51
+        }
+      },
+      {
+        "month": "2023-05",
+        "value_usd": 36050.05,
+        "workload_breakdown": {
+          "compute": 14579.47,
+          "storage": 7840.85,
+          "networking": 2350.93,
+          "paas": 11278.8
+        }
+      },
+      {
+        "month": "2023-06",
+        "value_usd": 36061.73,
+        "workload_breakdown": {
+          "compute": 9824.64,
+          "storage": 9448.9,
+          "networking": 7166.67,
+          "paas": 9621.52
+        }
+      },
+      {
+        "month": "2023-07",
+        "value_usd": 35497.01,
+        "workload_breakdown": {
+          "compute": 7158.45,
+          "storage": 6392.02,
+          "networking": 8395.17,
+          "paas": 13551.38
+        }
+      },
+      {
+        "month": "2023-08",
+        "value_usd": 34810.57,
+        "workload_breakdown": {
+          "compute": 15274.94,
+          "storage": 3479.81,
+          "networking": 2841.05,
+          "paas": 13214.77
+        }
+      },
+      {
+        "month": "2023-09",
+        "value_usd": 34707.22,
+        "workload_breakdown": {
+          "compute": 13027.49,
+          "storage": 5313.63,
+          "networking": 4353.92,
+          "paas": 12012.18
+        }
+      },
+      {
+        "month": "2023-10",
+        "value_usd": 34258.19,
+        "workload_breakdown": {
+          "compute": 14145.19,
+          "storage": 7517.03,
+          "networking": 4386.1,
+          "paas": 8209.87
+        }
+      },
+      {
+        "month": "2023-11",
+        "value_usd": 34212.36,
+        "workload_breakdown": {
+          "compute": 14037.18,
+          "storage": 7457.01,
+          "networking": 4999.19,
+          "paas": 7718.98
+        }
+      },
+      {
+        "month": "2023-12",
+        "value_usd": 35054.27,
+        "workload_breakdown": {
+          "compute": 12022.75,
+          "storage": 7553.13,
+          "networking": 2599.74,
+          "paas": 12878.65
+        }
+      },
+      {
+        "month": "2024-01",
+        "value_usd": 34428.39,
+        "workload_breakdown": {
+          "compute": 14559.2,
+          "storage": 8415.19,
+          "networking": 2925.39,
+          "paas": 8528.62
+        }
+      },
+      {
+        "month": "2024-02",
+        "value_usd": 35030.76,
+        "workload_breakdown": {
+          "compute": 11837.03,
+          "storage": 3596.64,
+          "networking": 5878.94,
+          "paas": 13718.14
+        }
+      },
+      {
+        "month": "2024-03",
+        "value_usd": 34613.91,
+        "workload_breakdown": {
+          "compute": 11665.3,
+          "storage": 5464.87,
+          "networking": 4796.65,
+          "paas": 12687.09
+        }
+      }
+    ]
+  },
+  "open_recommendations": [
+    {
+      "recommendation_id": "REC-68290",
+      "type": "CxObserve",
+      "description": "Enable Azure Monitor for production workloads",
+      "priority": "Low",
+      "created_at": "2024-01-23T10:00:00-05:00",
+      "status": "Acknowledged"
+    }
+  ],
+  "recent_activity_timeline": [
+    {
+      "date": "2024-03-15",
+      "activity_type": "spa_received",
+      "description": "SPA: Security recommendation - MFA gaps",
+      "participants": [
+        "Ahmed Hassan"
+      ]
+    },
+    {
+      "date": "2024-03-12",
+      "activity_type": "meeting",
+      "description": "Technical deep-dive on migration",
+      "participants": [
+        "Lisa Patel",
+        "Marcus Williams"
+      ]
+    },
+    {
+      "date": "2024-03-05",
+      "activity_type": "contract_event",
+      "description": "Contract renewal notification (90 days)",
+      "participants": [
+        "Sarah Kim"
+      ]
+    },
+    {
+      "date": "2024-02-25",
+      "activity_type": "email",
+      "description": "Received pricing inquiry from CFO",
+      "participants": [
+        "Marcus Williams",
+        "Sarah Kim",
+        "Raj Mehta"
+      ]
+    },
+    {
+      "date": "2024-02-23",
+      "activity_type": "meeting",
+      "description": "Technical deep-dive on migration",
+      "participants": [
+        "Raj Mehta",
+        "Sarah Kim"
+      ]
+    },
+    {
+      "date": "2024-01-28",
+      "activity_type": "spa_received",
+      "description": "SPA: VM rightsizing opportunity detected",
+      "participants": [
+        "Sarah Kim",
+        "Lisa Patel"
+      ]
+    },
+    {
+      "date": "2024-01-24",
+      "activity_type": "spa_received",
+      "description": "SPA: VM rightsizing opportunity detected",
+      "participants": [
+        "Marcus Williams",
+        "Raj Mehta"
+      ]
+    },
+    {
+      "date": "2024-01-14",
+      "activity_type": "call",
+      "description": "Quick call on deployment blocker",
+      "participants": [
+        "Lisa Patel",
+        "Raj Mehta"
+      ]
+    },
+    {
+      "date": "2024-01-14",
+      "activity_type": "msx_update",
+      "description": "Updated close date based on customer feedback",
+      "participants": [
+        "Marcus Williams",
+        "Lisa Patel",
+        "Ahmed Hassan"
+      ]
+    },
+    {
+      "date": "2024-01-08",
+      "activity_type": "contract_event",
+      "description": "Contract renewal notification (90 days)",
+      "participants": [
+        "Marcus Williams"
+      ]
+    },
+    {
+      "date": "2024-01-07",
+      "activity_type": "meeting",
+      "description": "Executive business review",
+      "participants": [
+        "Raj Mehta"
+      ]
+    },
+    {
+      "date": "2024-01-01",
+      "activity_type": "spa_received",
+      "description": "SPA: Cost anomaly detected",
+      "participants": [
+        "Ahmed Hassan",
+        "Sarah Kim",
+        "Lisa Patel"
+      ]
+    }
+  ],
+  "customer_health_flags": {
+    "overall_health": "Healthy",
+    "engagement_score": 95,
+    "consumption_trend": "Stable",
+    "renewal_risk": "Medium",
+    "last_assessed": "2024-03-11"
+  },
+  "contract_billing": {
+    "subscription_type": "EA",
+    "contract_end_date": "2024-06-14",
+    "macc_commitment_usd": 500000,
+    "macc_consumed_usd": 221505.99,
+    "billing_frequency": "Annual",
+    "auto_renew": false
+  }
+}

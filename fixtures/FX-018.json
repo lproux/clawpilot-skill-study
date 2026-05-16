@@ -1,0 +1,279 @@
+{
+  "fixture_id": "FX-018",
+  "fixture_class": "stale",
+  "authored_at": "2024-03-15T10:00:00-05:00",
+  "account": {
+    "account_id": "ACC-Z7NKL31Q",
+    "name": "Lamna Healthcare",
+    "segment": "smb-corporate",
+    "geography": "EMEA",
+    "tenure_years": 4.6,
+    "owner": "Priya Sharma",
+    "industry": "Healthcare",
+    "employee_count": 1500
+  },
+  "opportunities": [
+    {
+      "opportunity_id": "OPP-1UOHLKV1",
+      "name": "Lamna Azure Infrastructure",
+      "stage": "Qualify",
+      "estimated_value_usd": 45000,
+      "close_date": "2023-09-17",
+      "bpf_stage": "Qualify",
+      "forecast_category": "Pipeline",
+      "owner": "Priya Sharma",
+      "last_updated": "2023-07-13T11:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-AT6N7HET",
+          "name": "Discovery",
+          "status": "Blocked",
+          "due_date": "2024-03-20",
+          "completed_date": null,
+          "owner": "Priya Sharma",
+          "evidence": ""
+        }
+      ]
+    }
+  ],
+  "contacts": [
+    {
+      "contact_id": "CON-WUFIU93K",
+      "name": "Victoria Lee",
+      "role": "Business",
+      "title": "Cloud Architect",
+      "email": "victoria.lee@lamnahealthc.com",
+      "influence_level": "Decision Maker",
+      "last_interaction": "2024-01-24",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-ZHMLR7KW",
+      "name": "Sandra Foster",
+      "role": "Technical",
+      "title": "Director of IT",
+      "email": "sandra.foster@lamnahealthc.com",
+      "influence_level": "Influencer",
+      "last_interaction": "2024-03-22",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-Y0NFL74F",
+      "name": "Maria Park",
+      "role": "Finance",
+      "title": "IT Director",
+      "email": "maria.park@lamnahealthc.com",
+      "influence_level": "Champion",
+      "last_interaction": "2024-03-26",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-W2UM90ZX",
+      "name": "Karen Chen",
+      "role": "Executive",
+      "title": "VP Engineering",
+      "email": "karen.chen@lamnahealthc.com",
+      "influence_level": "End User",
+      "last_interaction": "2023-03-27",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-64FZ6TRM",
+      "name": "Kevin Jackson",
+      "role": "Business",
+      "title": "Infrastructure Manager",
+      "email": "kevin.jackson@lamnahealthc.com",
+      "influence_level": "Blocker",
+      "last_interaction": "2023-01-26",
+      "is_current": false
+    }
+  ],
+  "acr_trend": {
+    "currency": "USD",
+    "monthly_values": [
+      {
+        "month": "2023-04",
+        "value_usd": 31604.56,
+        "workload_breakdown": {
+          "compute": 12387.96,
+          "storage": 5972.82,
+          "networking": 5011.28,
+          "paas": 8232.5
+        }
+      },
+      {
+        "month": "2023-05",
+        "value_usd": 30699.58,
+        "workload_breakdown": {
+          "compute": 11315.47,
+          "storage": 4878.46,
+          "networking": 5090.32,
+          "paas": 9415.33
+        }
+      },
+      {
+        "month": "2023-06",
+        "value_usd": 31338.6,
+        "workload_breakdown": {
+          "compute": 13810.78,
+          "storage": 7323.68,
+          "networking": 4308.68,
+          "paas": 5895.45
+        }
+      },
+      {
+        "month": "2023-07",
+        "value_usd": 31741.69,
+        "workload_breakdown": {
+          "compute": 5724.4,
+          "storage": 8903.01,
+          "networking": 6912.32,
+          "paas": 10201.95
+        }
+      },
+      {
+        "month": "2023-08",
+        "value_usd": 32084.3,
+        "workload_breakdown": {
+          "compute": 7750.04,
+          "storage": 3978.86,
+          "networking": 7622.91,
+          "paas": 12732.49
+        }
+      },
+      {
+        "month": "2023-09",
+        "value_usd": 31142.13,
+        "workload_breakdown": {
+          "compute": 9935.19,
+          "storage": 9324.78,
+          "networking": 2684.69,
+          "paas": 9197.47
+        }
+      },
+      {
+        "month": "2023-10",
+        "value_usd": 31755.59,
+        "workload_breakdown": {
+          "compute": 5610.35,
+          "storage": 8458.7,
+          "networking": 7135.99,
+          "paas": 10550.55
+        }
+      },
+      {
+        "month": "2023-11",
+        "value_usd": 31523.63,
+        "workload_breakdown": {
+          "compute": 10859.13,
+          "storage": 3756.06,
+          "networking": 4256.43,
+          "paas": 12652.01
+        }
+      },
+      {
+        "month": "2023-12",
+        "value_usd": 31523.63,
+        "workload_breakdown": {
+          "compute": 5936.56,
+          "storage": 6944.08,
+          "networking": 7149.83,
+          "paas": 11493.16
+        }
+      },
+      {
+        "month": "2024-01",
+        "value_usd": 31523.63,
+        "workload_breakdown": {
+          "compute": 9006.97,
+          "storage": 7000.83,
+          "networking": 3380.54,
+          "paas": 12135.29
+        }
+      },
+      {
+        "month": "2024-02",
+        "value_usd": 31523.63,
+        "workload_breakdown": {
+          "compute": 9622.41,
+          "storage": 9789.1,
+          "networking": 3268.63,
+          "paas": 8843.5
+        }
+      },
+      {
+        "month": "2024-03",
+        "value_usd": 31523.63,
+        "workload_breakdown": {
+          "compute": 7624.29,
+          "storage": 8538.18,
+          "networking": 6383.34,
+          "paas": 8977.82
+        }
+      }
+    ]
+  },
+  "open_recommendations": [
+    {
+      "recommendation_id": "REC-85128",
+      "type": "SPA",
+      "description": "Deploy Azure Front Door for global load balancing",
+      "priority": "Low",
+      "created_at": "2023-06-17T10:00:00-05:00",
+      "status": "Acknowledged"
+    },
+    {
+      "recommendation_id": "REC-49333",
+      "type": "Manual",
+      "description": "Adopt Azure Policy for compliance governance",
+      "priority": "High",
+      "created_at": "2023-05-25T10:00:00-05:00",
+      "status": "Acknowledged"
+    },
+    {
+      "recommendation_id": "REC-73100",
+      "type": "Manual",
+      "description": "Migrate to Azure SQL Managed Instance",
+      "priority": "Medium",
+      "created_at": "2023-08-11T10:00:00-05:00",
+      "status": "New"
+    }
+  ],
+  "recent_activity_timeline": [
+    {
+      "date": "2023-09-11",
+      "activity_type": "email",
+      "description": "Shared architecture documentation",
+      "participants": [
+        "Marcus Williams",
+        "Ahmed Hassan",
+        "Lisa Patel"
+      ]
+    },
+    {
+      "date": "2023-06-17",
+      "activity_type": "call",
+      "description": "Discussed budget approval timeline",
+      "participants": [
+        "Sarah Kim",
+        "Ahmed Hassan",
+        "Raj Mehta"
+      ]
+    }
+  ],
+  "customer_health_flags": {
+    "overall_health": "Healthy",
+    "engagement_score": 47,
+    "consumption_trend": "Growing",
+    "renewal_risk": "Medium",
+    "last_assessed": "2023-08-02"
+  },
+  "contract_billing": {
+    "subscription_type": "MCA",
+    "contract_end_date": "2024-09-05",
+    "macc_commitment_usd": null,
+    "macc_consumed_usd": null,
+    "billing_frequency": "Monthly",
+    "auto_renew": true
+  }
+}

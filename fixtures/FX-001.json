@@ -1,0 +1,431 @@
+{
+  "fixture_id": "FX-001",
+  "fixture_class": "clean",
+  "authored_at": "2024-03-15T10:00:00-05:00",
+  "account": {
+    "account_id": "ACC-VWW2DK8X",
+    "name": "Contoso Ltd",
+    "segment": "smb-corporate",
+    "geography": "NA",
+    "tenure_years": 0.7,
+    "owner": "Marcus Williams",
+    "industry": "Technology",
+    "employee_count": 320
+  },
+  "opportunities": [
+    {
+      "opportunity_id": "OPP-7PT1FTB0",
+      "name": "Contoso Power Platform",
+      "stage": "Propose",
+      "estimated_value_usd": 560000,
+      "close_date": "2024-12-28",
+      "bpf_stage": "Propose",
+      "forecast_category": "Pipeline",
+      "owner": "Marcus Williams",
+      "last_updated": "2024-03-15T16:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-4EN713WO",
+          "name": "Discovery",
+          "status": "Not Started",
+          "due_date": "2024-03-05",
+          "completed_date": null,
+          "owner": "Marcus Williams",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-B5GMVU1S",
+          "name": "Technical Validation",
+          "status": "In Progress",
+          "due_date": "2024-05-26",
+          "completed_date": null,
+          "owner": "Marcus Williams",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-OB220JFK",
+          "name": "Business Case Approved",
+          "status": "Completed",
+          "due_date": "2024-06-26",
+          "completed_date": "2024-03-26",
+          "owner": "Marcus Williams",
+          "evidence": "email_thread_2066"
+        }
+      ]
+    }
+  ],
+  "contacts": [
+    {
+      "contact_id": "CON-72IQJH3W",
+      "name": "Angela Doyle",
+      "role": "Operations",
+      "title": "Director of IT",
+      "email": "angela.doyle@contosoltd.com",
+      "influence_level": "Decision Maker",
+      "last_interaction": "2024-01-27",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-TVMTUHV0",
+      "name": "Laura Okafor",
+      "role": "Finance",
+      "title": "Security Manager",
+      "email": "laura.okafor@contosoltd.com",
+      "influence_level": "Influencer",
+      "last_interaction": "2024-03-19",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-3XB81BNE",
+      "name": "Angela Hansen",
+      "role": "Technical",
+      "title": "Director of IT",
+      "email": "angela.hansen@contosoltd.com",
+      "influence_level": "Champion",
+      "last_interaction": "2024-02-04",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-VLMQEQVK",
+      "name": "William White",
+      "role": "Executive",
+      "title": "CIO",
+      "email": "william.white@contosoltd.com",
+      "influence_level": "End User",
+      "last_interaction": "2024-02-01",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-KQWUMYGB",
+      "name": "Diana Yamamoto",
+      "role": "Finance",
+      "title": "CTO",
+      "email": "diana.yamamoto@contosoltd.com",
+      "influence_level": "Blocker",
+      "last_interaction": "2024-03-13",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-QZPO3WKZ",
+      "name": "Tamara Thompson",
+      "role": "Business",
+      "title": "Director of IT",
+      "email": "tamara.thompson@contosoltd.com",
+      "influence_level": "End User",
+      "last_interaction": "2024-01-12",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-MH2FIZFF",
+      "name": "David Schmidt",
+      "role": "Finance",
+      "title": "Infrastructure Manager",
+      "email": "david.schmidt@contosoltd.com",
+      "influence_level": "Champion",
+      "last_interaction": "2024-03-22",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-EB3QS0RB",
+      "name": "Victoria Morrison",
+      "role": "Business",
+      "title": "CFO",
+      "email": "victoria.morrison@contosoltd.com",
+      "influence_level": "End User",
+      "last_interaction": "2024-03-17",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-5FU4ZZCD",
+      "name": "Rachel Nguyen",
+      "role": "Operations",
+      "title": "Security Manager",
+      "email": "rachel.nguyen@contosoltd.com",
+      "influence_level": "End User",
+      "last_interaction": "2024-03-10",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-46CW91IE",
+      "name": "Karen Martinez",
+      "role": "Business",
+      "title": "CFO",
+      "email": "karen.martinez@contosoltd.com",
+      "influence_level": "Champion",
+      "last_interaction": "2024-03-20",
+      "is_current": true
+    }
+  ],
+  "acr_trend": {
+    "currency": "USD",
+    "monthly_values": [
+      {
+        "month": "2023-04",
+        "value_usd": 77081.25,
+        "workload_breakdown": {
+          "compute": 16160.18,
+          "storage": 21015.66,
+          "networking": 12509.65,
+          "paas": 27395.76
+        }
+      },
+      {
+        "month": "2023-05",
+        "value_usd": 76811.6,
+        "workload_breakdown": {
+          "compute": 16601.46,
+          "storage": 19675.45,
+          "networking": 15923.21,
+          "paas": 24611.48
+        }
+      },
+      {
+        "month": "2023-06",
+        "value_usd": 76304.08,
+        "workload_breakdown": {
+          "compute": 11594.38,
+          "storage": 25349.75,
+          "networking": 14147.61,
+          "paas": 25212.34
+        }
+      },
+      {
+        "month": "2023-07",
+        "value_usd": 78149.75,
+        "workload_breakdown": {
+          "compute": 19699.61,
+          "storage": 11493.86,
+          "networking": 20527.59,
+          "paas": 26428.69
+        }
+      },
+      {
+        "month": "2023-08",
+        "value_usd": 79759.78,
+        "workload_breakdown": {
+          "compute": 20017.98,
+          "storage": 10623.51,
+          "networking": 8792.91,
+          "paas": 40325.38
+        }
+      },
+      {
+        "month": "2023-09",
+        "value_usd": 82434.19,
+        "workload_breakdown": {
+          "compute": 33323.88,
+          "storage": 16261.3,
+          "networking": 12881.36,
+          "paas": 19967.65
+        }
+      },
+      {
+        "month": "2023-10",
+        "value_usd": 81215.51,
+        "workload_breakdown": {
+          "compute": 29961.99,
+          "storage": 15933.1,
+          "networking": 15609.32,
+          "paas": 19711.1
+        }
+      },
+      {
+        "month": "2023-11",
+        "value_usd": 81647.2,
+        "workload_breakdown": {
+          "compute": 21518.96,
+          "storage": 18977.2,
+          "networking": 16411.91,
+          "paas": 24739.12
+        }
+      },
+      {
+        "month": "2023-12",
+        "value_usd": 80160.22,
+        "workload_breakdown": {
+          "compute": 26898.24,
+          "storage": 21758.16,
+          "networking": 10182.21,
+          "paas": 21321.61
+        }
+      },
+      {
+        "month": "2024-01",
+        "value_usd": 79608.58,
+        "workload_breakdown": {
+          "compute": 28768.28,
+          "storage": 8324.96,
+          "networking": 9284.05,
+          "paas": 33231.29
+        }
+      },
+      {
+        "month": "2024-02",
+        "value_usd": 80430.25,
+        "workload_breakdown": {
+          "compute": 19047.2,
+          "storage": 10676.82,
+          "networking": 11147.12,
+          "paas": 39559.11
+        }
+      },
+      {
+        "month": "2024-03",
+        "value_usd": 78949.7,
+        "workload_breakdown": {
+          "compute": 14234.66,
+          "storage": 15103.98,
+          "networking": 16902.75,
+          "paas": 32708.31
+        }
+      }
+    ]
+  },
+  "open_recommendations": [
+    {
+      "recommendation_id": "REC-73825",
+      "type": "CxObserve",
+      "description": "Enable diagnostic logging for all services",
+      "priority": "High",
+      "created_at": "2024-03-14T10:00:00-05:00",
+      "status": "In Progress"
+    }
+  ],
+  "recent_activity_timeline": [
+    {
+      "date": "2024-03-26",
+      "activity_type": "call",
+      "description": "Check-in on pilot progress",
+      "participants": [
+        "Marcus Williams",
+        "Lisa Patel",
+        "Raj Mehta"
+      ]
+    },
+    {
+      "date": "2024-03-23",
+      "activity_type": "escalation",
+      "description": "Customer escalated support ticket response time",
+      "participants": [
+        "Lisa Patel",
+        "Raj Mehta"
+      ]
+    },
+    {
+      "date": "2024-03-21",
+      "activity_type": "contract_event",
+      "description": "Contract renewal notification (90 days)",
+      "participants": [
+        "Raj Mehta",
+        "Marcus Williams",
+        "Lisa Patel"
+      ]
+    },
+    {
+      "date": "2024-02-27",
+      "activity_type": "email",
+      "description": "Sent follow-up on migration timeline",
+      "participants": [
+        "Ahmed Hassan",
+        "Sarah Kim"
+      ]
+    },
+    {
+      "date": "2024-02-09",
+      "activity_type": "contract_event",
+      "description": "Contract renewal notification (90 days)",
+      "participants": [
+        "Sarah Kim",
+        "Marcus Williams"
+      ]
+    },
+    {
+      "date": "2024-02-07",
+      "activity_type": "call",
+      "description": "Check-in on pilot progress",
+      "participants": [
+        "Lisa Patel",
+        "Marcus Williams",
+        "Ahmed Hassan"
+      ]
+    },
+    {
+      "date": "2024-02-03",
+      "activity_type": "spa_received",
+      "description": "SPA: Cost anomaly detected",
+      "participants": [
+        "Marcus Williams",
+        "Raj Mehta",
+        "Lisa Patel"
+      ]
+    },
+    {
+      "date": "2024-02-02",
+      "activity_type": "meeting",
+      "description": "Weekly sync with account team",
+      "participants": [
+        "Raj Mehta",
+        "Lisa Patel",
+        "Ahmed Hassan"
+      ]
+    },
+    {
+      "date": "2024-01-26",
+      "activity_type": "contract_event",
+      "description": "MACC milestone approaching",
+      "participants": [
+        "Lisa Patel",
+        "Ahmed Hassan",
+        "Marcus Williams"
+      ]
+    },
+    {
+      "date": "2024-01-24",
+      "activity_type": "spa_received",
+      "description": "SPA: VM rightsizing opportunity detected",
+      "participants": [
+        "Lisa Patel"
+      ]
+    },
+    {
+      "date": "2024-01-24",
+      "activity_type": "contract_event",
+      "description": "Billing discrepancy flagged",
+      "participants": [
+        "Raj Mehta",
+        "Marcus Williams"
+      ]
+    },
+    {
+      "date": "2024-01-20",
+      "activity_type": "call",
+      "description": "Check-in on pilot progress",
+      "participants": [
+        "Marcus Williams"
+      ]
+    },
+    {
+      "date": "2024-01-03",
+      "activity_type": "email",
+      "description": "Customer requested partner introduction",
+      "participants": [
+        "Ahmed Hassan"
+      ]
+    }
+  ],
+  "customer_health_flags": {
+    "overall_health": "Healthy",
+    "engagement_score": 87,
+    "consumption_trend": "Stable",
+    "renewal_risk": "Medium",
+    "last_assessed": "2024-01-20"
+  },
+  "contract_billing": {
+    "subscription_type": "CSP",
+    "contract_end_date": "2024-09-13",
+    "macc_commitment_usd": 350000,
+    "macc_consumed_usd": 189319.25,
+    "billing_frequency": "Monthly",
+    "auto_renew": true
+  }
+}

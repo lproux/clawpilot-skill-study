@@ -31,7 +31,7 @@ def validate_fixture(fixture_path: Path, schema: dict) -> list[str]:
 def report_distribution(fixture_dir: Path) -> dict:
     """Report fixture class distribution."""
     distribution = {"clean": 0, "stale": 0, "missing": 0, "inconsistent": 0, "contradictory": 0}
-    for path in sorted(fixture_dir.glob("fx-*.json")):
+    for path in sorted(fixture_dir.glob("FX-*.json")):
         try:
             with open(path) as f:
                 fixture = json.load(f)
@@ -50,7 +50,7 @@ def main():
     if len(sys.argv) > 1:
         paths = [Path(p) for p in sys.argv[1:]]
     else:
-        paths = sorted(fixture_dir.glob("fx-*.json"))
+        paths = sorted(fixture_dir.glob("FX-*.json"))
 
     if not paths:
         print("No fixture files found.")

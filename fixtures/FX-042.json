@@ -1,0 +1,338 @@
+{
+  "fixture_id": "FX-042",
+  "fixture_class": "inconsistent",
+  "authored_at": "2024-03-15T10:00:00-05:00",
+  "account": {
+    "account_id": "ACC-49A5S852",
+    "name": "Sunrise Healthcare",
+    "segment": "smb-mid",
+    "geography": "APAC",
+    "tenure_years": 4.3,
+    "owner": "Lisa Patel",
+    "industry": "Healthcare",
+    "employee_count": 720
+  },
+  "opportunities": [
+    {
+      "opportunity_id": "OPP-SOXDC2YM",
+      "name": "Sunrise Azure AI Services",
+      "stage": "Propose",
+      "estimated_value_usd": 89000,
+      "close_date": "2024-09-16",
+      "bpf_stage": "Close",
+      "forecast_category": "Pipeline",
+      "owner": "Lisa Patel",
+      "last_updated": "2024-01-05T11:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-AMKHVAUO",
+          "name": "Discovery",
+          "status": "Completed",
+          "due_date": "2024-05-16",
+          "completed_date": "2024-02-01",
+          "owner": "Lisa Patel",
+          "evidence": "email_thread_9890"
+        }
+      ]
+    }
+  ],
+  "contacts": [
+    {
+      "contact_id": "CON-UD74OVUI",
+      "name": "Sandra Brown",
+      "role": "Operations",
+      "title": "IT Director",
+      "email": "sandra.brown@sunrisehealt.com",
+      "influence_level": "Decision Maker",
+      "last_interaction": "2024-01-09",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-2J7EJJHS",
+      "name": "Eric O'Brien",
+      "role": "Technical",
+      "title": "IT Director",
+      "email": "eric.o'brien@sunrisehealt.com",
+      "influence_level": "Influencer",
+      "last_interaction": "2024-01-20",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-3AIR9G8F",
+      "name": "Brian Lee",
+      "role": "Technical",
+      "title": "Security Manager",
+      "email": "brian.lee@sunrisehealt.com",
+      "influence_level": "Champion",
+      "last_interaction": "2024-03-25",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-8T5XTB3M",
+      "name": "Maria Singh",
+      "role": "Technical",
+      "title": "Data Platform Lead",
+      "email": "maria.singh@sunrisehealt.com",
+      "influence_level": "End User",
+      "last_interaction": "2024-01-10",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-3IUK9QMA",
+      "name": "Christopher Foster",
+      "role": "Operations",
+      "title": "DevOps Lead",
+      "email": "christopher.foster@sunrisehealt.com",
+      "influence_level": "Blocker",
+      "last_interaction": "2024-01-03",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-4YRKHDGB",
+      "name": "Robert Anderson",
+      "role": "Finance",
+      "title": "COO",
+      "email": "robert.anderson@sunrisehealt.com",
+      "influence_level": "Champion",
+      "last_interaction": "2024-02-01",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-SEQTWUKY",
+      "name": "Sandra Kim",
+      "role": "Technical",
+      "title": "Technology Manager",
+      "email": "sandra.kim@sunrisehealt.com",
+      "influence_level": "Champion",
+      "last_interaction": "2024-01-05",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-ZTB0H4MR",
+      "name": "James Torres",
+      "role": "Executive",
+      "title": "Head of Digital",
+      "email": "james.torres@sunrisehealt.com",
+      "influence_level": "End User",
+      "last_interaction": "2024-02-03",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-84HTHEDO",
+      "name": "Steven Kowalski",
+      "role": "Finance",
+      "title": "Technology Manager",
+      "email": "steven.kowalski@sunrisehealt.com",
+      "influence_level": "End User",
+      "last_interaction": "2024-03-19",
+      "is_current": true
+    }
+  ],
+  "acr_trend": {
+    "currency": "USD",
+    "monthly_values": [
+      {
+        "month": "2023-04",
+        "value_usd": 59505.48,
+        "workload_breakdown": {
+          "compute": 17445.48,
+          "storage": 16359.25,
+          "networking": 10569.66,
+          "paas": 15131.09
+        }
+      },
+      {
+        "month": "2023-05",
+        "value_usd": 56822.74,
+        "workload_breakdown": {
+          "compute": 22969.54,
+          "storage": 9553.57,
+          "networking": 4636.31,
+          "paas": 19663.32
+        }
+      },
+      {
+        "month": "2023-06",
+        "value_usd": 55056.61,
+        "workload_breakdown": {
+          "compute": 20679.09,
+          "storage": 9358.33,
+          "networking": 7583.93,
+          "paas": 17435.26
+        }
+      },
+      {
+        "month": "2023-07",
+        "value_usd": 56810.99,
+        "workload_breakdown": {
+          "compute": 11690.09,
+          "storage": 14472.1,
+          "networking": 4713.97,
+          "paas": 25934.83
+        }
+      },
+      {
+        "month": "2023-08",
+        "value_usd": 113621.97,
+        "workload_breakdown": {
+          "compute": 32119.76,
+          "storage": 16837.49,
+          "networking": 18371.15,
+          "paas": 46293.56
+        }
+      },
+      {
+        "month": "2023-09",
+        "value_usd": 57156.09,
+        "workload_breakdown": {
+          "compute": 9174.53,
+          "storage": 8966.7,
+          "networking": 12772.42,
+          "paas": 26242.44
+        }
+      },
+      {
+        "month": "2023-10",
+        "value_usd": 114312.19,
+        "workload_breakdown": {
+          "compute": 48299.38,
+          "storage": 12804.85,
+          "networking": 11351.31,
+          "paas": 41856.65
+        }
+      },
+      {
+        "month": "2023-11",
+        "value_usd": 59816.11,
+        "workload_breakdown": {
+          "compute": 26515.02,
+          "storage": 5971.68,
+          "networking": 4719.22,
+          "paas": 22610.19
+        }
+      },
+      {
+        "month": "2023-12",
+        "value_usd": 29908.06,
+        "workload_breakdown": {
+          "compute": 5438.53,
+          "storage": 6702.83,
+          "networking": 5864.59,
+          "paas": 11902.12
+        }
+      },
+      {
+        "month": "2024-01",
+        "value_usd": 107669.01,
+        "workload_breakdown": {
+          "compute": 22023.07,
+          "storage": 33532.66,
+          "networking": 15110.7,
+          "paas": 37002.57
+        }
+      },
+      {
+        "month": "2024-02",
+        "value_usd": 60259.59,
+        "workload_breakdown": {
+          "compute": 14827.71,
+          "storage": 15790.2,
+          "networking": 8868.44,
+          "paas": 20773.24
+        }
+      },
+      {
+        "month": "2024-03",
+        "value_usd": 18077.88,
+        "workload_breakdown": {
+          "compute": 5797.08,
+          "storage": 3097.05,
+          "networking": 2978.21,
+          "paas": 6205.55
+        }
+      }
+    ]
+  },
+  "open_recommendations": [
+    {
+      "recommendation_id": "REC-78722",
+      "type": "SPA",
+      "description": "Implement Azure Landing Zones",
+      "priority": "High",
+      "created_at": "2024-02-28T10:00:00-05:00",
+      "status": "New"
+    },
+    {
+      "recommendation_id": "REC-81616",
+      "type": "Advisor",
+      "description": "Review network security group rules",
+      "priority": "High",
+      "created_at": "2024-02-19T10:00:00-05:00",
+      "status": "In Progress"
+    }
+  ],
+  "recent_activity_timeline": [
+    {
+      "date": "2024-03-28",
+      "activity_type": "contract_event",
+      "description": "Contract renewal notification (90 days)",
+      "participants": [
+        "Raj Mehta",
+        "Lisa Patel",
+        "Sarah Kim"
+      ]
+    },
+    {
+      "date": "2024-03-23",
+      "activity_type": "meeting",
+      "description": "QBR with customer IT team",
+      "participants": [
+        "Ahmed Hassan"
+      ]
+    },
+    {
+      "date": "2024-02-27",
+      "activity_type": "meeting",
+      "description": "Executive business review",
+      "participants": [
+        "Lisa Patel",
+        "Raj Mehta"
+      ]
+    },
+    {
+      "date": "2024-01-19",
+      "activity_type": "meeting",
+      "description": "Executive business review",
+      "participants": [
+        "Ahmed Hassan",
+        "Lisa Patel",
+        "Raj Mehta"
+      ]
+    },
+    {
+      "date": "2024-01-10",
+      "activity_type": "deployment",
+      "description": "Migration batch 1 completed",
+      "participants": [
+        "Marcus Williams",
+        "Ahmed Hassan",
+        "Sarah Kim"
+      ]
+    }
+  ],
+  "customer_health_flags": {
+    "overall_health": "Healthy",
+    "engagement_score": 68,
+    "consumption_trend": "Growing",
+    "renewal_risk": "Unknown",
+    "last_assessed": "2024-03-12"
+  },
+  "contract_billing": {
+    "subscription_type": "MCA",
+    "contract_end_date": "2024-11-02",
+    "macc_commitment_usd": 500000,
+    "macc_consumed_usd": 236002.65,
+    "billing_frequency": "Monthly",
+    "auto_renew": false
+  }
+}

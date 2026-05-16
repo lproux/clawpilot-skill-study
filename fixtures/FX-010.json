@@ -1,0 +1,491 @@
+{
+  "fixture_id": "FX-010",
+  "fixture_class": "clean",
+  "authored_at": "2024-03-15T10:00:00-05:00",
+  "account": {
+    "account_id": "ACC-5HZOG7IO",
+    "name": "Trey Research",
+    "segment": "smb-corporate",
+    "geography": "APAC",
+    "tenure_years": 4.9,
+    "owner": "Michelle Park",
+    "industry": "Biotech",
+    "employee_count": 380
+  },
+  "opportunities": [
+    {
+      "opportunity_id": "OPP-F2ZGIKTA",
+      "name": "Trey Security Modernization",
+      "stage": "Develop",
+      "estimated_value_usd": 280000,
+      "close_date": "2024-10-02",
+      "bpf_stage": "Develop",
+      "forecast_category": "Pipeline",
+      "owner": "Michelle Park",
+      "last_updated": "2024-01-03T12:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-Y8OAEHKS",
+          "name": "Discovery",
+          "status": "Not Started",
+          "due_date": "2024-06-22",
+          "completed_date": null,
+          "owner": "Michelle Park",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-EA34F17Y",
+          "name": "Technical Validation",
+          "status": "In Progress",
+          "due_date": "2024-08-12",
+          "completed_date": null,
+          "owner": "Michelle Park",
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "opportunity_id": "OPP-WGB1C3PL",
+      "name": "Trey Azure Virtual Desktop",
+      "stage": "Develop",
+      "estimated_value_usd": 280000,
+      "close_date": "2024-08-19",
+      "bpf_stage": "Develop",
+      "forecast_category": "Pipeline",
+      "owner": "Michelle Park",
+      "last_updated": "2024-02-15T09:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-LLF228QT",
+          "name": "Discovery",
+          "status": "Not Started",
+          "due_date": "2024-07-27",
+          "completed_date": null,
+          "owner": "Michelle Park",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-HV2EXEP1",
+          "name": "Technical Validation",
+          "status": "In Progress",
+          "due_date": "2024-06-22",
+          "completed_date": null,
+          "owner": "Michelle Park",
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "opportunity_id": "OPP-9UGH3C6F",
+      "name": "Trey Copilot Adoption",
+      "stage": "Close",
+      "estimated_value_usd": 450000,
+      "close_date": "2024-08-15",
+      "bpf_stage": "Close",
+      "forecast_category": "Committed",
+      "owner": "Michelle Park",
+      "last_updated": "2024-03-13T10:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-4WXD2T5V",
+          "name": "Discovery",
+          "status": "Not Started",
+          "due_date": "2024-07-10",
+          "completed_date": null,
+          "owner": "Michelle Park",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-8C95S8ZJ",
+          "name": "Technical Validation",
+          "status": "In Progress",
+          "due_date": "2024-08-27",
+          "completed_date": null,
+          "owner": "Michelle Park",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-P4IWXKSE",
+          "name": "Business Case Approved",
+          "status": "Completed",
+          "due_date": "2024-07-14",
+          "completed_date": "2024-03-04",
+          "owner": "Michelle Park",
+          "evidence": "email_thread_4256"
+        }
+      ]
+    }
+  ],
+  "contacts": [
+    {
+      "contact_id": "CON-J2N3BHXM",
+      "name": "Daniel Doyle",
+      "role": "Business",
+      "title": "CTO",
+      "email": "daniel.doyle@treyresearch.com",
+      "influence_level": "Decision Maker",
+      "last_interaction": "2024-02-19",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-1GDJAUR3",
+      "name": "Jennifer Schmidt",
+      "role": "Finance",
+      "title": "DevOps Lead",
+      "email": "jennifer.schmidt@treyresearch.com",
+      "influence_level": "Influencer",
+      "last_interaction": "2024-01-17",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-0UPRBWZT",
+      "name": "James Nakamura",
+      "role": "Executive",
+      "title": "CFO",
+      "email": "james.nakamura@treyresearch.com",
+      "influence_level": "Champion",
+      "last_interaction": "2024-01-04",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-T3LC0OJ2",
+      "name": "Sarah Schmidt",
+      "role": "Finance",
+      "title": "Data Platform Lead",
+      "email": "sarah.schmidt@treyresearch.com",
+      "influence_level": "End User",
+      "last_interaction": "2024-03-28",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-SDX7GHOJ",
+      "name": "Jason Doyle",
+      "role": "Finance",
+      "title": "CFO",
+      "email": "jason.doyle@treyresearch.com",
+      "influence_level": "Blocker",
+      "last_interaction": "2024-01-01",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-TW0WVL9Q",
+      "name": "Jason Kowalski",
+      "role": "Operations",
+      "title": "CFO",
+      "email": "jason.kowalski@treyresearch.com",
+      "influence_level": "Blocker",
+      "last_interaction": "2024-01-02",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-XYVH36CO",
+      "name": "Samantha Okafor",
+      "role": "Business",
+      "title": "Head of Digital",
+      "email": "samantha.okafor@treyresearch.com",
+      "influence_level": "Champion",
+      "last_interaction": "2024-03-13",
+      "is_current": true
+    }
+  ],
+  "acr_trend": {
+    "currency": "USD",
+    "monthly_values": [
+      {
+        "month": "2023-04",
+        "value_usd": 33338.96,
+        "workload_breakdown": {
+          "compute": 8603.66,
+          "storage": 11106.53,
+          "networking": 3695.69,
+          "paas": 9933.08
+        }
+      },
+      {
+        "month": "2023-05",
+        "value_usd": 32996.11,
+        "workload_breakdown": {
+          "compute": 14688.34,
+          "storage": 7428.78,
+          "networking": 1724.36,
+          "paas": 9154.64
+        }
+      },
+      {
+        "month": "2023-06",
+        "value_usd": 33962.02,
+        "workload_breakdown": {
+          "compute": 7725.02,
+          "storage": 7696.08,
+          "networking": 7312.15,
+          "paas": 11228.77
+        }
+      },
+      {
+        "month": "2023-07",
+        "value_usd": 33754.31,
+        "workload_breakdown": {
+          "compute": 6861.9,
+          "storage": 9002.29,
+          "networking": 4654.34,
+          "paas": 13235.78
+        }
+      },
+      {
+        "month": "2023-08",
+        "value_usd": 34197.83,
+        "workload_breakdown": {
+          "compute": 13190.23,
+          "storage": 8989.73,
+          "networking": 4550.39,
+          "paas": 7467.48
+        }
+      },
+      {
+        "month": "2023-09",
+        "value_usd": 35414.64,
+        "workload_breakdown": {
+          "compute": 7365.79,
+          "storage": 10604.89,
+          "networking": 4909.58,
+          "paas": 12534.38
+        }
+      },
+      {
+        "month": "2023-10",
+        "value_usd": 35550.73,
+        "workload_breakdown": {
+          "compute": 14261.77,
+          "storage": 6195.87,
+          "networking": 6369.18,
+          "paas": 8723.91
+        }
+      },
+      {
+        "month": "2023-11",
+        "value_usd": 36904.22,
+        "workload_breakdown": {
+          "compute": 16453.74,
+          "storage": 8124.27,
+          "networking": 4903.66,
+          "paas": 7422.55
+        }
+      },
+      {
+        "month": "2023-12",
+        "value_usd": 37785.79,
+        "workload_breakdown": {
+          "compute": 14952.27,
+          "storage": 7481.13,
+          "networking": 3108.21,
+          "paas": 12244.18
+        }
+      },
+      {
+        "month": "2024-01",
+        "value_usd": 38272.74,
+        "workload_breakdown": {
+          "compute": 17064.32,
+          "storage": 6134.6,
+          "networking": 2334.32,
+          "paas": 12739.5
+        }
+      },
+      {
+        "month": "2024-02",
+        "value_usd": 38951.52,
+        "workload_breakdown": {
+          "compute": 10919.58,
+          "storage": 7694.57,
+          "networking": 4276.15,
+          "paas": 16061.22
+        }
+      },
+      {
+        "month": "2024-03",
+        "value_usd": 39542.17,
+        "workload_breakdown": {
+          "compute": 17323.77,
+          "storage": 4079.46,
+          "networking": 7640.9,
+          "paas": 10498.04
+        }
+      }
+    ]
+  },
+  "open_recommendations": [
+    {
+      "recommendation_id": "REC-85806",
+      "type": "Manual",
+      "description": "Enable MFA for all admin accounts",
+      "priority": "Low",
+      "created_at": "2024-02-16T10:00:00-05:00",
+      "status": "Dismissed"
+    },
+    {
+      "recommendation_id": "REC-51200",
+      "type": "Manual",
+      "description": "Rightsize underutilized VMs (potential 23% savings)",
+      "priority": "Medium",
+      "created_at": "2024-03-08T10:00:00-05:00",
+      "status": "New"
+    }
+  ],
+  "recent_activity_timeline": [
+    {
+      "date": "2024-03-22",
+      "activity_type": "call",
+      "description": "Discussed budget approval timeline",
+      "participants": [
+        "Marcus Williams",
+        "Lisa Patel",
+        "Ahmed Hassan"
+      ]
+    },
+    {
+      "date": "2024-03-18",
+      "activity_type": "meeting",
+      "description": "Architecture review session",
+      "participants": [
+        "Sarah Kim"
+      ]
+    },
+    {
+      "date": "2024-03-15",
+      "activity_type": "escalation",
+      "description": "Customer escalated support ticket response time",
+      "participants": [
+        "Sarah Kim"
+      ]
+    },
+    {
+      "date": "2024-03-10",
+      "activity_type": "email",
+      "description": "Sent follow-up on migration timeline",
+      "participants": [
+        "Raj Mehta",
+        "Marcus Williams"
+      ]
+    },
+    {
+      "date": "2024-03-09",
+      "activity_type": "spa_received",
+      "description": "SPA: Cost anomaly detected",
+      "participants": [
+        "Ahmed Hassan",
+        "Raj Mehta",
+        "Sarah Kim"
+      ]
+    },
+    {
+      "date": "2024-02-26",
+      "activity_type": "escalation",
+      "description": "Customer escalated support ticket response time",
+      "participants": [
+        "Sarah Kim",
+        "Marcus Williams"
+      ]
+    },
+    {
+      "date": "2024-02-22",
+      "activity_type": "meeting",
+      "description": "Security posture review",
+      "participants": [
+        "Raj Mehta"
+      ]
+    },
+    {
+      "date": "2024-02-18",
+      "activity_type": "escalation",
+      "description": "Customer escalated support ticket response time",
+      "participants": [
+        "Ahmed Hassan",
+        "Raj Mehta",
+        "Marcus Williams"
+      ]
+    },
+    {
+      "date": "2024-02-15",
+      "activity_type": "call",
+      "description": "Quick call on deployment blocker",
+      "participants": [
+        "Lisa Patel",
+        "Ahmed Hassan",
+        "Sarah Kim"
+      ]
+    },
+    {
+      "date": "2024-02-11",
+      "activity_type": "escalation",
+      "description": "Customer escalated support ticket response time",
+      "participants": [
+        "Ahmed Hassan",
+        "Marcus Williams",
+        "Sarah Kim"
+      ]
+    },
+    {
+      "date": "2024-02-09",
+      "activity_type": "call",
+      "description": "Quick call on deployment blocker",
+      "participants": [
+        "Sarah Kim",
+        "Marcus Williams",
+        "Ahmed Hassan"
+      ]
+    },
+    {
+      "date": "2024-02-08",
+      "activity_type": "contract_event",
+      "description": "Contract renewal notification (90 days)",
+      "participants": [
+        "Sarah Kim",
+        "Marcus Williams",
+        "Raj Mehta"
+      ]
+    },
+    {
+      "date": "2024-02-06",
+      "activity_type": "msx_update",
+      "description": "Updated opportunity stage to Develop",
+      "participants": [
+        "Lisa Patel"
+      ]
+    },
+    {
+      "date": "2024-01-14",
+      "activity_type": "contract_event",
+      "description": "Contract renewal notification (90 days)",
+      "participants": [
+        "Marcus Williams",
+        "Sarah Kim",
+        "Lisa Patel"
+      ]
+    },
+    {
+      "date": "2024-01-12",
+      "activity_type": "meeting",
+      "description": "QBR with customer IT team",
+      "participants": [
+        "Raj Mehta",
+        "Lisa Patel",
+        "Sarah Kim"
+      ]
+    }
+  ],
+  "customer_health_flags": {
+    "overall_health": "Healthy",
+    "engagement_score": 47,
+    "consumption_trend": "Growing",
+    "renewal_risk": "Low",
+    "last_assessed": "2024-03-26"
+  },
+  "contract_billing": {
+    "subscription_type": "EA",
+    "contract_end_date": "2024-11-25",
+    "macc_commitment_usd": 1500000,
+    "macc_consumed_usd": 460081.75,
+    "billing_frequency": "Annual",
+    "auto_renew": true
+  }
+}

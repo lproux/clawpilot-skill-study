@@ -1,0 +1,436 @@
+{
+  "fixture_id": "FX-036",
+  "fixture_class": "inconsistent",
+  "authored_at": "2024-03-15T10:00:00-05:00",
+  "account": {
+    "account_id": "ACC-WF3Z9ME4",
+    "name": "Vineyard Bank",
+    "segment": "smb-corporate",
+    "geography": "NA",
+    "tenure_years": 2.9,
+    "owner": "Jennifer Walsh",
+    "industry": "Financial Services",
+    "employee_count": 980
+  },
+  "opportunities": [
+    {
+      "opportunity_id": "OPP-CPYI8LRP",
+      "name": "Vineyard Copilot Adoption",
+      "stage": "Close",
+      "estimated_value_usd": 45000,
+      "close_date": "2024-09-14",
+      "bpf_stage": "Qualify",
+      "forecast_category": "Committed",
+      "owner": "Jennifer Walsh",
+      "last_updated": "2024-03-20T09:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-U0EN2RLU",
+          "name": "Discovery",
+          "status": "Blocked",
+          "due_date": "2024-06-13",
+          "completed_date": null,
+          "owner": "Jennifer Walsh",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-8K7S1NZ9",
+          "name": "Technical Validation",
+          "status": "Blocked",
+          "due_date": "2024-06-16",
+          "completed_date": null,
+          "owner": "Jennifer Walsh",
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "opportunity_id": "OPP-21TRNJAA",
+      "name": "Vineyard Azure Arc Deployment",
+      "stage": "Prospect",
+      "estimated_value_usd": 280000,
+      "close_date": "2024-07-06",
+      "bpf_stage": null,
+      "forecast_category": "Pipeline",
+      "owner": "Jennifer Walsh",
+      "last_updated": "2024-01-09T13:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-WUWVD29M",
+          "name": "Discovery",
+          "status": "Not Started",
+          "due_date": "2024-03-28",
+          "completed_date": null,
+          "owner": "Jennifer Walsh",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-78WSJ1SO",
+          "name": "Technical Validation",
+          "status": "In Progress",
+          "due_date": "2024-03-28",
+          "completed_date": null,
+          "owner": "Jennifer Walsh",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-BNMGWZ93",
+          "name": "Business Case Approved",
+          "status": "Completed",
+          "due_date": "2024-05-19",
+          "completed_date": "2024-03-14",
+          "owner": "Jennifer Walsh",
+          "evidence": "email_thread_5198"
+        }
+      ]
+    },
+    {
+      "opportunity_id": "OPP-ZOAJGIRI",
+      "name": "Vineyard Azure Infrastructure",
+      "stage": "Propose",
+      "estimated_value_usd": 125000,
+      "close_date": "2024-07-07",
+      "bpf_stage": "Propose",
+      "forecast_category": "Best Case",
+      "owner": "Jennifer Walsh",
+      "last_updated": "2024-02-07T14:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-JWOJ08W5",
+          "name": "Discovery",
+          "status": "Not Started",
+          "due_date": "2024-08-19",
+          "completed_date": null,
+          "owner": "Jennifer Walsh",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-4GD0WO7M",
+          "name": "Technical Validation",
+          "status": "Not Started",
+          "due_date": "2024-06-28",
+          "completed_date": null,
+          "owner": "Jennifer Walsh",
+          "evidence": ""
+        }
+      ]
+    }
+  ],
+  "contacts": [
+    {
+      "contact_id": "CON-FJD656JN",
+      "name": "Tamara Doyle",
+      "role": "Technical",
+      "title": "VP Engineering",
+      "email": "tamara.doyle@vineyardbank.com",
+      "influence_level": "Decision Maker",
+      "last_interaction": "2024-01-03",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-4BFYN7XF",
+      "name": "James Rivera",
+      "role": "Finance",
+      "title": "CTO",
+      "email": "james.rivera@vineyardbank.com",
+      "influence_level": "Influencer",
+      "last_interaction": "2024-03-12",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-GYVD18DG",
+      "name": "Brian Wilson",
+      "role": "Business",
+      "title": "Data Platform Lead",
+      "email": "brian.wilson@vineyardbank.com",
+      "influence_level": "Champion",
+      "last_interaction": "2024-02-11",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-ATZHMM85",
+      "name": "Nicole Hansen",
+      "role": "Executive",
+      "title": "Security Manager",
+      "email": "nicole.hansen@vineyardbank.com",
+      "influence_level": "End User",
+      "last_interaction": "2024-01-07",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-H5RRTOLI",
+      "name": "Angela White",
+      "role": "Technical",
+      "title": "Head of Digital",
+      "email": "angela.white@vineyardbank.com",
+      "influence_level": "Blocker",
+      "last_interaction": "2024-01-13",
+      "is_current": true
+    }
+  ],
+  "acr_trend": {
+    "currency": "USD",
+    "monthly_values": [
+      {
+        "month": "2023-04",
+        "value_usd": 94383.69,
+        "workload_breakdown": {
+          "compute": 16192.93,
+          "storage": 31559.2,
+          "networking": 16748.62,
+          "paas": 29882.94
+        }
+      },
+      {
+        "month": "2023-05",
+        "value_usd": 90750.51,
+        "workload_breakdown": {
+          "compute": 38146.57,
+          "storage": 17285.46,
+          "networking": 11006.07,
+          "paas": 24312.42
+        }
+      },
+      {
+        "month": "2023-06",
+        "value_usd": 91275.91,
+        "workload_breakdown": {
+          "compute": 16425.41,
+          "storage": 29223.23,
+          "networking": 16527.04,
+          "paas": 29100.22
+        }
+      },
+      {
+        "month": "2023-07",
+        "value_usd": 88039.92,
+        "workload_breakdown": {
+          "compute": 18806.3,
+          "storage": 17215.83,
+          "networking": 9172.28,
+          "paas": 42845.51
+        }
+      },
+      {
+        "month": "2023-08",
+        "value_usd": 88045.38,
+        "workload_breakdown": {
+          "compute": 28444.54,
+          "storage": 23733.56,
+          "networking": 15245.68,
+          "paas": 20621.59
+        }
+      },
+      {
+        "month": "2023-09",
+        "value_usd": 83892.73,
+        "workload_breakdown": {
+          "compute": 32320.2,
+          "storage": 22793.71,
+          "networking": 6664.52,
+          "paas": 22114.31
+        }
+      },
+      {
+        "month": "2023-10",
+        "value_usd": 81146.75,
+        "workload_breakdown": {
+          "compute": 27437.4,
+          "storage": 22875.82,
+          "networking": 13645.54,
+          "paas": 17187.99
+        }
+      },
+      {
+        "month": "2023-11",
+        "value_usd": 81206.11,
+        "workload_breakdown": {
+          "compute": 20741.99,
+          "storage": 18678.38,
+          "networking": 16649.79,
+          "paas": 25135.95
+        }
+      },
+      {
+        "month": "2023-12",
+        "value_usd": 78630.85,
+        "workload_breakdown": {
+          "compute": 30000.14,
+          "storage": 13189.7,
+          "networking": 11509.65,
+          "paas": 23931.36
+        }
+      },
+      {
+        "month": "2024-01",
+        "value_usd": 75384.83,
+        "workload_breakdown": {
+          "compute": 25003.46,
+          "storage": 11302.64,
+          "networking": 12575.5,
+          "paas": 26503.24
+        }
+      },
+      {
+        "month": "2024-02",
+        "value_usd": 75640.9,
+        "workload_breakdown": {
+          "compute": 20483.04,
+          "storage": 10562.89,
+          "networking": 17443.63,
+          "paas": 27151.34
+        }
+      },
+      {
+        "month": "2024-03",
+        "value_usd": 151281.8,
+        "workload_breakdown": {
+          "compute": 23272.85,
+          "storage": 57021.5,
+          "networking": 11760.47,
+          "paas": 59226.98
+        }
+      }
+    ]
+  },
+  "open_recommendations": [
+    {
+      "recommendation_id": "REC-46189",
+      "type": "SPA",
+      "description": "Enable MFA for all admin accounts",
+      "priority": "High",
+      "created_at": "2024-03-02T10:00:00-05:00",
+      "status": "New"
+    },
+    {
+      "recommendation_id": "REC-37423",
+      "type": "CxObserve",
+      "description": "Consider Reserved Instances for stable workloads",
+      "priority": "Low",
+      "created_at": "2024-03-28T10:00:00-05:00",
+      "status": "In Progress"
+    }
+  ],
+  "recent_activity_timeline": [
+    {
+      "date": "2024-03-25",
+      "activity_type": "escalation",
+      "description": "Performance degradation reported by end users",
+      "participants": [
+        "Sarah Kim",
+        "Lisa Patel"
+      ]
+    },
+    {
+      "date": "2024-03-24",
+      "activity_type": "contract_event",
+      "description": "Billing discrepancy flagged",
+      "participants": [
+        "Sarah Kim",
+        "Marcus Williams"
+      ]
+    },
+    {
+      "date": "2024-03-19",
+      "activity_type": "call",
+      "description": "Discussed budget approval timeline",
+      "participants": [
+        "Sarah Kim"
+      ]
+    },
+    {
+      "date": "2024-03-06",
+      "activity_type": "deployment",
+      "description": "Migration batch 1 completed",
+      "participants": [
+        "Lisa Patel",
+        "Ahmed Hassan",
+        "Sarah Kim"
+      ]
+    },
+    {
+      "date": "2024-02-23",
+      "activity_type": "msx_update",
+      "description": "Added competitive intelligence notes",
+      "participants": [
+        "Raj Mehta"
+      ]
+    },
+    {
+      "date": "2024-02-21",
+      "activity_type": "spa_received",
+      "description": "SPA: Cost anomaly detected",
+      "participants": [
+        "Raj Mehta"
+      ]
+    },
+    {
+      "date": "2024-02-14",
+      "activity_type": "escalation",
+      "description": "Customer escalated support ticket response time",
+      "participants": [
+        "Ahmed Hassan",
+        "Sarah Kim",
+        "Marcus Williams"
+      ]
+    },
+    {
+      "date": "2024-02-09",
+      "activity_type": "email",
+      "description": "Follow-up on support ticket resolution",
+      "participants": [
+        "Lisa Patel"
+      ]
+    },
+    {
+      "date": "2024-01-23",
+      "activity_type": "meeting",
+      "description": "Executive business review",
+      "participants": [
+        "Sarah Kim",
+        "Lisa Patel"
+      ]
+    },
+    {
+      "date": "2024-01-20",
+      "activity_type": "call",
+      "description": "Escalation triage call",
+      "participants": [
+        "Lisa Patel",
+        "Ahmed Hassan",
+        "Sarah Kim"
+      ]
+    },
+    {
+      "date": "2024-01-15",
+      "activity_type": "call",
+      "description": "Escalation triage call",
+      "participants": [
+        "Lisa Patel"
+      ]
+    },
+    {
+      "date": "2024-01-03",
+      "activity_type": "spa_received",
+      "description": "SPA: VM rightsizing opportunity detected",
+      "participants": [
+        "Marcus Williams"
+      ]
+    }
+  ],
+  "customer_health_flags": {
+    "overall_health": "Healthy",
+    "engagement_score": 61,
+    "consumption_trend": "Declining",
+    "renewal_risk": "Medium",
+    "last_assessed": "2024-01-16"
+  },
+  "contract_billing": {
+    "subscription_type": "MCA",
+    "contract_end_date": "2024-11-07",
+    "macc_commitment_usd": 500000,
+    "macc_consumed_usd": 107620.58,
+    "billing_frequency": "Monthly",
+    "auto_renew": true
+  }
+}

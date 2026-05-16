@@ -1,0 +1,426 @@
+{
+  "fixture_id": "FX-050",
+  "fixture_class": "contradictory",
+  "authored_at": "2024-03-15T10:00:00-05:00",
+  "account": {
+    "account_id": "ACC-LSUTHOXL",
+    "name": "Meridian Software",
+    "segment": "smb-small",
+    "geography": "LATAM",
+    "tenure_years": 3.5,
+    "owner": "Michelle Park",
+    "industry": "Software",
+    "employee_count": 230
+  },
+  "opportunities": [
+    {
+      "opportunity_id": "OPP-8UTZ5YSZ",
+      "name": "Meridian Power Platform",
+      "stage": "Qualify",
+      "estimated_value_usd": 125000,
+      "close_date": "2024-07-24",
+      "bpf_stage": "Qualify",
+      "forecast_category": "Committed",
+      "owner": "Michelle Park",
+      "last_updated": "2024-02-12T09:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-OB4V984L",
+          "name": "Discovery",
+          "status": "Not Started",
+          "due_date": "2024-04-01",
+          "completed_date": null,
+          "owner": "Michelle Park",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-ZXTIJKAA",
+          "name": "Technical Validation",
+          "status": "Blocked",
+          "due_date": "2024-04-22",
+          "completed_date": null,
+          "owner": "Michelle Park",
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "opportunity_id": "OPP-X2AKXOZB",
+      "name": "Meridian Cloud Migration Phase",
+      "stage": "Develop",
+      "estimated_value_usd": 350000,
+      "close_date": "2024-10-28",
+      "bpf_stage": "Develop",
+      "forecast_category": "Best Case",
+      "owner": "Michelle Park",
+      "last_updated": "2024-03-21T11:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-D90WR1CG",
+          "name": "Discovery",
+          "status": "Not Started",
+          "due_date": "2024-05-04",
+          "completed_date": null,
+          "owner": "Michelle Park",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-TM4UP9G4",
+          "name": "Technical Validation",
+          "status": "Blocked",
+          "due_date": "2024-05-11",
+          "completed_date": null,
+          "owner": "Michelle Park",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-8S33FORU",
+          "name": "Business Case Approved",
+          "status": "Completed",
+          "due_date": "2024-06-16",
+          "completed_date": "2024-02-10",
+          "owner": "Michelle Park",
+          "evidence": "email_thread_7757"
+        }
+      ]
+    }
+  ],
+  "contacts": [
+    {
+      "contact_id": "CON-3P5FX8L9",
+      "name": "Sandra Davis",
+      "role": "Technical",
+      "title": "VP Engineering",
+      "email": "sandra.davis@meridiansoft.com",
+      "influence_level": "Decision Maker",
+      "last_interaction": "2024-02-08",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-6VJP48SI",
+      "name": "Diana Wilson",
+      "role": "Finance",
+      "title": "CFO",
+      "email": "diana.wilson@meridiansoft.com",
+      "influence_level": "Influencer",
+      "last_interaction": "2024-03-23",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-HYUSVHZ2",
+      "name": "Tamara Foster",
+      "role": "Executive",
+      "title": "Infrastructure Manager",
+      "email": "tamara.foster@meridiansoft.com",
+      "influence_level": "Champion",
+      "last_interaction": "2024-02-05",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-RHTQVJK3",
+      "name": "Angela White",
+      "role": "Operations",
+      "title": "VP Operations",
+      "email": "angela.white@meridiansoft.com",
+      "influence_level": "End User",
+      "last_interaction": "2024-03-01",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-PDPFUD00",
+      "name": "Maria Foster",
+      "role": "Technical",
+      "title": "Head of Digital",
+      "email": "maria.foster@meridiansoft.com",
+      "influence_level": "Blocker",
+      "last_interaction": "2024-01-01",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-IS2YAFQE",
+      "name": "Patricia Foster",
+      "role": "Executive",
+      "title": "Security Manager",
+      "email": "patricia.foster@meridiansoft.com",
+      "influence_level": "End User",
+      "last_interaction": "2024-02-01",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-3S6F9T2J",
+      "name": "Eric Nakamura",
+      "role": "Technical",
+      "title": "Data Platform Lead",
+      "email": "eric.nakamura@meridiansoft.com",
+      "influence_level": "End User",
+      "last_interaction": "2024-01-25",
+      "is_current": true
+    }
+  ],
+  "acr_trend": {
+    "currency": "USD",
+    "monthly_values": [
+      {
+        "month": "2023-04",
+        "value_usd": 13078.85,
+        "workload_breakdown": {
+          "compute": 5744.02,
+          "storage": 1576.93,
+          "networking": 2167.43,
+          "paas": 3590.47
+        }
+      },
+      {
+        "month": "2023-05",
+        "value_usd": 12314.3,
+        "workload_breakdown": {
+          "compute": 4678.37,
+          "storage": 1345.67,
+          "networking": 2816.84,
+          "paas": 3473.42
+        }
+      },
+      {
+        "month": "2023-06",
+        "value_usd": 11015.42,
+        "workload_breakdown": {
+          "compute": 3134.65,
+          "storage": 2466.99,
+          "networking": 1302.57,
+          "paas": 4111.2
+        }
+      },
+      {
+        "month": "2023-07",
+        "value_usd": 10634.6,
+        "workload_breakdown": {
+          "compute": 3373.02,
+          "storage": 3180.75,
+          "networking": 1039.45,
+          "paas": 3041.38
+        }
+      },
+      {
+        "month": "2023-08",
+        "value_usd": 10166.57,
+        "workload_breakdown": {
+          "compute": 3760.66,
+          "storage": 2468.04,
+          "networking": 1616.7,
+          "paas": 2321.17
+        }
+      },
+      {
+        "month": "2023-09",
+        "value_usd": 9625.84,
+        "workload_breakdown": {
+          "compute": 3439.08,
+          "storage": 1729.74,
+          "networking": 1121.9,
+          "paas": 3335.13
+        }
+      },
+      {
+        "month": "2023-10",
+        "value_usd": 8873.97,
+        "workload_breakdown": {
+          "compute": 2354.28,
+          "storage": 1709.0,
+          "networking": 2000.33,
+          "paas": 2810.36
+        }
+      },
+      {
+        "month": "2023-11",
+        "value_usd": 8469.58,
+        "workload_breakdown": {
+          "compute": 3374.74,
+          "storage": 1091.9,
+          "networking": 918.81,
+          "paas": 3084.13
+        }
+      },
+      {
+        "month": "2023-12",
+        "value_usd": 7638.98,
+        "workload_breakdown": {
+          "compute": 1247.08,
+          "storage": 2744.87,
+          "networking": 611.92,
+          "paas": 3035.1
+        }
+      },
+      {
+        "month": "2024-01",
+        "value_usd": 7137.07,
+        "workload_breakdown": {
+          "compute": 1907.6,
+          "storage": 1072.56,
+          "networking": 869.12,
+          "paas": 3287.78
+        }
+      },
+      {
+        "month": "2024-02",
+        "value_usd": 6518.65,
+        "workload_breakdown": {
+          "compute": 2818.51,
+          "storage": 1038.85,
+          "networking": 905.15,
+          "paas": 1756.14
+        }
+      },
+      {
+        "month": "2024-03",
+        "value_usd": 6024.14,
+        "workload_breakdown": {
+          "compute": 2404.1,
+          "storage": 1111.56,
+          "networking": 992.95,
+          "paas": 1515.53
+        }
+      }
+    ]
+  },
+  "open_recommendations": [
+    {
+      "recommendation_id": "REC-34343",
+      "type": "SPA",
+      "description": "Migrate legacy .NET apps to Azure App Service",
+      "priority": "Medium",
+      "created_at": "2024-02-19T10:00:00-05:00",
+      "status": "In Progress"
+    },
+    {
+      "recommendation_id": "REC-91891",
+      "type": "Manual",
+      "description": "Migrate to Azure SQL Managed Instance",
+      "priority": "Low",
+      "created_at": "2024-02-07T10:00:00-05:00",
+      "status": "In Progress"
+    }
+  ],
+  "recent_activity_timeline": [
+    {
+      "date": "2024-03-27",
+      "activity_type": "escalation",
+      "description": "Performance degradation reported by end users",
+      "participants": [
+        "Raj Mehta",
+        "Lisa Patel",
+        "Sarah Kim"
+      ]
+    },
+    {
+      "date": "2024-03-26",
+      "activity_type": "escalation",
+      "description": "Customer escalated support ticket response time",
+      "participants": [
+        "Marcus Williams",
+        "Sarah Kim"
+      ]
+    },
+    {
+      "date": "2024-03-24",
+      "activity_type": "contract_event",
+      "description": "MACC milestone approaching",
+      "participants": [
+        "Raj Mehta",
+        "Lisa Patel"
+      ]
+    },
+    {
+      "date": "2024-03-20",
+      "activity_type": "msx_update",
+      "description": "Added competitive intelligence notes",
+      "participants": [
+        "Marcus Williams"
+      ]
+    },
+    {
+      "date": "2024-03-17",
+      "activity_type": "deployment",
+      "description": "Migration batch 1 completed",
+      "participants": [
+        "Raj Mehta",
+        "Ahmed Hassan",
+        "Marcus Williams"
+      ]
+    },
+    {
+      "date": "2024-03-06",
+      "activity_type": "escalation",
+      "description": "Customer escalated support ticket response time",
+      "participants": [
+        "Raj Mehta"
+      ]
+    },
+    {
+      "date": "2024-02-26",
+      "activity_type": "call",
+      "description": "Escalation triage call",
+      "participants": [
+        "Ahmed Hassan"
+      ]
+    },
+    {
+      "date": "2024-02-05",
+      "activity_type": "call",
+      "description": "Quick call on deployment blocker",
+      "participants": [
+        "Ahmed Hassan",
+        "Lisa Patel"
+      ]
+    },
+    {
+      "date": "2024-02-04",
+      "activity_type": "meeting",
+      "description": "Technical deep-dive on migration",
+      "participants": [
+        "Marcus Williams",
+        "Ahmed Hassan"
+      ]
+    },
+    {
+      "date": "2024-02-02",
+      "activity_type": "call",
+      "description": "Check-in on pilot progress",
+      "participants": [
+        "Marcus Williams",
+        "Sarah Kim"
+      ]
+    },
+    {
+      "date": "2024-01-18",
+      "activity_type": "contract_event",
+      "description": "MACC milestone approaching",
+      "participants": [
+        "Raj Mehta"
+      ]
+    },
+    {
+      "date": "2024-01-06",
+      "activity_type": "email",
+      "description": "Received pricing inquiry from CFO",
+      "participants": [
+        "Ahmed Hassan",
+        "Lisa Patel"
+      ]
+    }
+  ],
+  "customer_health_flags": {
+    "overall_health": "Healthy",
+    "engagement_score": 87,
+    "consumption_trend": "Growing",
+    "renewal_risk": "Low",
+    "last_assessed": "2024-03-20"
+  },
+  "contract_billing": {
+    "subscription_type": "PAYG",
+    "contract_end_date": null,
+    "macc_commitment_usd": null,
+    "macc_consumed_usd": null,
+    "billing_frequency": "Monthly",
+    "auto_renew": false
+  }
+}

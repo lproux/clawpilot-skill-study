@@ -1,0 +1,335 @@
+{
+  "fixture_id": "FX-023",
+  "fixture_class": "stale",
+  "authored_at": "2024-03-15T10:00:00-05:00",
+  "account": {
+    "account_id": "ACC-Q026BTUQ",
+    "name": "Wide World Importers",
+    "segment": "smb-corporate",
+    "geography": "NA",
+    "tenure_years": 6.5,
+    "owner": "Ahmed Hassan",
+    "industry": "Import/Export",
+    "employee_count": 780
+  },
+  "opportunities": [
+    {
+      "opportunity_id": "OPP-NI50NVA0",
+      "name": "Wide AKS Deployment",
+      "stage": "Close",
+      "estimated_value_usd": 125000,
+      "close_date": "2023-12-01",
+      "bpf_stage": "Close",
+      "forecast_category": "Committed",
+      "owner": "Ahmed Hassan",
+      "last_updated": "2023-09-14T12:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-3NB4VT7I",
+          "name": "Discovery",
+          "status": "Blocked",
+          "due_date": "2024-03-18",
+          "completed_date": null,
+          "owner": "Ahmed Hassan",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-BMBVFOYL",
+          "name": "Technical Validation",
+          "status": "Not Started",
+          "due_date": "2024-06-05",
+          "completed_date": null,
+          "owner": "Ahmed Hassan",
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "opportunity_id": "OPP-P45XKFE7",
+      "name": "Wide Intune Rollout",
+      "stage": "Close",
+      "estimated_value_usd": 89000,
+      "close_date": "2024-04-18",
+      "bpf_stage": "Close",
+      "forecast_category": "Committed",
+      "owner": "Ahmed Hassan",
+      "last_updated": "2023-08-20T16:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-W2I0WJ08",
+          "name": "Discovery",
+          "status": "Completed",
+          "due_date": "2024-05-08",
+          "completed_date": "2024-01-27",
+          "owner": "Ahmed Hassan",
+          "evidence": "email_thread_6697"
+        },
+        {
+          "milestone_id": "MS-7NA8WEIM",
+          "name": "Technical Validation",
+          "status": "Not Started",
+          "due_date": "2024-07-03",
+          "completed_date": null,
+          "owner": "Ahmed Hassan",
+          "evidence": ""
+        }
+      ]
+    }
+  ],
+  "contacts": [
+    {
+      "contact_id": "CON-2HIQJJP2",
+      "name": "Ryan Kowalski",
+      "role": "Finance",
+      "title": "Director of IT",
+      "email": "ryan.kowalski@wideworldimp.com",
+      "influence_level": "Decision Maker",
+      "last_interaction": "2024-01-24",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-O117Q4NW",
+      "name": "Eric Torres",
+      "role": "Operations",
+      "title": "Technology Manager",
+      "email": "eric.torres@wideworldimp.com",
+      "influence_level": "Influencer",
+      "last_interaction": "2024-03-22",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-27VSDXOO",
+      "name": "Sandra Schmidt",
+      "role": "Technical",
+      "title": "CIO",
+      "email": "sandra.schmidt@wideworldimp.com",
+      "influence_level": "Champion",
+      "last_interaction": "2024-01-11",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-OAG7354F",
+      "name": "Michael Kowalski",
+      "role": "Finance",
+      "title": "Director of IT",
+      "email": "michael.kowalski@wideworldimp.com",
+      "influence_level": "End User",
+      "last_interaction": "2023-01-25",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-VGO1TX9Q",
+      "name": "Victoria Nguyen",
+      "role": "Technical",
+      "title": "IT Director",
+      "email": "victoria.nguyen@wideworldimp.com",
+      "influence_level": "Blocker",
+      "last_interaction": "2023-04-22",
+      "is_current": false
+    },
+    {
+      "contact_id": "CON-YWEMICXI",
+      "name": "Thomas Martinez",
+      "role": "Operations",
+      "title": "CFO",
+      "email": "thomas.martinez@wideworldimp.com",
+      "influence_level": "End User",
+      "last_interaction": "2023-03-15",
+      "is_current": false
+    }
+  ],
+  "acr_trend": {
+    "currency": "USD",
+    "monthly_values": [
+      {
+        "month": "2023-04",
+        "value_usd": 60163.32,
+        "workload_breakdown": {
+          "compute": 21634.56,
+          "storage": 14774.14,
+          "networking": 10511.4,
+          "paas": 13243.21
+        }
+      },
+      {
+        "month": "2023-05",
+        "value_usd": 60293.84,
+        "workload_breakdown": {
+          "compute": 10487.73,
+          "storage": 13697.68,
+          "networking": 7563.92,
+          "paas": 28544.51
+        }
+      },
+      {
+        "month": "2023-06",
+        "value_usd": 60969.83,
+        "workload_breakdown": {
+          "compute": 9595.62,
+          "storage": 13916.28,
+          "networking": 15865.09,
+          "paas": 21592.84
+        }
+      },
+      {
+        "month": "2023-07",
+        "value_usd": 59885.22,
+        "workload_breakdown": {
+          "compute": 25648.48,
+          "storage": 6928.46,
+          "networking": 8902.74,
+          "paas": 18405.54
+        }
+      },
+      {
+        "month": "2023-08",
+        "value_usd": 59053.95,
+        "workload_breakdown": {
+          "compute": 25689.1,
+          "storage": 7647.28,
+          "networking": 8017.94,
+          "paas": 17699.62
+        }
+      },
+      {
+        "month": "2023-09",
+        "value_usd": 60516.21,
+        "workload_breakdown": {
+          "compute": 10689.98,
+          "storage": 7915.55,
+          "networking": 12049.89,
+          "paas": 29860.8
+        }
+      },
+      {
+        "month": "2023-10",
+        "value_usd": 60997.5,
+        "workload_breakdown": {
+          "compute": 25465.94,
+          "storage": 8483.5,
+          "networking": 5171.21,
+          "paas": 21876.86
+        }
+      },
+      {
+        "month": "2023-11",
+        "value_usd": 61965.63,
+        "workload_breakdown": {
+          "compute": 17230.47,
+          "storage": 13544.22,
+          "networking": 11671.98,
+          "paas": 19518.95
+        }
+      },
+      {
+        "month": "2023-12",
+        "value_usd": 61965.63,
+        "workload_breakdown": {
+          "compute": 22091.25,
+          "storage": 12191.67,
+          "networking": 4568.28,
+          "paas": 23114.42
+        }
+      },
+      {
+        "month": "2024-01",
+        "value_usd": 61965.63,
+        "workload_breakdown": {
+          "compute": 13592.71,
+          "storage": 9591.49,
+          "networking": 8372.76,
+          "paas": 30408.67
+        }
+      },
+      {
+        "month": "2024-02",
+        "value_usd": 61965.63,
+        "workload_breakdown": {
+          "compute": 21218.54,
+          "storage": 8768.11,
+          "networking": 7150.71,
+          "paas": 24828.27
+        }
+      },
+      {
+        "month": "2024-03",
+        "value_usd": 61965.63,
+        "workload_breakdown": {
+          "compute": 24090.03,
+          "storage": 13888.36,
+          "networking": 10355.19,
+          "paas": 13632.05
+        }
+      }
+    ]
+  },
+  "open_recommendations": [
+    {
+      "recommendation_id": "REC-51566",
+      "type": "Advisor",
+      "description": "Enable diagnostic logging for all services",
+      "priority": "Low",
+      "created_at": "2023-08-22T10:00:00-05:00",
+      "status": "New"
+    },
+    {
+      "recommendation_id": "REC-86513",
+      "type": "Advisor",
+      "description": "Adopt Azure Policy for compliance governance",
+      "priority": "High",
+      "created_at": "2023-07-15T10:00:00-05:00",
+      "status": "Dismissed"
+    },
+    {
+      "recommendation_id": "REC-80801",
+      "type": "Manual",
+      "description": "Enable Azure Monitor for production workloads",
+      "priority": "Medium",
+      "created_at": "2023-06-24T10:00:00-05:00",
+      "status": "Acknowledged"
+    },
+    {
+      "recommendation_id": "REC-54185",
+      "type": "Manual",
+      "description": "Rightsize underutilized VMs (potential 23% savings)",
+      "priority": "High",
+      "created_at": "2023-06-09T10:00:00-05:00",
+      "status": "In Progress"
+    }
+  ],
+  "recent_activity_timeline": [
+    {
+      "date": "2023-10-02",
+      "activity_type": "meeting",
+      "description": "Technical deep-dive on migration",
+      "participants": [
+        "Sarah Kim",
+        "Ahmed Hassan",
+        "Raj Mehta"
+      ]
+    },
+    {
+      "date": "2023-09-10",
+      "activity_type": "spa_received",
+      "description": "SPA: Cost anomaly detected",
+      "participants": [
+        "Sarah Kim"
+      ]
+    }
+  ],
+  "customer_health_flags": {
+    "overall_health": "At Risk",
+    "engagement_score": 91,
+    "consumption_trend": "Declining",
+    "renewal_risk": "High",
+    "last_assessed": "2023-07-15"
+  },
+  "contract_billing": {
+    "subscription_type": "MCA",
+    "contract_end_date": "2024-10-25",
+    "macc_commitment_usd": 200000,
+    "macc_consumed_usd": 105366.36,
+    "billing_frequency": "Annual",
+    "auto_renew": false
+  }
+}

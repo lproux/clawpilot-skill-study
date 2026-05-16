@@ -1,0 +1,474 @@
+{
+  "fixture_id": "FX-039",
+  "fixture_class": "inconsistent",
+  "authored_at": "2024-03-15T10:00:00-05:00",
+  "account": {
+    "account_id": "ACC-5JSOIRD0",
+    "name": "Fabrikam Residences",
+    "segment": "smb-small",
+    "geography": "EMEA",
+    "tenure_years": 7.8,
+    "owner": "Tom Rodriguez",
+    "industry": "Real Estate",
+    "employee_count": 190
+  },
+  "opportunities": [
+    {
+      "opportunity_id": "OPP-VXW1S4I2",
+      "name": "Fabrikam Power Platform",
+      "stage": "Prospect",
+      "estimated_value_usd": 175000,
+      "close_date": "2024-06-08",
+      "bpf_stage": "Qualify",
+      "forecast_category": "Pipeline",
+      "owner": "Tom Rodriguez",
+      "last_updated": "2024-02-24T17:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-65UUCYCA",
+          "name": "Discovery",
+          "status": "Completed",
+          "due_date": "2024-08-08",
+          "completed_date": "2024-02-01",
+          "owner": "Tom Rodriguez",
+          "evidence": "email_thread_2458"
+        },
+        {
+          "milestone_id": "MS-MCQ24PD2",
+          "name": "Technical Validation",
+          "status": "Blocked",
+          "due_date": "2024-03-09",
+          "completed_date": null,
+          "owner": "Tom Rodriguez",
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "opportunity_id": "OPP-11OL2TWK",
+      "name": "Fabrikam Cloud Migration Phase",
+      "stage": "Develop",
+      "estimated_value_usd": 450000,
+      "close_date": "2024-11-24",
+      "bpf_stage": "Develop",
+      "forecast_category": "Best Case",
+      "owner": "Tom Rodriguez",
+      "last_updated": "2024-01-24T16:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-E3FNKKA7",
+          "name": "Discovery",
+          "status": "In Progress",
+          "due_date": "2024-06-19",
+          "completed_date": null,
+          "owner": "Tom Rodriguez",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-Z2814P4W",
+          "name": "Technical Validation",
+          "status": "Not Started",
+          "due_date": "2024-06-01",
+          "completed_date": null,
+          "owner": "Tom Rodriguez",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-ERAU0D6B",
+          "name": "Business Case Approved",
+          "status": "Blocked",
+          "due_date": "2024-04-09",
+          "completed_date": null,
+          "owner": "Tom Rodriguez",
+          "evidence": ""
+        }
+      ]
+    }
+  ],
+  "contacts": [
+    {
+      "contact_id": "CON-PUFX6ODE",
+      "name": "Kevin Lee",
+      "role": "Operations",
+      "title": "VP Operations",
+      "email": "kevin.lee@fabrikamresi.com",
+      "influence_level": "Decision Maker",
+      "last_interaction": "2024-02-06",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-SJVN4Q0A",
+      "name": "Maria Schmidt",
+      "role": "Executive",
+      "title": "Security Manager",
+      "email": "maria.schmidt@fabrikamresi.com",
+      "influence_level": "Influencer",
+      "last_interaction": "2024-02-13",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-T7CA5URN",
+      "name": "Christopher Schmidt",
+      "role": "Finance",
+      "title": "IT Director",
+      "email": "christopher.schmidt@fabrikamresi.com",
+      "influence_level": "Champion",
+      "last_interaction": "2024-02-14",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-2WOV2FS8",
+      "name": "Diana Torres",
+      "role": "Finance",
+      "title": "VP Operations",
+      "email": "diana.torres@fabrikamresi.com",
+      "influence_level": "End User",
+      "last_interaction": "2024-02-02",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-IX2KRUH5",
+      "name": "Angela Chen",
+      "role": "Executive",
+      "title": "VP Operations",
+      "email": "angela.chen@fabrikamresi.com",
+      "influence_level": "Blocker",
+      "last_interaction": "2024-03-12",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-FSTL3E8X",
+      "name": "Robert Chen",
+      "role": "Technical",
+      "title": "Infrastructure Manager",
+      "email": "robert.chen@fabrikamresi.com",
+      "influence_level": "End User",
+      "last_interaction": "2024-03-17",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-NGYX8EFD",
+      "name": "Kevin Nguyen",
+      "role": "Finance",
+      "title": "Director of IT",
+      "email": "kevin.nguyen@fabrikamresi.com",
+      "influence_level": "End User",
+      "last_interaction": "2024-02-16",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-XLDPB57R",
+      "name": "Diana Davis",
+      "role": "Executive",
+      "title": "COO",
+      "email": "diana.davis@fabrikamresi.com",
+      "influence_level": "Champion",
+      "last_interaction": "2024-02-21",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-7O3PXYK6",
+      "name": "Jason Petrov",
+      "role": "Operations",
+      "title": "COO",
+      "email": "jason.petrov@fabrikamresi.com",
+      "influence_level": "End User",
+      "last_interaction": "2024-03-17",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-U2GR2GED",
+      "name": "Thomas Patel",
+      "role": "Business",
+      "title": "Director of IT",
+      "email": "thomas.patel@fabrikamresi.com",
+      "influence_level": "End User",
+      "last_interaction": "2024-01-28",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-N2TV8QTA",
+      "name": "Kevin O'Brien",
+      "role": "Operations",
+      "title": "VP Operations",
+      "email": "kevin.o'brien@fabrikamresi.com",
+      "influence_level": "Blocker",
+      "last_interaction": "2024-03-07",
+      "is_current": true
+    }
+  ],
+  "acr_trend": {
+    "currency": "USD",
+    "monthly_values": [
+      {
+        "month": "2023-04",
+        "value_usd": 36975.36,
+        "workload_breakdown": {
+          "compute": 6671.65,
+          "storage": 4689.83,
+          "networking": 3872.64,
+          "paas": 21741.23
+        }
+      },
+      {
+        "month": "2023-05",
+        "value_usd": 36491.27,
+        "workload_breakdown": {
+          "compute": 11247.55,
+          "storage": 6041.36,
+          "networking": 4998.78,
+          "paas": 14203.57
+        }
+      },
+      {
+        "month": "2023-06",
+        "value_usd": 36034.12,
+        "workload_breakdown": {
+          "compute": 11667.09,
+          "storage": 5956.47,
+          "networking": 6857.03,
+          "paas": 11553.53
+        }
+      },
+      {
+        "month": "2023-07",
+        "value_usd": 37264.72,
+        "workload_breakdown": {
+          "compute": 8311.55,
+          "storage": 8660.13,
+          "networking": 5294.11,
+          "paas": 14998.93
+        }
+      },
+      {
+        "month": "2023-08",
+        "value_usd": 38861.66,
+        "workload_breakdown": {
+          "compute": 14464.06,
+          "storage": 6961.2,
+          "networking": 4068.32,
+          "paas": 13368.08
+        }
+      },
+      {
+        "month": "2023-09",
+        "value_usd": 37129.95,
+        "workload_breakdown": {
+          "compute": 15930.04,
+          "storage": 8145.88,
+          "networking": 3315.07,
+          "paas": 9738.95
+        }
+      },
+      {
+        "month": "2023-10",
+        "value_usd": 18564.97,
+        "workload_breakdown": {
+          "compute": 6542.32,
+          "storage": 3619.78,
+          "networking": 1363.34,
+          "paas": 7039.53
+        }
+      },
+      {
+        "month": "2023-11",
+        "value_usd": 74259.89,
+        "workload_breakdown": {
+          "compute": 15859.13,
+          "storage": 20259.1,
+          "networking": 5852.96,
+          "paas": 32288.69
+        }
+      },
+      {
+        "month": "2023-12",
+        "value_usd": 36132.06,
+        "workload_breakdown": {
+          "compute": 5840.97,
+          "storage": 6972.04,
+          "networking": 6861.09,
+          "paas": 16457.96
+        }
+      },
+      {
+        "month": "2024-01",
+        "value_usd": 34950.61,
+        "workload_breakdown": {
+          "compute": 5268.14,
+          "storage": 13166.53,
+          "networking": 7378.53,
+          "paas": 9137.4
+        }
+      },
+      {
+        "month": "2024-02",
+        "value_usd": 33915.79,
+        "workload_breakdown": {
+          "compute": 13000.19,
+          "storage": 8501.44,
+          "networking": 5255.23,
+          "paas": 7158.93
+        }
+      },
+      {
+        "month": "2024-03",
+        "value_usd": 32488.07,
+        "workload_breakdown": {
+          "compute": 13122.34,
+          "storage": 5341.7,
+          "networking": 2767.47,
+          "paas": 11256.56
+        }
+      }
+    ]
+  },
+  "open_recommendations": [
+    {
+      "recommendation_id": "REC-68099",
+      "type": "Manual",
+      "description": "Migrate to Azure SQL Managed Instance",
+      "priority": "Low",
+      "created_at": "2024-01-10T10:00:00-05:00",
+      "status": "In Progress"
+    },
+    {
+      "recommendation_id": "REC-43079",
+      "type": "Advisor",
+      "description": "Enable diagnostic logging for all services",
+      "priority": "High",
+      "created_at": "2024-03-28T10:00:00-05:00",
+      "status": "Acknowledged"
+    },
+    {
+      "recommendation_id": "REC-77104",
+      "type": "Manual",
+      "description": "Upgrade to premium tier storage for production",
+      "priority": "Low",
+      "created_at": "2024-01-27T10:00:00-05:00",
+      "status": "Dismissed"
+    },
+    {
+      "recommendation_id": "REC-50424",
+      "type": "SPA",
+      "description": "Enable Azure Backup for critical databases",
+      "priority": "Low",
+      "created_at": "2024-02-23T10:00:00-05:00",
+      "status": "Acknowledged"
+    },
+    {
+      "recommendation_id": "REC-80512",
+      "type": "Manual",
+      "description": "Enable Defender for Cloud across subscriptions",
+      "priority": "Medium",
+      "created_at": "2024-01-26T10:00:00-05:00",
+      "status": "Acknowledged"
+    }
+  ],
+  "recent_activity_timeline": [
+    {
+      "date": "2024-03-28",
+      "activity_type": "contract_event",
+      "description": "Contract renewal notification (90 days)",
+      "participants": [
+        "Lisa Patel",
+        "Sarah Kim"
+      ]
+    },
+    {
+      "date": "2024-03-21",
+      "activity_type": "email",
+      "description": "Customer requested partner introduction",
+      "participants": [
+        "Ahmed Hassan",
+        "Raj Mehta",
+        "Marcus Williams"
+      ]
+    },
+    {
+      "date": "2024-03-10",
+      "activity_type": "meeting",
+      "description": "QBR with customer IT team",
+      "participants": [
+        "Sarah Kim"
+      ]
+    },
+    {
+      "date": "2024-03-05",
+      "activity_type": "call",
+      "description": "Check-in on pilot progress",
+      "participants": [
+        "Ahmed Hassan",
+        "Sarah Kim",
+        "Lisa Patel"
+      ]
+    },
+    {
+      "date": "2024-02-12",
+      "activity_type": "msx_update",
+      "description": "Added competitive intelligence notes",
+      "participants": [
+        "Raj Mehta",
+        "Lisa Patel",
+        "Sarah Kim"
+      ]
+    },
+    {
+      "date": "2024-02-11",
+      "activity_type": "contract_event",
+      "description": "Contract renewal notification (90 days)",
+      "participants": [
+        "Lisa Patel"
+      ]
+    },
+    {
+      "date": "2024-01-14",
+      "activity_type": "deployment",
+      "description": "Production deployment completed successfully",
+      "participants": [
+        "Lisa Patel",
+        "Ahmed Hassan"
+      ]
+    },
+    {
+      "date": "2024-01-11",
+      "activity_type": "escalation",
+      "description": "Customer escalated support ticket response time",
+      "participants": [
+        "Marcus Williams"
+      ]
+    },
+    {
+      "date": "2024-01-06",
+      "activity_type": "meeting",
+      "description": "Security posture review",
+      "participants": [
+        "Marcus Williams"
+      ]
+    },
+    {
+      "date": "2024-01-02",
+      "activity_type": "contract_event",
+      "description": "Billing discrepancy flagged",
+      "participants": [
+        "Ahmed Hassan",
+        "Marcus Williams",
+        "Lisa Patel"
+      ]
+    }
+  ],
+  "customer_health_flags": {
+    "overall_health": "Healthy",
+    "engagement_score": 79,
+    "consumption_trend": "Declining",
+    "renewal_risk": "Low",
+    "last_assessed": "2024-02-09"
+  },
+  "contract_billing": {
+    "subscription_type": "PAYG",
+    "contract_end_date": null,
+    "macc_commitment_usd": null,
+    "macc_consumed_usd": null,
+    "billing_frequency": "Monthly",
+    "auto_renew": false
+  }
+}

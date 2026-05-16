@@ -1,0 +1,475 @@
+{
+  "fixture_id": "FX-045",
+  "fixture_class": "inconsistent",
+  "authored_at": "2024-03-15T10:00:00-05:00",
+  "account": {
+    "account_id": "ACC-URB6CCFS",
+    "name": "Azure Ridge Partners",
+    "segment": "smb-mid",
+    "geography": "EMEA",
+    "tenure_years": 3.5,
+    "owner": "Raj Mehta",
+    "industry": "Investment",
+    "employee_count": 85
+  },
+  "opportunities": [
+    {
+      "opportunity_id": "OPP-FYXVNQH6",
+      "name": "Azure Cloud Migration Phase",
+      "stage": "Develop",
+      "estimated_value_usd": 210000,
+      "close_date": "2024-09-05",
+      "bpf_stage": "Propose",
+      "forecast_category": "Best Case",
+      "owner": "Raj Mehta",
+      "last_updated": "2024-03-25T13:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-1A158D7I",
+          "name": "Discovery",
+          "status": "Blocked",
+          "due_date": "2024-07-12",
+          "completed_date": null,
+          "owner": "Raj Mehta",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-YEZ2EQ87",
+          "name": "Technical Validation",
+          "status": "In Progress",
+          "due_date": "2024-07-27",
+          "completed_date": null,
+          "owner": "Raj Mehta",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-6J259Y7V",
+          "name": "Business Case Approved",
+          "status": "Blocked",
+          "due_date": "2024-06-09",
+          "completed_date": null,
+          "owner": "Raj Mehta",
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "opportunity_id": "OPP-PHLCYIL5",
+      "name": "Azure Cloud Migration Phase",
+      "stage": "Close",
+      "estimated_value_usd": 560000,
+      "close_date": "2024-10-05",
+      "bpf_stage": "Close",
+      "forecast_category": "Committed",
+      "owner": "Raj Mehta",
+      "last_updated": "2024-02-10T16:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-ZIR45K8Y",
+          "name": "Discovery",
+          "status": "Not Started",
+          "due_date": "2024-06-17",
+          "completed_date": null,
+          "owner": "Raj Mehta",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-A8YBZ28N",
+          "name": "Technical Validation",
+          "status": "In Progress",
+          "due_date": "2024-07-25",
+          "completed_date": null,
+          "owner": "Raj Mehta",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-N7P4ZQQ5",
+          "name": "Business Case Approved",
+          "status": "Blocked",
+          "due_date": "2024-07-22",
+          "completed_date": null,
+          "owner": "Raj Mehta",
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "opportunity_id": "OPP-51VWPESP",
+      "name": "Azure Intune Rollout",
+      "stage": "Develop",
+      "estimated_value_usd": 280000,
+      "close_date": "2024-10-01",
+      "bpf_stage": "Develop",
+      "forecast_category": "Best Case",
+      "owner": "Raj Mehta",
+      "last_updated": "2024-03-07T17:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-2SXH2JCM",
+          "name": "Discovery",
+          "status": "Completed",
+          "due_date": "2024-07-12",
+          "completed_date": "2024-03-09",
+          "owner": "Raj Mehta",
+          "evidence": "email_thread_3538"
+        },
+        {
+          "milestone_id": "MS-PF5DPKMZ",
+          "name": "Technical Validation",
+          "status": "In Progress",
+          "due_date": "2024-06-26",
+          "completed_date": null,
+          "owner": "Raj Mehta",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-RCLQDBGQ",
+          "name": "Business Case Approved",
+          "status": "In Progress",
+          "due_date": "2024-04-22",
+          "completed_date": null,
+          "owner": "Raj Mehta",
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "opportunity_id": "OPP-56GWTGPJ",
+      "name": "Azure Security Modernization",
+      "stage": "Qualify",
+      "estimated_value_usd": 280000,
+      "close_date": "2024-08-08",
+      "bpf_stage": "Qualify",
+      "forecast_category": "Pipeline",
+      "owner": "Raj Mehta",
+      "last_updated": "2024-02-06T15:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-2KBQ1FLG",
+          "name": "Discovery",
+          "status": "Completed",
+          "due_date": "2024-05-07",
+          "completed_date": "2024-02-20",
+          "owner": "Raj Mehta",
+          "evidence": "email_thread_8386"
+        },
+        {
+          "milestone_id": "MS-SPIJTBM1",
+          "name": "Technical Validation",
+          "status": "Blocked",
+          "due_date": "2024-08-14",
+          "completed_date": null,
+          "owner": "Raj Mehta",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-F8LO5B8C",
+          "name": "Business Case Approved",
+          "status": "Completed",
+          "due_date": "2024-08-03",
+          "completed_date": "2024-02-21",
+          "owner": "Raj Mehta",
+          "evidence": "email_thread_3226"
+        }
+      ]
+    }
+  ],
+  "contacts": [
+    {
+      "contact_id": "CON-VKIEFH3F",
+      "name": "Thomas Okafor",
+      "role": "Operations",
+      "title": "CFO",
+      "email": "thomas.okafor@azureridgepa.com",
+      "influence_level": "Decision Maker",
+      "last_interaction": "2024-02-23",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-LKQIG6C5",
+      "name": "Victoria Morrison",
+      "role": "Executive",
+      "title": "Data Platform Lead",
+      "email": "victoria.morrison@azureridgepa.com",
+      "influence_level": "Influencer",
+      "last_interaction": "2024-01-19",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-WACUPQVN",
+      "name": "Victoria Rivera",
+      "role": "Finance",
+      "title": "IT Director",
+      "email": "victoria.rivera@azureridgepa.com",
+      "influence_level": "Champion",
+      "last_interaction": "2024-02-09",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-Z61QX0X8",
+      "name": "Victoria Yamamoto",
+      "role": "Operations",
+      "title": "Infrastructure Manager",
+      "email": "victoria.yamamoto@azureridgepa.com",
+      "influence_level": "End User",
+      "last_interaction": "2024-03-25",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-DGXEH53W",
+      "name": "Kevin Petrov",
+      "role": "Technical",
+      "title": "COO",
+      "email": "kevin.petrov@azureridgepa.com",
+      "influence_level": "Blocker",
+      "last_interaction": "2024-02-21",
+      "is_current": true
+    }
+  ],
+  "acr_trend": {
+    "currency": "USD",
+    "monthly_values": [
+      {
+        "month": "2023-04",
+        "value_usd": 28807.64,
+        "workload_breakdown": {
+          "compute": 5516.7,
+          "storage": 9175.41,
+          "networking": 3690.31,
+          "paas": 10425.22
+        }
+      },
+      {
+        "month": "2023-05",
+        "value_usd": 98605.31,
+        "workload_breakdown": {
+          "compute": 27436.7,
+          "storage": 18784.65,
+          "networking": 11014.67,
+          "paas": 41369.29
+        }
+      },
+      {
+        "month": "2023-06",
+        "value_usd": 100976.04,
+        "workload_breakdown": {
+          "compute": 36760.76,
+          "storage": 10434.08,
+          "networking": 14492.66,
+          "paas": 39288.54
+        }
+      },
+      {
+        "month": "2023-07",
+        "value_usd": 103213.02,
+        "workload_breakdown": {
+          "compute": 25313.14,
+          "storage": 28961.39,
+          "networking": 12819.14,
+          "paas": 36119.35
+        }
+      },
+      {
+        "month": "2023-08",
+        "value_usd": 107168.26,
+        "workload_breakdown": {
+          "compute": 40272.13,
+          "storage": 17820.47,
+          "networking": 13420.06,
+          "paas": 35655.6
+        }
+      },
+      {
+        "month": "2023-09",
+        "value_usd": 112395.85,
+        "workload_breakdown": {
+          "compute": 36802.02,
+          "storage": 17098.65,
+          "networking": 19452.67,
+          "paas": 39042.51
+        }
+      },
+      {
+        "month": "2023-10",
+        "value_usd": 106779.58,
+        "workload_breakdown": {
+          "compute": 43999.92,
+          "storage": 18711.46,
+          "networking": 13610.42,
+          "paas": 30457.78
+        }
+      },
+      {
+        "month": "2023-11",
+        "value_usd": 103710.25,
+        "workload_breakdown": {
+          "compute": 37860.55,
+          "storage": 29491.08,
+          "networking": 10050.25,
+          "paas": 26308.37
+        }
+      },
+      {
+        "month": "2023-12",
+        "value_usd": 106645.9,
+        "workload_breakdown": {
+          "compute": 46428.88,
+          "storage": 22433.93,
+          "networking": 16090.15,
+          "paas": 21692.95
+        }
+      },
+      {
+        "month": "2024-01",
+        "value_usd": 105538.83,
+        "workload_breakdown": {
+          "compute": 18885.27,
+          "storage": 22865.24,
+          "networking": 18850.08,
+          "paas": 44938.23
+        }
+      },
+      {
+        "month": "2024-02",
+        "value_usd": 105256.33,
+        "workload_breakdown": {
+          "compute": 42988.97,
+          "storage": 13502.62,
+          "networking": 17823.73,
+          "paas": 30941.01
+        }
+      },
+      {
+        "month": "2024-03",
+        "value_usd": 189461.39,
+        "workload_breakdown": {
+          "compute": 71261.56,
+          "storage": 18146.86,
+          "networking": 31316.45,
+          "paas": 68736.51
+        }
+      }
+    ]
+  },
+  "open_recommendations": [
+    {
+      "recommendation_id": "REC-94076",
+      "type": "SPA",
+      "description": "Deploy Azure Front Door for global load balancing",
+      "priority": "High",
+      "created_at": "2024-01-14T10:00:00-05:00",
+      "status": "Acknowledged"
+    },
+    {
+      "recommendation_id": "REC-42521",
+      "type": "CxObserve",
+      "description": "Enable diagnostic logging for all services",
+      "priority": "Low",
+      "created_at": "2024-02-23T10:00:00-05:00",
+      "status": "Acknowledged"
+    },
+    {
+      "recommendation_id": "REC-71401",
+      "type": "Manual",
+      "description": "Upgrade to premium tier storage for production",
+      "priority": "High",
+      "created_at": "2024-03-26T10:00:00-05:00",
+      "status": "Dismissed"
+    }
+  ],
+  "recent_activity_timeline": [
+    {
+      "date": "2024-03-27",
+      "activity_type": "meeting",
+      "description": "Weekly sync with account team",
+      "participants": [
+        "Marcus Williams",
+        "Ahmed Hassan"
+      ]
+    },
+    {
+      "date": "2024-03-15",
+      "activity_type": "meeting",
+      "description": "QBR with customer IT team",
+      "participants": [
+        "Lisa Patel",
+        "Marcus Williams"
+      ]
+    },
+    {
+      "date": "2024-03-12",
+      "activity_type": "escalation",
+      "description": "Performance degradation reported by end users",
+      "participants": [
+        "Lisa Patel"
+      ]
+    },
+    {
+      "date": "2024-02-19",
+      "activity_type": "meeting",
+      "description": "Security posture review",
+      "participants": [
+        "Ahmed Hassan"
+      ]
+    },
+    {
+      "date": "2024-02-17",
+      "activity_type": "deployment",
+      "description": "Migration batch 1 completed",
+      "participants": [
+        "Lisa Patel"
+      ]
+    },
+    {
+      "date": "2024-02-09",
+      "activity_type": "call",
+      "description": "Discussed budget approval timeline",
+      "participants": [
+        "Ahmed Hassan",
+        "Marcus Williams",
+        "Lisa Patel"
+      ]
+    },
+    {
+      "date": "2024-01-08",
+      "activity_type": "contract_event",
+      "description": "Billing discrepancy flagged",
+      "participants": [
+        "Marcus Williams"
+      ]
+    },
+    {
+      "date": "2024-01-06",
+      "activity_type": "contract_event",
+      "description": "Contract renewal notification (90 days)",
+      "participants": [
+        "Raj Mehta",
+        "Lisa Patel",
+        "Ahmed Hassan"
+      ]
+    },
+    {
+      "date": "2024-01-05",
+      "activity_type": "deployment",
+      "description": "Migration batch 1 completed",
+      "participants": [
+        "Sarah Kim"
+      ]
+    }
+  ],
+  "customer_health_flags": {
+    "overall_health": "Unknown",
+    "engagement_score": 58,
+    "consumption_trend": "Growing",
+    "renewal_risk": "High",
+    "last_assessed": "2024-03-28"
+  },
+  "contract_billing": {
+    "subscription_type": "MCA",
+    "contract_end_date": "2024-12-14",
+    "macc_commitment_usd": null,
+    "macc_consumed_usd": null,
+    "billing_frequency": "Annual",
+    "auto_renew": false
+  }
+}

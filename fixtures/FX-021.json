@@ -1,0 +1,394 @@
+{
+  "fixture_id": "FX-021",
+  "fixture_class": "stale",
+  "authored_at": "2024-03-15T10:00:00-05:00",
+  "account": {
+    "account_id": "ACC-BFJJI6LY",
+    "name": "Nod Publishers",
+    "segment": "smb-mid",
+    "geography": "APAC",
+    "tenure_years": 2.3,
+    "owner": "Marcus Williams",
+    "industry": "Media",
+    "employee_count": 95
+  },
+  "opportunities": [
+    {
+      "opportunity_id": "OPP-D85VDSD2",
+      "name": "Nod Azure SQL Migration",
+      "stage": "Close",
+      "estimated_value_usd": 45000,
+      "close_date": "2023-10-06",
+      "bpf_stage": "Close",
+      "forecast_category": "Committed",
+      "owner": "Marcus Williams",
+      "last_updated": "2023-07-24T15:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-3V8FYAKS",
+          "name": "Discovery",
+          "status": "In Progress",
+          "due_date": "2024-07-18",
+          "completed_date": null,
+          "owner": "Marcus Williams",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-KO12TE3I",
+          "name": "Technical Validation",
+          "status": "In Progress",
+          "due_date": "2024-04-04",
+          "completed_date": null,
+          "owner": "Marcus Williams",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-4RGEOQ1H",
+          "name": "Business Case Approved",
+          "status": "Blocked",
+          "due_date": "2024-04-14",
+          "completed_date": null,
+          "owner": "Marcus Williams",
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "opportunity_id": "OPP-BTSSWU1W",
+      "name": "Nod Intune Rollout",
+      "stage": "Develop",
+      "estimated_value_usd": 560000,
+      "close_date": "2024-12-16",
+      "bpf_stage": "Develop",
+      "forecast_category": "Best Case",
+      "owner": "Marcus Williams",
+      "last_updated": "2023-06-27T12:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-4PNG3ATF",
+          "name": "Discovery",
+          "status": "Not Started",
+          "due_date": "2024-08-26",
+          "completed_date": null,
+          "owner": "Marcus Williams",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-IZSC5RK1",
+          "name": "Technical Validation",
+          "status": "Blocked",
+          "due_date": "2024-04-15",
+          "completed_date": null,
+          "owner": "Marcus Williams",
+          "evidence": ""
+        }
+      ]
+    }
+  ],
+  "contacts": [
+    {
+      "contact_id": "CON-L8SNJW7L",
+      "name": "Samantha Singh",
+      "role": "Operations",
+      "title": "VP Engineering",
+      "email": "samantha.singh@nodpublisher.com",
+      "influence_level": "Decision Maker",
+      "last_interaction": "2024-02-18",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-WSOHDFQY",
+      "name": "Patricia Schmidt",
+      "role": "Technical",
+      "title": "COO",
+      "email": "patricia.schmidt@nodpublisher.com",
+      "influence_level": "Influencer",
+      "last_interaction": "2024-01-02",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-4JOJF7C1",
+      "name": "James Petrov",
+      "role": "Executive",
+      "title": "IT Director",
+      "email": "james.petrov@nodpublisher.com",
+      "influence_level": "Champion",
+      "last_interaction": "2024-01-16",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-U07TWIJ4",
+      "name": "Nicole Rivera",
+      "role": "Business",
+      "title": "Infrastructure Manager",
+      "email": "nicole.rivera@nodpublisher.com",
+      "influence_level": "End User",
+      "last_interaction": "2023-03-08",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-9SQZ8GQ0",
+      "name": "Angela Hansen",
+      "role": "Technical",
+      "title": "Infrastructure Manager",
+      "email": "angela.hansen@nodpublisher.com",
+      "influence_level": "Blocker",
+      "last_interaction": "2023-03-01",
+      "is_current": false
+    },
+    {
+      "contact_id": "CON-0TSWQFPJ",
+      "name": "Michelle Petrov",
+      "role": "Executive",
+      "title": "Data Platform Lead",
+      "email": "michelle.petrov@nodpublisher.com",
+      "influence_level": "End User",
+      "last_interaction": "2023-03-25",
+      "is_current": false
+    },
+    {
+      "contact_id": "CON-FROLIEDR",
+      "name": "Tamara Morrison",
+      "role": "Finance",
+      "title": "CFO",
+      "email": "tamara.morrison@nodpublisher.com",
+      "influence_level": "Blocker",
+      "last_interaction": "2023-01-14",
+      "is_current": false
+    },
+    {
+      "contact_id": "CON-TARHA379",
+      "name": "Ryan Nguyen",
+      "role": "Finance",
+      "title": "Director of IT",
+      "email": "ryan.nguyen@nodpublisher.com",
+      "influence_level": "Champion",
+      "last_interaction": "2023-06-25",
+      "is_current": false
+    },
+    {
+      "contact_id": "CON-7ZKLA921",
+      "name": "Brian Singh",
+      "role": "Executive",
+      "title": "COO",
+      "email": "brian.singh@nodpublisher.com",
+      "influence_level": "Champion",
+      "last_interaction": "2023-04-03",
+      "is_current": false
+    }
+  ],
+  "acr_trend": {
+    "currency": "USD",
+    "monthly_values": [
+      {
+        "month": "2023-04",
+        "value_usd": 108804.2,
+        "workload_breakdown": {
+          "compute": 22427.05,
+          "storage": 13157.99,
+          "networking": 16707.54,
+          "paas": 56511.62
+        }
+      },
+      {
+        "month": "2023-05",
+        "value_usd": 110859.15,
+        "workload_breakdown": {
+          "compute": 37815.22,
+          "storage": 29910.72,
+          "networking": 6861.36,
+          "paas": 36271.84
+        }
+      },
+      {
+        "month": "2023-06",
+        "value_usd": 113469.57,
+        "workload_breakdown": {
+          "compute": 33056.71,
+          "storage": 12518.19,
+          "networking": 27874.0,
+          "paas": 40020.67
+        }
+      },
+      {
+        "month": "2023-07",
+        "value_usd": 112175.18,
+        "workload_breakdown": {
+          "compute": 48852.24,
+          "storage": 21771.03,
+          "networking": 14853.57,
+          "paas": 26698.34
+        }
+      },
+      {
+        "month": "2023-08",
+        "value_usd": 113325.0,
+        "workload_breakdown": {
+          "compute": 41431.14,
+          "storage": 17822.51,
+          "networking": 15375.94,
+          "paas": 38695.41
+        }
+      },
+      {
+        "month": "2023-09",
+        "value_usd": 111088.58,
+        "workload_breakdown": {
+          "compute": 17308.36,
+          "storage": 25260.62,
+          "networking": 29587.92,
+          "paas": 38931.68
+        }
+      },
+      {
+        "month": "2023-10",
+        "value_usd": 111088.58,
+        "workload_breakdown": {
+          "compute": 46571.07,
+          "storage": 16690.18,
+          "networking": 20094.68,
+          "paas": 27732.66
+        }
+      },
+      {
+        "month": "2023-11",
+        "value_usd": 111088.58,
+        "workload_breakdown": {
+          "compute": 17180.9,
+          "storage": 38435.21,
+          "networking": 18430.34,
+          "paas": 37042.13
+        }
+      },
+      {
+        "month": "2023-12",
+        "value_usd": 111088.58,
+        "workload_breakdown": {
+          "compute": 24541.15,
+          "storage": 28816.43,
+          "networking": 12040.29,
+          "paas": 45690.7
+        }
+      },
+      {
+        "month": "2024-01",
+        "value_usd": 111088.58,
+        "workload_breakdown": {
+          "compute": 36616.19,
+          "storage": 11851.44,
+          "networking": 20098.57,
+          "paas": 42522.38
+        }
+      },
+      {
+        "month": "2024-02",
+        "value_usd": 111088.58,
+        "workload_breakdown": {
+          "compute": 23325.28,
+          "storage": 17058.08,
+          "networking": 13543.03,
+          "paas": 57162.18
+        }
+      },
+      {
+        "month": "2024-03",
+        "value_usd": 111088.58,
+        "workload_breakdown": {
+          "compute": 38218.92,
+          "storage": 20761.32,
+          "networking": 15457.44,
+          "paas": 36650.9
+        }
+      }
+    ]
+  },
+  "open_recommendations": [
+    {
+      "recommendation_id": "REC-12462",
+      "type": "Manual",
+      "description": "Enable Azure Monitor for production workloads",
+      "priority": "High",
+      "created_at": "2023-08-15T10:00:00-05:00",
+      "status": "Acknowledged"
+    },
+    {
+      "recommendation_id": "REC-15522",
+      "type": "SPA",
+      "description": "Enable Azure Security Center standard tier",
+      "priority": "Medium",
+      "created_at": "2023-04-13T10:00:00-05:00",
+      "status": "Dismissed"
+    },
+    {
+      "recommendation_id": "REC-28503",
+      "type": "SPA",
+      "description": "Implement Azure Landing Zones",
+      "priority": "Low",
+      "created_at": "2023-04-08T10:00:00-05:00",
+      "status": "Acknowledged"
+    }
+  ],
+  "recent_activity_timeline": [
+    {
+      "date": "2023-12-18",
+      "activity_type": "call",
+      "description": "Discussed budget approval timeline",
+      "participants": [
+        "Sarah Kim",
+        "Lisa Patel",
+        "Marcus Williams"
+      ]
+    },
+    {
+      "date": "2023-11-24",
+      "activity_type": "contract_event",
+      "description": "Billing discrepancy flagged",
+      "participants": [
+        "Raj Mehta",
+        "Marcus Williams"
+      ]
+    },
+    {
+      "date": "2023-09-01",
+      "activity_type": "msx_update",
+      "description": "Added competitive intelligence notes",
+      "participants": [
+        "Marcus Williams",
+        "Sarah Kim"
+      ]
+    },
+    {
+      "date": "2023-07-07",
+      "activity_type": "spa_received",
+      "description": "SPA: Cost anomaly detected",
+      "participants": [
+        "Ahmed Hassan",
+        "Sarah Kim",
+        "Raj Mehta"
+      ]
+    },
+    {
+      "date": "2023-06-16",
+      "activity_type": "escalation",
+      "description": "Customer escalated support ticket response time",
+      "participants": [
+        "Sarah Kim"
+      ]
+    }
+  ],
+  "customer_health_flags": {
+    "overall_health": "At Risk",
+    "engagement_score": 61,
+    "consumption_trend": "Growing",
+    "renewal_risk": "Low",
+    "last_assessed": "2023-09-09"
+  },
+  "contract_billing": {
+    "subscription_type": "CSP",
+    "contract_end_date": "2024-09-15",
+    "macc_commitment_usd": null,
+    "macc_consumed_usd": null,
+    "billing_frequency": "Annual",
+    "auto_renew": true
+  }
+}

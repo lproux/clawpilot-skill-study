@@ -1,0 +1,517 @@
+{
+  "fixture_id": "FX-009",
+  "fixture_class": "clean",
+  "authored_at": "2024-03-15T10:00:00-05:00",
+  "account": {
+    "account_id": "ACC-3ORLVDXJ",
+    "name": "VanArsdel Ltd",
+    "segment": "smb-mid",
+    "geography": "NA",
+    "tenure_years": 3.1,
+    "owner": "Tom Rodriguez",
+    "industry": "Electronics",
+    "employee_count": 640
+  },
+  "opportunities": [
+    {
+      "opportunity_id": "OPP-LZJVDAH6",
+      "name": "VanArsdel Data Platform Migration",
+      "stage": "Propose",
+      "estimated_value_usd": 210000,
+      "close_date": "2024-06-13",
+      "bpf_stage": "Propose",
+      "forecast_category": "Pipeline",
+      "owner": "Tom Rodriguez",
+      "last_updated": "2024-02-26T16:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-RF6MXF9D",
+          "name": "Discovery",
+          "status": "Not Started",
+          "due_date": "2024-03-11",
+          "completed_date": null,
+          "owner": "Tom Rodriguez",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-6XI2RD3Z",
+          "name": "Technical Validation",
+          "status": "In Progress",
+          "due_date": "2024-03-12",
+          "completed_date": null,
+          "owner": "Tom Rodriguez",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-EWH9RONU",
+          "name": "Business Case Approved",
+          "status": "Completed",
+          "due_date": "2024-05-26",
+          "completed_date": "2024-03-11",
+          "owner": "Tom Rodriguez",
+          "evidence": "email_thread_4772"
+        }
+      ]
+    },
+    {
+      "opportunity_id": "OPP-VX3XPFHU",
+      "name": "VanArsdel M365 E5 Upsell",
+      "stage": "Prospect",
+      "estimated_value_usd": 280000,
+      "close_date": "2024-06-13",
+      "bpf_stage": null,
+      "forecast_category": "Pipeline",
+      "owner": "Tom Rodriguez",
+      "last_updated": "2024-01-19T12:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-AHDW3JAR",
+          "name": "Discovery",
+          "status": "Not Started",
+          "due_date": "2024-05-25",
+          "completed_date": null,
+          "owner": "Tom Rodriguez",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-T3IIZDQU",
+          "name": "Technical Validation",
+          "status": "In Progress",
+          "due_date": "2024-08-20",
+          "completed_date": null,
+          "owner": "Tom Rodriguez",
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "opportunity_id": "OPP-QOZSMTB9",
+      "name": "VanArsdel Power Platform",
+      "stage": "Prospect",
+      "estimated_value_usd": 350000,
+      "close_date": "2024-09-08",
+      "bpf_stage": null,
+      "forecast_category": "Pipeline",
+      "owner": "Tom Rodriguez",
+      "last_updated": "2024-03-13T16:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-P4TDEIXN",
+          "name": "Discovery",
+          "status": "Not Started",
+          "due_date": "2024-04-08",
+          "completed_date": null,
+          "owner": "Tom Rodriguez",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-HL244FCR",
+          "name": "Technical Validation",
+          "status": "In Progress",
+          "due_date": "2024-07-23",
+          "completed_date": null,
+          "owner": "Tom Rodriguez",
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "opportunity_id": "OPP-BX5HQNB1",
+      "name": "VanArsdel Azure AI Services",
+      "stage": "Propose",
+      "estimated_value_usd": 45000,
+      "close_date": "2024-12-28",
+      "bpf_stage": "Propose",
+      "forecast_category": "Pipeline",
+      "owner": "Tom Rodriguez",
+      "last_updated": "2024-02-05T10:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-6AJOGIMM",
+          "name": "Discovery",
+          "status": "Not Started",
+          "due_date": "2024-06-05",
+          "completed_date": null,
+          "owner": "Tom Rodriguez",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-N28IWX1W",
+          "name": "Technical Validation",
+          "status": "In Progress",
+          "due_date": "2024-03-02",
+          "completed_date": null,
+          "owner": "Tom Rodriguez",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-AUQI8EAQ",
+          "name": "Business Case Approved",
+          "status": "Completed",
+          "due_date": "2024-05-18",
+          "completed_date": "2024-03-27",
+          "owner": "Tom Rodriguez",
+          "evidence": "email_thread_5574"
+        }
+      ]
+    }
+  ],
+  "contacts": [
+    {
+      "contact_id": "CON-JTL59HIV",
+      "name": "Karen Patel",
+      "role": "Technical",
+      "title": "CTO",
+      "email": "karen.patel@vanarsdelltd.com",
+      "influence_level": "Decision Maker",
+      "last_interaction": "2024-01-25",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-NNDG6MEC",
+      "name": "Robert Schmidt",
+      "role": "Executive",
+      "title": "CFO",
+      "email": "robert.schmidt@vanarsdelltd.com",
+      "influence_level": "Influencer",
+      "last_interaction": "2024-02-25",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-LF98IKSR",
+      "name": "Steven Taylor",
+      "role": "Operations",
+      "title": "VP Operations",
+      "email": "steven.taylor@vanarsdelltd.com",
+      "influence_level": "Champion",
+      "last_interaction": "2024-03-18",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-7F0R81VD",
+      "name": "Michael Berg",
+      "role": "Operations",
+      "title": "VP Operations",
+      "email": "michael.berg@vanarsdelltd.com",
+      "influence_level": "End User",
+      "last_interaction": "2024-03-06",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-7MYMQWP6",
+      "name": "Samantha Taylor",
+      "role": "Executive",
+      "title": "CFO",
+      "email": "samantha.taylor@vanarsdelltd.com",
+      "influence_level": "Blocker",
+      "last_interaction": "2024-01-07",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-435YW1B7",
+      "name": "Michael Anderson",
+      "role": "Executive",
+      "title": "Data Platform Lead",
+      "email": "michael.anderson@vanarsdelltd.com",
+      "influence_level": "End User",
+      "last_interaction": "2024-03-22",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-5HZR4OT3",
+      "name": "Robert Jackson",
+      "role": "Technical",
+      "title": "Infrastructure Manager",
+      "email": "robert.jackson@vanarsdelltd.com",
+      "influence_level": "Champion",
+      "last_interaction": "2024-02-27",
+      "is_current": true
+    }
+  ],
+  "acr_trend": {
+    "currency": "USD",
+    "monthly_values": [
+      {
+        "month": "2023-04",
+        "value_usd": 61966.0,
+        "workload_breakdown": {
+          "compute": 15231.34,
+          "storage": 9659.62,
+          "networking": 16376.51,
+          "paas": 20698.53
+        }
+      },
+      {
+        "month": "2023-05",
+        "value_usd": 63096.55,
+        "workload_breakdown": {
+          "compute": 15690.58,
+          "storage": 15697.79,
+          "networking": 10534.99,
+          "paas": 21173.19
+        }
+      },
+      {
+        "month": "2023-06",
+        "value_usd": 62752.59,
+        "workload_breakdown": {
+          "compute": 21367.05,
+          "storage": 17573.03,
+          "networking": 10447.41,
+          "paas": 13365.11
+        }
+      },
+      {
+        "month": "2023-07",
+        "value_usd": 63279.1,
+        "workload_breakdown": {
+          "compute": 22650.39,
+          "storage": 16148.74,
+          "networking": 9501.86,
+          "paas": 14978.1
+        }
+      },
+      {
+        "month": "2023-08",
+        "value_usd": 65697.63,
+        "workload_breakdown": {
+          "compute": 22530.15,
+          "storage": 12047.51,
+          "networking": 6789.33,
+          "paas": 24330.64
+        }
+      },
+      {
+        "month": "2023-09",
+        "value_usd": 64719.48,
+        "workload_breakdown": {
+          "compute": 14876.03,
+          "storage": 21383.1,
+          "networking": 10246.29,
+          "paas": 18214.06
+        }
+      },
+      {
+        "month": "2023-10",
+        "value_usd": 64657.53,
+        "workload_breakdown": {
+          "compute": 11750.77,
+          "storage": 22392.45,
+          "networking": 7058.75,
+          "paas": 23455.56
+        }
+      },
+      {
+        "month": "2023-11",
+        "value_usd": 65988.61,
+        "workload_breakdown": {
+          "compute": 23606.67,
+          "storage": 12205.9,
+          "networking": 6967.62,
+          "paas": 23208.42
+        }
+      },
+      {
+        "month": "2023-12",
+        "value_usd": 65006.33,
+        "workload_breakdown": {
+          "compute": 13831.8,
+          "storage": 16566.35,
+          "networking": 9466.36,
+          "paas": 25141.81
+        }
+      },
+      {
+        "month": "2024-01",
+        "value_usd": 64304.2,
+        "workload_breakdown": {
+          "compute": 21691.9,
+          "storage": 15289.06,
+          "networking": 10815.41,
+          "paas": 16507.82
+        }
+      },
+      {
+        "month": "2024-02",
+        "value_usd": 66202.23,
+        "workload_breakdown": {
+          "compute": 26875.16,
+          "storage": 13278.36,
+          "networking": 11459.38,
+          "paas": 14589.33
+        }
+      },
+      {
+        "month": "2024-03",
+        "value_usd": 68769.78,
+        "workload_breakdown": {
+          "compute": 20550.58,
+          "storage": 20071.97,
+          "networking": 11103.88,
+          "paas": 17043.35
+        }
+      }
+    ]
+  },
+  "open_recommendations": [
+    {
+      "recommendation_id": "REC-82047",
+      "type": "SPA",
+      "description": "Enable Azure Security Center standard tier",
+      "priority": "High",
+      "created_at": "2024-01-09T10:00:00-05:00",
+      "status": "Acknowledged"
+    },
+    {
+      "recommendation_id": "REC-62872",
+      "type": "CxObserve",
+      "description": "Migrate to Azure SQL Managed Instance",
+      "priority": "Medium",
+      "created_at": "2024-01-18T10:00:00-05:00",
+      "status": "Dismissed"
+    },
+    {
+      "recommendation_id": "REC-99253",
+      "type": "Manual",
+      "description": "Rightsize underutilized VMs (potential 23% savings)",
+      "priority": "High",
+      "created_at": "2024-03-13T10:00:00-05:00",
+      "status": "Acknowledged"
+    }
+  ],
+  "recent_activity_timeline": [
+    {
+      "date": "2024-03-24",
+      "activity_type": "email",
+      "description": "Shared architecture documentation",
+      "participants": [
+        "Ahmed Hassan"
+      ]
+    },
+    {
+      "date": "2024-03-11",
+      "activity_type": "email",
+      "description": "Received pricing inquiry from CFO",
+      "participants": [
+        "Raj Mehta"
+      ]
+    },
+    {
+      "date": "2024-03-10",
+      "activity_type": "deployment",
+      "description": "Pilot environment provisioned",
+      "participants": [
+        "Lisa Patel",
+        "Marcus Williams",
+        "Raj Mehta"
+      ]
+    },
+    {
+      "date": "2024-03-08",
+      "activity_type": "meeting",
+      "description": "Weekly sync with account team",
+      "participants": [
+        "Lisa Patel",
+        "Marcus Williams",
+        "Raj Mehta"
+      ]
+    },
+    {
+      "date": "2024-03-05",
+      "activity_type": "contract_event",
+      "description": "Contract renewal notification (90 days)",
+      "participants": [
+        "Ahmed Hassan",
+        "Raj Mehta"
+      ]
+    },
+    {
+      "date": "2024-02-28",
+      "activity_type": "meeting",
+      "description": "Executive business review",
+      "participants": [
+        "Sarah Kim",
+        "Raj Mehta",
+        "Lisa Patel"
+      ]
+    },
+    {
+      "date": "2024-02-21",
+      "activity_type": "deployment",
+      "description": "Production deployment completed successfully",
+      "participants": [
+        "Lisa Patel",
+        "Ahmed Hassan",
+        "Marcus Williams"
+      ]
+    },
+    {
+      "date": "2024-02-06",
+      "activity_type": "call",
+      "description": "Quick call on deployment blocker",
+      "participants": [
+        "Ahmed Hassan",
+        "Marcus Williams",
+        "Raj Mehta"
+      ]
+    },
+    {
+      "date": "2024-02-05",
+      "activity_type": "call",
+      "description": "Discussed budget approval timeline",
+      "participants": [
+        "Lisa Patel"
+      ]
+    },
+    {
+      "date": "2024-01-21",
+      "activity_type": "deployment",
+      "description": "Production deployment completed successfully",
+      "participants": [
+        "Sarah Kim",
+        "Marcus Williams",
+        "Lisa Patel"
+      ]
+    },
+    {
+      "date": "2024-01-13",
+      "activity_type": "deployment",
+      "description": "Production deployment completed successfully",
+      "participants": [
+        "Lisa Patel"
+      ]
+    },
+    {
+      "date": "2024-01-11",
+      "activity_type": "escalation",
+      "description": "Performance degradation reported by end users",
+      "participants": [
+        "Marcus Williams"
+      ]
+    },
+    {
+      "date": "2024-01-03",
+      "activity_type": "spa_received",
+      "description": "SPA: Cost anomaly detected",
+      "participants": [
+        "Marcus Williams",
+        "Ahmed Hassan"
+      ]
+    }
+  ],
+  "customer_health_flags": {
+    "overall_health": "Healthy",
+    "engagement_score": 53,
+    "consumption_trend": "Growing",
+    "renewal_risk": "Low",
+    "last_assessed": "2024-01-28"
+  },
+  "contract_billing": {
+    "subscription_type": "PAYG",
+    "contract_end_date": null,
+    "macc_commitment_usd": null,
+    "macc_consumed_usd": null,
+    "billing_frequency": "Monthly",
+    "auto_renew": false
+  }
+}

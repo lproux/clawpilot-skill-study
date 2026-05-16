@@ -1,0 +1,282 @@
+{
+  "fixture_id": "FX-034",
+  "fixture_class": "missing",
+  "authored_at": "2024-03-15T10:00:00-05:00",
+  "account": {
+    "account_id": "ACC-I8N7EZDF",
+    "name": "Southridge Video",
+    "segment": "smb-small",
+    "geography": "EMEA",
+    "tenure_years": 2.8,
+    "owner": "Sarah Kim",
+    "industry": "Entertainment",
+    "employee_count": 420
+  },
+  "opportunities": [
+    {
+      "opportunity_id": "OPP-FKTL423C",
+      "name": "Southridge Data Platform Migration",
+      "stage": "Prospect",
+      "estimated_value_usd": 210000,
+      "close_date": "2024-07-19",
+      "bpf_stage": null,
+      "forecast_category": "Pipeline",
+      "owner": "Sarah Kim",
+      "last_updated": "2024-01-06T11:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-P8OQVLU8",
+          "name": "Discovery",
+          "status": "Blocked",
+          "due_date": "2024-06-01",
+          "completed_date": null,
+          "owner": "Sarah Kim",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-PDXK36VY",
+          "name": "Technical Validation",
+          "status": "In Progress",
+          "due_date": "2024-04-24",
+          "completed_date": null,
+          "owner": "Sarah Kim",
+          "evidence": ""
+        }
+      ]
+    }
+  ],
+  "contacts": [
+    {
+      "contact_id": "CON-XF27X1JX",
+      "name": "Andrew Okafor",
+      "role": "Executive",
+      "title": "Data Platform Lead",
+      "email": "andrew.okafor@southridgevi.com",
+      "influence_level": "Decision Maker",
+      "last_interaction": "2024-01-16",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-7QATGD35",
+      "name": "Kevin Okafor",
+      "role": "Technical",
+      "title": "Director of IT",
+      "email": "kevin.okafor@southridgevi.com",
+      "influence_level": "Influencer",
+      "last_interaction": null,
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-EC6NEB7A",
+      "name": "Rachel Morrison",
+      "role": "Executive",
+      "title": "Infrastructure Manager",
+      "email": "rachel.morrison@southridgevi.com",
+      "influence_level": "Champion",
+      "last_interaction": "2024-03-19",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-Q4Q1ONKZ",
+      "name": "Eric Doyle",
+      "role": "Business",
+      "title": "CFO",
+      "email": "eric.doyle@southridgevi.com",
+      "influence_level": "End User",
+      "last_interaction": null,
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-9IKXAO6X",
+      "name": "Victoria Taylor",
+      "role": "Executive",
+      "title": "IT Director",
+      "email": "victoria.taylor@southridgevi.com",
+      "influence_level": "Blocker",
+      "last_interaction": null,
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-W4J5GX3S",
+      "name": "Michael Yamamoto",
+      "role": "Finance",
+      "title": "COO",
+      "email": "michael.yamamoto@southridgevi.com",
+      "influence_level": "End User",
+      "last_interaction": "2024-01-27",
+      "is_current": true
+    }
+  ],
+  "acr_trend": {
+    "currency": "USD",
+    "monthly_values": [
+      {
+        "month": "2023-04",
+        "value_usd": 0
+      },
+      {
+        "month": "2023-05",
+        "value_usd": 58018.87,
+        "workload_breakdown": {
+          "compute": 10161.15,
+          "storage": 10784.99,
+          "networking": 11083.29,
+          "paas": 25989.45
+        }
+      },
+      {
+        "month": "2023-06",
+        "value_usd": 59201.13,
+        "workload_breakdown": {
+          "compute": 24177.02,
+          "storage": 8907.16,
+          "networking": 9100.79,
+          "paas": 17016.17
+        }
+      },
+      {
+        "month": "2023-07",
+        "value_usd": 59351.49,
+        "workload_breakdown": {
+          "compute": 13675.71,
+          "storage": 7228.08,
+          "networking": 17022.68,
+          "paas": 21425.01
+        }
+      },
+      {
+        "month": "2023-08",
+        "value_usd": 60570.92,
+        "workload_breakdown": {
+          "compute": 19488.84,
+          "storage": 11866.06,
+          "networking": 10308.33,
+          "paas": 18907.69
+        }
+      },
+      {
+        "month": "2023-09",
+        "value_usd": 62958.82,
+        "workload_breakdown": {
+          "compute": 11930.9,
+          "storage": 21083.34,
+          "networking": 7205.78,
+          "paas": 22738.79
+        }
+      },
+      {
+        "month": "2023-10",
+        "value_usd": 64361.67,
+        "workload_breakdown": {
+          "compute": 28169.75,
+          "storage": 7257.94,
+          "networking": 8360.42,
+          "paas": 20573.56
+        }
+      },
+      {
+        "month": "2023-11",
+        "value_usd": 0
+      },
+      {
+        "month": "2023-12",
+        "value_usd": 0
+      },
+      {
+        "month": "2024-01",
+        "value_usd": 63789.36,
+        "workload_breakdown": {
+          "compute": 15453.06,
+          "storage": 16184.51,
+          "networking": 5405.04,
+          "paas": 26746.75
+        }
+      },
+      {
+        "month": "2024-02",
+        "value_usd": 66389.35,
+        "workload_breakdown": {
+          "compute": 11065.48,
+          "storage": 13674.18,
+          "networking": 6971.26,
+          "paas": 34678.43
+        }
+      },
+      {
+        "month": "2024-03",
+        "value_usd": 65627.83,
+        "workload_breakdown": {
+          "compute": 25861.68,
+          "storage": 7386.83,
+          "networking": 7843.09,
+          "paas": 24536.23
+        }
+      }
+    ]
+  },
+  "open_recommendations": [],
+  "recent_activity_timeline": [
+    {
+      "date": "2024-03-27",
+      "activity_type": "contract_event",
+      "description": "MACC milestone approaching",
+      "participants": [
+        "Ahmed Hassan",
+        "Marcus Williams",
+        "Raj Mehta"
+      ]
+    },
+    {
+      "date": "2024-03-09",
+      "activity_type": "call",
+      "description": "Discussed budget approval timeline",
+      "participants": [
+        "Lisa Patel"
+      ]
+    },
+    {
+      "date": "2024-01-17",
+      "activity_type": "call",
+      "description": "Discussed budget approval timeline",
+      "participants": [
+        "Ahmed Hassan",
+        "Raj Mehta",
+        "Lisa Patel"
+      ]
+    },
+    {
+      "date": "2024-01-11",
+      "activity_type": "msx_update",
+      "description": "Updated close date based on customer feedback",
+      "participants": [
+        "Lisa Patel",
+        "Raj Mehta"
+      ]
+    },
+    {
+      "date": "2024-01-01",
+      "activity_type": "email",
+      "description": "Received pricing inquiry from CFO",
+      "participants": [
+        "Marcus Williams",
+        "Raj Mehta",
+        "Sarah Kim"
+      ]
+    }
+  ],
+  "customer_health_flags": {
+    "overall_health": "Unknown",
+    "engagement_score": 80,
+    "consumption_trend": "Stable",
+    "renewal_risk": "Low",
+    "last_assessed": null
+  },
+  "contract_billing": {
+    "subscription_type": "PAYG",
+    "contract_end_date": null,
+    "macc_commitment_usd": null,
+    "macc_consumed_usd": null,
+    "billing_frequency": "Monthly",
+    "auto_renew": false
+  }
+}

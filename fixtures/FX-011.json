@@ -1,0 +1,386 @@
+{
+  "fixture_id": "FX-011",
+  "fixture_class": "stale",
+  "authored_at": "2024-03-15T10:00:00-05:00",
+  "account": {
+    "account_id": "ACC-UIKNWGJ7",
+    "name": "Alpine Ski House",
+    "segment": "smb-mid",
+    "geography": "APAC",
+    "tenure_years": 5.7,
+    "owner": "Marcus Williams",
+    "industry": "Hospitality",
+    "employee_count": 150
+  },
+  "opportunities": [
+    {
+      "opportunity_id": "OPP-ECC8242Z",
+      "name": "Alpine Azure Virtual Desktop",
+      "stage": "Propose",
+      "estimated_value_usd": 560000,
+      "close_date": "2023-12-14",
+      "bpf_stage": "Propose",
+      "forecast_category": "Best Case",
+      "owner": "Marcus Williams",
+      "last_updated": "2023-06-13T14:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-VEMMSFSY",
+          "name": "Discovery",
+          "status": "Blocked",
+          "due_date": "2024-03-10",
+          "completed_date": null,
+          "owner": "Marcus Williams",
+          "evidence": ""
+        }
+      ]
+    }
+  ],
+  "contacts": [
+    {
+      "contact_id": "CON-ONIU86C2",
+      "name": "Brian Yamamoto",
+      "role": "Executive",
+      "title": "COO",
+      "email": "brian.yamamoto@alpineskihou.com",
+      "influence_level": "Decision Maker",
+      "last_interaction": "2024-02-23",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-A4JYDW6T",
+      "name": "Tamara Anderson",
+      "role": "Operations",
+      "title": "Infrastructure Manager",
+      "email": "tamara.anderson@alpineskihou.com",
+      "influence_level": "Influencer",
+      "last_interaction": "2024-03-28",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-QZIU5EKC",
+      "name": "Steven Thompson",
+      "role": "Business",
+      "title": "DevOps Lead",
+      "email": "steven.thompson@alpineskihou.com",
+      "influence_level": "Champion",
+      "last_interaction": "2024-03-04",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-5PDCI2UY",
+      "name": "Andrew Torres",
+      "role": "Technical",
+      "title": "Technology Manager",
+      "email": "andrew.torres@alpineskihou.com",
+      "influence_level": "End User",
+      "last_interaction": "2023-05-27",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-C4F2W0YQ",
+      "name": "Samantha Hansen",
+      "role": "Executive",
+      "title": "VP Operations",
+      "email": "samantha.hansen@alpineskihou.com",
+      "influence_level": "Blocker",
+      "last_interaction": "2023-03-03",
+      "is_current": false
+    },
+    {
+      "contact_id": "CON-I0KUY29J",
+      "name": "Rachel O'Brien",
+      "role": "Technical",
+      "title": "COO",
+      "email": "rachel.o'brien@alpineskihou.com",
+      "influence_level": "Champion",
+      "last_interaction": "2023-01-22",
+      "is_current": false
+    },
+    {
+      "contact_id": "CON-W43NEGVK",
+      "name": "Andrew Foster",
+      "role": "Finance",
+      "title": "Technology Manager",
+      "email": "andrew.foster@alpineskihou.com",
+      "influence_level": "End User",
+      "last_interaction": "2023-06-11",
+      "is_current": false
+    },
+    {
+      "contact_id": "CON-JGJ63CC4",
+      "name": "William Rivera",
+      "role": "Finance",
+      "title": "Data Platform Lead",
+      "email": "william.rivera@alpineskihou.com",
+      "influence_level": "Champion",
+      "last_interaction": "2023-03-19",
+      "is_current": false
+    },
+    {
+      "contact_id": "CON-K8UK1IHJ",
+      "name": "Karen Nguyen",
+      "role": "Technical",
+      "title": "DevOps Lead",
+      "email": "karen.nguyen@alpineskihou.com",
+      "influence_level": "Blocker",
+      "last_interaction": "2023-05-16",
+      "is_current": false
+    },
+    {
+      "contact_id": "CON-AUSIAROF",
+      "name": "Maria Wilson",
+      "role": "Finance",
+      "title": "Security Manager",
+      "email": "maria.wilson@alpineskihou.com",
+      "influence_level": "Blocker",
+      "last_interaction": "2023-03-22",
+      "is_current": false
+    },
+    {
+      "contact_id": "CON-38Q6IGE9",
+      "name": "Brian Schmidt",
+      "role": "Technical",
+      "title": "VP Operations",
+      "email": "brian.schmidt@alpineskihou.com",
+      "influence_level": "Blocker",
+      "last_interaction": "2023-03-17",
+      "is_current": false
+    },
+    {
+      "contact_id": "CON-WDNO2UY1",
+      "name": "David Chen",
+      "role": "Technical",
+      "title": "VP Operations",
+      "email": "david.chen@alpineskihou.com",
+      "influence_level": "Champion",
+      "last_interaction": "2023-01-14",
+      "is_current": false
+    }
+  ],
+  "acr_trend": {
+    "currency": "USD",
+    "monthly_values": [
+      {
+        "month": "2023-04",
+        "value_usd": 120190.28,
+        "workload_breakdown": {
+          "compute": 53451.0,
+          "storage": 26002.89,
+          "networking": 16260.67,
+          "paas": 24475.73
+        }
+      },
+      {
+        "month": "2023-05",
+        "value_usd": 120281.05,
+        "workload_breakdown": {
+          "compute": 52872.73,
+          "storage": 19000.4,
+          "networking": 7277.61,
+          "paas": 41130.3
+        }
+      },
+      {
+        "month": "2023-06",
+        "value_usd": 122843.94,
+        "workload_breakdown": {
+          "compute": 38479.71,
+          "storage": 23738.57,
+          "networking": 13408.79,
+          "paas": 47216.86
+        }
+      },
+      {
+        "month": "2023-07",
+        "value_usd": 121893.3,
+        "workload_breakdown": {
+          "compute": 24098.43,
+          "storage": 28806.19,
+          "networking": 23285.34,
+          "paas": 45703.35
+        }
+      },
+      {
+        "month": "2023-08",
+        "value_usd": 118485.55,
+        "workload_breakdown": {
+          "compute": 35139.03,
+          "storage": 24981.34,
+          "networking": 10905.31,
+          "paas": 47459.88
+        }
+      },
+      {
+        "month": "2023-09",
+        "value_usd": 115928.19,
+        "workload_breakdown": {
+          "compute": 18560.28,
+          "storage": 32679.99,
+          "networking": 17042.89,
+          "paas": 47645.03
+        }
+      },
+      {
+        "month": "2023-10",
+        "value_usd": 115928.19,
+        "workload_breakdown": {
+          "compute": 20556.45,
+          "storage": 25607.78,
+          "networking": 29142.82,
+          "paas": 40621.15
+        }
+      },
+      {
+        "month": "2023-11",
+        "value_usd": 115928.19,
+        "workload_breakdown": {
+          "compute": 30117.65,
+          "storage": 16259.47,
+          "networking": 18716.38,
+          "paas": 50834.7
+        }
+      },
+      {
+        "month": "2023-12",
+        "value_usd": 115928.19,
+        "workload_breakdown": {
+          "compute": 40684.92,
+          "storage": 27167.91,
+          "networking": 11249.82,
+          "paas": 36825.54
+        }
+      },
+      {
+        "month": "2024-01",
+        "value_usd": 115928.19,
+        "workload_breakdown": {
+          "compute": 28593.19,
+          "storage": 33731.0,
+          "networking": 14848.57,
+          "paas": 38755.44
+        }
+      },
+      {
+        "month": "2024-02",
+        "value_usd": 115928.19,
+        "workload_breakdown": {
+          "compute": 36954.42,
+          "storage": 28801.17,
+          "networking": 16539.57,
+          "paas": 33633.03
+        }
+      },
+      {
+        "month": "2024-03",
+        "value_usd": 115928.19,
+        "workload_breakdown": {
+          "compute": 24409.75,
+          "storage": 19338.22,
+          "networking": 26433.85,
+          "paas": 45746.37
+        }
+      }
+    ]
+  },
+  "open_recommendations": [
+    {
+      "recommendation_id": "REC-41614",
+      "type": "Advisor",
+      "description": "Implement Azure Landing Zones",
+      "priority": "High",
+      "created_at": "2023-05-20T10:00:00-05:00",
+      "status": "Acknowledged"
+    },
+    {
+      "recommendation_id": "REC-13404",
+      "type": "Manual",
+      "description": "Enable Azure Monitor for production workloads",
+      "priority": "Medium",
+      "created_at": "2023-04-25T10:00:00-05:00",
+      "status": "New"
+    },
+    {
+      "recommendation_id": "REC-69360",
+      "type": "Manual",
+      "description": "Deploy Azure Front Door for global load balancing",
+      "priority": "Low",
+      "created_at": "2023-05-17T10:00:00-05:00",
+      "status": "In Progress"
+    },
+    {
+      "recommendation_id": "REC-41233",
+      "type": "Manual",
+      "description": "Enable diagnostic logging for all services",
+      "priority": "Low",
+      "created_at": "2023-08-19T10:00:00-05:00",
+      "status": "Acknowledged"
+    },
+    {
+      "recommendation_id": "REC-65182",
+      "type": "Manual",
+      "description": "Enable Defender for Cloud across subscriptions",
+      "priority": "Medium",
+      "created_at": "2023-08-11T10:00:00-05:00",
+      "status": "New"
+    }
+  ],
+  "recent_activity_timeline": [
+    {
+      "date": "2023-11-02",
+      "activity_type": "escalation",
+      "description": "Performance degradation reported by end users",
+      "participants": [
+        "Ahmed Hassan"
+      ]
+    },
+    {
+      "date": "2023-09-13",
+      "activity_type": "deployment",
+      "description": "Pilot environment provisioned",
+      "participants": [
+        "Marcus Williams"
+      ]
+    },
+    {
+      "date": "2023-09-10",
+      "activity_type": "deployment",
+      "description": "Pilot environment provisioned",
+      "participants": [
+        "Ahmed Hassan"
+      ]
+    },
+    {
+      "date": "2023-08-23",
+      "activity_type": "meeting",
+      "description": "Executive business review",
+      "participants": [
+        "Ahmed Hassan",
+        "Raj Mehta"
+      ]
+    },
+    {
+      "date": "2023-06-27",
+      "activity_type": "email",
+      "description": "Shared architecture documentation",
+      "participants": [
+        "Raj Mehta"
+      ]
+    }
+  ],
+  "customer_health_flags": {
+    "overall_health": "At Risk",
+    "engagement_score": 20,
+    "consumption_trend": "Stable",
+    "renewal_risk": "Low",
+    "last_assessed": "2023-06-26"
+  },
+  "contract_billing": {
+    "subscription_type": "PAYG",
+    "contract_end_date": null,
+    "macc_commitment_usd": null,
+    "macc_consumed_usd": null,
+    "billing_frequency": "Monthly",
+    "auto_renew": false
+  }
+}

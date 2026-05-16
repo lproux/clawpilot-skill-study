@@ -1,0 +1,503 @@
+{
+  "fixture_id": "FX-038",
+  "fixture_class": "inconsistent",
+  "authored_at": "2024-03-15T10:00:00-05:00",
+  "account": {
+    "account_id": "ACC-BV87NNVK",
+    "name": "Contoso Suites",
+    "segment": "smb-mid",
+    "geography": "LATAM",
+    "tenure_years": 4.6,
+    "owner": "Priya Sharma",
+    "industry": "Hospitality",
+    "employee_count": 250
+  },
+  "opportunities": [
+    {
+      "opportunity_id": "OPP-6M1WVS89",
+      "name": "Contoso AKS Deployment",
+      "stage": "Propose",
+      "estimated_value_usd": 350000,
+      "close_date": "2024-05-04",
+      "bpf_stage": "Close",
+      "forecast_category": "Best Case",
+      "owner": "Priya Sharma",
+      "last_updated": "2024-02-14T09:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-7X9QEM7U",
+          "name": "Discovery",
+          "status": "Blocked",
+          "due_date": "2024-03-16",
+          "completed_date": null,
+          "owner": "Priya Sharma",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-JHTDN7XU",
+          "name": "Technical Validation",
+          "status": "Blocked",
+          "due_date": "2024-08-18",
+          "completed_date": null,
+          "owner": "Priya Sharma",
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "opportunity_id": "OPP-EJC8IF0K",
+      "name": "Contoso Azure AI Services",
+      "stage": "Propose",
+      "estimated_value_usd": 450000,
+      "close_date": "2024-04-12",
+      "bpf_stage": "Propose",
+      "forecast_category": "Pipeline",
+      "owner": "Priya Sharma",
+      "last_updated": "2024-01-18T16:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-HW7317LP",
+          "name": "Discovery",
+          "status": "In Progress",
+          "due_date": "2024-03-13",
+          "completed_date": null,
+          "owner": "Priya Sharma",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-6896ZJDP",
+          "name": "Technical Validation",
+          "status": "Completed",
+          "due_date": "2024-08-14",
+          "completed_date": "2024-02-18",
+          "owner": "Priya Sharma",
+          "evidence": "email_thread_5414"
+        },
+        {
+          "milestone_id": "MS-IRJVM86M",
+          "name": "Business Case Approved",
+          "status": "Completed",
+          "due_date": "2024-05-17",
+          "completed_date": "2024-02-22",
+          "owner": "Priya Sharma",
+          "evidence": "email_thread_7117"
+        }
+      ]
+    },
+    {
+      "opportunity_id": "OPP-1IBICIUQ",
+      "name": "Contoso Data Platform Migration",
+      "stage": "Propose",
+      "estimated_value_usd": 560000,
+      "close_date": "2024-05-21",
+      "bpf_stage": "Propose",
+      "forecast_category": "Pipeline",
+      "owner": "Priya Sharma",
+      "last_updated": "2024-01-03T10:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-O0UEXCJJ",
+          "name": "Discovery",
+          "status": "Completed",
+          "due_date": "2024-08-10",
+          "completed_date": "2024-03-27",
+          "owner": "Priya Sharma",
+          "evidence": "email_thread_1100"
+        }
+      ]
+    },
+    {
+      "opportunity_id": "OPP-PS64RUVL",
+      "name": "Contoso Azure SQL Migration",
+      "stage": "Develop",
+      "estimated_value_usd": 45000,
+      "close_date": "2024-06-16",
+      "bpf_stage": "Develop",
+      "forecast_category": "Pipeline",
+      "owner": "Priya Sharma",
+      "last_updated": "2024-01-23T16:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-E50RGUAL",
+          "name": "Discovery",
+          "status": "Completed",
+          "due_date": "2024-03-26",
+          "completed_date": "2024-02-07",
+          "owner": "Priya Sharma",
+          "evidence": "email_thread_6056"
+        },
+        {
+          "milestone_id": "MS-4IBEGZIR",
+          "name": "Technical Validation",
+          "status": "Not Started",
+          "due_date": "2024-08-12",
+          "completed_date": null,
+          "owner": "Priya Sharma",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-K51PPCL1",
+          "name": "Business Case Approved",
+          "status": "Blocked",
+          "due_date": "2024-08-06",
+          "completed_date": null,
+          "owner": "Priya Sharma",
+          "evidence": ""
+        }
+      ]
+    }
+  ],
+  "contacts": [
+    {
+      "contact_id": "CON-6TGQJO8G",
+      "name": "Kevin Foster",
+      "role": "Technical",
+      "title": "Director of IT",
+      "email": "kevin.foster@contososuite.com",
+      "influence_level": "Decision Maker",
+      "last_interaction": "2024-03-28",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-HE25LLXG",
+      "name": "Christopher Nakamura",
+      "role": "Executive",
+      "title": "Head of Digital",
+      "email": "christopher.nakamura@contososuite.com",
+      "influence_level": "Influencer",
+      "last_interaction": "2024-02-11",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-RJ15LBRG",
+      "name": "Angela Okafor",
+      "role": "Finance",
+      "title": "COO",
+      "email": "angela.okafor@contososuite.com",
+      "influence_level": "Champion",
+      "last_interaction": "2024-03-08",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-GMPAERMJ",
+      "name": "David Nakamura",
+      "role": "Executive",
+      "title": "CFO",
+      "email": "david.nakamura@contososuite.com",
+      "influence_level": "End User",
+      "last_interaction": "2024-01-23",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-EUSB0FW9",
+      "name": "Michelle Jackson",
+      "role": "Finance",
+      "title": "Director of IT",
+      "email": "michelle.jackson@contososuite.com",
+      "influence_level": "Blocker",
+      "last_interaction": "2024-02-20",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-ITTFSAIX",
+      "name": "Ryan Petrov",
+      "role": "Finance",
+      "title": "Director of IT",
+      "email": "ryan.petrov@contososuite.com",
+      "influence_level": "Champion",
+      "last_interaction": "2024-01-20",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-AIYZC73O",
+      "name": "Michelle Kim",
+      "role": "Business",
+      "title": "Technology Manager",
+      "email": "michelle.kim@contososuite.com",
+      "influence_level": "Champion",
+      "last_interaction": "2024-03-28",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-GCTES9YS",
+      "name": "Eric Brown",
+      "role": "Business",
+      "title": "VP Operations",
+      "email": "eric.brown@contososuite.com",
+      "influence_level": "End User",
+      "last_interaction": "2024-03-26",
+      "is_current": true
+    }
+  ],
+  "acr_trend": {
+    "currency": "USD",
+    "monthly_values": [
+      {
+        "month": "2023-04",
+        "value_usd": 20981.77,
+        "workload_breakdown": {
+          "compute": 6027.81,
+          "storage": 5054.56,
+          "networking": 2198.35,
+          "paas": 7701.05
+        }
+      },
+      {
+        "month": "2023-05",
+        "value_usd": 37767.18,
+        "workload_breakdown": {
+          "compute": 10220.83,
+          "storage": 6989.54,
+          "networking": 9217.75,
+          "paas": 11339.06
+        }
+      },
+      {
+        "month": "2023-06",
+        "value_usd": 6294.53,
+        "workload_breakdown": {
+          "compute": 1547.87,
+          "storage": 1093.09,
+          "networking": 617.67,
+          "paas": 3035.9
+        }
+      },
+      {
+        "month": "2023-07",
+        "value_usd": 10490.88,
+        "workload_breakdown": {
+          "compute": 3411.67,
+          "storage": 2554.65,
+          "networking": 1173.65,
+          "paas": 3350.91
+        }
+      },
+      {
+        "month": "2023-08",
+        "value_usd": 20963.04,
+        "workload_breakdown": {
+          "compute": 3445.58,
+          "storage": 4283.32,
+          "networking": 5518.18,
+          "paas": 7715.96
+        }
+      },
+      {
+        "month": "2023-09",
+        "value_usd": 20774.33,
+        "workload_breakdown": {
+          "compute": 7434.54,
+          "storage": 3370.22,
+          "networking": 3806.51,
+          "paas": 6163.06
+        }
+      },
+      {
+        "month": "2023-10",
+        "value_usd": 20499.74,
+        "workload_breakdown": {
+          "compute": 3213.94,
+          "storage": 6750.65,
+          "networking": 3583.97,
+          "paas": 6951.17
+        }
+      },
+      {
+        "month": "2023-11",
+        "value_usd": 20258.11,
+        "workload_breakdown": {
+          "compute": 8952.8,
+          "storage": 3395.48,
+          "networking": 3543.41,
+          "paas": 4366.43
+        }
+      },
+      {
+        "month": "2023-12",
+        "value_usd": 21074.65,
+        "workload_breakdown": {
+          "compute": 7147.37,
+          "storage": 4641.44,
+          "networking": 3586.63,
+          "paas": 5699.21
+        }
+      },
+      {
+        "month": "2024-01",
+        "value_usd": 6322.4,
+        "workload_breakdown": {
+          "compute": 2665.17,
+          "storage": 566.91,
+          "networking": 1220.47,
+          "paas": 1869.85
+        }
+      },
+      {
+        "month": "2024-02",
+        "value_usd": 22093.22,
+        "workload_breakdown": {
+          "compute": 9676.7,
+          "storage": 3454.92,
+          "networking": 3095.66,
+          "paas": 5865.94
+        }
+      },
+      {
+        "month": "2024-03",
+        "value_usd": 22982.69,
+        "workload_breakdown": {
+          "compute": 9683.34,
+          "storage": 2024.45,
+          "networking": 4181.23,
+          "paas": 7093.67
+        }
+      }
+    ]
+  },
+  "open_recommendations": [
+    {
+      "recommendation_id": "REC-65009",
+      "type": "CxObserve",
+      "description": "Migrate legacy .NET apps to Azure App Service",
+      "priority": "High",
+      "created_at": "2024-02-28T10:00:00-05:00",
+      "status": "Acknowledged"
+    },
+    {
+      "recommendation_id": "REC-90392",
+      "type": "SPA",
+      "description": "Enable MFA for all admin accounts",
+      "priority": "Low",
+      "created_at": "2024-02-27T10:00:00-05:00",
+      "status": "New"
+    }
+  ],
+  "recent_activity_timeline": [
+    {
+      "date": "2024-03-28",
+      "activity_type": "call",
+      "description": "Quick call on deployment blocker",
+      "participants": [
+        "Lisa Patel",
+        "Raj Mehta",
+        "Ahmed Hassan"
+      ]
+    },
+    {
+      "date": "2024-03-22",
+      "activity_type": "call",
+      "description": "Check-in on pilot progress",
+      "participants": [
+        "Sarah Kim",
+        "Ahmed Hassan"
+      ]
+    },
+    {
+      "date": "2024-03-19",
+      "activity_type": "meeting",
+      "description": "Technical deep-dive on migration",
+      "participants": [
+        "Lisa Patel",
+        "Ahmed Hassan",
+        "Marcus Williams"
+      ]
+    },
+    {
+      "date": "2024-03-18",
+      "activity_type": "deployment",
+      "description": "Migration batch 1 completed",
+      "participants": [
+        "Sarah Kim",
+        "Lisa Patel"
+      ]
+    },
+    {
+      "date": "2024-03-12",
+      "activity_type": "deployment",
+      "description": "Pilot environment provisioned",
+      "participants": [
+        "Sarah Kim"
+      ]
+    },
+    {
+      "date": "2024-03-06",
+      "activity_type": "msx_update",
+      "description": "Updated opportunity stage to Develop",
+      "participants": [
+        "Lisa Patel",
+        "Raj Mehta",
+        "Ahmed Hassan"
+      ]
+    },
+    {
+      "date": "2024-02-04",
+      "activity_type": "deployment",
+      "description": "Pilot environment provisioned",
+      "participants": [
+        "Ahmed Hassan"
+      ]
+    },
+    {
+      "date": "2024-02-02",
+      "activity_type": "call",
+      "description": "Discussed budget approval timeline",
+      "participants": [
+        "Raj Mehta",
+        "Sarah Kim"
+      ]
+    },
+    {
+      "date": "2024-01-27",
+      "activity_type": "call",
+      "description": "Discussed budget approval timeline",
+      "participants": [
+        "Raj Mehta"
+      ]
+    },
+    {
+      "date": "2024-01-25",
+      "activity_type": "email",
+      "description": "Follow-up on support ticket resolution",
+      "participants": [
+        "Marcus Williams",
+        "Ahmed Hassan",
+        "Sarah Kim"
+      ]
+    },
+    {
+      "date": "2024-01-20",
+      "activity_type": "msx_update",
+      "description": "Added competitive intelligence notes",
+      "participants": [
+        "Ahmed Hassan",
+        "Raj Mehta",
+        "Lisa Patel"
+      ]
+    },
+    {
+      "date": "2024-01-04",
+      "activity_type": "escalation",
+      "description": "Customer escalated support ticket response time",
+      "participants": [
+        "Raj Mehta",
+        "Sarah Kim",
+        "Lisa Patel"
+      ]
+    }
+  ],
+  "customer_health_flags": {
+    "overall_health": "Unknown",
+    "engagement_score": 68,
+    "consumption_trend": "Declining",
+    "renewal_risk": "Low",
+    "last_assessed": "2024-02-23"
+  },
+  "contract_billing": {
+    "subscription_type": "PAYG",
+    "contract_end_date": null,
+    "macc_commitment_usd": null,
+    "macc_consumed_usd": null,
+    "billing_frequency": "Monthly",
+    "auto_renew": false
+  }
+}

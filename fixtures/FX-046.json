@@ -1,0 +1,323 @@
+{
+  "fixture_id": "FX-046",
+  "fixture_class": "contradictory",
+  "authored_at": "2024-03-15T10:00:00-05:00",
+  "account": {
+    "account_id": "ACC-OQTZAL3E",
+    "name": "Cascadia Systems",
+    "segment": "smb-small",
+    "geography": "APAC",
+    "tenure_years": 7.5,
+    "owner": "Jennifer Walsh",
+    "industry": "Technology",
+    "employee_count": 310
+  },
+  "opportunities": [
+    {
+      "opportunity_id": "OPP-OG2JZWOR",
+      "name": "Cascadia Power Platform",
+      "stage": "Qualify",
+      "estimated_value_usd": 175000,
+      "close_date": "2024-05-03",
+      "bpf_stage": "Qualify",
+      "forecast_category": "Committed",
+      "owner": "Jennifer Walsh",
+      "last_updated": "2024-03-05T10:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-FFSMPXXI",
+          "name": "Discovery",
+          "status": "Not Started",
+          "due_date": "2024-05-08",
+          "completed_date": null,
+          "owner": "Jennifer Walsh",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-3JABPRJ7",
+          "name": "Technical Validation",
+          "status": "Completed",
+          "due_date": "2024-08-19",
+          "completed_date": "2024-01-05",
+          "owner": "Jennifer Walsh",
+          "evidence": "email_thread_4707"
+        },
+        {
+          "milestone_id": "MS-PQS8ER0T",
+          "name": "Business Case Approved",
+          "status": "Completed",
+          "due_date": "2024-06-09",
+          "completed_date": "2024-02-11",
+          "owner": "Jennifer Walsh",
+          "evidence": "email_thread_2734"
+        }
+      ]
+    }
+  ],
+  "contacts": [
+    {
+      "contact_id": "CON-TDTOEKZV",
+      "name": "Nicole Nguyen",
+      "role": "Business",
+      "title": "CIO",
+      "email": "nicole.nguyen@cascadiasyst.com",
+      "influence_level": "Decision Maker",
+      "last_interaction": "2024-01-11",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-HRENC917",
+      "name": "Kevin Hansen",
+      "role": "Technical",
+      "title": "Technology Manager",
+      "email": "kevin.hansen@cascadiasyst.com",
+      "influence_level": "Influencer",
+      "last_interaction": "2024-01-08",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-TKL4EAE3",
+      "name": "Thomas Brown",
+      "role": "Business",
+      "title": "Technology Manager",
+      "email": "thomas.brown@cascadiasyst.com",
+      "influence_level": "Champion",
+      "last_interaction": "2024-01-24",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-GD9JT7T3",
+      "name": "Kevin Yamamoto",
+      "role": "Finance",
+      "title": "Head of Digital",
+      "email": "kevin.yamamoto@cascadiasyst.com",
+      "influence_level": "End User",
+      "last_interaction": "2024-03-26",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-7O6LC8E6",
+      "name": "Tamara Jackson",
+      "role": "Technical",
+      "title": "VP Operations",
+      "email": "tamara.jackson@cascadiasyst.com",
+      "influence_level": "Blocker",
+      "last_interaction": "2024-03-21",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-BSVXOCUI",
+      "name": "Diana Kowalski",
+      "role": "Executive",
+      "title": "Data Platform Lead",
+      "email": "diana.kowalski@cascadiasyst.com",
+      "influence_level": "Champion",
+      "last_interaction": "2024-02-19",
+      "is_current": true
+    }
+  ],
+  "acr_trend": {
+    "currency": "USD",
+    "monthly_values": [
+      {
+        "month": "2023-04",
+        "value_usd": 19541.53,
+        "workload_breakdown": {
+          "compute": 7833.68,
+          "storage": 3561.44,
+          "networking": 3403.1,
+          "paas": 4743.32
+        }
+      },
+      {
+        "month": "2023-05",
+        "value_usd": 18672.32,
+        "workload_breakdown": {
+          "compute": 3190.64,
+          "storage": 5453.43,
+          "networking": 2257.56,
+          "paas": 7770.69
+        }
+      },
+      {
+        "month": "2023-06",
+        "value_usd": 17340.03,
+        "workload_breakdown": {
+          "compute": 3576.17,
+          "storage": 4361.92,
+          "networking": 1640.08,
+          "paas": 7761.87
+        }
+      },
+      {
+        "month": "2023-07",
+        "value_usd": 15697.54,
+        "workload_breakdown": {
+          "compute": 2488.51,
+          "storage": 3086.15,
+          "networking": 3326.89,
+          "paas": 6795.99
+        }
+      },
+      {
+        "month": "2023-08",
+        "value_usd": 14287.73,
+        "workload_breakdown": {
+          "compute": 4945.24,
+          "storage": 3678.48,
+          "networking": 1400.77,
+          "paas": 4263.24
+        }
+      },
+      {
+        "month": "2023-09",
+        "value_usd": 13271.84,
+        "workload_breakdown": {
+          "compute": 4589.69,
+          "storage": 3843.69,
+          "networking": 2111.23,
+          "paas": 2727.23
+        }
+      },
+      {
+        "month": "2023-10",
+        "value_usd": 12070.73,
+        "workload_breakdown": {
+          "compute": 2559.56,
+          "storage": 2417.09,
+          "networking": 1479.62,
+          "paas": 5614.46
+        }
+      },
+      {
+        "month": "2023-11",
+        "value_usd": 11393.45,
+        "workload_breakdown": {
+          "compute": 3744.29,
+          "storage": 2248.94,
+          "networking": 1743.98,
+          "paas": 3656.24
+        }
+      },
+      {
+        "month": "2023-12",
+        "value_usd": 10151.79,
+        "workload_breakdown": {
+          "compute": 2421.54,
+          "storage": 3312.63,
+          "networking": 801.77,
+          "paas": 3615.84
+        }
+      },
+      {
+        "month": "2024-01",
+        "value_usd": 9265.85,
+        "workload_breakdown": {
+          "compute": 4144.84,
+          "storage": 2048.88,
+          "networking": 1155.15,
+          "paas": 1916.98
+        }
+      },
+      {
+        "month": "2024-02",
+        "value_usd": 8384.2,
+        "workload_breakdown": {
+          "compute": 2839.33,
+          "storage": 2429.18,
+          "networking": 909.68,
+          "paas": 2206.01
+        }
+      },
+      {
+        "month": "2024-03",
+        "value_usd": 7947.7,
+        "workload_breakdown": {
+          "compute": 3469.42,
+          "storage": 1940.76,
+          "networking": 426.77,
+          "paas": 2110.75
+        }
+      }
+    ]
+  },
+  "open_recommendations": [
+    {
+      "recommendation_id": "REC-35553",
+      "type": "CxObserve",
+      "description": "Enable Azure Security Center standard tier",
+      "priority": "Low",
+      "created_at": "2024-02-16T10:00:00-05:00",
+      "status": "In Progress"
+    },
+    {
+      "recommendation_id": "REC-86623",
+      "type": "CxObserve",
+      "description": "Upgrade to premium tier storage for production",
+      "priority": "Medium",
+      "created_at": "2024-03-07T10:00:00-05:00",
+      "status": "Acknowledged"
+    }
+  ],
+  "recent_activity_timeline": [
+    {
+      "date": "2024-03-15",
+      "activity_type": "meeting",
+      "description": "Weekly sync with account team",
+      "participants": [
+        "Ahmed Hassan",
+        "Sarah Kim"
+      ]
+    },
+    {
+      "date": "2024-03-02",
+      "activity_type": "msx_update",
+      "description": "Added competitive intelligence notes",
+      "participants": [
+        "Marcus Williams"
+      ]
+    },
+    {
+      "date": "2024-02-23",
+      "activity_type": "escalation",
+      "description": "Performance degradation reported by end users",
+      "participants": [
+        "Raj Mehta"
+      ]
+    },
+    {
+      "date": "2024-02-14",
+      "activity_type": "deployment",
+      "description": "Production deployment completed successfully",
+      "participants": [
+        "Lisa Patel",
+        "Raj Mehta"
+      ]
+    },
+    {
+      "date": "2024-01-02",
+      "activity_type": "msx_update",
+      "description": "Added new milestone: Technical Validation",
+      "participants": [
+        "Ahmed Hassan",
+        "Lisa Patel",
+        "Raj Mehta"
+      ]
+    }
+  ],
+  "customer_health_flags": {
+    "overall_health": "Healthy",
+    "engagement_score": 88,
+    "consumption_trend": "Growing",
+    "renewal_risk": "Low",
+    "last_assessed": "2024-03-10"
+  },
+  "contract_billing": {
+    "subscription_type": "EA",
+    "contract_end_date": "2024-07-21",
+    "macc_commitment_usd": 500000,
+    "macc_consumed_usd": 384869.51,
+    "billing_frequency": "Annual",
+    "auto_renew": false
+  }
+}

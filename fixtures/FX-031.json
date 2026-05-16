@@ -1,0 +1,326 @@
+{
+  "fixture_id": "FX-031",
+  "fixture_class": "missing",
+  "authored_at": "2024-03-15T10:00:00-05:00",
+  "account": {
+    "account_id": "ACC-A2FZGZWL",
+    "name": "Liberty's Delightful Sinful Bakery",
+    "segment": "smb-corporate",
+    "geography": "NA",
+    "tenure_years": 7.7,
+    "owner": "Marcus Williams",
+    "industry": "Food & Beverage",
+    "employee_count": 45
+  },
+  "opportunities": [
+    {
+      "opportunity_id": "OPP-WO2FPN5N",
+      "name": "Liberty's Dynamics 365 Implementation",
+      "stage": "Develop",
+      "estimated_value_usd": 89000,
+      "close_date": "2024-12-10",
+      "bpf_stage": "Develop",
+      "forecast_category": "Best Case",
+      "owner": "Marcus Williams",
+      "last_updated": "2024-02-12T13:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-308XHPOK",
+          "name": "Discovery",
+          "status": "Completed",
+          "due_date": "2024-08-17",
+          "completed_date": "2024-03-22",
+          "owner": "Marcus Williams",
+          "evidence": "email_thread_7604"
+        }
+      ]
+    },
+    {
+      "opportunity_id": "OPP-JVX8X9P6",
+      "name": "Liberty's AKS Deployment",
+      "stage": "Qualify",
+      "estimated_value_usd": 89000,
+      "close_date": "2024-12-24",
+      "bpf_stage": "Qualify",
+      "forecast_category": "Pipeline",
+      "owner": "Marcus Williams",
+      "last_updated": "2024-01-07T15:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-NLW2XBNW",
+          "name": "Discovery",
+          "status": "Blocked",
+          "due_date": "2024-03-03",
+          "completed_date": null,
+          "owner": "Marcus Williams",
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "opportunity_id": "OPP-MP8HZW63",
+      "name": "Liberty's Azure Infrastructure",
+      "stage": "Develop",
+      "estimated_value_usd": 450000,
+      "close_date": "2024-04-08",
+      "bpf_stage": "Develop",
+      "forecast_category": "Pipeline",
+      "owner": "Marcus Williams",
+      "last_updated": "2024-02-04T12:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-6MLE6KKX",
+          "name": "Discovery",
+          "status": "In Progress",
+          "due_date": "2024-07-16",
+          "completed_date": null,
+          "owner": "Marcus Williams",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-FBCIAB98",
+          "name": "Technical Validation",
+          "status": "In Progress",
+          "due_date": "2024-05-10",
+          "completed_date": null,
+          "owner": "Marcus Williams",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-5CNWFXJ0",
+          "name": "Business Case Approved",
+          "status": "Completed",
+          "due_date": "2024-08-10",
+          "completed_date": "2024-01-10",
+          "owner": "Marcus Williams",
+          "evidence": "email_thread_7294"
+        }
+      ]
+    }
+  ],
+  "contacts": [
+    {
+      "contact_id": "CON-8EYIYPHQ",
+      "name": "Patricia Kim",
+      "role": "Business",
+      "title": "Director of IT",
+      "email": "patricia.kim@libertysdeli.com",
+      "influence_level": "Decision Maker",
+      "last_interaction": "2024-02-18",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-61QZDPV1",
+      "name": "Victoria Davis",
+      "role": "Finance",
+      "title": "Technology Manager",
+      "email": "victoria.davis@libertysdeli.com",
+      "influence_level": "Influencer",
+      "last_interaction": "2024-01-06",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-LZ0QOPTY",
+      "name": "Andrew Morrison",
+      "role": "Executive",
+      "title": "Infrastructure Manager",
+      "email": "andrew.morrison@libertysdeli.com",
+      "influence_level": "Champion",
+      "last_interaction": null,
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-KO28SXYO",
+      "name": "Diana Nakamura",
+      "role": "Executive",
+      "title": "Director of IT",
+      "email": "diana.nakamura@libertysdeli.com",
+      "influence_level": "End User",
+      "last_interaction": "2024-03-15",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-TFPHP777",
+      "name": "Michelle Berg",
+      "role": "Operations",
+      "title": "CIO",
+      "email": "michelle.berg@libertysdeli.com",
+      "influence_level": "Blocker",
+      "last_interaction": null,
+      "is_current": true
+    }
+  ],
+  "acr_trend": {
+    "currency": "USD",
+    "monthly_values": [
+      {
+        "month": "2023-04",
+        "value_usd": 13656.23,
+        "workload_breakdown": {
+          "compute": 2635.82,
+          "storage": 1742.5,
+          "networking": 3639.53,
+          "paas": 5638.39
+        }
+      },
+      {
+        "month": "2023-05",
+        "value_usd": 13487.22,
+        "workload_breakdown": {
+          "compute": 3865.12,
+          "storage": 1481.3,
+          "networking": 1389.67,
+          "paas": 6751.13
+        }
+      },
+      {
+        "month": "2023-06",
+        "value_usd": 0
+      },
+      {
+        "month": "2023-07",
+        "value_usd": 13818.98,
+        "workload_breakdown": {
+          "compute": 3297.38,
+          "storage": 3174.49,
+          "networking": 2702.43,
+          "paas": 4644.68
+        }
+      },
+      {
+        "month": "2023-08",
+        "value_usd": 14492.13,
+        "workload_breakdown": {
+          "compute": 5968.88,
+          "storage": 3536.36,
+          "networking": 1151.05,
+          "paas": 3835.84
+        }
+      },
+      {
+        "month": "2023-09",
+        "value_usd": 0
+      },
+      {
+        "month": "2023-10",
+        "value_usd": 14080.7,
+        "workload_breakdown": {
+          "compute": 3676.4,
+          "storage": 2727.14,
+          "networking": 2275.39,
+          "paas": 5401.77
+        }
+      },
+      {
+        "month": "2023-11",
+        "value_usd": 14772.19,
+        "workload_breakdown": {
+          "compute": 3318.32,
+          "storage": 3757.43,
+          "networking": 2764.35,
+          "paas": 4932.08
+        }
+      },
+      {
+        "month": "2023-12",
+        "value_usd": 0
+      },
+      {
+        "month": "2024-01",
+        "value_usd": 15105.72,
+        "workload_breakdown": {
+          "compute": 3625.79,
+          "storage": 3127.64,
+          "networking": 3374.39,
+          "paas": 4977.91
+        }
+      },
+      {
+        "month": "2024-02",
+        "value_usd": 14817.6,
+        "workload_breakdown": {
+          "compute": 3714.29,
+          "storage": 3176.06,
+          "networking": 3269.51,
+          "paas": 4657.74
+        }
+      },
+      {
+        "month": "2024-03",
+        "value_usd": 0
+      }
+    ]
+  },
+  "open_recommendations": [
+    {
+      "recommendation_id": "REC-74891",
+      "type": "Advisor",
+      "description": "Migrate to Azure SQL Managed Instance",
+      "priority": "High",
+      "created_at": "2024-01-25T10:00:00-05:00",
+      "status": "New"
+    }
+  ],
+  "recent_activity_timeline": [
+    {
+      "date": "2024-03-08",
+      "activity_type": "meeting",
+      "description": "Security posture review",
+      "participants": [
+        "Ahmed Hassan",
+        "Marcus Williams"
+      ]
+    },
+    {
+      "date": "2024-02-18",
+      "activity_type": "msx_update",
+      "description": "Added new milestone: Technical Validation",
+      "participants": [
+        "Sarah Kim",
+        "Ahmed Hassan"
+      ]
+    },
+    {
+      "date": "2024-02-14",
+      "activity_type": "msx_update",
+      "description": "Updated close date based on customer feedback",
+      "participants": [
+        "Ahmed Hassan"
+      ]
+    },
+    {
+      "date": "2024-02-09",
+      "activity_type": "escalation",
+      "description": "Performance degradation reported by end users",
+      "participants": [
+        "Marcus Williams",
+        "Lisa Patel"
+      ]
+    },
+    {
+      "date": "2024-01-22",
+      "activity_type": "escalation",
+      "description": "Customer escalated support ticket response time",
+      "participants": [
+        "Sarah Kim",
+        "Ahmed Hassan",
+        "Raj Mehta"
+      ]
+    }
+  ],
+  "customer_health_flags": {
+    "overall_health": "Healthy",
+    "engagement_score": 60,
+    "consumption_trend": "Growing",
+    "renewal_risk": "Low",
+    "last_assessed": null
+  },
+  "contract_billing": {
+    "subscription_type": "MCA",
+    "contract_end_date": null,
+    "macc_commitment_usd": null,
+    "macc_consumed_usd": null,
+    "billing_frequency": "Annual",
+    "auto_renew": false
+  }
+}

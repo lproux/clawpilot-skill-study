@@ -1,0 +1,386 @@
+{
+  "fixture_id": "FX-032",
+  "fixture_class": "missing",
+  "authored_at": "2024-03-15T10:00:00-05:00",
+  "account": {
+    "account_id": "ACC-0CNBEONL",
+    "name": "Munson's Pickles",
+    "segment": "smb-small",
+    "geography": "NA",
+    "tenure_years": 3.8,
+    "owner": "Lisa Patel",
+    "industry": "Food & Beverage",
+    "employee_count": 38
+  },
+  "opportunities": [
+    {
+      "opportunity_id": "OPP-3FL06ZHV",
+      "name": "Munson's Copilot Adoption",
+      "stage": "Develop",
+      "estimated_value_usd": 450000,
+      "close_date": "2024-04-19",
+      "bpf_stage": "Develop",
+      "forecast_category": "Pipeline",
+      "owner": "Lisa Patel",
+      "last_updated": null,
+      "milestones": [
+        {
+          "milestone_id": "MS-S06GFUL3",
+          "name": "Discovery",
+          "status": "In Progress",
+          "due_date": "2024-04-21",
+          "completed_date": null,
+          "owner": "Lisa Patel",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-OIQCHHZH",
+          "name": "Technical Validation",
+          "status": "Blocked",
+          "due_date": "2024-08-01",
+          "completed_date": null,
+          "owner": "Lisa Patel",
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "opportunity_id": "OPP-3EPNRVTL",
+      "name": "Munson's Copilot Adoption",
+      "stage": "Develop",
+      "estimated_value_usd": 280000,
+      "close_date": "2024-05-22",
+      "bpf_stage": "Develop",
+      "forecast_category": "Pipeline",
+      "owner": "Lisa Patel",
+      "last_updated": null,
+      "milestones": [
+        {
+          "milestone_id": "MS-JB3TNW3K",
+          "name": "Discovery",
+          "status": "Blocked",
+          "due_date": "2024-06-20",
+          "completed_date": null,
+          "owner": "Lisa Patel",
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "opportunity_id": "OPP-V8UMF6QH",
+      "name": "Munson's AKS Deployment",
+      "stage": "Close",
+      "estimated_value_usd": 350000,
+      "close_date": "2024-12-10",
+      "bpf_stage": "Close",
+      "forecast_category": "Committed",
+      "owner": "Lisa Patel",
+      "last_updated": "2024-03-12T11:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-M0YR5WUR",
+          "name": "Discovery",
+          "status": "Not Started",
+          "due_date": "2024-08-23",
+          "completed_date": null,
+          "owner": "Lisa Patel",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-9IVKM51T",
+          "name": "Technical Validation",
+          "status": "Completed",
+          "due_date": "2024-05-26",
+          "completed_date": "2024-03-26",
+          "owner": "Lisa Patel",
+          "evidence": "email_thread_5785"
+        },
+        {
+          "milestone_id": "MS-IBLQV9IA",
+          "name": "Business Case Approved",
+          "status": "Not Started",
+          "due_date": "2024-06-01",
+          "completed_date": null,
+          "owner": "Lisa Patel",
+          "evidence": ""
+        }
+      ]
+    }
+  ],
+  "contacts": [
+    {
+      "contact_id": "CON-LKQ68N8B",
+      "name": "Robert Morrison",
+      "role": "Technical",
+      "title": "Technology Manager",
+      "email": "robert.morrison@munsonspickl.com",
+      "influence_level": "Decision Maker",
+      "last_interaction": "2024-03-14",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-5TQ5523M",
+      "name": "Samantha Kim",
+      "role": "Finance",
+      "title": "CFO",
+      "email": "samantha.kim@munsonspickl.com",
+      "influence_level": "Influencer",
+      "last_interaction": "2024-03-19",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-2UBUM1XP",
+      "name": "Sarah Torres",
+      "role": "Operations",
+      "title": "COO",
+      "email": "sarah.torres@munsonspickl.com",
+      "influence_level": "Champion",
+      "last_interaction": null,
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-609SB28C",
+      "name": "Michael Singh",
+      "role": "Executive",
+      "title": "Infrastructure Manager",
+      "email": "michael.singh@munsonspickl.com",
+      "influence_level": "End User",
+      "last_interaction": "2024-03-15",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-FA8KYET9",
+      "name": "Diana Nakamura",
+      "role": "Technical",
+      "title": "Data Platform Lead",
+      "email": "diana.nakamura@munsonspickl.com",
+      "influence_level": "Blocker",
+      "last_interaction": "2024-03-03",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-HM3TL3AP",
+      "name": "Thomas Taylor",
+      "role": "Operations",
+      "title": "CFO",
+      "email": "thomas.taylor@munsonspickl.com",
+      "influence_level": "Champion",
+      "last_interaction": null,
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-5ODTO2NX",
+      "name": "Robert Taylor",
+      "role": "Technical",
+      "title": "Data Platform Lead",
+      "email": "robert.taylor@munsonspickl.com",
+      "influence_level": "Champion",
+      "last_interaction": "2024-01-16",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-EII6KQIJ",
+      "name": "Jason O'Brien",
+      "role": "Executive",
+      "title": "VP Operations",
+      "email": "jason.o'brien@munsonspickl.com",
+      "influence_level": "End User",
+      "last_interaction": "2024-03-02",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-GPPPCMMP",
+      "name": "Karen Morrison",
+      "role": "Finance",
+      "title": "Infrastructure Manager",
+      "email": "karen.morrison@munsonspickl.com",
+      "influence_level": "Blocker",
+      "last_interaction": null,
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-3ZBNVM94",
+      "name": "Sarah Berg",
+      "role": "Business",
+      "title": "Data Platform Lead",
+      "email": "sarah.berg@munsonspickl.com",
+      "influence_level": "Blocker",
+      "last_interaction": "2024-02-08",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-EOYYCTCH",
+      "name": "Kevin Brown",
+      "role": "Operations",
+      "title": "Technology Manager",
+      "email": "kevin.brown@munsonspickl.com",
+      "influence_level": "End User",
+      "last_interaction": "2024-02-22",
+      "is_current": true
+    }
+  ],
+  "acr_trend": {
+    "currency": "USD",
+    "monthly_values": [
+      {
+        "month": "2023-04",
+        "value_usd": 36687.63,
+        "workload_breakdown": {
+          "compute": 10077.47,
+          "storage": 8443.51,
+          "networking": 5440.29,
+          "paas": 12726.37
+        }
+      },
+      {
+        "month": "2023-05",
+        "value_usd": 35463.26,
+        "workload_breakdown": {
+          "compute": 15863.1,
+          "storage": 4000.42,
+          "networking": 2601.96,
+          "paas": 12997.78
+        }
+      },
+      {
+        "month": "2023-06",
+        "value_usd": 0
+      },
+      {
+        "month": "2023-07",
+        "value_usd": 35335.02,
+        "workload_breakdown": {
+          "compute": 8110.13,
+          "storage": 8942.08,
+          "networking": 7061.0,
+          "paas": 11221.81
+        }
+      },
+      {
+        "month": "2023-08",
+        "value_usd": 35513.3,
+        "workload_breakdown": {
+          "compute": 12913.75,
+          "storage": 4005.62,
+          "networking": 6787.47,
+          "paas": 11806.45
+        }
+      },
+      {
+        "month": "2023-09",
+        "value_usd": 35533.89,
+        "workload_breakdown": {
+          "compute": 9056.42,
+          "storage": 6320.77,
+          "networking": 3811.33,
+          "paas": 16345.37
+        }
+      },
+      {
+        "month": "2023-10",
+        "value_usd": 34183.22,
+        "workload_breakdown": {
+          "compute": 5373.32,
+          "storage": 11822.56,
+          "networking": 6648.25,
+          "paas": 10339.09
+        }
+      },
+      {
+        "month": "2023-11",
+        "value_usd": 0
+      },
+      {
+        "month": "2023-12",
+        "value_usd": 34082.16,
+        "workload_breakdown": {
+          "compute": 14616.9,
+          "storage": 7054.59,
+          "networking": 5316.04,
+          "paas": 7094.63
+        }
+      },
+      {
+        "month": "2024-01",
+        "value_usd": 0
+      },
+      {
+        "month": "2024-02",
+        "value_usd": 35339.14,
+        "workload_breakdown": {
+          "compute": 14356.44,
+          "storage": 6324.31,
+          "networking": 6186.07,
+          "paas": 8472.31
+        }
+      },
+      {
+        "month": "2024-03",
+        "value_usd": 0
+      }
+    ]
+  },
+  "open_recommendations": [
+    {
+      "recommendation_id": "REC-30749",
+      "type": "Manual",
+      "description": "Migrate to Azure SQL Managed Instance",
+      "priority": "High",
+      "created_at": "2024-02-14T10:00:00-05:00",
+      "status": "In Progress"
+    },
+    {
+      "recommendation_id": "REC-90190",
+      "type": "Advisor",
+      "description": "Implement Azure Landing Zones",
+      "priority": "Low",
+      "created_at": "2024-03-04T10:00:00-05:00",
+      "status": "Dismissed"
+    }
+  ],
+  "recent_activity_timeline": [
+    {
+      "date": "2024-03-27",
+      "activity_type": "msx_update",
+      "description": "Updated close date based on customer feedback",
+      "participants": [
+        "Ahmed Hassan"
+      ]
+    },
+    {
+      "date": "2024-03-22",
+      "activity_type": "spa_received",
+      "description": "SPA: VM rightsizing opportunity detected",
+      "participants": [
+        "Marcus Williams",
+        "Lisa Patel",
+        "Raj Mehta"
+      ]
+    },
+    {
+      "date": "2024-01-11",
+      "activity_type": "spa_received",
+      "description": "SPA: Security recommendation - MFA gaps",
+      "participants": [
+        "Marcus Williams",
+        "Lisa Patel",
+        "Ahmed Hassan"
+      ]
+    }
+  ],
+  "customer_health_flags": {
+    "overall_health": "At Risk",
+    "engagement_score": 20,
+    "consumption_trend": "Stable",
+    "renewal_risk": "Low",
+    "last_assessed": null
+  },
+  "contract_billing": {
+    "subscription_type": "EA",
+    "contract_end_date": null,
+    "macc_commitment_usd": null,
+    "macc_consumed_usd": null,
+    "billing_frequency": "Annual",
+    "auto_renew": true
+  }
+}

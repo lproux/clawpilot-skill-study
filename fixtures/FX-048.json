@@ -1,0 +1,403 @@
+{
+  "fixture_id": "FX-048",
+  "fixture_class": "contradictory",
+  "authored_at": "2024-03-15T10:00:00-05:00",
+  "account": {
+    "account_id": "ACC-L5ILSPD7",
+    "name": "Summit Financial",
+    "segment": "smb-mid",
+    "geography": "LATAM",
+    "tenure_years": 3.6,
+    "owner": "Priya Sharma",
+    "industry": "Financial Services",
+    "employee_count": 620
+  },
+  "opportunities": [
+    {
+      "opportunity_id": "OPP-ROD4BBM3",
+      "name": "Summit Cloud Migration Phase",
+      "stage": "Qualify",
+      "estimated_value_usd": 210000,
+      "close_date": "2024-11-20",
+      "bpf_stage": "Qualify",
+      "forecast_category": "Committed",
+      "owner": "Priya Sharma",
+      "last_updated": "2024-01-22T09:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-O9ZMDJ51",
+          "name": "Discovery",
+          "status": "Completed",
+          "due_date": "2024-05-18",
+          "completed_date": "2024-01-15",
+          "owner": "Priya Sharma",
+          "evidence": "email_thread_8146"
+        }
+      ]
+    }
+  ],
+  "contacts": [
+    {
+      "contact_id": "CON-3WDHZ6UI",
+      "name": "Andrew Brown",
+      "role": "Technical",
+      "title": "Head of Digital",
+      "email": "andrew.brown@summitfinanc.com",
+      "influence_level": "Decision Maker",
+      "last_interaction": "2024-03-25",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-MYF9EF7I",
+      "name": "Eric Nakamura",
+      "role": "Technical",
+      "title": "VP Operations",
+      "email": "eric.nakamura@summitfinanc.com",
+      "influence_level": "Influencer",
+      "last_interaction": "2024-03-24",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-65IIVEVB",
+      "name": "Michael Jackson",
+      "role": "Technical",
+      "title": "VP Engineering",
+      "email": "michael.jackson@summitfinanc.com",
+      "influence_level": "Champion",
+      "last_interaction": "2024-02-22",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-1L4TEARI",
+      "name": "James Taylor",
+      "role": "Operations",
+      "title": "CIO",
+      "email": "james.taylor@summitfinanc.com",
+      "influence_level": "End User",
+      "last_interaction": "2024-01-25",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-PW232B2G",
+      "name": "Andrew Davis",
+      "role": "Technical",
+      "title": "Infrastructure Manager",
+      "email": "andrew.davis@summitfinanc.com",
+      "influence_level": "Blocker",
+      "last_interaction": "2024-01-13",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-8J9IEKGL",
+      "name": "Ryan Lee",
+      "role": "Finance",
+      "title": "Head of Digital",
+      "email": "ryan.lee@summitfinanc.com",
+      "influence_level": "End User",
+      "last_interaction": "2024-03-26",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-2TJZY9YH",
+      "name": "David Chen",
+      "role": "Technical",
+      "title": "Head of Digital",
+      "email": "david.chen@summitfinanc.com",
+      "influence_level": "End User",
+      "last_interaction": "2024-02-07",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-JW0ZY9K2",
+      "name": "Michelle Martinez",
+      "role": "Operations",
+      "title": "DevOps Lead",
+      "email": "michelle.martinez@summitfinanc.com",
+      "influence_level": "End User",
+      "last_interaction": "2024-01-04",
+      "is_current": true
+    }
+  ],
+  "acr_trend": {
+    "currency": "USD",
+    "monthly_values": [
+      {
+        "month": "2023-04",
+        "value_usd": 13388.72,
+        "workload_breakdown": {
+          "compute": 2023.06,
+          "storage": 2200.19,
+          "networking": 2643.44,
+          "paas": 6522.03
+        }
+      },
+      {
+        "month": "2023-05",
+        "value_usd": 12984.32,
+        "workload_breakdown": {
+          "compute": 5007.92,
+          "storage": 2532.78,
+          "networking": 2407.6,
+          "paas": 3036.02
+        }
+      },
+      {
+        "month": "2023-06",
+        "value_usd": 11590.49,
+        "workload_breakdown": {
+          "compute": 2054.91,
+          "storage": 2610.1,
+          "networking": 1210.63,
+          "paas": 5714.85
+        }
+      },
+      {
+        "month": "2023-07",
+        "value_usd": 11088.69,
+        "workload_breakdown": {
+          "compute": 4448.05,
+          "storage": 2466.86,
+          "networking": 1867.24,
+          "paas": 2306.54
+        }
+      },
+      {
+        "month": "2023-08",
+        "value_usd": 9907.32,
+        "workload_breakdown": {
+          "compute": 1503.66,
+          "storage": 3492.11,
+          "networking": 950.02,
+          "paas": 3961.52
+        }
+      },
+      {
+        "month": "2023-09",
+        "value_usd": 9089.39,
+        "workload_breakdown": {
+          "compute": 1976.11,
+          "storage": 1265.14,
+          "networking": 1478.08,
+          "paas": 4370.06
+        }
+      },
+      {
+        "month": "2023-10",
+        "value_usd": 8731.55,
+        "workload_breakdown": {
+          "compute": 3374.65,
+          "storage": 1364.26,
+          "networking": 1272.25,
+          "paas": 2720.39
+        }
+      },
+      {
+        "month": "2023-11",
+        "value_usd": 7919.28,
+        "workload_breakdown": {
+          "compute": 2899.69,
+          "storage": 2014.93,
+          "networking": 953.83,
+          "paas": 2050.83
+        }
+      },
+      {
+        "month": "2023-12",
+        "value_usd": 7454.58,
+        "workload_breakdown": {
+          "compute": 2323.08,
+          "storage": 1382.95,
+          "networking": 1407.72,
+          "paas": 2340.84
+        }
+      },
+      {
+        "month": "2024-01",
+        "value_usd": 6611.4,
+        "workload_breakdown": {
+          "compute": 1925.86,
+          "storage": 2065.86,
+          "networking": 1120.08,
+          "paas": 1499.6
+        }
+      },
+      {
+        "month": "2024-02",
+        "value_usd": 6330.01,
+        "workload_breakdown": {
+          "compute": 1496.46,
+          "storage": 2153.24,
+          "networking": 1144.32,
+          "paas": 1535.99
+        }
+      },
+      {
+        "month": "2024-03",
+        "value_usd": 5836.85,
+        "workload_breakdown": {
+          "compute": 1853.58,
+          "storage": 1674.82,
+          "networking": 562.53,
+          "paas": 1745.93
+        }
+      }
+    ]
+  },
+  "open_recommendations": [
+    {
+      "recommendation_id": "REC-60757",
+      "type": "SPA",
+      "description": "Deploy Azure Front Door for global load balancing",
+      "priority": "Low",
+      "created_at": "2024-01-17T10:00:00-05:00",
+      "status": "New"
+    },
+    {
+      "recommendation_id": "REC-75552",
+      "type": "SPA",
+      "description": "Upgrade to premium tier storage for production",
+      "priority": "High",
+      "created_at": "2024-03-14T10:00:00-05:00",
+      "status": "In Progress"
+    },
+    {
+      "recommendation_id": "REC-84856",
+      "type": "CxObserve",
+      "description": "Migrate legacy .NET apps to Azure App Service",
+      "priority": "Medium",
+      "created_at": "2024-02-25T10:00:00-05:00",
+      "status": "In Progress"
+    },
+    {
+      "recommendation_id": "REC-36601",
+      "type": "Advisor",
+      "description": "Migrate to Azure SQL Managed Instance",
+      "priority": "High",
+      "created_at": "2024-03-10T10:00:00-05:00",
+      "status": "In Progress"
+    },
+    {
+      "recommendation_id": "REC-34539",
+      "type": "SPA",
+      "description": "Enable Azure Security Center standard tier",
+      "priority": "High",
+      "created_at": "2024-02-18T10:00:00-05:00",
+      "status": "Dismissed"
+    }
+  ],
+  "recent_activity_timeline": [
+    {
+      "date": "2024-03-19",
+      "activity_type": "call",
+      "description": "Quick call on deployment blocker",
+      "participants": [
+        "Marcus Williams",
+        "Ahmed Hassan",
+        "Sarah Kim"
+      ]
+    },
+    {
+      "date": "2024-03-12",
+      "activity_type": "deployment",
+      "description": "Pilot environment provisioned",
+      "participants": [
+        "Marcus Williams"
+      ]
+    },
+    {
+      "date": "2024-03-07",
+      "activity_type": "call",
+      "description": "Discussed budget approval timeline",
+      "participants": [
+        "Raj Mehta",
+        "Marcus Williams"
+      ]
+    },
+    {
+      "date": "2024-03-06",
+      "activity_type": "call",
+      "description": "Escalation triage call",
+      "participants": [
+        "Ahmed Hassan"
+      ]
+    },
+    {
+      "date": "2024-02-17",
+      "activity_type": "call",
+      "description": "Escalation triage call",
+      "participants": [
+        "Lisa Patel",
+        "Raj Mehta"
+      ]
+    },
+    {
+      "date": "2024-02-08",
+      "activity_type": "meeting",
+      "description": "Partner introduction meeting",
+      "participants": [
+        "Lisa Patel",
+        "Sarah Kim"
+      ]
+    },
+    {
+      "date": "2024-02-07",
+      "activity_type": "call",
+      "description": "Quick call on deployment blocker",
+      "participants": [
+        "Ahmed Hassan",
+        "Marcus Williams",
+        "Raj Mehta"
+      ]
+    },
+    {
+      "date": "2024-02-07",
+      "activity_type": "deployment",
+      "description": "Pilot environment provisioned",
+      "participants": [
+        "Marcus Williams",
+        "Ahmed Hassan"
+      ]
+    },
+    {
+      "date": "2024-02-04",
+      "activity_type": "escalation",
+      "description": "Performance degradation reported by end users",
+      "participants": [
+        "Sarah Kim",
+        "Lisa Patel",
+        "Marcus Williams"
+      ]
+    },
+    {
+      "date": "2024-01-17",
+      "activity_type": "call",
+      "description": "Check-in on pilot progress",
+      "participants": [
+        "Ahmed Hassan"
+      ]
+    },
+    {
+      "date": "2024-01-17",
+      "activity_type": "spa_received",
+      "description": "SPA: Cost anomaly detected",
+      "participants": [
+        "Sarah Kim"
+      ]
+    }
+  ],
+  "customer_health_flags": {
+    "overall_health": "Healthy",
+    "engagement_score": 38,
+    "consumption_trend": "Growing",
+    "renewal_risk": "Low",
+    "last_assessed": "2024-01-26"
+  },
+  "contract_billing": {
+    "subscription_type": "CSP",
+    "contract_end_date": "2024-10-04",
+    "macc_commitment_usd": 200000,
+    "macc_consumed_usd": 131638.49,
+    "billing_frequency": "Monthly",
+    "auto_renew": true
+  }
+}

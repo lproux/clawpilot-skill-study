@@ -1,0 +1,482 @@
+{
+  "fixture_id": "FX-006",
+  "fixture_class": "clean",
+  "authored_at": "2024-03-15T10:00:00-05:00",
+  "account": {
+    "account_id": "ACC-AIM1K57Z",
+    "name": "Woodgrove Bank",
+    "segment": "smb-mid",
+    "geography": "APAC",
+    "tenure_years": 2.0,
+    "owner": "Jennifer Walsh",
+    "industry": "Financial Services",
+    "employee_count": 1200
+  },
+  "opportunities": [
+    {
+      "opportunity_id": "OPP-48SL58YO",
+      "name": "Woodgrove Azure AI Services",
+      "stage": "Propose",
+      "estimated_value_usd": 450000,
+      "close_date": "2024-08-25",
+      "bpf_stage": "Propose",
+      "forecast_category": "Pipeline",
+      "owner": "Jennifer Walsh",
+      "last_updated": "2024-03-04T16:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-V2A7M6O2",
+          "name": "Discovery",
+          "status": "Not Started",
+          "due_date": "2024-05-06",
+          "completed_date": null,
+          "owner": "Jennifer Walsh",
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "opportunity_id": "OPP-GMSB24Y3",
+      "name": "Woodgrove Azure SQL Migration",
+      "stage": "Close",
+      "estimated_value_usd": 560000,
+      "close_date": "2024-09-18",
+      "bpf_stage": "Close",
+      "forecast_category": "Committed",
+      "owner": "Jennifer Walsh",
+      "last_updated": "2024-02-15T16:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-49JK0YPO",
+          "name": "Discovery",
+          "status": "Not Started",
+          "due_date": "2024-07-04",
+          "completed_date": null,
+          "owner": "Jennifer Walsh",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-TYTF0CC9",
+          "name": "Technical Validation",
+          "status": "In Progress",
+          "due_date": "2024-03-09",
+          "completed_date": null,
+          "owner": "Jennifer Walsh",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-TZ1NG6HI",
+          "name": "Business Case Approved",
+          "status": "Completed",
+          "due_date": "2024-07-27",
+          "completed_date": "2024-03-21",
+          "owner": "Jennifer Walsh",
+          "evidence": "email_thread_4310"
+        }
+      ]
+    },
+    {
+      "opportunity_id": "OPP-UK7ZRE6V",
+      "name": "Woodgrove Copilot Adoption",
+      "stage": "Qualify",
+      "estimated_value_usd": 280000,
+      "close_date": "2024-10-25",
+      "bpf_stage": "Qualify",
+      "forecast_category": "Pipeline",
+      "owner": "Jennifer Walsh",
+      "last_updated": "2024-03-12T11:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-IHKMD43E",
+          "name": "Discovery",
+          "status": "Not Started",
+          "due_date": "2024-07-03",
+          "completed_date": null,
+          "owner": "Jennifer Walsh",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-24HHCB1F",
+          "name": "Technical Validation",
+          "status": "In Progress",
+          "due_date": "2024-04-27",
+          "completed_date": null,
+          "owner": "Jennifer Walsh",
+          "evidence": ""
+        }
+      ]
+    }
+  ],
+  "contacts": [
+    {
+      "contact_id": "CON-8A08QB37",
+      "name": "Rachel Berg",
+      "role": "Finance",
+      "title": "CTO",
+      "email": "rachel.berg@woodgroveban.com",
+      "influence_level": "Decision Maker",
+      "last_interaction": "2024-02-19",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-97I6UOUR",
+      "name": "Patricia Berg",
+      "role": "Technical",
+      "title": "Head of Digital",
+      "email": "patricia.berg@woodgroveban.com",
+      "influence_level": "Influencer",
+      "last_interaction": "2024-03-21",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-W3L3T4OV",
+      "name": "David White",
+      "role": "Executive",
+      "title": "Data Platform Lead",
+      "email": "david.white@woodgroveban.com",
+      "influence_level": "Champion",
+      "last_interaction": "2024-03-13",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-U8BNZY17",
+      "name": "Brian Taylor",
+      "role": "Executive",
+      "title": "Technology Manager",
+      "email": "brian.taylor@woodgroveban.com",
+      "influence_level": "End User",
+      "last_interaction": "2024-01-01",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-CWEBE7H1",
+      "name": "Eric Nguyen",
+      "role": "Operations",
+      "title": "Security Manager",
+      "email": "eric.nguyen@woodgroveban.com",
+      "influence_level": "Blocker",
+      "last_interaction": "2024-03-18",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-1ZQ58RZX",
+      "name": "Jason Nakamura",
+      "role": "Business",
+      "title": "Head of Digital",
+      "email": "jason.nakamura@woodgroveban.com",
+      "influence_level": "End User",
+      "last_interaction": "2024-02-08",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-Q0LD0NFN",
+      "name": "Jennifer Lee",
+      "role": "Technical",
+      "title": "COO",
+      "email": "jennifer.lee@woodgroveban.com",
+      "influence_level": "End User",
+      "last_interaction": "2024-02-19",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-OY9C200B",
+      "name": "Michelle Schmidt",
+      "role": "Technical",
+      "title": "DevOps Lead",
+      "email": "michelle.schmidt@woodgroveban.com",
+      "influence_level": "Champion",
+      "last_interaction": "2024-03-03",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-DIS0K6ME",
+      "name": "Michelle Thompson",
+      "role": "Technical",
+      "title": "Technology Manager",
+      "email": "michelle.thompson@woodgroveban.com",
+      "influence_level": "Blocker",
+      "last_interaction": "2024-03-21",
+      "is_current": true
+    }
+  ],
+  "acr_trend": {
+    "currency": "USD",
+    "monthly_values": [
+      {
+        "month": "2023-04",
+        "value_usd": 45726.51,
+        "workload_breakdown": {
+          "compute": 14358.41,
+          "storage": 13338.38,
+          "networking": 7565.66,
+          "paas": 10464.06
+        }
+      },
+      {
+        "month": "2023-05",
+        "value_usd": 46056.67,
+        "workload_breakdown": {
+          "compute": 14750.59,
+          "storage": 6856.47,
+          "networking": 7505.56,
+          "paas": 16944.04
+        }
+      },
+      {
+        "month": "2023-06",
+        "value_usd": 46084.68,
+        "workload_breakdown": {
+          "compute": 11877.16,
+          "storage": 14959.94,
+          "networking": 3079.21,
+          "paas": 16168.37
+        }
+      },
+      {
+        "month": "2023-07",
+        "value_usd": 46579.93,
+        "workload_breakdown": {
+          "compute": 12215.59,
+          "storage": 12243.34,
+          "networking": 7306.4,
+          "paas": 14814.59
+        }
+      },
+      {
+        "month": "2023-08",
+        "value_usd": 46745.06,
+        "workload_breakdown": {
+          "compute": 14833.94,
+          "storage": 12080.58,
+          "networking": 4394.17,
+          "paas": 15436.38
+        }
+      },
+      {
+        "month": "2023-09",
+        "value_usd": 45924.89,
+        "workload_breakdown": {
+          "compute": 18470.4,
+          "storage": 11654.05,
+          "networking": 2537.29,
+          "paas": 13263.15
+        }
+      },
+      {
+        "month": "2023-10",
+        "value_usd": 46159.66,
+        "workload_breakdown": {
+          "compute": 11548.15,
+          "storage": 8959.24,
+          "networking": 6799.74,
+          "paas": 18852.53
+        }
+      },
+      {
+        "month": "2023-11",
+        "value_usd": 45301.99,
+        "workload_breakdown": {
+          "compute": 14135.97,
+          "storage": 7038.86,
+          "networking": 8315.25,
+          "paas": 15811.92
+        }
+      },
+      {
+        "month": "2023-12",
+        "value_usd": 44674.44,
+        "workload_breakdown": {
+          "compute": 18510.12,
+          "storage": 11201.06,
+          "networking": 6040.49,
+          "paas": 8922.78
+        }
+      },
+      {
+        "month": "2024-01",
+        "value_usd": 44488.08,
+        "workload_breakdown": {
+          "compute": 9590.13,
+          "storage": 13025.79,
+          "networking": 8353.47,
+          "paas": 13518.69
+        }
+      },
+      {
+        "month": "2024-02",
+        "value_usd": 46175.7,
+        "workload_breakdown": {
+          "compute": 15302.47,
+          "storage": 10881.47,
+          "networking": 4715.97,
+          "paas": 15275.8
+        }
+      },
+      {
+        "month": "2024-03",
+        "value_usd": 46586.35,
+        "workload_breakdown": {
+          "compute": 17790.43,
+          "storage": 6383.91,
+          "networking": 7095.19,
+          "paas": 15316.82
+        }
+      }
+    ]
+  },
+  "open_recommendations": [
+    {
+      "recommendation_id": "REC-83025",
+      "type": "CxObserve",
+      "description": "Implement Azure Landing Zones",
+      "priority": "Low",
+      "created_at": "2024-02-26T10:00:00-05:00",
+      "status": "New"
+    },
+    {
+      "recommendation_id": "REC-85637",
+      "type": "SPA",
+      "description": "Enable Azure Backup for critical databases",
+      "priority": "Medium",
+      "created_at": "2024-03-07T10:00:00-05:00",
+      "status": "Acknowledged"
+    }
+  ],
+  "recent_activity_timeline": [
+    {
+      "date": "2024-03-27",
+      "activity_type": "deployment",
+      "description": "Migration batch 1 completed",
+      "participants": [
+        "Raj Mehta",
+        "Marcus Williams",
+        "Lisa Patel"
+      ]
+    },
+    {
+      "date": "2024-03-18",
+      "activity_type": "call",
+      "description": "Quick call on deployment blocker",
+      "participants": [
+        "Marcus Williams",
+        "Sarah Kim"
+      ]
+    },
+    {
+      "date": "2024-03-05",
+      "activity_type": "call",
+      "description": "Quick call on deployment blocker",
+      "participants": [
+        "Raj Mehta",
+        "Sarah Kim",
+        "Lisa Patel"
+      ]
+    },
+    {
+      "date": "2024-03-02",
+      "activity_type": "spa_received",
+      "description": "SPA: Cost anomaly detected",
+      "participants": [
+        "Raj Mehta",
+        "Sarah Kim",
+        "Ahmed Hassan"
+      ]
+    },
+    {
+      "date": "2024-02-23",
+      "activity_type": "spa_received",
+      "description": "SPA: Security recommendation - MFA gaps",
+      "participants": [
+        "Sarah Kim",
+        "Raj Mehta"
+      ]
+    },
+    {
+      "date": "2024-02-07",
+      "activity_type": "call",
+      "description": "Quick call on deployment blocker",
+      "participants": [
+        "Marcus Williams",
+        "Raj Mehta",
+        "Sarah Kim"
+      ]
+    },
+    {
+      "date": "2024-02-06",
+      "activity_type": "meeting",
+      "description": "Security posture review",
+      "participants": [
+        "Raj Mehta"
+      ]
+    },
+    {
+      "date": "2024-01-23",
+      "activity_type": "msx_update",
+      "description": "Added competitive intelligence notes",
+      "participants": [
+        "Sarah Kim"
+      ]
+    },
+    {
+      "date": "2024-01-21",
+      "activity_type": "escalation",
+      "description": "Performance degradation reported by end users",
+      "participants": [
+        "Sarah Kim",
+        "Marcus Williams",
+        "Lisa Patel"
+      ]
+    },
+    {
+      "date": "2024-01-17",
+      "activity_type": "spa_received",
+      "description": "SPA: VM rightsizing opportunity detected",
+      "participants": [
+        "Ahmed Hassan",
+        "Marcus Williams",
+        "Lisa Patel"
+      ]
+    },
+    {
+      "date": "2024-01-10",
+      "activity_type": "spa_received",
+      "description": "SPA: VM rightsizing opportunity detected",
+      "participants": [
+        "Ahmed Hassan",
+        "Raj Mehta"
+      ]
+    },
+    {
+      "date": "2024-01-05",
+      "activity_type": "contract_event",
+      "description": "MACC milestone approaching",
+      "participants": [
+        "Marcus Williams"
+      ]
+    },
+    {
+      "date": "2024-01-04",
+      "activity_type": "meeting",
+      "description": "Partner introduction meeting",
+      "participants": [
+        "Ahmed Hassan",
+        "Lisa Patel"
+      ]
+    }
+  ],
+  "customer_health_flags": {
+    "overall_health": "Healthy",
+    "engagement_score": 62,
+    "consumption_trend": "Stable",
+    "renewal_risk": "Medium",
+    "last_assessed": "2024-03-02"
+  },
+  "contract_billing": {
+    "subscription_type": "EA",
+    "contract_end_date": "2024-10-16",
+    "macc_commitment_usd": 750000,
+    "macc_consumed_usd": 443206.93,
+    "billing_frequency": "Annual",
+    "auto_renew": false
+  }
+}

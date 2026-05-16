@@ -1,0 +1,438 @@
+{
+  "fixture_id": "FX-007",
+  "fixture_class": "clean",
+  "authored_at": "2024-03-15T10:00:00-05:00",
+  "account": {
+    "account_id": "ACC-658MPDXQ",
+    "name": "Litware Inc",
+    "segment": "smb-corporate",
+    "geography": "APAC",
+    "tenure_years": 7.4,
+    "owner": "David Chen",
+    "industry": "Software",
+    "employee_count": 95
+  },
+  "opportunities": [
+    {
+      "opportunity_id": "OPP-CYSLPO19",
+      "name": "Litware Security Modernization",
+      "stage": "Prospect",
+      "estimated_value_usd": 280000,
+      "close_date": "2024-09-23",
+      "bpf_stage": null,
+      "forecast_category": "Pipeline",
+      "owner": "David Chen",
+      "last_updated": "2024-02-01T16:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-XGFIS003",
+          "name": "Discovery",
+          "status": "Not Started",
+          "due_date": "2024-04-21",
+          "completed_date": null,
+          "owner": "David Chen",
+          "evidence": ""
+        }
+      ]
+    }
+  ],
+  "contacts": [
+    {
+      "contact_id": "CON-PA4S9G5H",
+      "name": "Sarah Wilson",
+      "role": "Finance",
+      "title": "VP Operations",
+      "email": "sarah.wilson@litwareinc.com",
+      "influence_level": "Decision Maker",
+      "last_interaction": "2024-02-11",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-9MJFEAEG",
+      "name": "Patricia Thompson",
+      "role": "Executive",
+      "title": "VP Operations",
+      "email": "patricia.thompson@litwareinc.com",
+      "influence_level": "Influencer",
+      "last_interaction": "2024-02-05",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-XWSQV3KJ",
+      "name": "Rachel Patel",
+      "role": "Executive",
+      "title": "IT Director",
+      "email": "rachel.patel@litwareinc.com",
+      "influence_level": "Champion",
+      "last_interaction": "2024-01-16",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-R10WYLTM",
+      "name": "Patricia Lee",
+      "role": "Technical",
+      "title": "DevOps Lead",
+      "email": "patricia.lee@litwareinc.com",
+      "influence_level": "End User",
+      "last_interaction": "2024-01-02",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-ND2TISS2",
+      "name": "Patricia O'Brien",
+      "role": "Technical",
+      "title": "VP Operations",
+      "email": "patricia.o'brien@litwareinc.com",
+      "influence_level": "Blocker",
+      "last_interaction": "2024-03-26",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-LHB0RSMX",
+      "name": "Daniel Kim",
+      "role": "Finance",
+      "title": "Technology Manager",
+      "email": "daniel.kim@litwareinc.com",
+      "influence_level": "End User",
+      "last_interaction": "2024-01-15",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-XJS17A0Z",
+      "name": "Robert White",
+      "role": "Operations",
+      "title": "Director of IT",
+      "email": "robert.white@litwareinc.com",
+      "influence_level": "End User",
+      "last_interaction": "2024-01-05",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-D08UU6B5",
+      "name": "Angela Nakamura",
+      "role": "Operations",
+      "title": "Technology Manager",
+      "email": "angela.nakamura@litwareinc.com",
+      "influence_level": "Champion",
+      "last_interaction": "2024-01-24",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-OUINZM8G",
+      "name": "Samantha Wilson",
+      "role": "Operations",
+      "title": "VP Operations",
+      "email": "samantha.wilson@litwareinc.com",
+      "influence_level": "End User",
+      "last_interaction": "2024-01-06",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-IPSVSYX9",
+      "name": "Rachel Anderson",
+      "role": "Executive",
+      "title": "Technology Manager",
+      "email": "rachel.anderson@litwareinc.com",
+      "influence_level": "Champion",
+      "last_interaction": "2024-02-07",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-3N2VSO1F",
+      "name": "Thomas Hansen",
+      "role": "Business",
+      "title": "Technology Manager",
+      "email": "thomas.hansen@litwareinc.com",
+      "influence_level": "End User",
+      "last_interaction": "2024-02-12",
+      "is_current": true
+    }
+  ],
+  "acr_trend": {
+    "currency": "USD",
+    "monthly_values": [
+      {
+        "month": "2023-04",
+        "value_usd": 67215.81,
+        "workload_breakdown": {
+          "compute": 20398.66,
+          "storage": 18965.3,
+          "networking": 5472.18,
+          "paas": 22379.66
+        }
+      },
+      {
+        "month": "2023-05",
+        "value_usd": 68741.12,
+        "workload_breakdown": {
+          "compute": 14788.37,
+          "storage": 9279.63,
+          "networking": 7552.06,
+          "paas": 37121.06
+        }
+      },
+      {
+        "month": "2023-06",
+        "value_usd": 68612.92,
+        "workload_breakdown": {
+          "compute": 20560.95,
+          "storage": 9558.04,
+          "networking": 7261.93,
+          "paas": 31232.0
+        }
+      },
+      {
+        "month": "2023-07",
+        "value_usd": 71103.54,
+        "workload_breakdown": {
+          "compute": 25557.71,
+          "storage": 10818.31,
+          "networking": 8741.83,
+          "paas": 25985.69
+        }
+      },
+      {
+        "month": "2023-08",
+        "value_usd": 70503.64,
+        "workload_breakdown": {
+          "compute": 17719.35,
+          "storage": 21244.97,
+          "networking": 7303.7,
+          "paas": 24235.61
+        }
+      },
+      {
+        "month": "2023-09",
+        "value_usd": 72316.93,
+        "workload_breakdown": {
+          "compute": 24907.18,
+          "storage": 20420.96,
+          "networking": 8672.63,
+          "paas": 18316.16
+        }
+      },
+      {
+        "month": "2023-10",
+        "value_usd": 71589.32,
+        "workload_breakdown": {
+          "compute": 16814.42,
+          "storage": 10486.94,
+          "networking": 15316.44,
+          "paas": 28971.52
+        }
+      },
+      {
+        "month": "2023-11",
+        "value_usd": 74307.22,
+        "workload_breakdown": {
+          "compute": 15060.96,
+          "storage": 16027.61,
+          "networking": 17052.1,
+          "paas": 26166.55
+        }
+      },
+      {
+        "month": "2023-12",
+        "value_usd": 76716.0,
+        "workload_breakdown": {
+          "compute": 29516.94,
+          "storage": 11005.7,
+          "networking": 9406.82,
+          "paas": 26786.54
+        }
+      },
+      {
+        "month": "2024-01",
+        "value_usd": 75676.59,
+        "workload_breakdown": {
+          "compute": 17913.06,
+          "storage": 13713.82,
+          "networking": 13174.64,
+          "paas": 30875.08
+        }
+      },
+      {
+        "month": "2024-02",
+        "value_usd": 77111.34,
+        "workload_breakdown": {
+          "compute": 14260.46,
+          "storage": 11597.89,
+          "networking": 9946.74,
+          "paas": 41306.25
+        }
+      },
+      {
+        "month": "2024-03",
+        "value_usd": 76577.96,
+        "workload_breakdown": {
+          "compute": 19067.11,
+          "storage": 17856.71,
+          "networking": 9746.22,
+          "paas": 29907.91
+        }
+      }
+    ]
+  },
+  "open_recommendations": [
+    {
+      "recommendation_id": "REC-85609",
+      "type": "CxObserve",
+      "description": "Enable diagnostic logging for all services",
+      "priority": "High",
+      "created_at": "2024-01-09T10:00:00-05:00",
+      "status": "In Progress"
+    },
+    {
+      "recommendation_id": "REC-30396",
+      "type": "Manual",
+      "description": "Deploy Azure Front Door for global load balancing",
+      "priority": "Medium",
+      "created_at": "2024-02-25T10:00:00-05:00",
+      "status": "Dismissed"
+    },
+    {
+      "recommendation_id": "REC-81076",
+      "type": "CxObserve",
+      "description": "Upgrade to premium tier storage for production",
+      "priority": "Medium",
+      "created_at": "2024-03-13T10:00:00-05:00",
+      "status": "Dismissed"
+    }
+  ],
+  "recent_activity_timeline": [
+    {
+      "date": "2024-03-17",
+      "activity_type": "escalation",
+      "description": "Customer escalated support ticket response time",
+      "participants": [
+        "Raj Mehta"
+      ]
+    },
+    {
+      "date": "2024-03-12",
+      "activity_type": "spa_received",
+      "description": "SPA: Cost anomaly detected",
+      "participants": [
+        "Lisa Patel",
+        "Marcus Williams"
+      ]
+    },
+    {
+      "date": "2024-03-07",
+      "activity_type": "deployment",
+      "description": "Production deployment completed successfully",
+      "participants": [
+        "Marcus Williams",
+        "Ahmed Hassan",
+        "Lisa Patel"
+      ]
+    },
+    {
+      "date": "2024-02-26",
+      "activity_type": "meeting",
+      "description": "Partner introduction meeting",
+      "participants": [
+        "Lisa Patel",
+        "Marcus Williams"
+      ]
+    },
+    {
+      "date": "2024-02-21",
+      "activity_type": "call",
+      "description": "Escalation triage call",
+      "participants": [
+        "Marcus Williams"
+      ]
+    },
+    {
+      "date": "2024-02-13",
+      "activity_type": "call",
+      "description": "Check-in on pilot progress",
+      "participants": [
+        "Sarah Kim",
+        "Lisa Patel",
+        "Ahmed Hassan"
+      ]
+    },
+    {
+      "date": "2024-01-28",
+      "activity_type": "email",
+      "description": "Sent follow-up on migration timeline",
+      "participants": [
+        "Raj Mehta"
+      ]
+    },
+    {
+      "date": "2024-01-26",
+      "activity_type": "contract_event",
+      "description": "Billing discrepancy flagged",
+      "participants": [
+        "Raj Mehta",
+        "Ahmed Hassan",
+        "Marcus Williams"
+      ]
+    },
+    {
+      "date": "2024-01-22",
+      "activity_type": "msx_update",
+      "description": "Added competitive intelligence notes",
+      "participants": [
+        "Sarah Kim",
+        "Ahmed Hassan",
+        "Raj Mehta"
+      ]
+    },
+    {
+      "date": "2024-01-14",
+      "activity_type": "msx_update",
+      "description": "Updated opportunity stage to Develop",
+      "participants": [
+        "Sarah Kim",
+        "Marcus Williams",
+        "Raj Mehta"
+      ]
+    },
+    {
+      "date": "2024-01-14",
+      "activity_type": "msx_update",
+      "description": "Added new milestone: Technical Validation",
+      "participants": [
+        "Sarah Kim",
+        "Marcus Williams"
+      ]
+    },
+    {
+      "date": "2024-01-11",
+      "activity_type": "escalation",
+      "description": "Customer escalated support ticket response time",
+      "participants": [
+        "Raj Mehta"
+      ]
+    },
+    {
+      "date": "2024-01-11",
+      "activity_type": "escalation",
+      "description": "Customer escalated support ticket response time",
+      "participants": [
+        "Ahmed Hassan",
+        "Lisa Patel",
+        "Sarah Kim"
+      ]
+    }
+  ],
+  "customer_health_flags": {
+    "overall_health": "Healthy",
+    "engagement_score": 62,
+    "consumption_trend": "Growing",
+    "renewal_risk": "Low",
+    "last_assessed": "2024-02-17"
+  },
+  "contract_billing": {
+    "subscription_type": "EA",
+    "contract_end_date": "2024-09-10",
+    "macc_commitment_usd": 1000000,
+    "macc_consumed_usd": 687398.54,
+    "billing_frequency": "Annual",
+    "auto_renew": false
+  }
+}

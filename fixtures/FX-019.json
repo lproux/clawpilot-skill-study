@@ -1,0 +1,369 @@
+{
+  "fixture_id": "FX-019",
+  "fixture_class": "stale",
+  "authored_at": "2024-03-15T10:00:00-05:00",
+  "account": {
+    "account_id": "ACC-2JXCFRG8",
+    "name": "Lucerne Publishing",
+    "segment": "smb-corporate",
+    "geography": "NA",
+    "tenure_years": 4.4,
+    "owner": "Tom Rodriguez",
+    "industry": "Media",
+    "employee_count": 220
+  },
+  "opportunities": [
+    {
+      "opportunity_id": "OPP-649BWUXS",
+      "name": "Lucerne Copilot Adoption",
+      "stage": "Propose",
+      "estimated_value_usd": 210000,
+      "close_date": "2023-11-19",
+      "bpf_stage": "Propose",
+      "forecast_category": "Best Case",
+      "owner": "Tom Rodriguez",
+      "last_updated": "2023-06-14T16:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-FSVI6DDW",
+          "name": "Discovery",
+          "status": "In Progress",
+          "due_date": "2024-03-08",
+          "completed_date": null,
+          "owner": "Tom Rodriguez",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-SQ6ZWMNZ",
+          "name": "Technical Validation",
+          "status": "Not Started",
+          "due_date": "2024-08-07",
+          "completed_date": null,
+          "owner": "Tom Rodriguez",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-CGXCP1W8",
+          "name": "Business Case Approved",
+          "status": "Blocked",
+          "due_date": "2024-06-08",
+          "completed_date": null,
+          "owner": "Tom Rodriguez",
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "opportunity_id": "OPP-0T50A8B2",
+      "name": "Lucerne Data Platform Migration",
+      "stage": "Prospect",
+      "estimated_value_usd": 45000,
+      "close_date": "2024-11-16",
+      "bpf_stage": null,
+      "forecast_category": "Pipeline",
+      "owner": "Tom Rodriguez",
+      "last_updated": "2023-10-07T14:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-GQALY30Y",
+          "name": "Discovery",
+          "status": "Blocked",
+          "due_date": "2024-07-28",
+          "completed_date": null,
+          "owner": "Tom Rodriguez",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-8LHJHM8K",
+          "name": "Technical Validation",
+          "status": "Completed",
+          "due_date": "2024-05-10",
+          "completed_date": "2024-02-10",
+          "owner": "Tom Rodriguez",
+          "evidence": "email_thread_4467"
+        }
+      ]
+    }
+  ],
+  "contacts": [
+    {
+      "contact_id": "CON-AXFKLD9E",
+      "name": "Laura Anderson",
+      "role": "Finance",
+      "title": "Head of Digital",
+      "email": "laura.anderson@lucernepubli.com",
+      "influence_level": "Decision Maker",
+      "last_interaction": "2024-02-06",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-ZODT4BHS",
+      "name": "Ryan O'Brien",
+      "role": "Business",
+      "title": "IT Director",
+      "email": "ryan.o'brien@lucernepubli.com",
+      "influence_level": "Influencer",
+      "last_interaction": "2024-03-26",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-ZSFLO050",
+      "name": "Diana Chen",
+      "role": "Business",
+      "title": "Head of Digital",
+      "email": "diana.chen@lucernepubli.com",
+      "influence_level": "Champion",
+      "last_interaction": "2024-01-10",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-SVDXK05Q",
+      "name": "Michelle Park",
+      "role": "Business",
+      "title": "COO",
+      "email": "michelle.park@lucernepubli.com",
+      "influence_level": "End User",
+      "last_interaction": "2023-01-04",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-WPQP875W",
+      "name": "Jason Morrison",
+      "role": "Technical",
+      "title": "Technology Manager",
+      "email": "jason.morrison@lucernepubli.com",
+      "influence_level": "Blocker",
+      "last_interaction": "2023-05-12",
+      "is_current": false
+    }
+  ],
+  "acr_trend": {
+    "currency": "USD",
+    "monthly_values": [
+      {
+        "month": "2023-04",
+        "value_usd": 39559.45,
+        "workload_breakdown": {
+          "compute": 16112.27,
+          "storage": 4600.64,
+          "networking": 3089.55,
+          "paas": 15756.98
+        }
+      },
+      {
+        "month": "2023-05",
+        "value_usd": 38917.76,
+        "workload_breakdown": {
+          "compute": 13296.68,
+          "storage": 10756.96,
+          "networking": 4068.91,
+          "paas": 10795.2
+        }
+      },
+      {
+        "month": "2023-06",
+        "value_usd": 38879.25,
+        "workload_breakdown": {
+          "compute": 14302.27,
+          "storage": 4649.66,
+          "networking": 6722.51,
+          "paas": 13204.81
+        }
+      },
+      {
+        "month": "2023-07",
+        "value_usd": 39777.97,
+        "workload_breakdown": {
+          "compute": 15455.42,
+          "storage": 4735.45,
+          "networking": 6442.84,
+          "paas": 13144.26
+        }
+      },
+      {
+        "month": "2023-08",
+        "value_usd": 40912.35,
+        "workload_breakdown": {
+          "compute": 16105.02,
+          "storage": 4080.71,
+          "networking": 6610.93,
+          "paas": 14115.69
+        }
+      },
+      {
+        "month": "2023-09",
+        "value_usd": 39786.05,
+        "workload_breakdown": {
+          "compute": 17719.89,
+          "storage": 4299.98,
+          "networking": 7750.32,
+          "paas": 10015.86
+        }
+      },
+      {
+        "month": "2023-10",
+        "value_usd": 40789.24,
+        "workload_breakdown": {
+          "compute": 8797.88,
+          "storage": 12315.63,
+          "networking": 6179.38,
+          "paas": 13496.34
+        }
+      },
+      {
+        "month": "2023-11",
+        "value_usd": 39791.19,
+        "workload_breakdown": {
+          "compute": 6756.21,
+          "storage": 7160.12,
+          "networking": 9369.94,
+          "paas": 16504.91
+        }
+      },
+      {
+        "month": "2023-12",
+        "value_usd": 39791.19,
+        "workload_breakdown": {
+          "compute": 9027.71,
+          "storage": 12294.01,
+          "networking": 6824.83,
+          "paas": 11644.63
+        }
+      },
+      {
+        "month": "2024-01",
+        "value_usd": 39791.19,
+        "workload_breakdown": {
+          "compute": 16331.86,
+          "storage": 7594.47,
+          "networking": 6989.99,
+          "paas": 8874.87
+        }
+      },
+      {
+        "month": "2024-02",
+        "value_usd": 39791.19,
+        "workload_breakdown": {
+          "compute": 11940.18,
+          "storage": 10941.77,
+          "networking": 4397.87,
+          "paas": 12511.38
+        }
+      },
+      {
+        "month": "2024-03",
+        "value_usd": 39791.19,
+        "workload_breakdown": {
+          "compute": 7013.27,
+          "storage": 10082.5,
+          "networking": 4059.14,
+          "paas": 18636.28
+        }
+      }
+    ]
+  },
+  "open_recommendations": [
+    {
+      "recommendation_id": "REC-17912",
+      "type": "SPA",
+      "description": "Review network security group rules",
+      "priority": "Medium",
+      "created_at": "2023-05-08T10:00:00-05:00",
+      "status": "Acknowledged"
+    },
+    {
+      "recommendation_id": "REC-84398",
+      "type": "SPA",
+      "description": "Enable Defender for Cloud across subscriptions",
+      "priority": "Low",
+      "created_at": "2023-04-10T10:00:00-05:00",
+      "status": "Acknowledged"
+    },
+    {
+      "recommendation_id": "REC-50523",
+      "type": "CxObserve",
+      "description": "Deploy Azure Front Door for global load balancing",
+      "priority": "Low",
+      "created_at": "2023-07-13T10:00:00-05:00",
+      "status": "Dismissed"
+    },
+    {
+      "recommendation_id": "REC-14915",
+      "type": "Manual",
+      "description": "Enable Azure Security Center standard tier",
+      "priority": "Medium",
+      "created_at": "2023-05-11T10:00:00-05:00",
+      "status": "Dismissed"
+    },
+    {
+      "recommendation_id": "REC-23088",
+      "type": "SPA",
+      "description": "Upgrade to premium tier storage for production",
+      "priority": "High",
+      "created_at": "2023-07-02T10:00:00-05:00",
+      "status": "Dismissed"
+    }
+  ],
+  "recent_activity_timeline": [
+    {
+      "date": "2023-11-24",
+      "activity_type": "call",
+      "description": "Discussed budget approval timeline",
+      "participants": [
+        "Lisa Patel",
+        "Marcus Williams",
+        "Sarah Kim"
+      ]
+    },
+    {
+      "date": "2023-11-03",
+      "activity_type": "spa_received",
+      "description": "SPA: Security recommendation - MFA gaps",
+      "participants": [
+        "Ahmed Hassan",
+        "Raj Mehta"
+      ]
+    },
+    {
+      "date": "2023-09-21",
+      "activity_type": "escalation",
+      "description": "Customer escalated support ticket response time",
+      "participants": [
+        "Raj Mehta"
+      ]
+    },
+    {
+      "date": "2023-07-11",
+      "activity_type": "escalation",
+      "description": "Customer escalated support ticket response time",
+      "participants": [
+        "Raj Mehta",
+        "Lisa Patel",
+        "Marcus Williams"
+      ]
+    },
+    {
+      "date": "2023-06-17",
+      "activity_type": "call",
+      "description": "Discussed budget approval timeline",
+      "participants": [
+        "Marcus Williams"
+      ]
+    }
+  ],
+  "customer_health_flags": {
+    "overall_health": "Healthy",
+    "engagement_score": 89,
+    "consumption_trend": "Stable",
+    "renewal_risk": "Medium",
+    "last_assessed": "2023-08-03"
+  },
+  "contract_billing": {
+    "subscription_type": "EA",
+    "contract_end_date": "2024-12-05",
+    "macc_commitment_usd": 500000,
+    "macc_consumed_usd": 194191.08,
+    "billing_frequency": "Annual",
+    "auto_renew": false
+  }
+}

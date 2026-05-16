@@ -1,0 +1,380 @@
+{
+  "fixture_id": "FX-014",
+  "fixture_class": "stale",
+  "authored_at": "2024-03-15T10:00:00-05:00",
+  "account": {
+    "account_id": "ACC-WL4RKVIY",
+    "name": "Datum Corporation",
+    "segment": "smb-mid",
+    "geography": "APAC",
+    "tenure_years": 4.1,
+    "owner": "Sarah Kim",
+    "industry": "Data Services",
+    "employee_count": 890
+  },
+  "opportunities": [
+    {
+      "opportunity_id": "OPP-8CAYXBHL",
+      "name": "Datum Azure Infrastructure",
+      "stage": "Close",
+      "estimated_value_usd": 560000,
+      "close_date": "2023-09-28",
+      "bpf_stage": "Close",
+      "forecast_category": "Committed",
+      "owner": "Sarah Kim",
+      "last_updated": "2023-09-03T14:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-IRCGD0X7",
+          "name": "Discovery",
+          "status": "Not Started",
+          "due_date": "2024-08-15",
+          "completed_date": null,
+          "owner": "Sarah Kim",
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "opportunity_id": "OPP-P6UYAY0E",
+      "name": "Datum Dynamics 365 Implementation",
+      "stage": "Qualify",
+      "estimated_value_usd": 450000,
+      "close_date": "2024-10-14",
+      "bpf_stage": "Qualify",
+      "forecast_category": "Pipeline",
+      "owner": "Sarah Kim",
+      "last_updated": "2023-08-07T14:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-KPN002HW",
+          "name": "Discovery",
+          "status": "Not Started",
+          "due_date": "2024-07-21",
+          "completed_date": null,
+          "owner": "Sarah Kim",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-CN2J84ZQ",
+          "name": "Technical Validation",
+          "status": "Not Started",
+          "due_date": "2024-07-17",
+          "completed_date": null,
+          "owner": "Sarah Kim",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-569Z8DTP",
+          "name": "Business Case Approved",
+          "status": "Not Started",
+          "due_date": "2024-07-22",
+          "completed_date": null,
+          "owner": "Sarah Kim",
+          "evidence": ""
+        }
+      ]
+    }
+  ],
+  "contacts": [
+    {
+      "contact_id": "CON-47TT9X2C",
+      "name": "Eric Nguyen",
+      "role": "Operations",
+      "title": "CTO",
+      "email": "eric.nguyen@datumcorpora.com",
+      "influence_level": "Decision Maker",
+      "last_interaction": "2024-01-19",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-3DU704WN",
+      "name": "Laura Park",
+      "role": "Executive",
+      "title": "Head of Digital",
+      "email": "laura.park@datumcorpora.com",
+      "influence_level": "Influencer",
+      "last_interaction": "2024-02-20",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-XRS2MT5D",
+      "name": "James Morrison",
+      "role": "Finance",
+      "title": "VP Engineering",
+      "email": "james.morrison@datumcorpora.com",
+      "influence_level": "Champion",
+      "last_interaction": "2024-01-03",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-XZYQ90J3",
+      "name": "Daniel Schmidt",
+      "role": "Business",
+      "title": "Security Manager",
+      "email": "daniel.schmidt@datumcorpora.com",
+      "influence_level": "End User",
+      "last_interaction": "2023-01-15",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-P8CW1123",
+      "name": "David Davis",
+      "role": "Finance",
+      "title": "CTO",
+      "email": "david.davis@datumcorpora.com",
+      "influence_level": "Blocker",
+      "last_interaction": "2023-03-20",
+      "is_current": false
+    },
+    {
+      "contact_id": "CON-E26MFTVQ",
+      "name": "Brian Martinez",
+      "role": "Technical",
+      "title": "Director of IT",
+      "email": "brian.martinez@datumcorpora.com",
+      "influence_level": "End User",
+      "last_interaction": "2023-04-27",
+      "is_current": false
+    },
+    {
+      "contact_id": "CON-8R9889J3",
+      "name": "Michael Brown",
+      "role": "Operations",
+      "title": "CFO",
+      "email": "michael.brown@datumcorpora.com",
+      "influence_level": "Blocker",
+      "last_interaction": "2023-05-23",
+      "is_current": false
+    }
+  ],
+  "acr_trend": {
+    "currency": "USD",
+    "monthly_values": [
+      {
+        "month": "2023-04",
+        "value_usd": 15065.89,
+        "workload_breakdown": {
+          "compute": 5522.53,
+          "storage": 4196.16,
+          "networking": 1865.04,
+          "paas": 3482.16
+        }
+      },
+      {
+        "month": "2023-05",
+        "value_usd": 15282.27,
+        "workload_breakdown": {
+          "compute": 4770.73,
+          "storage": 2799.96,
+          "networking": 2095.4,
+          "paas": 5616.17
+        }
+      },
+      {
+        "month": "2023-06",
+        "value_usd": 15595.16,
+        "workload_breakdown": {
+          "compute": 5703.6,
+          "storage": 2756.46,
+          "networking": 2213.73,
+          "paas": 4921.38
+        }
+      },
+      {
+        "month": "2023-07",
+        "value_usd": 15826.41,
+        "workload_breakdown": {
+          "compute": 5369.66,
+          "storage": 3552.74,
+          "networking": 1120.57,
+          "paas": 5783.44
+        }
+      },
+      {
+        "month": "2023-08",
+        "value_usd": 15638.33,
+        "workload_breakdown": {
+          "compute": 3427.66,
+          "storage": 4416.94,
+          "networking": 2502.6,
+          "paas": 5291.13
+        }
+      },
+      {
+        "month": "2023-09",
+        "value_usd": 15499.11,
+        "workload_breakdown": {
+          "compute": 6220.91,
+          "storage": 1537.82,
+          "networking": 1699.16,
+          "paas": 6041.22
+        }
+      },
+      {
+        "month": "2023-10",
+        "value_usd": 15499.11,
+        "workload_breakdown": {
+          "compute": 4658.9,
+          "storage": 4055.3,
+          "networking": 1414.84,
+          "paas": 5370.08
+        }
+      },
+      {
+        "month": "2023-11",
+        "value_usd": 15499.11,
+        "workload_breakdown": {
+          "compute": 5880.15,
+          "storage": 2627.13,
+          "networking": 1689.92,
+          "paas": 5301.91
+        }
+      },
+      {
+        "month": "2023-12",
+        "value_usd": 15499.11,
+        "workload_breakdown": {
+          "compute": 6181.61,
+          "storage": 1697.08,
+          "networking": 3277.82,
+          "paas": 4342.61
+        }
+      },
+      {
+        "month": "2024-01",
+        "value_usd": 15499.11,
+        "workload_breakdown": {
+          "compute": 3768.72,
+          "storage": 3034.51,
+          "networking": 1834.16,
+          "paas": 6861.71
+        }
+      },
+      {
+        "month": "2024-02",
+        "value_usd": 15499.11,
+        "workload_breakdown": {
+          "compute": 4500.88,
+          "storage": 4428.8,
+          "networking": 1421.1,
+          "paas": 5148.34
+        }
+      },
+      {
+        "month": "2024-03",
+        "value_usd": 15499.11,
+        "workload_breakdown": {
+          "compute": 4900.93,
+          "storage": 2989.4,
+          "networking": 1830.08,
+          "paas": 5778.7
+        }
+      }
+    ]
+  },
+  "open_recommendations": [
+    {
+      "recommendation_id": "REC-59189",
+      "type": "SPA",
+      "description": "Enable Azure Monitor for production workloads",
+      "priority": "High",
+      "created_at": "2023-05-17T10:00:00-05:00",
+      "status": "New"
+    },
+    {
+      "recommendation_id": "REC-78511",
+      "type": "Advisor",
+      "description": "Deploy Azure Front Door for global load balancing",
+      "priority": "Medium",
+      "created_at": "2023-07-25T10:00:00-05:00",
+      "status": "In Progress"
+    },
+    {
+      "recommendation_id": "REC-39372",
+      "type": "SPA",
+      "description": "Enable Azure Backup for critical databases",
+      "priority": "High",
+      "created_at": "2023-07-10T10:00:00-05:00",
+      "status": "In Progress"
+    },
+    {
+      "recommendation_id": "REC-86999",
+      "type": "CxObserve",
+      "description": "Adopt Azure Policy for compliance governance",
+      "priority": "Medium",
+      "created_at": "2023-05-20T10:00:00-05:00",
+      "status": "Dismissed"
+    },
+    {
+      "recommendation_id": "REC-73304",
+      "type": "SPA",
+      "description": "Enable Defender for Cloud across subscriptions",
+      "priority": "Medium",
+      "created_at": "2023-07-14T10:00:00-05:00",
+      "status": "In Progress"
+    },
+    {
+      "recommendation_id": "REC-67362",
+      "type": "CxObserve",
+      "description": "Migrate legacy .NET apps to Azure App Service",
+      "priority": "Low",
+      "created_at": "2023-08-08T10:00:00-05:00",
+      "status": "Dismissed"
+    }
+  ],
+  "recent_activity_timeline": [
+    {
+      "date": "2023-10-11",
+      "activity_type": "spa_received",
+      "description": "SPA: Security recommendation - MFA gaps",
+      "participants": [
+        "Marcus Williams",
+        "Lisa Patel",
+        "Ahmed Hassan"
+      ]
+    },
+    {
+      "date": "2023-08-28",
+      "activity_type": "call",
+      "description": "Escalation triage call",
+      "participants": [
+        "Marcus Williams"
+      ]
+    },
+    {
+      "date": "2023-07-07",
+      "activity_type": "meeting",
+      "description": "Security posture review",
+      "participants": [
+        "Lisa Patel",
+        "Raj Mehta",
+        "Marcus Williams"
+      ]
+    },
+    {
+      "date": "2023-07-02",
+      "activity_type": "deployment",
+      "description": "Migration batch 1 completed",
+      "participants": [
+        "Ahmed Hassan",
+        "Raj Mehta"
+      ]
+    }
+  ],
+  "customer_health_flags": {
+    "overall_health": "Healthy",
+    "engagement_score": 28,
+    "consumption_trend": "Growing",
+    "renewal_risk": "Low",
+    "last_assessed": "2023-08-18"
+  },
+  "contract_billing": {
+    "subscription_type": "EA",
+    "contract_end_date": "2024-08-23",
+    "macc_commitment_usd": 1500000,
+    "macc_consumed_usd": 1123267.9,
+    "billing_frequency": "Annual",
+    "auto_renew": true
+  }
+}

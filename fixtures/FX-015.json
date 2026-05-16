@@ -1,0 +1,362 @@
+{
+  "fixture_id": "FX-015",
+  "fixture_class": "stale",
+  "authored_at": "2024-03-15T10:00:00-05:00",
+  "account": {
+    "account_id": "ACC-A7MFL3SV",
+    "name": "Fourth Coffee",
+    "segment": "smb-small",
+    "geography": "NA",
+    "tenure_years": 2.5,
+    "owner": "Raj Mehta",
+    "industry": "Food & Beverage",
+    "employee_count": 85
+  },
+  "opportunities": [
+    {
+      "opportunity_id": "OPP-ACCQHEEA",
+      "name": "Fourth Data Platform Migration",
+      "stage": "Qualify",
+      "estimated_value_usd": 210000,
+      "close_date": "2023-12-04",
+      "bpf_stage": "Qualify",
+      "forecast_category": "Pipeline",
+      "owner": "Raj Mehta",
+      "last_updated": "2023-06-26T14:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-ZU0VT0SN",
+          "name": "Discovery",
+          "status": "Not Started",
+          "due_date": "2024-06-26",
+          "completed_date": null,
+          "owner": "Raj Mehta",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-WFIWRLDC",
+          "name": "Technical Validation",
+          "status": "Completed",
+          "due_date": "2024-05-09",
+          "completed_date": "2024-01-23",
+          "owner": "Raj Mehta",
+          "evidence": "email_thread_7064"
+        },
+        {
+          "milestone_id": "MS-HAXZGHS8",
+          "name": "Business Case Approved",
+          "status": "Not Started",
+          "due_date": "2024-08-21",
+          "completed_date": null,
+          "owner": "Raj Mehta",
+          "evidence": ""
+        }
+      ]
+    }
+  ],
+  "contacts": [
+    {
+      "contact_id": "CON-EI6K9CZY",
+      "name": "David Rivera",
+      "role": "Technical",
+      "title": "Infrastructure Manager",
+      "email": "david.rivera@fourthcoffee.com",
+      "influence_level": "Decision Maker",
+      "last_interaction": "2024-01-22",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-ZZ2HWCQA",
+      "name": "Laura Patel",
+      "role": "Finance",
+      "title": "CFO",
+      "email": "laura.patel@fourthcoffee.com",
+      "influence_level": "Influencer",
+      "last_interaction": "2024-01-15",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-Q9YOTGCF",
+      "name": "William Martinez",
+      "role": "Operations",
+      "title": "IT Director",
+      "email": "william.martinez@fourthcoffee.com",
+      "influence_level": "Champion",
+      "last_interaction": "2024-02-21",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-PCDSASFB",
+      "name": "William Jackson",
+      "role": "Technical",
+      "title": "Director of IT",
+      "email": "william.jackson@fourthcoffee.com",
+      "influence_level": "End User",
+      "last_interaction": "2023-01-11",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-L05J2FQ7",
+      "name": "Samantha Wilson",
+      "role": "Business",
+      "title": "CFO",
+      "email": "samantha.wilson@fourthcoffee.com",
+      "influence_level": "Blocker",
+      "last_interaction": "2023-06-21",
+      "is_current": false
+    },
+    {
+      "contact_id": "CON-I1RBXC5G",
+      "name": "Patricia Doyle",
+      "role": "Operations",
+      "title": "Security Manager",
+      "email": "patricia.doyle@fourthcoffee.com",
+      "influence_level": "Blocker",
+      "last_interaction": "2023-05-11",
+      "is_current": false
+    },
+    {
+      "contact_id": "CON-RX99WJ0V",
+      "name": "Jennifer Doyle",
+      "role": "Executive",
+      "title": "Technology Manager",
+      "email": "jennifer.doyle@fourthcoffee.com",
+      "influence_level": "Blocker",
+      "last_interaction": "2023-02-22",
+      "is_current": false
+    },
+    {
+      "contact_id": "CON-FI30BHZH",
+      "name": "William Taylor",
+      "role": "Executive",
+      "title": "COO",
+      "email": "william.taylor@fourthcoffee.com",
+      "influence_level": "Champion",
+      "last_interaction": "2023-02-20",
+      "is_current": false
+    },
+    {
+      "contact_id": "CON-3EYLQXYK",
+      "name": "Jennifer Chen",
+      "role": "Executive",
+      "title": "DevOps Lead",
+      "email": "jennifer.chen@fourthcoffee.com",
+      "influence_level": "Champion",
+      "last_interaction": "2023-02-08",
+      "is_current": false
+    },
+    {
+      "contact_id": "CON-EZQ3RHH2",
+      "name": "Andrew Hansen",
+      "role": "Business",
+      "title": "COO",
+      "email": "andrew.hansen@fourthcoffee.com",
+      "influence_level": "Champion",
+      "last_interaction": "2023-02-16",
+      "is_current": false
+    }
+  ],
+  "acr_trend": {
+    "currency": "USD",
+    "monthly_values": [
+      {
+        "month": "2023-04",
+        "value_usd": 112678.36,
+        "workload_breakdown": {
+          "compute": 28305.62,
+          "storage": 19121.56,
+          "networking": 21019.98,
+          "paas": 44231.21
+        }
+      },
+      {
+        "month": "2023-05",
+        "value_usd": 113713.44,
+        "workload_breakdown": {
+          "compute": 17821.05,
+          "storage": 30859.88,
+          "networking": 10816.78,
+          "paas": 54215.72
+        }
+      },
+      {
+        "month": "2023-06",
+        "value_usd": 112356.66,
+        "workload_breakdown": {
+          "compute": 36471.01,
+          "storage": 14497.71,
+          "networking": 21729.65,
+          "paas": 39658.29
+        }
+      },
+      {
+        "month": "2023-07",
+        "value_usd": 112644.7,
+        "workload_breakdown": {
+          "compute": 48253.93,
+          "storage": 17104.09,
+          "networking": 10592.25,
+          "paas": 36694.43
+        }
+      },
+      {
+        "month": "2023-08",
+        "value_usd": 115557.47,
+        "workload_breakdown": {
+          "compute": 20592.12,
+          "storage": 19828.01,
+          "networking": 16201.31,
+          "paas": 58936.04
+        }
+      },
+      {
+        "month": "2023-09",
+        "value_usd": 116995.03,
+        "workload_breakdown": {
+          "compute": 24031.73,
+          "storage": 24681.69,
+          "networking": 28505.29,
+          "paas": 39776.32
+        }
+      },
+      {
+        "month": "2023-10",
+        "value_usd": 114148.6,
+        "workload_breakdown": {
+          "compute": 50779.07,
+          "storage": 24335.33,
+          "networking": 12007.01,
+          "paas": 27027.19
+        }
+      },
+      {
+        "month": "2023-11",
+        "value_usd": 114958.25,
+        "workload_breakdown": {
+          "compute": 23467.63,
+          "storage": 18545.45,
+          "networking": 22968.98,
+          "paas": 49976.18
+        }
+      },
+      {
+        "month": "2023-12",
+        "value_usd": 114958.25,
+        "workload_breakdown": {
+          "compute": 42617.19,
+          "storage": 18688.91,
+          "networking": 18633.07,
+          "paas": 35019.08
+        }
+      },
+      {
+        "month": "2024-01",
+        "value_usd": 114958.25,
+        "workload_breakdown": {
+          "compute": 18444.96,
+          "storage": 25164.02,
+          "networking": 29394.57,
+          "paas": 41954.7
+        }
+      },
+      {
+        "month": "2024-02",
+        "value_usd": 114958.25,
+        "workload_breakdown": {
+          "compute": 40506.29,
+          "storage": 22921.57,
+          "networking": 9254.21,
+          "paas": 42276.18
+        }
+      },
+      {
+        "month": "2024-03",
+        "value_usd": 114958.25,
+        "workload_breakdown": {
+          "compute": 34425.47,
+          "storage": 28450.9,
+          "networking": 15255.54,
+          "paas": 36826.35
+        }
+      }
+    ]
+  },
+  "open_recommendations": [
+    {
+      "recommendation_id": "REC-12635",
+      "type": "Advisor",
+      "description": "Migrate legacy .NET apps to Azure App Service",
+      "priority": "Low",
+      "created_at": "2023-06-20T10:00:00-05:00",
+      "status": "In Progress"
+    },
+    {
+      "recommendation_id": "REC-75656",
+      "type": "SPA",
+      "description": "Upgrade to premium tier storage for production",
+      "priority": "Medium",
+      "created_at": "2023-03-17T10:00:00-05:00",
+      "status": "Acknowledged"
+    },
+    {
+      "recommendation_id": "REC-31307",
+      "type": "Manual",
+      "description": "Enable Azure Backup for critical databases",
+      "priority": "Medium",
+      "created_at": "2023-04-18T10:00:00-05:00",
+      "status": "New"
+    }
+  ],
+  "recent_activity_timeline": [
+    {
+      "date": "2023-12-12",
+      "activity_type": "msx_update",
+      "description": "Added new milestone: Technical Validation",
+      "participants": [
+        "Raj Mehta",
+        "Marcus Williams",
+        "Sarah Kim"
+      ]
+    },
+    {
+      "date": "2023-08-04",
+      "activity_type": "msx_update",
+      "description": "Added new milestone: Technical Validation",
+      "participants": [
+        "Ahmed Hassan"
+      ]
+    },
+    {
+      "date": "2023-06-27",
+      "activity_type": "contract_event",
+      "description": "Billing discrepancy flagged",
+      "participants": [
+        "Sarah Kim",
+        "Marcus Williams"
+      ]
+    },
+    {
+      "date": "2023-06-02",
+      "activity_type": "meeting",
+      "description": "Partner introduction meeting",
+      "participants": [
+        "Ahmed Hassan"
+      ]
+    }
+  ],
+  "customer_health_flags": {
+    "overall_health": "Healthy",
+    "engagement_score": 94,
+    "consumption_trend": "Stable",
+    "renewal_risk": "Medium",
+    "last_assessed": "2023-07-06"
+  },
+  "contract_billing": {
+    "subscription_type": "EA",
+    "contract_end_date": "2024-07-28",
+    "macc_commitment_usd": 2000000,
+    "macc_consumed_usd": 1540317.61,
+    "billing_frequency": "Annual",
+    "auto_renew": false
+  }
+}

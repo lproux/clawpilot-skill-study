@@ -1,0 +1,394 @@
+{
+  "fixture_id": "FX-040",
+  "fixture_class": "inconsistent",
+  "authored_at": "2024-03-15T10:00:00-05:00",
+  "account": {
+    "account_id": "ACC-N5RXCFPK",
+    "name": "Prism Media Group",
+    "segment": "smb-mid",
+    "geography": "LATAM",
+    "tenure_years": 3.0,
+    "owner": "Michelle Park",
+    "industry": "Media",
+    "employee_count": 340
+  },
+  "opportunities": [
+    {
+      "opportunity_id": "OPP-NLBYQKR8",
+      "name": "Prism Dynamics 365 Implementation",
+      "stage": "Propose",
+      "estimated_value_usd": 68000,
+      "close_date": "2024-05-05",
+      "bpf_stage": "Close",
+      "forecast_category": "Best Case",
+      "owner": "Michelle Park",
+      "last_updated": "2024-03-02T13:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-4TY9PPU5",
+          "name": "Discovery",
+          "status": "Blocked",
+          "due_date": "2024-06-18",
+          "completed_date": null,
+          "owner": "Michelle Park",
+          "evidence": ""
+        }
+      ]
+    }
+  ],
+  "contacts": [
+    {
+      "contact_id": "CON-CN2E2H5K",
+      "name": "Sarah Schmidt",
+      "role": "Finance",
+      "title": "Security Manager",
+      "email": "sarah.schmidt@prismmediagr.com",
+      "influence_level": "Decision Maker",
+      "last_interaction": "2024-03-26",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-9DUQ8NQC",
+      "name": "Victoria Nakamura",
+      "role": "Operations",
+      "title": "DevOps Lead",
+      "email": "victoria.nakamura@prismmediagr.com",
+      "influence_level": "Influencer",
+      "last_interaction": "2024-02-16",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-XX8R61CH",
+      "name": "Thomas Schmidt",
+      "role": "Executive",
+      "title": "Director of IT",
+      "email": "thomas.schmidt@prismmediagr.com",
+      "influence_level": "Champion",
+      "last_interaction": "2024-01-03",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-62ROCX35",
+      "name": "Steven White",
+      "role": "Business",
+      "title": "IT Director",
+      "email": "steven.white@prismmediagr.com",
+      "influence_level": "End User",
+      "last_interaction": "2024-02-15",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-M617JL8F",
+      "name": "Nicole Petrov",
+      "role": "Technical",
+      "title": "CFO",
+      "email": "nicole.petrov@prismmediagr.com",
+      "influence_level": "Blocker",
+      "last_interaction": "2024-01-09",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-94CVBOCG",
+      "name": "Kevin Wilson",
+      "role": "Finance",
+      "title": "DevOps Lead",
+      "email": "kevin.wilson@prismmediagr.com",
+      "influence_level": "Blocker",
+      "last_interaction": "2024-03-15",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-5A6BUDKG",
+      "name": "Angela O'Brien",
+      "role": "Finance",
+      "title": "Technology Manager",
+      "email": "angela.o'brien@prismmediagr.com",
+      "influence_level": "Blocker",
+      "last_interaction": "2024-02-04",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-W9CEL0ZM",
+      "name": "James Hansen",
+      "role": "Operations",
+      "title": "Director of IT",
+      "email": "james.hansen@prismmediagr.com",
+      "influence_level": "End User",
+      "last_interaction": "2024-01-25",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-NA4CIIXA",
+      "name": "Sarah Martinez",
+      "role": "Technical",
+      "title": "Director of IT",
+      "email": "sarah.martinez@prismmediagr.com",
+      "influence_level": "End User",
+      "last_interaction": "2024-03-27",
+      "is_current": true
+    }
+  ],
+  "acr_trend": {
+    "currency": "USD",
+    "monthly_values": [
+      {
+        "month": "2023-04",
+        "value_usd": 63549.43,
+        "workload_breakdown": {
+          "compute": 22818.07,
+          "storage": 6327.9,
+          "networking": 14594.01,
+          "paas": 19809.45
+        }
+      },
+      {
+        "month": "2023-05",
+        "value_usd": 65675.29,
+        "workload_breakdown": {
+          "compute": 23955.34,
+          "storage": 17919.12,
+          "networking": 6662.29,
+          "paas": 17138.54
+        }
+      },
+      {
+        "month": "2023-06",
+        "value_usd": 118215.52,
+        "workload_breakdown": {
+          "compute": 28059.86,
+          "storage": 33551.83,
+          "networking": 13146.29,
+          "paas": 43457.53
+        }
+      },
+      {
+        "month": "2023-07",
+        "value_usd": 67925.4,
+        "workload_breakdown": {
+          "compute": 17277.08,
+          "storage": 19429.63,
+          "networking": 6211.07,
+          "paas": 25007.63
+        }
+      },
+      {
+        "month": "2023-08",
+        "value_usd": 20377.62,
+        "workload_breakdown": {
+          "compute": 8993.68,
+          "storage": 3973.89,
+          "networking": 3055.27,
+          "paas": 4354.78
+        }
+      },
+      {
+        "month": "2023-09",
+        "value_usd": 66960.12,
+        "workload_breakdown": {
+          "compute": 27482.39,
+          "storage": 8071.53,
+          "networking": 12808.96,
+          "paas": 18597.25
+        }
+      },
+      {
+        "month": "2023-10",
+        "value_usd": 64497.58,
+        "workload_breakdown": {
+          "compute": 18622.29,
+          "storage": 9998.24,
+          "networking": 6611.73,
+          "paas": 29265.32
+        }
+      },
+      {
+        "month": "2023-11",
+        "value_usd": 19349.27,
+        "workload_breakdown": {
+          "compute": 6524.05,
+          "storage": 3071.71,
+          "networking": 3952.51,
+          "paas": 5801.0
+        }
+      },
+      {
+        "month": "2023-12",
+        "value_usd": 64878.47,
+        "workload_breakdown": {
+          "compute": 10437.38,
+          "storage": 14554.85,
+          "networking": 8052.01,
+          "paas": 31834.24
+        }
+      },
+      {
+        "month": "2024-01",
+        "value_usd": 19463.54,
+        "workload_breakdown": {
+          "compute": 3631.47,
+          "storage": 6700.94,
+          "networking": 2434.99,
+          "paas": 6696.14
+        }
+      },
+      {
+        "month": "2024-02",
+        "value_usd": 129756.95,
+        "workload_breakdown": {
+          "compute": 20859.93,
+          "storage": 27773.77,
+          "networking": 34788.12,
+          "paas": 46335.13
+        }
+      },
+      {
+        "month": "2024-03",
+        "value_usd": 64544.12,
+        "workload_breakdown": {
+          "compute": 23031.5,
+          "storage": 10842.04,
+          "networking": 8770.12,
+          "paas": 21900.46
+        }
+      }
+    ]
+  },
+  "open_recommendations": [
+    {
+      "recommendation_id": "REC-96276",
+      "type": "Manual",
+      "description": "Enable Azure Backup for critical databases",
+      "priority": "Low",
+      "created_at": "2024-02-18T10:00:00-05:00",
+      "status": "New"
+    },
+    {
+      "recommendation_id": "REC-31855",
+      "type": "CxObserve",
+      "description": "Migrate to Azure SQL Managed Instance",
+      "priority": "Low",
+      "created_at": "2024-01-28T10:00:00-05:00",
+      "status": "Dismissed"
+    },
+    {
+      "recommendation_id": "REC-64886",
+      "type": "Manual",
+      "description": "Enable diagnostic logging for all services",
+      "priority": "Medium",
+      "created_at": "2024-03-23T10:00:00-05:00",
+      "status": "Dismissed"
+    },
+    {
+      "recommendation_id": "REC-62553",
+      "type": "Manual",
+      "description": "Adopt Azure Policy for compliance governance",
+      "priority": "High",
+      "created_at": "2024-01-27T10:00:00-05:00",
+      "status": "Dismissed"
+    }
+  ],
+  "recent_activity_timeline": [
+    {
+      "date": "2024-03-28",
+      "activity_type": "deployment",
+      "description": "Pilot environment provisioned",
+      "participants": [
+        "Sarah Kim",
+        "Lisa Patel"
+      ]
+    },
+    {
+      "date": "2024-02-28",
+      "activity_type": "escalation",
+      "description": "Customer escalated support ticket response time",
+      "participants": [
+        "Marcus Williams"
+      ]
+    },
+    {
+      "date": "2024-02-08",
+      "activity_type": "email",
+      "description": "Sent renewal reminder to procurement",
+      "participants": [
+        "Ahmed Hassan"
+      ]
+    },
+    {
+      "date": "2024-01-20",
+      "activity_type": "call",
+      "description": "Check-in on pilot progress",
+      "participants": [
+        "Sarah Kim",
+        "Ahmed Hassan"
+      ]
+    },
+    {
+      "date": "2024-01-19",
+      "activity_type": "email",
+      "description": "Follow-up on support ticket resolution",
+      "participants": [
+        "Lisa Patel",
+        "Marcus Williams",
+        "Sarah Kim"
+      ]
+    },
+    {
+      "date": "2024-01-18",
+      "activity_type": "call",
+      "description": "Escalation triage call",
+      "participants": [
+        "Sarah Kim"
+      ]
+    },
+    {
+      "date": "2024-01-17",
+      "activity_type": "meeting",
+      "description": "Partner introduction meeting",
+      "participants": [
+        "Sarah Kim"
+      ]
+    },
+    {
+      "date": "2024-01-17",
+      "activity_type": "contract_event",
+      "description": "Billing discrepancy flagged",
+      "participants": [
+        "Marcus Williams",
+        "Raj Mehta"
+      ]
+    },
+    {
+      "date": "2024-01-11",
+      "activity_type": "spa_received",
+      "description": "SPA: VM rightsizing opportunity detected",
+      "participants": [
+        "Marcus Williams"
+      ]
+    },
+    {
+      "date": "2024-01-06",
+      "activity_type": "spa_received",
+      "description": "SPA: Security recommendation - MFA gaps",
+      "participants": [
+        "Ahmed Hassan",
+        "Marcus Williams",
+        "Sarah Kim"
+      ]
+    }
+  ],
+  "customer_health_flags": {
+    "overall_health": "At Risk",
+    "engagement_score": 31,
+    "consumption_trend": "Declining",
+    "renewal_risk": "Medium",
+    "last_assessed": "2024-03-20"
+  },
+  "contract_billing": {
+    "subscription_type": "MCA",
+    "contract_end_date": "2024-10-08",
+    "macc_commitment_usd": 500000,
+    "macc_consumed_usd": 218057.94,
+    "billing_frequency": "Annual",
+    "auto_renew": true
+  }
+}

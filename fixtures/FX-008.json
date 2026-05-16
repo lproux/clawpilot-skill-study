@@ -1,0 +1,408 @@
+{
+  "fixture_id": "FX-008",
+  "fixture_class": "clean",
+  "authored_at": "2024-03-15T10:00:00-05:00",
+  "account": {
+    "account_id": "ACC-Y66S2EKA",
+    "name": "Proseware Inc",
+    "segment": "smb-small",
+    "geography": "EMEA",
+    "tenure_years": 7.8,
+    "owner": "Priya Sharma",
+    "industry": "Software",
+    "employee_count": 270
+  },
+  "opportunities": [
+    {
+      "opportunity_id": "OPP-O1ASEVFT",
+      "name": "Proseware AKS Deployment",
+      "stage": "Propose",
+      "estimated_value_usd": 68000,
+      "close_date": "2024-12-24",
+      "bpf_stage": "Propose",
+      "forecast_category": "Pipeline",
+      "owner": "Priya Sharma",
+      "last_updated": "2024-02-09T11:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-GWB0QWQQ",
+          "name": "Discovery",
+          "status": "Not Started",
+          "due_date": "2024-07-28",
+          "completed_date": null,
+          "owner": "Priya Sharma",
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "opportunity_id": "OPP-TTSN9ZWN",
+      "name": "Proseware Dynamics 365 Implementation",
+      "stage": "Develop",
+      "estimated_value_usd": 560000,
+      "close_date": "2024-08-18",
+      "bpf_stage": "Develop",
+      "forecast_category": "Best Case",
+      "owner": "Priya Sharma",
+      "last_updated": "2024-01-21T14:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-UJ62QJR9",
+          "name": "Discovery",
+          "status": "Not Started",
+          "due_date": "2024-06-04",
+          "completed_date": null,
+          "owner": "Priya Sharma",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-VP1MIM1J",
+          "name": "Technical Validation",
+          "status": "In Progress",
+          "due_date": "2024-03-09",
+          "completed_date": null,
+          "owner": "Priya Sharma",
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "opportunity_id": "OPP-ENZBGMG3",
+      "name": "Proseware Azure Virtual Desktop",
+      "stage": "Qualify",
+      "estimated_value_usd": 450000,
+      "close_date": "2024-07-14",
+      "bpf_stage": "Qualify",
+      "forecast_category": "Pipeline",
+      "owner": "Priya Sharma",
+      "last_updated": "2024-03-22T10:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-ZKGF8UT0",
+          "name": "Discovery",
+          "status": "Not Started",
+          "due_date": "2024-08-21",
+          "completed_date": null,
+          "owner": "Priya Sharma",
+          "evidence": ""
+        }
+      ]
+    }
+  ],
+  "contacts": [
+    {
+      "contact_id": "CON-QD7QY2CY",
+      "name": "Robert Chen",
+      "role": "Operations",
+      "title": "Security Manager",
+      "email": "robert.chen@prosewareinc.com",
+      "influence_level": "Decision Maker",
+      "last_interaction": "2024-01-24",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-8S7XRL2A",
+      "name": "Rachel Torres",
+      "role": "Executive",
+      "title": "VP Operations",
+      "email": "rachel.torres@prosewareinc.com",
+      "influence_level": "Influencer",
+      "last_interaction": "2024-03-03",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-WVALEKM1",
+      "name": "Samantha Petrov",
+      "role": "Operations",
+      "title": "COO",
+      "email": "samantha.petrov@prosewareinc.com",
+      "influence_level": "Champion",
+      "last_interaction": "2024-02-17",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-JFESZZS9",
+      "name": "Laura Jackson",
+      "role": "Operations",
+      "title": "COO",
+      "email": "laura.jackson@prosewareinc.com",
+      "influence_level": "End User",
+      "last_interaction": "2024-02-27",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-I9PN0315",
+      "name": "Rachel Rivera",
+      "role": "Finance",
+      "title": "Technology Manager",
+      "email": "rachel.rivera@prosewareinc.com",
+      "influence_level": "Blocker",
+      "last_interaction": "2024-02-17",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-7NIA83MT",
+      "name": "Christopher Anderson",
+      "role": "Technical",
+      "title": "Data Platform Lead",
+      "email": "christopher.anderson@prosewareinc.com",
+      "influence_level": "Champion",
+      "last_interaction": "2024-03-27",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-6619ZSDK",
+      "name": "Jason Doyle",
+      "role": "Finance",
+      "title": "Director of IT",
+      "email": "jason.doyle@prosewareinc.com",
+      "influence_level": "Champion",
+      "last_interaction": "2024-03-09",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-181AHQY2",
+      "name": "Daniel Brown",
+      "role": "Business",
+      "title": "Head of Digital",
+      "email": "daniel.brown@prosewareinc.com",
+      "influence_level": "Champion",
+      "last_interaction": "2024-03-20",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-IQAEGGBO",
+      "name": "James Hansen",
+      "role": "Technical",
+      "title": "CFO",
+      "email": "james.hansen@prosewareinc.com",
+      "influence_level": "Champion",
+      "last_interaction": "2024-02-22",
+      "is_current": true
+    }
+  ],
+  "acr_trend": {
+    "currency": "USD",
+    "monthly_values": [
+      {
+        "month": "2023-04",
+        "value_usd": 12752.51,
+        "workload_breakdown": {
+          "compute": 4218.11,
+          "storage": 2748.14,
+          "networking": 1562.43,
+          "paas": 4223.83
+        }
+      },
+      {
+        "month": "2023-05",
+        "value_usd": 12582.01,
+        "workload_breakdown": {
+          "compute": 2826.22,
+          "storage": 1867.22,
+          "networking": 2184.93,
+          "paas": 5703.64
+        }
+      },
+      {
+        "month": "2023-06",
+        "value_usd": 12898.16,
+        "workload_breakdown": {
+          "compute": 3389.87,
+          "storage": 3629.67,
+          "networking": 1355.09,
+          "paas": 4523.52
+        }
+      },
+      {
+        "month": "2023-07",
+        "value_usd": 13035.87,
+        "workload_breakdown": {
+          "compute": 3514.05,
+          "storage": 4130.9,
+          "networking": 1811.81,
+          "paas": 3579.11
+        }
+      },
+      {
+        "month": "2023-08",
+        "value_usd": 12814.01,
+        "workload_breakdown": {
+          "compute": 4464.11,
+          "storage": 2975.66,
+          "networking": 2273.49,
+          "paas": 3100.75
+        }
+      },
+      {
+        "month": "2023-09",
+        "value_usd": 12592.18,
+        "workload_breakdown": {
+          "compute": 2668.0,
+          "storage": 3782.16,
+          "networking": 1042.11,
+          "paas": 5099.91
+        }
+      },
+      {
+        "month": "2023-10",
+        "value_usd": 12896.35,
+        "workload_breakdown": {
+          "compute": 2921.1,
+          "storage": 3279.1,
+          "networking": 1644.13,
+          "paas": 5052.02
+        }
+      },
+      {
+        "month": "2023-11",
+        "value_usd": 12757.86,
+        "workload_breakdown": {
+          "compute": 3779.74,
+          "storage": 1945.22,
+          "networking": 1593.33,
+          "paas": 5439.58
+        }
+      },
+      {
+        "month": "2023-12",
+        "value_usd": 13064.36,
+        "workload_breakdown": {
+          "compute": 3673.04,
+          "storage": 3133.06,
+          "networking": 2239.87,
+          "paas": 4018.4
+        }
+      },
+      {
+        "month": "2024-01",
+        "value_usd": 13297.26,
+        "workload_breakdown": {
+          "compute": 3988.72,
+          "storage": 2454.82,
+          "networking": 3014.48,
+          "paas": 3839.24
+        }
+      },
+      {
+        "month": "2024-02",
+        "value_usd": 13433.64,
+        "workload_breakdown": {
+          "compute": 5145.3,
+          "storage": 2605.85,
+          "networking": 1776.84,
+          "paas": 3905.65
+        }
+      },
+      {
+        "month": "2024-03",
+        "value_usd": 13854.76,
+        "workload_breakdown": {
+          "compute": 2696.41,
+          "storage": 2341.02,
+          "networking": 1546.82,
+          "paas": 7270.52
+        }
+      }
+    ]
+  },
+  "open_recommendations": [
+    {
+      "recommendation_id": "REC-63088",
+      "type": "Manual",
+      "description": "Enable Azure Monitor for production workloads",
+      "priority": "High",
+      "created_at": "2024-02-25T10:00:00-05:00",
+      "status": "Dismissed"
+    }
+  ],
+  "recent_activity_timeline": [
+    {
+      "date": "2024-03-25",
+      "activity_type": "email",
+      "description": "Follow-up on support ticket resolution",
+      "participants": [
+        "Sarah Kim"
+      ]
+    },
+    {
+      "date": "2024-03-03",
+      "activity_type": "meeting",
+      "description": "Technical deep-dive on migration",
+      "participants": [
+        "Marcus Williams",
+        "Ahmed Hassan",
+        "Lisa Patel"
+      ]
+    },
+    {
+      "date": "2024-03-01",
+      "activity_type": "deployment",
+      "description": "Pilot environment provisioned",
+      "participants": [
+        "Raj Mehta",
+        "Marcus Williams"
+      ]
+    },
+    {
+      "date": "2024-02-18",
+      "activity_type": "call",
+      "description": "Check-in on pilot progress",
+      "participants": [
+        "Lisa Patel",
+        "Marcus Williams"
+      ]
+    },
+    {
+      "date": "2024-02-10",
+      "activity_type": "contract_event",
+      "description": "Billing discrepancy flagged",
+      "participants": [
+        "Ahmed Hassan",
+        "Raj Mehta",
+        "Marcus Williams"
+      ]
+    },
+    {
+      "date": "2024-02-07",
+      "activity_type": "spa_received",
+      "description": "SPA: Cost anomaly detected",
+      "participants": [
+        "Lisa Patel"
+      ]
+    },
+    {
+      "date": "2024-01-25",
+      "activity_type": "meeting",
+      "description": "Weekly sync with account team",
+      "participants": [
+        "Raj Mehta",
+        "Marcus Williams",
+        "Sarah Kim"
+      ]
+    },
+    {
+      "date": "2024-01-05",
+      "activity_type": "deployment",
+      "description": "Migration batch 1 completed",
+      "participants": [
+        "Marcus Williams"
+      ]
+    }
+  ],
+  "customer_health_flags": {
+    "overall_health": "Healthy",
+    "engagement_score": 36,
+    "consumption_trend": "Growing",
+    "renewal_risk": "Low",
+    "last_assessed": "2024-02-08"
+  },
+  "contract_billing": {
+    "subscription_type": "MCA",
+    "contract_end_date": "2024-06-19",
+    "macc_commitment_usd": 200000,
+    "macc_consumed_usd": 106014.25,
+    "billing_frequency": "Annual",
+    "auto_renew": false
+  }
+}

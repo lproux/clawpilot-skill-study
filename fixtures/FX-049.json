@@ -1,0 +1,532 @@
+{
+  "fixture_id": "FX-049",
+  "fixture_class": "contradictory",
+  "authored_at": "2024-03-15T10:00:00-05:00",
+  "account": {
+    "account_id": "ACC-WVPLFPK6",
+    "name": "Iron Creek Mining",
+    "segment": "smb-small",
+    "geography": "APAC",
+    "tenure_years": 5.8,
+    "owner": "Tom Rodriguez",
+    "industry": "Mining",
+    "employee_count": 1900
+  },
+  "opportunities": [
+    {
+      "opportunity_id": "OPP-AKMPB3EM",
+      "name": "Iron Azure DevOps",
+      "stage": "Qualify",
+      "estimated_value_usd": 350000,
+      "close_date": "2024-10-28",
+      "bpf_stage": "Qualify",
+      "forecast_category": "Committed",
+      "owner": "Tom Rodriguez",
+      "last_updated": "2024-03-24T09:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-15CFZWJ9",
+          "name": "Discovery",
+          "status": "In Progress",
+          "due_date": "2024-04-25",
+          "completed_date": null,
+          "owner": "Tom Rodriguez",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-2BHYJPSB",
+          "name": "Technical Validation",
+          "status": "In Progress",
+          "due_date": "2024-06-09",
+          "completed_date": null,
+          "owner": "Tom Rodriguez",
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "opportunity_id": "OPP-KNKXRWD9",
+      "name": "Iron Azure Virtual Desktop",
+      "stage": "Develop",
+      "estimated_value_usd": 280000,
+      "close_date": "2024-06-02",
+      "bpf_stage": "Develop",
+      "forecast_category": "Best Case",
+      "owner": "Tom Rodriguez",
+      "last_updated": "2024-02-21T10:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-JRK2TS46",
+          "name": "Discovery",
+          "status": "Blocked",
+          "due_date": "2024-04-27",
+          "completed_date": null,
+          "owner": "Tom Rodriguez",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-PQJI8VL4",
+          "name": "Technical Validation",
+          "status": "In Progress",
+          "due_date": "2024-04-20",
+          "completed_date": null,
+          "owner": "Tom Rodriguez",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-QONWMEQ7",
+          "name": "Business Case Approved",
+          "status": "Not Started",
+          "due_date": "2024-05-19",
+          "completed_date": null,
+          "owner": "Tom Rodriguez",
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "opportunity_id": "OPP-4LCVD9GJ",
+      "name": "Iron Azure SQL Migration",
+      "stage": "Qualify",
+      "estimated_value_usd": 68000,
+      "close_date": "2024-05-06",
+      "bpf_stage": "Qualify",
+      "forecast_category": "Pipeline",
+      "owner": "Tom Rodriguez",
+      "last_updated": "2024-01-09T08:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-IKDQKQXD",
+          "name": "Discovery",
+          "status": "Completed",
+          "due_date": "2024-04-20",
+          "completed_date": "2024-01-10",
+          "owner": "Tom Rodriguez",
+          "evidence": "email_thread_3560"
+        },
+        {
+          "milestone_id": "MS-251VFYNW",
+          "name": "Technical Validation",
+          "status": "Completed",
+          "due_date": "2024-08-12",
+          "completed_date": "2024-03-18",
+          "owner": "Tom Rodriguez",
+          "evidence": "email_thread_4239"
+        },
+        {
+          "milestone_id": "MS-E1NOZAIU",
+          "name": "Business Case Approved",
+          "status": "Not Started",
+          "due_date": "2024-06-15",
+          "completed_date": null,
+          "owner": "Tom Rodriguez",
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "opportunity_id": "OPP-V8U49Z6W",
+      "name": "Iron Security Modernization",
+      "stage": "Close",
+      "estimated_value_usd": 175000,
+      "close_date": "2024-09-22",
+      "bpf_stage": "Close",
+      "forecast_category": "Committed",
+      "owner": "Tom Rodriguez",
+      "last_updated": "2024-01-14T16:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-E59BS6PZ",
+          "name": "Discovery",
+          "status": "Blocked",
+          "due_date": "2024-07-07",
+          "completed_date": null,
+          "owner": "Tom Rodriguez",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-72ITJEDS",
+          "name": "Technical Validation",
+          "status": "Blocked",
+          "due_date": "2024-03-03",
+          "completed_date": null,
+          "owner": "Tom Rodriguez",
+          "evidence": ""
+        }
+      ]
+    }
+  ],
+  "contacts": [
+    {
+      "contact_id": "CON-PZDIZKOG",
+      "name": "Karen Berg",
+      "role": "Executive",
+      "title": "CTO",
+      "email": "karen.berg@ironcreekmin.com",
+      "influence_level": "Decision Maker",
+      "last_interaction": "2024-03-10",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-HQG2RH4V",
+      "name": "Jennifer Lee",
+      "role": "Technical",
+      "title": "Infrastructure Manager",
+      "email": "jennifer.lee@ironcreekmin.com",
+      "influence_level": "Influencer",
+      "last_interaction": "2024-03-24",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-6Z36MG2X",
+      "name": "Sarah Kowalski",
+      "role": "Operations",
+      "title": "Infrastructure Manager",
+      "email": "sarah.kowalski@ironcreekmin.com",
+      "influence_level": "Champion",
+      "last_interaction": "2024-02-20",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-7RGAEO84",
+      "name": "Ryan Lee",
+      "role": "Technical",
+      "title": "COO",
+      "email": "ryan.lee@ironcreekmin.com",
+      "influence_level": "End User",
+      "last_interaction": "2024-03-28",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-IP285CNL",
+      "name": "David Singh",
+      "role": "Business",
+      "title": "CTO",
+      "email": "david.singh@ironcreekmin.com",
+      "influence_level": "Blocker",
+      "last_interaction": "2024-01-13",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-JD3SRLGB",
+      "name": "Christopher Nakamura",
+      "role": "Operations",
+      "title": "Technology Manager",
+      "email": "christopher.nakamura@ironcreekmin.com",
+      "influence_level": "End User",
+      "last_interaction": "2024-01-27",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-3JTFER2X",
+      "name": "Daniel Yamamoto",
+      "role": "Executive",
+      "title": "Head of Digital",
+      "email": "daniel.yamamoto@ironcreekmin.com",
+      "influence_level": "Blocker",
+      "last_interaction": "2024-02-09",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-7LALI1LD",
+      "name": "Daniel Okafor",
+      "role": "Business",
+      "title": "Technology Manager",
+      "email": "daniel.okafor@ironcreekmin.com",
+      "influence_level": "End User",
+      "last_interaction": "2024-02-21",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-NW6ECD8S",
+      "name": "Michelle Petrov",
+      "role": "Operations",
+      "title": "CFO",
+      "email": "michelle.petrov@ironcreekmin.com",
+      "influence_level": "Champion",
+      "last_interaction": "2024-01-13",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-045U58JA",
+      "name": "Maria Berg",
+      "role": "Operations",
+      "title": "Head of Digital",
+      "email": "maria.berg@ironcreekmin.com",
+      "influence_level": "End User",
+      "last_interaction": "2024-03-23",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-IF40KOHU",
+      "name": "David Rivera",
+      "role": "Operations",
+      "title": "VP Operations",
+      "email": "david.rivera@ironcreekmin.com",
+      "influence_level": "End User",
+      "last_interaction": "2024-03-09",
+      "is_current": true
+    }
+  ],
+  "acr_trend": {
+    "currency": "USD",
+    "monthly_values": [
+      {
+        "month": "2023-04",
+        "value_usd": 25248.56,
+        "workload_breakdown": {
+          "compute": 4098.17,
+          "storage": 7481.26,
+          "networking": 5954.02,
+          "paas": 7715.11
+        }
+      },
+      {
+        "month": "2023-05",
+        "value_usd": 23717.31,
+        "workload_breakdown": {
+          "compute": 9582.58,
+          "storage": 3700.43,
+          "networking": 4097.85,
+          "paas": 6336.45
+        }
+      },
+      {
+        "month": "2023-06",
+        "value_usd": 22122.36,
+        "workload_breakdown": {
+          "compute": 4190.79,
+          "storage": 6830.31,
+          "networking": 2266.83,
+          "paas": 8834.44
+        }
+      },
+      {
+        "month": "2023-07",
+        "value_usd": 20730.8,
+        "workload_breakdown": {
+          "compute": 7334.71,
+          "storage": 2108.72,
+          "networking": 3402.5,
+          "paas": 7884.88
+        }
+      },
+      {
+        "month": "2023-08",
+        "value_usd": 18905.16,
+        "workload_breakdown": {
+          "compute": 8095.24,
+          "storage": 2311.63,
+          "networking": 1536.88,
+          "paas": 6961.4
+        }
+      },
+      {
+        "month": "2023-09",
+        "value_usd": 17404.36,
+        "workload_breakdown": {
+          "compute": 4825.02,
+          "storage": 1917.11,
+          "networking": 1865.03,
+          "paas": 8797.19
+        }
+      },
+      {
+        "month": "2023-10",
+        "value_usd": 16707.37,
+        "workload_breakdown": {
+          "compute": 5770.0,
+          "storage": 4871.65,
+          "networking": 2679.48,
+          "paas": 3386.23
+        }
+      },
+      {
+        "month": "2023-11",
+        "value_usd": 15932.36,
+        "workload_breakdown": {
+          "compute": 6261.17,
+          "storage": 2713.18,
+          "networking": 2678.94,
+          "paas": 4279.07
+        }
+      },
+      {
+        "month": "2023-12",
+        "value_usd": 14400.07,
+        "workload_breakdown": {
+          "compute": 5351.23,
+          "storage": 3440.24,
+          "networking": 1644.84,
+          "paas": 3963.76
+        }
+      },
+      {
+        "month": "2024-01",
+        "value_usd": 13025.65,
+        "workload_breakdown": {
+          "compute": 4880.21,
+          "storage": 2046.66,
+          "networking": 1418.1,
+          "paas": 4680.68
+        }
+      },
+      {
+        "month": "2024-02",
+        "value_usd": 11549.65,
+        "workload_breakdown": {
+          "compute": 2342.17,
+          "storage": 2409.23,
+          "networking": 1915.34,
+          "paas": 4882.91
+        }
+      },
+      {
+        "month": "2024-03",
+        "value_usd": 10924.12,
+        "workload_breakdown": {
+          "compute": 2685.48,
+          "storage": 3398.42,
+          "networking": 1498.75,
+          "paas": 3341.47
+        }
+      }
+    ]
+  },
+  "open_recommendations": [
+    {
+      "recommendation_id": "REC-22696",
+      "type": "Manual",
+      "description": "Adopt Azure Policy for compliance governance",
+      "priority": "Low",
+      "created_at": "2024-02-24T10:00:00-05:00",
+      "status": "In Progress"
+    },
+    {
+      "recommendation_id": "REC-80605",
+      "type": "Advisor",
+      "description": "Implement Azure Landing Zones",
+      "priority": "Low",
+      "created_at": "2024-02-05T10:00:00-05:00",
+      "status": "Acknowledged"
+    },
+    {
+      "recommendation_id": "REC-83863",
+      "type": "Manual",
+      "description": "Consider Reserved Instances for stable workloads",
+      "priority": "Low",
+      "created_at": "2024-01-18T10:00:00-05:00",
+      "status": "In Progress"
+    },
+    {
+      "recommendation_id": "REC-22439",
+      "type": "Manual",
+      "description": "Review network security group rules",
+      "priority": "Low",
+      "created_at": "2024-01-08T10:00:00-05:00",
+      "status": "Acknowledged"
+    }
+  ],
+  "recent_activity_timeline": [
+    {
+      "date": "2024-03-22",
+      "activity_type": "email",
+      "description": "Shared architecture documentation",
+      "participants": [
+        "Sarah Kim",
+        "Marcus Williams",
+        "Raj Mehta"
+      ]
+    },
+    {
+      "date": "2024-03-22",
+      "activity_type": "meeting",
+      "description": "Architecture review session",
+      "participants": [
+        "Raj Mehta",
+        "Ahmed Hassan",
+        "Marcus Williams"
+      ]
+    },
+    {
+      "date": "2024-03-11",
+      "activity_type": "escalation",
+      "description": "Performance degradation reported by end users",
+      "participants": [
+        "Lisa Patel",
+        "Ahmed Hassan",
+        "Raj Mehta"
+      ]
+    },
+    {
+      "date": "2024-03-01",
+      "activity_type": "spa_received",
+      "description": "SPA: VM rightsizing opportunity detected",
+      "participants": [
+        "Marcus Williams",
+        "Ahmed Hassan"
+      ]
+    },
+    {
+      "date": "2024-02-25",
+      "activity_type": "call",
+      "description": "Quick call on deployment blocker",
+      "participants": [
+        "Raj Mehta",
+        "Marcus Williams",
+        "Lisa Patel"
+      ]
+    },
+    {
+      "date": "2024-02-04",
+      "activity_type": "escalation",
+      "description": "Performance degradation reported by end users",
+      "participants": [
+        "Lisa Patel",
+        "Raj Mehta",
+        "Sarah Kim"
+      ]
+    },
+    {
+      "date": "2024-01-25",
+      "activity_type": "meeting",
+      "description": "Weekly sync with account team",
+      "participants": [
+        "Lisa Patel"
+      ]
+    },
+    {
+      "date": "2024-01-23",
+      "activity_type": "deployment",
+      "description": "Pilot environment provisioned",
+      "participants": [
+        "Marcus Williams",
+        "Ahmed Hassan",
+        "Raj Mehta"
+      ]
+    },
+    {
+      "date": "2024-01-02",
+      "activity_type": "msx_update",
+      "description": "Updated opportunity stage to Develop",
+      "participants": [
+        "Marcus Williams"
+      ]
+    }
+  ],
+  "customer_health_flags": {
+    "overall_health": "Healthy",
+    "engagement_score": 71,
+    "consumption_trend": "Growing",
+    "renewal_risk": "Low",
+    "last_assessed": "2024-02-28"
+  },
+  "contract_billing": {
+    "subscription_type": "CSP",
+    "contract_end_date": "2024-09-27",
+    "macc_commitment_usd": 200000,
+    "macc_consumed_usd": 71568.69,
+    "billing_frequency": "Annual",
+    "auto_renew": true
+  }
+}

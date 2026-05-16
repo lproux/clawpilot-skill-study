@@ -1,0 +1,359 @@
+{
+  "fixture_id": "FX-033",
+  "fixture_class": "missing",
+  "authored_at": "2024-03-15T10:00:00-05:00",
+  "account": {
+    "account_id": "ACC-0H065FH7",
+    "name": "Parnell Aerospace",
+    "segment": "smb-small",
+    "geography": "NA",
+    "tenure_years": 3.8,
+    "owner": "Ahmed Hassan",
+    "industry": "Aerospace",
+    "employee_count": 2800
+  },
+  "opportunities": [
+    {
+      "opportunity_id": "OPP-2HYA3DZW",
+      "name": "Parnell Dynamics 365 Implementation",
+      "stage": "Close",
+      "estimated_value_usd": 350000,
+      "close_date": "2024-11-03",
+      "bpf_stage": "Close",
+      "forecast_category": "Committed",
+      "owner": "Ahmed Hassan",
+      "last_updated": "2024-01-16T12:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-75UJBQLJ",
+          "name": "Discovery",
+          "status": "Completed",
+          "due_date": "2024-07-19",
+          "completed_date": "2024-03-21",
+          "owner": "Ahmed Hassan",
+          "evidence": "email_thread_5443"
+        },
+        {
+          "milestone_id": "MS-1E5SKUC5",
+          "name": "Technical Validation",
+          "status": "Not Started",
+          "due_date": "2024-07-05",
+          "completed_date": null,
+          "owner": "Ahmed Hassan",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-FJCX1PM0",
+          "name": "Business Case Approved",
+          "status": "In Progress",
+          "due_date": "2024-06-19",
+          "completed_date": null,
+          "owner": "Ahmed Hassan",
+          "evidence": ""
+        }
+      ]
+    }
+  ],
+  "contacts": [
+    {
+      "contact_id": "CON-CXNW9FFH",
+      "name": "Christopher Martinez",
+      "role": "Operations",
+      "title": "VP Operations",
+      "email": "christopher.martinez@parnellaeros.com",
+      "influence_level": "Decision Maker",
+      "last_interaction": "2024-02-18",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-DXCB131Z",
+      "name": "Jennifer Okafor",
+      "role": "Executive",
+      "title": "CIO",
+      "email": "jennifer.okafor@parnellaeros.com",
+      "influence_level": "Influencer",
+      "last_interaction": "2024-02-01",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-6STPAGP5",
+      "name": "Jason Brown",
+      "role": "Business",
+      "title": "VP Engineering",
+      "email": "jason.brown@parnellaeros.com",
+      "influence_level": "Champion",
+      "last_interaction": "2024-02-17",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-Z8NB6M6E",
+      "name": "Andrew Patel",
+      "role": "Technical",
+      "title": "Technology Manager",
+      "email": "andrew.patel@parnellaeros.com",
+      "influence_level": "End User",
+      "last_interaction": "2024-01-03",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-4CNQHE7D",
+      "name": "Eric Yamamoto",
+      "role": "Business",
+      "title": "Cloud Architect",
+      "email": "eric.yamamoto@parnellaeros.com",
+      "influence_level": "Blocker",
+      "last_interaction": "2024-03-21",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-U0QXA755",
+      "name": "Jason Torres",
+      "role": "Technical",
+      "title": "Head of Digital",
+      "email": "jason.torres@parnellaeros.com",
+      "influence_level": "Blocker",
+      "last_interaction": "2024-01-28",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-1K06X1JA",
+      "name": "Jason Wilson",
+      "role": "Executive",
+      "title": "Head of Digital",
+      "email": "jason.wilson@parnellaeros.com",
+      "influence_level": "Blocker",
+      "last_interaction": "2024-01-25",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-Z814LECR",
+      "name": "Brian Torres",
+      "role": "Business",
+      "title": "Data Platform Lead",
+      "email": "brian.torres@parnellaeros.com",
+      "influence_level": "Blocker",
+      "last_interaction": null,
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-A0SMMU09",
+      "name": "Tamara Nakamura",
+      "role": "Finance",
+      "title": "Data Platform Lead",
+      "email": "tamara.nakamura@parnellaeros.com",
+      "influence_level": "End User",
+      "last_interaction": "2024-02-01",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-UZ86R70H",
+      "name": "Eric White",
+      "role": "Finance",
+      "title": "Infrastructure Manager",
+      "email": "eric.white@parnellaeros.com",
+      "influence_level": "End User",
+      "last_interaction": null,
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-YPUHHRDJ",
+      "name": "Tamara Kim",
+      "role": "Operations",
+      "title": "Director of IT",
+      "email": "tamara.kim@parnellaeros.com",
+      "influence_level": "Champion",
+      "last_interaction": null,
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-JUB02E9P",
+      "name": "Daniel Thompson",
+      "role": "Executive",
+      "title": "Head of Digital",
+      "email": "daniel.thompson@parnellaeros.com",
+      "influence_level": "Blocker",
+      "last_interaction": null,
+      "is_current": true
+    }
+  ],
+  "acr_trend": {
+    "currency": "USD",
+    "monthly_values": [
+      {
+        "month": "2023-04",
+        "value_usd": 101414.09,
+        "workload_breakdown": {
+          "compute": 23705.75,
+          "storage": 26217.57,
+          "networking": 18372.49,
+          "paas": 33118.28
+        }
+      },
+      {
+        "month": "2023-05",
+        "value_usd": 0
+      },
+      {
+        "month": "2023-06",
+        "value_usd": 105172.19,
+        "workload_breakdown": {
+          "compute": 17174.58,
+          "storage": 38180.81,
+          "networking": 10885.13,
+          "paas": 38931.67
+        }
+      },
+      {
+        "month": "2023-07",
+        "value_usd": 103015.66,
+        "workload_breakdown": {
+          "compute": 20254.85,
+          "storage": 27242.62,
+          "networking": 12241.69,
+          "paas": 43276.5
+        }
+      },
+      {
+        "month": "2023-08",
+        "value_usd": 0
+      },
+      {
+        "month": "2023-09",
+        "value_usd": 0
+      },
+      {
+        "month": "2023-10",
+        "value_usd": 100008.55,
+        "workload_breakdown": {
+          "compute": 22659.94,
+          "storage": 27007.21,
+          "networking": 14150.96,
+          "paas": 36190.43
+        }
+      },
+      {
+        "month": "2023-11",
+        "value_usd": 103224.03,
+        "workload_breakdown": {
+          "compute": 32549.22,
+          "storage": 14893.08,
+          "networking": 19467.35,
+          "paas": 36314.38
+        }
+      },
+      {
+        "month": "2023-12",
+        "value_usd": 103963.54,
+        "workload_breakdown": {
+          "compute": 20571.34,
+          "storage": 13929.32,
+          "networking": 14944.07,
+          "paas": 54518.8
+        }
+      },
+      {
+        "month": "2024-01",
+        "value_usd": 102404.68,
+        "workload_breakdown": {
+          "compute": 43585.35,
+          "storage": 9579.91,
+          "networking": 7658.58,
+          "paas": 41580.85
+        }
+      },
+      {
+        "month": "2024-02",
+        "value_usd": 99883.22,
+        "workload_breakdown": {
+          "compute": 40298.36,
+          "storage": 25694.41,
+          "networking": 9108.22,
+          "paas": 24782.23
+        }
+      },
+      {
+        "month": "2024-03",
+        "value_usd": 0
+      }
+    ]
+  },
+  "open_recommendations": [
+    {
+      "recommendation_id": "REC-81222",
+      "type": "Advisor",
+      "description": "Enable Defender for Cloud across subscriptions",
+      "priority": "High",
+      "created_at": "2024-02-27T10:00:00-05:00",
+      "status": "Dismissed"
+    }
+  ],
+  "recent_activity_timeline": [
+    {
+      "date": "2024-03-14",
+      "activity_type": "contract_event",
+      "description": "Billing discrepancy flagged",
+      "participants": [
+        "Lisa Patel",
+        "Marcus Williams"
+      ]
+    },
+    {
+      "date": "2024-03-10",
+      "activity_type": "meeting",
+      "description": "Executive business review",
+      "participants": [
+        "Sarah Kim",
+        "Marcus Williams"
+      ]
+    },
+    {
+      "date": "2024-02-07",
+      "activity_type": "spa_received",
+      "description": "SPA: Security recommendation - MFA gaps",
+      "participants": [
+        "Raj Mehta"
+      ]
+    },
+    {
+      "date": "2024-02-03",
+      "activity_type": "spa_received",
+      "description": "SPA: Cost anomaly detected",
+      "participants": [
+        "Ahmed Hassan",
+        "Marcus Williams"
+      ]
+    },
+    {
+      "date": "2024-01-18",
+      "activity_type": "spa_received",
+      "description": "SPA: VM rightsizing opportunity detected",
+      "participants": [
+        "Lisa Patel",
+        "Ahmed Hassan"
+      ]
+    },
+    {
+      "date": "2024-01-06",
+      "activity_type": "contract_event",
+      "description": "Contract renewal notification (90 days)",
+      "participants": [
+        "Sarah Kim"
+      ]
+    }
+  ],
+  "customer_health_flags": {
+    "overall_health": "Healthy",
+    "engagement_score": 42,
+    "consumption_trend": "Stable",
+    "renewal_risk": "Medium",
+    "last_assessed": null
+  },
+  "contract_billing": {
+    "subscription_type": "CSP",
+    "contract_end_date": "2024-04-24",
+    "macc_commitment_usd": 200000,
+    "macc_consumed_usd": 64533.41,
+    "billing_frequency": "Annual",
+    "auto_renew": false
+  }
+}

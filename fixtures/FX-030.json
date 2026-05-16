@@ -1,0 +1,363 @@
+{
+  "fixture_id": "FX-030",
+  "fixture_class": "missing",
+  "authored_at": "2024-03-15T10:00:00-05:00",
+  "account": {
+    "account_id": "ACC-M3ON3CTQ",
+    "name": "First Up Consultants",
+    "segment": "smb-small",
+    "geography": "APAC",
+    "tenure_years": 4.0,
+    "owner": "Michelle Park",
+    "industry": "Consulting",
+    "employee_count": 130
+  },
+  "opportunities": [
+    {
+      "opportunity_id": "OPP-JCOCFP60",
+      "name": "First M365 E5 Upsell",
+      "stage": "Develop",
+      "estimated_value_usd": 210000,
+      "close_date": "2024-12-12",
+      "bpf_stage": "Develop",
+      "forecast_category": "Best Case",
+      "owner": "Michelle Park",
+      "last_updated": "2024-01-10T11:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-GJ9U9PSF",
+          "name": "Discovery",
+          "status": "Not Started",
+          "due_date": "2024-05-14",
+          "completed_date": null,
+          "owner": "Michelle Park",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-OOL2LQ7Q",
+          "name": "Technical Validation",
+          "status": "Completed",
+          "due_date": "2024-04-10",
+          "completed_date": "2024-02-25",
+          "owner": "Michelle Park",
+          "evidence": "email_thread_1031"
+        }
+      ]
+    },
+    {
+      "opportunity_id": "OPP-JO7KJRBH",
+      "name": "First Security Modernization",
+      "stage": "Develop",
+      "estimated_value_usd": 210000,
+      "close_date": "2024-07-15",
+      "bpf_stage": null,
+      "forecast_category": "Pipeline",
+      "owner": "Michelle Park",
+      "last_updated": "2024-01-18T10:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-OII0XA5Y",
+          "name": "Discovery",
+          "status": "In Progress",
+          "due_date": "2024-06-27",
+          "completed_date": null,
+          "owner": "Michelle Park",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-TAT6BI3G",
+          "name": "Technical Validation",
+          "status": "Not Started",
+          "due_date": "2024-08-12",
+          "completed_date": null,
+          "owner": "Michelle Park",
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "opportunity_id": "OPP-MM8GUNUR",
+      "name": "First Azure Arc Deployment",
+      "stage": "Develop",
+      "estimated_value_usd": 45000,
+      "close_date": "2024-09-18",
+      "bpf_stage": "Develop",
+      "forecast_category": "Best Case",
+      "owner": "Michelle Park",
+      "last_updated": null,
+      "milestones": [
+        {
+          "milestone_id": "MS-UK4VV9QK",
+          "name": "Discovery",
+          "status": "Blocked",
+          "due_date": "2024-04-04",
+          "completed_date": null,
+          "owner": "Michelle Park",
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "opportunity_id": "OPP-MHRLGY4S",
+      "name": "First Azure Arc Deployment",
+      "stage": "Develop",
+      "estimated_value_usd": 280000,
+      "close_date": "2024-05-09",
+      "bpf_stage": "Develop",
+      "forecast_category": "Pipeline",
+      "owner": "Michelle Park",
+      "last_updated": "2024-02-21T16:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-XT82RII1",
+          "name": "Discovery",
+          "status": "Completed",
+          "due_date": "2024-07-25",
+          "completed_date": "2024-03-01",
+          "owner": "Michelle Park",
+          "evidence": "email_thread_6762"
+        }
+      ]
+    }
+  ],
+  "contacts": [
+    {
+      "contact_id": "CON-6IKI32QO",
+      "name": "Michael Schmidt",
+      "role": "Business",
+      "title": "CIO",
+      "email": "michael.schmidt@firstupconsu.com",
+      "influence_level": "Decision Maker",
+      "last_interaction": "2024-03-01",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-PTOHKWDF",
+      "name": "Steven Singh",
+      "role": "Executive",
+      "title": "COO",
+      "email": "steven.singh@firstupconsu.com",
+      "influence_level": "Influencer",
+      "last_interaction": "2024-01-09",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-3EYQ8WCL",
+      "name": "Diana Jackson",
+      "role": "Operations",
+      "title": "CTO",
+      "email": "diana.jackson@firstupconsu.com",
+      "influence_level": "Champion",
+      "last_interaction": "2024-01-22",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-C4FKR3A3",
+      "name": "Brian Park",
+      "role": "Business",
+      "title": "Infrastructure Manager",
+      "email": "brian.park@firstupconsu.com",
+      "influence_level": "End User",
+      "last_interaction": "2024-01-25",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-DSJWM0NX",
+      "name": "Victoria Hansen",
+      "role": "Technical",
+      "title": "Infrastructure Manager",
+      "email": "victoria.hansen@firstupconsu.com",
+      "influence_level": "Blocker",
+      "last_interaction": null,
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-AYEBQ4LV",
+      "name": "Christopher White",
+      "role": "Business",
+      "title": "Director of IT",
+      "email": "christopher.white@firstupconsu.com",
+      "influence_level": "Blocker",
+      "last_interaction": "2024-01-20",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-7FHRWEIQ",
+      "name": "Sarah Martinez",
+      "role": "Finance",
+      "title": "CFO",
+      "email": "sarah.martinez@firstupconsu.com",
+      "influence_level": "Blocker",
+      "last_interaction": null,
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-96XK6QE4",
+      "name": "Jennifer Kowalski",
+      "role": "Finance",
+      "title": "COO",
+      "email": "jennifer.kowalski@firstupconsu.com",
+      "influence_level": "Champion",
+      "last_interaction": "2024-02-19",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-75DUJOBU",
+      "name": "Patricia Thompson",
+      "role": "Executive",
+      "title": "Data Platform Lead",
+      "email": "patricia.thompson@firstupconsu.com",
+      "influence_level": "Blocker",
+      "last_interaction": null,
+      "is_current": true
+    }
+  ],
+  "acr_trend": {
+    "currency": "USD",
+    "monthly_values": [
+      {
+        "month": "2023-04",
+        "value_usd": 0
+      },
+      {
+        "month": "2023-05",
+        "value_usd": 41543.32,
+        "workload_breakdown": {
+          "compute": 15711.75,
+          "storage": 6581.81,
+          "networking": 3850.72,
+          "paas": 15399.04
+        }
+      },
+      {
+        "month": "2023-06",
+        "value_usd": 0
+      },
+      {
+        "month": "2023-07",
+        "value_usd": 0
+      },
+      {
+        "month": "2023-08",
+        "value_usd": 0
+      },
+      {
+        "month": "2023-09",
+        "value_usd": 40627.46,
+        "workload_breakdown": {
+          "compute": 10331.66,
+          "storage": 4819.71,
+          "networking": 8776.45,
+          "paas": 16699.63
+        }
+      },
+      {
+        "month": "2023-10",
+        "value_usd": 39202.51,
+        "workload_breakdown": {
+          "compute": 8112.46,
+          "storage": 6050.74,
+          "networking": 10429.4,
+          "paas": 14609.91
+        }
+      },
+      {
+        "month": "2023-11",
+        "value_usd": 38318.19,
+        "workload_breakdown": {
+          "compute": 10771.68,
+          "storage": 11950.14,
+          "networking": 6926.06,
+          "paas": 8670.31
+        }
+      },
+      {
+        "month": "2023-12",
+        "value_usd": 36868.87,
+        "workload_breakdown": {
+          "compute": 12874.23,
+          "storage": 5396.82,
+          "networking": 3613.79,
+          "paas": 14984.02
+        }
+      },
+      {
+        "month": "2024-01",
+        "value_usd": 37689.44,
+        "workload_breakdown": {
+          "compute": 8441.56,
+          "storage": 10850.63,
+          "networking": 5584.34,
+          "paas": 12812.9
+        }
+      },
+      {
+        "month": "2024-02",
+        "value_usd": 37422.23,
+        "workload_breakdown": {
+          "compute": 8957.77,
+          "storage": 4418.52,
+          "networking": 6139.47,
+          "paas": 17906.46
+        }
+      },
+      {
+        "month": "2024-03",
+        "value_usd": 38672.15,
+        "workload_breakdown": {
+          "compute": 10357.36,
+          "storage": 4836.1,
+          "networking": 5279.12,
+          "paas": 18199.57
+        }
+      }
+    ]
+  },
+  "open_recommendations": [],
+  "recent_activity_timeline": [
+    {
+      "date": "2024-02-21",
+      "activity_type": "contract_event",
+      "description": "MACC milestone approaching",
+      "participants": [
+        "Lisa Patel",
+        "Marcus Williams"
+      ]
+    },
+    {
+      "date": "2024-02-16",
+      "activity_type": "email",
+      "description": "Customer requested partner introduction",
+      "participants": [
+        "Marcus Williams",
+        "Lisa Patel",
+        "Sarah Kim"
+      ]
+    },
+    {
+      "date": "2024-01-15",
+      "activity_type": "deployment",
+      "description": "Production deployment completed successfully",
+      "participants": [
+        "Marcus Williams",
+        "Raj Mehta",
+        "Lisa Patel"
+      ]
+    }
+  ],
+  "customer_health_flags": {
+    "overall_health": "Unknown",
+    "engagement_score": 77,
+    "consumption_trend": "Declining",
+    "renewal_risk": "High",
+    "last_assessed": null
+  },
+  "contract_billing": {
+    "subscription_type": "EA",
+    "contract_end_date": "2024-06-04",
+    "macc_commitment_usd": 500000,
+    "macc_consumed_usd": 389285.18,
+    "billing_frequency": "Annual",
+    "auto_renew": false
+  }
+}

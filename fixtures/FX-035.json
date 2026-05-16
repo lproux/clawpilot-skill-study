@@ -1,0 +1,399 @@
+{
+  "fixture_id": "FX-035",
+  "fixture_class": "missing",
+  "authored_at": "2024-03-15T10:00:00-05:00",
+  "account": {
+    "account_id": "ACC-YBG804XY",
+    "name": "Treyarch Global",
+    "segment": "smb-mid",
+    "geography": "LATAM",
+    "tenure_years": 5.4,
+    "owner": "Raj Mehta",
+    "industry": "Defense",
+    "employee_count": 5400
+  },
+  "opportunities": [
+    {
+      "opportunity_id": "OPP-YMYJIKP2",
+      "name": "Treyarch Azure DevOps",
+      "stage": "Close",
+      "estimated_value_usd": 89000,
+      "close_date": "2024-05-02",
+      "bpf_stage": null,
+      "forecast_category": "Committed",
+      "owner": "Raj Mehta",
+      "last_updated": "2024-02-08T08:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-NE4K25LP",
+          "name": "Discovery",
+          "status": "In Progress",
+          "due_date": "2024-05-26",
+          "completed_date": null,
+          "owner": "Raj Mehta",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-2D4VG661",
+          "name": "Technical Validation",
+          "status": "Completed",
+          "due_date": "2024-05-27",
+          "completed_date": "2024-03-09",
+          "owner": "Raj Mehta",
+          "evidence": "email_thread_1703"
+        },
+        {
+          "milestone_id": "MS-LCYIFWDU",
+          "name": "Business Case Approved",
+          "status": "In Progress",
+          "due_date": "2024-03-06",
+          "completed_date": null,
+          "owner": "Raj Mehta",
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "opportunity_id": "OPP-3EXBHC2N",
+      "name": "Treyarch Azure AI Services",
+      "stage": "Qualify",
+      "estimated_value_usd": 450000,
+      "close_date": "2024-05-13",
+      "bpf_stage": "Qualify",
+      "forecast_category": "Pipeline",
+      "owner": "Raj Mehta",
+      "last_updated": null,
+      "milestones": [
+        {
+          "milestone_id": "MS-JSXAJQNL",
+          "name": "Discovery",
+          "status": "In Progress",
+          "due_date": "2024-04-26",
+          "completed_date": null,
+          "owner": "Raj Mehta",
+          "evidence": ""
+        }
+      ]
+    }
+  ],
+  "contacts": [
+    {
+      "contact_id": "CON-VGXPPRXU",
+      "name": "Laura Schmidt",
+      "role": "Business",
+      "title": "DevOps Lead",
+      "email": "laura.schmidt@treyarchglob.com",
+      "influence_level": "Decision Maker",
+      "last_interaction": "2024-02-20",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-OZ98214K",
+      "name": "Victoria Foster",
+      "role": "Operations",
+      "title": "VP Operations",
+      "email": "victoria.foster@treyarchglob.com",
+      "influence_level": "Influencer",
+      "last_interaction": "2024-03-14",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-P4F3CGMA",
+      "name": "Brian Thompson",
+      "role": "Operations",
+      "title": "Infrastructure Manager",
+      "email": "brian.thompson@treyarchglob.com",
+      "influence_level": "Champion",
+      "last_interaction": "2024-02-10",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-A6W48M1I",
+      "name": "Nicole Kowalski",
+      "role": "Business",
+      "title": "CIO",
+      "email": "nicole.kowalski@treyarchglob.com",
+      "influence_level": "End User",
+      "last_interaction": "2024-03-10",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-7HM336JX",
+      "name": "Samantha O'Brien",
+      "role": "Technical",
+      "title": "Data Platform Lead",
+      "email": "samantha.o'brien@treyarchglob.com",
+      "influence_level": "Blocker",
+      "last_interaction": "2024-03-27",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-DIRU2L01",
+      "name": "Daniel Kowalski",
+      "role": "Operations",
+      "title": "Director of IT",
+      "email": "daniel.kowalski@treyarchglob.com",
+      "influence_level": "Champion",
+      "last_interaction": null,
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-O77YZO7T",
+      "name": "Sarah O'Brien",
+      "role": "Finance",
+      "title": "VP Operations",
+      "email": "sarah.o'brien@treyarchglob.com",
+      "influence_level": "Champion",
+      "last_interaction": "2024-02-25",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-YRI7CQVR",
+      "name": "David Davis",
+      "role": "Technical",
+      "title": "Data Platform Lead",
+      "email": "david.davis@treyarchglob.com",
+      "influence_level": "Blocker",
+      "last_interaction": null,
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-IAQ44UCF",
+      "name": "Rachel Torres",
+      "role": "Technical",
+      "title": "Security Manager",
+      "email": "rachel.torres@treyarchglob.com",
+      "influence_level": "End User",
+      "last_interaction": "2024-03-24",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-BCZLUPCA",
+      "name": "Robert Park",
+      "role": "Technical",
+      "title": "DevOps Lead",
+      "email": "robert.park@treyarchglob.com",
+      "influence_level": "End User",
+      "last_interaction": "2024-01-10",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-P5XIMYC9",
+      "name": "Laura White",
+      "role": "Finance",
+      "title": "COO",
+      "email": "laura.white@treyarchglob.com",
+      "influence_level": "Blocker",
+      "last_interaction": "2024-02-19",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-Q6J4W7A9",
+      "name": "Nicole White",
+      "role": "Operations",
+      "title": "CFO",
+      "email": "nicole.white@treyarchglob.com",
+      "influence_level": "Blocker",
+      "last_interaction": "2024-01-12",
+      "is_current": true
+    }
+  ],
+  "acr_trend": {
+    "currency": "USD",
+    "monthly_values": [
+      {
+        "month": "2023-04",
+        "value_usd": 0
+      },
+      {
+        "month": "2023-05",
+        "value_usd": 47501.21,
+        "workload_breakdown": {
+          "compute": 7986.02,
+          "storage": 13740.56,
+          "networking": 8429.49,
+          "paas": 17345.15
+        }
+      },
+      {
+        "month": "2023-06",
+        "value_usd": 46615.67,
+        "workload_breakdown": {
+          "compute": 15479.33,
+          "storage": 13835.46,
+          "networking": 6450.52,
+          "paas": 10850.37
+        }
+      },
+      {
+        "month": "2023-07",
+        "value_usd": 0
+      },
+      {
+        "month": "2023-08",
+        "value_usd": 0
+      },
+      {
+        "month": "2023-09",
+        "value_usd": 46015.46,
+        "workload_breakdown": {
+          "compute": 11485.19,
+          "storage": 9910.9,
+          "networking": 4163.73,
+          "paas": 20455.63
+        }
+      },
+      {
+        "month": "2023-10",
+        "value_usd": 47656.78,
+        "workload_breakdown": {
+          "compute": 16141.9,
+          "storage": 8533.31,
+          "networking": 4135.32,
+          "paas": 18846.26
+        }
+      },
+      {
+        "month": "2023-11",
+        "value_usd": 47850.97,
+        "workload_breakdown": {
+          "compute": 16288.87,
+          "storage": 11971.05,
+          "networking": 3454.07,
+          "paas": 16136.98
+        }
+      },
+      {
+        "month": "2023-12",
+        "value_usd": 46295.15,
+        "workload_breakdown": {
+          "compute": 16833.61,
+          "storage": 10428.98,
+          "networking": 3455.75,
+          "paas": 15576.81
+        }
+      },
+      {
+        "month": "2024-01",
+        "value_usd": 47973.14,
+        "workload_breakdown": {
+          "compute": 17704.43,
+          "storage": 5489.33,
+          "networking": 3864.21,
+          "paas": 20915.16
+        }
+      },
+      {
+        "month": "2024-02",
+        "value_usd": 47036.13,
+        "workload_breakdown": {
+          "compute": 18383.14,
+          "storage": 12041.45,
+          "networking": 4980.67,
+          "paas": 11630.87
+        }
+      },
+      {
+        "month": "2024-03",
+        "value_usd": 48495.65,
+        "workload_breakdown": {
+          "compute": 21357.12,
+          "storage": 8948.39,
+          "networking": 7540.94,
+          "paas": 10649.2
+        }
+      }
+    ]
+  },
+  "open_recommendations": [
+    {
+      "recommendation_id": "REC-21170",
+      "type": "Advisor",
+      "description": "Deploy Azure Front Door for global load balancing",
+      "priority": "Low",
+      "created_at": "2024-01-21T10:00:00-05:00",
+      "status": "New"
+    },
+    {
+      "recommendation_id": "REC-55692",
+      "type": "CxObserve",
+      "description": "Consider Reserved Instances for stable workloads",
+      "priority": "Low",
+      "created_at": "2024-01-16T10:00:00-05:00",
+      "status": "New"
+    }
+  ],
+  "recent_activity_timeline": [
+    {
+      "date": "2024-03-23",
+      "activity_type": "meeting",
+      "description": "Technical deep-dive on migration",
+      "participants": [
+        "Ahmed Hassan"
+      ]
+    },
+    {
+      "date": "2024-03-21",
+      "activity_type": "msx_update",
+      "description": "Added competitive intelligence notes",
+      "participants": [
+        "Marcus Williams",
+        "Raj Mehta"
+      ]
+    },
+    {
+      "date": "2024-03-17",
+      "activity_type": "spa_received",
+      "description": "SPA: VM rightsizing opportunity detected",
+      "participants": [
+        "Sarah Kim",
+        "Marcus Williams",
+        "Raj Mehta"
+      ]
+    },
+    {
+      "date": "2024-02-06",
+      "activity_type": "call",
+      "description": "Escalation triage call",
+      "participants": [
+        "Lisa Patel",
+        "Sarah Kim",
+        "Marcus Williams"
+      ]
+    },
+    {
+      "date": "2024-01-28",
+      "activity_type": "contract_event",
+      "description": "Contract renewal notification (90 days)",
+      "participants": [
+        "Sarah Kim",
+        "Marcus Williams"
+      ]
+    },
+    {
+      "date": "2024-01-13",
+      "activity_type": "meeting",
+      "description": "Executive business review",
+      "participants": [
+        "Sarah Kim",
+        "Marcus Williams",
+        "Raj Mehta"
+      ]
+    }
+  ],
+  "customer_health_flags": {
+    "overall_health": "Healthy",
+    "engagement_score": 75,
+    "consumption_trend": "Stable",
+    "renewal_risk": "Medium",
+    "last_assessed": null
+  },
+  "contract_billing": {
+    "subscription_type": "MCA",
+    "contract_end_date": null,
+    "macc_commitment_usd": null,
+    "macc_consumed_usd": null,
+    "billing_frequency": "Monthly",
+    "auto_renew": false
+  }
+}

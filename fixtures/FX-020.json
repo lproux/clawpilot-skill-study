@@ -1,0 +1,355 @@
+{
+  "fixture_id": "FX-020",
+  "fixture_class": "stale",
+  "authored_at": "2024-03-15T10:00:00-05:00",
+  "account": {
+    "account_id": "ACC-M6FKIYR4",
+    "name": "Margie's Travel",
+    "segment": "smb-mid",
+    "geography": "EMEA",
+    "tenure_years": 0.9,
+    "owner": "Michelle Park",
+    "industry": "Travel",
+    "employee_count": 165
+  },
+  "opportunities": [
+    {
+      "opportunity_id": "OPP-MKHWOFZB",
+      "name": "Margie's Intune Rollout",
+      "stage": "Prospect",
+      "estimated_value_usd": 125000,
+      "close_date": "2023-09-22",
+      "bpf_stage": null,
+      "forecast_category": "Pipeline",
+      "owner": "Michelle Park",
+      "last_updated": "2023-07-23T12:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-10WZS663",
+          "name": "Discovery",
+          "status": "In Progress",
+          "due_date": "2024-03-04",
+          "completed_date": null,
+          "owner": "Michelle Park",
+          "evidence": ""
+        }
+      ]
+    }
+  ],
+  "contacts": [
+    {
+      "contact_id": "CON-FCFXEQLF",
+      "name": "William Schmidt",
+      "role": "Executive",
+      "title": "Cloud Architect",
+      "email": "william.schmidt@margiestrave.com",
+      "influence_level": "Decision Maker",
+      "last_interaction": "2024-03-28",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-9RGDY5VU",
+      "name": "Andrew Thompson",
+      "role": "Technical",
+      "title": "Infrastructure Manager",
+      "email": "andrew.thompson@margiestrave.com",
+      "influence_level": "Influencer",
+      "last_interaction": "2024-01-18",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-4X1D2UJ3",
+      "name": "Eric Okafor",
+      "role": "Business",
+      "title": "COO",
+      "email": "eric.okafor@margiestrave.com",
+      "influence_level": "Champion",
+      "last_interaction": "2024-01-23",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-7H7LTL0W",
+      "name": "Eric Kowalski",
+      "role": "Finance",
+      "title": "Cloud Architect",
+      "email": "eric.kowalski@margiestrave.com",
+      "influence_level": "End User",
+      "last_interaction": "2023-04-21",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-P3MM5NV2",
+      "name": "James Davis",
+      "role": "Operations",
+      "title": "VP Operations",
+      "email": "james.davis@margiestrave.com",
+      "influence_level": "Blocker",
+      "last_interaction": "2023-04-15",
+      "is_current": false
+    },
+    {
+      "contact_id": "CON-5RBXYMYK",
+      "name": "Christopher Jackson",
+      "role": "Executive",
+      "title": "CFO",
+      "email": "christopher.jackson@margiestrave.com",
+      "influence_level": "End User",
+      "last_interaction": "2023-01-05",
+      "is_current": false
+    },
+    {
+      "contact_id": "CON-PS89VOH0",
+      "name": "Christopher Nakamura",
+      "role": "Finance",
+      "title": "DevOps Lead",
+      "email": "christopher.nakamura@margiestrave.com",
+      "influence_level": "Champion",
+      "last_interaction": "2023-06-10",
+      "is_current": false
+    },
+    {
+      "contact_id": "CON-LFJD59BJ",
+      "name": "William Lee",
+      "role": "Finance",
+      "title": "VP Operations",
+      "email": "william.lee@margiestrave.com",
+      "influence_level": "Blocker",
+      "last_interaction": "2023-05-23",
+      "is_current": false
+    },
+    {
+      "contact_id": "CON-PJSQM0BG",
+      "name": "Robert Schmidt",
+      "role": "Technical",
+      "title": "Security Manager",
+      "email": "robert.schmidt@margiestrave.com",
+      "influence_level": "Champion",
+      "last_interaction": "2023-06-11",
+      "is_current": false
+    },
+    {
+      "contact_id": "CON-EKY40ZXI",
+      "name": "Samantha Park",
+      "role": "Business",
+      "title": "Technology Manager",
+      "email": "samantha.park@margiestrave.com",
+      "influence_level": "Champion",
+      "last_interaction": "2023-04-12",
+      "is_current": false
+    },
+    {
+      "contact_id": "CON-AC8GYGC9",
+      "name": "Tamara Foster",
+      "role": "Technical",
+      "title": "CFO",
+      "email": "tamara.foster@margiestrave.com",
+      "influence_level": "End User",
+      "last_interaction": "2023-06-17",
+      "is_current": false
+    },
+    {
+      "contact_id": "CON-2XDKJ0H9",
+      "name": "Ryan Nguyen",
+      "role": "Technical",
+      "title": "DevOps Lead",
+      "email": "ryan.nguyen@margiestrave.com",
+      "influence_level": "Champion",
+      "last_interaction": "2023-03-12",
+      "is_current": false
+    }
+  ],
+  "acr_trend": {
+    "currency": "USD",
+    "monthly_values": [
+      {
+        "month": "2023-04",
+        "value_usd": 60814.73,
+        "workload_breakdown": {
+          "compute": 26894.71,
+          "storage": 8493.44,
+          "networking": 3862.2,
+          "paas": 21564.38
+        }
+      },
+      {
+        "month": "2023-05",
+        "value_usd": 62299.95,
+        "workload_breakdown": {
+          "compute": 18743.61,
+          "storage": 7732.81,
+          "networking": 7246.58,
+          "paas": 28576.95
+        }
+      },
+      {
+        "month": "2023-06",
+        "value_usd": 61527.4,
+        "workload_breakdown": {
+          "compute": 9716.02,
+          "storage": 20307.25,
+          "networking": 5934.36,
+          "paas": 25569.77
+        }
+      },
+      {
+        "month": "2023-07",
+        "value_usd": 62649.58,
+        "workload_breakdown": {
+          "compute": 16974.87,
+          "storage": 19261.58,
+          "networking": 9811.65,
+          "paas": 16601.48
+        }
+      },
+      {
+        "month": "2023-08",
+        "value_usd": 60874.3,
+        "workload_breakdown": {
+          "compute": 24544.08,
+          "storage": 10252.22,
+          "networking": 6403.39,
+          "paas": 19674.61
+        }
+      },
+      {
+        "month": "2023-09",
+        "value_usd": 60353.55,
+        "workload_breakdown": {
+          "compute": 15795.11,
+          "storage": 17638.0,
+          "networking": 9085.83,
+          "paas": 17834.61
+        }
+      },
+      {
+        "month": "2023-10",
+        "value_usd": 58778.78,
+        "workload_breakdown": {
+          "compute": 22604.41,
+          "storage": 12100.01,
+          "networking": 6641.02,
+          "paas": 17433.34
+        }
+      },
+      {
+        "month": "2023-11",
+        "value_usd": 58642.37,
+        "workload_breakdown": {
+          "compute": 12911.5,
+          "storage": 9338.63,
+          "networking": 11366.44,
+          "paas": 25025.8
+        }
+      },
+      {
+        "month": "2023-12",
+        "value_usd": 58642.37,
+        "workload_breakdown": {
+          "compute": 17304.71,
+          "storage": 12890.44,
+          "networking": 4998.92,
+          "paas": 23448.29
+        }
+      },
+      {
+        "month": "2024-01",
+        "value_usd": 58642.37,
+        "workload_breakdown": {
+          "compute": 14222.65,
+          "storage": 6757.51,
+          "networking": 7659.46,
+          "paas": 30002.76
+        }
+      },
+      {
+        "month": "2024-02",
+        "value_usd": 58642.37,
+        "workload_breakdown": {
+          "compute": 17014.25,
+          "storage": 15157.0,
+          "networking": 7096.97,
+          "paas": 19374.15
+        }
+      },
+      {
+        "month": "2024-03",
+        "value_usd": 58642.37,
+        "workload_breakdown": {
+          "compute": 10818.07,
+          "storage": 12247.77,
+          "networking": 8835.95,
+          "paas": 26740.58
+        }
+      }
+    ]
+  },
+  "open_recommendations": [
+    {
+      "recommendation_id": "REC-45141",
+      "type": "SPA",
+      "description": "Enable Defender for Cloud across subscriptions",
+      "priority": "Medium",
+      "created_at": "2023-08-20T10:00:00-05:00",
+      "status": "Dismissed"
+    },
+    {
+      "recommendation_id": "REC-30297",
+      "type": "Manual",
+      "description": "Rightsize underutilized VMs (potential 23% savings)",
+      "priority": "Low",
+      "created_at": "2023-03-25T10:00:00-05:00",
+      "status": "In Progress"
+    },
+    {
+      "recommendation_id": "REC-70503",
+      "type": "SPA",
+      "description": "Migrate legacy .NET apps to Azure App Service",
+      "priority": "High",
+      "created_at": "2023-07-16T10:00:00-05:00",
+      "status": "Dismissed"
+    },
+    {
+      "recommendation_id": "REC-70005",
+      "type": "Manual",
+      "description": "Implement Azure Landing Zones",
+      "priority": "Medium",
+      "created_at": "2023-07-15T10:00:00-05:00",
+      "status": "New"
+    }
+  ],
+  "recent_activity_timeline": [
+    {
+      "date": "2023-10-02",
+      "activity_type": "escalation",
+      "description": "Performance degradation reported by end users",
+      "participants": [
+        "Ahmed Hassan",
+        "Marcus Williams"
+      ]
+    },
+    {
+      "date": "2023-06-09",
+      "activity_type": "spa_received",
+      "description": "SPA: VM rightsizing opportunity detected",
+      "participants": [
+        "Raj Mehta",
+        "Sarah Kim"
+      ]
+    }
+  ],
+  "customer_health_flags": {
+    "overall_health": "At Risk",
+    "engagement_score": 42,
+    "consumption_trend": "Declining",
+    "renewal_risk": "Medium",
+    "last_assessed": "2023-05-12"
+  },
+  "contract_billing": {
+    "subscription_type": "CSP",
+    "contract_end_date": "2024-04-25",
+    "macc_commitment_usd": 350000,
+    "macc_consumed_usd": 182335.16,
+    "billing_frequency": "Monthly",
+    "auto_renew": false
+  }
+}

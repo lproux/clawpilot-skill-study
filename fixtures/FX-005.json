@@ -1,0 +1,520 @@
+{
+  "fixture_id": "FX-005",
+  "fixture_class": "clean",
+  "authored_at": "2024-03-15T10:00:00-05:00",
+  "account": {
+    "account_id": "ACC-JXC3G9ET",
+    "name": "Tailspin Toys",
+    "segment": "smb-small",
+    "geography": "APAC",
+    "tenure_years": 5.8,
+    "owner": "Raj Mehta",
+    "industry": "Consumer Goods",
+    "employee_count": 180
+  },
+  "opportunities": [
+    {
+      "opportunity_id": "OPP-RGHHA8EP",
+      "name": "Tailspin Azure Virtual Desktop",
+      "stage": "Close",
+      "estimated_value_usd": 560000,
+      "close_date": "2024-09-15",
+      "bpf_stage": "Close",
+      "forecast_category": "Committed",
+      "owner": "Raj Mehta",
+      "last_updated": "2024-01-10T13:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-R6O9GYMG",
+          "name": "Discovery",
+          "status": "Not Started",
+          "due_date": "2024-08-08",
+          "completed_date": null,
+          "owner": "Raj Mehta",
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "opportunity_id": "OPP-F8F9TGH5",
+      "name": "Tailspin Azure SQL Migration",
+      "stage": "Prospect",
+      "estimated_value_usd": 125000,
+      "close_date": "2024-10-05",
+      "bpf_stage": null,
+      "forecast_category": "Pipeline",
+      "owner": "Raj Mehta",
+      "last_updated": "2024-02-17T16:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-VUUL81XC",
+          "name": "Discovery",
+          "status": "Not Started",
+          "due_date": "2024-06-12",
+          "completed_date": null,
+          "owner": "Raj Mehta",
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "opportunity_id": "OPP-DDB9QO3H",
+      "name": "Tailspin Dynamics 365 Implementation",
+      "stage": "Propose",
+      "estimated_value_usd": 45000,
+      "close_date": "2024-08-10",
+      "bpf_stage": "Propose",
+      "forecast_category": "Best Case",
+      "owner": "Raj Mehta",
+      "last_updated": "2024-03-02T10:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-6S9RBIRS",
+          "name": "Discovery",
+          "status": "Not Started",
+          "due_date": "2024-04-25",
+          "completed_date": null,
+          "owner": "Raj Mehta",
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "opportunity_id": "OPP-LNUEQBUW",
+      "name": "Tailspin Azure SQL Migration",
+      "stage": "Qualify",
+      "estimated_value_usd": 89000,
+      "close_date": "2024-10-14",
+      "bpf_stage": "Qualify",
+      "forecast_category": "Pipeline",
+      "owner": "Raj Mehta",
+      "last_updated": "2024-03-14T17:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-D1Z80YMM",
+          "name": "Discovery",
+          "status": "Not Started",
+          "due_date": "2024-04-10",
+          "completed_date": null,
+          "owner": "Raj Mehta",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-OKM0GSWF",
+          "name": "Technical Validation",
+          "status": "In Progress",
+          "due_date": "2024-04-11",
+          "completed_date": null,
+          "owner": "Raj Mehta",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-WBJAX8FS",
+          "name": "Business Case Approved",
+          "status": "Completed",
+          "due_date": "2024-07-22",
+          "completed_date": "2024-03-23",
+          "owner": "Raj Mehta",
+          "evidence": "email_thread_6559"
+        }
+      ]
+    }
+  ],
+  "contacts": [
+    {
+      "contact_id": "CON-28Q7TLGW",
+      "name": "Steven Wilson",
+      "role": "Technical",
+      "title": "VP Engineering",
+      "email": "steven.wilson@tailspintoys.com",
+      "influence_level": "Decision Maker",
+      "last_interaction": "2024-02-26",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-A5IE9O36",
+      "name": "Maria White",
+      "role": "Executive",
+      "title": "Cloud Architect",
+      "email": "maria.white@tailspintoys.com",
+      "influence_level": "Influencer",
+      "last_interaction": "2024-03-10",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-DENMSNHQ",
+      "name": "Tamara Anderson",
+      "role": "Business",
+      "title": "COO",
+      "email": "tamara.anderson@tailspintoys.com",
+      "influence_level": "Champion",
+      "last_interaction": "2024-03-28",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-U5V5G3A7",
+      "name": "Daniel Jackson",
+      "role": "Operations",
+      "title": "VP Operations",
+      "email": "daniel.jackson@tailspintoys.com",
+      "influence_level": "End User",
+      "last_interaction": "2024-03-18",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-Q8BRTM6A",
+      "name": "Laura Okafor",
+      "role": "Technical",
+      "title": "Cloud Architect",
+      "email": "laura.okafor@tailspintoys.com",
+      "influence_level": "Blocker",
+      "last_interaction": "2024-01-03",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-QPA9X9X1",
+      "name": "Victoria Thompson",
+      "role": "Business",
+      "title": "Head of Digital",
+      "email": "victoria.thompson@tailspintoys.com",
+      "influence_level": "Champion",
+      "last_interaction": "2024-03-20",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-XUGNPNUF",
+      "name": "Michael Kim",
+      "role": "Technical",
+      "title": "DevOps Lead",
+      "email": "michael.kim@tailspintoys.com",
+      "influence_level": "Champion",
+      "last_interaction": "2024-01-18",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-I0FINZPL",
+      "name": "Jennifer Berg",
+      "role": "Technical",
+      "title": "Infrastructure Manager",
+      "email": "jennifer.berg@tailspintoys.com",
+      "influence_level": "Champion",
+      "last_interaction": "2024-03-09",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-N8DEI1KG",
+      "name": "Ryan Lee",
+      "role": "Finance",
+      "title": "Director of IT",
+      "email": "ryan.lee@tailspintoys.com",
+      "influence_level": "Champion",
+      "last_interaction": "2024-01-11",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-4P654VY8",
+      "name": "Sarah Park",
+      "role": "Executive",
+      "title": "Security Manager",
+      "email": "sarah.park@tailspintoys.com",
+      "influence_level": "Champion",
+      "last_interaction": "2024-02-09",
+      "is_current": true
+    }
+  ],
+  "acr_trend": {
+    "currency": "USD",
+    "monthly_values": [
+      {
+        "month": "2023-04",
+        "value_usd": 107579.4,
+        "workload_breakdown": {
+          "compute": 20506.5,
+          "storage": 37081.04,
+          "networking": 15414.03,
+          "paas": 34577.83
+        }
+      },
+      {
+        "month": "2023-05",
+        "value_usd": 109227.21,
+        "workload_breakdown": {
+          "compute": 48100.27,
+          "storage": 26306.33,
+          "networking": 6193.76,
+          "paas": 28626.84
+        }
+      },
+      {
+        "month": "2023-06",
+        "value_usd": 112677.39,
+        "workload_breakdown": {
+          "compute": 49838.24,
+          "storage": 18451.04,
+          "networking": 8737.06,
+          "paas": 35651.05
+        }
+      },
+      {
+        "month": "2023-07",
+        "value_usd": 111968.92,
+        "workload_breakdown": {
+          "compute": 32435.44,
+          "storage": 13703.29,
+          "networking": 24664.09,
+          "paas": 41166.09
+        }
+      },
+      {
+        "month": "2023-08",
+        "value_usd": 113194.2,
+        "workload_breakdown": {
+          "compute": 35466.77,
+          "storage": 14209.71,
+          "networking": 13841.0,
+          "paas": 49676.72
+        }
+      },
+      {
+        "month": "2023-09",
+        "value_usd": 114894.81,
+        "workload_breakdown": {
+          "compute": 34694.98,
+          "storage": 30760.54,
+          "networking": 11495.67,
+          "paas": 37943.63
+        }
+      },
+      {
+        "month": "2023-10",
+        "value_usd": 119126.61,
+        "workload_breakdown": {
+          "compute": 21681.12,
+          "storage": 24987.12,
+          "networking": 12369.33,
+          "paas": 60089.04
+        }
+      },
+      {
+        "month": "2023-11",
+        "value_usd": 116974.1,
+        "workload_breakdown": {
+          "compute": 29322.52,
+          "storage": 36073.29,
+          "networking": 10579.91,
+          "paas": 40998.38
+        }
+      },
+      {
+        "month": "2023-12",
+        "value_usd": 115118.49,
+        "workload_breakdown": {
+          "compute": 27688.32,
+          "storage": 33394.57,
+          "networking": 11406.67,
+          "paas": 42628.93
+        }
+      },
+      {
+        "month": "2024-01",
+        "value_usd": 115026.98,
+        "workload_breakdown": {
+          "compute": 21217.16,
+          "storage": 21055.39,
+          "networking": 24233.37,
+          "paas": 48521.06
+        }
+      },
+      {
+        "month": "2024-02",
+        "value_usd": 118420.91,
+        "workload_breakdown": {
+          "compute": 43048.3,
+          "storage": 26608.04,
+          "networking": 8259.59,
+          "paas": 40504.98
+        }
+      },
+      {
+        "month": "2024-03",
+        "value_usd": 122043.29,
+        "workload_breakdown": {
+          "compute": 28702.18,
+          "storage": 17243.54,
+          "networking": 24201.34,
+          "paas": 51896.23
+        }
+      }
+    ]
+  },
+  "open_recommendations": [
+    {
+      "recommendation_id": "REC-33212",
+      "type": "Advisor",
+      "description": "Enable Defender for Cloud across subscriptions",
+      "priority": "Low",
+      "created_at": "2024-03-17T10:00:00-05:00",
+      "status": "In Progress"
+    },
+    {
+      "recommendation_id": "REC-36427",
+      "type": "SPA",
+      "description": "Upgrade to premium tier storage for production",
+      "priority": "Low",
+      "created_at": "2024-03-02T10:00:00-05:00",
+      "status": "Dismissed"
+    },
+    {
+      "recommendation_id": "REC-15885",
+      "type": "Advisor",
+      "description": "Implement Azure Landing Zones",
+      "priority": "Medium",
+      "created_at": "2024-03-08T10:00:00-05:00",
+      "status": "In Progress"
+    }
+  ],
+  "recent_activity_timeline": [
+    {
+      "date": "2024-03-20",
+      "activity_type": "escalation",
+      "description": "Performance degradation reported by end users",
+      "participants": [
+        "Raj Mehta",
+        "Ahmed Hassan"
+      ]
+    },
+    {
+      "date": "2024-03-18",
+      "activity_type": "contract_event",
+      "description": "MACC milestone approaching",
+      "participants": [
+        "Sarah Kim"
+      ]
+    },
+    {
+      "date": "2024-03-07",
+      "activity_type": "contract_event",
+      "description": "MACC milestone approaching",
+      "participants": [
+        "Ahmed Hassan",
+        "Sarah Kim"
+      ]
+    },
+    {
+      "date": "2024-03-05",
+      "activity_type": "spa_received",
+      "description": "SPA: Security recommendation - MFA gaps",
+      "participants": [
+        "Lisa Patel"
+      ]
+    },
+    {
+      "date": "2024-02-20",
+      "activity_type": "email",
+      "description": "Received pricing inquiry from CFO",
+      "participants": [
+        "Marcus Williams",
+        "Sarah Kim"
+      ]
+    },
+    {
+      "date": "2024-02-16",
+      "activity_type": "deployment",
+      "description": "Migration batch 1 completed",
+      "participants": [
+        "Marcus Williams",
+        "Ahmed Hassan"
+      ]
+    },
+    {
+      "date": "2024-02-14",
+      "activity_type": "meeting",
+      "description": "QBR with customer IT team",
+      "participants": [
+        "Raj Mehta",
+        "Ahmed Hassan",
+        "Lisa Patel"
+      ]
+    },
+    {
+      "date": "2024-02-11",
+      "activity_type": "contract_event",
+      "description": "Billing discrepancy flagged",
+      "participants": [
+        "Sarah Kim",
+        "Raj Mehta"
+      ]
+    },
+    {
+      "date": "2024-02-10",
+      "activity_type": "spa_received",
+      "description": "SPA: Security recommendation - MFA gaps",
+      "participants": [
+        "Ahmed Hassan",
+        "Lisa Patel",
+        "Sarah Kim"
+      ]
+    },
+    {
+      "date": "2024-02-10",
+      "activity_type": "spa_received",
+      "description": "SPA: Security recommendation - MFA gaps",
+      "participants": [
+        "Raj Mehta",
+        "Sarah Kim",
+        "Ahmed Hassan"
+      ]
+    },
+    {
+      "date": "2024-02-05",
+      "activity_type": "deployment",
+      "description": "Production deployment completed successfully",
+      "participants": [
+        "Ahmed Hassan",
+        "Raj Mehta"
+      ]
+    },
+    {
+      "date": "2024-02-04",
+      "activity_type": "email",
+      "description": "Customer requested partner introduction",
+      "participants": [
+        "Raj Mehta",
+        "Marcus Williams"
+      ]
+    },
+    {
+      "date": "2024-02-03",
+      "activity_type": "email",
+      "description": "Shared architecture documentation",
+      "participants": [
+        "Raj Mehta",
+        "Lisa Patel"
+      ]
+    },
+    {
+      "date": "2024-01-26",
+      "activity_type": "email",
+      "description": "Sent follow-up on migration timeline",
+      "participants": [
+        "Sarah Kim",
+        "Lisa Patel"
+      ]
+    }
+  ],
+  "customer_health_flags": {
+    "overall_health": "Healthy",
+    "engagement_score": 49,
+    "consumption_trend": "Growing",
+    "renewal_risk": "Low",
+    "last_assessed": "2024-01-16"
+  },
+  "contract_billing": {
+    "subscription_type": "MCA",
+    "contract_end_date": "2024-06-13",
+    "macc_commitment_usd": 350000,
+    "macc_consumed_usd": 179672.55,
+    "billing_frequency": "Annual",
+    "auto_renew": false
+  }
+}

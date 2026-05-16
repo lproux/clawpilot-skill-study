@@ -1,0 +1,425 @@
+{
+  "fixture_id": "FX-043",
+  "fixture_class": "inconsistent",
+  "authored_at": "2024-03-15T10:00:00-05:00",
+  "account": {
+    "account_id": "ACC-6SYIFEPT",
+    "name": "Pacific Northwest Outfitters",
+    "segment": "smb-small",
+    "geography": "EMEA",
+    "tenure_years": 1.6,
+    "owner": "Ahmed Hassan",
+    "industry": "Retail",
+    "employee_count": 280
+  },
+  "opportunities": [
+    {
+      "opportunity_id": "OPP-R30CPYVQ",
+      "name": "Pacific Azure Arc Deployment",
+      "stage": "Qualify",
+      "estimated_value_usd": 45000,
+      "close_date": "2024-04-15",
+      "bpf_stage": "Develop",
+      "forecast_category": "Pipeline",
+      "owner": "Ahmed Hassan",
+      "last_updated": "2024-02-12T16:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-4AP70BGR",
+          "name": "Discovery",
+          "status": "In Progress",
+          "due_date": "2024-06-09",
+          "completed_date": null,
+          "owner": "Ahmed Hassan",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-CH0ZL02I",
+          "name": "Technical Validation",
+          "status": "Completed",
+          "due_date": "2024-05-22",
+          "completed_date": "2024-03-28",
+          "owner": "Ahmed Hassan",
+          "evidence": "email_thread_5660"
+        }
+      ]
+    },
+    {
+      "opportunity_id": "OPP-EADB0FOV",
+      "name": "Pacific M365 E5 Upsell",
+      "stage": "Qualify",
+      "estimated_value_usd": 560000,
+      "close_date": "2024-11-15",
+      "bpf_stage": "Qualify",
+      "forecast_category": "Pipeline",
+      "owner": "Ahmed Hassan",
+      "last_updated": "2024-01-12T12:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-UNXWL2I1",
+          "name": "Discovery",
+          "status": "Blocked",
+          "due_date": "2024-08-03",
+          "completed_date": null,
+          "owner": "Ahmed Hassan",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-DRDEQO4U",
+          "name": "Technical Validation",
+          "status": "Completed",
+          "due_date": "2024-06-15",
+          "completed_date": "2024-02-09",
+          "owner": "Ahmed Hassan",
+          "evidence": "email_thread_8806"
+        }
+      ]
+    }
+  ],
+  "contacts": [
+    {
+      "contact_id": "CON-QZ9TELDQ",
+      "name": "Andrew Taylor",
+      "role": "Operations",
+      "title": "IT Director",
+      "email": "andrew.taylor@pacificnorth.com",
+      "influence_level": "Decision Maker",
+      "last_interaction": "2024-01-03",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-NNJMT7X4",
+      "name": "Eric Berg",
+      "role": "Executive",
+      "title": "Cloud Architect",
+      "email": "eric.berg@pacificnorth.com",
+      "influence_level": "Influencer",
+      "last_interaction": "2024-01-21",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-DJB3PFD4",
+      "name": "Nicole Singh",
+      "role": "Executive",
+      "title": "Infrastructure Manager",
+      "email": "nicole.singh@pacificnorth.com",
+      "influence_level": "Champion",
+      "last_interaction": "2024-02-12",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-M2WCT40F",
+      "name": "Robert Schmidt",
+      "role": "Executive",
+      "title": "Cloud Architect",
+      "email": "robert.schmidt@pacificnorth.com",
+      "influence_level": "End User",
+      "last_interaction": "2024-02-28",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-0O42D2IS",
+      "name": "Robert Yamamoto",
+      "role": "Executive",
+      "title": "Infrastructure Manager",
+      "email": "robert.yamamoto@pacificnorth.com",
+      "influence_level": "Blocker",
+      "last_interaction": "2024-01-06",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-FC8VG5JN",
+      "name": "James Lee",
+      "role": "Executive",
+      "title": "DevOps Lead",
+      "email": "james.lee@pacificnorth.com",
+      "influence_level": "End User",
+      "last_interaction": "2024-02-26",
+      "is_current": true
+    }
+  ],
+  "acr_trend": {
+    "currency": "USD",
+    "monthly_values": [
+      {
+        "month": "2023-04",
+        "value_usd": 85002.48,
+        "workload_breakdown": {
+          "compute": 15496.12,
+          "storage": 15461.4,
+          "networking": 22761.86,
+          "paas": 31283.1
+        }
+      },
+      {
+        "month": "2023-05",
+        "value_usd": 25500.74,
+        "workload_breakdown": {
+          "compute": 4863.26,
+          "storage": 7452.03,
+          "networking": 3052.5,
+          "paas": 10132.96
+        }
+      },
+      {
+        "month": "2023-06",
+        "value_usd": 84665.13,
+        "workload_breakdown": {
+          "compute": 35725.72,
+          "storage": 8842.33,
+          "networking": 6895.9,
+          "paas": 33201.17
+        }
+      },
+      {
+        "month": "2023-07",
+        "value_usd": 86818.07,
+        "workload_breakdown": {
+          "compute": 27394.26,
+          "storage": 11522.93,
+          "networking": 18321.02,
+          "paas": 29579.87
+        }
+      },
+      {
+        "month": "2023-08",
+        "value_usd": 83781.86,
+        "workload_breakdown": {
+          "compute": 32206.14,
+          "storage": 18699.54,
+          "networking": 5177.82,
+          "paas": 27698.37
+        }
+      },
+      {
+        "month": "2023-09",
+        "value_usd": 85602.3,
+        "workload_breakdown": {
+          "compute": 28329.32,
+          "storage": 19797.35,
+          "networking": 15534.73,
+          "paas": 21940.9
+        }
+      },
+      {
+        "month": "2023-10",
+        "value_usd": 84734.3,
+        "workload_breakdown": {
+          "compute": 27849.38,
+          "storage": 24326.01,
+          "networking": 6419.91,
+          "paas": 26139.0
+        }
+      },
+      {
+        "month": "2023-11",
+        "value_usd": 83295.52,
+        "workload_breakdown": {
+          "compute": 17126.55,
+          "storage": 27394.55,
+          "networking": 12072.29,
+          "paas": 26702.12
+        }
+      },
+      {
+        "month": "2023-12",
+        "value_usd": 149931.93,
+        "workload_breakdown": {
+          "compute": 29276.51,
+          "storage": 47357.36,
+          "networking": 32555.57,
+          "paas": 40742.49
+        }
+      },
+      {
+        "month": "2024-01",
+        "value_usd": 41647.76,
+        "workload_breakdown": {
+          "compute": 11528.52,
+          "storage": 9563.11,
+          "networking": 7072.89,
+          "paas": 13483.24
+        }
+      },
+      {
+        "month": "2024-02",
+        "value_usd": 149931.93,
+        "workload_breakdown": {
+          "compute": 50816.0,
+          "storage": 40877.23,
+          "networking": 10095.47,
+          "paas": 48143.23
+        }
+      },
+      {
+        "month": "2024-03",
+        "value_usd": 81560.32,
+        "workload_breakdown": {
+          "compute": 23869.79,
+          "storage": 12484.4,
+          "networking": 10245.87,
+          "paas": 34960.26
+        }
+      }
+    ]
+  },
+  "open_recommendations": [
+    {
+      "recommendation_id": "REC-25765",
+      "type": "Manual",
+      "description": "Enable Azure Security Center standard tier",
+      "priority": "High",
+      "created_at": "2024-01-01T10:00:00-05:00",
+      "status": "Acknowledged"
+    },
+    {
+      "recommendation_id": "REC-71152",
+      "type": "Advisor",
+      "description": "Consider Reserved Instances for stable workloads",
+      "priority": "High",
+      "created_at": "2024-01-23T10:00:00-05:00",
+      "status": "New"
+    },
+    {
+      "recommendation_id": "REC-92513",
+      "type": "SPA",
+      "description": "Enable Defender for Cloud across subscriptions",
+      "priority": "Low",
+      "created_at": "2024-01-12T10:00:00-05:00",
+      "status": "New"
+    },
+    {
+      "recommendation_id": "REC-29515",
+      "type": "SPA",
+      "description": "Upgrade to premium tier storage for production",
+      "priority": "High",
+      "created_at": "2024-01-11T10:00:00-05:00",
+      "status": "Dismissed"
+    }
+  ],
+  "recent_activity_timeline": [
+    {
+      "date": "2024-03-25",
+      "activity_type": "escalation",
+      "description": "Performance degradation reported by end users",
+      "participants": [
+        "Sarah Kim",
+        "Raj Mehta",
+        "Lisa Patel"
+      ]
+    },
+    {
+      "date": "2024-03-21",
+      "activity_type": "msx_update",
+      "description": "Updated opportunity stage to Develop",
+      "participants": [
+        "Marcus Williams"
+      ]
+    },
+    {
+      "date": "2024-03-16",
+      "activity_type": "deployment",
+      "description": "Production deployment completed successfully",
+      "participants": [
+        "Marcus Williams",
+        "Raj Mehta",
+        "Lisa Patel"
+      ]
+    },
+    {
+      "date": "2024-03-15",
+      "activity_type": "escalation",
+      "description": "Customer escalated support ticket response time",
+      "participants": [
+        "Ahmed Hassan",
+        "Marcus Williams",
+        "Raj Mehta"
+      ]
+    },
+    {
+      "date": "2024-03-14",
+      "activity_type": "msx_update",
+      "description": "Added competitive intelligence notes",
+      "participants": [
+        "Sarah Kim",
+        "Marcus Williams",
+        "Lisa Patel"
+      ]
+    },
+    {
+      "date": "2024-02-08",
+      "activity_type": "meeting",
+      "description": "Executive business review",
+      "participants": [
+        "Lisa Patel"
+      ]
+    },
+    {
+      "date": "2024-02-05",
+      "activity_type": "email",
+      "description": "Shared architecture documentation",
+      "participants": [
+        "Sarah Kim"
+      ]
+    },
+    {
+      "date": "2024-01-27",
+      "activity_type": "spa_received",
+      "description": "SPA: Security recommendation - MFA gaps",
+      "participants": [
+        "Ahmed Hassan",
+        "Lisa Patel",
+        "Sarah Kim"
+      ]
+    },
+    {
+      "date": "2024-01-25",
+      "activity_type": "contract_event",
+      "description": "Contract renewal notification (90 days)",
+      "participants": [
+        "Raj Mehta"
+      ]
+    },
+    {
+      "date": "2024-01-21",
+      "activity_type": "escalation",
+      "description": "Performance degradation reported by end users",
+      "participants": [
+        "Lisa Patel",
+        "Raj Mehta",
+        "Ahmed Hassan"
+      ]
+    },
+    {
+      "date": "2024-01-15",
+      "activity_type": "escalation",
+      "description": "Customer escalated support ticket response time",
+      "participants": [
+        "Marcus Williams"
+      ]
+    },
+    {
+      "date": "2024-01-12",
+      "activity_type": "spa_received",
+      "description": "SPA: Security recommendation - MFA gaps",
+      "participants": [
+        "Marcus Williams"
+      ]
+    }
+  ],
+  "customer_health_flags": {
+    "overall_health": "Healthy",
+    "engagement_score": 38,
+    "consumption_trend": "Growing",
+    "renewal_risk": "Low",
+    "last_assessed": "2024-02-15"
+  },
+  "contract_billing": {
+    "subscription_type": "PAYG",
+    "contract_end_date": null,
+    "macc_commitment_usd": null,
+    "macc_consumed_usd": null,
+    "billing_frequency": "Monthly",
+    "auto_renew": false
+  }
+}

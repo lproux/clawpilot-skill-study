@@ -1,0 +1,424 @@
+{
+  "fixture_id": "FX-016",
+  "fixture_class": "stale",
+  "authored_at": "2024-03-15T10:00:00-05:00",
+  "account": {
+    "account_id": "ACC-HIKSYLTX",
+    "name": "Graphic Design Institute",
+    "segment": "smb-corporate",
+    "geography": "EMEA",
+    "tenure_years": 7.5,
+    "owner": "Jennifer Walsh",
+    "industry": "Education",
+    "employee_count": 340
+  },
+  "opportunities": [
+    {
+      "opportunity_id": "OPP-DH5FVFUM",
+      "name": "Graphic Azure DevOps",
+      "stage": "Propose",
+      "estimated_value_usd": 450000,
+      "close_date": "2023-09-06",
+      "bpf_stage": "Propose",
+      "forecast_category": "Pipeline",
+      "owner": "Jennifer Walsh",
+      "last_updated": "2023-06-22T14:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-AHDW3JAR",
+          "name": "Discovery",
+          "status": "Completed",
+          "due_date": "2024-03-05",
+          "completed_date": "2024-01-20",
+          "owner": "Jennifer Walsh",
+          "evidence": "email_thread_4413"
+        },
+        {
+          "milestone_id": "MS-2O4PYU6P",
+          "name": "Technical Validation",
+          "status": "Blocked",
+          "due_date": "2024-08-01",
+          "completed_date": null,
+          "owner": "Jennifer Walsh",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-H3MKVOQY",
+          "name": "Business Case Approved",
+          "status": "Completed",
+          "due_date": "2024-08-02",
+          "completed_date": "2024-03-14",
+          "owner": "Jennifer Walsh",
+          "evidence": "email_thread_2047"
+        }
+      ]
+    },
+    {
+      "opportunity_id": "OPP-HDU4VAWL",
+      "name": "Graphic Azure Infrastructure",
+      "stage": "Prospect",
+      "estimated_value_usd": 125000,
+      "close_date": "2024-11-14",
+      "bpf_stage": null,
+      "forecast_category": "Pipeline",
+      "owner": "Jennifer Walsh",
+      "last_updated": "2023-08-26T14:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-A8LSYNB3",
+          "name": "Discovery",
+          "status": "Not Started",
+          "due_date": "2024-07-25",
+          "completed_date": null,
+          "owner": "Jennifer Walsh",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-GS8687BM",
+          "name": "Technical Validation",
+          "status": "Not Started",
+          "due_date": "2024-04-01",
+          "completed_date": null,
+          "owner": "Jennifer Walsh",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-SFPX3S7P",
+          "name": "Business Case Approved",
+          "status": "Blocked",
+          "due_date": "2024-04-16",
+          "completed_date": null,
+          "owner": "Jennifer Walsh",
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "opportunity_id": "OPP-113TNW0A",
+      "name": "Graphic Azure Arc Deployment",
+      "stage": "Develop",
+      "estimated_value_usd": 45000,
+      "close_date": "2024-10-28",
+      "bpf_stage": "Develop",
+      "forecast_category": "Pipeline",
+      "owner": "Jennifer Walsh",
+      "last_updated": "2023-08-22T12:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-W2I0WJ08",
+          "name": "Discovery",
+          "status": "Completed",
+          "due_date": "2024-05-08",
+          "completed_date": "2024-01-27",
+          "owner": "Jennifer Walsh",
+          "evidence": "email_thread_6697"
+        },
+        {
+          "milestone_id": "MS-CA5FJZPZ",
+          "name": "Technical Validation",
+          "status": "Not Started",
+          "due_date": "2024-08-10",
+          "completed_date": null,
+          "owner": "Jennifer Walsh",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-WI3FMIHM",
+          "name": "Business Case Approved",
+          "status": "Not Started",
+          "due_date": "2024-04-16",
+          "completed_date": null,
+          "owner": "Jennifer Walsh",
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "opportunity_id": "OPP-MS5WYX3P",
+      "name": "Graphic Intune Rollout",
+      "stage": "Close",
+      "estimated_value_usd": 89000,
+      "close_date": "2024-07-09",
+      "bpf_stage": "Close",
+      "forecast_category": "Committed",
+      "owner": "Jennifer Walsh",
+      "last_updated": "2023-09-09T12:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-ZI5GNQLH",
+          "name": "Discovery",
+          "status": "Completed",
+          "due_date": "2024-03-01",
+          "completed_date": "2024-02-05",
+          "owner": "Jennifer Walsh",
+          "evidence": "email_thread_5110"
+        },
+        {
+          "milestone_id": "MS-L4PR9HAA",
+          "name": "Technical Validation",
+          "status": "In Progress",
+          "due_date": "2024-05-23",
+          "completed_date": null,
+          "owner": "Jennifer Walsh",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-4RZYTHJC",
+          "name": "Business Case Approved",
+          "status": "In Progress",
+          "due_date": "2024-04-27",
+          "completed_date": null,
+          "owner": "Jennifer Walsh",
+          "evidence": ""
+        }
+      ]
+    }
+  ],
+  "contacts": [
+    {
+      "contact_id": "CON-1XVV91KW",
+      "name": "Maria Park",
+      "role": "Operations",
+      "title": "CTO",
+      "email": "maria.park@graphicdesig.com",
+      "influence_level": "Decision Maker",
+      "last_interaction": "2024-03-14",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-8PVNRX2T",
+      "name": "Ryan Park",
+      "role": "Technical",
+      "title": "CTO",
+      "email": "ryan.park@graphicdesig.com",
+      "influence_level": "Influencer",
+      "last_interaction": "2024-02-14",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-6F54CW9R",
+      "name": "Sarah Taylor",
+      "role": "Business",
+      "title": "Infrastructure Manager",
+      "email": "sarah.taylor@graphicdesig.com",
+      "influence_level": "Champion",
+      "last_interaction": "2024-01-22",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-VN6BOM8L",
+      "name": "Samantha Nakamura",
+      "role": "Executive",
+      "title": "IT Director",
+      "email": "samantha.nakamura@graphicdesig.com",
+      "influence_level": "End User",
+      "last_interaction": "2023-01-11",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-ROBTADFY",
+      "name": "Andrew Foster",
+      "role": "Business",
+      "title": "CIO",
+      "email": "andrew.foster@graphicdesig.com",
+      "influence_level": "Blocker",
+      "last_interaction": "2023-03-07",
+      "is_current": false
+    }
+  ],
+  "acr_trend": {
+    "currency": "USD",
+    "monthly_values": [
+      {
+        "month": "2023-04",
+        "value_usd": 9957.57,
+        "workload_breakdown": {
+          "compute": 4080.69,
+          "storage": 1173.03,
+          "networking": 1993.09,
+          "paas": 2710.76
+        }
+      },
+      {
+        "month": "2023-05",
+        "value_usd": 9793.18,
+        "workload_breakdown": {
+          "compute": 2564.33,
+          "storage": 1947.86,
+          "networking": 964.57,
+          "paas": 4316.43
+        }
+      },
+      {
+        "month": "2023-06",
+        "value_usd": 9688.14,
+        "workload_breakdown": {
+          "compute": 4016.74,
+          "storage": 1846.04,
+          "networking": 1131.28,
+          "paas": 2694.08
+        }
+      },
+      {
+        "month": "2023-07",
+        "value_usd": 9674.97,
+        "workload_breakdown": {
+          "compute": 2188.99,
+          "storage": 2577.24,
+          "networking": 941.56,
+          "paas": 3967.18
+        }
+      },
+      {
+        "month": "2023-08",
+        "value_usd": 9956.01,
+        "workload_breakdown": {
+          "compute": 1919.08,
+          "storage": 2122.55,
+          "networking": 2649.57,
+          "paas": 3264.81
+        }
+      },
+      {
+        "month": "2023-09",
+        "value_usd": 9918.4,
+        "workload_breakdown": {
+          "compute": 3906.86,
+          "storage": 2586.6,
+          "networking": 1038.73,
+          "paas": 2386.21
+        }
+      },
+      {
+        "month": "2023-10",
+        "value_usd": 10116.82,
+        "workload_breakdown": {
+          "compute": 2054.12,
+          "storage": 2251.06,
+          "networking": 1875.32,
+          "paas": 3936.32
+        }
+      },
+      {
+        "month": "2023-11",
+        "value_usd": 10042.75,
+        "workload_breakdown": {
+          "compute": 3059.33,
+          "storage": 1544.77,
+          "networking": 2285.98,
+          "paas": 3152.67
+        }
+      },
+      {
+        "month": "2023-12",
+        "value_usd": 10042.75,
+        "workload_breakdown": {
+          "compute": 2346.01,
+          "storage": 2700.74,
+          "networking": 1371.71,
+          "paas": 3624.3
+        }
+      },
+      {
+        "month": "2024-01",
+        "value_usd": 10042.75,
+        "workload_breakdown": {
+          "compute": 1545.09,
+          "storage": 2441.23,
+          "networking": 944.86,
+          "paas": 5111.56
+        }
+      },
+      {
+        "month": "2024-02",
+        "value_usd": 10042.75,
+        "workload_breakdown": {
+          "compute": 2676.45,
+          "storage": 2469.21,
+          "networking": 1378.99,
+          "paas": 3518.1
+        }
+      },
+      {
+        "month": "2024-03",
+        "value_usd": 10042.75,
+        "workload_breakdown": {
+          "compute": 3798.52,
+          "storage": 2265.45,
+          "networking": 1249.96,
+          "paas": 2728.82
+        }
+      }
+    ]
+  },
+  "open_recommendations": [
+    {
+      "recommendation_id": "REC-42672",
+      "type": "SPA",
+      "description": "Enable Defender for Cloud across subscriptions",
+      "priority": "High",
+      "created_at": "2023-08-25T10:00:00-05:00",
+      "status": "New"
+    },
+    {
+      "recommendation_id": "REC-57897",
+      "type": "CxObserve",
+      "description": "Deploy Azure Front Door for global load balancing",
+      "priority": "Medium",
+      "created_at": "2023-05-10T10:00:00-05:00",
+      "status": "Dismissed"
+    },
+    {
+      "recommendation_id": "REC-15233",
+      "type": "Manual",
+      "description": "Migrate to Azure SQL Managed Instance",
+      "priority": "Low",
+      "created_at": "2023-08-02T10:00:00-05:00",
+      "status": "Acknowledged"
+    },
+    {
+      "recommendation_id": "REC-33677",
+      "type": "SPA",
+      "description": "Rightsize underutilized VMs (potential 23% savings)",
+      "priority": "Medium",
+      "created_at": "2023-03-04T10:00:00-05:00",
+      "status": "Acknowledged"
+    }
+  ],
+  "recent_activity_timeline": [
+    {
+      "date": "2023-12-20",
+      "activity_type": "escalation",
+      "description": "Performance degradation reported by end users",
+      "participants": [
+        "Marcus Williams",
+        "Ahmed Hassan",
+        "Sarah Kim"
+      ]
+    },
+    {
+      "date": "2023-11-20",
+      "activity_type": "deployment",
+      "description": "Pilot environment provisioned",
+      "participants": [
+        "Ahmed Hassan",
+        "Lisa Patel"
+      ]
+    }
+  ],
+  "customer_health_flags": {
+    "overall_health": "Healthy",
+    "engagement_score": 85,
+    "consumption_trend": "Growing",
+    "renewal_risk": "Medium",
+    "last_assessed": "2023-08-16"
+  },
+  "contract_billing": {
+    "subscription_type": "EA",
+    "contract_end_date": "2024-11-03",
+    "macc_commitment_usd": 750000,
+    "macc_consumed_usd": 576128.61,
+    "billing_frequency": "Annual",
+    "auto_renew": false
+  }
+}

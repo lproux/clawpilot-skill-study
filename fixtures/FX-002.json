@@ -1,0 +1,354 @@
+{
+  "fixture_id": "FX-002",
+  "fixture_class": "clean",
+  "authored_at": "2024-03-15T10:00:00-05:00",
+  "account": {
+    "account_id": "ACC-L0850H8R",
+    "name": "Fabrikam Inc",
+    "segment": "smb-small",
+    "geography": "APAC",
+    "tenure_years": 3.6,
+    "owner": "Lisa Patel",
+    "industry": "Manufacturing",
+    "employee_count": 580
+  },
+  "opportunities": [
+    {
+      "opportunity_id": "OPP-KDMAQXVM",
+      "name": "Fabrikam Dynamics 365 Implementation",
+      "stage": "Close",
+      "estimated_value_usd": 560000,
+      "close_date": "2024-05-11",
+      "bpf_stage": "Close",
+      "forecast_category": "Committed",
+      "owner": "Lisa Patel",
+      "last_updated": "2024-01-02T17:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-T35PCZM1",
+          "name": "Discovery",
+          "status": "Not Started",
+          "due_date": "2024-05-20",
+          "completed_date": null,
+          "owner": "Lisa Patel",
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "opportunity_id": "OPP-T9ZP5LXM",
+      "name": "Fabrikam Security Modernization",
+      "stage": "Qualify",
+      "estimated_value_usd": 280000,
+      "close_date": "2024-04-13",
+      "bpf_stage": "Qualify",
+      "forecast_category": "Pipeline",
+      "owner": "Lisa Patel",
+      "last_updated": "2024-01-16T11:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-TV054ZQQ",
+          "name": "Discovery",
+          "status": "Not Started",
+          "due_date": "2024-04-13",
+          "completed_date": null,
+          "owner": "Lisa Patel",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-50D2EIP4",
+          "name": "Technical Validation",
+          "status": "In Progress",
+          "due_date": "2024-06-13",
+          "completed_date": null,
+          "owner": "Lisa Patel",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-G9E9U38Y",
+          "name": "Business Case Approved",
+          "status": "Completed",
+          "due_date": "2024-03-07",
+          "completed_date": "2024-01-13",
+          "owner": "Lisa Patel",
+          "evidence": "email_thread_2555"
+        }
+      ]
+    }
+  ],
+  "contacts": [
+    {
+      "contact_id": "CON-SC4YNTSC",
+      "name": "Ryan Patel",
+      "role": "Executive",
+      "title": "IT Director",
+      "email": "ryan.patel@fabrikaminc.com",
+      "influence_level": "Decision Maker",
+      "last_interaction": "2024-02-04",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-PXOCE79K",
+      "name": "Diana Doyle",
+      "role": "Finance",
+      "title": "CFO",
+      "email": "diana.doyle@fabrikaminc.com",
+      "influence_level": "Influencer",
+      "last_interaction": "2024-02-28",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-NUKVEXI7",
+      "name": "Jason Petrov",
+      "role": "Operations",
+      "title": "VP Engineering",
+      "email": "jason.petrov@fabrikaminc.com",
+      "influence_level": "Champion",
+      "last_interaction": "2024-03-02",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-ICT47HDA",
+      "name": "Kevin Morrison",
+      "role": "Executive",
+      "title": "COO",
+      "email": "kevin.morrison@fabrikaminc.com",
+      "influence_level": "End User",
+      "last_interaction": "2024-02-12",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-4FF8525Y",
+      "name": "Jason Thompson",
+      "role": "Operations",
+      "title": "COO",
+      "email": "jason.thompson@fabrikaminc.com",
+      "influence_level": "Blocker",
+      "last_interaction": "2024-01-08",
+      "is_current": true
+    }
+  ],
+  "acr_trend": {
+    "currency": "USD",
+    "monthly_values": [
+      {
+        "month": "2023-04",
+        "value_usd": 9638.86,
+        "workload_breakdown": {
+          "compute": 3629.95,
+          "storage": 1683.82,
+          "networking": 877.37,
+          "paas": 3447.72
+        }
+      },
+      {
+        "month": "2023-05",
+        "value_usd": 9529.32,
+        "workload_breakdown": {
+          "compute": 3861.88,
+          "storage": 2244.68,
+          "networking": 899.36,
+          "paas": 2523.41
+        }
+      },
+      {
+        "month": "2023-06",
+        "value_usd": 9603.2,
+        "workload_breakdown": {
+          "compute": 1716.31,
+          "storage": 2395.48,
+          "networking": 1640.8,
+          "paas": 3850.61
+        }
+      },
+      {
+        "month": "2023-07",
+        "value_usd": 9798.13,
+        "workload_breakdown": {
+          "compute": 3739.85,
+          "storage": 1994.17,
+          "networking": 1227.37,
+          "paas": 2836.73
+        }
+      },
+      {
+        "month": "2023-08",
+        "value_usd": 10068.33,
+        "workload_breakdown": {
+          "compute": 3247.52,
+          "storage": 1794.4,
+          "networking": 827.73,
+          "paas": 4198.68
+        }
+      },
+      {
+        "month": "2023-09",
+        "value_usd": 10140.74,
+        "workload_breakdown": {
+          "compute": 1707.33,
+          "storage": 3648.05,
+          "networking": 1922.42,
+          "paas": 2862.94
+        }
+      },
+      {
+        "month": "2023-10",
+        "value_usd": 10241.09,
+        "workload_breakdown": {
+          "compute": 2446.06,
+          "storage": 3247.61,
+          "networking": 1394.58,
+          "paas": 3152.84
+        }
+      },
+      {
+        "month": "2023-11",
+        "value_usd": 10048.04,
+        "workload_breakdown": {
+          "compute": 1817.81,
+          "storage": 3347.29,
+          "networking": 1588.48,
+          "paas": 3294.46
+        }
+      },
+      {
+        "month": "2023-12",
+        "value_usd": 10107.76,
+        "workload_breakdown": {
+          "compute": 4344.68,
+          "storage": 2038.84,
+          "networking": 663.77,
+          "paas": 3060.47
+        }
+      },
+      {
+        "month": "2024-01",
+        "value_usd": 10131.44,
+        "workload_breakdown": {
+          "compute": 3412.52,
+          "storage": 2593.95,
+          "networking": 1731.15,
+          "paas": 2393.83
+        }
+      },
+      {
+        "month": "2024-02",
+        "value_usd": 10446.9,
+        "workload_breakdown": {
+          "compute": 2605.27,
+          "storage": 2420.45,
+          "networking": 1953.5,
+          "paas": 3467.67
+        }
+      },
+      {
+        "month": "2024-03",
+        "value_usd": 10580.82,
+        "workload_breakdown": {
+          "compute": 2116.65,
+          "storage": 3423.83,
+          "networking": 1936.8,
+          "paas": 3103.55
+        }
+      }
+    ]
+  },
+  "open_recommendations": [
+    {
+      "recommendation_id": "REC-17513",
+      "type": "CxObserve",
+      "description": "Rightsize underutilized VMs (potential 23% savings)",
+      "priority": "Low",
+      "created_at": "2024-03-07T10:00:00-05:00",
+      "status": "Dismissed"
+    }
+  ],
+  "recent_activity_timeline": [
+    {
+      "date": "2024-03-23",
+      "activity_type": "contract_event",
+      "description": "Billing discrepancy flagged",
+      "participants": [
+        "Ahmed Hassan"
+      ]
+    },
+    {
+      "date": "2024-03-22",
+      "activity_type": "meeting",
+      "description": "Architecture review session",
+      "participants": [
+        "Lisa Patel",
+        "Ahmed Hassan"
+      ]
+    },
+    {
+      "date": "2024-03-17",
+      "activity_type": "msx_update",
+      "description": "Added competitive intelligence notes",
+      "participants": [
+        "Raj Mehta",
+        "Marcus Williams",
+        "Ahmed Hassan"
+      ]
+    },
+    {
+      "date": "2024-03-10",
+      "activity_type": "call",
+      "description": "Discussed budget approval timeline",
+      "participants": [
+        "Ahmed Hassan",
+        "Lisa Patel"
+      ]
+    },
+    {
+      "date": "2024-03-09",
+      "activity_type": "email",
+      "description": "Sent renewal reminder to procurement",
+      "participants": [
+        "Marcus Williams"
+      ]
+    },
+    {
+      "date": "2024-03-01",
+      "activity_type": "spa_received",
+      "description": "SPA: VM rightsizing opportunity detected",
+      "participants": [
+        "Raj Mehta",
+        "Marcus Williams",
+        "Lisa Patel"
+      ]
+    },
+    {
+      "date": "2024-02-23",
+      "activity_type": "call",
+      "description": "Quick call on deployment blocker",
+      "participants": [
+        "Ahmed Hassan",
+        "Lisa Patel"
+      ]
+    },
+    {
+      "date": "2024-01-02",
+      "activity_type": "call",
+      "description": "Discussed budget approval timeline",
+      "participants": [
+        "Ahmed Hassan"
+      ]
+    }
+  ],
+  "customer_health_flags": {
+    "overall_health": "Healthy",
+    "engagement_score": 79,
+    "consumption_trend": "Growing",
+    "renewal_risk": "Low",
+    "last_assessed": "2024-03-25"
+  },
+  "contract_billing": {
+    "subscription_type": "PAYG",
+    "contract_end_date": null,
+    "macc_commitment_usd": null,
+    "macc_consumed_usd": null,
+    "billing_frequency": "Monthly",
+    "auto_renew": false
+  }
+}

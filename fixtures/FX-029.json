@@ -1,0 +1,415 @@
+{
+  "fixture_id": "FX-029",
+  "fixture_class": "missing",
+  "authored_at": "2024-03-15T10:00:00-05:00",
+  "account": {
+    "account_id": "ACC-LVS79LOG",
+    "name": "Consolidated Messenger",
+    "segment": "smb-mid",
+    "geography": "NA",
+    "tenure_years": 3.8,
+    "owner": "Tom Rodriguez",
+    "industry": "Logistics",
+    "employee_count": 650
+  },
+  "opportunities": [
+    {
+      "opportunity_id": "OPP-0U5MW5IN",
+      "name": "Consolidated Azure AI Services",
+      "stage": "Propose",
+      "estimated_value_usd": 280000,
+      "close_date": "2024-12-11",
+      "bpf_stage": "Propose",
+      "forecast_category": "Best Case",
+      "owner": "Tom Rodriguez",
+      "last_updated": "2024-03-15T11:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-V68OY02J",
+          "name": "Discovery",
+          "status": "In Progress",
+          "due_date": "2024-08-23",
+          "completed_date": null,
+          "owner": "Tom Rodriguez",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-LEPDWYYF",
+          "name": "Technical Validation",
+          "status": "In Progress",
+          "due_date": "2024-03-14",
+          "completed_date": null,
+          "owner": "Tom Rodriguez",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-TSTB8DYB",
+          "name": "Business Case Approved",
+          "status": "Blocked",
+          "due_date": "2024-05-25",
+          "completed_date": null,
+          "owner": "Tom Rodriguez",
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "opportunity_id": "OPP-U13AHWE6",
+      "name": "Consolidated Security Modernization",
+      "stage": "Prospect",
+      "estimated_value_usd": 210000,
+      "close_date": "2024-04-06",
+      "bpf_stage": null,
+      "forecast_category": "Pipeline",
+      "owner": "Tom Rodriguez",
+      "last_updated": "2024-01-03T12:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-5ICFUTWW",
+          "name": "Discovery",
+          "status": "Not Started",
+          "due_date": "2024-06-20",
+          "completed_date": null,
+          "owner": "Tom Rodriguez",
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "opportunity_id": "OPP-8F2RZ1D7",
+      "name": "Consolidated Azure Arc Deployment",
+      "stage": "Close",
+      "estimated_value_usd": 125000,
+      "close_date": "2024-05-02",
+      "bpf_stage": "Close",
+      "forecast_category": "Committed",
+      "owner": "Tom Rodriguez",
+      "last_updated": "2024-01-20T17:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-XU9ACBWC",
+          "name": "Discovery",
+          "status": "In Progress",
+          "due_date": "2024-03-20",
+          "completed_date": null,
+          "owner": "Tom Rodriguez",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-DMABWCWJ",
+          "name": "Technical Validation",
+          "status": "Not Started",
+          "due_date": "2024-06-04",
+          "completed_date": null,
+          "owner": "Tom Rodriguez",
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "opportunity_id": "OPP-GH3IOF9D",
+      "name": "Consolidated M365 E5 Upsell",
+      "stage": "Qualify",
+      "estimated_value_usd": 280000,
+      "close_date": "2024-11-07",
+      "bpf_stage": null,
+      "forecast_category": "Pipeline",
+      "owner": "Tom Rodriguez",
+      "last_updated": "2024-02-08T17:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-JWOJ08W5",
+          "name": "Discovery",
+          "status": "Not Started",
+          "due_date": "2024-08-19",
+          "completed_date": null,
+          "owner": "Tom Rodriguez",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-JT261ZMV",
+          "name": "Technical Validation",
+          "status": "In Progress",
+          "due_date": "2024-03-11",
+          "completed_date": null,
+          "owner": "Tom Rodriguez",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-JA4JE4GF",
+          "name": "Business Case Approved",
+          "status": "In Progress",
+          "due_date": "2024-08-17",
+          "completed_date": null,
+          "owner": "Tom Rodriguez",
+          "evidence": ""
+        }
+      ]
+    }
+  ],
+  "contacts": [
+    {
+      "contact_id": "CON-IBJBJ2LR",
+      "name": "Sarah Singh",
+      "role": "Operations",
+      "title": "DevOps Lead",
+      "email": "sarah.singh@consolidated.com",
+      "influence_level": "Decision Maker",
+      "last_interaction": "2024-03-23",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-OE0LT7EZ",
+      "name": "Tamara Anderson",
+      "role": "Technical",
+      "title": "IT Director",
+      "email": "tamara.anderson@consolidated.com",
+      "influence_level": "Influencer",
+      "last_interaction": "2024-01-14",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-YOA15U3S",
+      "name": "Christopher Martinez",
+      "role": "Business",
+      "title": "CTO",
+      "email": "christopher.martinez@consolidated.com",
+      "influence_level": "Champion",
+      "last_interaction": "2024-03-02",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-KDNK0CPX",
+      "name": "Jennifer O'Brien",
+      "role": "Technical",
+      "title": "DevOps Lead",
+      "email": "jennifer.o'brien@consolidated.com",
+      "influence_level": "End User",
+      "last_interaction": "2024-03-15",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-0DGK7UKN",
+      "name": "David Martinez",
+      "role": "Operations",
+      "title": "Cloud Architect",
+      "email": "david.martinez@consolidated.com",
+      "influence_level": "Blocker",
+      "last_interaction": "2024-03-17",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-U5M91TOJ",
+      "name": "Robert Chen",
+      "role": "Technical",
+      "title": "Technology Manager",
+      "email": "robert.chen@consolidated.com",
+      "influence_level": "Champion",
+      "last_interaction": "2024-02-17",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-RC6B81PZ",
+      "name": "Tamara Park",
+      "role": "Operations",
+      "title": "COO",
+      "email": "tamara.park@consolidated.com",
+      "influence_level": "Champion",
+      "last_interaction": "2024-01-11",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-HN5XLY17",
+      "name": "James Singh",
+      "role": "Operations",
+      "title": "Technology Manager",
+      "email": "james.singh@consolidated.com",
+      "influence_level": "Champion",
+      "last_interaction": "2024-03-12",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-XJJ4GD6V",
+      "name": "Nicole Park",
+      "role": "Executive",
+      "title": "Security Manager",
+      "email": "nicole.park@consolidated.com",
+      "influence_level": "Champion",
+      "last_interaction": null,
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-Q2W9CQQ9",
+      "name": "Maria O'Brien",
+      "role": "Operations",
+      "title": "Head of Digital",
+      "email": "maria.o'brien@consolidated.com",
+      "influence_level": "End User",
+      "last_interaction": "2024-03-08",
+      "is_current": true
+    }
+  ],
+  "acr_trend": {
+    "currency": "USD",
+    "monthly_values": [
+      {
+        "month": "2023-04",
+        "value_usd": 106583.85,
+        "workload_breakdown": {
+          "compute": 18307.43,
+          "storage": 21709.77,
+          "networking": 15493.38,
+          "paas": 51073.27
+        }
+      },
+      {
+        "month": "2023-05",
+        "value_usd": 111865.67,
+        "workload_breakdown": {
+          "compute": 42984.02,
+          "storage": 19545.36,
+          "networking": 8826.61,
+          "paas": 40509.68
+        }
+      },
+      {
+        "month": "2023-06",
+        "value_usd": 108947.98,
+        "workload_breakdown": {
+          "compute": 17378.24,
+          "storage": 23239.76,
+          "networking": 30435.22,
+          "paas": 37894.76
+        }
+      },
+      {
+        "month": "2023-07",
+        "value_usd": 111198.25,
+        "workload_breakdown": {
+          "compute": 17528.0,
+          "storage": 26717.17,
+          "networking": 25491.64,
+          "paas": 41461.44
+        }
+      },
+      {
+        "month": "2023-08",
+        "value_usd": 112735.27,
+        "workload_breakdown": {
+          "compute": 21003.35,
+          "storage": 35869.97,
+          "networking": 23192.11,
+          "paas": 32669.83
+        }
+      },
+      {
+        "month": "2023-09",
+        "value_usd": 115476.56,
+        "workload_breakdown": {
+          "compute": 45951.54,
+          "storage": 13220.07,
+          "networking": 24171.78,
+          "paas": 32133.17
+        }
+      },
+      {
+        "month": "2023-10",
+        "value_usd": 115124.04,
+        "workload_breakdown": {
+          "compute": 25175.37,
+          "storage": 35072.74,
+          "networking": 21351.05,
+          "paas": 33524.88
+        }
+      },
+      {
+        "month": "2023-11",
+        "value_usd": 0
+      },
+      {
+        "month": "2023-12",
+        "value_usd": 114457.25,
+        "workload_breakdown": {
+          "compute": 35130.91,
+          "storage": 29793.86,
+          "networking": 18909.34,
+          "paas": 30623.15
+        }
+      },
+      {
+        "month": "2024-01",
+        "value_usd": 113998.36,
+        "workload_breakdown": {
+          "compute": 44496.06,
+          "storage": 16878.12,
+          "networking": 23094.43,
+          "paas": 29529.76
+        }
+      },
+      {
+        "month": "2024-02",
+        "value_usd": 0
+      },
+      {
+        "month": "2024-03",
+        "value_usd": 0
+      }
+    ]
+  },
+  "open_recommendations": [],
+  "recent_activity_timeline": [
+    {
+      "date": "2024-03-26",
+      "activity_type": "contract_event",
+      "description": "Contract renewal notification (90 days)",
+      "participants": [
+        "Sarah Kim",
+        "Lisa Patel"
+      ]
+    },
+    {
+      "date": "2024-03-05",
+      "activity_type": "spa_received",
+      "description": "SPA: VM rightsizing opportunity detected",
+      "participants": [
+        "Ahmed Hassan",
+        "Sarah Kim",
+        "Lisa Patel"
+      ]
+    },
+    {
+      "date": "2024-02-11",
+      "activity_type": "email",
+      "description": "Received pricing inquiry from CFO",
+      "participants": [
+        "Ahmed Hassan",
+        "Lisa Patel"
+      ]
+    },
+    {
+      "date": "2024-01-25",
+      "activity_type": "email",
+      "description": "Shared architecture documentation",
+      "participants": [
+        "Lisa Patel",
+        "Ahmed Hassan",
+        "Marcus Williams"
+      ]
+    }
+  ],
+  "customer_health_flags": {
+    "overall_health": "Unknown",
+    "engagement_score": 74,
+    "consumption_trend": "Growing",
+    "renewal_risk": "High",
+    "last_assessed": null
+  },
+  "contract_billing": {
+    "subscription_type": "EA",
+    "contract_end_date": null,
+    "macc_commitment_usd": null,
+    "macc_consumed_usd": null,
+    "billing_frequency": "Annual",
+    "auto_renew": true
+  }
+}

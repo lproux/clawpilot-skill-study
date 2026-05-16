@@ -1,0 +1,403 @@
+{
+  "fixture_id": "FX-013",
+  "fixture_class": "stale",
+  "authored_at": "2024-03-15T10:00:00-05:00",
+  "account": {
+    "account_id": "ACC-W5BNG4OC",
+    "name": "Coho Winery",
+    "segment": "smb-corporate",
+    "geography": "NA",
+    "tenure_years": 4.8,
+    "owner": "Ahmed Hassan",
+    "industry": "Food & Beverage",
+    "employee_count": 120
+  },
+  "opportunities": [
+    {
+      "opportunity_id": "OPP-94M6KZ47",
+      "name": "Coho Copilot Adoption",
+      "stage": "Close",
+      "estimated_value_usd": 210000,
+      "close_date": "2023-11-10",
+      "bpf_stage": "Close",
+      "forecast_category": "Committed",
+      "owner": "Ahmed Hassan",
+      "last_updated": "2023-08-12T16:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-869RNVOO",
+          "name": "Discovery",
+          "status": "In Progress",
+          "due_date": "2024-06-16",
+          "completed_date": null,
+          "owner": "Ahmed Hassan",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-EG9KVKP0",
+          "name": "Technical Validation",
+          "status": "In Progress",
+          "due_date": "2024-07-04",
+          "completed_date": null,
+          "owner": "Ahmed Hassan",
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "opportunity_id": "OPP-LPBX0ROM",
+      "name": "Coho Azure AI Services",
+      "stage": "Qualify",
+      "estimated_value_usd": 280000,
+      "close_date": "2024-04-26",
+      "bpf_stage": "Qualify",
+      "forecast_category": "Pipeline",
+      "owner": "Ahmed Hassan",
+      "last_updated": "2023-10-24T17:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-WBHECPPK",
+          "name": "Discovery",
+          "status": "Completed",
+          "due_date": "2024-04-03",
+          "completed_date": "2024-02-13",
+          "owner": "Ahmed Hassan",
+          "evidence": "email_thread_1684"
+        },
+        {
+          "milestone_id": "MS-XG0RDKDA",
+          "name": "Technical Validation",
+          "status": "Blocked",
+          "due_date": "2024-06-14",
+          "completed_date": null,
+          "owner": "Ahmed Hassan",
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "opportunity_id": "OPP-16VK2GTK",
+      "name": "Coho Azure Virtual Desktop",
+      "stage": "Qualify",
+      "estimated_value_usd": 125000,
+      "close_date": "2024-11-17",
+      "bpf_stage": "Qualify",
+      "forecast_category": "Pipeline",
+      "owner": "Ahmed Hassan",
+      "last_updated": "2023-08-08T08:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-0UXX9BE4",
+          "name": "Discovery",
+          "status": "Blocked",
+          "due_date": "2024-07-17",
+          "completed_date": null,
+          "owner": "Ahmed Hassan",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-ACFCL0SA",
+          "name": "Technical Validation",
+          "status": "In Progress",
+          "due_date": "2024-05-09",
+          "completed_date": null,
+          "owner": "Ahmed Hassan",
+          "evidence": ""
+        }
+      ]
+    }
+  ],
+  "contacts": [
+    {
+      "contact_id": "CON-LHB6RP1G",
+      "name": "Eric Kim",
+      "role": "Executive",
+      "title": "VP Engineering",
+      "email": "eric.kim@cohowinery.com",
+      "influence_level": "Decision Maker",
+      "last_interaction": "2024-02-06",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-AV5RT7RG",
+      "name": "Patricia Nakamura",
+      "role": "Executive",
+      "title": "COO",
+      "email": "patricia.nakamura@cohowinery.com",
+      "influence_level": "Influencer",
+      "last_interaction": "2024-03-28",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-PTQ02VKP",
+      "name": "Angela Thompson",
+      "role": "Operations",
+      "title": "DevOps Lead",
+      "email": "angela.thompson@cohowinery.com",
+      "influence_level": "Champion",
+      "last_interaction": "2024-02-06",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-WSSHMR53",
+      "name": "Jason Taylor",
+      "role": "Operations",
+      "title": "VP Operations",
+      "email": "jason.taylor@cohowinery.com",
+      "influence_level": "End User",
+      "last_interaction": "2023-06-23",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-WAS3UEWG",
+      "name": "Andrew Petrov",
+      "role": "Operations",
+      "title": "CFO",
+      "email": "andrew.petrov@cohowinery.com",
+      "influence_level": "Blocker",
+      "last_interaction": "2023-02-02",
+      "is_current": false
+    },
+    {
+      "contact_id": "CON-C30ADKGQ",
+      "name": "Jason Rivera",
+      "role": "Business",
+      "title": "Security Manager",
+      "email": "jason.rivera@cohowinery.com",
+      "influence_level": "Champion",
+      "last_interaction": "2023-05-08",
+      "is_current": false
+    },
+    {
+      "contact_id": "CON-9RV8E3VI",
+      "name": "James Singh",
+      "role": "Technical",
+      "title": "Head of Digital",
+      "email": "james.singh@cohowinery.com",
+      "influence_level": "End User",
+      "last_interaction": "2023-05-25",
+      "is_current": false
+    },
+    {
+      "contact_id": "CON-EKM2OBHO",
+      "name": "Michelle Rivera",
+      "role": "Technical",
+      "title": "VP Operations",
+      "email": "michelle.rivera@cohowinery.com",
+      "influence_level": "End User",
+      "last_interaction": "2023-03-13",
+      "is_current": false
+    }
+  ],
+  "acr_trend": {
+    "currency": "USD",
+    "monthly_values": [
+      {
+        "month": "2023-04",
+        "value_usd": 109665.68,
+        "workload_breakdown": {
+          "compute": 40509.2,
+          "storage": 28554.19,
+          "networking": 18006.51,
+          "paas": 22595.79
+        }
+      },
+      {
+        "month": "2023-05",
+        "value_usd": 108336.04,
+        "workload_breakdown": {
+          "compute": 23036.55,
+          "storage": 17913.89,
+          "networking": 20128.04,
+          "paas": 47257.56
+        }
+      },
+      {
+        "month": "2023-06",
+        "value_usd": 110870.05,
+        "workload_breakdown": {
+          "compute": 43227.74,
+          "storage": 19335.79,
+          "networking": 8564.39,
+          "paas": 39742.13
+        }
+      },
+      {
+        "month": "2023-07",
+        "value_usd": 110787.12,
+        "workload_breakdown": {
+          "compute": 27921.93,
+          "storage": 19720.36,
+          "networking": 17329.75,
+          "paas": 45815.08
+        }
+      },
+      {
+        "month": "2023-08",
+        "value_usd": 108919.26,
+        "workload_breakdown": {
+          "compute": 34112.03,
+          "storage": 13392.52,
+          "networking": 21106.14,
+          "paas": 40308.57
+        }
+      },
+      {
+        "month": "2023-09",
+        "value_usd": 107808.75,
+        "workload_breakdown": {
+          "compute": 46766.05,
+          "storage": 27180.28,
+          "networking": 11039.1,
+          "paas": 22823.33
+        }
+      },
+      {
+        "month": "2023-10",
+        "value_usd": 107808.75,
+        "workload_breakdown": {
+          "compute": 17370.19,
+          "storage": 31939.44,
+          "networking": 15130.84,
+          "paas": 43368.29
+        }
+      },
+      {
+        "month": "2023-11",
+        "value_usd": 107808.75,
+        "workload_breakdown": {
+          "compute": 16184.76,
+          "storage": 33752.99,
+          "networking": 11633.57,
+          "paas": 46237.43
+        }
+      },
+      {
+        "month": "2023-12",
+        "value_usd": 107808.75,
+        "workload_breakdown": {
+          "compute": 45500.28,
+          "storage": 25830.24,
+          "networking": 9618.68,
+          "paas": 26859.55
+        }
+      },
+      {
+        "month": "2024-01",
+        "value_usd": 107808.75,
+        "workload_breakdown": {
+          "compute": 46686.03,
+          "storage": 9642.97,
+          "networking": 10934.79,
+          "paas": 40544.96
+        }
+      },
+      {
+        "month": "2024-02",
+        "value_usd": 107808.75,
+        "workload_breakdown": {
+          "compute": 28476.7,
+          "storage": 16109.33,
+          "networking": 17813.31,
+          "paas": 45409.41
+        }
+      },
+      {
+        "month": "2024-03",
+        "value_usd": 107808.75,
+        "workload_breakdown": {
+          "compute": 24079.58,
+          "storage": 27554.01,
+          "networking": 19327.44,
+          "paas": 36847.72
+        }
+      }
+    ]
+  },
+  "open_recommendations": [
+    {
+      "recommendation_id": "REC-83545",
+      "type": "Manual",
+      "description": "Enable Defender for Cloud across subscriptions",
+      "priority": "High",
+      "created_at": "2023-08-13T10:00:00-05:00",
+      "status": "Dismissed"
+    },
+    {
+      "recommendation_id": "REC-90539",
+      "type": "SPA",
+      "description": "Enable Azure Security Center standard tier",
+      "priority": "Low",
+      "created_at": "2023-04-10T10:00:00-05:00",
+      "status": "New"
+    },
+    {
+      "recommendation_id": "REC-44284",
+      "type": "CxObserve",
+      "description": "Adopt Azure Policy for compliance governance",
+      "priority": "Low",
+      "created_at": "2023-04-10T10:00:00-05:00",
+      "status": "New"
+    },
+    {
+      "recommendation_id": "REC-55604",
+      "type": "SPA",
+      "description": "Review network security group rules",
+      "priority": "Medium",
+      "created_at": "2023-05-20T10:00:00-05:00",
+      "status": "In Progress"
+    }
+  ],
+  "recent_activity_timeline": [
+    {
+      "date": "2023-12-03",
+      "activity_type": "spa_received",
+      "description": "SPA: Cost anomaly detected",
+      "participants": [
+        "Ahmed Hassan",
+        "Sarah Kim"
+      ]
+    },
+    {
+      "date": "2023-11-14",
+      "activity_type": "deployment",
+      "description": "Pilot environment provisioned",
+      "participants": [
+        "Marcus Williams"
+      ]
+    },
+    {
+      "date": "2023-09-13",
+      "activity_type": "email",
+      "description": "Sent renewal reminder to procurement",
+      "participants": [
+        "Marcus Williams",
+        "Lisa Patel"
+      ]
+    },
+    {
+      "date": "2023-08-15",
+      "activity_type": "msx_update",
+      "description": "Added competitive intelligence notes",
+      "participants": [
+        "Sarah Kim",
+        "Raj Mehta"
+      ]
+    }
+  ],
+  "customer_health_flags": {
+    "overall_health": "At Risk",
+    "engagement_score": 38,
+    "consumption_trend": "Stable",
+    "renewal_risk": "Medium",
+    "last_assessed": "2023-09-09"
+  },
+  "contract_billing": {
+    "subscription_type": "CSP",
+    "contract_end_date": "2024-11-15",
+    "macc_commitment_usd": 350000,
+    "macc_consumed_usd": 196257.86,
+    "billing_frequency": "Annual",
+    "auto_renew": false
+  }
+}

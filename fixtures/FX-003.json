@@ -1,0 +1,464 @@
+{
+  "fixture_id": "FX-003",
+  "fixture_class": "clean",
+  "authored_at": "2024-03-15T10:00:00-05:00",
+  "account": {
+    "account_id": "ACC-X86FSRU2",
+    "name": "Northwind Traders",
+    "segment": "smb-corporate",
+    "geography": "NA",
+    "tenure_years": 4.1,
+    "owner": "Ahmed Hassan",
+    "industry": "Retail",
+    "employee_count": 210
+  },
+  "opportunities": [
+    {
+      "opportunity_id": "OPP-B565YLFZ",
+      "name": "Northwind Azure Arc Deployment",
+      "stage": "Propose",
+      "estimated_value_usd": 89000,
+      "close_date": "2024-09-05",
+      "bpf_stage": "Propose",
+      "forecast_category": "Best Case",
+      "owner": "Ahmed Hassan",
+      "last_updated": "2024-03-20T12:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-YYKIIKAN",
+          "name": "Discovery",
+          "status": "Not Started",
+          "due_date": "2024-06-27",
+          "completed_date": null,
+          "owner": "Ahmed Hassan",
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "opportunity_id": "OPP-O4D7DQWD",
+      "name": "Northwind Copilot Adoption",
+      "stage": "Develop",
+      "estimated_value_usd": 175000,
+      "close_date": "2024-06-22",
+      "bpf_stage": "Develop",
+      "forecast_category": "Pipeline",
+      "owner": "Ahmed Hassan",
+      "last_updated": "2024-03-22T11:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-54H7EFWN",
+          "name": "Discovery",
+          "status": "Not Started",
+          "due_date": "2024-07-04",
+          "completed_date": null,
+          "owner": "Ahmed Hassan",
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "opportunity_id": "OPP-QJJROXED",
+      "name": "Northwind Intune Rollout",
+      "stage": "Close",
+      "estimated_value_usd": 350000,
+      "close_date": "2024-04-19",
+      "bpf_stage": "Close",
+      "forecast_category": "Committed",
+      "owner": "Ahmed Hassan",
+      "last_updated": "2024-02-21T13:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-89MO96F5",
+          "name": "Discovery",
+          "status": "Not Started",
+          "due_date": "2024-03-27",
+          "completed_date": null,
+          "owner": "Ahmed Hassan",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-VU2N6N3Z",
+          "name": "Technical Validation",
+          "status": "In Progress",
+          "due_date": "2024-07-22",
+          "completed_date": null,
+          "owner": "Ahmed Hassan",
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "opportunity_id": "OPP-UQJ8KOCG",
+      "name": "Northwind Azure SQL Migration",
+      "stage": "Develop",
+      "estimated_value_usd": 210000,
+      "close_date": "2024-05-01",
+      "bpf_stage": "Develop",
+      "forecast_category": "Best Case",
+      "owner": "Ahmed Hassan",
+      "last_updated": "2024-03-20T17:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-77XMOYZZ",
+          "name": "Discovery",
+          "status": "Not Started",
+          "due_date": "2024-03-04",
+          "completed_date": null,
+          "owner": "Ahmed Hassan",
+          "evidence": ""
+        }
+      ]
+    }
+  ],
+  "contacts": [
+    {
+      "contact_id": "CON-ZNN9EDHX",
+      "name": "Sandra Taylor",
+      "role": "Technical",
+      "title": "Head of Digital",
+      "email": "sandra.taylor@northwindtra.com",
+      "influence_level": "Decision Maker",
+      "last_interaction": "2024-02-14",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-34A0WZLK",
+      "name": "Diana Morrison",
+      "role": "Technical",
+      "title": "VP Engineering",
+      "email": "diana.morrison@northwindtra.com",
+      "influence_level": "Influencer",
+      "last_interaction": "2024-01-08",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-U3TMJYQH",
+      "name": "Jennifer Brown",
+      "role": "Finance",
+      "title": "CFO",
+      "email": "jennifer.brown@northwindtra.com",
+      "influence_level": "Champion",
+      "last_interaction": "2024-03-22",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-N4917Y8A",
+      "name": "Victoria Anderson",
+      "role": "Finance",
+      "title": "IT Director",
+      "email": "victoria.anderson@northwindtra.com",
+      "influence_level": "End User",
+      "last_interaction": "2024-02-28",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-GOA1420S",
+      "name": "Robert Patel",
+      "role": "Business",
+      "title": "Security Manager",
+      "email": "robert.patel@northwindtra.com",
+      "influence_level": "Blocker",
+      "last_interaction": "2024-03-02",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-9YO3UPUO",
+      "name": "Samantha Okafor",
+      "role": "Executive",
+      "title": "Data Platform Lead",
+      "email": "samantha.okafor@northwindtra.com",
+      "influence_level": "End User",
+      "last_interaction": "2024-03-10",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-3BX384W4",
+      "name": "Tamara Petrov",
+      "role": "Technical",
+      "title": "Technology Manager",
+      "email": "tamara.petrov@northwindtra.com",
+      "influence_level": "Champion",
+      "last_interaction": "2024-01-10",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-8R8IDBVE",
+      "name": "Andrew White",
+      "role": "Finance",
+      "title": "CFO",
+      "email": "andrew.white@northwindtra.com",
+      "influence_level": "End User",
+      "last_interaction": "2024-01-09",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-223VKNWW",
+      "name": "Sandra Brown",
+      "role": "Technical",
+      "title": "Security Manager",
+      "email": "sandra.brown@northwindtra.com",
+      "influence_level": "End User",
+      "last_interaction": "2024-02-11",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-N6L9GVMI",
+      "name": "Nicole Chen",
+      "role": "Finance",
+      "title": "Director of IT",
+      "email": "nicole.chen@northwindtra.com",
+      "influence_level": "End User",
+      "last_interaction": "2024-01-22",
+      "is_current": true
+    }
+  ],
+  "acr_trend": {
+    "currency": "USD",
+    "monthly_values": [
+      {
+        "month": "2023-04",
+        "value_usd": 52632.35,
+        "workload_breakdown": {
+          "compute": 14290.44,
+          "storage": 13703.13,
+          "networking": 6106.38,
+          "paas": 18532.41
+        }
+      },
+      {
+        "month": "2023-05",
+        "value_usd": 54301.96,
+        "workload_breakdown": {
+          "compute": 9343.52,
+          "storage": 18093.83,
+          "networking": 9004.1,
+          "paas": 17860.5
+        }
+      },
+      {
+        "month": "2023-06",
+        "value_usd": 53791.52,
+        "workload_breakdown": {
+          "compute": 9876.28,
+          "storage": 7510.38,
+          "networking": 6494.2,
+          "paas": 29910.66
+        }
+      },
+      {
+        "month": "2023-07",
+        "value_usd": 53442.39,
+        "workload_breakdown": {
+          "compute": 23390.5,
+          "storage": 5478.91,
+          "networking": 8295.72,
+          "paas": 16277.26
+        }
+      },
+      {
+        "month": "2023-08",
+        "value_usd": 52466.84,
+        "workload_breakdown": {
+          "compute": 23131.07,
+          "storage": 4708.42,
+          "networking": 6545.05,
+          "paas": 18082.3
+        }
+      },
+      {
+        "month": "2023-09",
+        "value_usd": 51784.72,
+        "workload_breakdown": {
+          "compute": 15182.47,
+          "storage": 15558.4,
+          "networking": 4347.2,
+          "paas": 16696.65
+        }
+      },
+      {
+        "month": "2023-10",
+        "value_usd": 50776.39,
+        "workload_breakdown": {
+          "compute": 11551.83,
+          "storage": 8801.57,
+          "networking": 5012.53,
+          "paas": 25410.45
+        }
+      },
+      {
+        "month": "2023-11",
+        "value_usd": 50238.23,
+        "workload_breakdown": {
+          "compute": 17689.64,
+          "storage": 12857.07,
+          "networking": 5531.54,
+          "paas": 14159.98
+        }
+      },
+      {
+        "month": "2023-12",
+        "value_usd": 50781.95,
+        "workload_breakdown": {
+          "compute": 8193.67,
+          "storage": 15505.29,
+          "networking": 10050.87,
+          "paas": 17032.12
+        }
+      },
+      {
+        "month": "2024-01",
+        "value_usd": 52781.21,
+        "workload_breakdown": {
+          "compute": 18264.08,
+          "storage": 8580.81,
+          "networking": 10352.34,
+          "paas": 15583.98
+        }
+      },
+      {
+        "month": "2024-02",
+        "value_usd": 53921.85,
+        "workload_breakdown": {
+          "compute": 18288.54,
+          "storage": 11651.81,
+          "networking": 7486.04,
+          "paas": 16495.46
+        }
+      },
+      {
+        "month": "2024-03",
+        "value_usd": 54067.74,
+        "workload_breakdown": {
+          "compute": 11893.74,
+          "storage": 12090.1,
+          "networking": 11679.11,
+          "paas": 18404.8
+        }
+      }
+    ]
+  },
+  "open_recommendations": [
+    {
+      "recommendation_id": "REC-54527",
+      "type": "SPA",
+      "description": "Enable Azure Backup for critical databases",
+      "priority": "High",
+      "created_at": "2024-01-02T10:00:00-05:00",
+      "status": "In Progress"
+    },
+    {
+      "recommendation_id": "REC-62379",
+      "type": "CxObserve",
+      "description": "Enable Azure Monitor for production workloads",
+      "priority": "Medium",
+      "created_at": "2024-02-02T10:00:00-05:00",
+      "status": "New"
+    },
+    {
+      "recommendation_id": "REC-83349",
+      "type": "Manual",
+      "description": "Rightsize underutilized VMs (potential 23% savings)",
+      "priority": "Medium",
+      "created_at": "2024-02-22T10:00:00-05:00",
+      "status": "Acknowledged"
+    }
+  ],
+  "recent_activity_timeline": [
+    {
+      "date": "2024-03-22",
+      "activity_type": "msx_update",
+      "description": "Updated opportunity stage to Develop",
+      "participants": [
+        "Raj Mehta",
+        "Ahmed Hassan"
+      ]
+    },
+    {
+      "date": "2024-03-13",
+      "activity_type": "deployment",
+      "description": "Pilot environment provisioned",
+      "participants": [
+        "Marcus Williams"
+      ]
+    },
+    {
+      "date": "2024-03-03",
+      "activity_type": "escalation",
+      "description": "Performance degradation reported by end users",
+      "participants": [
+        "Lisa Patel",
+        "Ahmed Hassan"
+      ]
+    },
+    {
+      "date": "2024-02-28",
+      "activity_type": "email",
+      "description": "Sent renewal reminder to procurement",
+      "participants": [
+        "Marcus Williams",
+        "Lisa Patel"
+      ]
+    },
+    {
+      "date": "2024-02-13",
+      "activity_type": "msx_update",
+      "description": "Updated opportunity stage to Develop",
+      "participants": [
+        "Lisa Patel",
+        "Ahmed Hassan"
+      ]
+    },
+    {
+      "date": "2024-02-08",
+      "activity_type": "msx_update",
+      "description": "Added competitive intelligence notes",
+      "participants": [
+        "Ahmed Hassan",
+        "Lisa Patel"
+      ]
+    },
+    {
+      "date": "2024-02-05",
+      "activity_type": "email",
+      "description": "Customer requested partner introduction",
+      "participants": [
+        "Ahmed Hassan",
+        "Raj Mehta",
+        "Sarah Kim"
+      ]
+    },
+    {
+      "date": "2024-01-12",
+      "activity_type": "spa_received",
+      "description": "SPA: VM rightsizing opportunity detected",
+      "participants": [
+        "Ahmed Hassan"
+      ]
+    },
+    {
+      "date": "2024-01-07",
+      "activity_type": "email",
+      "description": "Sent follow-up on migration timeline",
+      "participants": [
+        "Marcus Williams",
+        "Lisa Patel"
+      ]
+    }
+  ],
+  "customer_health_flags": {
+    "overall_health": "Healthy",
+    "engagement_score": 58,
+    "consumption_trend": "Stable",
+    "renewal_risk": "Medium",
+    "last_assessed": "2024-01-06"
+  },
+  "contract_billing": {
+    "subscription_type": "CSP",
+    "contract_end_date": "2024-10-11",
+    "macc_commitment_usd": null,
+    "macc_consumed_usd": null,
+    "billing_frequency": "Monthly",
+    "auto_renew": false
+  }
+}

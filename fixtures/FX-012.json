@@ -1,0 +1,374 @@
+{
+  "fixture_id": "FX-012",
+  "fixture_class": "stale",
+  "authored_at": "2024-03-15T10:00:00-05:00",
+  "account": {
+    "account_id": "ACC-PPFBFFQ3",
+    "name": "Bellows College",
+    "segment": "smb-mid",
+    "geography": "EMEA",
+    "tenure_years": 6.0,
+    "owner": "Lisa Patel",
+    "industry": "Education",
+    "employee_count": 2100
+  },
+  "opportunities": [
+    {
+      "opportunity_id": "OPP-HFKI7MPL",
+      "name": "Bellows Cloud Migration Phase",
+      "stage": "Propose",
+      "estimated_value_usd": 350000,
+      "close_date": "2023-11-22",
+      "bpf_stage": "Propose",
+      "forecast_category": "Best Case",
+      "owner": "Lisa Patel",
+      "last_updated": "2023-07-03T10:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-7QNLVL42",
+          "name": "Discovery",
+          "status": "Not Started",
+          "due_date": "2024-05-06",
+          "completed_date": null,
+          "owner": "Lisa Patel",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-9XUN5BCF",
+          "name": "Technical Validation",
+          "status": "Completed",
+          "due_date": "2024-03-27",
+          "completed_date": "2024-02-03",
+          "owner": "Lisa Patel",
+          "evidence": "email_thread_1609"
+        },
+        {
+          "milestone_id": "MS-G7AG0IN0",
+          "name": "Business Case Approved",
+          "status": "Blocked",
+          "due_date": "2024-06-13",
+          "completed_date": null,
+          "owner": "Lisa Patel",
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "opportunity_id": "OPP-I9OTOXOX",
+      "name": "Bellows Azure SQL Migration",
+      "stage": "Qualify",
+      "estimated_value_usd": 68000,
+      "close_date": "2024-10-09",
+      "bpf_stage": "Qualify",
+      "forecast_category": "Pipeline",
+      "owner": "Lisa Patel",
+      "last_updated": "2023-09-11T13:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-SEO2GSQK",
+          "name": "Discovery",
+          "status": "Completed",
+          "due_date": "2024-03-23",
+          "completed_date": "2024-03-03",
+          "owner": "Lisa Patel",
+          "evidence": "email_thread_2690"
+        },
+        {
+          "milestone_id": "MS-ZCT3764G",
+          "name": "Technical Validation",
+          "status": "Blocked",
+          "due_date": "2024-07-25",
+          "completed_date": null,
+          "owner": "Lisa Patel",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-V0PNG0RG",
+          "name": "Business Case Approved",
+          "status": "In Progress",
+          "due_date": "2024-03-21",
+          "completed_date": null,
+          "owner": "Lisa Patel",
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "opportunity_id": "OPP-Z82YAXZ6",
+      "name": "Bellows Power Platform",
+      "stage": "Develop",
+      "estimated_value_usd": 450000,
+      "close_date": "2024-12-20",
+      "bpf_stage": "Develop",
+      "forecast_category": "Pipeline",
+      "owner": "Lisa Patel",
+      "last_updated": "2023-07-17T14:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-LI7UAFCM",
+          "name": "Discovery",
+          "status": "Completed",
+          "due_date": "2024-07-11",
+          "completed_date": "2024-02-05",
+          "owner": "Lisa Patel",
+          "evidence": "email_thread_6120"
+        }
+      ]
+    }
+  ],
+  "contacts": [
+    {
+      "contact_id": "CON-SV0TOV25",
+      "name": "Jason Thompson",
+      "role": "Technical",
+      "title": "CTO",
+      "email": "jason.thompson@bellowscolle.com",
+      "influence_level": "Decision Maker",
+      "last_interaction": "2024-02-02",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-VN8FAPK0",
+      "name": "David Martinez",
+      "role": "Finance",
+      "title": "Director of IT",
+      "email": "david.martinez@bellowscolle.com",
+      "influence_level": "Influencer",
+      "last_interaction": "2024-03-05",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-ANF2WGKM",
+      "name": "David Morrison",
+      "role": "Technical",
+      "title": "Head of Digital",
+      "email": "david.morrison@bellowscolle.com",
+      "influence_level": "Champion",
+      "last_interaction": "2024-01-26",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-KP007YIJ",
+      "name": "Victoria Chen",
+      "role": "Executive",
+      "title": "COO",
+      "email": "victoria.chen@bellowscolle.com",
+      "influence_level": "End User",
+      "last_interaction": "2023-02-19",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-8VHHDB6Q",
+      "name": "Laura Kim",
+      "role": "Executive",
+      "title": "Data Platform Lead",
+      "email": "laura.kim@bellowscolle.com",
+      "influence_level": "Blocker",
+      "last_interaction": "2023-01-25",
+      "is_current": false
+    }
+  ],
+  "acr_trend": {
+    "currency": "USD",
+    "monthly_values": [
+      {
+        "month": "2023-04",
+        "value_usd": 75772.93,
+        "workload_breakdown": {
+          "compute": 30874.13,
+          "storage": 7230.4,
+          "networking": 7563.35,
+          "paas": 30105.05
+        }
+      },
+      {
+        "month": "2023-05",
+        "value_usd": 76734.05,
+        "workload_breakdown": {
+          "compute": 34460.71,
+          "storage": 15811.95,
+          "networking": 6041.12,
+          "paas": 20420.28
+        }
+      },
+      {
+        "month": "2023-06",
+        "value_usd": 78745.93,
+        "workload_breakdown": {
+          "compute": 29351.2,
+          "storage": 9917.04,
+          "networking": 10188.05,
+          "paas": 29289.64
+        }
+      },
+      {
+        "month": "2023-07",
+        "value_usd": 78843.07,
+        "workload_breakdown": {
+          "compute": 22255.42,
+          "storage": 12372.57,
+          "networking": 8465.4,
+          "paas": 35749.68
+        }
+      },
+      {
+        "month": "2023-08",
+        "value_usd": 79949.27,
+        "workload_breakdown": {
+          "compute": 24165.63,
+          "storage": 19195.63,
+          "networking": 8981.55,
+          "paas": 27606.46
+        }
+      },
+      {
+        "month": "2023-09",
+        "value_usd": 81043.14,
+        "workload_breakdown": {
+          "compute": 28209.6,
+          "storage": 23489.34,
+          "networking": 4886.56,
+          "paas": 24457.64
+        }
+      },
+      {
+        "month": "2023-10",
+        "value_usd": 81043.14,
+        "workload_breakdown": {
+          "compute": 18923.4,
+          "storage": 11004.69,
+          "networking": 18053.0,
+          "paas": 33062.05
+        }
+      },
+      {
+        "month": "2023-11",
+        "value_usd": 81043.14,
+        "workload_breakdown": {
+          "compute": 22187.84,
+          "storage": 16587.05,
+          "networking": 9473.97,
+          "paas": 32794.28
+        }
+      },
+      {
+        "month": "2023-12",
+        "value_usd": 81043.14,
+        "workload_breakdown": {
+          "compute": 31048.1,
+          "storage": 18881.73,
+          "networking": 8843.0,
+          "paas": 22270.31
+        }
+      },
+      {
+        "month": "2024-01",
+        "value_usd": 81043.14,
+        "workload_breakdown": {
+          "compute": 32212.97,
+          "storage": 10710.6,
+          "networking": 9654.34,
+          "paas": 28465.23
+        }
+      },
+      {
+        "month": "2024-02",
+        "value_usd": 81043.14,
+        "workload_breakdown": {
+          "compute": 35442.09,
+          "storage": 9960.81,
+          "networking": 6885.87,
+          "paas": 28754.37
+        }
+      },
+      {
+        "month": "2024-03",
+        "value_usd": 81043.14,
+        "workload_breakdown": {
+          "compute": 12937.74,
+          "storage": 23952.38,
+          "networking": 17493.57,
+          "paas": 26659.45
+        }
+      }
+    ]
+  },
+  "open_recommendations": [
+    {
+      "recommendation_id": "REC-14908",
+      "type": "CxObserve",
+      "description": "Adopt Azure Policy for compliance governance",
+      "priority": "Low",
+      "created_at": "2023-05-17T10:00:00-05:00",
+      "status": "In Progress"
+    },
+    {
+      "recommendation_id": "REC-20926",
+      "type": "CxObserve",
+      "description": "Migrate legacy .NET apps to Azure App Service",
+      "priority": "Low",
+      "created_at": "2023-03-13T10:00:00-05:00",
+      "status": "New"
+    },
+    {
+      "recommendation_id": "REC-22857",
+      "type": "Advisor",
+      "description": "Enable Azure Backup for critical databases",
+      "priority": "Medium",
+      "created_at": "2023-06-19T10:00:00-05:00",
+      "status": "New"
+    },
+    {
+      "recommendation_id": "REC-75605",
+      "type": "SPA",
+      "description": "Enable Azure Monitor for production workloads",
+      "priority": "Medium",
+      "created_at": "2023-08-12T10:00:00-05:00",
+      "status": "In Progress"
+    }
+  ],
+  "recent_activity_timeline": [
+    {
+      "date": "2023-12-15",
+      "activity_type": "contract_event",
+      "description": "MACC milestone approaching",
+      "participants": [
+        "Raj Mehta",
+        "Sarah Kim"
+      ]
+    },
+    {
+      "date": "2023-07-13",
+      "activity_type": "escalation",
+      "description": "Customer escalated support ticket response time",
+      "participants": [
+        "Sarah Kim",
+        "Marcus Williams",
+        "Lisa Patel"
+      ]
+    },
+    {
+      "date": "2023-07-04",
+      "activity_type": "meeting",
+      "description": "Technical deep-dive on migration",
+      "participants": [
+        "Marcus Williams"
+      ]
+    }
+  ],
+  "customer_health_flags": {
+    "overall_health": "Healthy",
+    "engagement_score": 70,
+    "consumption_trend": "Stable",
+    "renewal_risk": "Medium",
+    "last_assessed": "2023-09-08"
+  },
+  "contract_billing": {
+    "subscription_type": "CSP",
+    "contract_end_date": "2024-05-08",
+    "macc_commitment_usd": 500000,
+    "macc_consumed_usd": 140673.84,
+    "billing_frequency": "Annual",
+    "auto_renew": true
+  }
+}

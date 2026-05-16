@@ -1,0 +1,520 @@
+{
+  "fixture_id": "FX-041",
+  "fixture_class": "inconsistent",
+  "authored_at": "2024-03-15T10:00:00-05:00",
+  "account": {
+    "account_id": "ACC-ZJSZDYNL",
+    "name": "Quantum Analytics",
+    "segment": "smb-corporate",
+    "geography": "LATAM",
+    "tenure_years": 1.7,
+    "owner": "Marcus Williams",
+    "industry": "Technology",
+    "employee_count": 160
+  },
+  "opportunities": [
+    {
+      "opportunity_id": "OPP-CUKM5PAI",
+      "name": "Quantum Azure Infrastructure",
+      "stage": "Qualify",
+      "estimated_value_usd": 68000,
+      "close_date": "2024-04-14",
+      "bpf_stage": "Close",
+      "forecast_category": "Pipeline",
+      "owner": "Marcus Williams",
+      "last_updated": "2024-01-13T09:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-UKBGX86U",
+          "name": "Discovery",
+          "status": "In Progress",
+          "due_date": "2024-04-22",
+          "completed_date": null,
+          "owner": "Marcus Williams",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-TK7MLBCM",
+          "name": "Technical Validation",
+          "status": "Blocked",
+          "due_date": "2024-07-07",
+          "completed_date": null,
+          "owner": "Marcus Williams",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-MU2219AP",
+          "name": "Business Case Approved",
+          "status": "In Progress",
+          "due_date": "2024-04-26",
+          "completed_date": null,
+          "owner": "Marcus Williams",
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "opportunity_id": "OPP-QDFKCOHN",
+      "name": "Quantum Data Platform Migration",
+      "stage": "Develop",
+      "estimated_value_usd": 450000,
+      "close_date": "2024-07-16",
+      "bpf_stage": "Develop",
+      "forecast_category": "Best Case",
+      "owner": "Marcus Williams",
+      "last_updated": "2024-03-05T10:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-O9ZMDJ51",
+          "name": "Discovery",
+          "status": "Completed",
+          "due_date": "2024-05-18",
+          "completed_date": "2024-01-15",
+          "owner": "Marcus Williams",
+          "evidence": "email_thread_8146"
+        },
+        {
+          "milestone_id": "MS-R3648X4L",
+          "name": "Technical Validation",
+          "status": "Not Started",
+          "due_date": "2024-06-12",
+          "completed_date": null,
+          "owner": "Marcus Williams",
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "opportunity_id": "OPP-OQYOI37D",
+      "name": "Quantum Dynamics 365 Implementation",
+      "stage": "Qualify",
+      "estimated_value_usd": 68000,
+      "close_date": "2024-07-17",
+      "bpf_stage": "Qualify",
+      "forecast_category": "Pipeline",
+      "owner": "Marcus Williams",
+      "last_updated": "2024-03-10T14:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-QTWTTK4P",
+          "name": "Discovery",
+          "status": "Completed",
+          "due_date": "2024-07-13",
+          "completed_date": "2024-03-28",
+          "owner": "Marcus Williams",
+          "evidence": "email_thread_6975"
+        },
+        {
+          "milestone_id": "MS-YY1Q1PRH",
+          "name": "Technical Validation",
+          "status": "In Progress",
+          "due_date": "2024-04-13",
+          "completed_date": null,
+          "owner": "Marcus Williams",
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "opportunity_id": "OPP-LGM8S1RZ",
+      "name": "Quantum Azure AI Services",
+      "stage": "Propose",
+      "estimated_value_usd": 280000,
+      "close_date": "2024-05-26",
+      "bpf_stage": "Propose",
+      "forecast_category": "Best Case",
+      "owner": "Marcus Williams",
+      "last_updated": "2024-01-24T16:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-TL8YSBSK",
+          "name": "Discovery",
+          "status": "Not Started",
+          "due_date": "2024-04-25",
+          "completed_date": null,
+          "owner": "Marcus Williams",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-ZAO1QZUY",
+          "name": "Technical Validation",
+          "status": "Blocked",
+          "due_date": "2024-03-06",
+          "completed_date": null,
+          "owner": "Marcus Williams",
+          "evidence": ""
+        }
+      ]
+    }
+  ],
+  "contacts": [
+    {
+      "contact_id": "CON-GQTW8L73",
+      "name": "Robert Foster",
+      "role": "Technical",
+      "title": "Head of Digital",
+      "email": "robert.foster@quantumanaly.com",
+      "influence_level": "Decision Maker",
+      "last_interaction": "2024-01-06",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-O39VKGXJ",
+      "name": "Eric Kowalski",
+      "role": "Operations",
+      "title": "DevOps Lead",
+      "email": "eric.kowalski@quantumanaly.com",
+      "influence_level": "Influencer",
+      "last_interaction": "2024-02-15",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-7Y7LUS34",
+      "name": "Michael White",
+      "role": "Finance",
+      "title": "VP Operations",
+      "email": "michael.white@quantumanaly.com",
+      "influence_level": "Champion",
+      "last_interaction": "2024-01-04",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-B7XYOROJ",
+      "name": "Andrew Kim",
+      "role": "Operations",
+      "title": "Security Manager",
+      "email": "andrew.kim@quantumanaly.com",
+      "influence_level": "End User",
+      "last_interaction": "2024-02-15",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-AHQJ6EUN",
+      "name": "Nicole Thompson",
+      "role": "Business",
+      "title": "Cloud Architect",
+      "email": "nicole.thompson@quantumanaly.com",
+      "influence_level": "Blocker",
+      "last_interaction": "2024-02-03",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-IX5J3BPG",
+      "name": "Patricia Hansen",
+      "role": "Technical",
+      "title": "DevOps Lead",
+      "email": "patricia.hansen@quantumanaly.com",
+      "influence_level": "End User",
+      "last_interaction": "2024-01-04",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-7P58POIQ",
+      "name": "Laura Yamamoto",
+      "role": "Finance",
+      "title": "Director of IT",
+      "email": "laura.yamamoto@quantumanaly.com",
+      "influence_level": "End User",
+      "last_interaction": "2024-03-19",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-9W68QR3U",
+      "name": "James Jackson",
+      "role": "Executive",
+      "title": "Director of IT",
+      "email": "james.jackson@quantumanaly.com",
+      "influence_level": "End User",
+      "last_interaction": "2024-02-27",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-T7H3LX8M",
+      "name": "Tamara Berg",
+      "role": "Executive",
+      "title": "Infrastructure Manager",
+      "email": "tamara.berg@quantumanaly.com",
+      "influence_level": "Blocker",
+      "last_interaction": "2024-01-04",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-Q71TR8UY",
+      "name": "Steven Kowalski",
+      "role": "Business",
+      "title": "VP Operations",
+      "email": "steven.kowalski@quantumanaly.com",
+      "influence_level": "Champion",
+      "last_interaction": "2024-03-22",
+      "is_current": true
+    }
+  ],
+  "acr_trend": {
+    "currency": "USD",
+    "monthly_values": [
+      {
+        "month": "2023-04",
+        "value_usd": 21653.9,
+        "workload_breakdown": {
+          "compute": 5644.96,
+          "storage": 6226.0,
+          "networking": 3859.63,
+          "paas": 5923.31
+        }
+      },
+      {
+        "month": "2023-05",
+        "value_usd": 22329.48,
+        "workload_breakdown": {
+          "compute": 6136.55,
+          "storage": 3836.02,
+          "networking": 3310.52,
+          "paas": 9046.39
+        }
+      },
+      {
+        "month": "2023-06",
+        "value_usd": 22731.51,
+        "workload_breakdown": {
+          "compute": 9998.64,
+          "storage": 2876.57,
+          "networking": 2524.65,
+          "paas": 7331.66
+        }
+      },
+      {
+        "month": "2023-07",
+        "value_usd": 11365.75,
+        "workload_breakdown": {
+          "compute": 2088.46,
+          "storage": 3314.35,
+          "networking": 1332.75,
+          "paas": 4630.19
+        }
+      },
+      {
+        "month": "2023-08",
+        "value_usd": 22919.62,
+        "workload_breakdown": {
+          "compute": 3752.39,
+          "storage": 7510.24,
+          "networking": 2994.16,
+          "paas": 8662.82
+        }
+      },
+      {
+        "month": "2023-09",
+        "value_usd": 6875.89,
+        "workload_breakdown": {
+          "compute": 2434.12,
+          "storage": 1472.29,
+          "networking": 1067.47,
+          "paas": 1902.02
+        }
+      },
+      {
+        "month": "2023-10",
+        "value_usd": 22083.2,
+        "workload_breakdown": {
+          "compute": 9643.48,
+          "storage": 5589.49,
+          "networking": 1856.86,
+          "paas": 4993.37
+        }
+      },
+      {
+        "month": "2023-11",
+        "value_usd": 22365.59,
+        "workload_breakdown": {
+          "compute": 7796.94,
+          "storage": 3990.87,
+          "networking": 1594.66,
+          "paas": 8983.11
+        }
+      },
+      {
+        "month": "2023-12",
+        "value_usd": 22973.97,
+        "workload_breakdown": {
+          "compute": 5893.64,
+          "storage": 5437.37,
+          "networking": 2435.07,
+          "paas": 9207.89
+        }
+      },
+      {
+        "month": "2024-01",
+        "value_usd": 45947.95,
+        "workload_breakdown": {
+          "compute": 17734.15,
+          "storage": 5023.12,
+          "networking": 9554.13,
+          "paas": 13636.55
+        }
+      },
+      {
+        "month": "2024-02",
+        "value_usd": 22381.43,
+        "workload_breakdown": {
+          "compute": 6226.09,
+          "storage": 2544.26,
+          "networking": 4166.66,
+          "paas": 9444.42
+        }
+      },
+      {
+        "month": "2024-03",
+        "value_usd": 21322.6,
+        "workload_breakdown": {
+          "compute": 7868.45,
+          "storage": 4063.4,
+          "networking": 1626.17,
+          "paas": 7764.59
+        }
+      }
+    ]
+  },
+  "open_recommendations": [
+    {
+      "recommendation_id": "REC-36656",
+      "type": "Manual",
+      "description": "Migrate legacy .NET apps to Azure App Service",
+      "priority": "High",
+      "created_at": "2024-02-05T10:00:00-05:00",
+      "status": "Acknowledged"
+    },
+    {
+      "recommendation_id": "REC-88774",
+      "type": "SPA",
+      "description": "Enable MFA for all admin accounts",
+      "priority": "High",
+      "created_at": "2024-01-05T10:00:00-05:00",
+      "status": "Acknowledged"
+    },
+    {
+      "recommendation_id": "REC-14646",
+      "type": "Advisor",
+      "description": "Rightsize underutilized VMs (potential 23% savings)",
+      "priority": "Low",
+      "created_at": "2024-02-07T10:00:00-05:00",
+      "status": "Dismissed"
+    }
+  ],
+  "recent_activity_timeline": [
+    {
+      "date": "2024-03-21",
+      "activity_type": "msx_update",
+      "description": "Updated close date based on customer feedback",
+      "participants": [
+        "Lisa Patel",
+        "Raj Mehta"
+      ]
+    },
+    {
+      "date": "2024-03-07",
+      "activity_type": "email",
+      "description": "Sent follow-up on migration timeline",
+      "participants": [
+        "Marcus Williams",
+        "Sarah Kim",
+        "Lisa Patel"
+      ]
+    },
+    {
+      "date": "2024-03-04",
+      "activity_type": "deployment",
+      "description": "Pilot environment provisioned",
+      "participants": [
+        "Raj Mehta",
+        "Ahmed Hassan",
+        "Lisa Patel"
+      ]
+    },
+    {
+      "date": "2024-02-23",
+      "activity_type": "msx_update",
+      "description": "Updated opportunity stage to Develop",
+      "participants": [
+        "Ahmed Hassan",
+        "Lisa Patel"
+      ]
+    },
+    {
+      "date": "2024-02-19",
+      "activity_type": "spa_received",
+      "description": "SPA: Security recommendation - MFA gaps",
+      "participants": [
+        "Sarah Kim"
+      ]
+    },
+    {
+      "date": "2024-02-12",
+      "activity_type": "email",
+      "description": "Received pricing inquiry from CFO",
+      "participants": [
+        "Marcus Williams",
+        "Raj Mehta"
+      ]
+    },
+    {
+      "date": "2024-02-11",
+      "activity_type": "escalation",
+      "description": "Performance degradation reported by end users",
+      "participants": [
+        "Lisa Patel",
+        "Sarah Kim",
+        "Raj Mehta"
+      ]
+    },
+    {
+      "date": "2024-02-08",
+      "activity_type": "escalation",
+      "description": "Customer escalated support ticket response time",
+      "participants": [
+        "Marcus Williams"
+      ]
+    },
+    {
+      "date": "2024-02-02",
+      "activity_type": "msx_update",
+      "description": "Added competitive intelligence notes",
+      "participants": [
+        "Raj Mehta",
+        "Marcus Williams",
+        "Ahmed Hassan"
+      ]
+    },
+    {
+      "date": "2024-02-01",
+      "activity_type": "meeting",
+      "description": "Partner introduction meeting",
+      "participants": [
+        "Raj Mehta",
+        "Sarah Kim"
+      ]
+    },
+    {
+      "date": "2024-01-05",
+      "activity_type": "email",
+      "description": "Customer requested partner introduction",
+      "participants": [
+        "Ahmed Hassan"
+      ]
+    }
+  ],
+  "customer_health_flags": {
+    "overall_health": "At Risk",
+    "engagement_score": 57,
+    "consumption_trend": "Growing",
+    "renewal_risk": "Unknown",
+    "last_assessed": "2024-02-20"
+  },
+  "contract_billing": {
+    "subscription_type": "EA",
+    "contract_end_date": "2024-08-09",
+    "macc_commitment_usd": 500000,
+    "macc_consumed_usd": 217892.52,
+    "billing_frequency": "Annual",
+    "auto_renew": true
+  }
+}

@@ -1,0 +1,480 @@
+{
+  "fixture_id": "FX-044",
+  "fixture_class": "inconsistent",
+  "authored_at": "2024-03-15T10:00:00-05:00",
+  "account": {
+    "account_id": "ACC-A38BOUHF",
+    "name": "Redmond Instruments",
+    "segment": "smb-small",
+    "geography": "LATAM",
+    "tenure_years": 6.2,
+    "owner": "Sarah Kim",
+    "industry": "Medical Devices",
+    "employee_count": 490
+  },
+  "opportunities": [
+    {
+      "opportunity_id": "OPP-1271NNX7",
+      "name": "Redmond AKS Deployment",
+      "stage": "Prospect",
+      "estimated_value_usd": 350000,
+      "close_date": "2024-05-11",
+      "bpf_stage": "Qualify",
+      "forecast_category": "Pipeline",
+      "owner": "Sarah Kim",
+      "last_updated": "2024-03-25T11:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-9S13OSJC",
+          "name": "Discovery",
+          "status": "Blocked",
+          "due_date": "2024-07-01",
+          "completed_date": null,
+          "owner": "Sarah Kim",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-0MF4TCGG",
+          "name": "Technical Validation",
+          "status": "Blocked",
+          "due_date": "2024-06-14",
+          "completed_date": null,
+          "owner": "Sarah Kim",
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "opportunity_id": "OPP-5X3IB5QX",
+      "name": "Redmond Azure AI Services",
+      "stage": "Close",
+      "estimated_value_usd": 560000,
+      "close_date": "2024-05-21",
+      "bpf_stage": "Close",
+      "forecast_category": "Committed",
+      "owner": "Sarah Kim",
+      "last_updated": "2024-01-20T11:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-DKXM6H8R",
+          "name": "Discovery",
+          "status": "In Progress",
+          "due_date": "2024-08-06",
+          "completed_date": null,
+          "owner": "Sarah Kim",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-N9WE07GG",
+          "name": "Technical Validation",
+          "status": "Completed",
+          "due_date": "2024-05-01",
+          "completed_date": "2024-02-17",
+          "owner": "Sarah Kim",
+          "evidence": "email_thread_5788"
+        }
+      ]
+    },
+    {
+      "opportunity_id": "OPP-0BJ40LBW",
+      "name": "Redmond Azure SQL Migration",
+      "stage": "Qualify",
+      "estimated_value_usd": 350000,
+      "close_date": "2024-10-25",
+      "bpf_stage": "Qualify",
+      "forecast_category": "Pipeline",
+      "owner": "Sarah Kim",
+      "last_updated": "2024-01-07T15:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-A10ELZUU",
+          "name": "Discovery",
+          "status": "Blocked",
+          "due_date": "2024-07-27",
+          "completed_date": null,
+          "owner": "Sarah Kim",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-E0FT5WTM",
+          "name": "Technical Validation",
+          "status": "Blocked",
+          "due_date": "2024-07-10",
+          "completed_date": null,
+          "owner": "Sarah Kim",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-MHJG16AC",
+          "name": "Business Case Approved",
+          "status": "Blocked",
+          "due_date": "2024-07-16",
+          "completed_date": null,
+          "owner": "Sarah Kim",
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "opportunity_id": "OPP-UA5FJP8N",
+      "name": "Redmond Security Modernization",
+      "stage": "Close",
+      "estimated_value_usd": 560000,
+      "close_date": "2024-05-05",
+      "bpf_stage": "Close",
+      "forecast_category": "Committed",
+      "owner": "Sarah Kim",
+      "last_updated": "2024-02-24T16:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-TNVPOQEV",
+          "name": "Discovery",
+          "status": "Not Started",
+          "due_date": "2024-03-02",
+          "completed_date": null,
+          "owner": "Sarah Kim",
+          "evidence": ""
+        },
+        {
+          "milestone_id": "MS-GU33DXPR",
+          "name": "Technical Validation",
+          "status": "Blocked",
+          "due_date": "2024-04-02",
+          "completed_date": null,
+          "owner": "Sarah Kim",
+          "evidence": ""
+        }
+      ]
+    }
+  ],
+  "contacts": [
+    {
+      "contact_id": "CON-DXSVHJ4X",
+      "name": "Angela Yamamoto",
+      "role": "Operations",
+      "title": "DevOps Lead",
+      "email": "angela.yamamoto@redmondinstr.com",
+      "influence_level": "Decision Maker",
+      "last_interaction": "2024-01-10",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-31VYY6Q4",
+      "name": "James Chen",
+      "role": "Executive",
+      "title": "COO",
+      "email": "james.chen@redmondinstr.com",
+      "influence_level": "Influencer",
+      "last_interaction": "2024-01-13",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-ZM61JEJT",
+      "name": "Nicole Petrov",
+      "role": "Executive",
+      "title": "COO",
+      "email": "nicole.petrov@redmondinstr.com",
+      "influence_level": "Champion",
+      "last_interaction": "2024-02-02",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-FCFXEQLF",
+      "name": "Michelle Kowalski",
+      "role": "Executive",
+      "title": "Cloud Architect",
+      "email": "michelle.kowalski@redmondinstr.com",
+      "influence_level": "End User",
+      "last_interaction": "2024-03-28",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-MTMP5S8Z",
+      "name": "Andrew Thompson",
+      "role": "Finance",
+      "title": "VP Operations",
+      "email": "andrew.thompson@redmondinstr.com",
+      "influence_level": "Blocker",
+      "last_interaction": "2024-02-11",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-4X1D2UJ3",
+      "name": "Michael Okafor",
+      "role": "Business",
+      "title": "Technology Manager",
+      "email": "michael.okafor@redmondinstr.com",
+      "influence_level": "Champion",
+      "last_interaction": "2024-03-05",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-59FW4WZZ",
+      "name": "Sarah Schmidt",
+      "role": "Business",
+      "title": "Technology Manager",
+      "email": "sarah.schmidt@redmondinstr.com",
+      "influence_level": "Blocker",
+      "last_interaction": "2024-02-02",
+      "is_current": true
+    }
+  ],
+  "acr_trend": {
+    "currency": "USD",
+    "monthly_values": [
+      {
+        "month": "2023-04",
+        "value_usd": 26854.47,
+        "workload_breakdown": {
+          "compute": 5804.09,
+          "storage": 5787.74,
+          "networking": 6620.22,
+          "paas": 8642.41
+        }
+      },
+      {
+        "month": "2023-05",
+        "value_usd": 26027.56,
+        "workload_breakdown": {
+          "compute": 6637.7,
+          "storage": 3855.54,
+          "networking": 4110.42,
+          "paas": 11423.9
+        }
+      },
+      {
+        "month": "2023-06",
+        "value_usd": 26733.52,
+        "workload_breakdown": {
+          "compute": 5164.16,
+          "storage": 8595.45,
+          "networking": 4561.81,
+          "paas": 8412.09
+        }
+      },
+      {
+        "month": "2023-07",
+        "value_usd": 26953.32,
+        "workload_breakdown": {
+          "compute": 5896.6,
+          "storage": 9118.97,
+          "networking": 3429.3,
+          "paas": 8508.45
+        }
+      },
+      {
+        "month": "2023-08",
+        "value_usd": 27051.38,
+        "workload_breakdown": {
+          "compute": 6769.04,
+          "storage": 8433.66,
+          "networking": 2344.98,
+          "paas": 9503.7
+        }
+      },
+      {
+        "month": "2023-09",
+        "value_usd": 26306.34,
+        "workload_breakdown": {
+          "compute": 6013.15,
+          "storage": 5576.13,
+          "networking": 6022.15,
+          "paas": 8694.9
+        }
+      },
+      {
+        "month": "2023-10",
+        "value_usd": 26572.81,
+        "workload_breakdown": {
+          "compute": 6874.04,
+          "storage": 6242.33,
+          "networking": 2693.72,
+          "paas": 10762.72
+        }
+      },
+      {
+        "month": "2023-11",
+        "value_usd": 26388.65,
+        "workload_breakdown": {
+          "compute": 5920.89,
+          "storage": 5289.82,
+          "networking": 5536.03,
+          "paas": 9641.91
+        }
+      },
+      {
+        "month": "2023-12",
+        "value_usd": 13194.32,
+        "workload_breakdown": {
+          "compute": 5207.5,
+          "storage": 3061.44,
+          "networking": 955.68,
+          "paas": 3969.69
+        }
+      },
+      {
+        "month": "2024-01",
+        "value_usd": 26703.61,
+        "workload_breakdown": {
+          "compute": 7618.01,
+          "storage": 3768.58,
+          "networking": 5686.47,
+          "paas": 9630.55
+        }
+      },
+      {
+        "month": "2024-02",
+        "value_usd": 27834.0,
+        "workload_breakdown": {
+          "compute": 6806.15,
+          "storage": 9276.52,
+          "networking": 4671.46,
+          "paas": 7079.87
+        }
+      },
+      {
+        "month": "2024-03",
+        "value_usd": 28240.91,
+        "workload_breakdown": {
+          "compute": 11715.04,
+          "storage": 4193.16,
+          "networking": 5382.25,
+          "paas": 6950.46
+        }
+      }
+    ]
+  },
+  "open_recommendations": [
+    {
+      "recommendation_id": "REC-84327",
+      "type": "SPA",
+      "description": "Enable MFA for all admin accounts",
+      "priority": "Low",
+      "created_at": "2024-03-04T10:00:00-05:00",
+      "status": "Acknowledged"
+    },
+    {
+      "recommendation_id": "REC-51340",
+      "type": "Manual",
+      "description": "Deploy Azure Front Door for global load balancing",
+      "priority": "Medium",
+      "created_at": "2024-03-18T10:00:00-05:00",
+      "status": "Dismissed"
+    }
+  ],
+  "recent_activity_timeline": [
+    {
+      "date": "2024-03-26",
+      "activity_type": "contract_event",
+      "description": "Contract renewal notification (90 days)",
+      "participants": [
+        "Raj Mehta"
+      ]
+    },
+    {
+      "date": "2024-03-06",
+      "activity_type": "contract_event",
+      "description": "MACC milestone approaching",
+      "participants": [
+        "Ahmed Hassan",
+        "Marcus Williams",
+        "Lisa Patel"
+      ]
+    },
+    {
+      "date": "2024-02-18",
+      "activity_type": "email",
+      "description": "Shared architecture documentation",
+      "participants": [
+        "Raj Mehta"
+      ]
+    },
+    {
+      "date": "2024-02-17",
+      "activity_type": "contract_event",
+      "description": "Contract renewal notification (90 days)",
+      "participants": [
+        "Sarah Kim"
+      ]
+    },
+    {
+      "date": "2024-02-14",
+      "activity_type": "spa_received",
+      "description": "SPA: Cost anomaly detected",
+      "participants": [
+        "Lisa Patel",
+        "Sarah Kim"
+      ]
+    },
+    {
+      "date": "2024-02-08",
+      "activity_type": "meeting",
+      "description": "Architecture review session",
+      "participants": [
+        "Ahmed Hassan",
+        "Lisa Patel",
+        "Sarah Kim"
+      ]
+    },
+    {
+      "date": "2024-02-04",
+      "activity_type": "meeting",
+      "description": "Executive business review",
+      "participants": [
+        "Lisa Patel",
+        "Marcus Williams"
+      ]
+    },
+    {
+      "date": "2024-01-19",
+      "activity_type": "deployment",
+      "description": "Pilot environment provisioned",
+      "participants": [
+        "Sarah Kim"
+      ]
+    },
+    {
+      "date": "2024-01-18",
+      "activity_type": "escalation",
+      "description": "Customer escalated support ticket response time",
+      "participants": [
+        "Sarah Kim",
+        "Marcus Williams"
+      ]
+    },
+    {
+      "date": "2024-01-10",
+      "activity_type": "spa_received",
+      "description": "SPA: Cost anomaly detected",
+      "participants": [
+        "Lisa Patel",
+        "Raj Mehta"
+      ]
+    },
+    {
+      "date": "2024-01-09",
+      "activity_type": "email",
+      "description": "Sent renewal reminder to procurement",
+      "participants": [
+        "Ahmed Hassan",
+        "Sarah Kim",
+        "Raj Mehta"
+      ]
+    }
+  ],
+  "customer_health_flags": {
+    "overall_health": "Healthy",
+    "engagement_score": 26,
+    "consumption_trend": "Stable",
+    "renewal_risk": "Unknown",
+    "last_assessed": "2024-02-15"
+  },
+  "contract_billing": {
+    "subscription_type": "PAYG",
+    "contract_end_date": null,
+    "macc_commitment_usd": null,
+    "macc_consumed_usd": null,
+    "billing_frequency": "Monthly",
+    "auto_renew": false
+  }
+}

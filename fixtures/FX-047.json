@@ -1,0 +1,367 @@
+{
+  "fixture_id": "FX-047",
+  "fixture_class": "contradictory",
+  "authored_at": "2024-03-15T10:00:00-05:00",
+  "account": {
+    "account_id": "ACC-S7KJN805",
+    "name": "Evergreen Solutions",
+    "segment": "smb-small",
+    "geography": "NA",
+    "tenure_years": 4.2,
+    "owner": "David Chen",
+    "industry": "Environmental",
+    "employee_count": 140
+  },
+  "opportunities": [
+    {
+      "opportunity_id": "OPP-FGHR4GZK",
+      "name": "Evergreen Azure AI Services",
+      "stage": "Qualify",
+      "estimated_value_usd": 175000,
+      "close_date": "2024-12-26",
+      "bpf_stage": "Qualify",
+      "forecast_category": "Committed",
+      "owner": "David Chen",
+      "last_updated": "2024-01-04T14:00:00-05:00",
+      "milestones": [
+        {
+          "milestone_id": "MS-W4VXJAYZ",
+          "name": "Discovery",
+          "status": "Blocked",
+          "due_date": "2024-07-06",
+          "completed_date": null,
+          "owner": "David Chen",
+          "evidence": ""
+        }
+      ]
+    }
+  ],
+  "contacts": [
+    {
+      "contact_id": "CON-61ORV3DI",
+      "name": "Samantha Okafor",
+      "role": "Finance",
+      "title": "IT Director",
+      "email": "samantha.okafor@evergreensol.com",
+      "influence_level": "Decision Maker",
+      "last_interaction": "2024-01-14",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-O2FMRY1I",
+      "name": "Daniel Thompson",
+      "role": "Business",
+      "title": "IT Director",
+      "email": "daniel.thompson@evergreensol.com",
+      "influence_level": "Influencer",
+      "last_interaction": "2024-01-25",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-6WE499P3",
+      "name": "Sandra Petrov",
+      "role": "Executive",
+      "title": "Cloud Architect",
+      "email": "sandra.petrov@evergreensol.com",
+      "influence_level": "Champion",
+      "last_interaction": "2024-03-20",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-L7P87ENK",
+      "name": "Daniel Petrov",
+      "role": "Finance",
+      "title": "CFO",
+      "email": "daniel.petrov@evergreensol.com",
+      "influence_level": "End User",
+      "last_interaction": "2024-03-16",
+      "is_current": true
+    },
+    {
+      "contact_id": "CON-XJCYA56R",
+      "name": "Thomas Wilson",
+      "role": "Business",
+      "title": "Cloud Architect",
+      "email": "thomas.wilson@evergreensol.com",
+      "influence_level": "Blocker",
+      "last_interaction": "2024-01-17",
+      "is_current": true
+    }
+  ],
+  "acr_trend": {
+    "currency": "USD",
+    "monthly_values": [
+      {
+        "month": "2023-04",
+        "value_usd": 45490.81,
+        "workload_breakdown": {
+          "compute": 12421.72,
+          "storage": 11605.55,
+          "networking": 4117.71,
+          "paas": 17345.82
+        }
+      },
+      {
+        "month": "2023-05",
+        "value_usd": 43726.65,
+        "workload_breakdown": {
+          "compute": 8708.2,
+          "storage": 10131.91,
+          "networking": 10163.66,
+          "paas": 14722.88
+        }
+      },
+      {
+        "month": "2023-06",
+        "value_usd": 40941.19,
+        "workload_breakdown": {
+          "compute": 6882.1,
+          "storage": 14330.68,
+          "networking": 4423.84,
+          "paas": 15304.57
+        }
+      },
+      {
+        "month": "2023-07",
+        "value_usd": 37968.88,
+        "workload_breakdown": {
+          "compute": 15707.96,
+          "storage": 4804.14,
+          "networking": 7435.56,
+          "paas": 10021.21
+        }
+      },
+      {
+        "month": "2023-08",
+        "value_usd": 35793.47,
+        "workload_breakdown": {
+          "compute": 15975.69,
+          "storage": 8774.63,
+          "networking": 3802.19,
+          "paas": 7240.95
+        }
+      },
+      {
+        "month": "2023-09",
+        "value_usd": 34244.45,
+        "workload_breakdown": {
+          "compute": 14917.43,
+          "storage": 7443.9,
+          "networking": 1871.72,
+          "paas": 10011.4
+        }
+      },
+      {
+        "month": "2023-10",
+        "value_usd": 32249.45,
+        "workload_breakdown": {
+          "compute": 9652.2,
+          "storage": 5952.22,
+          "networking": 4419.57,
+          "paas": 12225.46
+        }
+      },
+      {
+        "month": "2023-11",
+        "value_usd": 28772.82,
+        "workload_breakdown": {
+          "compute": 8642.54,
+          "storage": 5984.1,
+          "networking": 3744.8,
+          "paas": 10401.37
+        }
+      },
+      {
+        "month": "2023-12",
+        "value_usd": 27888.25,
+        "workload_breakdown": {
+          "compute": 5343.41,
+          "storage": 6279.42,
+          "networking": 3957.96,
+          "paas": 12307.46
+        }
+      },
+      {
+        "month": "2024-01",
+        "value_usd": 24848.8,
+        "workload_breakdown": {
+          "compute": 10082.4,
+          "storage": 2306.65,
+          "networking": 2365.61,
+          "paas": 10094.15
+        }
+      },
+      {
+        "month": "2024-02",
+        "value_usd": 22181.41,
+        "workload_breakdown": {
+          "compute": 7014.55,
+          "storage": 2663.06,
+          "networking": 2947.68,
+          "paas": 9556.11
+        }
+      },
+      {
+        "month": "2024-03",
+        "value_usd": 19865.64,
+        "workload_breakdown": {
+          "compute": 7195.18,
+          "storage": 5609.55,
+          "networking": 1833.21,
+          "paas": 5227.7
+        }
+      }
+    ]
+  },
+  "open_recommendations": [
+    {
+      "recommendation_id": "REC-53253",
+      "type": "CxObserve",
+      "description": "Enable Azure Security Center standard tier",
+      "priority": "High",
+      "created_at": "2024-01-06T10:00:00-05:00",
+      "status": "In Progress"
+    },
+    {
+      "recommendation_id": "REC-17480",
+      "type": "Advisor",
+      "description": "Rightsize underutilized VMs (potential 23% savings)",
+      "priority": "Low",
+      "created_at": "2024-03-15T10:00:00-05:00",
+      "status": "Acknowledged"
+    },
+    {
+      "recommendation_id": "REC-94346",
+      "type": "Advisor",
+      "description": "Review network security group rules",
+      "priority": "Medium",
+      "created_at": "2024-03-03T10:00:00-05:00",
+      "status": "Dismissed"
+    }
+  ],
+  "recent_activity_timeline": [
+    {
+      "date": "2024-03-27",
+      "activity_type": "contract_event",
+      "description": "Billing discrepancy flagged",
+      "participants": [
+        "Marcus Williams"
+      ]
+    },
+    {
+      "date": "2024-03-26",
+      "activity_type": "contract_event",
+      "description": "Billing discrepancy flagged",
+      "participants": [
+        "Lisa Patel",
+        "Marcus Williams",
+        "Raj Mehta"
+      ]
+    },
+    {
+      "date": "2024-03-22",
+      "activity_type": "contract_event",
+      "description": "MACC milestone approaching",
+      "participants": [
+        "Lisa Patel",
+        "Ahmed Hassan"
+      ]
+    },
+    {
+      "date": "2024-03-02",
+      "activity_type": "deployment",
+      "description": "Migration batch 1 completed",
+      "participants": [
+        "Lisa Patel",
+        "Sarah Kim",
+        "Ahmed Hassan"
+      ]
+    },
+    {
+      "date": "2024-02-28",
+      "activity_type": "contract_event",
+      "description": "Billing discrepancy flagged",
+      "participants": [
+        "Sarah Kim",
+        "Ahmed Hassan"
+      ]
+    },
+    {
+      "date": "2024-02-26",
+      "activity_type": "contract_event",
+      "description": "Contract renewal notification (90 days)",
+      "participants": [
+        "Raj Mehta",
+        "Marcus Williams"
+      ]
+    },
+    {
+      "date": "2024-02-19",
+      "activity_type": "contract_event",
+      "description": "Contract renewal notification (90 days)",
+      "participants": [
+        "Lisa Patel",
+        "Ahmed Hassan",
+        "Raj Mehta"
+      ]
+    },
+    {
+      "date": "2024-02-03",
+      "activity_type": "spa_received",
+      "description": "SPA: VM rightsizing opportunity detected",
+      "participants": [
+        "Raj Mehta",
+        "Ahmed Hassan"
+      ]
+    },
+    {
+      "date": "2024-01-26",
+      "activity_type": "deployment",
+      "description": "Pilot environment provisioned",
+      "participants": [
+        "Sarah Kim",
+        "Marcus Williams"
+      ]
+    },
+    {
+      "date": "2024-01-11",
+      "activity_type": "meeting",
+      "description": "Weekly sync with account team",
+      "participants": [
+        "Marcus Williams"
+      ]
+    },
+    {
+      "date": "2024-01-07",
+      "activity_type": "email",
+      "description": "Shared architecture documentation",
+      "participants": [
+        "Ahmed Hassan",
+        "Lisa Patel"
+      ]
+    },
+    {
+      "date": "2024-01-06",
+      "activity_type": "spa_received",
+      "description": "SPA: VM rightsizing opportunity detected",
+      "participants": [
+        "Marcus Williams"
+      ]
+    }
+  ],
+  "customer_health_flags": {
+    "overall_health": "Healthy",
+    "engagement_score": 68,
+    "consumption_trend": "Growing",
+    "renewal_risk": "Low",
+    "last_assessed": "2024-02-14"
+  },
+  "contract_billing": {
+    "subscription_type": "PAYG",
+    "contract_end_date": null,
+    "macc_commitment_usd": null,
+    "macc_consumed_usd": null,
+    "billing_frequency": "Monthly",
+    "auto_renew": false
+  }
+}
